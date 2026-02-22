@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+
+class AppColors {
+  AppColors._();
+
+  // Primary
+  static const primary = Color(0xFF6C63FF);
+  static const primaryLight = Color(0xFF9D97FF);
+  static const primaryDark = Color(0xFF4A42D4);
+
+  // Secondary
+  static const secondary = Color(0xFFFF6584);
+  static const secondaryLight = Color(0xFFFF8FA5);
+  static const secondaryDark = Color(0xFFD44A66);
+
+  // Tertiary
+  static const tertiary = Color(0xFF00D2FF);
+
+  // Success / Warning / Error
+  static const success = Color(0xFF4CAF50);
+  static const warning = Color(0xFFFFB74D);
+  static const error = Color(0xFFEF5350);
+
+  // Metabolic Phase Gradients
+  static const anabolicStart = Color(0xFF667eea);
+  static const anabolicEnd = Color(0xFF764ba2);
+  static const catabolicStart = Color(0xFFf093fb);
+  static const catabolicEnd = Color(0xFFf5576c);
+  static const fatBurningStart = Color(0xFF4facfe);
+  static const fatBurningEnd = Color(0xFF00f2fe);
+  static const ketosisStart = Color(0xFF43e97b);
+  static const ketosisEnd = Color(0xFF38f9d7);
+  static const autophagyStart = Color(0xFFfa709a);
+  static const autophagyEnd = Color(0xFFfee140);
+
+  static const phaseGradients = <String, List<Color>>{
+    'anabolic': [anabolicStart, anabolicEnd],
+    'catabolic': [catabolicStart, catabolicEnd],
+    'fatBurning': [fatBurningStart, fatBurningEnd],
+    'ketosis': [ketosisStart, ketosisEnd],
+    'autophagy': [autophagyStart, autophagyEnd],
+  };
+
+  // Dark Theme
+  static const darkBg = Color(0xFF0F0F1A);
+  static const darkSurface = Color(0xFF1A1A2E);
+  static const darkCard = Color(0xFF16213E);
+  static const darkTextPrimary = Color(0xFFE8E8E8);
+  static const darkTextSecondary = Color(0xFFA0A0B0);
+  static const darkDivider = Color(0xFF2A2A3E);
+
+  // Light Theme
+  static const lightBg = Color(0xFFF8F9FE);
+  static const lightSurface = Color(0xFFFFFFFF);
+  static const lightCard = Color(0xFFF0F1F5);
+  static const lightTextPrimary = Color(0xFF1A1A2E);
+  static const lightTextSecondary = Color(0xFF6B6B80);
+  static const lightDivider = Color(0xFFE0E0EC);
+}

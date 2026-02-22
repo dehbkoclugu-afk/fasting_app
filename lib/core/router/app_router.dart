@@ -1,0 +1,98 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../features/onboarding/screens/welcome_screen.dart';
+import '../../features/onboarding/screens/goal_screen.dart';
+import '../../features/onboarding/screens/plan_select_screen.dart';
+import '../../features/onboarding/screens/body_info_screen.dart';
+import '../../features/onboarding/screens/permissions_screen.dart';
+import '../../features/timer/screens/timer_screen.dart';
+import '../../features/stats/screens/stats_screen.dart';
+import '../../features/meals/screens/meals_screen.dart';
+import '../../features/profile/screens/profile_screen.dart';
+import '../../features/paywall/screens/paywall_screen.dart';
+import '../../features/profile/screens/body_metrics_screen.dart';
+import '../shell/main_shell.dart';
+
+class AppRouter {
+  AppRouter._();
+
+  static final _rootNavigatorKey = GlobalKey<NavigatorState>();
+  static final _shellNavigatorKey = GlobalKey<NavigatorState>();
+
+  static GoRouter router({required bool showOnboarding}) {
+    return GoRouter(
+      navigatorKey: _rootNavigatorKey,
+      initialLocation: showOnboarding ? '/onboarding' : '/timer',
+      routes: [
+        // Onboarding
+        GoRoute(
+          path: '/onboarding',
+          builder: (context, state) => const WelcomeScreen(),
+        ),
+        GoRoute(
+          path: '/onboarding/goals',
+          builder: (context, state) => const GoalScreen(),
+        ),
+        GoRoute(
+          path: '/onboarding/plan',
+          builder: (context, state) => const PlanSelectScreen(),
+        ),
+        GoRoute(
+          path: '/onboarding/body-info',
+          builder: (context, state) => const BodyInfoScreen(),
+        ),
+        GoRoute(
+          path: '/onboarding/permissions',
+          builder: (context, state) => const PermissionsScreen(),
+        ),
+
+        // Main Shell (Bottom Nav)
+        ShellRoute(
+          navigatorKey: _shellNavigatorKey,
+          builder: (context, state, child) => MainShell(child: child),
+          routes: [
+            GoRoute(
+              path: '/timer',
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: TimerScreen(),
+              ),
+            ),
+            GoRoute(
+              path: '/stats',
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: StatsScreen(),
+              ),
+            ),
+            GoRoute(
+              path: '/meals',
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: MealsScreen(),
+              ),
+            ),
+            GoRoute(
+              path: '/profile',
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: ProfileScreen(),
+              ),
+            ),
+          ],
+        ),
+
+        // Paywall (Full screen modal)
+        GoRoute(
+          path: '/paywall',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const PaywallScreen(),
+        ),
+
+        // Body Metrics
+        GoRoute(
+          path: '/body-metrics',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const BodyMetricsScreen(),
+        ),
+      ],
+    );
+  }
+}

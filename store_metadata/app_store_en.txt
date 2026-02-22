@@ -1,0 +1,50 @@
+== APP STORE (iOS) / PLAY STORE (Android) - English ==
+
+App Name: FastLife - Intermittent Fasting
+Subtitle: Fasting Tracker & Health Assistant
+
+Short Description (Play Store - 80 chars):
+Smart fasting tracker with metabolic phase analysis and health management.
+
+Full Description:
+Track your intermittent fasting journey like a pro with FastLife.
+
+FEATURES:
+
+• Smart Timer
+Track your fast with a real-time circular timer. See your metabolic phases live - monitor fat burning, ketosis, and autophagy phases in real time.
+
+• 8+ Fasting Plans
+Choose from popular fasting plans including 12:12, 16:8, 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, and Warrior diet, or create your own custom plan.
+
+• Detailed Statistics
+Analyze your weekly, monthly, and yearly fasting data with visual charts. Review metrics like streak tracking, completion rate, and average fasting duration.
+
+• Metabolic Phase Tracking
+Learn what stage your body's metabolism is at during your fast. Track anabolic, catabolic, fat burning, ketosis, and autophagy phases in real time.
+
+• Meal Planner
+Log what you eat during your eating window. Optimize your nutrition with calorie, protein, carb, and fat tracking.
+
+• Weight Tracking
+Monitor your weight changes on a chart. Measure your progress with BMI calculation and body metrics.
+
+• Water Tracking
+Easily log your daily water intake and reach your hydration goals.
+
+• Smart Notifications
+Stay on track with fasting start/end reminders, phase transition notifications, and motivational messages.
+
+• Dark & Light Theme
+Choose between eye-friendly dark theme and light theme options.
+
+• HealthKit / Google Fit Integration
+Automatically sync your steps, calories, and weight data with Apple Health or Google Fit.
+
+• Turkish & English
+Full Turkish and English language support.
+
+Keywords: intermittent fasting, fasting, diet, weight loss, health, ketosis, autophagy, fat burning, calories, nutrition, fasting tracker, timer, IF
+
+Category: Health & Fitness
+Age Rating: 4+

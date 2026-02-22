@@ -1,0 +1,281 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "FastTrack",
+
+  "greeting_morning": "Good morning",
+  "greeting_afternoon": "Good afternoon",
+  "greeting_evening": "Good evening",
+
+  "tab_timer": "Timer",
+  "tab_stats": "Stats",
+  "tab_meals": "Meals",
+  "tab_profile": "Profile",
+
+  "timer_fasting": "Fasting Time",
+  "timer_remaining": "Remaining",
+  "timer_elapsed": "Elapsed",
+  "timer_start": "Start",
+  "timer_stop": "Stop",
+  "timer_pause": "Pause",
+  "timer_resume": "Resume",
+  "timer_completed": "Congratulations!",
+  "timer_completedMessage": "You completed your fast successfully!",
+  "timer_selectPlan": "Select Fasting Plan",
+  "timer_stopConfirm": "Are you sure you want to end the fast early?",
+  "timer_stopTitle": "End Fast",
+  "timer_cancel": "Cancel",
+  "timer_confirmStop": "Yes, End",
+
+  "phase_anabolic": "Anabolic",
+  "phase_anabolicDesc": "Digestion in progress",
+  "phase_catabolic": "Catabolic",
+  "phase_catabolicDesc": "Energy transition",
+  "phase_fatBurning": "Fat Burning",
+  "phase_fatBurningDesc": "Fat burning started",
+  "phase_ketosis": "Ketosis",
+  "phase_ketosisDesc": "Ketone production active",
+  "phase_autophagy": "Autophagy",
+  "phase_autophagyDesc": "Cell renewal",
+
+  "stats_title": "Statistics",
+  "stats_week": "Week",
+  "stats_month": "Month",
+  "stats_year": "Year",
+  "stats_totalFasts": "Total Fasts",
+  "stats_average": "Average",
+  "stats_fastDuration": "fast duration",
+  "stats_streak": "Streak",
+  "stats_daysConsecutive": "consecutive days",
+  "stats_success": "Success",
+  "stats_completion": "completion",
+  "stats_weeklyFasting": "Weekly Fasting",
+  "stats_monthlyView": "Monthly View",
+  "stats_weightChange": "Weight Change",
+
+  "heatmap_none": "None",
+  "heatmap_low": "Low",
+  "heatmap_good": "Good",
+  "heatmap_full": "Full",
+
+  "meals_title": "Meal Planner",
+  "meals_eatingWindow": "Eating Window",
+  "meals_windowOpen": "Open",
+  "meals_windowFasting": "Fasting",
+  "meals_calories": "Calories",
+  "meals_protein": "Protein",
+  "meals_carbs": "Carbs",
+  "meals_fat": "Fat",
+  "meals_todayMeals": "Today's Meals",
+  "meals_noMeals": "No meals added yet",
+  "meals_breakfastSuggestions": "Break-Fast Suggestions",
+  "meals_addMeal": "Add Meal",
+
+  "profile_title": "Profile",
+  "profile_user": "User",
+  "profile_planActive": "{plan} Plan active",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {"type": "String"}
+    }
+  },
+  "profile_upgradePremium": "Upgrade to Premium",
+  "profile_premiumDesc": "All plans, advanced stats, and more",
+  "profile_bodyMetrics": "Body Metrics",
+  "profile_height": "Height",
+  "profile_weight": "Weight",
+  "profile_targetWeight": "Target Weight",
+  "profile_bmi": "BMI",
+  "profile_settings": "Settings",
+  "profile_notifications": "Notifications",
+  "profile_darkTheme": "Dark Theme",
+  "profile_waterReminder": "Water Reminder",
+  "profile_phaseNotifications": "Phase Notifications",
+  "profile_language": "Language",
+  "profile_about": "About",
+  "profile_rateApp": "Rate App",
+  "profile_share": "Share",
+  "profile_privacyPolicy": "Privacy Policy",
+  "profile_version": "Version",
+
+  "onboarding_welcome": "Welcome",
+  "onboarding_welcomeDesc": "Take control of your\nintermittent fasting journey",
+  "onboarding_featureTimer": "Smart fasting timer",
+  "onboarding_featureStats": "Detailed statistics and charts",
+  "onboarding_featureMeals": "Meal planner and recipe suggestions",
+  "onboarding_getStarted": "Get Started",
+  "onboarding_selectGoal": "What's your goal?",
+  "onboarding_selectGoalDesc": "You can select multiple",
+  "onboarding_goalWeight": "Lose Weight",
+  "onboarding_goalWeightDesc": "Healthy weight loss",
+  "onboarding_goalHealth": "Improve Health",
+  "onboarding_goalHealthDesc": "General health and immunity",
+  "onboarding_goalEnergy": "More Energy",
+  "onboarding_goalEnergyDesc": "Energy throughout the day",
+  "onboarding_goalMental": "Mental Clarity",
+  "onboarding_goalMentalDesc": "Focus and clarity",
+  "onboarding_goalLongevity": "Longevity",
+  "onboarding_goalLongevityDesc": "Cell renewal and anti-aging",
+  "onboarding_goalDiscipline": "Discipline",
+  "onboarding_goalDisciplineDesc": "Build self-discipline",
+  "onboarding_selectPlan": "Choose Your Plan",
+  "onboarding_selectPlanDesc": "Select the best fasting plan for you",
+  "onboarding_bodyInfo": "Enter Your Info",
+  "onboarding_bodyInfoDesc": "For personalized recommendations",
+  "onboarding_gender": "Gender",
+  "onboarding_male": "Male",
+  "onboarding_female": "Female",
+  "onboarding_age": "Age",
+  "onboarding_bodyInfoDisclaimer": "This information is stored only on your device and used for calorie calculations.",
+  "onboarding_permissions": "Final Step",
+  "onboarding_permissionsDesc": "Enable permissions for the best experience",
+  "onboarding_next": "Continue",
+  "onboarding_start": "Let's Go!",
+  "onboarding_skipForNow": "Set up later",
+
+  "waterAdded": "+250ml water added",
+
+  "languageSelect": "Select Language",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+
+  "paywall_title": "Upgrade to Premium",
+  "paywall_subtitle": "Unlock all features",
+  "paywall_allPlans": "All fasting plans",
+  "paywall_advancedStats": "Advanced statistics",
+  "paywall_mealPlanner": "Meal planner",
+  "paywall_healthKit": "HealthKit integration",
+  "paywall_themes": "Theme customization",
+  "paywall_noAds": "No ads",
+  "paywall_weekly": "Weekly",
+  "paywall_monthly": "Monthly",
+  "paywall_yearly": "Yearly",
+  "paywall_bestValue": "Best",
+  "paywall_freeTrial": "Free Trial (3 Days)",
+  "paywall_restore": "Restore purchases",
+  "paywall_premiumActive": "Premium Active!",
+  "paywall_premiumActiveDesc": "You unlocked all features",
+
+  "water_title": "Water Intake",
+  "water_addWater": "Add Water",
+  "water_goal": "Goal",
+  "water_ml": "ml",
+
+  "common_ok": "OK",
+  "common_cancel": "Cancel",
+  "common_save": "Save",
+  "common_delete": "Delete",
+  "common_hours": "hours",
+  "common_minutes": "minutes",
+  "common_days": "days",
+  "common_enable": "Enable",
+
+  "streakCard_currentStreak": "Current Streak",
+  "streakCard_longestStreak": "Longest Streak",
+  "streakCard_totalSessions": "Total Fasts",
+
+  "meals_mealType": "Meal Type",
+  "meals_breakfast": "Breakfast",
+  "meals_lunch": "Lunch",
+  "meals_dinner": "Dinner",
+  "meals_snack": "Snack",
+  "meals_carbohydrate": "Carbohydrate",
+  "meals_add": "Add",
+  "meals_mealName": "Meal name",
+
+  "bodyMetrics_title": "Body Metrics",
+  "bodyMetrics_weight": "Weight",
+  "bodyMetrics_target": "Target",
+  "bodyMetrics_save": "Save",
+  "bodyMetrics_history": "History",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "bodyMetrics_noData": "No data yet",
+
+  "meals_quickAdd": "Quick Add",
+  "meals_manualEntry": "Manual Entry",
+  "meals_added": "{name} added",
+  "@meals_added": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "meals_nameCalorieRequired": "Name and calories are required",
+
+  "bodyMetrics_addWeight": "Add Weight",
+  "bodyMetrics_hintWeight": "e.g. 74.5",
+  "bodyMetrics_invalidWeight": "Enter a valid weight",
+  "bodyMetrics_weightSaved": "{value} kg saved",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+
+  "completion_duration": "Duration",
+  "completion_plan": "Plan",
+  "completion_lastPhase": "Last Phase",
+
+  "timer_remainingTime": "Remaining Time",
+  "timer_ready": "Ready to Start",
+
+  "streak_status": "Status",
+  "streak_startToday": "Start today!",
+  "streak_goodStart": "Good start!",
+  "streak_goingGreat": "Going great!",
+  "streak_superb": "Superb!",
+  "streak_legendary": "Legendary!",
+  "streak_incredible": "Incredible!",
+
+  "weight_noRecord": "No weight records yet\nAdd from Profile > Body Metrics",
+
+  "day_mon": "Mon",
+  "day_tue": "Tue",
+  "day_wed": "Wed",
+  "day_thu": "Thu",
+  "day_fri": "Fri",
+  "day_sat": "Sat",
+  "day_sun": "Sun",
+
+  "day_short_mon": "M",
+  "day_short_tue": "T",
+  "day_short_wed": "W",
+  "day_short_thu": "T",
+  "day_short_fri": "F",
+  "day_short_sat": "S",
+  "day_short_sun": "S",
+
+  "month_jan": "January",
+  "month_feb": "February",
+  "month_mar": "March",
+  "month_apr": "April",
+  "month_may": "May",
+  "month_jun": "June",
+  "month_jul": "July",
+  "month_aug": "August",
+  "month_sep": "September",
+  "month_oct": "October",
+  "month_nov": "November",
+  "month_dec": "December",
+
+  "meals_fastingWindow": "Fasting ({hours}h)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {"type": "String"}
+    }
+  },
+  "meals_eatingWindowHours": "Eating ({hours}h)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {"type": "String"}
+    }
+  },
+
+  "recipe_oatSmoothie": "Oat Smoothie",
+  "recipe_avocadoToast": "Avocado Toast",
+  "recipe_yogurtBowl": "Yogurt Bowl"
+}

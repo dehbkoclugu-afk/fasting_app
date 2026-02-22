@@ -1,0 +1,50 @@
+== APP STORE (iOS) - Turkce ==
+
+Uygulama Adi: FastLife - Intermittent Fasting
+Alt Baslik: Oruc Takibi & Saglik Asistani
+
+Kisa Aciklama (Play Store - 80 karakter):
+Akilli oruc takibi, metabolik faz analizi ve kisisel saglik yonetimi.
+
+Tam Aciklama:
+FastLife ile intermittent fasting yolculugunuzu profesyonel seviyede takip edin.
+
+OZELLIKLER:
+
+• Akilli Zamanlayici
+Gercek zamanli dairesel zamanlayici ile orucunuzu takip edin. Metabolik fazlarinizi canli olarak gorun - yag yakimi, ketozis ve otofaji fazlarini anlik izleyin.
+
+• 8+ Oruc Plani
+12:12, 16:8, 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ve Warrior diyeti dahil populer oruc planlarindan birini secin veya kendinize ozel plan olusturun.
+
+• Detayli Istatistikler
+Haftalik, aylik ve yillik oruc verilerinizi gorsel grafiklerle analiz edin. Streak takibi, tamamlama orani ve ortalama oruc suresi gibi metrikleri inceleyin.
+
+• Metabolik Faz Takibi
+Orucunuz sirasinda vucut metabolizmanizin hangi asamada oldugunu ogrenin. Anabolik, katabolik, yag yakimi, ketozis ve otofaji fazlarini gercek zamanli takip edin.
+
+• Yemek Planlayici
+Yemek pencerenizde ne yediginizi kaydedin. Kalori, protein, karbonhidrat ve yag takibi ile beslenmenizi optimize edin.
+
+• Kilo Takibi
+Kilo degisimlerinizi grafik uzerinde izleyin. BMI hesaplama ve vucut metrikleri ile ilerlemenizi olcun.
+
+• Su Takibi
+Gunluk su tuketiminizi kolayca kaydedin ve hedeflerinize ulasin.
+
+• Akilli Bildirimler
+Oruc baslangic/bitis hatirlaticlari, faz gecis bildirimleri ve motivasyon mesajlari ile yolunuzdan sapmayin.
+
+• Karanlik & Aydinlik Tema
+Goz yormayan karanlik tema ve aydinlik tema secenekleri.
+
+• HealthKit Entegrasyonu
+Apple Health ile adim, kalori ve kilo verilerinizi otomatik senkronize edin.
+
+• Turkce & Ingilizce
+Tam Turkce ve Ingilizce dil destegi.
+
+Anahtar Kelimeler: intermittent fasting, oruc, diyet, kilo verme, saglik, ketozis, otofaji, yag yakimi, kalori, beslenme, fasting tracker, timer
+
+Kategori: Saglik & Fitness
+Yas Sinifi: 4+

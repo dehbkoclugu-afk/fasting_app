@@ -1,0 +1,281 @@
+{
+  "@@locale": "tr",
+
+  "appTitle": "FastTrack",
+
+  "greeting_morning": "Günaydın",
+  "greeting_afternoon": "İyi günler",
+  "greeting_evening": "İyi akşamlar",
+
+  "tab_timer": "Zamanlayıcı",
+  "tab_stats": "İstatistik",
+  "tab_meals": "Yemek",
+  "tab_profile": "Profil",
+
+  "timer_fasting": "Oruç Süresi",
+  "timer_remaining": "Kalan",
+  "timer_elapsed": "Geçen",
+  "timer_start": "Başlat",
+  "timer_stop": "Durdur",
+  "timer_pause": "Duraklat",
+  "timer_resume": "Devam Et",
+  "timer_completed": "Tebrikler!",
+  "timer_completedMessage": "Orucunu başarıyla tamamladın!",
+  "timer_selectPlan": "Oruç Planı Seç",
+  "timer_stopConfirm": "Orucu erken bitirmek istediğine emin misin?",
+  "timer_stopTitle": "Orucu Bitir",
+  "timer_cancel": "İptal",
+  "timer_confirmStop": "Evet, Bitir",
+
+  "phase_anabolic": "Anabolik",
+  "phase_anabolicDesc": "Sindirim devam ediyor",
+  "phase_catabolic": "Katabolik",
+  "phase_catabolicDesc": "Enerji geçişi",
+  "phase_fatBurning": "Yağ Yakımı",
+  "phase_fatBurningDesc": "Yağ yakımı başladı",
+  "phase_ketosis": "Ketozis",
+  "phase_ketosisDesc": "Keton üretimi aktif",
+  "phase_autophagy": "Otofaji",
+  "phase_autophagyDesc": "Hücre yenilenmesi",
+
+  "stats_title": "İstatistikler",
+  "stats_week": "Hafta",
+  "stats_month": "Ay",
+  "stats_year": "Yıl",
+  "stats_totalFasts": "Toplam Oruç",
+  "stats_average": "Ortalama",
+  "stats_fastDuration": "oruç süresi",
+  "stats_streak": "Seri",
+  "stats_daysConsecutive": "gün ardışık",
+  "stats_success": "Başarı",
+  "stats_completion": "tamamlama",
+  "stats_weeklyFasting": "Haftalık Oruç",
+  "stats_monthlyView": "Aylık Görünüm",
+  "stats_weightChange": "Kilo Değişimi",
+
+  "heatmap_none": "Yok",
+  "heatmap_low": "Az",
+  "heatmap_good": "İyi",
+  "heatmap_full": "Tam",
+
+  "meals_title": "Yemek Planlayıcı",
+  "meals_eatingWindow": "Yemek Penceresi",
+  "meals_windowOpen": "Açık",
+  "meals_windowFasting": "Oruç",
+  "meals_calories": "Kalori",
+  "meals_protein": "Protein",
+  "meals_carbs": "Karb",
+  "meals_fat": "Yağ",
+  "meals_todayMeals": "Bugünkü Öğünler",
+  "meals_noMeals": "Henüz yemek eklenmedi",
+  "meals_breakfastSuggestions": "Oruç Kırma Önerileri",
+  "meals_addMeal": "Yemek Ekle",
+
+  "profile_title": "Profil",
+  "profile_user": "Kullanıcı",
+  "profile_planActive": "{plan} Planı aktif",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {"type": "String"}
+    }
+  },
+  "profile_upgradePremium": "Premium'a Yükselt",
+  "profile_premiumDesc": "Tüm planlar, gelişmiş istatistikler ve daha fazlası",
+  "profile_bodyMetrics": "Vücut Ölçüleri",
+  "profile_height": "Boy",
+  "profile_weight": "Kilo",
+  "profile_targetWeight": "Hedef Kilo",
+  "profile_bmi": "BMI",
+  "profile_settings": "Ayarlar",
+  "profile_notifications": "Bildirimler",
+  "profile_darkTheme": "Koyu Tema",
+  "profile_waterReminder": "Su Hatırlatıcısı",
+  "profile_phaseNotifications": "Faz Bildirimleri",
+  "profile_language": "Dil",
+  "profile_about": "Hakkında",
+  "profile_rateApp": "Uygulamayı Değerlendir",
+  "profile_share": "Paylaş",
+  "profile_privacyPolicy": "Gizlilik Politikası",
+  "profile_version": "Versiyon",
+
+  "onboarding_welcome": "Hoş Geldin",
+  "onboarding_welcomeDesc": "Intermittent fasting yolculuğunu\nkontrol altına al",
+  "onboarding_featureTimer": "Akıllı oruç zamanlayıcı",
+  "onboarding_featureStats": "Detaylı istatistikler ve grafikler",
+  "onboarding_featureMeals": "Yemek planlayıcı ve tarif önerileri",
+  "onboarding_getStarted": "Başla",
+  "onboarding_selectGoal": "Hedefin ne?",
+  "onboarding_selectGoalDesc": "Birden fazla seçebilirsin",
+  "onboarding_goalWeight": "Kilo Vermek",
+  "onboarding_goalWeightDesc": "Sağlıklı kilo kaybı",
+  "onboarding_goalHealth": "Sağlığı İyileştirmek",
+  "onboarding_goalHealthDesc": "Genel sağlık ve bağışıklık",
+  "onboarding_goalEnergy": "Enerji Artışı",
+  "onboarding_goalEnergyDesc": "Gün boyu enerji",
+  "onboarding_goalMental": "Mental Netlik",
+  "onboarding_goalMentalDesc": "Odaklanma ve berraklık",
+  "onboarding_goalLongevity": "Uzun Ömür",
+  "onboarding_goalLongevityDesc": "Hücre yenilenmesi ve anti-aging",
+  "onboarding_goalDiscipline": "Disiplin",
+  "onboarding_goalDisciplineDesc": "Öz disiplin geliştirme",
+  "onboarding_selectPlan": "Planını Seç",
+  "onboarding_selectPlanDesc": "Sana en uygun oruç planını seç",
+  "onboarding_bodyInfo": "Bilgilerini Gir",
+  "onboarding_bodyInfoDesc": "Kişiselleştirilmiş öneriler için",
+  "onboarding_gender": "Cinsiyet",
+  "onboarding_male": "Erkek",
+  "onboarding_female": "Kadın",
+  "onboarding_age": "Yaş",
+  "onboarding_bodyInfoDisclaimer": "Bu bilgiler sadece cihazında saklanır ve kalori hesaplamaları için kullanılır.",
+  "onboarding_permissions": "Son Adım",
+  "onboarding_permissionsDesc": "En iyi deneyim için izinleri etkinleştir",
+  "onboarding_next": "Devam Et",
+  "onboarding_start": "Başlayalım!",
+  "onboarding_skipForNow": "Sonra ayarla",
+
+  "waterAdded": "+250ml su eklendi",
+
+  "languageSelect": "Dil Seçimi",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+
+  "paywall_title": "Premium'a Yükselt",
+  "paywall_subtitle": "Tüm özelliklere erişim sağla",
+  "paywall_allPlans": "Tüm oruç planları",
+  "paywall_advancedStats": "Gelişmiş istatistikler",
+  "paywall_mealPlanner": "Yemek planlayıcı",
+  "paywall_healthKit": "HealthKit entegrasyonu",
+  "paywall_themes": "Tema özelleştirme",
+  "paywall_noAds": "Reklam yok",
+  "paywall_weekly": "Haftalık",
+  "paywall_monthly": "Aylık",
+  "paywall_yearly": "Yıllık",
+  "paywall_bestValue": "En İyi",
+  "paywall_freeTrial": "Ücretsiz Dene (3 Gün)",
+  "paywall_restore": "Satın alımları geri yükle",
+  "paywall_premiumActive": "Premium Aktif!",
+  "paywall_premiumActiveDesc": "Tüm özelliklerin kilidini açtın",
+
+  "water_title": "Su Tüketimi",
+  "water_addWater": "Su Ekle",
+  "water_goal": "Hedef",
+  "water_ml": "ml",
+
+  "common_ok": "Tamam",
+  "common_cancel": "İptal",
+  "common_save": "Kaydet",
+  "common_delete": "Sil",
+  "common_hours": "saat",
+  "common_minutes": "dakika",
+  "common_days": "gün",
+  "common_enable": "Aç",
+
+  "streakCard_currentStreak": "Mevcut Seri",
+  "streakCard_longestStreak": "En Uzun Seri",
+  "streakCard_totalSessions": "Toplam Oruç",
+
+  "meals_mealType": "Öğün",
+  "meals_breakfast": "Kahvaltı",
+  "meals_lunch": "Öğle",
+  "meals_dinner": "Akşam",
+  "meals_snack": "Atıştırma",
+  "meals_carbohydrate": "Karbonhidrat",
+  "meals_add": "Ekle",
+  "meals_mealName": "Yemek adı",
+
+  "bodyMetrics_title": "Vücut Ölçüleri",
+  "bodyMetrics_weight": "Kilo",
+  "bodyMetrics_target": "Hedef",
+  "bodyMetrics_save": "Kaydet",
+  "bodyMetrics_history": "Geçmiş",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "bodyMetrics_noData": "Henüz veri yok",
+
+  "meals_quickAdd": "Hızlı Ekle",
+  "meals_manualEntry": "Manuel Giriş",
+  "meals_added": "{name} eklendi",
+  "@meals_added": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "meals_nameCalorieRequired": "İsim ve kalori zorunlu",
+
+  "bodyMetrics_addWeight": "Kilo Ekle",
+  "bodyMetrics_hintWeight": "Örn: 74.5",
+  "bodyMetrics_invalidWeight": "Geçerli bir kilo gir",
+  "bodyMetrics_weightSaved": "{value} kg kaydedildi",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+
+  "completion_duration": "Süre",
+  "completion_plan": "Plan",
+  "completion_lastPhase": "Son Faz",
+
+  "timer_remainingTime": "Kalan Süre",
+  "timer_ready": "Başlamaya Hazır",
+
+  "streak_status": "Durum",
+  "streak_startToday": "Bugün başla!",
+  "streak_goodStart": "İyi başlangıç!",
+  "streak_goingGreat": "Harika gidiyorsun!",
+  "streak_superb": "Süpersin!",
+  "streak_legendary": "Efsane!",
+  "streak_incredible": "İnanılmaz!",
+
+  "weight_noRecord": "Henüz kilo kaydı yok\nProfil > Vücut Ölçüleri'nden ekle",
+
+  "day_mon": "Pzt",
+  "day_tue": "Sal",
+  "day_wed": "Çar",
+  "day_thu": "Per",
+  "day_fri": "Cum",
+  "day_sat": "Cmt",
+  "day_sun": "Paz",
+
+  "day_short_mon": "P",
+  "day_short_tue": "S",
+  "day_short_wed": "Ç",
+  "day_short_thu": "P",
+  "day_short_fri": "C",
+  "day_short_sat": "C",
+  "day_short_sun": "P",
+
+  "month_jan": "Ocak",
+  "month_feb": "Şubat",
+  "month_mar": "Mart",
+  "month_apr": "Nisan",
+  "month_may": "Mayıs",
+  "month_jun": "Haziran",
+  "month_jul": "Temmuz",
+  "month_aug": "Ağustos",
+  "month_sep": "Eylül",
+  "month_oct": "Ekim",
+  "month_nov": "Kasım",
+  "month_dec": "Aralık",
+
+  "meals_fastingWindow": "Oruç ({hours}s)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {"type": "String"}
+    }
+  },
+  "meals_eatingWindowHours": "Yemek ({hours}s)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {"type": "String"}
+    }
+  },
+
+  "recipe_oatSmoothie": "Yulaflı Smoothie",
+  "recipe_avocadoToast": "Avokado Toast",
+  "recipe_yogurtBowl": "Yoğurt Bowl"
+}
