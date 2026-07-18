@@ -10,7 +10,7 @@ The scrollable body must respect the device bottom safe area. Its final action r
 
 ## Fasting Ring
 
-The ring displays metabolic phase thresholds around its perimeter. Each marker contains a short localized label and semantic phase color. Completed phases are filled, the current phase receives stronger emphasis, and future phases remain neutral. The timer remains the primary visual focus and the labels must not overlap the timer content.
+The ring displays metabolic phase thresholds as compact dots and hour labels inside its safe bounds. Completed phases are filled, the current phase receives stronger emphasis, and future phases remain neutral. Each marker has a minimum 48×48 touch target. Tapping it opens a themed bottom sheet with the localized phase name, hour range, explanation, and an estimate disclaimer. The timer remains the primary visual focus and markers must not overlap or overflow at compact widths.
 
 ## Explore Safety and Sources
 
