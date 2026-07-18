@@ -27,7 +27,7 @@ Replace the flat achievement list with:
 3. Four ordered sections: Start, Rhythm, Endurance, and Mastery.
 4. Achievement rows that show unlocked state or measurable progress toward the requirement.
 
-Unlocked items use restrained coral and success semantics. Locked items remain readable and show progress instead of appearing disabled. The screen avoids gradients, repeated trophy decoration, and a wall of identical cards.
+Unlocked items use restrained coral and success semantics. Locked items remain readable and show progress instead of appearing disabled. Generic circular and linear progress indicators are replaced by a shared journey meter: a rounded tonal rail, solid semantic fill, animated endpoint, and current/target value. The screen avoids gradients, repeated trophy decoration, and a wall of identical cards.
 
 ## Verification
 
