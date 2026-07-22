@@ -38,9 +38,11 @@ workflows:
       - name: Fetch App Store signing files
         script: |
           keychain initialize
+          openssl genrsa -out ios_distribution_private_key 2048
           app-store-connect fetch-signing-files com.dehbkoclugu.fasttrack \
             --type IOS_APP_STORE \
-            --create
+            --create \
+            --certificate-key ios_distribution_private_key
           keychain add-certificates
       - name: Set up code signing
         script: xcode-project use-profiles --project ios/Runner.xcodeproj
