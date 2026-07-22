@@ -8,7 +8,7 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../../paywall/providers/subscription_provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../widgets/onboarding_progress.dart';
 
 class PlanSelectScreen extends ConsumerStatefulWidget {
