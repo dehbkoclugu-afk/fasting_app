@@ -31,7 +31,13 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.dehbkoclugu.fasttrack
-      flutter: stable
+      # Pinned: `stable` drifted to 3.44.x (Dart 3.12), which breaks two deps:
+      # google_fonts 6.2.1 (FontWeight gained `==` override in 3.41 -> const map
+      # key error) and phosphor_flutter 2.1.0 (IconData became `final class` in
+      # 3.44 -> can't extend). 3.38.10 is the newest stable where both compile.
+      # ponytail: version-lock stopgap; drop it once google_fonts is bumped and
+      # phosphor_flutter is replaced (2.1.0 is its last release, no IconData fix).
+      flutter: 3.38.10
       xcode: latest
       cocoapods: default
       groups:
