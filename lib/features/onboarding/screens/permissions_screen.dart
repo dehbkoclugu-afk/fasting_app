@@ -29,7 +29,7 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -55,12 +55,12 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
                 context,
                 icon: PhosphorIcons.bell(PhosphorIconsStyle.fill),
                 title: l10n.profile_notifications,
-                description:
-                    'Oruç başlangıç/bitiş hatırlatmaları, faz geçişleri ve motivasyon mesajları',
+                description: l10n.permission_notificationDesc,
                 color: AppColors.primary,
                 granted: _notificationGranted,
                 onEnable: () async {
-                  final granted = await NotificationService().requestPermission();
+                  final granted =
+                      await NotificationService().requestPermission();
                   setState(() => _notificationGranted = granted);
                   if (granted) {
                     ref.read(settingsProvider.notifier).setNotifications(true);
@@ -72,9 +72,8 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
               _buildPermissionCard(
                 context,
                 icon: PhosphorIcons.heartbeat(PhosphorIconsStyle.fill),
-                title: 'HealthKit / Google Fit',
-                description:
-                    'Adım, kalori ve kilo verilerini otomatik olarak senkronize et',
+                title: l10n.permission_healthTitle,
+                description: l10n.permission_healthDesc,
                 color: AppColors.success,
                 granted: _healthGranted,
                 onEnable: () async {
@@ -128,14 +127,16 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: granted
-            ? color.withValues(alpha: 0.05)
-            : theme.colorScheme.onSurface.withValues(alpha: 0.03),
+        color:
+            granted
+                ? color.withValues(alpha: 0.05)
+                : theme.colorScheme.onSurface.withValues(alpha: 0.03),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: granted
-              ? color.withValues(alpha: 0.3)
-              : theme.colorScheme.onSurface.withValues(alpha: 0.06),
+          color:
+              granted
+                  ? color.withValues(alpha: 0.3)
+                  : theme.colorScheme.onSurface.withValues(alpha: 0.06),
         ),
       ),
       child: Row(
@@ -179,7 +180,10 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
               style: OutlinedButton.styleFrom(
                 foregroundColor: color,
                 side: BorderSide(color: color),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
               ),
               child: Text(AppLocalizations.of(context)!.common_enable),
             ),

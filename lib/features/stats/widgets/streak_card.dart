@@ -40,10 +40,7 @@ class StreakCard extends StatelessWidget {
                     ),
                     shape: BoxShape.circle,
                   ),
-                  child: Text(
-                    '🔥',
-                    style: TextStyle(fontSize: 32),
-                  ),
+                  child: Text('🔥', style: TextStyle(fontSize: 32)),
                 ),
                 const SizedBox(height: 8),
                 Text(
@@ -62,11 +59,7 @@ class StreakCard extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            width: 1,
-            height: 80,
-            color: theme.dividerTheme.color,
-          ),
+          Container(width: 1, height: 80, color: theme.dividerTheme.color),
           // Stats
           Expanded(
             flex: 3,

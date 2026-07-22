@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz_data;
@@ -10,6 +12,8 @@ class NotificationService {
 
   final _plugin = FlutterLocalNotificationsPlugin();
   bool _initialized = false;
+  VoidCallback? _notificationTapHandler;
+  bool _pendingNotificationTap = false;
   String _locale = 'tr';
 
   static const _channelId = 'fasting_channel';
@@ -17,7 +21,16 @@ class NotificationService {
   static const _channelDesc = 'Fasting timer notifications';
 
   void setLocale(String locale) => _locale = locale;
-  bool get _isTr => _locale == 'tr';
+  set notificationTapHandler(VoidCallback? handler) {
+    _notificationTapHandler = handler;
+    if (handler != null && _pendingNotificationTap) {
+      _pendingNotificationTap = false;
+      WidgetsBinding.instance.addPostFrameCallback((_) => handler());
+    }
+  }
+
+  AppLocalizations get _l10n =>
+      lookupAppLocalizations(Locale(_supportedLocale(_locale)));
 
   // Notification IDs
   static const fastingStartId = 1;
@@ -33,7 +46,9 @@ class NotificationService {
 
     tz_data.initializeTimeZones();
 
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidSettings = AndroidInitializationSettings(
+      '@mipmap/ic_launcher',
+    );
     const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: false,
       requestBadgePermission: false,
@@ -50,6 +65,9 @@ class NotificationService {
       onDidReceiveNotificationResponse: _onNotificationTapped,
     );
 
+    final launchDetails = await _plugin.getNotificationAppLaunchDetails();
+    _pendingNotificationTap = launchDetails?.didNotificationLaunchApp ?? false;
+
     _initialized = true;
   }
 
@@ -57,16 +75,19 @@ class NotificationService {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       final result = await _plugin
           .resolvePlatformSpecificImplementation<
-              IOSFlutterLocalNotificationsPlugin>()
+            IOSFlutterLocalNotificationsPlugin
+          >()
           ?.requestPermissions(alert: true, badge: true, sound: true);
       return result ?? false;
     }
 
     if (defaultTargetPlatform == TargetPlatform.android) {
-      final result = await _plugin
-          .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
-          ?.requestNotificationsPermission();
+      final result =
+          await _plugin
+              .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin
+              >()
+              ?.requestNotificationsPermission();
       return result ?? false;
     }
 
@@ -91,10 +112,8 @@ class NotificationService {
     if (halfTime.isAfter(now)) {
       await _scheduleNotification(
         id: halfwayId,
-        title: _isTr ? 'Yarı Yoldasın! 💪' : 'Halfway There! 💪',
-        body: _isTr
-            ? '$planName orucunun yarısını tamamladın. Devam et!'
-            : 'You completed half of your $planName fast. Keep going!',
+        title: _l10n.notification_halfwayTitle,
+        body: _l10n.notification_halfwayBody(planName),
         scheduledTime: halfTime,
       );
     }
@@ -104,9 +123,12 @@ class NotificationService {
     for (int i = 0; i < phaseHours.length; i++) {
       final phaseTime = startTime.add(Duration(hours: phaseHours[i]));
       if (phaseTime.isAfter(now) && phaseTime.isBefore(endTime)) {
-        final phaseNames = _isTr
-            ? ['Katabolik faza geçtin 📉', 'Yağ Yakımı başladı! 🔥', 'Ketozis fazındasın ⚡', 'Otofaji aktif! 🔄']
-            : ['Entered Catabolic phase 📉', 'Fat Burning started! 🔥', 'You\'re in Ketosis ⚡', 'Autophagy active! 🔄'];
+        final phaseNames = [
+          _l10n.notification_phaseCatabolic,
+          _l10n.notification_phaseFatBurning,
+          _l10n.notification_phaseKetosis,
+          _l10n.notification_phaseAutophagy,
+        ];
         await _scheduleNotification(
           id: phaseChangeId + i,
           title: phaseNames[i],
@@ -120,10 +142,8 @@ class NotificationService {
     if (endTime.isAfter(now)) {
       await _scheduleNotification(
         id: fastingEndId,
-        title: _isTr ? 'Tebrikler! 🎉' : 'Congratulations! 🎉',
-        body: _isTr
-            ? '$planName orucunu tamamladın! Yemek penceren açıldı.'
-            : 'You completed your $planName fast! Your eating window is open.',
+        title: _l10n.timer_completed,
+        body: _l10n.notification_completedBody(planName),
         scheduledTime: endTime,
       );
     }
@@ -134,10 +154,8 @@ class NotificationService {
       if (waterTime.isAfter(now) && waterTime.isBefore(endTime)) {
         await _scheduleNotification(
           id: waterReminderId + i,
-          title: _isTr ? 'Su İç 💧' : 'Drink Water 💧',
-          body: _isTr
-              ? 'Oruç süresince bol su içmeyi unutma!'
-              : 'Don\'t forget to drink plenty of water while fasting!',
+          title: _l10n.notification_waterTitle,
+          body: _l10n.notification_waterBody,
           scheduledTime: waterTime,
         );
       }
@@ -145,17 +163,13 @@ class NotificationService {
   }
 
   // Yemek penceresi kapanma bildirimi
-  Future<void> scheduleWindowClosing({
-    required DateTime closingTime,
-  }) async {
+  Future<void> scheduleWindowClosing({required DateTime closingTime}) async {
     final warningTime = closingTime.subtract(const Duration(minutes: 30));
     if (warningTime.isAfter(DateTime.now())) {
       await _scheduleNotification(
         id: windowClosingId,
-        title: _isTr ? 'Yemek Penceresi Kapanıyor ⏰' : 'Eating Window Closing ⏰',
-        body: _isTr
-            ? '30 dakika içinde yemek penceren kapanacak.'
-            : 'Your eating window will close in 30 minutes.',
+        title: _l10n.notification_windowTitle,
+        body: _l10n.notification_windowBody,
         scheduledTime: warningTime,
       );
     }
@@ -169,10 +183,8 @@ class NotificationService {
     if (morningTime.isAfter(DateTime.now())) {
       await _scheduleNotification(
         id: streakId,
-        title: _isTr ? '$streakDays Günlük Seri! 🔥' : '$streakDays Day Streak! 🔥',
-        body: _isTr
-            ? 'Harika gidiyorsun! Bugün de devam et.'
-            : 'You\'re doing great! Keep it up today.',
+        title: _l10n.notification_streakTitle(streakDays),
+        body: _l10n.notification_streakBody,
         scheduledTime: morningTime,
       );
     }
@@ -212,8 +224,8 @@ class NotificationService {
     required String phase,
   }) async {
     await showOngoingNotification(
-      title: _isTr ? 'Oruç Devam Ediyor - $phase' : 'Fasting In Progress - $phase',
-      body: _isTr ? 'Kalan: $remaining' : 'Remaining: $remaining',
+      title: _l10n.notification_ongoingTitle(phase),
+      body: _l10n.notification_remaining(remaining),
     );
   }
 
@@ -264,24 +276,24 @@ class NotificationService {
   }
 
   void _onNotificationTapped(NotificationResponse response) {
-    // TODO: Navigate to timer screen
-    debugPrint('Notification tapped: ${response.id}');
+    final handler = _notificationTapHandler;
+    if (handler != null) {
+      handler();
+    } else {
+      _pendingNotificationTap = true;
+    }
   }
 
   String _getPhaseDescription(int index) {
-    final descriptions = _isTr
-        ? [
-            'Kan şekerin düşüyor, vücudun yağ yakmaya hazırlanıyor.',
-            'Vücudun yağ depolarından enerji üretmeye başladı!',
-            'Keton üretimi başladı, mental netlik artıyor.',
-            'Hücre yenilenmesi aktif, hasarlı hücreler temizleniyor!',
-          ]
-        : [
-            'Blood sugar is dropping, your body is preparing to burn fat.',
-            'Your body started producing energy from fat stores!',
-            'Ketone production started, mental clarity is improving.',
-            'Cell renewal active, damaged cells are being cleaned!',
-          ];
+    final descriptions = [
+      _l10n.phase_catabolicDesc,
+      _l10n.phase_fatBurningDesc,
+      _l10n.phase_ketosisDesc,
+      _l10n.phase_autophagyDesc,
+    ];
     return descriptions[index];
   }
 }
+
+String _supportedLocale(String locale) =>
+    const {'tr', 'en', 'es', 'pt', 'de', 'fr'}.contains(locale) ? locale : 'en';

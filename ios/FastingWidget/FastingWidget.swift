@@ -11,7 +11,7 @@ struct FastingEntry: TimelineEntry {
 }
 
 struct FastingWidgetProvider: TimelineProvider {
-    let appGroupId = "group.com.fasttrack.widget"
+    let appGroupId = "group.com.dehbkoclugu.fasttrack"
 
     func placeholder(in context: Context) -> FastingEntry {
         FastingEntry(

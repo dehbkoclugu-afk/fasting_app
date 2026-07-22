@@ -23,18 +23,48 @@ class _GoalScreenState extends State<GoalScreen> {
     final l10n = AppLocalizations.of(context)!;
 
     final goals = [
-      {'id': 'weight', 'title': l10n.onboarding_goalWeight, 'icon': Icons.monitor_weight_outlined, 'desc': l10n.onboarding_goalWeightDesc},
-      {'id': 'health', 'title': l10n.onboarding_goalHealth, 'icon': Icons.favorite_outline, 'desc': l10n.onboarding_goalHealthDesc},
-      {'id': 'energy', 'title': l10n.onboarding_goalEnergy, 'icon': Icons.bolt_outlined, 'desc': l10n.onboarding_goalEnergyDesc},
-      {'id': 'mental', 'title': l10n.onboarding_goalMental, 'icon': Icons.psychology_outlined, 'desc': l10n.onboarding_goalMentalDesc},
-      {'id': 'longevity', 'title': l10n.onboarding_goalLongevity, 'icon': Icons.spa_outlined, 'desc': l10n.onboarding_goalLongevityDesc},
-      {'id': 'discipline', 'title': l10n.onboarding_goalDiscipline, 'icon': Icons.flag_outlined, 'desc': l10n.onboarding_goalDisciplineDesc},
+      {
+        'id': 'weight',
+        'title': l10n.onboarding_goalWeight,
+        'icon': Icons.monitor_weight_outlined,
+        'desc': l10n.onboarding_goalWeightDesc,
+      },
+      {
+        'id': 'health',
+        'title': l10n.onboarding_goalHealth,
+        'icon': Icons.favorite_outline,
+        'desc': l10n.onboarding_goalHealthDesc,
+      },
+      {
+        'id': 'energy',
+        'title': l10n.onboarding_goalEnergy,
+        'icon': Icons.bolt_outlined,
+        'desc': l10n.onboarding_goalEnergyDesc,
+      },
+      {
+        'id': 'mental',
+        'title': l10n.onboarding_goalMental,
+        'icon': Icons.psychology_outlined,
+        'desc': l10n.onboarding_goalMentalDesc,
+      },
+      {
+        'id': 'longevity',
+        'title': l10n.onboarding_goalLongevity,
+        'icon': Icons.spa_outlined,
+        'desc': l10n.onboarding_goalLongevityDesc,
+      },
+      {
+        'id': 'discipline',
+        'title': l10n.onboarding_goalDiscipline,
+        'icon': Icons.flag_outlined,
+        'desc': l10n.onboarding_goalDisciplineDesc,
+      },
     ];
 
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -51,7 +81,7 @@ class _GoalScreenState extends State<GoalScreen> {
               Text(
                 l10n.onboarding_selectGoalDesc,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha:0.5),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
               ),
               const SizedBox(height: 24),
@@ -62,79 +92,87 @@ class _GoalScreenState extends State<GoalScreen> {
                   mainAxisSpacing: 12,
                   crossAxisSpacing: 12,
                   childAspectRatio: 1.4,
-                  children: goals.map((goal) {
-                    final isSelected =
-                        _selectedGoals.contains(goal['id'] as String);
-                    return GestureDetector(
-                      onTap: () {
-                        HapticFeedback.selectionClick();
-                        setState(() {
-                          if (isSelected) {
-                            _selectedGoals.remove(goal['id'] as String);
-                          } else {
-                            _selectedGoals.add(goal['id'] as String);
-                          }
-                        });
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        padding: const EdgeInsets.all(14),
-                        decoration: BoxDecoration(
-                          color: isSelected
-                              ? AppColors.primary.withValues(alpha:0.1)
-                              : theme.colorScheme.onSurface.withValues(alpha:0.03),
+                  children:
+                      goals.map((goal) {
+                        final isSelected = _selectedGoals.contains(
+                          goal['id'] as String,
+                        );
+                        return InkWell(
                           borderRadius: AppSpacing.borderRadiusLg,
-                          border: Border.all(
-                            color: isSelected
-                                ? AppColors.primary
-                                : theme.colorScheme.onSurface
-                                    .withValues(alpha:0.08),
-                            width: isSelected ? 2 : 1,
+                          onTap: () {
+                            HapticFeedback.selectionClick();
+                            setState(() {
+                              if (isSelected) {
+                                _selectedGoals.remove(goal['id'] as String);
+                              } else {
+                                _selectedGoals.add(goal['id'] as String);
+                              }
+                            });
+                          },
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            padding: const EdgeInsets.all(14),
+                            decoration: BoxDecoration(
+                              color:
+                                  isSelected
+                                      ? AppColors.primary.withValues(alpha: 0.1)
+                                      : theme.colorScheme.onSurface.withValues(
+                                        alpha: 0.03,
+                                      ),
+                              borderRadius: AppSpacing.borderRadiusLg,
+                              border: Border.all(
+                                color:
+                                    isSelected
+                                        ? AppColors.primary
+                                        : theme.colorScheme.onSurface
+                                            .withValues(alpha: 0.08),
+                                width: isSelected ? 2 : 1,
+                              ),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  goal['icon'] as IconData,
+                                  color:
+                                      isSelected
+                                          ? AppColors.primary
+                                          : theme.colorScheme.onSurface
+                                              .withValues(alpha: 0.5),
+                                  size: 28,
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  goal['title'] as String,
+                                  style: theme.textTheme.titleSmall?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    color:
+                                        isSelected ? AppColors.primary : null,
+                                  ),
+                                ),
+                                Text(
+                                  goal['desc'] as String,
+                                  style: theme.textTheme.bodySmall?.copyWith(
+                                    color: theme.colorScheme.onSurface
+                                        .withValues(alpha: 0.4),
+                                    fontSize: 11,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              goal['icon'] as IconData,
-                              color: isSelected
-                                  ? AppColors.primary
-                                  : theme.colorScheme.onSurface
-                                      .withValues(alpha:0.5),
-                              size: 28,
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              goal['title'] as String,
-                              style: theme.textTheme.titleSmall?.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: isSelected
-                                    ? AppColors.primary
-                                    : null,
-                              ),
-                            ),
-                            Text(
-                              goal['desc'] as String,
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                color: theme.colorScheme.onSurface
-                                    .withValues(alpha:0.4),
-                                fontSize: 11,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }).toList(),
+                        );
+                      }).toList(),
                 ),
               ),
 
               GradientButton(
                 text: l10n.onboarding_next,
-                onPressed: _selectedGoals.isEmpty
-                    ? () {}
-                    : () => context.go('/onboarding/plan'),
+                onPressed:
+                    _selectedGoals.isEmpty
+                        ? null
+                        : () => context.go('/onboarding/plan'),
               ),
             ],
           ),

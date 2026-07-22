@@ -68,25 +68,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
       state = state.copyWith(isPremium: success, isLoading: false);
       return success;
     } catch (e) {
-      state = state.copyWith(
-        isLoading: false,
-        errorMessage: 'Satın alma başarısız oldu',
-      );
-      return false;
-    }
-  }
-
-  Future<bool> purchaseByProductId(String productId) async {
-    state = state.copyWith(isLoading: true, errorMessage: null);
-    try {
-      final success = await _service.purchaseProduct(productId);
-      state = state.copyWith(isPremium: success, isLoading: false);
-      return success;
-    } catch (e) {
-      state = state.copyWith(
-        isLoading: false,
-        errorMessage: 'Satın alma başarısız oldu',
-      );
+      state = state.copyWith(isLoading: false, errorMessage: 'purchase_failed');
       return false;
     }
   }
@@ -97,16 +79,11 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
       final success = await _service.restorePurchases();
       state = state.copyWith(isPremium: success, isLoading: false);
       if (!success) {
-        state = state.copyWith(
-          errorMessage: 'Geri yüklenecek satın alma bulunamadı',
-        );
+        state = state.copyWith(errorMessage: 'nothing_to_restore');
       }
       return success;
     } catch (e) {
-      state = state.copyWith(
-        isLoading: false,
-        errorMessage: 'Geri yükleme başarısız oldu',
-      );
+      state = state.copyWith(isLoading: false, errorMessage: 'restore_failed');
       return false;
     }
   }
@@ -119,8 +96,8 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
 
 final subscriptionProvider =
     StateNotifierProvider<SubscriptionNotifier, SubscriptionState>((ref) {
-  return SubscriptionNotifier();
-});
+      return SubscriptionNotifier();
+    });
 
 /// Convenience provider for premium status check
 final isPremiumProvider = Provider<bool>((ref) {

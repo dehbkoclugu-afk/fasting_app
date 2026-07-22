@@ -1,50 +1,54 @@
-== APP STORE (iOS) - Turkce ==
+UYGULAMA ADI
+FastTrack: Oruç Takibi
 
-Uygulama Adi: FastLife - Intermittent Fasting
-Alt Baslik: Oruc Takibi & Saglik Asistani
+ALT BAŞLIK
+Sürdürülebilir ritmini kur
 
-Kisa Aciklama (Play Store - 80 karakter):
-Akilli oruc takibi, metabolik faz analizi ve kisisel saglik yonetimi.
+PLAY STORE KISA AÇIKLAMA
+Oruç, su, kilo ve ilerlemeni sakin ve özel bir uygulamada takip et.
 
-Tam Aciklama:
-FastLife ile intermittent fasting yolculugunuzu profesyonel seviyede takip edin.
+TAM AÇIKLAMA
+FastTrack ile hayatına uygun, sürdürülebilir bir oruç düzeni oluştur.
 
-OZELLIKLER:
+Oruç süreni takip et, genel metabolik evreleri öğren, su ve kilo kayıtlarını tut, ilerlemeni baskı hissetmeden incele.
 
-• Akilli Zamanlayici
-Gercek zamanli dairesel zamanlayici ile orucunuzu takip edin. Metabolik fazlarinizi canli olarak gorun - yag yakimi, ketozis ve otofaji fazlarini anlik izleyin.
+ÖZELLİKLER
 
-• 8+ Oruc Plani
-12:12, 16:8, 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ve Warrior diyeti dahil populer oruc planlarindan birini secin veya kendinize ozel plan olusturun.
+• Anlaşılır oruç zamanlayıcısı
+Bir oruç planı seç; geçen ve kalan süreyi tek bakışta gör.
 
-• Detayli Istatistikler
-Haftalik, aylik ve yillik oruc verilerinizi gorsel grafiklerle analiz edin. Streak takibi, tamamlama orani ve ortalama oruc suresi gibi metrikleri inceleyin.
+• Metabolik yolculuk
+Anabolik, katabolik, yağ yakımı, ketozis ve otofaji evreleri hakkında bilgi edin. Evre saatleri genel tahmindir; tıbbi ölçüm değildir.
 
-• Metabolik Faz Takibi
-Orucunuz sirasinda vucut metabolizmanizin hangi asamada oldugunu ogrenin. Anabolik, katabolik, yag yakimi, ketozis ve otofaji fazlarini gercek zamanli takip edin.
+• Esnek oruç planları
+12:12, 14:10, 16:8, 18:6, 20:4 ve OMAD gibi bilinen programları kullan.
 
-• Yemek Planlayici
-Yemek pencerenizde ne yediginizi kaydedin. Kalori, protein, karbonhidrat ve yag takibi ile beslenmenizi optimize edin.
+• İlerleme raporları
+Tamamlanan oruçlarını, düzenini, sürelerini ve kilo eğilimini anlaşılır grafiklerle incele.
 
-• Kilo Takibi
-Kilo degisimlerinizi grafik uzerinde izleyin. BMI hesaplama ve vucut metrikleri ile ilerlemenizi olcun.
+• Su ve kilo takibi
+Günlük su tüketimini ve kilo kayıtlarını uygulamadan çıkmadan ekle.
 
-• Su Takibi
-Gunluk su tuketiminizi kolayca kaydedin ve hedeflerinize ulasin.
+• Sağlık entegrasyonu
+İzin verdiğinde Health Connect veya Apple Health üzerinden desteklenen adım, aktif kalori ve vücut ölçümü verilerini oku.
 
-• Akilli Bildirimler
-Oruc baslangic/bitis hatirlaticlari, faz gecis bildirimleri ve motivasyon mesajlari ile yolunuzdan sapmayin.
+• Yararlı hatırlatmalar
+İsteğe bağlı oruç, evre, su ve tamamlama bildirimleri al.
 
-• Karanlik & Aydinlik Tema
-Goz yormayan karanlik tema ve aydinlik tema secenekleri.
+• Dilin ve görünümün
+FastTrack sistem dilini ve açık veya karanlık görünümünü izler. Türkçe, İngilizce, İspanyolca, Portekizce, Almanca ve Fransızca desteklenir.
 
-• HealthKit Entegrasyonu
-Apple Health ile adim, kalori ve kilo verilerinizi otomatik senkronize edin.
+• Gizlilik odaklı
+Temel oruç, su, öğün ve kilo kayıtları cihazında saklanır. Sağlık erişimi isteğe bağlıdır.
 
-• Turkce & Ingilizce
-Tam Turkce ve Ingilizce dil destegi.
+PREMIUM
+Premium; tüm oruç planlarını, gelişmiş raporları, ek kişiselleştirmeyi ve reklamsız deneyimi açar. Aylık, yıllık ve ömür boyu seçenekler sunulabilir. Fiyat satın alma öncesinde mağazan tarafından gösterilir.
 
-Anahtar Kelimeler: intermittent fasting, oruc, diyet, kilo verme, saglik, ketozis, otofaji, yag yakimi, kalori, beslenme, fasting tracker, timer
+ÖNEMLİ
+FastTrack genel eğitim ve iyi yaşam bilgileri sunar. Herhangi bir hastalığa tanı koymaz, tedavi etmez veya önlemez. Metabolik evre saatleri tahminidir ve kişisel yanıtlar değişebilir. Bir hastalığın varsa, ilaç kullanıyorsan, hamileysen, emziriyorsan veya kendini kötü hissediyorsan oruç tutmadan önce yetkin bir sağlık uzmanına danış.
 
-Kategori: Saglik & Fitness
-Yas Sinifi: 4+
+ANAHTAR KELİMELER
+oruç, aralıklı oruç, oruç sayacı, su takibi, kilo takibi, sağlık, ilerleme, Health Connect
+
+KATEGORİ
+Sağlık ve Fitness

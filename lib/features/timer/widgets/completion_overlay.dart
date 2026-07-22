@@ -1,7 +1,7 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/gradient_button.dart';
 
@@ -9,6 +9,7 @@ class CompletionOverlay extends StatefulWidget {
   final int durationMinutes;
   final String planName;
   final String phaseName;
+  final int targetMinutes;
   final VoidCallback onDismiss;
 
   const CompletionOverlay({
@@ -16,6 +17,7 @@ class CompletionOverlay extends StatefulWidget {
     required this.durationMinutes,
     required this.planName,
     required this.phaseName,
+    required this.targetMinutes,
     required this.onDismiss,
   });
 
@@ -27,17 +29,13 @@ class _CompletionOverlayState extends State<CompletionOverlay>
     with TickerProviderStateMixin {
   late AnimationController _fadeController;
   late AnimationController _scaleController;
-  late AnimationController _confettiController;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
-
-  final _confettiParticles = <_ConfettiParticle>[];
-  final _random = Random();
 
   @override
   void initState() {
     super.initState();
-    HapticFeedback.heavyImpact();
+    _playCompletionHaptic();
 
     _fadeController = AnimationController(
       duration: const Duration(milliseconds: 400),
@@ -47,48 +45,34 @@ class _CompletionOverlayState extends State<CompletionOverlay>
       duration: const Duration(milliseconds: 600),
       vsync: this,
     );
-    _confettiController = AnimationController(
-      duration: const Duration(seconds: 3),
-      vsync: this,
-    );
-
     _fadeAnimation = CurvedAnimation(
       parent: _fadeController,
       curve: Curves.easeOut,
     );
-    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
-      CurvedAnimation(parent: _scaleController, curve: Curves.elasticOut),
+    _scaleAnimation = Tween<double>(begin: 0.94, end: 1.0).animate(
+      CurvedAnimation(parent: _scaleController, curve: Curves.easeOutCubic),
     );
-
-    // Generate confetti
-    for (int i = 0; i < 50; i++) {
-      _confettiParticles.add(_ConfettiParticle(
-        x: _random.nextDouble(),
-        y: -_random.nextDouble() * 0.3,
-        speed: 0.3 + _random.nextDouble() * 0.7,
-        size: 4 + _random.nextDouble() * 8,
-        color: [
-          AppColors.primary,
-          AppColors.secondary,
-          AppColors.tertiary,
-          AppColors.success,
-          Colors.orange,
-          Colors.yellow,
-        ][_random.nextInt(6)],
-        rotation: _random.nextDouble() * 2 * pi,
-      ));
-    }
 
     _fadeController.forward();
     _scaleController.forward();
-    _confettiController.forward();
+  }
+
+  Future<void> _playCompletionHaptic() async {
+    await HapticFeedback.lightImpact();
+    await Future<void>.delayed(const Duration(milliseconds: 90));
+    await HapticFeedback.mediumImpact();
+    await Future<void>.delayed(const Duration(milliseconds: 120));
+    await HapticFeedback.heavyImpact();
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool('sound_enabled') ?? false) {
+      await SystemSound.play(SystemSoundType.click);
+    }
   }
 
   @override
   void dispose() {
     _fadeController.dispose();
     _scaleController.dispose();
-    _confettiController.dispose();
     super.dispose();
   }
 
@@ -98,33 +82,23 @@ class _CompletionOverlayState extends State<CompletionOverlay>
     final l10n = AppLocalizations.of(context)!;
     final hours = widget.durationMinutes ~/ 60;
     final minutes = widget.durationMinutes % 60;
+    final earnedXp =
+        100 + (widget.durationMinutes.clamp(0, widget.targetMinutes) ~/ 60) * 4;
 
+    final reduceMotion = MediaQuery.of(context).disableAnimations;
     return FadeTransition(
-      opacity: _fadeAnimation,
+      opacity:
+          reduceMotion ? const AlwaysStoppedAnimation(1.0) : _fadeAnimation,
       child: Material(
         color: Colors.black54,
         child: Stack(
           children: [
-            // Confetti
-            RepaintBoundary(
-              child: AnimatedBuilder(
-                animation: _confettiController,
-                builder: (context, child) {
-                  return CustomPaint(
-                    size: MediaQuery.of(context).size,
-                    painter: _ConfettiPainter(
-                      particles: _confettiParticles,
-                      progress: _confettiController.value,
-                    ),
-                  );
-                },
-              ),
-            ),
-
-            // Content
             Center(
               child: ScaleTransition(
-                scale: _scaleAnimation,
+                scale:
+                    reduceMotion
+                        ? const AlwaysStoppedAnimation(1.0)
+                        : _scaleAnimation,
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 32),
                   padding: const EdgeInsets.all(32),
@@ -146,22 +120,25 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                       Container(
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [AppColors.primary, AppColors.secondary],
-                          ),
+                          color: AppColors.primary.withValues(alpha: .08),
                           shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.primary.withAlpha(80),
-                              blurRadius: 20,
-                              offset: const Offset(0, 8),
-                            ),
-                          ],
+                          border: Border.all(
+                            color: AppColors.primary,
+                            width: 2,
+                          ),
                         ),
                         child: const Icon(
-                          Icons.emoji_events,
-                          color: Colors.white,
+                          Icons.workspace_premium_outlined,
+                          color: AppColors.primary,
                           size: 48,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        '+$earnedXp Rhythm XP',
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -179,6 +156,25 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                           color: theme.colorScheme.onSurface.withAlpha(150),
                         ),
                       ),
+                      const SizedBox(height: 16),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 8,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: AppColors.primary.withValues(alpha: .35),
+                          ),
+                          borderRadius: BorderRadius.circular(999),
+                        ),
+                        child: Text(
+                          '${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year} · ${widget.planName}',
+                          style: theme.textTheme.labelMedium?.copyWith(
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ),
                       const SizedBox(height: 24),
 
                       // Stats row
@@ -191,27 +187,68 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            _buildStat(context, '${hours}h ${minutes}m', l10n.completion_duration),
+                            _buildStat(
+                              context,
+                              '${hours}h ${minutes}m',
+                              l10n.completion_duration,
+                            ),
                             Container(
                               width: 1,
                               height: 40,
                               color: theme.dividerTheme.color,
                             ),
-                            _buildStat(context, widget.planName, l10n.completion_plan),
+                            _buildStat(
+                              context,
+                              widget.planName,
+                              l10n.completion_plan,
+                            ),
                             Container(
                               width: 1,
                               height: 40,
                               color: theme.dividerTheme.color,
                             ),
-                            _buildStat(context, widget.phaseName, l10n.completion_lastPhase),
+                            _buildStat(
+                              context,
+                              widget.phaseName,
+                              l10n.completion_lastPhase,
+                            ),
                           ],
                         ),
                       ),
                       const SizedBox(height: 24),
 
-                      GradientButton(
-                        text: l10n.common_ok,
-                        onPressed: widget.onDismiss,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: OutlinedButton.icon(
+                              onPressed: () async {
+                                final replay = l10n.replay_text(
+                                  widget.planName,
+                                  hours,
+                                  minutes,
+                                  widget.phaseName,
+                                );
+                                await Clipboard.setData(
+                                  ClipboardData(text: replay),
+                                );
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text(l10n.replay_copied)),
+                                  );
+                                }
+                              },
+                              icon: const Icon(Icons.ios_share_outlined),
+                              label: Text(l10n.replay_button),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: GradientButton(
+                              text: l10n.common_ok,
+                              onPressed: widget.onDismiss,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -244,51 +281,5 @@ class _CompletionOverlayState extends State<CompletionOverlay>
         ),
       ],
     );
-  }
-}
-
-class _ConfettiParticle {
-  double x, y, speed, size, rotation;
-  Color color;
-
-  _ConfettiParticle({
-    required this.x,
-    required this.y,
-    required this.speed,
-    required this.size,
-    required this.color,
-    required this.rotation,
-  });
-}
-
-class _ConfettiPainter extends CustomPainter {
-  final List<_ConfettiParticle> particles;
-  final double progress;
-
-  _ConfettiPainter({required this.particles, required this.progress});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    for (final p in particles) {
-      final y = p.y + progress * p.speed * 1.5;
-      if (y > 1.1) continue;
-
-      final paint = Paint()
-        ..color = p.color.withAlpha((255 * (1 - progress * 0.5)).toInt());
-
-      canvas.save();
-      canvas.translate(p.x * size.width, y * size.height);
-      canvas.rotate(p.rotation + progress * 5);
-      canvas.drawRect(
-        Rect.fromCenter(center: Offset.zero, width: p.size, height: p.size * 0.6),
-        paint,
-      );
-      canvas.restore();
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant _ConfettiPainter oldDelegate) {
-    return oldDelegate.progress != progress;
   }
 }

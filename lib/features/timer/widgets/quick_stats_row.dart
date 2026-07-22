@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../shared/widgets/glass_card.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class QuickStatsRow extends StatefulWidget {
-  final int streak;
-  final int waterMl;
-  final int waterGoalMl;
-  final VoidCallback onAddWater;
+import '../../../core/theme/app_colors.dart';
+import '../../profile/providers/settings_provider.dart';
+import '../../stats/providers/stats_provider.dart';
 
+class QuickStatsRow extends ConsumerWidget {
   const QuickStatsRow({
     super.key,
     required this.streak,
@@ -18,178 +18,242 @@ class QuickStatsRow extends StatefulWidget {
     required this.onAddWater,
   });
 
-  @override
-  State<QuickStatsRow> createState() => _QuickStatsRowState();
-}
-
-class _QuickStatsRowState extends State<QuickStatsRow>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _waterBounceController;
-  late Animation<double> _waterBounceAnimation;
+  final int streak;
+  final int waterMl;
+  final int waterGoalMl;
+  final VoidCallback onAddWater;
 
   @override
-  void initState() {
-    super.initState();
-    _waterBounceController = AnimationController(
-      duration: const Duration(milliseconds: 400),
-      vsync: this,
-    );
-    _waterBounceAnimation = TweenSequence<double>([
-      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.15), weight: 40),
-      TweenSequenceItem(tween: Tween(begin: 1.15, end: 0.95), weight: 30),
-      TweenSequenceItem(tween: Tween(begin: 0.95, end: 1.0), weight: 30),
-    ]).animate(CurvedAnimation(
-      parent: _waterBounceController,
-      curve: Curves.easeOut,
-    ));
-  }
-
-  @override
-  void didUpdateWidget(QuickStatsRow oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.waterMl != widget.waterMl && widget.waterMl > oldWidget.waterMl) {
-      _waterBounceController.forward(from: 0);
-    }
-  }
-
-  @override
-  void dispose() {
-    _waterBounceController.dispose();
-    super.dispose();
-  }
-
-  void _handleAddWater() {
-    HapticFeedback.lightImpact();
-    widget.onAddWater();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final waterProgress = widget.waterGoalMl > 0
-        ? (widget.waterMl / widget.waterGoalMl).clamp(0.0, 1.0)
-        : 0.0;
+    final l10n = AppLocalizations.of(context)!;
+    final settings = ref.watch(settingsProvider);
+    final latestWeight = ref.watch(latestWeightProvider).valueOrNull;
+    final currentWeight = latestWeight ?? settings.weight;
+    final targetWeight = settings.targetWeight;
+    final waterProgress =
+        waterGoalMl > 0 ? (waterMl / waterGoalMl).clamp(0.0, 1.0) : 0.0;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        children: [
-          // Streak
-          Expanded(
-            child: GlassCard(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.orange.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Icon(
-                      Icons.local_fire_department,
-                      color: Colors.orange,
-                      size: 20,
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${widget.streak}',
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.stats_streak,
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2),
+          child: Row(
+            children: [
+              Text(
+                l10n.home_todaySummary,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -.2,
+                ),
               ),
-            ),
+              const Spacer(),
+              Text(
+                '${(waterProgress * 100).round()}%',
+                style: theme.textTheme.labelMedium?.copyWith(
+                  color: AppColors.tertiary,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(width: 12),
-          // Water
-          Expanded(
-            child: GlassCard(
-              padding: const EdgeInsets.all(12),
-              onTap: _handleAddWater,
-              child: Row(
+        ),
+        const SizedBox(height: 12),
+        _SummarySurface(
+          onTap: () => context.push('/water-tracker'),
+          child: Column(
+            children: [
+              Row(
                 children: [
-                  AnimatedBuilder(
-                    animation: _waterBounceAnimation,
-                    builder: (context, child) {
-                      return Transform.scale(
-                        scale: _waterBounceAnimation.value,
-                        child: child,
-                      );
-                    },
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        // Water progress circle
-                        SizedBox(
-                          width: 36,
-                          height: 36,
-                          child: CircularProgressIndicator(
-                            value: waterProgress,
-                            strokeWidth: 2.5,
-                            backgroundColor: Colors.blue.withValues(alpha: 0.1),
-                            valueColor: const AlwaysStoppedAnimation(Colors.blue),
-                          ),
-                        ),
-                        PhosphorIcon(
-                          PhosphorIcons.drop(PhosphorIconsStyle.fill),
-                          color: Colors.blue,
-                          size: 18,
-                        ),
-                      ],
-                    ),
+                  _IconTile(
+                    color: AppColors.tertiary,
+                    icon: PhosphorIcons.drop(PhosphorIconsStyle.fill),
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          _formatWater(widget.waterMl),
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w700,
+                          l10n.water_title,
+                          style: theme.textTheme.labelLarge?.copyWith(
+                            fontWeight: FontWeight.w800,
                           ),
                         ),
+                        const SizedBox(height: 2),
                         Text(
-                          '/ ${_formatWater(widget.waterGoalMl)}',
+                          '${_formatWater(waterMl)} / ${_formatWater(waterGoalMl)}',
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: .55,
+                            ),
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Icon(
-                    Icons.add_circle_outline,
-                    color: Colors.blue.withValues(alpha: 0.5),
-                    size: 20,
+                  IconButton.filled(
+                    tooltip: l10n.water_addWater,
+                    onPressed: () {
+                      HapticFeedback.lightImpact();
+                      onAddWater();
+                    },
+                    style: IconButton.styleFrom(
+                      backgroundColor: AppColors.tertiary,
+                      foregroundColor: Colors.white,
+                    ),
+                    icon: Icon(PhosphorIcons.plus(), size: 20),
                   ),
                 ],
               ),
+              const SizedBox(height: 14),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(99),
+                child: LinearProgressIndicator(
+                  value: waterProgress,
+                  minHeight: 7,
+                  backgroundColor: AppColors.tertiary.withValues(alpha: .1),
+                  valueColor: const AlwaysStoppedAnimation(AppColors.tertiary),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            Expanded(
+              child: _SummarySurface(
+                child: _Metric(
+                  icon: PhosphorIcons.fire(PhosphorIconsStyle.fill),
+                  color: AppColors.warning,
+                  value: '$streak',
+                  label: l10n.home_dayStreak,
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: _SummarySurface(
+                onTap: () => context.push('/weight-tracker'),
+                child: _Metric(
+                  icon: PhosphorIcons.scales(),
+                  color: theme.colorScheme.primary,
+                  value:
+                      currentWeight == null
+                          ? '—'
+                          : '${currentWeight.toStringAsFixed(1)} kg',
+                  label:
+                      targetWeight == null
+                          ? l10n.stats_weightChange
+                          : l10n.home_weightGoal(
+                            targetWeight.toStringAsFixed(1),
+                          ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  String _formatWater(int ml) =>
+      ml >= 1000 ? '${(ml / 1000).toStringAsFixed(1)} L' : '$ml ml';
+}
+
+class _SummarySurface extends StatelessWidget {
+  const _SummarySurface({required this.child, this.onTap});
+
+  final Widget child;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Material(
+      color: theme.colorScheme.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(22),
+        side: BorderSide(
+          color: theme.colorScheme.onSurface.withValues(alpha: .065),
+        ),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(padding: const EdgeInsets.all(16), child: child),
+      ),
+    );
+  }
+}
+
+class _IconTile extends StatelessWidget {
+  const _IconTile({required this.color, required this.icon});
+
+  final Color color;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    width: 48,
+    height: 48,
+    decoration: BoxDecoration(
+      color: color.withValues(alpha: .1),
+      borderRadius: BorderRadius.circular(15),
+    ),
+    child: Icon(icon, color: color, size: 23),
+  );
+}
+
+class _Metric extends StatelessWidget {
+  const _Metric({
+    required this.icon,
+    required this.color,
+    required this.value,
+    required this.label,
+  });
+
+  final IconData icon;
+  final Color color;
+  final String value;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return SizedBox(
+      height: 86,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(icon, size: 22, color: color),
+          const SizedBox(height: 10),
+          Text(
+            value,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w800,
+              letterSpacing: -.25,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.onSurface.withValues(alpha: .52),
             ),
           ),
         ],
       ),
     );
-  }
-
-  String _formatWater(int ml) {
-    if (ml >= 1000) {
-      return '${(ml / 1000).toStringAsFixed(1)}L';
-    }
-    return '${ml}ml';
   }
 }

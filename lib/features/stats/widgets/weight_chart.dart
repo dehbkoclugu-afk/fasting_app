@@ -5,14 +5,11 @@ import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/glass_card.dart';
 
 class WeightChart extends StatelessWidget {
-  final List<Map<String, dynamic>> weightData; // [{date: DateTime, weight: double}]
+  final List<Map<String, dynamic>>
+  weightData; // [{date: DateTime, weight: double}]
   final double? targetWeight;
 
-  const WeightChart({
-    super.key,
-    required this.weightData,
-    this.targetWeight,
-  });
+  const WeightChart({super.key, required this.weightData, this.targetWeight});
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +46,10 @@ class WeightChart extends StatelessWidget {
       );
     }
 
-    final spots = weightData.asMap().entries.map((e) {
-      return FlSpot(e.key.toDouble(), e.value['weight'] as double);
-    }).toList();
+    final spots =
+        weightData.asMap().entries.map((e) {
+          return FlSpot(e.key.toDouble(), e.value['weight'] as double);
+        }).toList();
 
     final weights = weightData.map((d) => d['weight'] as double).toList();
     final minWeight = weights.reduce((a, b) => a < b ? a : b) - 2;
@@ -69,10 +67,11 @@ class WeightChart extends StatelessWidget {
               show: true,
               drawVerticalLine: false,
               horizontalInterval: 2,
-              getDrawingHorizontalLine: (value) => FlLine(
-                color: theme.colorScheme.onSurface.withAlpha(12),
-                strokeWidth: 1,
-              ),
+              getDrawingHorizontalLine:
+                  (value) => FlLine(
+                    color: theme.colorScheme.onSurface.withAlpha(12),
+                    strokeWidth: 1,
+                  ),
             ),
             titlesData: FlTitlesData(
               bottomTitles: AxisTitles(
@@ -115,8 +114,12 @@ class WeightChart extends StatelessWidget {
                   },
                 ),
               ),
-              topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-              rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+              topTitles: const AxisTitles(
+                sideTitles: SideTitles(showTitles: false),
+              ),
+              rightTitles: const AxisTitles(
+                sideTitles: SideTitles(showTitles: false),
+              ),
             ),
             borderData: FlBorderData(show: false),
             lineBarsData: [

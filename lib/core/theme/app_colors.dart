@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  // Primary
-  static const primary = Color(0xFF6C63FF);
-  static const primaryLight = Color(0xFF9D97FF);
-  static const primaryDark = Color(0xFF4A42D4);
+  // Primary (Kırmızı-pembe - Fastify)
+  static const primary = Color(0xFFE84C5E);
+  static const primaryLight = Color(0xFFFF6B7A);
+  static const primaryDark = Color(0xFFC73848);
 
   // Secondary
-  static const secondary = Color(0xFFFF6584);
-  static const secondaryLight = Color(0xFFFF8FA5);
+  static const secondary = Color(0xFFFF8A96);
+  static const secondaryLight = Color(0xFFFFB0B8);
   static const secondaryDark = Color(0xFFD44A66);
 
-  // Tertiary
-  static const tertiary = Color(0xFF00D2FF);
+  // Tertiary (Mavi - su vurgu)
+  static const tertiary = Color(0xFF4A9DFF);
 
   // Success / Warning / Error
   static const success = Color(0xFF4CAF50);
@@ -22,8 +22,8 @@ class AppColors {
   static const error = Color(0xFFEF5350);
 
   // Metabolic Phase Gradients
-  static const anabolicStart = Color(0xFF667eea);
-  static const anabolicEnd = Color(0xFF764ba2);
+  static const anabolicStart = Color(0xFFE84C5E);
+  static const anabolicEnd = Color(0xFFFF8A96);
   static const catabolicStart = Color(0xFFf093fb);
   static const catabolicEnd = Color(0xFFf5576c);
   static const fatBurningStart = Color(0xFF4facfe);
@@ -45,15 +45,17 @@ class AppColors {
   static const darkBg = Color(0xFF0F0F1A);
   static const darkSurface = Color(0xFF1A1A2E);
   static const darkCard = Color(0xFF16213E);
+  static const darkSurfaceVariant = Color(0xFF222238);
   static const darkTextPrimary = Color(0xFFE8E8E8);
   static const darkTextSecondary = Color(0xFFA0A0B0);
   static const darkDivider = Color(0xFF2A2A3E);
 
-  // Light Theme
-  static const lightBg = Color(0xFFF8F9FE);
+  // Light Theme (Beyaz, temiz - Fastify)
+  static const lightBg = Color(0xFFFFFFFF);
   static const lightSurface = Color(0xFFFFFFFF);
-  static const lightCard = Color(0xFFF0F1F5);
+  static const lightCard = Color(0xFFFFFFFF);
+  static const lightSurfaceVariant = Color(0xFFF5F5F7);
   static const lightTextPrimary = Color(0xFF1A1A2E);
   static const lightTextSecondary = Color(0xFF6B6B80);
-  static const lightDivider = Color(0xFFE0E0EC);
+  static const lightDivider = Color(0xFFE8E8E8);
 }

@@ -7,17 +7,13 @@ class RevenueCatService {
   RevenueCatService._();
   factory RevenueCatService() => _instance;
 
-  // TODO: Replace with your actual RevenueCat API keys
-  static const _iosApiKey = 'appl_YOUR_IOS_KEY';
-  static const _androidApiKey = 'goog_YOUR_ANDROID_KEY';
+  static const _iosApiKey = String.fromEnvironment('REVENUECAT_IOS_API_KEY');
+  static const _androidApiKey = String.fromEnvironment(
+    'REVENUECAT_ANDROID_API_KEY',
+  );
 
   // Entitlement ID configured in RevenueCat dashboard
   static const entitlementId = 'premium';
-
-  // Product identifiers
-  static const weeklyProductId = 'fasting_premium_weekly';
-  static const monthlyProductId = 'fasting_premium_monthly';
-  static const yearlyProductId = 'fasting_premium_yearly';
 
   bool _initialized = false;
 
@@ -25,6 +21,10 @@ class RevenueCatService {
     if (_initialized) return;
 
     final apiKey = Platform.isIOS ? _iosApiKey : _androidApiKey;
+    if (apiKey.isEmpty) {
+      debugPrint('RevenueCat disabled: API key is not configured.');
+      return;
+    }
 
     final configuration = PurchasesConfiguration(apiKey);
     await Purchases.configure(configuration);
@@ -37,6 +37,7 @@ class RevenueCatService {
   }
 
   Future<bool> isPremium() async {
+    if (!_initialized) return false;
     try {
       final customerInfo = await Purchases.getCustomerInfo();
       return customerInfo.entitlements.all[entitlementId]?.isActive ?? false;
@@ -46,19 +47,8 @@ class RevenueCatService {
     }
   }
 
-  Future<List<StoreProduct>> getProducts() async {
-    try {
-      final products = await Purchases.getProducts(
-        [weeklyProductId, monthlyProductId, yearlyProductId],
-      );
-      return products;
-    } catch (e) {
-      debugPrint('RevenueCat getProducts error: $e');
-      return [];
-    }
-  }
-
   Future<Offerings?> getOfferings() async {
+    if (!_initialized) return null;
     try {
       final offerings = await Purchases.getOfferings();
       return offerings;
@@ -69,6 +59,7 @@ class RevenueCatService {
   }
 
   Future<bool> purchasePackage(Package package) async {
+    if (!_initialized) return false;
     try {
       final customerInfo = await Purchases.purchasePackage(package);
       return customerInfo.entitlements.all[entitlementId]?.isActive ?? false;
@@ -78,21 +69,8 @@ class RevenueCatService {
     }
   }
 
-  Future<bool> purchaseProduct(String productId) async {
-    try {
-      final products = await Purchases.getProducts([productId]);
-      if (products.isEmpty) return false;
-
-      final customerInfo =
-          await Purchases.purchaseStoreProduct(products.first);
-      return customerInfo.entitlements.all[entitlementId]?.isActive ?? false;
-    } catch (e) {
-      debugPrint('RevenueCat purchaseProduct error: $e');
-      return false;
-    }
-  }
-
   Future<bool> restorePurchases() async {
+    if (!_initialized) return false;
     try {
       final customerInfo = await Purchases.restorePurchases();
       return customerInfo.entitlements.all[entitlementId]?.isActive ?? false;

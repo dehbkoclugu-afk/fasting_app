@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../providers/subscription_provider.dart';
-import '../../../services/revenue_cat_service.dart';
 
 class PaywallScreen extends ConsumerStatefulWidget {
   const PaywallScreen({super.key});
@@ -16,70 +18,76 @@ class PaywallScreen extends ConsumerStatefulWidget {
 }
 
 class _PaywallScreenState extends ConsumerState<PaywallScreen> {
-  int _selectedPlan = 1; // 0: haftalık, 1: yıllık, 2: aylık
+  int _selectedPlan = 1;
 
-  final _productIds = [
-    RevenueCatService.weeklyProductId,
-    RevenueCatService.yearlyProductId,
-    RevenueCatService.monthlyProductId,
+  static const _privacyUrl = String.fromEnvironment('PRIVACY_POLICY_URL');
+  static const _termsUrl = String.fromEnvironment('TERMS_OF_USE_URL');
+  static const _packageTypes = [
+    PackageType.monthly,
+    PackageType.annual,
+    PackageType.lifetime,
   ];
 
-  Future<void> _handlePurchase() async {
-    final productId = _productIds[_selectedPlan];
-    final success = await ref
-        .read(subscriptionProvider.notifier)
-        .purchaseByProductId(productId);
-    if (success && mounted) {
-      Navigator.pop(context);
+  Package? _package(SubscriptionState state, int index) {
+    for (final package in state.availablePackages) {
+      if (package.packageType == _packageTypes[index]) return package;
     }
+    return null;
   }
 
-  Future<void> _handleRestore() async {
-    final nav = Navigator.of(context);
-    final messenger = ScaffoldMessenger.of(context);
-    final success = await ref.read(subscriptionProvider.notifier).restore();
-    if (success && mounted) {
-      messenger.showSnackBar(
-        const SnackBar(
-          content: Text('Satın almalar geri yüklendi!'),
-          backgroundColor: AppColors.success,
-        ),
-      );
-      nav.pop();
-    }
+  Future<void> _purchase() async {
+    final package = _package(ref.read(subscriptionProvider), _selectedPlan);
+    if (package == null) return;
+    final success = await ref
+        .read(subscriptionProvider.notifier)
+        .purchase(package);
+    if (success && mounted) Navigator.pop(context);
   }
+
+  Future<void> _restore() async {
+    final success = await ref.read(subscriptionProvider.notifier).restore();
+    if (!mounted || !success) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(AppLocalizations.of(context)!.paywall_restoreSuccess),
+        backgroundColor: AppColors.success,
+      ),
+    );
+    Navigator.pop(context);
+  }
+
+  Future<void> _open(String value) async {
+    final uri = Uri.tryParse(value);
+    if (uri != null) await launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
+
+  String _errorText(AppLocalizations l10n, String error) => switch (error) {
+    'nothing_to_restore' => l10n.paywall_nothingToRestore,
+    'restore_failed' => l10n.paywall_restoreFailed,
+    _ => l10n.paywall_purchaseFailed,
+  };
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
-    final subState = ref.watch(subscriptionProvider);
+    final state = ref.watch(subscriptionProvider);
 
-    // If already premium, show success
-    if (subState.isPremium) {
+    if (state.isPremium) {
       return Scaffold(
         body: SafeArea(
           child: Center(
             child: Padding(
               padding: AppSpacing.screenPadding,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [AppColors.primary, AppColors.secondary],
-                      ),
-                      borderRadius: BorderRadius.circular(28),
-                    ),
-                    child: const Icon(
-                      PhosphorIconsFill.crown,
-                      color: Colors.white,
-                      size: 48,
-                    ),
+                  const Icon(
+                    PhosphorIconsFill.crown,
+                    color: AppColors.primary,
+                    size: 56,
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 20),
                   Text(
                     l10n.paywall_premiumActive,
                     style: theme.textTheme.headlineMedium?.copyWith(
@@ -87,13 +95,8 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    l10n.paywall_premiumActiveDesc,
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                    ),
-                  ),
-                  const SizedBox(height: 32),
+                  Text(l10n.paywall_premiumActiveDesc),
+                  const SizedBox(height: 28),
                   GradientButton(
                     text: l10n.common_ok,
                     onPressed: () => Navigator.pop(context),
@@ -106,147 +109,179 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       );
     }
 
+    final plans = [
+      (l10n.paywall_monthly, l10n.paywall_monthly),
+      (l10n.paywall_yearly, l10n.paywall_yearly),
+      (l10n.paywall_lifetime, l10n.paywall_once),
+    ];
+    final selectedPackage = _package(state, _selectedPlan);
+
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: AppSpacing.screenPadding,
-          child: Column(
-            children: [
-              // Close button
-              Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.close),
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(Icons.close),
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: AppSpacing.screenPadding,
+                child: Column(
+                  children: [
+                    const Icon(
+                      PhosphorIconsFill.crown,
+                      color: AppColors.primary,
+                      size: 44,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      l10n.paywall_title,
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.headlineMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      l10n.paywall_subtitle,
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: .6,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    _feature(
+                      context,
+                      PhosphorIcons.timer(),
+                      l10n.paywall_allPlans,
+                    ),
+                    _feature(
+                      context,
+                      PhosphorIcons.chartBar(),
+                      l10n.paywall_advancedStats,
+                    ),
+                    _feature(
+                      context,
+                      PhosphorIcons.forkKnife(),
+                      l10n.paywall_mealPlanner,
+                    ),
+                    _feature(
+                      context,
+                      PhosphorIcons.heartbeat(),
+                      l10n.paywall_healthKit,
+                    ),
+                    _feature(
+                      context,
+                      PhosphorIcons.bellRinging(),
+                      l10n.paywall_noAds,
+                    ),
+                    const SizedBox(height: 18),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: List.generate(plans.length, (index) {
+                        return Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: index == 0 ? 0 : 6),
+                            child: _planCard(
+                              context,
+                              index,
+                              plans[index].$1,
+                              _package(
+                                    state,
+                                    index,
+                                  )?.storeProduct.priceString ??
+                                  '—',
+                              plans[index].$2,
+                              badge: index == 1 ? l10n.paywall_bestValue : null,
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                    if (state.errorMessage != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 14),
+                        child: Text(
+                          _errorText(l10n, state.errorMessage!),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: theme.colorScheme.error),
+                        ),
+                      ),
+                    if (state.availablePackages.isEmpty && !state.isLoading)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 14),
+                        child: Text(
+                          l10n.paywall_productsUnavailable,
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: .6,
+                            ),
+                          ),
+                        ),
+                      ),
+                    const SizedBox(height: 20),
+                    GradientButton(
+                      text:
+                          state.isLoading
+                              ? l10n.paywall_processing
+                              : l10n.paywall_continue,
+                      isLoading: state.isLoading,
+                      onPressed:
+                          selectedPackage == null || state.isLoading
+                              ? null
+                              : _purchase,
+                    ),
+                    const SizedBox(height: 6),
+                    TextButton(
+                      onPressed: state.isLoading ? null : _restore,
+                      child: Text(l10n.paywall_restore),
+                    ),
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      children: [
+                        if (_privacyUrl.isNotEmpty)
+                          TextButton(
+                            onPressed: () => _open(_privacyUrl),
+                            child: Text(l10n.profile_privacyPolicy),
+                          ),
+                        if (_termsUrl.isNotEmpty)
+                          TextButton(
+                            onPressed: () => _open(_termsUrl),
+                            child: Text(l10n.paywall_terms),
+                          ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 8),
-
-              // Crown icon
-              Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [AppColors.primary, AppColors.secondary],
-                  ),
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: const Icon(
-                  PhosphorIconsFill.crown,
-                  color: Colors.white,
-                  size: 40,
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              Text(
-                l10n.paywall_title,
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                l10n.paywall_subtitle,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                ),
-              ),
-              const SizedBox(height: 32),
-
-              // Features
-              _buildFeature(context, PhosphorIcons.timer(), l10n.paywall_allPlans),
-              _buildFeature(
-                  context, PhosphorIcons.chartBar(), l10n.paywall_advancedStats),
-              _buildFeature(
-                  context, PhosphorIcons.forkKnife(), l10n.paywall_mealPlanner),
-              _buildFeature(
-                  context, PhosphorIcons.heartbeat(), l10n.paywall_healthKit),
-              _buildFeature(
-                  context, PhosphorIcons.palette(), l10n.paywall_themes),
-              _buildFeature(context, PhosphorIcons.bellRinging(), l10n.paywall_noAds),
-
-              const Spacer(),
-
-              // Error message
-              if (subState.errorMessage != null)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: Text(
-                    subState.errorMessage!,
-                    style: TextStyle(color: Colors.red.shade400, fontSize: 13),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-
-              // Plans
-              Row(
-                children: [
-                  _buildPlanCard(context, 0, l10n.paywall_weekly, '₺29.99', '/hafta'),
-                  const SizedBox(width: 8),
-                  _buildPlanCard(context, 1, l10n.paywall_yearly, '₺149.99', '/yıl',
-                      badge: l10n.paywall_bestValue),
-                  const SizedBox(width: 8),
-                  _buildPlanCard(context, 2, l10n.paywall_monthly, '₺49.99', '/ay'),
-                ],
-              ),
-              const SizedBox(height: 20),
-
-              GradientButton(
-                text: subState.isLoading
-                    ? 'İşleniyor...'
-                    : l10n.paywall_freeTrial,
-                isLoading: subState.isLoading,
-                onPressed: () {
-                  if (subState.isLoading) return;
-                  _handlePurchase();
-                },
-                colors: [AppColors.primary, AppColors.secondary],
-              ),
-              const SizedBox(height: 12),
-              TextButton(
-                onPressed: subState.isLoading
-                    ? null
-                    : () => _handleRestore(),
-                child: Text(
-                  l10n.paywall_restore,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 8),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildFeature(BuildContext context, IconData icon, String text) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Icon(icon, color: AppColors.primary, size: 18),
-          ),
-          const SizedBox(width: 12),
-          Text(text, style: theme.textTheme.bodyMedium),
-          const Spacer(),
-          const Icon(Icons.check_circle, color: AppColors.success, size: 20),
-        ],
-      ),
-    );
-  }
+  Widget _feature(BuildContext context, IconData icon, String text) => Padding(
+    padding: const EdgeInsets.only(bottom: 10),
+    child: Row(
+      children: [
+        Icon(icon, color: AppColors.primary, size: 20),
+        const SizedBox(width: 12),
+        Expanded(child: Text(text)),
+        const Icon(Icons.check_circle, color: AppColors.success, size: 20),
+      ],
+    ),
+  );
 
-  Widget _buildPlanCard(
+  Widget _planCard(
     BuildContext context,
     int index,
     String title,
@@ -254,66 +289,64 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     String period, {
     String? badge,
   }) {
-    final isSelected = _selectedPlan == index;
+    final selected = _selectedPlan == index;
     final theme = Theme.of(context);
-
-    return Expanded(
-      child: GestureDetector(
+    return Semantics(
+      selected: selected,
+      button: true,
+      child: InkWell(
+        borderRadius: AppSpacing.borderRadiusMd,
         onTap: () => setState(() => _selectedPlan = index),
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+          duration: const Duration(milliseconds: 180),
+          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 7),
           decoration: BoxDecoration(
-            color: isSelected
-                ? AppColors.primary.withValues(alpha: 0.1)
-                : Colors.transparent,
+            color: selected ? AppColors.primary.withValues(alpha: .1) : null,
             borderRadius: AppSpacing.borderRadiusMd,
             border: Border.all(
-              color: isSelected
-                  ? AppColors.primary
-                  : theme.colorScheme.onSurface.withValues(alpha: 0.1),
-              width: isSelected ? 2 : 1,
+              color:
+                  selected
+                      ? AppColors.primary
+                      : theme.colorScheme.outlineVariant,
+              width: selected ? 2 : 1,
             ),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (badge != null)
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                  margin: const EdgeInsets.only(bottom: 6),
-                  decoration: BoxDecoration(
-                    color: AppColors.secondary,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    badge,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 9,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              Text(
-                title,
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                ),
+              SizedBox(
+                height: 18,
+                child:
+                    badge == null
+                        ? null
+                        : Text(
+                          badge,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.labelSmall?.copyWith(
+                            color: AppColors.secondary,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
               ),
-              const SizedBox(height: 4),
-              Text(
-                price,
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                  color: isSelected ? AppColors.primary : null,
+              Text(title, textAlign: TextAlign.center, maxLines: 2),
+              const SizedBox(height: 6),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  price,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: selected ? AppColors.primary : null,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ),
               Text(
                 period,
-                style: TextStyle(
-                  fontSize: 10,
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: theme.colorScheme.onSurface.withValues(alpha: .55),
                 ),
               ),
             ],

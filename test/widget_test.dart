@@ -5,7 +5,7 @@ import 'package:fasting_app/app.dart';
 void main() {
   testWidgets('App builds without error', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const ProviderScope(child: FastingApp()),
+      const ProviderScope(child: FastingApp(showOnboarding: true)),
     );
     expect(find.text('FastTrack'), findsOneWidget);
   });

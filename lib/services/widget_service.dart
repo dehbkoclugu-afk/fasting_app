@@ -1,8 +1,20 @@
 import 'package:flutter/foundation.dart';
 import 'package:home_widget/home_widget.dart';
 
+abstract interface class FastingWidgetService {
+  Future<void> updateWidget({
+    required bool isFasting,
+    required String planName,
+    required String remainingTime,
+    required double progress,
+    required String phaseName,
+  });
+
+  Future<void> updateIdleWidget();
+}
+
 /// Service to update the home screen widget with current fasting status
-class WidgetService {
+class WidgetService implements FastingWidgetService {
   static final WidgetService _instance = WidgetService._();
   WidgetService._();
   factory WidgetService() => _instance;
@@ -21,6 +33,7 @@ class WidgetService {
   }
 
   /// Update the widget with current fasting state
+  @override
   Future<void> updateWidget({
     required bool isFasting,
     required String planName,
@@ -46,6 +59,7 @@ class WidgetService {
   }
 
   /// Update widget to show idle state
+  @override
   Future<void> updateIdleWidget() async {
     await updateWidget(
       isFasting: false,

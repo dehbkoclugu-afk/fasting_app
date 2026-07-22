@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../providers/meal_provider.dart';
 
@@ -55,111 +53,125 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       maxChildSize: 0.95,
       minChildSize: 0.5,
       builder: (context, scrollController) {
-        return Container(
-          decoration: BoxDecoration(
-            color: theme.scaffoldBackgroundColor,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-          ),
-          child: SingleChildScrollView(
-            controller: scrollController,
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Container(
-                    width: 40,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.onSurface.withAlpha(50),
-                      borderRadius: BorderRadius.circular(2),
+        return SingleChildScrollView(
+          controller: scrollController,
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(l10n.meals_addMeal, style: theme.textTheme.titleLarge),
+              const SizedBox(height: 20),
+
+              // Meal type selector
+              Text(l10n.meals_mealType, style: theme.textTheme.titleSmall),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  _buildMealTypeChip(
+                    'breakfast',
+                    l10n.meals_breakfast,
+                    Icons.wb_sunny_outlined,
+                  ),
+                  _buildMealTypeChip(
+                    'lunch',
+                    l10n.meals_lunch,
+                    Icons.wb_cloudy_outlined,
+                  ),
+                  _buildMealTypeChip(
+                    'dinner',
+                    l10n.meals_dinner,
+                    Icons.nightlight_outlined,
+                  ),
+                  _buildMealTypeChip(
+                    'snack',
+                    l10n.meals_snack,
+                    Icons.cookie_outlined,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+
+              // Quick add
+              Text(l10n.meals_quickAdd, style: theme.textTheme.titleSmall),
+              const SizedBox(height: 8),
+              SizedBox(
+                height: 36,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _quickMeals.length,
+                  separatorBuilder: (_, __) => const SizedBox(width: 6),
+                  itemBuilder: (context, index) {
+                    final meal = _quickMeals[index];
+                    return ActionChip(
+                      label: Text(
+                        '${meal['name']} (${meal['cal']} kcal)',
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                      onPressed: () => _quickAdd(meal),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Manual entry
+              Text(l10n.meals_manualEntry, style: theme.textTheme.titleSmall),
+              const SizedBox(height: 8),
+              _buildField(
+                l10n.meals_mealName,
+                _nameController,
+                TextInputType.text,
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildField(
+                      l10n.meals_calories,
+                      _caloriesController,
+                      TextInputType.number,
+                      'kcal',
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Text(l10n.meals_addMeal, style: theme.textTheme.titleLarge),
-                const SizedBox(height: 20),
-
-                // Meal type selector
-                Text(l10n.meals_mealType, style: theme.textTheme.titleSmall),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    _buildMealTypeChip('breakfast', l10n.meals_breakfast, Icons.wb_sunny_outlined),
-                    const SizedBox(width: 8),
-                    _buildMealTypeChip('lunch', l10n.meals_lunch, Icons.wb_cloudy_outlined),
-                    const SizedBox(width: 8),
-                    _buildMealTypeChip('dinner', l10n.meals_dinner, Icons.nightlight_outlined),
-                    const SizedBox(width: 8),
-                    _buildMealTypeChip('snack', l10n.meals_snack, Icons.cookie_outlined),
-                  ],
-                ),
-                const SizedBox(height: 20),
-
-                // Quick add
-                Text(l10n.meals_quickAdd, style: theme.textTheme.titleSmall),
-                const SizedBox(height: 8),
-                SizedBox(
-                  height: 36,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _quickMeals.length,
-                    separatorBuilder: (_, __) => const SizedBox(width: 6),
-                    itemBuilder: (context, index) {
-                      final meal = _quickMeals[index];
-                      return ActionChip(
-                        label: Text(
-                          '${meal['name']} (${meal['cal']} kcal)',
-                          style: const TextStyle(fontSize: 12),
-                        ),
-                        onPressed: () => _quickAdd(meal),
-                        backgroundColor: AppColors.primary.withAlpha(20),
-                      );
-                    },
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: _buildField(
+                      l10n.meals_protein,
+                      _proteinController,
+                      TextInputType.number,
+                      'g',
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-
-                // Manual entry
-                Text(l10n.meals_manualEntry, style: theme.textTheme.titleSmall),
-                const SizedBox(height: 8),
-                _buildField(l10n.meals_mealName, _nameController, TextInputType.text),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      child: _buildField(l10n.meals_calories, _caloriesController,
-                          TextInputType.number, 'kcal'),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildField(
+                      l10n.meals_carbohydrate,
+                      _carbsController,
+                      TextInputType.number,
+                      'g',
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: _buildField(l10n.meals_protein, _proteinController,
-                          TextInputType.number, 'g'),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: _buildField(
+                      l10n.meals_fat,
+                      _fatController,
+                      TextInputType.number,
+                      'g',
                     ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      child: _buildField(l10n.meals_carbohydrate, _carbsController,
-                          TextInputType.number, 'g'),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: _buildField(
-                          l10n.meals_fat, _fatController, TextInputType.number, 'g'),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                GradientButton(
-                  text: l10n.meals_add,
-                  onPressed: _saveMeal,
-                ),
-                const SizedBox(height: 16),
-              ],
-            ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              GradientButton(text: l10n.meals_add, onPressed: _saveMeal),
+              const SizedBox(height: 16),
+            ],
           ),
         );
       },
@@ -168,43 +180,14 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
 
   Widget _buildMealTypeChip(String value, String label, IconData icon) {
     final isSelected = _mealType == value;
-    return Expanded(
-      child: GestureDetector(
-        onTap: () {
-          HapticFeedback.selectionClick();
-          setState(() => _mealType = value);
-        },
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          decoration: BoxDecoration(
-            color: isSelected ? AppColors.primary.withAlpha(25) : Colors.transparent,
-            borderRadius: AppSpacing.borderRadiusSm,
-            border: Border.all(
-              color: isSelected
-                  ? AppColors.primary
-                  : Theme.of(context).colorScheme.onSurface.withAlpha(20),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon,
-                  size: 18,
-                  color: isSelected ? AppColors.primary : null),
-              const SizedBox(height: 2),
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                  color: isSelected ? AppColors.primary : null,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+    return ChoiceChip(
+      selected: isSelected,
+      avatar: Icon(icon, size: 18),
+      label: Text(label),
+      onSelected: (_) {
+        HapticFeedback.selectionClick();
+        setState(() => _mealType = value);
+      },
     );
   }
 
@@ -221,26 +204,14 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
         labelText: label,
         suffixText: suffix,
         isDense: true,
-        filled: true,
-        fillColor: Theme.of(context).colorScheme.onSurface.withAlpha(8),
-        border: OutlineInputBorder(
-          borderRadius: AppSpacing.borderRadiusSm,
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.onSurface.withAlpha(20),
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: AppSpacing.borderRadiusSm,
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.onSurface.withAlpha(20),
-          ),
-        ),
       ),
     );
   }
 
   void _quickAdd(Map<String, dynamic> meal) {
-    ref.read(mealProvider.notifier).addMeal(
+    ref
+        .read(mealProvider.notifier)
+        .addMeal(
           name: meal['name'] as String,
           calories: meal['cal'] as int,
           protein: meal['p'] as double,
@@ -263,13 +234,15 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     final name = _nameController.text.trim();
     final cal = int.tryParse(_caloriesController.text) ?? 0;
     if (name.isEmpty || cal <= 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(l10n.meals_nameCalorieRequired)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.meals_nameCalorieRequired)));
       return;
     }
 
-    ref.read(mealProvider.notifier).addMeal(
+    ref
+        .read(mealProvider.notifier)
+        .addMeal(
           name: name,
           calories: cal,
           protein: double.tryParse(_proteinController.text) ?? 0,
@@ -282,8 +255,6 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     final navigator = Navigator.of(context);
     HapticFeedback.lightImpact();
     navigator.pop();
-    messenger.showSnackBar(
-      SnackBar(content: Text(l10n.meals_added(name))),
-    );
+    messenger.showSnackBar(SnackBar(content: Text(l10n.meals_added(name))));
   }
 }

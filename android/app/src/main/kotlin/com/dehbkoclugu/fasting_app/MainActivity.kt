@@ -1,4 +1,4 @@
-package com.dehbkoclugu.fasting_app
+package com.dehbkoclugu.fasttrack
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -7,6 +7,8 @@ class AppSettings {
   final bool notificationsEnabled;
   final bool waterReminders;
   final bool phaseNotifications;
+  final bool soundEnabled;
+  final bool calmGamification;
   final bool onboardingCompleted;
   final String selectedPlanId;
   final String userName;
@@ -15,13 +17,17 @@ class AppSettings {
   final double? targetWeight;
   final int? age;
   final bool isMale;
-  final String locale;
+
+  /// Null means follow the device language.
+  final String? locale;
 
   const AppSettings({
     this.themeMode = ThemeMode.system,
     this.notificationsEnabled = true,
     this.waterReminders = true,
     this.phaseNotifications = true,
+    this.soundEnabled = false,
+    this.calmGamification = false,
     this.onboardingCompleted = false,
     this.selectedPlanId = '16_8',
     this.userName = '',
@@ -30,7 +36,7 @@ class AppSettings {
     this.targetWeight,
     this.age,
     this.isMale = true,
-    this.locale = 'tr',
+    this.locale,
   });
 
   AppSettings copyWith({
@@ -38,6 +44,8 @@ class AppSettings {
     bool? notificationsEnabled,
     bool? waterReminders,
     bool? phaseNotifications,
+    bool? soundEnabled,
+    bool? calmGamification,
     bool? onboardingCompleted,
     String? selectedPlanId,
     String? userName,
@@ -46,13 +54,15 @@ class AppSettings {
     double? targetWeight,
     int? age,
     bool? isMale,
-    String? locale,
+    Object? locale = _unset,
   }) {
     return AppSettings(
       themeMode: themeMode ?? this.themeMode,
       notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
       waterReminders: waterReminders ?? this.waterReminders,
       phaseNotifications: phaseNotifications ?? this.phaseNotifications,
+      soundEnabled: soundEnabled ?? this.soundEnabled,
+      calmGamification: calmGamification ?? this.calmGamification,
       onboardingCompleted: onboardingCompleted ?? this.onboardingCompleted,
       selectedPlanId: selectedPlanId ?? this.selectedPlanId,
       userName: userName ?? this.userName,
@@ -61,7 +71,7 @@ class AppSettings {
       targetWeight: targetWeight ?? this.targetWeight,
       age: age ?? this.age,
       isMale: isMale ?? this.isMale,
-      locale: locale ?? this.locale,
+      locale: identical(locale, _unset) ? this.locale : locale as String?,
     );
   }
 }
@@ -78,6 +88,8 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
       notificationsEnabled: prefs.getBool('notificationsEnabled') ?? true,
       waterReminders: prefs.getBool('waterReminders') ?? true,
       phaseNotifications: prefs.getBool('phaseNotifications') ?? true,
+      soundEnabled: prefs.getBool('sound_enabled') ?? false,
+      calmGamification: prefs.getBool('calm_gamification') ?? false,
       onboardingCompleted: prefs.getBool('onboardingCompleted') ?? false,
       selectedPlanId: prefs.getString('selectedPlanId') ?? '16_8',
       userName: prefs.getString('userName') ?? '',
@@ -86,7 +98,7 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
       targetWeight: prefs.getDouble('targetWeight'),
       age: prefs.getInt('age'),
       isMale: prefs.getBool('isMale') ?? true,
-      locale: prefs.getString('locale') ?? 'tr',
+      locale: prefs.getString('locale'),
     );
   }
 
@@ -96,15 +108,23 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     await prefs.setBool('notificationsEnabled', state.notificationsEnabled);
     await prefs.setBool('waterReminders', state.waterReminders);
     await prefs.setBool('phaseNotifications', state.phaseNotifications);
+    await prefs.setBool('sound_enabled', state.soundEnabled);
+    await prefs.setBool('calm_gamification', state.calmGamification);
     await prefs.setBool('onboardingCompleted', state.onboardingCompleted);
     await prefs.setString('selectedPlanId', state.selectedPlanId);
     await prefs.setString('userName', state.userName);
     if (state.height != null) await prefs.setDouble('height', state.height!);
     if (state.weight != null) await prefs.setDouble('weight', state.weight!);
-    if (state.targetWeight != null) await prefs.setDouble('targetWeight', state.targetWeight!);
+    if (state.targetWeight != null) {
+      await prefs.setDouble('targetWeight', state.targetWeight!);
+    }
     if (state.age != null) await prefs.setInt('age', state.age!);
     await prefs.setBool('isMale', state.isMale);
-    await prefs.setString('locale', state.locale);
+    if (state.locale == null) {
+      await prefs.remove('locale');
+    } else {
+      await prefs.setString('locale', state.locale!);
+    }
   }
 
   void setThemeMode(ThemeMode mode) {
@@ -124,6 +144,16 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
 
   void setPhaseNotifications(bool enabled) {
     state = state.copyWith(phaseNotifications: enabled);
+    _save();
+  }
+
+  void setSoundEnabled(bool enabled) {
+    state = state.copyWith(soundEnabled: enabled);
+    _save();
+  }
+
+  void setCalmGamification(bool enabled) {
+    state = state.copyWith(calmGamification: enabled);
     _save();
   }
 
@@ -159,12 +189,16 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     _save();
   }
 
-  void setLocale(String locale) {
+  void setLocale(String? locale) {
     state = state.copyWith(locale: locale);
     _save();
   }
 }
 
-final settingsProvider = StateNotifierProvider<SettingsNotifier, AppSettings>((ref) {
+const _unset = Object();
+
+final settingsProvider = StateNotifierProvider<SettingsNotifier, AppSettings>((
+  ref,
+) {
   return SettingsNotifier();
 });

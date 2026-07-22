@@ -11,6 +11,7 @@ import '../../../shared/widgets/gradient_button.dart';
 import '../../stats/widgets/weight_chart.dart';
 import '../../timer/providers/water_provider.dart';
 import '../providers/settings_provider.dart';
+import '../../stats/providers/stats_provider.dart';
 
 class BodyMetricsScreen extends ConsumerStatefulWidget {
   const BodyMetricsScreen({super.key});
@@ -39,10 +40,11 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
     final db = ref.read(databaseProvider);
     final metrics = await db.getAllMetrics();
     setState(() {
-      _weightHistory = metrics
-          .where((m) => m.weight != null)
-          .map((m) => {'date': m.date, 'weight': m.weight!})
-          .toList();
+      _weightHistory =
+          metrics
+              .where((m) => m.weight != null)
+              .map((m) => {'date': m.date, 'weight': m.weight!})
+              .toList();
     });
   }
 
@@ -51,9 +53,10 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
     final settings = ref.watch(settingsProvider);
-    final bmi = (settings.weight != null && settings.height != null)
-        ? Calculations.calculateBMI(settings.weight!, settings.height!)
-        : null;
+    final bmi =
+        (settings.weight != null && settings.height != null)
+            ? Calculations.calculateBMI(settings.weight!, settings.height!)
+            : null;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.bodyMetrics_title)),
@@ -71,9 +74,10 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
                   child: _buildMetricCard(
                     context,
                     label: l10n.bodyMetrics_weight,
-                    value: settings.weight != null
-                        ? '${settings.weight!.toStringAsFixed(1)} kg'
-                        : '-- kg',
+                    value:
+                        settings.weight != null
+                            ? '${settings.weight!.toStringAsFixed(1)} kg'
+                            : '-- kg',
                     icon: Icons.monitor_weight_outlined,
                     color: AppColors.primary,
                   ),
@@ -83,9 +87,10 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
                   child: _buildMetricCard(
                     context,
                     label: l10n.bodyMetrics_target,
-                    value: settings.targetWeight != null
-                        ? '${settings.targetWeight!.toStringAsFixed(1)} kg'
-                        : '-- kg',
+                    value:
+                        settings.targetWeight != null
+                            ? '${settings.targetWeight!.toStringAsFixed(1)} kg'
+                            : '-- kg',
                     icon: Icons.flag_outlined,
                     color: AppColors.success,
                   ),
@@ -94,11 +99,14 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
                 Expanded(
                   child: _buildMetricCard(
                     context,
-                    label: 'BMI',
+                    label: l10n.bmi,
                     value: bmi != null ? bmi.toStringAsFixed(1) : '--',
                     icon: Icons.favorite_outline,
                     color: _getBmiColor(bmi),
-                    subtitle: bmi != null ? Calculations.getBMICategory(bmi, Localizations.localeOf(context).languageCode) : null,
+                    subtitle:
+                        bmi != null
+                            ? Calculations.getBMICategory(bmi, l10n)
+                            : null,
                   ),
                 ),
               ],
@@ -106,14 +114,19 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
             const SizedBox(height: 24),
 
             // Add weight
-            Text(l10n.bodyMetrics_addWeight, style: theme.textTheme.titleMedium),
+            Text(
+              l10n.bodyMetrics_addWeight,
+              style: theme.textTheme.titleMedium,
+            ),
             const SizedBox(height: 8),
             Row(
               children: [
                 Expanded(
                   child: TextField(
                     controller: _weightController,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    keyboardType: const TextInputType.numberWithOptions(
+                      decimal: true,
+                    ),
                     decoration: InputDecoration(
                       hintText: l10n.bodyMetrics_hintWeight,
                       suffixText: 'kg',
@@ -159,7 +172,10 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
 
             // Weight history list
             if (_weightHistory.isNotEmpty) ...[
-              Text(l10n.bodyMetrics_history, style: theme.textTheme.titleMedium),
+              Text(
+                l10n.bodyMetrics_history,
+                style: theme.textTheme.titleMedium,
+              ),
               const SizedBox(height: 8),
               ...List.generate(
                 _weightHistory.length > 10 ? 10 : _weightHistory.length,
@@ -171,7 +187,9 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
                     padding: const EdgeInsets.only(bottom: 6),
                     child: GlassCard(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 14, vertical: 10),
+                        horizontal: 14,
+                        vertical: 10,
+                      ),
                       child: Row(
                         children: [
                           Text(
@@ -204,17 +222,18 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
     final weight = double.tryParse(text);
     if (weight == null || weight <= 0 || weight > 500) {
       final l10n = AppLocalizations.of(context)!;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(l10n.bodyMetrics_invalidWeight)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.bodyMetrics_invalidWeight)));
       return;
     }
 
     final db = ref.read(databaseProvider);
     final settings = ref.read(settingsProvider);
-    final bmi = settings.height != null
-        ? Calculations.calculateBMI(weight, settings.height!)
-        : null;
+    final bmi =
+        settings.height != null
+            ? Calculations.calculateBMI(weight, settings.height!)
+            : null;
 
     await db.insertMetric(
       BodyMetricsCompanion(
@@ -226,13 +245,19 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
     );
 
     ref.read(settingsProvider.notifier).setBodyInfo(weight: weight);
+    ref.invalidate(latestWeightProvider);
+    ref.invalidate(weightHistoryProvider);
     _weightController.clear();
     await _loadWeightHistory();
 
     if (mounted) {
       final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(l10n.bodyMetrics_weightSaved(weight.toStringAsFixed(1)))),
+        SnackBar(
+          content: Text(
+            l10n.bodyMetrics_weightSaved(weight.toStringAsFixed(1)),
+          ),
+        ),
       );
     }
   }
@@ -269,7 +294,11 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
           if (subtitle != null)
             Text(
               subtitle,
-              style: TextStyle(fontSize: 10, color: color, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                fontSize: 10,
+                color: color,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           Text(
             label,

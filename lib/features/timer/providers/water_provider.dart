@@ -44,10 +44,7 @@ class WaterNotifier extends StateNotifier<WaterState> {
 
   Future<void> addWater(int ml) async {
     await _db.insertWater(
-      WaterIntakeCompanion(
-        amountMl: Value(ml),
-        date: Value(DateTime.now()),
-      ),
+      WaterIntakeCompanion(amountMl: Value(ml), date: Value(DateTime.now())),
     );
     await _loadToday();
   }

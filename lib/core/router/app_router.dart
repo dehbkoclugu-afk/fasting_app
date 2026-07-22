@@ -12,6 +12,10 @@ import '../../features/meals/screens/meals_screen.dart';
 import '../../features/profile/screens/profile_screen.dart';
 import '../../features/paywall/screens/paywall_screen.dart';
 import '../../features/profile/screens/body_metrics_screen.dart';
+import '../../features/explore/screens/explore_screen.dart';
+import '../../features/gamification/screens/gamification_dashboard_screen.dart';
+import '../../features/water/screens/water_tracker_screen.dart';
+import '../../features/weight/screens/weight_tracker_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRouter {
@@ -47,34 +51,41 @@ class AppRouter {
           builder: (context, state) => const PermissionsScreen(),
         ),
 
-        // Main Shell (Bottom Nav)
+        // Main Shell (Bottom Nav - 5 tab)
         ShellRoute(
           navigatorKey: _shellNavigatorKey,
           builder: (context, state, child) => MainShell(child: child),
           routes: [
             GoRoute(
               path: '/timer',
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: TimerScreen(),
-              ),
+              pageBuilder:
+                  (context, state) =>
+                      const NoTransitionPage(child: TimerScreen()),
+            ),
+            GoRoute(
+              path: '/explore',
+              pageBuilder:
+                  (context, state) =>
+                      const NoTransitionPage(child: ExploreScreen()),
             ),
             GoRoute(
               path: '/stats',
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: StatsScreen(),
-              ),
+              pageBuilder:
+                  (context, state) =>
+                      const NoTransitionPage(child: StatsScreen()),
             ),
             GoRoute(
-              path: '/meals',
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: MealsScreen(),
-              ),
+              path: '/achievements',
+              pageBuilder:
+                  (context, state) => const NoTransitionPage(
+                    child: GamificationDashboardScreen(),
+                  ),
             ),
             GoRoute(
               path: '/profile',
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: ProfileScreen(),
-              ),
+              pageBuilder:
+                  (context, state) =>
+                      const NoTransitionPage(child: ProfileScreen()),
             ),
           ],
         ),
@@ -91,6 +102,27 @@ class AppRouter {
           path: '/body-metrics',
           parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => const BodyMetricsScreen(),
+        ),
+
+        // Meals (accessible from other screens)
+        GoRoute(
+          path: '/meals',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const MealsScreen(),
+        ),
+
+        // Water Tracker
+        GoRoute(
+          path: '/water-tracker',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const WaterTrackerScreen(),
+        ),
+
+        // Weight Tracker
+        GoRoute(
+          path: '/weight-tracker',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const WeightTrackerScreen(),
         ),
       ],
     );

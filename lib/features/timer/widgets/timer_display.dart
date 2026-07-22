@@ -1,63 +1,77 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../core/theme/app_typography.dart';
 
 class TimerDisplay extends StatelessWidget {
-  final String elapsed;
-  final String remaining;
-  final String phaseLabel;
-  final bool isRunning;
-
   const TimerDisplay({
     super.key,
     required this.elapsed,
     required this.remaining,
     required this.phaseLabel,
     required this.isRunning,
+    this.progress = 0,
+    this.endTime,
   });
+
+  final String elapsed;
+  final String remaining;
+  final String phaseLabel;
+  final bool isRunning;
+  final double progress;
+  final DateTime? endTime;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
-    final textColor = theme.colorScheme.onSurface;
+    final foreground = theme.colorScheme.onSurface;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          isRunning ? l10n.timer_remainingTime : l10n.timer_ready,
-          style: theme.textTheme.bodySmall?.copyWith(
-            color: textColor.withValues(alpha:0.5),
-            letterSpacing: 1.5,
-            fontWeight: FontWeight.w500,
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primary.withValues(alpha: .09),
+            borderRadius: BorderRadius.circular(99),
           ),
-        ),
-        const SizedBox(height: 4),
-        AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
           child: Text(
-            isRunning ? remaining : elapsed,
-            key: ValueKey(isRunning ? remaining : elapsed),
-            style: AppTypography.timerLarge(textColor),
+            phaseLabel.toUpperCase(),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: theme.colorScheme.primary,
+              fontWeight: FontWeight.w800,
+              letterSpacing: .8,
+            ),
           ),
         ),
-        const SizedBox(height: 8),
-        if (isRunning)
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withValues(alpha:0.1),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text(
-              phaseLabel,
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: theme.colorScheme.primary,
-                fontWeight: FontWeight.w600,
-              ),
+        const SizedBox(height: 12),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            isRunning ? elapsed : '00:00:00',
+            style: theme.textTheme.displaySmall?.copyWith(
+              color: foreground,
+              fontSize: 42,
+              height: 1,
+              fontWeight: FontWeight.w700,
+              letterSpacing: -1.8,
+              fontFeatures: const [FontFeature.tabularFigures()],
             ),
           ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          isRunning
+              ? '$remaining ${l10n.timer_remaining.toLowerCase()}'
+              : l10n.timer_ready,
+          maxLines: 1,
+          style: theme.textTheme.bodySmall?.copyWith(
+            color: foreground.withValues(alpha: .55),
+            fontWeight: FontWeight.w600,
+            fontFeatures: const [FontFeature.tabularFigures()],
+          ),
+        ),
       ],
     );
   }

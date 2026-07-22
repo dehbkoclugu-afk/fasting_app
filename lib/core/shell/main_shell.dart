@@ -12,9 +12,10 @@ class MainShell extends StatelessWidget {
   int _currentIndex(BuildContext context) {
     final location = GoRouterState.of(context).uri.path;
     if (location.startsWith('/timer')) return 0;
-    if (location.startsWith('/stats')) return 1;
-    if (location.startsWith('/meals')) return 2;
-    if (location.startsWith('/profile')) return 3;
+    if (location.startsWith('/explore')) return 1;
+    if (location.startsWith('/stats')) return 2;
+    if (location.startsWith('/achievements')) return 3;
+    if (location.startsWith('/profile')) return 4;
     return 0;
   }
 
@@ -24,10 +25,12 @@ class MainShell extends StatelessWidget {
       case 0:
         context.go('/timer');
       case 1:
-        context.go('/stats');
+        context.go('/explore');
       case 2:
-        context.go('/meals');
+        context.go('/stats');
       case 3:
+        context.go('/achievements');
+      case 4:
         context.go('/profile');
     }
   }
@@ -35,46 +38,50 @@ class MainShell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentIndex = _currentIndex(context);
-    final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       body: child,
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(
-              color: theme.dividerTheme.color ?? Colors.transparent,
-              width: 0.5,
-            ),
-          ),
-        ),
+      bottomNavigationBar: SafeArea(
+        top: false,
         child: NavigationBar(
           selectedIndex: currentIndex,
           onDestinationSelected: (index) => _onTap(context, index),
-          backgroundColor: theme.bottomNavigationBarTheme.backgroundColor,
-          indicatorColor: theme.colorScheme.primary.withValues(alpha:0.1),
-          height: 65,
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
           destinations: [
             NavigationDestination(
-              icon: PhosphorIcon(PhosphorIcons.timer()),
-              selectedIcon: PhosphorIcon(PhosphorIcons.timer(PhosphorIconsStyle.fill)),
+              icon: PhosphorIcon(PhosphorIcons.house()),
+              selectedIcon: PhosphorIcon(
+                PhosphorIcons.house(PhosphorIconsStyle.fill),
+              ),
               label: l10n.tab_timer,
             ),
             NavigationDestination(
+              icon: PhosphorIcon(PhosphorIcons.compass()),
+              selectedIcon: PhosphorIcon(
+                PhosphorIcons.compass(PhosphorIconsStyle.fill),
+              ),
+              label: l10n.tab_explore,
+            ),
+            NavigationDestination(
               icon: PhosphorIcon(PhosphorIcons.chartBar()),
-              selectedIcon: PhosphorIcon(PhosphorIcons.chartBar(PhosphorIconsStyle.fill)),
+              selectedIcon: PhosphorIcon(
+                PhosphorIcons.chartBar(PhosphorIconsStyle.fill),
+              ),
               label: l10n.tab_stats,
             ),
             NavigationDestination(
-              icon: PhosphorIcon(PhosphorIcons.forkKnife()),
-              selectedIcon: PhosphorIcon(PhosphorIcons.forkKnife(PhosphorIconsStyle.fill)),
-              label: l10n.tab_meals,
+              icon: PhosphorIcon(PhosphorIcons.trophy()),
+              selectedIcon: PhosphorIcon(
+                PhosphorIcons.trophy(PhosphorIconsStyle.fill),
+              ),
+              label: l10n.tab_achievements,
             ),
             NavigationDestination(
               icon: PhosphorIcon(PhosphorIcons.user()),
-              selectedIcon: PhosphorIcon(PhosphorIcons.user(PhosphorIconsStyle.fill)),
+              selectedIcon: PhosphorIcon(
+                PhosphorIcons.user(PhosphorIconsStyle.fill),
+              ),
               label: l10n.tab_profile,
             ),
           ],

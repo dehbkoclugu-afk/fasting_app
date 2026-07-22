@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
 import 'notification_service.dart';
@@ -27,7 +30,8 @@ Future<void> _updateTimerNotification() async {
   final startTimeMs = prefs.getInt('fasting_start_time');
   final targetMinutes = prefs.getInt('fasting_target_minutes');
   final isActive = prefs.getBool('fasting_active') ?? false;
-  final locale = prefs.getString('locale') ?? 'tr';
+  final locale = _resolveLocale(prefs);
+  final l10n = lookupAppLocalizations(Locale(locale));
 
   if (!isActive || startTimeMs == null || targetMinutes == null) return;
 
@@ -45,21 +49,20 @@ Future<void> _updateTimerNotification() async {
 
   final h = remaining.inHours;
   final m = remaining.inMinutes % 60;
-  final isTr = locale == 'tr';
-  final remainingStr = isTr ? '${h}s ${m}dk' : '${h}h ${m}m';
+  final remainingStr = l10n.notification_time(h, m);
 
   final elapsedHours = elapsed.inMinutes / 60;
   String phase;
   if (elapsedHours < 4) {
-    phase = isTr ? 'Anabolik' : 'Anabolic';
+    phase = l10n.phase_anabolic;
   } else if (elapsedHours < 8) {
-    phase = isTr ? 'Katabolik' : 'Catabolic';
+    phase = l10n.phase_catabolic;
   } else if (elapsedHours < 12) {
-    phase = isTr ? 'Yağ Yakımı' : 'Fat Burning';
+    phase = l10n.phase_fatBurning;
   } else if (elapsedHours < 18) {
-    phase = isTr ? 'Ketozis' : 'Ketosis';
+    phase = l10n.phase_ketosis;
   } else {
-    phase = isTr ? 'Otofaji' : 'Autophagy';
+    phase = l10n.phase_autophagy;
   }
 
   final notifService = NotificationService();
@@ -71,7 +74,17 @@ Future<void> _updateTimerNotification() async {
   );
 }
 
-class BackgroundService {
+abstract interface class FastingTimerService {
+  Future<void> startFastingTimer({
+    required DateTime startTime,
+    required int targetMinutes,
+    required String planName,
+  });
+
+  Future<void> stopFastingTimer();
+}
+
+class BackgroundService implements FastingTimerService {
   static final BackgroundService _instance = BackgroundService._();
   factory BackgroundService() => _instance;
   BackgroundService._();
@@ -81,14 +94,12 @@ class BackgroundService {
   Future<void> initialize() async {
     if (_initialized) return;
 
-    await Workmanager().initialize(
-      callbackDispatcher,
-      isInDebugMode: false,
-    );
+    await Workmanager().initialize(callbackDispatcher, isInDebugMode: false);
 
     _initialized = true;
   }
 
+  @override
   Future<void> startFastingTimer({
     required DateTime startTime,
     required int targetMinutes,
@@ -106,14 +117,13 @@ class BackgroundService {
       _uniqueName,
       _taskName,
       frequency: const Duration(minutes: 15),
-      constraints: Constraints(
-        networkType: NetworkType.not_required,
-      ),
+      constraints: Constraints(networkType: NetworkType.not_required),
       existingWorkPolicy: ExistingWorkPolicy.replace,
     );
 
     // Bildirimleri zamanla
-    final locale = prefs.getString('locale') ?? 'tr';
+    final locale = _resolveLocale(prefs);
+    final l10n = lookupAppLocalizations(Locale(locale));
     final notifService = NotificationService();
     notifService.setLocale(locale);
     await notifService.scheduleFastingNotifications(
@@ -123,13 +133,13 @@ class BackgroundService {
     );
 
     // Ongoing bildirim göster
-    final isTr = locale == 'tr';
     await notifService.showOngoingNotification(
-      title: isTr ? 'Oruç Başladı - $planName' : 'Fasting Started - $planName',
-      body: isTr ? 'Hedef: ${targetMinutes ~/ 60} saat' : 'Target: ${targetMinutes ~/ 60} hours',
+      title: l10n.notification_started(planName),
+      body: l10n.notification_target(targetMinutes ~/ 60),
     );
   }
 
+  @override
   Future<void> stopFastingTimer() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('fasting_active', false);
@@ -140,23 +150,13 @@ class BackgroundService {
     await notifService.cancelOngoing();
     await notifService.cancelAll();
   }
+}
 
-  Future<Map<String, dynamic>?> getActiveFasting() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isActive = prefs.getBool('fasting_active') ?? false;
-
-    if (!isActive) return null;
-
-    final startTimeMs = prefs.getInt('fasting_start_time');
-    final targetMinutes = prefs.getInt('fasting_target_minutes');
-    final planName = prefs.getString('fasting_plan_name');
-
-    if (startTimeMs == null || targetMinutes == null) return null;
-
-    return {
-      'startTime': DateTime.fromMillisecondsSinceEpoch(startTimeMs),
-      'targetMinutes': targetMinutes,
-      'planName': planName,
-    };
-  }
+String _resolveLocale(SharedPreferences prefs) {
+  final locale =
+      prefs.getString('locale') ??
+      PlatformDispatcher.instance.locale.languageCode;
+  return const {'tr', 'en', 'es', 'pt', 'de', 'fr'}.contains(locale)
+      ? locale
+      : 'en';
 }

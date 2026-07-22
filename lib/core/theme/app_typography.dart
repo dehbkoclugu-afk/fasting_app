@@ -31,10 +31,7 @@ class AppTypography {
         fontSize: 24,
         fontWeight: FontWeight.w600,
       ),
-      titleLarge: GoogleFonts.inter(
-        fontSize: 22,
-        fontWeight: FontWeight.w600,
-      ),
+      titleLarge: GoogleFonts.inter(fontSize: 22, fontWeight: FontWeight.w600),
       titleMedium: GoogleFonts.inter(
         fontSize: 16,
         fontWeight: FontWeight.w600,
@@ -80,25 +77,25 @@ class AppTypography {
 
   // Timer-specific large numbers
   static TextStyle timerLarge(Color color) => GoogleFonts.inter(
-        fontSize: 64,
-        fontWeight: FontWeight.w700,
-        color: color,
-        letterSpacing: -2,
-        height: 1.1,
-      );
+    fontSize: 64,
+    fontWeight: FontWeight.w700,
+    color: color,
+    letterSpacing: -2,
+    height: 1.1,
+  );
 
   static TextStyle timerMedium(Color color) => GoogleFonts.inter(
-        fontSize: 48,
-        fontWeight: FontWeight.w700,
-        color: color,
-        letterSpacing: -1.5,
-        height: 1.1,
-      );
+    fontSize: 48,
+    fontWeight: FontWeight.w700,
+    color: color,
+    letterSpacing: -1.5,
+    height: 1.1,
+  );
 
   static TextStyle timerSmall(Color color) => GoogleFonts.inter(
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
-        color: color,
-        letterSpacing: 2,
-      );
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: color,
+    letterSpacing: 2,
+  );
 }

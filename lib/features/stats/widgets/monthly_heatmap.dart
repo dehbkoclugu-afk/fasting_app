@@ -6,11 +6,7 @@ class MonthlyHeatmap extends StatelessWidget {
   final Map<DateTime, double> data; // date -> hours fasted
   final DateTime month;
 
-  const MonthlyHeatmap({
-    super.key,
-    required this.data,
-    required this.month,
-  });
+  const MonthlyHeatmap({super.key, required this.data, required this.month});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +17,15 @@ class MonthlyHeatmap extends StatelessWidget {
     final startWeekday = firstDay.weekday; // 1=Mon
     final totalDays = lastDay.day;
 
-    final dayLabels = [l10n.day_short_mon, l10n.day_short_tue, l10n.day_short_wed, l10n.day_short_thu, l10n.day_short_fri, l10n.day_short_sat, l10n.day_short_sun];
+    final dayLabels = [
+      l10n.day_short_mon,
+      l10n.day_short_tue,
+      l10n.day_short_wed,
+      l10n.day_short_thu,
+      l10n.day_short_fri,
+      l10n.day_short_sat,
+      l10n.day_short_sun,
+    ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,9 +44,17 @@ class MonthlyHeatmap extends StatelessWidget {
               children: [
                 _buildLegendDot(context, l10n.heatmap_none, Colors.transparent),
                 const SizedBox(width: 8),
-                _buildLegendDot(context, l10n.heatmap_low, AppColors.primary.withAlpha(60)),
+                _buildLegendDot(
+                  context,
+                  l10n.heatmap_low,
+                  AppColors.primary.withAlpha(60),
+                ),
                 const SizedBox(width: 8),
-                _buildLegendDot(context, l10n.heatmap_good, AppColors.primary.withAlpha(140)),
+                _buildLegendDot(
+                  context,
+                  l10n.heatmap_good,
+                  AppColors.primary.withAlpha(140),
+                ),
                 const SizedBox(width: 8),
                 _buildLegendDot(context, l10n.heatmap_full, AppColors.primary),
               ],
@@ -53,19 +65,22 @@ class MonthlyHeatmap extends StatelessWidget {
 
         // Day labels row
         Row(
-          children: dayLabels
-              .map((l) => Expanded(
-                    child: Center(
-                      child: Text(
-                        l,
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurface.withAlpha(100),
-                          fontSize: 11,
+          children:
+              dayLabels
+                  .map(
+                    (l) => Expanded(
+                      child: Center(
+                        child: Text(
+                          l,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.colorScheme.onSurface.withAlpha(100),
+                            fontSize: 11,
+                          ),
                         ),
                       ),
                     ),
-                  ))
-              .toList(),
+                  )
+                  .toList(),
         ),
         const SizedBox(height: 4),
 
@@ -75,14 +90,14 @@ class MonthlyHeatmap extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 3),
             child: Row(
               children: List.generate(7, (dayIndex) {
-                final dayNumber =
-                    weekIndex * 7 + dayIndex - (startWeekday - 2);
+                final dayNumber = weekIndex * 7 + dayIndex - (startWeekday - 2);
                 if (dayNumber < 1 || dayNumber > totalDays) {
                   return Expanded(child: Container());
                 }
 
                 final date = DateTime(month.year, month.month, dayNumber);
-                final hours = data[DateTime(date.year, date.month, date.day)] ?? 0;
+                final hours =
+                    data[DateTime(date.year, date.month, date.day)] ?? 0;
                 final isFuture = date.isAfter(DateTime.now());
 
                 return Expanded(
@@ -91,15 +106,19 @@ class MonthlyHeatmap extends StatelessWidget {
                     child: Container(
                       margin: const EdgeInsets.all(1.5),
                       decoration: BoxDecoration(
-                        color: isFuture
-                            ? Colors.transparent
-                            : _getHeatColor(hours, theme),
+                        color:
+                            isFuture
+                                ? Colors.transparent
+                                : _getHeatColor(hours, theme),
                         borderRadius: BorderRadius.circular(4),
-                        border: isFuture
-                            ? Border.all(
-                                color: theme.colorScheme.onSurface.withAlpha(20),
-                              )
-                            : null,
+                        border:
+                            isFuture
+                                ? Border.all(
+                                  color: theme.colorScheme.onSurface.withAlpha(
+                                    20,
+                                  ),
+                                )
+                                : null,
                       ),
                       child: Center(
                         child: Text(
@@ -107,11 +126,12 @@ class MonthlyHeatmap extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 9,
                             fontWeight: FontWeight.w500,
-                            color: hours >= 12
-                                ? Colors.white
-                                : theme.colorScheme.onSurface.withAlpha(
-                                    isFuture ? 50 : 150,
-                                  ),
+                            color:
+                                hours >= 12
+                                    ? Colors.white
+                                    : theme.colorScheme.onSurface.withAlpha(
+                                      isFuture ? 50 : 150,
+                                    ),
                           ),
                         ),
                       ),
@@ -151,9 +171,10 @@ class MonthlyHeatmap extends StatelessWidget {
           width: 10,
           height: 10,
           decoration: BoxDecoration(
-            color: color == Colors.transparent
-                ? theme.colorScheme.onSurface.withAlpha(15)
-                : color,
+            color:
+                color == Colors.transparent
+                    ? theme.colorScheme.onSurface.withAlpha(15)
+                    : color,
             borderRadius: BorderRadius.circular(2),
           ),
         ),
@@ -173,8 +194,18 @@ class MonthlyHeatmap extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final names = [
       '',
-      l10n.month_jan, l10n.month_feb, l10n.month_mar, l10n.month_apr, l10n.month_may, l10n.month_jun,
-      l10n.month_jul, l10n.month_aug, l10n.month_sep, l10n.month_oct, l10n.month_nov, l10n.month_dec,
+      l10n.month_jan,
+      l10n.month_feb,
+      l10n.month_mar,
+      l10n.month_apr,
+      l10n.month_may,
+      l10n.month_jun,
+      l10n.month_jul,
+      l10n.month_aug,
+      l10n.month_sep,
+      l10n.month_oct,
+      l10n.month_nov,
+      l10n.month_dec,
     ];
     return names[month];
   }

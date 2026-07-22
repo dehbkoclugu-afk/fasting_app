@@ -13,18 +13,25 @@ import 'tables/settings.dart';
 
 part 'app_database.g.dart';
 
-@DriftDatabase(tables: [FastingSessions, BodyMetrics, Meals, WaterIntake, Settings])
+@DriftDatabase(
+  tables: [FastingSessions, BodyMetrics, Meals, WaterIntake, Settings],
+)
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
+  AppDatabase.forTesting(super.executor);
 
   @override
   int get schemaVersion => 1;
 
   // --- Fasting Sessions ---
 
-  Future<List<FastingSession>> getAllSessions() => select(fastingSessions).get();
+  Future<List<FastingSession>> getAllSessions() =>
+      select(fastingSessions).get();
 
-  Future<List<FastingSession>> getSessionsInRange(DateTime start, DateTime end) {
+  Future<List<FastingSession>> getSessionsInRange(
+    DateTime start,
+    DateTime end,
+  ) {
     return (select(fastingSessions)
           ..where((s) => s.startTime.isBetweenValues(start, end))
           ..orderBy([(s) => OrderingTerm.desc(s.startTime)]))
@@ -34,16 +41,38 @@ class AppDatabase extends _$AppDatabase {
   Future<FastingSession?> getActiveSession() {
     return (select(fastingSessions)
           ..where((s) => s.endTime.isNull())
+          ..orderBy([(s) => OrderingTerm.asc(s.id)])
           ..limit(1))
         .getSingleOrNull();
   }
 
-  Future<int> insertSession(FastingSessionsCompanion session) {
-    return into(fastingSessions).insert(session);
+  Future<FastingSession> createOrGetActiveSession(
+    FastingSessionsCompanion session,
+  ) {
+    return transaction(() async {
+      final active = await getActiveSession();
+      if (active != null) return active;
+      final id = await into(fastingSessions).insert(session);
+      return (select(fastingSessions)
+        ..where((s) => s.id.equals(id))).getSingle();
+    });
   }
 
-  Future<bool> updateSession(FastingSession session) {
-    return update(fastingSessions).replace(session);
+  Future<bool> finalizeActiveSession({
+    required int id,
+    required DateTime endTime,
+    required int actualMinutes,
+    required bool completed,
+  }) async {
+    final changed = await (update(fastingSessions)
+      ..where((s) => s.id.equals(id) & s.endTime.isNull())).write(
+      FastingSessionsCompanion(
+        endTime: Value(endTime),
+        actualMinutes: Value(actualMinutes),
+        completed: Value(completed),
+      ),
+    );
+    return changed == 1;
   }
 
   Future<List<FastingSession>> getCompletedSessions() {
@@ -56,7 +85,8 @@ class AppDatabase extends _$AppDatabase {
   // --- Body Metrics ---
 
   Future<List<BodyMetric>> getAllMetrics() {
-    return (select(bodyMetrics)..orderBy([(m) => OrderingTerm.desc(m.date)])).get();
+    return (select(bodyMetrics)
+      ..orderBy([(m) => OrderingTerm.desc(m.date)])).get();
   }
 
   Future<BodyMetric?> getLatestMetric() {
@@ -102,8 +132,7 @@ class AppDatabase extends _$AppDatabase {
     final start = DateTime(date.year, date.month, date.day);
     final end = start.add(const Duration(days: 1));
     return (select(waterIntake)
-          ..where((w) => w.date.isBetweenValues(start, end)))
-        .get();
+      ..where((w) => w.date.isBetweenValues(start, end))).get();
   }
 
   Future<int> insertWater(WaterIntakeCompanion entry) {
@@ -123,16 +152,15 @@ class AppDatabase extends _$AppDatabase {
   // --- Settings ---
 
   Future<String?> getSetting(String key) async {
-    final result = await (select(settings)..where((s) => s.key.equals(key))).getSingleOrNull();
+    final result =
+        await (select(settings)
+          ..where((s) => s.key.equals(key))).getSingleOrNull();
     return result?.value;
   }
 
   Future<void> setSetting(String key, String value) {
     return into(settings).insertOnConflictUpdate(
-      SettingsCompanion(
-        key: Value(key),
-        value: Value(value),
-      ),
+      SettingsCompanion(key: Value(key), value: Value(value)),
     );
   }
 }

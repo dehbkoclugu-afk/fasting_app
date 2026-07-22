@@ -13,7 +13,7 @@ To complete the setup, you need Xcode on a Mac (or Codemagic):
 3. Replace the auto-generated Swift file with `FastingWidget/FastingWidget.swift`
 4. Add App Group capability to BOTH targets:
    - Runner target > Signing & Capabilities > + Capability > App Groups
-   - Add: `group.com.fasttrack.widget`
+   - Add: `group.com.dehbkoclugu.fasttrack`
    - FastingWidget target > same steps
 5. Set deployment target to iOS 17.0 for the widget extension
 6. Build and run

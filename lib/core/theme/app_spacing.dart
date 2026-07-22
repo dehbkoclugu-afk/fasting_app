@@ -13,14 +13,14 @@ class AppSpacing {
   static const double xxxl = 64;
 
   // Padding
-  static const screenPadding = EdgeInsets.symmetric(horizontal: md);
+  static const screenPadding = EdgeInsets.symmetric(horizontal: 20);
   static const cardPadding = EdgeInsets.all(md);
   static const cardPaddingLarge = EdgeInsets.all(lg);
 
   // Border Radius
   static const radiusSm = 8.0;
-  static const radiusMd = 12.0;
-  static const radiusLg = 16.0;
+  static const radiusMd = 16.0;
+  static const radiusLg = 20.0;
   static const radiusXl = 24.0;
   static const radiusFull = 999.0;
 

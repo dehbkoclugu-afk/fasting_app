@@ -28,7 +28,15 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
     final periods = [l10n.stats_week, l10n.stats_month, l10n.stats_year];
-    final dayLabels = [l10n.day_mon, l10n.day_tue, l10n.day_wed, l10n.day_thu, l10n.day_fri, l10n.day_sat, l10n.day_sun];
+    final dayLabels = [
+      l10n.day_mon,
+      l10n.day_tue,
+      l10n.day_wed,
+      l10n.day_thu,
+      l10n.day_fri,
+      l10n.day_sat,
+      l10n.day_sun,
+    ];
 
     return Scaffold(
       body: SafeArea(
@@ -47,45 +55,67 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               const SizedBox(height: 20),
 
               // Period selector
-              Container(
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.onSurface.withValues(alpha:0.05),
-                  borderRadius: AppSpacing.borderRadiusMd,
-                ),
-                child: Row(
-                  children: List.generate(periods.length, (i) {
-                    final isSelected = i == _selectedPeriod;
-                    return Expanded(
-                      child: GestureDetector(
-                        onTap: () => setState(() => _selectedPeriod = i),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                            color: isSelected
-                                ? theme.colorScheme.primary
-                                : Colors.transparent,
-                            borderRadius: AppSpacing.borderRadiusSm,
-                          ),
-                          child: Text(
-                            periods[i],
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: isSelected
-                                  ? Colors.white
-                                  : theme.colorScheme.onSurface.withValues(alpha:0.5),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
+              SizedBox(
+                width: double.infinity,
+                child: SegmentedButton<int>(
+                  segments: List.generate(
+                    periods.length,
+                    (index) => ButtonSegment(
+                      value: index,
+                      label: Text(periods[index]),
+                    ),
+                  ),
+                  selected: {_selectedPeriod},
+                  showSelectedIcon: false,
+                  onSelectionChanged:
+                      (selection) =>
+                          setState(() => _selectedPeriod = selection.first),
                 ),
               ),
               const SizedBox(height: 24),
+
+              Builder(
+                builder: (context) {
+                  final l10n = AppLocalizations.of(context)!;
+                  final days = [7, 30, 365][_selectedPeriod];
+                  final stats =
+                      ref.watch(statsProvider(days)).valueOrNull ??
+                      const StatsData();
+                  final story =
+                      stats.totalSessions == 0
+                          ? l10n.stats_storyEmpty
+                          : l10n.stats_story(
+                            stats.totalSessions,
+                            stats.totalFastingHours,
+                            (stats.completionRate * 100).round(),
+                          );
+                  return Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary.withValues(alpha: .07),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          l10n.stats_storyTitle,
+                          style: theme.textTheme.titleMedium,
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          story,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            height: 1.45,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 20),
 
               // Summary cards with real data
               Builder(
@@ -113,7 +143,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                             child: _buildSummaryCard(
                               context,
                               title: l10n.stats_average,
-                              value: '${stats.averageDurationHours.toStringAsFixed(1)}s',
+                              value:
+                                  '${stats.averageDurationHours.toStringAsFixed(1)}s',
                               subtitle: l10n.stats_fastDuration,
                               icon: Icons.analytics_outlined,
                               color: AppColors.tertiary,
@@ -159,7 +190,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               Builder(
                 builder: (context) {
                   final weekStatsAsync = ref.watch(statsProvider(7));
-                  final weekStats = weekStatsAsync.valueOrNull ?? const StatsData();
+                  final weekStats =
+                      weekStatsAsync.valueOrNull ?? const StatsData();
                   return GlassCard(
                     padding: const EdgeInsets.all(20),
                     child: SizedBox(
@@ -180,7 +212,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                                     child: Text(
                                       dayLabels[value.toInt()],
                                       style: TextStyle(
-                                        color: theme.colorScheme.onSurface.withValues(alpha:0.5),
+                                        color: theme.colorScheme.onSurface
+                                            .withValues(alpha: 0.5),
                                         fontSize: 11,
                                       ),
                                     ),
@@ -197,28 +230,37 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                                   return Text(
                                     '${value.toInt()}s',
                                     style: TextStyle(
-                                      color: theme.colorScheme.onSurface.withValues(alpha:0.4),
+                                      color: theme.colorScheme.onSurface
+                                          .withValues(alpha: 0.4),
                                       fontSize: 10,
                                     ),
                                   );
                                 },
                               ),
                             ),
-                            topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                            rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                            topTitles: const AxisTitles(
+                              sideTitles: SideTitles(showTitles: false),
+                            ),
+                            rightTitles: const AxisTitles(
+                              sideTitles: SideTitles(showTitles: false),
+                            ),
                           ),
                           gridData: FlGridData(
                             show: true,
                             drawVerticalLine: false,
                             horizontalInterval: 8,
-                            getDrawingHorizontalLine: (value) => FlLine(
-                              color: theme.colorScheme.onSurface.withValues(alpha:0.05),
-                              strokeWidth: 1,
-                            ),
+                            getDrawingHorizontalLine:
+                                (value) => FlLine(
+                                  color: theme.colorScheme.onSurface.withValues(
+                                    alpha: 0.05,
+                                  ),
+                                  strokeWidth: 1,
+                                ),
                           ),
                           borderData: FlBorderData(show: false),
-                          barGroups: List.generate(7, (i) =>
-                            _makeBarGroup(i, weekStats.weeklyHours[i]),
+                          barGroups: List.generate(
+                            7,
+                            (i) => _makeBarGroup(i, weekStats.weeklyHours[i]),
                           ),
                         ),
                       ),
@@ -270,17 +312,18 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                       ),
                       IconButton(
                         icon: const Icon(Icons.chevron_right, size: 20),
-                        onPressed: _heatmapMonth.month == DateTime.now().month &&
-                                _heatmapMonth.year == DateTime.now().year
-                            ? null
-                            : () {
-                                setState(() {
-                                  _heatmapMonth = DateTime(
-                                    _heatmapMonth.year,
-                                    _heatmapMonth.month + 1,
-                                  );
-                                });
-                              },
+                        onPressed:
+                            _heatmapMonth.month == DateTime.now().month &&
+                                    _heatmapMonth.year == DateTime.now().year
+                                ? null
+                                : () {
+                                  setState(() {
+                                    _heatmapMonth = DateTime(
+                                      _heatmapMonth.year,
+                                      _heatmapMonth.month + 1,
+                                    );
+                                  });
+                                },
                         visualDensity: VisualDensity.compact,
                       ),
                     ],
@@ -289,7 +332,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               ),
               Builder(
                 builder: (context) {
-                  final heatmapAsync = ref.watch(heatmapProvider(_heatmapMonth));
+                  final heatmapAsync = ref.watch(
+                    heatmapProvider(_heatmapMonth),
+                  );
                   final heatmapData = heatmapAsync.valueOrNull ?? const {};
                   return GlassCard(
                     padding: const EdgeInsets.all(16),
@@ -330,13 +375,14 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
           toY: y,
           width: 20,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(6)),
-          gradient: y > 0
-              ? const LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [AppColors.primary, AppColors.primaryLight],
-                )
-              : null,
+          gradient:
+              y > 0
+                  ? const LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [AppColors.primary, AppColors.primaryLight],
+                  )
+                  : null,
           color: y <= 0 ? Colors.transparent : null,
         ),
       ],
@@ -354,31 +400,39 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     final theme = Theme.of(context);
     return GlassCard(
       padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: color.withValues(alpha:0.1),
-              borderRadius: BorderRadius.circular(10),
+      child: SizedBox(
+        height: 120,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(icon, color: color, size: 20),
             ),
-            child: Icon(icon, color: color, size: 20),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            value,
-            style: theme.textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.w700,
+            const SizedBox(height: 10),
+            Text(
+              value,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.headlineMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-          Text(
-            subtitle,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha:0.5),
+            Text(
+              subtitle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -47,7 +47,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               const OnboardingProgress(currentStep: 0),
@@ -70,7 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       borderRadius: BorderRadius.circular(32),
                       boxShadow: [
                         BoxShadow(
-                          color: AppColors.primary.withValues(alpha:0.3),
+                          color: AppColors.primary.withValues(alpha: 0.3),
                           blurRadius: 30,
                           offset: const Offset(0, 10),
                         ),
@@ -105,8 +105,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         l10n.onboarding_welcomeDesc,
                         textAlign: TextAlign.center,
                         style: theme.textTheme.bodyLarge?.copyWith(
-                          color:
-                              theme.colorScheme.onSurface.withValues(alpha:0.5),
+                          color: theme.colorScheme.onSurface.withValues(
+                            alpha: 0.5,
+                          ),
                           height: 1.5,
                         ),
                       ),
@@ -122,14 +123,23 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 opacity: _fadeIn,
                 child: Column(
                   children: [
-                    _buildFeatureRow(context, Icons.timer_outlined,
-                        l10n.onboarding_featureTimer),
+                    _buildFeatureRow(
+                      context,
+                      Icons.timer_outlined,
+                      l10n.onboarding_featureTimer,
+                    ),
                     const SizedBox(height: 12),
-                    _buildFeatureRow(context, Icons.analytics_outlined,
-                        l10n.onboarding_featureStats),
+                    _buildFeatureRow(
+                      context,
+                      Icons.analytics_outlined,
+                      l10n.onboarding_featureStats,
+                    ),
                     const SizedBox(height: 12),
-                    _buildFeatureRow(context, Icons.restaurant_outlined,
-                        l10n.onboarding_featureMeals),
+                    _buildFeatureRow(
+                      context,
+                      Icons.restaurant_outlined,
+                      l10n.onboarding_featureMeals,
+                    ),
                   ],
                 ),
               ),
@@ -155,7 +165,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: AppColors.primary.withValues(alpha:0.1),
+            color: AppColors.primary.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Icon(icon, color: AppColors.primary, size: 20),
@@ -165,7 +175,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           child: Text(
             text,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha:0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
         ),

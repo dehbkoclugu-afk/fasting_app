@@ -52,20 +52,25 @@ class MealsScreen extends ConsumerWidget {
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 4),
+                            horizontal: 10,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             color: (isEatingWindow
                                     ? AppColors.success
                                     : AppColors.primary)
-                                .withValues(alpha:0.1),
+                                .withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text(
-                            isEatingWindow ? l10n.meals_windowOpen : l10n.meals_windowFasting,
+                            isEatingWindow
+                                ? l10n.meals_windowOpen
+                                : l10n.meals_windowFasting,
                             style: TextStyle(
-                              color: isEatingWindow
-                                  ? AppColors.success
-                                  : AppColors.primary,
+                              color:
+                                  isEatingWindow
+                                      ? AppColors.success
+                                      : AppColors.primary,
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                             ),
@@ -83,7 +88,9 @@ class MealsScreen extends ConsumerWidget {
                             Expanded(
                               flex: 16,
                               child: Container(
-                                color: AppColors.primary.withValues(alpha:0.15),
+                                color: AppColors.primary.withValues(
+                                  alpha: 0.15,
+                                ),
                                 child: Center(
                                   child: Text(
                                     l10n.meals_fastingWindow('16'),
@@ -99,7 +106,9 @@ class MealsScreen extends ConsumerWidget {
                             Expanded(
                               flex: 8,
                               child: Container(
-                                color: AppColors.success.withValues(alpha:0.15),
+                                color: AppColors.success.withValues(
+                                  alpha: 0.15,
+                                ),
                                 child: Center(
                                   child: Text(
                                     l10n.meals_eatingWindowHours('8'),
@@ -182,14 +191,17 @@ class MealsScreen extends ConsumerWidget {
                         Icon(
                           PhosphorIcons.forkKnife(),
                           size: 40,
-                          color: theme.colorScheme.onSurface.withValues(alpha:0.2),
+                          color: theme.colorScheme.onSurface.withValues(
+                            alpha: 0.2,
+                          ),
                         ),
                         const SizedBox(height: 8),
                         Text(
                           l10n.meals_noMeals,
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color:
-                                theme.colorScheme.onSurface.withValues(alpha:0.4),
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: 0.4,
+                            ),
                           ),
                         ),
                       ],
@@ -209,7 +221,7 @@ class MealsScreen extends ConsumerWidget {
                         alignment: Alignment.centerRight,
                         padding: const EdgeInsets.only(right: 20),
                         decoration: BoxDecoration(
-                          color: Colors.red.withValues(alpha:0.1),
+                          color: Colors.red.withValues(alpha: 0.1),
                           borderRadius: AppSpacing.borderRadiusMd,
                         ),
                         child: const Icon(Icons.delete, color: Colors.red),
@@ -241,14 +253,26 @@ class MealsScreen extends ConsumerWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    _buildRecipeCard(context, l10n.recipe_oatSmoothie, '280 kcal',
-                        Icons.blender_outlined),
+                    _buildRecipeCard(
+                      context,
+                      l10n.recipe_oatSmoothie,
+                      '280 kcal',
+                      Icons.blender_outlined,
+                    ),
                     const SizedBox(width: 12),
-                    _buildRecipeCard(context, l10n.recipe_avocadoToast, '350 kcal',
-                        Icons.breakfast_dining_outlined),
+                    _buildRecipeCard(
+                      context,
+                      l10n.recipe_avocadoToast,
+                      '350 kcal',
+                      Icons.breakfast_dining_outlined,
+                    ),
                     const SizedBox(width: 12),
-                    _buildRecipeCard(context, l10n.recipe_yogurtBowl, '220 kcal',
-                        Icons.rice_bowl_outlined),
+                    _buildRecipeCard(
+                      context,
+                      l10n.recipe_yogurtBowl,
+                      '220 kcal',
+                      Icons.rice_bowl_outlined,
+                    ),
                   ],
                 ),
               ),
@@ -262,12 +286,11 @@ class MealsScreen extends ConsumerWidget {
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
-            backgroundColor: Colors.transparent,
+            showDragHandle: true,
             builder: (_) => const AddMealSheet(),
           );
         },
-        backgroundColor: AppColors.primary,
-        child: const Icon(Icons.add, color: Colors.white),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -327,7 +350,7 @@ class MealsScreen extends ConsumerWidget {
             '/ $target',
             style: TextStyle(
               fontSize: 10,
-              color: theme.colorScheme.onSurface.withValues(alpha:0.4),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
             ),
           ),
           const SizedBox(height: 2),
@@ -335,7 +358,7 @@ class MealsScreen extends ConsumerWidget {
             label,
             style: TextStyle(
               fontSize: 10,
-              color: theme.colorScheme.onSurface.withValues(alpha:0.5),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -361,7 +384,7 @@ class MealsScreen extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: color.withValues(alpha:0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(icon, color: color, size: 20),
@@ -375,7 +398,7 @@ class MealsScreen extends ConsumerWidget {
                 Text(
                   description,
                   style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withValues(alpha:0.5),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                   ),
                 ),
               ],
@@ -393,7 +416,7 @@ class MealsScreen extends ConsumerWidget {
               Text(
                 time,
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha:0.4),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
                   fontSize: 11,
                 ),
               ),
@@ -405,7 +428,11 @@ class MealsScreen extends ConsumerWidget {
   }
 
   Widget _buildRecipeCard(
-      BuildContext context, String title, String cal, IconData icon) {
+    BuildContext context,
+    String title,
+    String cal,
+    IconData icon,
+  ) {
     final theme = Theme.of(context);
     return GlassCard(
       padding: const EdgeInsets.all(14),
@@ -417,7 +444,7 @@ class MealsScreen extends ConsumerWidget {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha:0.1),
+                color: AppColors.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Icon(icon, color: AppColors.primary, size: 28),
@@ -434,7 +461,7 @@ class MealsScreen extends ConsumerWidget {
             Text(
               cal,
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha:0.5),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
               ),
             ),
           ],

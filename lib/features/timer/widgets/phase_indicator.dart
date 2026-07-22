@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../core/constants/metabolic_phases.dart';
+import '../../../core/utils/metabolic_phase_l10n.dart';
 import '../../../core/theme/app_spacing.dart';
 
 class PhaseIndicator extends StatelessWidget {
@@ -15,8 +17,7 @@ class PhaseIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final locale = Localizations.localeOf(context).languageCode;
-    final isTr = locale == 'tr';
+    final l10n = AppLocalizations.of(context)!;
 
     return SizedBox(
       height: 80,
@@ -27,8 +28,8 @@ class PhaseIndicator extends StatelessWidget {
         separatorBuilder: (_, __) => const SizedBox(width: 8),
         itemBuilder: (context, index) {
           final phase = MetabolicPhases.all[index];
-          final isActive = elapsedHours >= phase.startHour &&
-              elapsedHours < phase.endHour;
+          final isActive =
+              elapsedHours >= phase.startHour && elapsedHours < phase.endHour;
           final isPassed = elapsedHours >= phase.endHour;
           final isReachable = phase.startHour < targetHours;
 
@@ -36,22 +37,26 @@ class PhaseIndicator extends StatelessWidget {
             duration: const Duration(milliseconds: 300),
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              gradient: isActive
-                  ? LinearGradient(
-                      colors: [
-                        phase.gradientColors.first.withValues(alpha:0.2),
-                        phase.gradientColors.last.withValues(alpha:0.1),
-                      ],
-                    )
-                  : null,
+              gradient:
+                  isActive
+                      ? LinearGradient(
+                        colors: [
+                          phase.gradientColors.first.withValues(alpha: 0.2),
+                          phase.gradientColors.last.withValues(alpha: 0.1),
+                        ],
+                      )
+                      : null,
               color: isActive ? null : Colors.transparent,
               borderRadius: AppSpacing.borderRadiusMd,
-              border: isActive
-                  ? Border.all(
-                      color: phase.gradientColors.first.withValues(alpha:0.5),
-                      width: 1.5,
-                    )
-                  : Border.all(color: Colors.transparent),
+              border:
+                  isActive
+                      ? Border.all(
+                        color: phase.gradientColors.first.withValues(
+                          alpha: 0.5,
+                        ),
+                        width: 1.5,
+                      )
+                      : Border.all(color: Colors.transparent),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -59,32 +64,39 @@ class PhaseIndicator extends StatelessWidget {
                 Icon(
                   phase.icon,
                   size: 20,
-                  color: isActive
-                      ? phase.gradientColors.first
-                      : isPassed
+                  color:
+                      isActive
+                          ? phase.gradientColors.first
+                          : isPassed
                           ? theme.colorScheme.primary
                           : isReachable
-                              ? theme.colorScheme.onSurface.withValues(alpha:0.3)
-                              : theme.colorScheme.onSurface.withValues(alpha:0.15),
+                          ? theme.colorScheme.onSurface.withValues(alpha: 0.3)
+                          : theme.colorScheme.onSurface.withValues(alpha: 0.15),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  isTr ? phase.nameTr : phase.name,
+                  metabolicPhaseName(l10n, phase),
                   style: theme.textTheme.labelSmall?.copyWith(
-                    color: isActive
-                        ? phase.gradientColors.first
-                        : isPassed
+                    color:
+                        isActive
+                            ? phase.gradientColors.first
+                            : isPassed
                             ? theme.colorScheme.onSurface
-                            : theme.colorScheme.onSurface.withValues(alpha:0.4),
+                            : theme.colorScheme.onSurface.withValues(
+                              alpha: 0.4,
+                            ),
                     fontWeight: isActive ? FontWeight.w700 : FontWeight.w500,
                   ),
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  '${phase.startHour}-${phase.endHour > 24 ? '24+' : phase.endHour}${isTr ? 's' : 'h'}',
+                  l10n.phase_hours(
+                    phase.startHour,
+                    phase.endHour > 24 ? 24 : phase.endHour,
+                  ),
                   style: theme.textTheme.bodySmall?.copyWith(
                     fontSize: 10,
-                    color: theme.colorScheme.onSurface.withValues(alpha:0.4),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
                   ),
                 ),
               ],

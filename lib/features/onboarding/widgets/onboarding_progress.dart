@@ -14,7 +14,7 @@ class OnboardingProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: List.generate(totalSteps, (index) {
           final isActive = index <= currentStep;
@@ -27,9 +27,12 @@ class OnboardingProgress extends StatelessWidget {
               margin: EdgeInsets.only(right: index < totalSteps - 1 ? 4 : 0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(2),
-                color: isActive
-                    ? AppColors.primary
-                    : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
+                color:
+                    isActive
+                        ? AppColors.primary
+                        : Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withValues(alpha: 0.1),
               ),
             ),
           );

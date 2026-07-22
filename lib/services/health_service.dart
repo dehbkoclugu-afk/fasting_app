@@ -27,13 +27,19 @@ class HealthService {
 
   Future<bool> requestAuthorization() async {
     try {
-      final hasPermissions = await _health.hasPermissions(_types, permissions: _permissions);
+      final hasPermissions = await _health.hasPermissions(
+        _types,
+        permissions: _permissions,
+      );
       if (hasPermissions == true) {
         _authorized = true;
         return true;
       }
 
-      _authorized = await _health.requestAuthorization(_types, permissions: _permissions);
+      _authorized = await _health.requestAuthorization(
+        _types,
+        permissions: _permissions,
+      );
       return _authorized;
     } catch (e) {
       debugPrint('Health authorization error: $e');
@@ -106,10 +112,12 @@ class HealthService {
       );
       data.sort((a, b) => a.dateTo.compareTo(b.dateTo));
       return data
-          .map((d) => {
-                'date': d.dateTo,
-                'weight': (d.value as NumericHealthValue).numericValue.toDouble(),
-              })
+          .map(
+            (d) => {
+              'date': d.dateTo,
+              'weight': (d.value as NumericHealthValue).numericValue.toDouble(),
+            },
+          )
           .toList();
     } catch (e) {
       debugPrint('Error getting weight history: $e');

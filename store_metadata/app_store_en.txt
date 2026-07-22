@@ -1,50 +1,54 @@
-== APP STORE (iOS) / PLAY STORE (Android) - English ==
+APP NAME
+FastTrack: Fasting Tracker
 
-App Name: FastLife - Intermittent Fasting
-Subtitle: Fasting Tracker & Health Assistant
+SUBTITLE
+Build a sustainable rhythm
 
-Short Description (Play Store - 80 chars):
-Smart fasting tracker with metabolic phase analysis and health management.
+PLAY STORE SHORT DESCRIPTION
+Track fasting, hydration, weight and progress in one calm, private app.
 
-Full Description:
-Track your intermittent fasting journey like a pro with FastLife.
+FULL DESCRIPTION
+Build a fasting routine that fits your life with FastTrack.
 
-FEATURES:
+Follow your fasting timer, understand general metabolic stages, record water and weight, and review your progress without pressure.
 
-• Smart Timer
-Track your fast with a real-time circular timer. See your metabolic phases live - monitor fat burning, ketosis, and autophagy phases in real time.
+FEATURES
 
-• 8+ Fasting Plans
-Choose from popular fasting plans including 12:12, 16:8, 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, and Warrior diet, or create your own custom plan.
+• Clear fasting timer
+Choose a fasting plan and see elapsed and remaining time at a glance.
 
-• Detailed Statistics
-Analyze your weekly, monthly, and yearly fasting data with visual charts. Review metrics like streak tracking, completion rate, and average fasting duration.
+• Metabolic journey
+Learn about anabolic, catabolic, fat-burning, ketosis and autophagy stages. Stage times are general estimates, not medical measurements.
 
-• Metabolic Phase Tracking
-Learn what stage your body's metabolism is at during your fast. Track anabolic, catabolic, fat burning, ketosis, and autophagy phases in real time.
+• Flexible fasting plans
+Use familiar schedules such as 12:12, 14:10, 16:8, 18:6, 20:4 and OMAD.
 
-• Meal Planner
-Log what you eat during your eating window. Optimize your nutrition with calorie, protein, carb, and fat tracking.
+• Progress reports
+Review completed fasts, consistency, duration and weight trends with readable charts.
 
-• Weight Tracking
-Monitor your weight changes on a chart. Measure your progress with BMI calculation and body metrics.
+• Water and weight tracking
+Record hydration and body-weight entries without leaving the app.
 
-• Water Tracking
-Easily log your daily water intake and reach your hydration goals.
+• Health integration
+With your permission, read supported step, active-calorie and body-measurement data from Health Connect or Apple Health.
 
-• Smart Notifications
-Stay on track with fasting start/end reminders, phase transition notifications, and motivational messages.
+• Helpful reminders
+Receive optional fasting, phase, hydration and completion notifications.
 
-• Dark & Light Theme
-Choose between eye-friendly dark theme and light theme options.
+• Your language and appearance
+FastTrack follows your system language and light or dark appearance. English, Turkish, Spanish, Portuguese, German and French are supported.
 
-• HealthKit / Google Fit Integration
-Automatically sync your steps, calories, and weight data with Apple Health or Google Fit.
+• Private by design
+Core fasting, water, meal and weight records are stored on your device. Health access is optional.
 
-• Turkish & English
-Full Turkish and English language support.
+PREMIUM
+Premium unlocks all fasting plans, advanced reports, additional personalization and an ad-free experience. Monthly, yearly and lifetime options may be available. Prices are shown by your store before purchase.
 
-Keywords: intermittent fasting, fasting, diet, weight loss, health, ketosis, autophagy, fat burning, calories, nutrition, fasting tracker, timer, IF
+IMPORTANT
+FastTrack provides general educational and wellness information. It does not diagnose, treat or prevent any condition. Metabolic stage times are estimates and individual responses vary. Consult a qualified healthcare professional before fasting if you have a medical condition, take medication, are pregnant or breastfeeding, or feel unwell.
 
-Category: Health & Fitness
-Age Rating: 4+
+KEYWORDS
+fasting, intermittent fasting, fasting timer, hydration, water tracker, weight tracker, wellness, progress, health connect
+
+CATEGORY
+Health & Fitness

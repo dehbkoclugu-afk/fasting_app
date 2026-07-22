@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -16,8 +17,8 @@ class AdmobService {
     }
     // TODO: Gerçek reklam ID'leri
     return Platform.isAndroid
-        ? 'ca-app-pub-XXXXX/XXXXX'
-        : 'ca-app-pub-XXXXX/XXXXX';
+        ? const String.fromEnvironment('ADMOB_ANDROID_BANNER_ID')
+        : const String.fromEnvironment('ADMOB_IOS_BANNER_ID');
   }
 
   // Interstitial Ad Unit IDs
@@ -28,16 +29,32 @@ class AdmobService {
           : 'ca-app-pub-3940256099942544/4411468910';
     }
     return Platform.isAndroid
-        ? 'ca-app-pub-XXXXX/XXXXX'
-        : 'ca-app-pub-XXXXX/XXXXX';
+        ? const String.fromEnvironment('ADMOB_ANDROID_INTERSTITIAL_ID')
+        : const String.fromEnvironment('ADMOB_IOS_INTERSTITIAL_ID');
   }
 
   BannerAd? _bannerAd;
   InterstitialAd? _interstitialAd;
   bool _isInitialized = false;
+  bool _canRequestAds = false;
 
   Future<void> initialize() async {
     if (_isInitialized) return;
+    final consentUpdated = Completer<void>();
+    ConsentInformation.instance.requestConsentInfoUpdate(
+      ConsentRequestParameters(),
+      () async {
+        await ConsentForm.loadAndShowConsentFormIfRequired((_) {});
+        _canRequestAds = await ConsentInformation.instance.canRequestAds();
+        consentUpdated.complete();
+      },
+      (_) async {
+        _canRequestAds = await ConsentInformation.instance.canRequestAds();
+        consentUpdated.complete();
+      },
+    );
+    await consentUpdated.future;
+    if (!_canRequestAds) return;
     await MobileAds.instance.initialize();
     _isInitialized = true;
   }
@@ -46,6 +63,7 @@ class AdmobService {
   BannerAd? get bannerAd => _bannerAd;
 
   void loadBannerAd({Function(BannerAd)? onLoaded}) {
+    if (!_isInitialized || bannerAdUnitId.isEmpty) return;
     _bannerAd?.dispose();
     _bannerAd = BannerAd(
       adUnitId: bannerAdUnitId,
@@ -72,6 +90,7 @@ class AdmobService {
 
   // Interstitial Ad
   void loadInterstitialAd() {
+    if (!_isInitialized || interstitialAdUnitId.isEmpty) return;
     InterstitialAd.load(
       adUnitId: interstitialAdUnitId,
       request: const AdRequest(),
@@ -99,11 +118,20 @@ class AdmobService {
   }
 
   Future<void> showInterstitialAd() async {
+    if (!_isInitialized) return;
     if (_interstitialAd != null) {
       await _interstitialAd!.show();
     } else {
       loadInterstitialAd();
     }
+  }
+
+  Future<bool> showPrivacyOptions() async {
+    final result = Completer<bool>();
+    ConsentForm.showPrivacyOptionsForm(
+      (error) => result.complete(error == null),
+    );
+    return result.future;
   }
 
   void dispose() {

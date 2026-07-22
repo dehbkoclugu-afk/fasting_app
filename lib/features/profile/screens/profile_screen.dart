@@ -1,17 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/constants/fasting_plans.dart';
 import '../../../core/utils/calculations.dart';
 import '../../../shared/widgets/glass_card.dart';
+import '../../../services/admob_service.dart';
 import '../providers/settings_provider.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
+
+  static const _privacyUrl = String.fromEnvironment('PRIVACY_POLICY_URL');
+  static const _androidStoreUrl = String.fromEnvironment('ANDROID_STORE_URL');
+  static const _iosStoreUrl = String.fromEnvironment('IOS_STORE_URL');
+
+  Future<void> _openUrl(BuildContext context, String value) async {
+    final uri = Uri.tryParse(value);
+    if (uri != null &&
+        await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      return;
+    }
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.explore_sourceError),
+        ),
+      );
+    }
+  }
+
+  Future<void> _rate(BuildContext context) => _openUrl(
+    context,
+    Theme.of(context).platform == TargetPlatform.iOS
+        ? _iosStoreUrl
+        : _androidStoreUrl,
+  );
+
+  Future<void> _share(BuildContext context) async {
+    final url =
+        Theme.of(context).platform == TargetPlatform.iOS
+            ? _iosStoreUrl
+            : _androidStoreUrl;
+    if (url.isEmpty) return _openUrl(context, url);
+    await Clipboard.setData(ClipboardData(text: url));
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context)!.replay_copied)),
+      );
+    }
+  }
+
+  Future<void> _privacyChoices(BuildContext context) async {
+    final success = await AdmobService().showPrivacyOptions();
+    if (!success && context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.explore_sourceError),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,9 +74,10 @@ class ProfileScreen extends ConsumerWidget {
     final settings = ref.watch(settingsProvider);
     final plan = FastingPlans.getById(settings.selectedPlanId);
 
-    final bmi = (settings.weight != null && settings.height != null)
-        ? Calculations.calculateBMI(settings.weight!, settings.height!)
-        : null;
+    final bmi =
+        (settings.weight != null && settings.height != null)
+            ? Calculations.calculateBMI(settings.weight!, settings.height!)
+            : null;
 
     return Scaffold(
       body: SafeArea(
@@ -45,11 +100,12 @@ class ProfileScreen extends ConsumerWidget {
 
               // Profile card
               GlassCard(
+                onTap: () => _showNameDialog(context, ref, settings.userName),
                 child: Row(
                   children: [
                     CircleAvatar(
                       radius: 30,
-                      backgroundColor: AppColors.primary.withValues(alpha:0.1),
+                      backgroundColor: AppColors.primary.withValues(alpha: 0.1),
                       child: const Icon(
                         Icons.person,
                         size: 32,
@@ -72,8 +128,9 @@ class ProfileScreen extends ConsumerWidget {
                           Text(
                             l10n.profile_planActive(plan.name),
                             style: theme.textTheme.bodySmall?.copyWith(
-                              color: theme.colorScheme.onSurface
-                                  .withValues(alpha:0.5),
+                              color: theme.colorScheme.onSurface.withValues(
+                                alpha: 0.5,
+                              ),
                             ),
                           ),
                         ],
@@ -81,7 +138,7 @@ class ProfileScreen extends ConsumerWidget {
                     ),
                     Icon(
                       PhosphorIcons.pencilSimple(),
-                      color: theme.colorScheme.onSurface.withValues(alpha:0.4),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
                     ),
                   ],
                 ),
@@ -92,13 +149,15 @@ class ProfileScreen extends ConsumerWidget {
               GlassCard(
                 onTap: () => context.push('/paywall'),
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 4,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        AppColors.primary.withValues(alpha:0.05),
-                        AppColors.secondary.withValues(alpha:0.05),
+                        AppColors.primary.withValues(alpha: 0.05),
+                        AppColors.secondary.withValues(alpha: 0.05),
                       ],
                     ),
                     borderRadius: AppSpacing.borderRadiusLg,
@@ -133,8 +192,9 @@ class ProfileScreen extends ConsumerWidget {
                             Text(
                               l10n.profile_premiumDesc,
                               style: theme.textTheme.bodySmall?.copyWith(
-                                color: theme.colorScheme.onSurface
-                                    .withValues(alpha:0.5),
+                                color: theme.colorScheme.onSurface.withValues(
+                                  alpha: 0.5,
+                                ),
                               ),
                             ),
                           ],
@@ -188,7 +248,7 @@ class ProfileScreen extends ConsumerWidget {
                       context,
                       l10n.profile_bmi,
                       bmi != null
-                          ? '${bmi.toStringAsFixed(1)} (${Calculations.getBMICategory(bmi, Localizations.localeOf(context).languageCode)})'
+                          ? '${bmi.toStringAsFixed(1)} (${Calculations.getBMICategory(bmi, l10n)})'
                           : '—',
                       PhosphorIcons.heartbeat(),
                     ),
@@ -214,23 +274,22 @@ class ProfileScreen extends ConsumerWidget {
                               .read(settingsProvider.notifier)
                               .setNotifications(v);
                         },
-                        activeColor: AppColors.primary,
                       ),
                     ),
                     const Divider(height: 1),
                     _buildSettingsTile(
                       context,
                       icon: PhosphorIcons.moon(),
-                      title: l10n.profile_darkTheme,
-                      trailing: Switch(
-                        value: settings.themeMode == ThemeMode.dark,
-                        onChanged: (v) {
-                          ref.read(settingsProvider.notifier).setThemeMode(
-                                v ? ThemeMode.dark : ThemeMode.light,
-                              );
-                        },
-                        activeColor: AppColors.primary,
+                      title: l10n.profile_theme,
+                      subtitle: _themeLabel(l10n, settings.themeMode),
+                      trailing: Icon(
+                        PhosphorIcons.caretRight(),
+                        size: 20,
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: 0.3,
+                        ),
                       ),
+                      onTap: () => _showThemeDialog(context, ref),
                     ),
                     const Divider(height: 1),
                     _buildSettingsTile(
@@ -244,7 +303,6 @@ class ProfileScreen extends ConsumerWidget {
                               .read(settingsProvider.notifier)
                               .setWaterReminders(v);
                         },
-                        activeColor: AppColors.primary,
                       ),
                     ),
                     const Divider(height: 1),
@@ -259,7 +317,31 @@ class ProfileScreen extends ConsumerWidget {
                               .read(settingsProvider.notifier)
                               .setPhaseNotifications(v);
                         },
-                        activeColor: AppColors.primary,
+                      ),
+                    ),
+                    const Divider(height: 1),
+                    _buildSettingsTile(
+                      context,
+                      icon: PhosphorIcons.speakerHigh(),
+                      title: l10n.profile_completionSound,
+                      trailing: Switch(
+                        value: settings.soundEnabled,
+                        onChanged:
+                            ref.read(settingsProvider.notifier).setSoundEnabled,
+                      ),
+                    ),
+                    const Divider(height: 1),
+                    _buildSettingsTile(
+                      context,
+                      icon: PhosphorIcons.leaf(),
+                      title: l10n.profile_calmGamification,
+                      subtitle: l10n.profile_calmGamificationDesc,
+                      trailing: Switch(
+                        value: settings.calmGamification,
+                        onChanged:
+                            ref
+                                .read(settingsProvider.notifier)
+                                .setCalmGamification,
                       ),
                     ),
                     const Divider(height: 1),
@@ -267,12 +349,13 @@ class ProfileScreen extends ConsumerWidget {
                       context,
                       icon: PhosphorIcons.translate(),
                       title: l10n.profile_language,
-                      subtitle: settings.locale == 'tr' ? 'Türkçe' : 'English',
+                      subtitle: _localeLabel(l10n, settings.locale),
                       trailing: Icon(
                         PhosphorIcons.caretRight(),
                         size: 20,
-                        color:
-                            theme.colorScheme.onSurface.withValues(alpha:0.3),
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: 0.3,
+                        ),
                       ),
                       onTap: () => _showLanguageDialog(context, ref),
                     ),
@@ -291,18 +374,28 @@ class ProfileScreen extends ConsumerWidget {
                       context,
                       icon: PhosphorIcons.star(),
                       title: l10n.profile_rateApp,
+                      onTap: () => _rate(context),
                     ),
                     const Divider(height: 1),
                     _buildSettingsTile(
                       context,
                       icon: PhosphorIcons.share(),
                       title: l10n.profile_share,
+                      onTap: () => _share(context),
                     ),
                     const Divider(height: 1),
                     _buildSettingsTile(
                       context,
                       icon: PhosphorIcons.shieldCheck(),
                       title: l10n.profile_privacyPolicy,
+                      onTap: () => _openUrl(context, _privacyUrl),
+                    ),
+                    const Divider(height: 1),
+                    _buildSettingsTile(
+                      context,
+                      icon: PhosphorIcons.slidersHorizontal(),
+                      title: l10n.profile_privacyChoices,
+                      onTap: () => _privacyChoices(context),
                     ),
                     const Divider(height: 1),
                     _buildSettingsTile(
@@ -328,14 +421,18 @@ class ProfileScreen extends ConsumerWidget {
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.5),
-            ),
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+        ),
       ),
     );
   }
 
   Widget _buildMetricRow(
-      BuildContext context, String label, String value, IconData icon) {
+    BuildContext context,
+    String label,
+    String value,
+    IconData icon,
+  ) {
     final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12),
@@ -365,34 +462,36 @@ class ProfileScreen extends ConsumerWidget {
     VoidCallback? onTap,
   }) {
     final theme = Theme.of(context);
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
-      behavior: HitTestBehavior.opaque,
+      borderRadius: BorderRadius.circular(14),
       child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Row(
-        children: [
-          Icon(icon, size: 20, color: AppColors.primary),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: theme.textTheme.bodyMedium),
-                if (subtitle != null)
-                  Text(
-                    subtitle,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurface.withValues(alpha:0.4),
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        child: Row(
+          children: [
+            Icon(icon, size: 20, color: AppColors.primary),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: theme.textTheme.bodyMedium),
+                  if (subtitle != null)
+                    Text(
+                      subtitle,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: 0.4,
+                        ),
+                      ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             ),
-          ),
-          if (trailing != null) trailing,
-        ],
+            if (trailing != null) trailing,
+          ],
+        ),
       ),
-    ),
     );
   }
 
@@ -402,31 +501,124 @@ class ProfileScreen extends ConsumerWidget {
 
     showDialog(
       context: context,
-      builder: (ctx) => SimpleDialog(
-        title: Text(l10n.languageSelect),
-        children: [
-          RadioListTile<String>(
-            title: Text(l10n.languageTurkish),
-            value: 'tr',
-            groupValue: settings.locale,
-            activeColor: AppColors.primary,
-            onChanged: (v) {
-              ref.read(settingsProvider.notifier).setLocale(v!);
-              Navigator.pop(ctx);
-            },
+      builder:
+          (ctx) => SimpleDialog(
+            title: Text(l10n.languageSelect),
+            children:
+                <(String?, String)>[
+                  (null, l10n.language_system),
+                  ('en', l10n.languageEnglish),
+                  ('tr', l10n.languageTurkish),
+                  ('es', l10n.languageSpanish),
+                  ('pt', l10n.languagePortugueseBrazil),
+                  ('de', l10n.languageGerman),
+                  ('fr', l10n.languageFrench),
+                ].map((option) {
+                  return RadioListTile<String?>(
+                    title: Text(option.$2),
+                    value: option.$1,
+                    groupValue: settings.locale,
+                    onChanged: (value) {
+                      ref.read(settingsProvider.notifier).setLocale(value);
+                      Navigator.pop(ctx);
+                    },
+                  );
+                }).toList(),
           ),
-          RadioListTile<String>(
-            title: Text(l10n.languageEnglish),
-            value: 'en',
-            groupValue: settings.locale,
-            activeColor: AppColors.primary,
-            onChanged: (v) {
-              ref.read(settingsProvider.notifier).setLocale(v!);
-              Navigator.pop(ctx);
-            },
-          ),
-        ],
-      ),
     );
+  }
+
+  void _showThemeDialog(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final settings = ref.read(settingsProvider);
+    showDialog<void>(
+      context: context,
+      builder:
+          (dialogContext) => SimpleDialog(
+            title: Text(l10n.theme_select),
+            children:
+                ThemeMode.values.map((mode) {
+                  return RadioListTile<ThemeMode>(
+                    title: Text(_themeLabel(l10n, mode)),
+                    value: mode,
+                    groupValue: settings.themeMode,
+                    onChanged: (value) {
+                      if (value == null) return;
+                      ref.read(settingsProvider.notifier).setThemeMode(value);
+                      Navigator.pop(dialogContext);
+                    },
+                  );
+                }).toList(),
+          ),
+    );
+  }
+
+  String _themeLabel(AppLocalizations l10n, ThemeMode mode) => switch (mode) {
+    ThemeMode.system => l10n.theme_system,
+    ThemeMode.light => l10n.theme_light,
+    ThemeMode.dark => l10n.theme_dark,
+  };
+
+  String _localeLabel(AppLocalizations l10n, String? locale) =>
+      switch (locale) {
+        null => l10n.language_system,
+        'tr' => l10n.languageTurkish,
+        'es' => l10n.languageSpanish,
+        'pt' => l10n.languagePortugueseBrazil,
+        'de' => l10n.languageGerman,
+        'fr' => l10n.languageFrench,
+        _ => l10n.languageEnglish,
+      };
+
+  Future<void> _showNameDialog(
+    BuildContext context,
+    WidgetRef ref,
+    String currentName,
+  ) async {
+    final l10n = AppLocalizations.of(context)!;
+    final controller = TextEditingController(text: currentName);
+    controller.selection = TextSelection.collapsed(
+      offset: controller.text.length,
+    );
+
+    await showDialog<void>(
+      context: context,
+      builder:
+          (dialogContext) => AlertDialog(
+            title: Text(l10n.profile_editName),
+            content: TextField(
+              controller: controller,
+              autofocus: true,
+              textCapitalization: TextCapitalization.words,
+              textInputAction: TextInputAction.done,
+              decoration: InputDecoration(
+                labelText: l10n.profile_name,
+                prefixIcon: const Icon(Icons.person_outline),
+              ),
+              onSubmitted: (value) {
+                final name = value.trim();
+                if (name.isEmpty) return;
+                ref.read(settingsProvider.notifier).setUserName(name);
+                Navigator.pop(dialogContext);
+              },
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(dialogContext),
+                child: Text(l10n.common_cancel),
+              ),
+              FilledButton(
+                onPressed: () {
+                  final name = controller.text.trim();
+                  if (name.isEmpty) return;
+                  ref.read(settingsProvider.notifier).setUserName(name);
+                  Navigator.pop(dialogContext);
+                },
+                child: Text(l10n.common_save),
+              ),
+            ],
+          ),
+    );
+    controller.dispose();
   }
 }

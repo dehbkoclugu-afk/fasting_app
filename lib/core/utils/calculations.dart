@@ -1,3 +1,5 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Calculations {
   Calculations._();
 
@@ -8,17 +10,11 @@ class Calculations {
   }
 
   /// BMI kategorisi
-  static String getBMICategory(double bmi, [String locale = 'tr']) {
-    if (locale == 'en') {
-      if (bmi < 18.5) return 'Underweight';
-      if (bmi < 25) return 'Normal';
-      if (bmi < 30) return 'Overweight';
-      return 'Obese';
-    }
-    if (bmi < 18.5) return 'Zayıf';
-    if (bmi < 25) return 'Normal';
-    if (bmi < 30) return 'Fazla Kilolu';
-    return 'Obez';
+  static String getBMICategory(double bmi, AppLocalizations l10n) {
+    if (bmi < 18.5) return l10n.bmi_underweight;
+    if (bmi < 25) return l10n.bmi_normal;
+    if (bmi < 30) return l10n.bmi_overweight;
+    return l10n.bmi_obese;
   }
 
   /// TDEE (Total Daily Energy Expenditure) - Mifflin-St Jeor
@@ -55,8 +51,9 @@ class Calculations {
   static int calculateStreak(List<DateTime> completedDates) {
     if (completedDates.isEmpty) return 0;
 
-    final sorted = completedDates.map((d) => DateTime(d.year, d.month, d.day)).toList()
-      ..sort((a, b) => b.compareTo(a));
+    final sorted =
+        completedDates.map((d) => DateTime(d.year, d.month, d.day)).toList()
+          ..sort((a, b) => b.compareTo(a));
 
     final today = DateTime.now();
     final todayDate = DateTime(today.year, today.month, today.day);

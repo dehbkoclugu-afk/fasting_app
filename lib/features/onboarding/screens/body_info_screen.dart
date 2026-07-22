@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../widgets/onboarding_progress.dart';
@@ -37,7 +35,7 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -54,7 +52,7 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
               Text(
                 l10n.onboarding_bodyInfoDesc,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha:0.5),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
               ),
               const SizedBox(height: 32),
@@ -62,20 +60,26 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
               // Gender
               Text(l10n.onboarding_gender, style: theme.textTheme.titleSmall),
               const SizedBox(height: 8),
-              Row(
-                children: [
-                  Expanded(
-                    child: _buildGenderOption(
-                      context, 'male', l10n.onboarding_male, Icons.male,
+              SizedBox(
+                width: double.infinity,
+                child: SegmentedButton<String>(
+                  segments: [
+                    ButtonSegment(
+                      value: 'male',
+                      icon: const Icon(Icons.male),
+                      label: Text(l10n.onboarding_male),
                     ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: _buildGenderOption(
-                      context, 'female', l10n.onboarding_female, Icons.female,
+                    ButtonSegment(
+                      value: 'female',
+                      icon: const Icon(Icons.female),
+                      label: Text(l10n.onboarding_female),
                     ),
-                  ),
-                ],
+                  ],
+                  selected: {_gender},
+                  showSelectedIcon: false,
+                  onSelectionChanged:
+                      (selection) => setState(() => _gender = selection.first),
+                ),
               ),
               const SizedBox(height: 24),
 
@@ -114,7 +118,7 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
                 l10n.onboarding_bodyInfoDisclaimer,
                 textAlign: TextAlign.center,
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha:0.4),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
                 ),
               ),
               const SizedBox(height: 16),
@@ -122,7 +126,9 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
               GradientButton(
                 text: l10n.onboarding_next,
                 onPressed: () {
-                  ref.read(settingsProvider.notifier).setBodyInfo(
+                  ref
+                      .read(settingsProvider.notifier)
+                      .setBodyInfo(
                         height: double.tryParse(_heightController.text),
                         weight: double.tryParse(_weightController.text),
                         age: int.tryParse(_ageController.text),
@@ -133,53 +139,6 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildGenderOption(
-    BuildContext context,
-    String value,
-    String label,
-    IconData icon,
-  ) {
-    final isSelected = _gender == value;
-    final theme = Theme.of(context);
-
-    return GestureDetector(
-      onTap: () => setState(() => _gender = value),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? AppColors.primary.withValues(alpha:0.1)
-              : theme.colorScheme.onSurface.withValues(alpha:0.03),
-          borderRadius: AppSpacing.borderRadiusMd,
-          border: Border.all(
-            color: isSelected
-                ? AppColors.primary
-                : theme.colorScheme.onSurface.withValues(alpha:0.08),
-            width: isSelected ? 2 : 1,
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              color: isSelected ? AppColors.primary : null,
-            ),
-            const SizedBox(width: 8),
-            Text(
-              label,
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: isSelected ? AppColors.primary : null,
-              ),
-            ),
-          ],
         ),
       ),
     );
@@ -204,24 +163,6 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
           decoration: InputDecoration(
             prefixIcon: Icon(icon, size: 20),
             suffixText: suffix,
-            filled: true,
-            fillColor: theme.colorScheme.onSurface.withValues(alpha:0.03),
-            border: OutlineInputBorder(
-              borderRadius: AppSpacing.borderRadiusMd,
-              borderSide: BorderSide(
-                color: theme.colorScheme.onSurface.withValues(alpha:0.08),
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: AppSpacing.borderRadiusMd,
-              borderSide: BorderSide(
-                color: theme.colorScheme.onSurface.withValues(alpha:0.08),
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: AppSpacing.borderRadiusMd,
-              borderSide: const BorderSide(color: AppColors.primary, width: 2),
-            ),
           ),
         ),
       ],
