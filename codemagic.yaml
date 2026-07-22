@@ -1,0 +1,65 @@
+# Codemagic CI/CD — FastTrack iOS build to TestFlight (no Mac needed).
+#
+# ONE-TIME SETUP in the Codemagic web UI before the first build:
+#   1. Add this repository (dehbkoclugu-afk/fasting_app) as an application.
+#   2. Teams > Integrations > App Store Connect: upload your App Store Connect
+#      API key (.p8). Note the integration name you give it and set it as
+#      `app_store_connect:` below (replace "FastTrack ASC API Key").
+#      The same API key from your other app works — one Apple account.
+#   3. Create an environment variable group named "fasttrack_release" holding
+#      the values listed under `vars` below (mark the secrets as secure).
+#
+# Prerequisites on the Apple side (done once, in App Store Connect):
+#   - App record created with bundle id com.dehbkoclugu.fasttrack
+#   - HealthKit + In-App Purchase capabilities enabled
+#   - IAP products: fasttrack_premium_monthly / _yearly / _lifetime
+#     attached to the RevenueCat "premium" entitlement.
+
+workflows:
+  ios-testflight:
+    name: FastTrack iOS → TestFlight
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    integrations:
+      app_store_connect: FastTrack ASC API Key
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.dehbkoclugu.fasttrack
+      groups:
+        - fasttrack_release
+      # Values live in the "fasttrack_release" group in the Codemagic UI:
+      #   REVENUECAT_IOS_API_KEY, ADMOB_IOS_BANNER_ID,
+      #   ADMOB_IOS_INTERSTITIAL_ID, PRIVACY_POLICY_URL,
+      #   TERMS_OF_USE_URL, IOS_STORE_URL
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Set up code signing
+        script: xcode-project use-profiles
+      - name: Build IPA
+        script: |
+          flutter build ipa --release \
+            --dart-define=REVENUECAT_IOS_API_KEY=$REVENUECAT_IOS_API_KEY \
+            --dart-define=ADMOB_IOS_BANNER_ID=$ADMOB_IOS_BANNER_ID \
+            --dart-define=ADMOB_IOS_INTERSTITIAL_ID=$ADMOB_IOS_INTERSTITIAL_ID \
+            --dart-define=PRIVACY_POLICY_URL=$PRIVACY_POLICY_URL \
+            --dart-define=TERMS_OF_USE_URL=$TERMS_OF_USE_URL \
+            --dart-define=IOS_STORE_URL=$IOS_STORE_URL \
+            --export-options-plist=/Users/builder/export_options.plist
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+      email:
+        recipients:
+          - dehbkoclugu@gmail.com
+        notify:
+          success: true
+          failure: true
