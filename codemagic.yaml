@@ -39,10 +39,11 @@ workflows:
         script: |
           keychain initialize
           openssl genrsa -out ios_distribution_private_key 2048
+          export CERTIFICATE_PRIVATE_KEY="$(cat ios_distribution_private_key)"
           app-store-connect fetch-signing-files com.dehbkoclugu.fasttrack \
             --type IOS_APP_STORE \
             --create \
-            --certificate-key ios_distribution_private_key
+            --certificate-key "$CERTIFICATE_PRIVATE_KEY"
           keychain add-certificates
       - name: Set up code signing
         script: xcode-project use-profiles --project ios/Runner.xcodeproj
