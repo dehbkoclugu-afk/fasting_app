@@ -33,6 +33,10 @@ workflows:
       #   ADMOB_IOS_INTERSTITIAL_ID, PRIVACY_POLICY_URL,
       #   TERMS_OF_USE_URL, IOS_STORE_URL
     scripts:
+      - name: Disable Swift Package Manager
+        # google_mobile_ads still uses CocoaPods; SPM (auto-enabled by newer
+        # Flutter) conflicts with it via webview_flutter_wkwebview. Force pods.
+        script: flutter config --no-enable-swift-package-manager
       - name: Get Flutter packages
         script: flutter pub get
       - name: Fetch App Store signing files
