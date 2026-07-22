@@ -84,15 +84,20 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
                 ),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: _buildMetricCard(
-                    context,
-                    label: l10n.bodyMetrics_target,
-                    value:
-                        settings.targetWeight != null
-                            ? '${settings.targetWeight!.toStringAsFixed(1)} kg'
-                            : '-- kg',
-                    icon: Icons.flag_outlined,
-                    color: AppColors.success,
+                  child: InkWell(
+                    borderRadius: AppSpacing.borderRadiusMd,
+                    onTap:
+                        () => _showTargetWeightDialog(settings.targetWeight),
+                    child: _buildMetricCard(
+                      context,
+                      label: l10n.bodyMetrics_target,
+                      value:
+                          settings.targetWeight != null
+                              ? '${settings.targetWeight!.toStringAsFixed(1)} kg'
+                              : '-- kg',
+                      icon: Icons.flag_outlined,
+                      color: AppColors.success,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -260,6 +265,55 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
         ),
       );
     }
+  }
+
+  Future<void> _showTargetWeightDialog(double? current) async {
+    final l10n = AppLocalizations.of(context)!;
+    final controller = TextEditingController(
+      text: current != null ? current.toStringAsFixed(1) : '',
+    );
+    await showDialog<void>(
+      context: context,
+      builder:
+          (ctx) => AlertDialog(
+            title: Text(l10n.profile_targetWeight),
+            content: TextField(
+              controller: controller,
+              autofocus: true,
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+              ),
+              decoration: InputDecoration(
+                hintText: l10n.bodyMetrics_hintWeight,
+                suffixText: 'kg',
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: Text(l10n.common_cancel),
+              ),
+              FilledButton(
+                onPressed: () {
+                  final target = double.tryParse(
+                    controller.text.trim().replaceAll(',', '.'),
+                  );
+                  if (target == null || target <= 0 || target > 500) {
+                    ScaffoldMessenger.of(ctx).showSnackBar(
+                      SnackBar(content: Text(l10n.bodyMetrics_invalidWeight)),
+                    );
+                    return;
+                  }
+                  ref
+                      .read(settingsProvider.notifier)
+                      .setBodyInfo(targetWeight: target);
+                  Navigator.pop(ctx);
+                },
+                child: Text(l10n.bodyMetrics_save),
+              ),
+            ],
+          ),
+    );
   }
 
   Color _getBmiColor(double? bmi) {

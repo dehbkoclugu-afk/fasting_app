@@ -16,6 +16,7 @@ class BodyInfoScreen extends ConsumerStatefulWidget {
 class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
   final _heightController = TextEditingController(text: '175');
   final _weightController = TextEditingController(text: '75');
+  final _targetWeightController = TextEditingController(text: '70');
   final _ageController = TextEditingController(text: '30');
   String _gender = 'male';
 
@@ -23,6 +24,7 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
   void dispose() {
     _heightController.dispose();
     _weightController.dispose();
+    _targetWeightController.dispose();
     _ageController.dispose();
     super.dispose();
   }
@@ -103,6 +105,16 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
               ),
               const SizedBox(height: 16),
 
+              // Target weight
+              _buildInputField(
+                context,
+                label: l10n.profile_targetWeight,
+                controller: _targetWeightController,
+                suffix: 'kg',
+                icon: Icons.flag_outlined,
+              ),
+              const SizedBox(height: 16),
+
               // Age
               _buildInputField(
                 context,
@@ -131,6 +143,9 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
                       .setBodyInfo(
                         height: double.tryParse(_heightController.text),
                         weight: double.tryParse(_weightController.text),
+                        targetWeight: double.tryParse(
+                          _targetWeightController.text,
+                        ),
                         age: int.tryParse(_ageController.text),
                         isMale: _gender == 'male',
                       );
