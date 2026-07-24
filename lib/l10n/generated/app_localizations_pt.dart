@@ -1469,4 +1469,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get profile_privacyChoices => 'Opções de privacidade';
+
+  @override
+  String get paywall_autoRenewInfo => 'As assinaturas renovam automaticamente, a menos que sejam canceladas pelo menos 24 horas antes do fim do período. Gerencie nas configurações da App Store.';
 }

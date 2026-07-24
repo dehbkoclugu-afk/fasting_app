@@ -2910,6 +2910,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Privacy choices'**
   String get profile_privacyChoices;
+
+  /// No description provided for @paywall_autoRenewInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in your App Store settings.'**
+  String get paywall_autoRenewInfo;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

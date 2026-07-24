@@ -1469,4 +1469,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profile_privacyChoices => 'Gizlilik tercihleri';
+
+  @override
+  String get paywall_autoRenewInfo => 'Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. App Store ayarlarından istediğin zaman yönetebilir veya iptal edebilirsin.';
 }

@@ -1,19 +1,15 @@
 {
   "@@locale": "tr",
-
   "appTitle": "FastTrack",
-
   "greeting_morning": "Günaydın",
   "greeting_afternoon": "İyi günler",
   "greeting_evening": "İyi akşamlar",
-
   "tab_timer": "Ana Sayfa",
   "tab_explore": "Keşfet",
   "tab_stats": "Rapor",
   "tab_meals": "Yemek",
   "tab_achievements": "Başarılar",
   "tab_profile": "Hesap",
-
   "timer_fasting": "Oruç Süresi",
   "timer_remaining": "Kalan",
   "timer_elapsed": "Geçen",
@@ -26,7 +22,6 @@
   "timer_stopTitle": "Orucu Bitir",
   "timer_cancel": "İptal",
   "timer_confirmStop": "Evet, Bitir",
-
   "phase_anabolic": "Anabolik",
   "phase_anabolicDesc": "Sindirim devam ediyor",
   "phase_catabolic": "Katabolik",
@@ -37,7 +32,6 @@
   "phase_ketosisDesc": "Keton üretimi aktif",
   "phase_autophagy": "Otofaji",
   "phase_autophagyDesc": "Hücre yenilenmesi",
-
   "stats_title": "İstatistikler",
   "stats_week": "Hafta",
   "stats_month": "Ay",
@@ -52,12 +46,10 @@
   "stats_weeklyFasting": "Haftalık Oruç",
   "stats_monthlyView": "Aylık Görünüm",
   "stats_weightChange": "Kilo Değişimi",
-
   "heatmap_none": "Yok",
   "heatmap_low": "Az",
   "heatmap_good": "İyi",
   "heatmap_full": "Tam",
-
   "meals_title": "Yemek Planlayıcı",
   "meals_eatingWindow": "Yemek Penceresi",
   "meals_windowOpen": "Açık",
@@ -70,13 +62,14 @@
   "meals_noMeals": "Henüz yemek eklenmedi",
   "meals_breakfastSuggestions": "Oruç Kırma Önerileri",
   "meals_addMeal": "Yemek Ekle",
-
   "profile_title": "Profil",
   "profile_user": "Kullanıcı",
   "profile_planActive": "{plan} Planı aktif",
   "@profile_planActive": {
     "placeholders": {
-      "plan": {"type": "String"}
+      "plan": {
+        "type": "String"
+      }
     }
   },
   "profile_upgradePremium": "Premium'a Yükselt",
@@ -97,7 +90,6 @@
   "profile_share": "Paylaş",
   "profile_privacyPolicy": "Gizlilik Politikası",
   "profile_version": "Versiyon",
-
   "onboarding_welcome": "Hoş Geldin",
   "onboarding_welcomeDesc": "Intermittent fasting yolculuğunu\nkontrol altına al",
   "onboarding_featureTimer": "Akıllı oruç zamanlayıcı",
@@ -132,13 +124,10 @@
   "onboarding_next": "Devam Et",
   "onboarding_start": "Başlayalım!",
   "onboarding_skipForNow": "Sonra ayarla",
-
   "waterAdded": "+250ml su eklendi",
-
   "languageSelect": "Dil Seçimi",
   "languageTurkish": "Türkçe",
   "languageEnglish": "English",
-
   "paywall_title": "Premium'a Yükselt",
   "paywall_subtitle": "Tüm özelliklere erişim sağla",
   "paywall_allPlans": "Tüm oruç planları",
@@ -155,12 +144,10 @@
   "paywall_restore": "Satın alımları geri yükle",
   "paywall_premiumActive": "Premium Aktif!",
   "paywall_premiumActiveDesc": "Tüm özelliklerin kilidini açtın",
-
   "water_title": "Su Tüketimi",
   "water_addWater": "Su Ekle",
   "water_goal": "Hedef",
   "water_ml": "ml",
-
   "common_ok": "Tamam",
   "common_cancel": "İptal",
   "common_save": "Kaydet",
@@ -169,11 +156,9 @@
   "common_minutes": "dakika",
   "common_days": "gün",
   "common_enable": "Aç",
-
   "streakCard_currentStreak": "Mevcut Seri",
   "streakCard_longestStreak": "En Uzun Seri",
   "streakCard_totalSessions": "Toplam Oruç",
-
   "meals_mealType": "Öğün",
   "meals_breakfast": "Kahvaltı",
   "meals_lunch": "Öğle",
@@ -182,7 +167,6 @@
   "meals_carbohydrate": "Karbonhidrat",
   "meals_add": "Ekle",
   "meals_mealName": "Yemek adı",
-
   "bodyMetrics_title": "Vücut Ölçüleri",
   "bodyMetrics_weight": "Kilo",
   "bodyMetrics_target": "Hedef",
@@ -191,38 +175,39 @@
   "bodyMetrics_bmiValue": "BMI: {value}",
   "@bodyMetrics_bmiValue": {
     "placeholders": {
-      "value": {"type": "String"}
+      "value": {
+        "type": "String"
+      }
     }
   },
   "bodyMetrics_noData": "Henüz veri yok",
-
   "meals_quickAdd": "Hızlı Ekle",
   "meals_manualEntry": "Manuel Giriş",
   "meals_added": "{name} eklendi",
   "@meals_added": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "meals_nameCalorieRequired": "İsim ve kalori zorunlu",
-
   "bodyMetrics_addWeight": "Kilo Ekle",
   "bodyMetrics_hintWeight": "Örn: 74.5",
   "bodyMetrics_invalidWeight": "Geçerli bir kilo gir",
   "bodyMetrics_weightSaved": "{value} kg kaydedildi",
   "@bodyMetrics_weightSaved": {
     "placeholders": {
-      "value": {"type": "String"}
+      "value": {
+        "type": "String"
+      }
     }
   },
-
   "completion_duration": "Süre",
   "completion_plan": "Plan",
   "completion_lastPhase": "Son Faz",
-
   "timer_remainingTime": "Kalan Süre",
   "timer_ready": "Başlamaya Hazır",
-
   "streak_status": "Durum",
   "streak_startToday": "Bugün başla!",
   "streak_goodStart": "İyi başlangıç!",
@@ -230,9 +215,7 @@
   "streak_superb": "Süpersin!",
   "streak_legendary": "Efsane!",
   "streak_incredible": "İnanılmaz!",
-
   "weight_noRecord": "Henüz kilo kaydı yok\nProfil > Vücut Ölçüleri'nden ekle",
-
   "day_mon": "Pzt",
   "day_tue": "Sal",
   "day_wed": "Çar",
@@ -240,7 +223,6 @@
   "day_fri": "Cum",
   "day_sat": "Cmt",
   "day_sun": "Paz",
-
   "day_short_mon": "P",
   "day_short_tue": "S",
   "day_short_wed": "Ç",
@@ -248,7 +230,6 @@
   "day_short_fri": "C",
   "day_short_sat": "C",
   "day_short_sun": "P",
-
   "month_jan": "Ocak",
   "month_feb": "Şubat",
   "month_mar": "Mart",
@@ -261,24 +242,25 @@
   "month_oct": "Ekim",
   "month_nov": "Kasım",
   "month_dec": "Aralık",
-
   "meals_fastingWindow": "Oruç ({hours}s)",
   "@meals_fastingWindow": {
     "placeholders": {
-      "hours": {"type": "String"}
+      "hours": {
+        "type": "String"
+      }
     }
   },
   "meals_eatingWindowHours": "Yemek ({hours}s)",
   "@meals_eatingWindowHours": {
     "placeholders": {
-      "hours": {"type": "String"}
+      "hours": {
+        "type": "String"
+      }
     }
   },
-
   "recipe_oatSmoothie": "Yulaflı Smoothie",
   "recipe_avocadoToast": "Avokado Toast",
   "recipe_yogurtBowl": "Yoğurt Bowl",
-
   "elapsed_time": "Geçen Süre",
   "fast_ends_on": "Orucun bitiş saati",
   "end_fasting": "Orucu Bitir",
@@ -295,7 +277,9 @@
   "completed_percent": "%{percent} Tamamlandı",
   "@completed_percent": {
     "placeholders": {
-      "percent": {"type": "String"}
+      "percent": {
+        "type": "String"
+      }
     }
   },
   "explore": "Keşfet",
@@ -320,7 +304,13 @@
   "circle_tagline": "Birlikte, baskı olmadan.",
   "circle_privacy": "Kilo ve özel ölçüler paylaşılmaz. Yalnızca ilerleme ve destek görünür.",
   "circle_sendSupport": "Destek gönder · {count}",
-  "@circle_sendSupport": {"placeholders":{"count":{"type":"int"}}},
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "circle_inviteCopied": "Davet kodu kopyalandı",
   "circle_createInvite": "Özel davet oluştur",
   "crisis_nameTitle": "Önce ne olduğunu adlandıralım",
@@ -335,7 +325,19 @@
   "crisis_tenMore": "10 dakika daha",
   "stats_storyEmpty": "İlk orucun, kişisel hikâyenin başlangıcı olacak.",
   "stats_story": "Bu dönemde {sessions} oruç tuttun. Toplam {hours} saat boyunca ritmini korudun ve %{rate} tamamlama oranına ulaştın.",
-  "@stats_story": {"placeholders":{"sessions":{"type":"int"},"hours":{"type":"int"},"rate":{"type":"int"}}},
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
   "stats_storyTitle": "Ritminin hikâyesi",
   "home_todayRhythm": "Bugünkü ritmin",
   "home_finalHourSupport": "Son saat desteği",
@@ -343,7 +345,13 @@
   "home_todaySummary": "Günün özeti",
   "home_dayStreak": "günlük seri",
   "home_weightGoal": "hedef {weight} kg",
-  "@home_weightGoal": {"placeholders":{"weight":{"type":"String"}}},
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
   "weather_steady": "Ritmin dengeli",
   "weather_gentle": "Nazik bir gün",
   "weather_water": "Bir bardak su iyi gelebilir.",
@@ -353,14 +361,47 @@
   "replay_copied": "Fasting Replay kopyalandı",
   "replay_button": "Replay",
   "replay_text": "{plan} orucumu {hours}sa {minutes}dk ile tamamladım · {phase}",
-  "@replay_text": {"placeholders":{"plan":{"type":"String"},"hours":{"type":"int"},"minutes":{"type":"int"},"phase":{"type":"String"}}},
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
   "journey_label": "Metabolik yolculuk",
   "journey_now": "Şimdi",
   "journey_next": "{time} sonra {phase}",
-  "@journey_next": {"placeholders":{"time":{"type":"String"},"phase":{"type":"String"}}},
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
   "phase_estimateShort": "Evre saatleri genel tahmindir; tıbbi ölçüm değildir.",
   "phase_hours": "{start}–{end}. saat",
-  "@phase_hours": {"placeholders":{"start":{"type":"int"},"end":{"type":"int"}}},
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
   "phase_estimateLong": "Bu zaman aralığı genel bir tahmindir. Metabolik yanıt kişiden kişiye değişebilir.",
   "bmi_underweight": "Zayıf",
   "bmi_normal": "Normal",
@@ -368,30 +409,81 @@
   "bmi_obese": "Obez",
   "notification_halfwayTitle": "Yarı Yoldasın! 💪",
   "notification_halfwayBody": "{plan} orucunun yarısını tamamladın. Devam et!",
-  "@notification_halfwayBody": {"placeholders":{"plan":{"type":"String"}}},
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
   "notification_phaseCatabolic": "Katabolik faza geçtin 📉",
   "notification_phaseFatBurning": "Yağ Yakımı başladı! 🔥",
   "notification_phaseKetosis": "Ketozis fazındasın ⚡",
   "notification_phaseAutophagy": "Otofaji aktif! 🔄",
   "notification_completedBody": "{plan} orucunu tamamladın! Yemek penceren açıldı.",
-  "@notification_completedBody": {"placeholders":{"plan":{"type":"String"}}},
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
   "notification_waterTitle": "Su İç 💧",
   "notification_waterBody": "Oruç süresince bol su içmeyi unutma!",
   "notification_windowTitle": "Yemek Penceresi Kapanıyor ⏰",
   "notification_windowBody": "30 dakika içinde yemek penceren kapanacak.",
   "notification_streakTitle": "{days} Günlük Seri! 🔥",
-  "@notification_streakTitle": {"placeholders":{"days":{"type":"int"}}},
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "notification_streakBody": "Harika gidiyorsun! Bugün de devam et.",
   "notification_ongoingTitle": "Oruç Devam Ediyor - {phase}",
-  "@notification_ongoingTitle": {"placeholders":{"phase":{"type":"String"}}},
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
   "notification_remaining": "Kalan: {time}",
-  "@notification_remaining": {"placeholders":{"time":{"type":"String"}}},
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "notification_started": "Oruç Başladı - {plan}",
-  "@notification_started": {"placeholders":{"plan":{"type":"String"}}},
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
   "notification_target": "Hedef: {hours} saat",
-  "@notification_target": {"placeholders":{"hours":{"type":"int"}}},
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
   "notification_time": "{hours}sa {minutes}dk",
-  "@notification_time": {"placeholders":{"hours":{"type":"int"},"minutes":{"type":"int"}}},
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "explore_guide": "Oruç Rehberi",
   "explore_guideDesc": "Intermittent fasting hakkında bilmeniz gerekenler",
   "explore_circleDesc": "Özel grubunla sessizce destekleş.",
@@ -443,18 +535,30 @@
   "plan_ese_detail": "Haftada 1–2 kez tam 24 saat oruç tut. İleri seviye kullanıcılar için.",
   "plan_warrior_desc": "Savaşçı diyeti",
   "plan_warrior_detail": "Gün boyunca az ye (meyve, sebze), akşam 4 saatlik pencerede ana öğününü ye.",
-  "award_first_title": "İlk Adım", "award_first_desc": "İlk orucunu tamamla",
-  "award_rhythm3_title": "3 Günlük Ritim", "award_rhythm3_desc": "Üç gün üst üste ritmini koru",
-  "award_hours24_title": "24 Saat", "award_hours24_desc": "Toplam 24 saat oruç tut",
-  "award_week_title": "Bir Haftalık Ritim", "award_week_desc": "Yedi günlük seri oluştur",
-  "award_fasts10_title": "10 Oruç", "award_fasts10_desc": "On orucu tamamla",
-  "award_hours100_title": "100 Saat", "award_hours100_desc": "Toplam 100 saate ulaş",
-  "award_rhythm30_title": "30 Günlük Ritim", "award_rhythm30_desc": "Otuz günlük seri oluştur",
-  "award_fasts50_title": "50 Oruç", "award_fasts50_desc": "Elli orucu tamamla",
-  "award_hours500_title": "500 Saat", "award_hours500_desc": "Toplam 500 saate ulaş",
-  "award_fasts100_title": "100 Oruç", "award_fasts100_desc": "Yüz orucu tamamla",
-  "award_rhythm90_title": "90 Günlük Ritim", "award_rhythm90_desc": "Doksan günlük seri oluştur",
-  "award_year_title": "Bir Yıllık Yolculuk", "award_year_desc": "365 günlük ritme ulaş",
+  "award_first_title": "İlk Adım",
+  "award_first_desc": "İlk orucunu tamamla",
+  "award_rhythm3_title": "3 Günlük Ritim",
+  "award_rhythm3_desc": "Üç gün üst üste ritmini koru",
+  "award_hours24_title": "24 Saat",
+  "award_hours24_desc": "Toplam 24 saat oruç tut",
+  "award_week_title": "Bir Haftalık Ritim",
+  "award_week_desc": "Yedi günlük seri oluştur",
+  "award_fasts10_title": "10 Oruç",
+  "award_fasts10_desc": "On orucu tamamla",
+  "award_hours100_title": "100 Saat",
+  "award_hours100_desc": "Toplam 100 saate ulaş",
+  "award_rhythm30_title": "30 Günlük Ritim",
+  "award_rhythm30_desc": "Otuz günlük seri oluştur",
+  "award_fasts50_title": "50 Oruç",
+  "award_fasts50_desc": "Elli orucu tamamla",
+  "award_hours500_title": "500 Saat",
+  "award_hours500_desc": "Toplam 500 saate ulaş",
+  "award_fasts100_title": "100 Oruç",
+  "award_fasts100_desc": "Yüz orucu tamamla",
+  "award_rhythm90_title": "90 Günlük Ritim",
+  "award_rhythm90_desc": "Doksan günlük seri oluştur",
+  "award_year_title": "Bir Yıllık Yolculuk",
+  "award_year_desc": "365 günlük ritme ulaş",
   "awards_loadError": "İlerleme yüklenemedi",
   "awards_journeyComplete": "Yolculuk tamamlandı",
   "awards_nextGoal": "Sıradaki hedef",
@@ -468,11 +572,29 @@
   "awards_stageMastery": "Ustalık",
   "awards_completed": "Tamamlandı",
   "awards_fastsRemaining": "{count} oruç kaldı",
-  "@awards_fastsRemaining": {"placeholders":{"count":{"type":"int"}}},
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "awards_daysRemaining": "{count} gün kaldı",
-  "@awards_daysRemaining": {"placeholders":{"count":{"type":"int"}}},
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "awards_hoursRemaining": "{count} saat kaldı",
-  "@awards_hoursRemaining": {"placeholders":{"count":{"type":"int"}}},
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "common_retry": "Tekrar dene",
   "game_title": "İlerleme Merkezi",
   "game_quests": "Bugünün görevleri",
@@ -481,38 +603,88 @@
   "game_seasonDesc": "Her beşinci adım koleksiyon mührü.",
   "game_badges": "Rozet koleksiyonu",
   "game_shields": "{count} ritim kalkanı",
-  "@game_shields": {"placeholders":{"count":{"type":"int"}}},
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "game_shieldsDesc": "Her yedi tamamlamada kazanılır. Kaçırılan bir gün ilerlemeni değersizleştirmez.",
   "game_league": "Özel haftalık lig",
   "game_leagueDesc": "Ritim puanın anonim yerel modelin %{percent} diliminde. Kimseyle kilo veya açlık süresi yarıştırılmaz.",
-  "@game_leagueDesc": {"placeholders":{"percent":{"type":"int"}}},
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
   "game_levelSemantics": "Seviye {level}, {xp} deneyim puanı",
-  "@game_levelSemantics": {"placeholders":{"level":{"type":"int"},"xp":{"type":"int"}}},
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
   "game_explorer": "Ritim Kaşifi",
-  "game_streak": "Seri", "game_targets": "Hedef", "game_best": "Rekor",
+  "game_streak": "Seri",
+  "game_targets": "Hedef",
+  "game_best": "Rekor",
   "quest_rhythm": "Bugünün ritmini oluştur",
   "quest_hydrate": "Su hedefinin yarısına ulaş",
   "quest_steady": "Serini koru",
-  "badge_first_title":"İlk Adım","badge_first_desc":"İlk orucunu kaydet",
-  "badge_rhythm7_title":"Ritim Ustası","badge_rhythm7_desc":"7 günlük seriye ulaş",
-  "badge_rhythm3_title":"Üç Gün Ritim","badge_rhythm3_desc":"3 günlük seriye ulaş",
-  "badge_target1_title":"İlk Hedef","badge_target1_desc":"İlk hedef orucunu tamamla",
-  "badge_target3_title":"Üçlü Adım","badge_target3_desc":"3 hedef tamamla",
-  "badge_water_title":"Denge","badge_water_desc":"Günlük su hedefini tamamla",
-  "badge_support_title":"Kendini Dinle","badge_support_desc":"Destek modunu kullan",
-  "badge_hours10_title":"10 Saat","badge_hours10_desc":"Toplam 10 saat kaydet",
-  "badge_target10_title":"Onlu Seri","badge_target10_desc":"10 hedef tamamla",
-  "badge_target20_title":"Yirmi Hedef","badge_target20_desc":"20 hedef tamamla",
-  "badge_fast16_title":"16 Saat","badge_fast16_desc":"Tek oruçta 16 saate ulaş",
-  "badge_hours50_title":"50 Saat","badge_hours50_desc":"Toplam 50 saat kaydet",
-  "badge_hours100_title":"Yüz Saat","badge_hours100_desc":"Toplam 100 saat kaydet",
-  "badge_target30_title":"Otuz Hedef","badge_target30_desc":"30 hedef tamamla",
-  "badge_rhythm30_title":"30 Gün Ritim","badge_rhythm30_desc":"30 günlük seriye ulaş",
-  "paywall_restoreSuccess":"Satın almalar geri yüklendi!",
-  "fasting_progressSemantics":"Oruç ilerlemesi yüzde {percent}",
-  "@fasting_progressSemantics":{"placeholders":{"percent":{"type":"int"}}},
-  "phase_hourMarker":"{hour}s",
-  "@phase_hourMarker":{"placeholders":{"hour":{"type":"int"}}},
+  "badge_first_title": "İlk Adım",
+  "badge_first_desc": "İlk orucunu kaydet",
+  "badge_rhythm7_title": "Ritim Ustası",
+  "badge_rhythm7_desc": "7 günlük seriye ulaş",
+  "badge_rhythm3_title": "Üç Gün Ritim",
+  "badge_rhythm3_desc": "3 günlük seriye ulaş",
+  "badge_target1_title": "İlk Hedef",
+  "badge_target1_desc": "İlk hedef orucunu tamamla",
+  "badge_target3_title": "Üçlü Adım",
+  "badge_target3_desc": "3 hedef tamamla",
+  "badge_water_title": "Denge",
+  "badge_water_desc": "Günlük su hedefini tamamla",
+  "badge_support_title": "Kendini Dinle",
+  "badge_support_desc": "Destek modunu kullan",
+  "badge_hours10_title": "10 Saat",
+  "badge_hours10_desc": "Toplam 10 saat kaydet",
+  "badge_target10_title": "Onlu Seri",
+  "badge_target10_desc": "10 hedef tamamla",
+  "badge_target20_title": "Yirmi Hedef",
+  "badge_target20_desc": "20 hedef tamamla",
+  "badge_fast16_title": "16 Saat",
+  "badge_fast16_desc": "Tek oruçta 16 saate ulaş",
+  "badge_hours50_title": "50 Saat",
+  "badge_hours50_desc": "Toplam 50 saat kaydet",
+  "badge_hours100_title": "Yüz Saat",
+  "badge_hours100_desc": "Toplam 100 saat kaydet",
+  "badge_target30_title": "Otuz Hedef",
+  "badge_target30_desc": "30 hedef tamamla",
+  "badge_rhythm30_title": "30 Gün Ritim",
+  "badge_rhythm30_desc": "30 günlük seriye ulaş",
+  "paywall_restoreSuccess": "Satın almalar geri yüklendi!",
+  "fasting_progressSemantics": "Oruç ilerlemesi yüzde {percent}",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}s",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
   "paywall_lifetime": "Ömür boyu",
   "paywall_once": "tek ödeme",
   "paywall_processing": "İşleniyor…",
@@ -525,5 +697,6 @@
   "permission_notificationDesc": "Oruç hatırlatmaları, faz güncellemeleri ve tamamlanma bildirimleri",
   "permission_healthTitle": "Health Connect / HealthKit",
   "permission_healthDesc": "İzninizle adım, aktif kalori ve kilo verilerini eşitleyin",
-  "profile_privacyChoices": "Gizlilik tercihleri"
+  "profile_privacyChoices": "Gizlilik tercihleri",
+  "paywall_autoRenewInfo": "Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. App Store ayarlarından istediğin zaman yönetebilir veya iptal edebilirsin."
 }

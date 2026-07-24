@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app.dart';
 import 'services/notification_service.dart';
@@ -29,6 +32,12 @@ void main() async {
   await NotificationService().initialize();
   await BackgroundService().initialize();
   await RevenueCatService().initialize();
+  // iOS App Tracking Transparency: must prompt before using tracking data for ads.
+  // ponytail: 200ms delay lets the app become active so the system prompt shows.
+  if (Platform.isIOS) {
+    await Future.delayed(const Duration(milliseconds: 200));
+    await AppTrackingTransparency.requestTrackingAuthorization();
+  }
   await AdmobService().initialize();
   await WidgetService().initialize();
 

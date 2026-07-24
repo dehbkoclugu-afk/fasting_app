@@ -1469,4 +1469,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get profile_privacyChoices => 'Datenschutzeinstellungen';
+
+  @override
+  String get paywall_autoRenewInfo => 'Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwaltung jederzeit in den App-Store-Einstellungen.';
 }

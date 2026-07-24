@@ -47,6 +47,8 @@
 		<string>FastTrack reads your steps, active calories, weight, height, and BMI to show your personal progress.</string>
 		<key>NSHealthUpdateUsageDescription</key>
 		<string>FastTrack only updates health data when you explicitly choose to do so.</string>
+		<key>NSUserTrackingUsageDescription</key>
+		<string>Your data is used to show you more relevant ads. You can change this anytime in Settings.</string>
 		<key>SKAdNetworkItems</key>
 		<array>
 			<dict>

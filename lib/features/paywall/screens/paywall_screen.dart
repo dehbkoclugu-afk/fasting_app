@@ -20,8 +20,15 @@ class PaywallScreen extends ConsumerStatefulWidget {
 class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   int _selectedPlan = 1;
 
-  static const _privacyUrl = String.fromEnvironment('PRIVACY_POLICY_URL');
-  static const _termsUrl = String.fromEnvironment('TERMS_OF_USE_URL');
+  static const _privacyUrlEnv = String.fromEnvironment('PRIVACY_POLICY_URL');
+  static const _termsUrlEnv = String.fromEnvironment('TERMS_OF_USE_URL');
+  // Fallback so the required legal links always render even if the build-time
+  // dart-define is empty. App Review rejects a subscription paywall without them.
+  String get _privacyUrl => _privacyUrlEnv.isNotEmpty
+      ? _privacyUrlEnv
+      : 'https://dehbkoclugu-afk.github.io/privacy/';
+  String get _termsUrl =>
+      _termsUrlEnv.isNotEmpty ? _termsUrlEnv : 'https://dehbkoclugu-afk.github.io/terms/';
   static const _packageTypes = [
     PackageType.monthly,
     PackageType.annual,
@@ -227,6 +234,19 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                           ),
                         ),
                       ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 14),
+                      child: Text(
+                        l10n.paywall_autoRenewInfo,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurface.withValues(
+                            alpha: .55,
+                          ),
+                          height: 1.35,
+                        ),
+                      ),
+                    ),
                     const SizedBox(height: 20),
                     GradientButton(
                       text:

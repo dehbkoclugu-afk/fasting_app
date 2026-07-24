@@ -1469,4 +1469,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get profile_privacyChoices => 'Choix de confidentialité';
+
+  @override
+  String get paywall_autoRenewInfo => 'Les abonnements se renouvellent automatiquement sauf résiliation au moins 24 heures avant la fin de la période. Gérez-les dans les réglages de l\'App Store.';
 }
