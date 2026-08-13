@@ -80,3 +80,57 @@ workflows:
         notify:
           success: true
           failure: true
+
+  android-playstore:
+    name: FastTrack Android → Play Store
+    instance_type: linux_x2
+    max_build_duration: 60
+    environment:
+      # Code signing. The keystore is uploaded once in the Codemagic UI under
+      # Teams > Code signing identities > Android keystores; put its *reference
+      # name* here. Without it the bundle builds unsigned and Play rejects it.
+      android_signing:
+        - fasttrack_upload
+      flutter: 3.38.10
+      java: 17
+      groups:
+        - fasttrack_release
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Generate l10n
+        script: flutter gen-l10n
+      - name: Analyze
+        # Infos are not fatal: the repo carries pre-existing Radio deprecations.
+        script: flutter analyze --no-fatal-infos
+      - name: Test
+        script: flutter test
+      - name: Build AAB
+        # Every one of these also has a fallback in BuildConfig, so an empty
+        # variable degrades to the in-source value instead of shipping a build
+        # with purchases and ads switched off.
+        script: |
+          flutter build appbundle --release \
+            --dart-define=REVENUECAT_ANDROID_API_KEY=$REVENUECAT_ANDROID_API_KEY \
+            --dart-define=ADMOB_ANDROID_BANNER_ID=$ADMOB_ANDROID_BANNER_ID \
+            --dart-define=ADMOB_ANDROID_INTERSTITIAL_ID=$ADMOB_ANDROID_INTERSTITIAL_ID \
+            --dart-define=PRIVACY_POLICY_URL=$PRIVACY_POLICY_URL \
+            --dart-define=TERMS_OF_USE_URL=$TERMS_OF_USE_URL \
+            --dart-define=ANDROID_STORE_URL=$ANDROID_STORE_URL
+    artifacts:
+      - build/**/outputs/**/*.aab
+      - build/**/outputs/**/mapping.txt
+    publishing:
+      # Uncomment once a Google Play service account JSON is stored in the
+      # "fasttrack_release" group as GCLOUD_SERVICE_ACCOUNT_CREDENTIALS. Until
+      # then the bundle arrives by email and is uploaded by hand.
+      # google_play:
+      #   credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+      #   track: internal
+      #   submit_as_draft: true
+      email:
+        recipients:
+          - dehbkoclugu@gmail.com
+        notify:
+          success: true
+          failure: true
