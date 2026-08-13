@@ -698,5 +698,34 @@
   "permission_healthTitle": "Health Connect / HealthKit",
   "permission_healthDesc": "Sync steps, active calories and weight with your permission",
   "profile_privacyChoices": "Privacy choices",
-  "paywall_autoRenewInfo": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in your App Store settings."
+  "paywall_autoRenewInfo": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in your App Store settings.",
+  "paywall_perMonth": "{price} / month",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Save {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "{days}-day free trial",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Start free trial",
+  "paywall_retry": "Try again",
+  "paywall_alreadyOwned": "You already own this subscription. Tap “Restore purchases”.",
+  "paywall_storeUnavailable": "Can't reach the store right now. Check your connection and try again.",
+  "paywall_secureNote": "Cancel anytime. Payment is charged to your store account."
 }

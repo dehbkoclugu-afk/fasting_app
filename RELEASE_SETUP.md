@@ -34,6 +34,25 @@ IOS_STORE_URL
 Replace the Google test AdMob application IDs in AndroidManifest.xml and
 Info.plist with the production application IDs before enabling ad unit IDs.
 
+## Paywall shows no purchase option
+
+The paywall only renders plans it actually receives from the store. When it
+shows the "unavailable" card with a retry button, the cause is configuration,
+not the app — work through this list in order:
+
+1. `REVENUECAT_IOS_API_KEY` / `REVENUECAT_ANDROID_API_KEY` were passed to the
+   release build. An empty key disables the SDK entirely.
+2. RevenueCat → Offerings: one offering is marked **Current** and contains
+   packages. (The app falls back to any non-empty offering, but Current is
+   what the pricing is designed around.)
+3. Every product is attached to the `premium` entitlement — without it a
+   purchase completes at the store but the app never unlocks.
+4. App Store Connect: the three IAP products are at least "Ready to Submit"
+   and the **Paid Applications Agreement** is active. An unsigned agreement
+   makes `getOfferings()` return nothing on real devices.
+5. Google Play: the app is published on a track and the subscriptions are
+   active; products stay invisible to the license tester otherwise.
+
 ## Android signing
 
 Copy `android/key.properties.example` to `android/key.properties`, point it to
