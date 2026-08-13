@@ -1567,4 +1567,11 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get paywall_secureNote =>
       'Annulez à tout moment. Le paiement est débité de votre compte.';
+
+  @override
+  String get paywall_autoRenewInfoPlay =>
+      'Les abonnements sont renouvelés automatiquement sauf résiliation au moins 24 heures avant la fin de la période. Gérez ou résiliez à tout moment dans Google Play > Abonnements.';
+
+  @override
+  String get paywall_healthConnect => 'Intégration Health Connect';
 }

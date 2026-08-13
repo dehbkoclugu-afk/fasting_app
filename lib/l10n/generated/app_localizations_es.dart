@@ -1556,4 +1556,11 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get paywall_secureNote =>
       'Cancela cuando quieras. El pago se carga a tu cuenta de la tienda.';
+
+  @override
+  String get paywall_autoRenewInfoPlay =>
+      'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del final del periodo. Gestiónalas o cancélalas cuando quieras en Google Play > Suscripciones.';
+
+  @override
+  String get paywall_healthConnect => 'Integración con Health Connect';
 }

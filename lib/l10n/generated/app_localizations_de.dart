@@ -1566,4 +1566,11 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get paywall_secureNote =>
       'Jederzeit kündbar. Die Zahlung erfolgt über dein Store-Konto.';
+
+  @override
+  String get paywall_autoRenewInfoPlay =>
+      'Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwaltung jederzeit unter Google Play > Abos.';
+
+  @override
+  String get paywall_healthConnect => 'Health-Connect-Integration';
 }

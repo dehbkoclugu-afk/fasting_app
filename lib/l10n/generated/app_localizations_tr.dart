@@ -1544,4 +1544,11 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get paywall_secureNote =>
       'İstediğin zaman iptal et. Ödeme mağaza hesabından tahsil edilir.';
+
+  @override
+  String get paywall_autoRenewInfoPlay =>
+      'Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. Google Play > Abonelikler bölümünden istediğin zaman yönetebilir veya iptal edebilirsin.';
+
+  @override
+  String get paywall_healthConnect => 'Health Connect entegrasyonu';
 }

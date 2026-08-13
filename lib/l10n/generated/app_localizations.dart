@@ -2967,6 +2967,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancel anytime. Payment is charged to your store account.'**
   String get paywall_secureNote;
+
+  /// No description provided for @paywall_autoRenewInfoPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.'**
+  String get paywall_autoRenewInfoPlay;
+
+  /// No description provided for @paywall_healthConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Health Connect integration'**
+  String get paywall_healthConnect;
 }
 
 class _AppLocalizationsDelegate

@@ -727,5 +727,7 @@
   "paywall_retry": "Try again",
   "paywall_alreadyOwned": "You already own this subscription. Tap “Restore purchases”.",
   "paywall_storeUnavailable": "Can't reach the store right now. Check your connection and try again.",
-  "paywall_secureNote": "Cancel anytime. Payment is charged to your store account."
+  "paywall_secureNote": "Cancel anytime. Payment is charged to your store account.",
+  "paywall_autoRenewInfoPlay": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.",
+  "paywall_healthConnect": "Health Connect integration"
 }

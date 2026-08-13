@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -225,7 +227,9 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                       ),
                     const SizedBox(height: 4),
                     Text(
-                      l10n.paywall_autoRenewInfo,
+                      Platform.isIOS
+                          ? l10n.paywall_autoRenewInfo
+                          : l10n.paywall_autoRenewInfoPlay,
                       textAlign: TextAlign.center,
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.onSurface.withValues(
@@ -337,7 +341,10 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       (PhosphorIcons.timer(), l10n.paywall_allPlans),
       (PhosphorIcons.chartBar(), l10n.paywall_advancedStats),
       (PhosphorIcons.forkKnife(), l10n.paywall_mealPlanner),
-      (PhosphorIcons.heartbeat(), l10n.paywall_healthKit),
+      (
+        PhosphorIcons.heartbeat(),
+        Platform.isIOS ? l10n.paywall_healthKit : l10n.paywall_healthConnect,
+      ),
       (PhosphorIcons.prohibit(), l10n.paywall_noAds),
     ];
     return Container(

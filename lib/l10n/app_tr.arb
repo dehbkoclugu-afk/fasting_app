@@ -706,5 +706,7 @@
   "paywall_retry": "Tekrar dene",
   "paywall_alreadyOwned": "Bu abonelik zaten hesabında. “Satın alımları geri yükle”ye dokun.",
   "paywall_storeUnavailable": "Mağazaya şu anda ulaşılamıyor. Bağlantını kontrol edip tekrar dene.",
-  "paywall_secureNote": "İstediğin zaman iptal et. Ödeme mağaza hesabından tahsil edilir."
+  "paywall_secureNote": "İstediğin zaman iptal et. Ödeme mağaza hesabından tahsil edilir.",
+  "paywall_autoRenewInfoPlay": "Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. Google Play > Abonelikler bölümünden istediğin zaman yönetebilir veya iptal edebilirsin.",
+  "paywall_healthConnect": "Health Connect entegrasyonu"
 }

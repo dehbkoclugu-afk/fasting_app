@@ -1548,4 +1548,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get paywall_secureNote =>
       'Cancel anytime. Payment is charged to your store account.';
+
+  @override
+  String get paywall_autoRenewInfoPlay =>
+      'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.';
+
+  @override
+  String get paywall_healthConnect => 'Health Connect integration';
 }
