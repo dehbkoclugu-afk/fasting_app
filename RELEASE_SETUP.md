@@ -5,14 +5,23 @@ are missing. Do not commit `android/key.properties` or the upload keystore.
 
 ## Products
 
-Create these exact products in Google Play, App Store Connect, and RevenueCat:
+App Store Connect uses one product per plan:
 
 - `fasttrack_premium_monthly` — auto-renewing monthly subscription
 - `fasttrack_premium_yearly` — auto-renewing yearly subscription
 - `fasttrack_premium_lifetime` — non-consumable lifetime purchase
 
-Attach all three to the `premium` entitlement and the current RevenueCat
-offering. Prices and introductory offers are read from the stores.
+Google Play groups the recurring plans under a single subscription with two
+base plans, so RevenueCat lists them as `<subscription>:<base plan>`:
+
+- `fasttrack_premium_monthly:monthly`
+- `fasttrack_premium_monthly:yearly`
+- `fasttrack_premium_lifetime` — one-time product
+
+Attach every product to the `premium` entitlement — that exact identifier is
+what the app checks — and add them as packages to the **current** offering.
+A product that is published and entitled but missing from the offering never
+reaches the paywall. Prices and introductory offers are read from the stores.
 
 ## Required build values
 

@@ -53,8 +53,19 @@ class RevenueCatService {
     }
   }
 
-  bool _hasEntitlement(CustomerInfo info) =>
-      info.entitlements.all[entitlementId]?.isActive ?? false;
+  bool _hasEntitlement(CustomerInfo info) {
+    final isActive = info.entitlements.all[entitlementId]?.isActive ?? false;
+    if (!isActive && info.entitlements.active.isNotEmpty) {
+      // A completed purchase that unlocks nothing almost always means the
+      // products hang off a differently named entitlement in the dashboard.
+      debugPrint(
+        'RevenueCat: active entitlements are '
+        '${info.entitlements.active.keys.toList()}, '
+        'but "$entitlementId" was expected.',
+      );
+    }
+    return isActive;
+  }
 
   /// Fires whenever RevenueCat pushes new customer info (renewals, purchases
   /// made on another device, subscription expiry).
