@@ -98,6 +98,31 @@ void main() {
     expect(find.text('Save 58%'), findsOneWidget);
   });
 
+  testWidgets('lays out on a small screen at a large text scale', (
+    tester,
+  ) async {
+    // Regression: the plan row used CrossAxisAlignment.stretch inside a scroll
+    // view, which threw "BoxConstraints forces an infinite height" and blanked
+    // out everything below the feature list — including the purchase button.
+    tester.view.physicalSize = const Size(320 * 3, 568 * 3);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+
+    await tester.pumpWidget(
+      MediaQuery(
+        data: const MediaQueryData(textScaler: TextScaler.linear(1.3)),
+        child: _app(SubscriptionState(availablePackages: [monthly, annual])),
+      ),
+    );
+    await tester.pump();
+
+    expect(tester.takeException(), isNull);
+    expect(
+      tester.widget<GradientButton>(find.byType(GradientButton)).onPressed,
+      isNotNull,
+    );
+  });
+
   testWidgets('offers a retry instead of a dead button when no products load', (
     tester,
   ) async {
