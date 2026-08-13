@@ -15,10 +15,36 @@ class RevenueCatService {
   RevenueCatService._();
   factory RevenueCatService() => _instance;
 
-  static const _iosApiKey = String.fromEnvironment('REVENUECAT_IOS_API_KEY');
-  static const _androidApiKey = String.fromEnvironment(
+  // Build-time values from --dart-define / --dart-define-from-file.
+  static const _iosApiKeyEnv = String.fromEnvironment('REVENUECAT_IOS_API_KEY');
+  static const _androidApiKeyEnv = String.fromEnvironment(
     'REVENUECAT_ANDROID_API_KEY',
   );
+
+  // ---------------------------------------------------------------------------
+  // PASTE THE REVENUECAT PUBLIC SDK KEYS HERE
+  //
+  // RevenueCat > Project settings > Apps > (the app) > Show key.
+  //
+  // These are *public* keys: they ship inside every build and can be read out
+  // of any APK or IPA, and they cannot read or change account data. Keeping
+  // them in source is safe, and it means a build made without the dart-defines
+  // still sells subscriptions instead of silently disabling purchases — which
+  // is exactly how a release shipped with the paywall dead.
+  //
+  // A --dart-define of the same name still wins, so release.json keeps working.
+  //
+  // NEVER paste a RevenueCat secret key (sk_…) or the Play service account
+  // JSON here. Those are credentials and must stay out of the repository.
+  // ---------------------------------------------------------------------------
+  static const _iosApiKeyFallback = ''; // App Store key, starts with appl_
+  static const _androidApiKeyFallback = ''; // Play Store key, starts with goog_
+
+  static String get _apiKey {
+    final fromEnv = Platform.isIOS ? _iosApiKeyEnv : _androidApiKeyEnv;
+    if (fromEnv.isNotEmpty) return fromEnv;
+    return Platform.isIOS ? _iosApiKeyFallback : _androidApiKeyFallback;
+  }
 
   // Entitlement ID configured in RevenueCat dashboard
   static const entitlementId = 'premium';
@@ -33,9 +59,14 @@ class RevenueCatService {
   Future<void> initialize() async {
     if (_initialized) return;
 
-    final apiKey = Platform.isIOS ? _iosApiKey : _androidApiKey;
+    final apiKey = _apiKey;
     if (apiKey.isEmpty) {
-      debugPrint('RevenueCat disabled: API key is not configured.');
+      debugPrint(
+        'RevenueCat disabled: no API key. Pass '
+        '${Platform.isIOS ? 'REVENUECAT_IOS_API_KEY' : 'REVENUECAT_ANDROID_API_KEY'} '
+        'with --dart-define, or paste the public SDK key into '
+        'RevenueCatService.',
+      );
       return;
     }
 

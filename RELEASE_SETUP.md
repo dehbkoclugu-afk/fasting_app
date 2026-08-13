@@ -43,6 +43,19 @@ IOS_STORE_URL
 Replace the Google test AdMob application IDs in AndroidManifest.xml and
 Info.plist with the production application IDs before enabling ad unit IDs.
 
+### RevenueCat keys
+
+The two RevenueCat values are the only ones with an in-source fallback:
+`_iosApiKeyFallback` and `_androidApiKeyFallback` in
+`lib/services/revenue_cat_service.dart`. Paste the public SDK keys there
+(RevenueCat > Project settings > Apps > Show key) so a build made without the
+dart-defines still sells subscriptions instead of quietly disabling purchases.
+A `--dart-define` of the same name takes precedence.
+
+Public SDK keys (`appl_…`, `goog_…`) ship inside every build and cannot read or
+change account data, so they belong in source. Secret keys (`sk_…`) and the
+Play service account JSON must never be committed.
+
 ## Paywall shows no purchase option
 
 The paywall only renders plans it actually receives from the store. When it
