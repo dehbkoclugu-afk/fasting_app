@@ -73,7 +73,7 @@
     }
   },
   "profile_upgradePremium": "Premium'a Yükselt",
-  "profile_premiumDesc": "Tüm planlar, gelişmiş istatistikler ve daha fazlası",
+  "profile_premiumDesc": "Tüm oruç planları ve reklamsız kullanım",
   "profile_bodyMetrics": "Vücut Ölçüleri",
   "profile_height": "Boy",
   "profile_weight": "Kilo",
@@ -129,7 +129,7 @@
   "languageTurkish": "Türkçe",
   "languageEnglish": "English",
   "paywall_title": "Premium'a Yükselt",
-  "paywall_subtitle": "Tüm özelliklere erişim sağla",
+  "paywall_subtitle": "Tüm oruç planlarını aç, reklamları kaldır",
   "paywall_allPlans": "Tüm oruç planları",
   "paywall_advancedStats": "Gelişmiş istatistikler",
   "paywall_mealPlanner": "Yemek planlayıcı",
@@ -143,7 +143,7 @@
   "paywall_freeTrial": "Ücretsiz Dene (3 Gün)",
   "paywall_restore": "Satın alımları geri yükle",
   "paywall_premiumActive": "Premium Aktif!",
-  "paywall_premiumActiveDesc": "Tüm özelliklerin kilidini açtın",
+  "paywall_premiumActiveDesc": "Tüm oruç planları açık, reklamlar kapalı",
   "water_title": "Su Tüketimi",
   "water_addWater": "Su Ekle",
   "water_goal": "Hedef",
@@ -708,5 +708,7 @@
   "paywall_storeUnavailable": "Mağazaya şu anda ulaşılamıyor. Bağlantını kontrol edip tekrar dene.",
   "paywall_secureNote": "İstediğin zaman iptal et. Ödeme mağaza hesabından tahsil edilir.",
   "paywall_autoRenewInfoPlay": "Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. Google Play > Abonelikler bölümünden istediğin zaman yönetebilir veya iptal edebilirsin.",
-  "paywall_healthConnect": "Health Connect entegrasyonu"
+  "paywall_healthConnect": "Health Connect entegrasyonu",
+  "paywall_allPlansDesc": "18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ve Warrior kilidi açılır",
+  "paywall_noAdsDesc": "Banner ve geçiş reklamları tamamen kapanır"
 }

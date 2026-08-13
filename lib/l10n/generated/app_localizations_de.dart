@@ -211,8 +211,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get profile_upgradePremium => 'Upgrade auf Premium';
 
   @override
-  String get profile_premiumDesc =>
-      'Alle Pläne, erweiterte Statistiken und mehr';
+  String get profile_premiumDesc => 'Alle Fastenpläne, ohne Werbung';
 
   @override
   String get profile_bodyMetrics => 'Körpermetriken';
@@ -385,7 +384,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get paywall_title => 'Upgrade auf Premium';
 
   @override
-  String get paywall_subtitle => 'Schalten Sie alle Funktionen frei';
+  String get paywall_subtitle =>
+      'Alle Fastenpläne freischalten, Werbung entfernen';
 
   @override
   String get paywall_allPlans => 'Alle Fastenpläne';
@@ -428,7 +428,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get paywall_premiumActiveDesc =>
-      'Sie haben alle Funktionen freigeschaltet';
+      'Alle Fastenpläne sind freigeschaltet, Werbung ist aus';
 
   @override
   String get water_title => 'Wasseraufnahme';
@@ -1573,4 +1573,12 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get paywall_healthConnect => 'Health-Connect-Integration';
+
+  @override
+  String get paywall_allPlansDesc =>
+      'Schaltet 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat und Warrior frei';
+
+  @override
+  String get paywall_noAdsDesc =>
+      'Banner- und Interstitial-Werbung wird vollständig deaktiviert';
 }

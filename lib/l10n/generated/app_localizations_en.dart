@@ -210,7 +210,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile_upgradePremium => 'Upgrade to Premium';
 
   @override
-  String get profile_premiumDesc => 'All plans, advanced stats, and more';
+  String get profile_premiumDesc => 'Every fasting plan, with no ads';
 
   @override
   String get profile_bodyMetrics => 'Body Metrics';
@@ -382,7 +382,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paywall_title => 'Upgrade to Premium';
 
   @override
-  String get paywall_subtitle => 'Unlock all features';
+  String get paywall_subtitle => 'Unlock every fasting plan and remove ads';
 
   @override
   String get paywall_allPlans => 'All fasting plans';
@@ -424,7 +424,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paywall_premiumActive => 'Premium Active!';
 
   @override
-  String get paywall_premiumActiveDesc => 'You unlocked all features';
+  String get paywall_premiumActiveDesc =>
+      'Every fasting plan is unlocked and ads are off';
 
   @override
   String get water_title => 'Water Intake';
@@ -1555,4 +1556,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get paywall_healthConnect => 'Health Connect integration';
+
+  @override
+  String get paywall_allPlansDesc =>
+      'Unlocks 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat and Warrior';
+
+  @override
+  String get paywall_noAdsDesc =>
+      'Banner and interstitial ads are turned off completely';
 }

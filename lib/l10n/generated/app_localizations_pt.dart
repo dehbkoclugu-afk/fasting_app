@@ -210,8 +210,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get profile_upgradePremium => 'Atualizar para Premium';
 
   @override
-  String get profile_premiumDesc =>
-      'Todos os planos, estatísticas avançadas e muito mais';
+  String get profile_premiumDesc => 'Todos os planos de jejum, sem anúncios';
 
   @override
   String get profile_bodyMetrics => 'Métricas Corporais';
@@ -385,7 +384,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get paywall_title => 'Atualizar para Premium';
 
   @override
-  String get paywall_subtitle => 'Desbloqueie todos os recursos';
+  String get paywall_subtitle =>
+      'Desbloqueia todos os planos de jejum e remove os anúncios';
 
   @override
   String get paywall_allPlans => 'Todos os planos de jejum';
@@ -427,7 +427,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get paywall_premiumActive => 'Ativo Premium!';
 
   @override
-  String get paywall_premiumActiveDesc => 'Você desbloqueou todos os recursos';
+  String get paywall_premiumActiveDesc =>
+      'Todos os planos de jejum estão desbloqueados e os anúncios desativados';
 
   @override
   String get water_title => 'Ingestão de água';
@@ -1563,4 +1564,12 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get paywall_healthConnect => 'Integração com o Health Connect';
+
+  @override
+  String get paywall_allPlansDesc =>
+      'Desbloqueia 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat e Warrior';
+
+  @override
+  String get paywall_noAdsDesc =>
+      'Os anúncios de banner e intersticiais são totalmente desativados';
 }

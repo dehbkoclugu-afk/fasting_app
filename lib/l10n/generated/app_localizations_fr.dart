@@ -211,8 +211,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get profile_upgradePremium => 'Passer à Premium';
 
   @override
-  String get profile_premiumDesc =>
-      'Tous les forfaits, statistiques avancées et plus encore';
+  String get profile_premiumDesc => 'Tous les plans de jeûne, sans publicité';
 
   @override
   String get profile_bodyMetrics => 'Mesures corporelles';
@@ -388,7 +387,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get paywall_title => 'Passer à Premium';
 
   @override
-  String get paywall_subtitle => 'Débloquez toutes les fonctionnalités';
+  String get paywall_subtitle =>
+      'Débloquez tous les plans de jeûne et supprimez les publicités';
 
   @override
   String get paywall_allPlans => 'Tous les plans de jeûne';
@@ -431,7 +431,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get paywall_premiumActiveDesc =>
-      'Vous avez débloqué toutes les fonctionnalités';
+      'Tous les plans de jeûne sont débloqués et les publicités désactivées';
 
   @override
   String get water_title => 'Prise d\'eau';
@@ -1574,4 +1574,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get paywall_healthConnect => 'Intégration Health Connect';
+
+  @override
+  String get paywall_allPlansDesc =>
+      'Débloque 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat et Warrior';
+
+  @override
+  String get paywall_noAdsDesc =>
+      'Les bannières et les interstitiels sont entièrement désactivés';
 }

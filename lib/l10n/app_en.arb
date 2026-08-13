@@ -73,7 +73,7 @@
     }
   },
   "profile_upgradePremium": "Upgrade to Premium",
-  "profile_premiumDesc": "All plans, advanced stats, and more",
+  "profile_premiumDesc": "Every fasting plan, with no ads",
   "profile_bodyMetrics": "Body Metrics",
   "profile_height": "Height",
   "profile_weight": "Weight",
@@ -129,7 +129,7 @@
   "languageTurkish": "Türkçe",
   "languageEnglish": "English",
   "paywall_title": "Upgrade to Premium",
-  "paywall_subtitle": "Unlock all features",
+  "paywall_subtitle": "Unlock every fasting plan and remove ads",
   "paywall_allPlans": "All fasting plans",
   "paywall_advancedStats": "Advanced statistics",
   "paywall_mealPlanner": "Meal planner",
@@ -143,7 +143,7 @@
   "paywall_freeTrial": "Free Trial (3 Days)",
   "paywall_restore": "Restore purchases",
   "paywall_premiumActive": "Premium Active!",
-  "paywall_premiumActiveDesc": "You unlocked all features",
+  "paywall_premiumActiveDesc": "Every fasting plan is unlocked and ads are off",
   "water_title": "Water Intake",
   "water_addWater": "Add Water",
   "water_goal": "Goal",
@@ -729,5 +729,7 @@
   "paywall_storeUnavailable": "Can't reach the store right now. Check your connection and try again.",
   "paywall_secureNote": "Cancel anytime. Payment is charged to your store account.",
   "paywall_autoRenewInfoPlay": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.",
-  "paywall_healthConnect": "Health Connect integration"
+  "paywall_healthConnect": "Health Connect integration",
+  "paywall_allPlansDesc": "Unlocks 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat and Warrior",
+  "paywall_noAdsDesc": "Banner and interstitial ads are turned off completely"
 }

@@ -505,7 +505,7 @@ abstract class AppLocalizations {
   /// No description provided for @profile_premiumDesc.
   ///
   /// In en, this message translates to:
-  /// **'All plans, advanced stats, and more'**
+  /// **'Every fasting plan, with no ads'**
   String get profile_premiumDesc;
 
   /// No description provided for @profile_bodyMetrics.
@@ -841,7 +841,7 @@ abstract class AppLocalizations {
   /// No description provided for @paywall_subtitle.
   ///
   /// In en, this message translates to:
-  /// **'Unlock all features'**
+  /// **'Unlock every fasting plan and remove ads'**
   String get paywall_subtitle;
 
   /// No description provided for @paywall_allPlans.
@@ -925,7 +925,7 @@ abstract class AppLocalizations {
   /// No description provided for @paywall_premiumActiveDesc.
   ///
   /// In en, this message translates to:
-  /// **'You unlocked all features'**
+  /// **'Every fasting plan is unlocked and ads are off'**
   String get paywall_premiumActiveDesc;
 
   /// No description provided for @water_title.
@@ -2979,6 +2979,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Health Connect integration'**
   String get paywall_healthConnect;
+
+  /// No description provided for @paywall_allPlansDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocks 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat and Warrior'**
+  String get paywall_allPlansDesc;
+
+  /// No description provided for @paywall_noAdsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Banner and interstitial ads are turned off completely'**
+  String get paywall_noAdsDesc;
 }
 
 class _AppLocalizationsDelegate

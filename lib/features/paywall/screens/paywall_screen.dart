@@ -337,18 +337,14 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
   Widget _features(BuildContext context, AppLocalizations l10n) {
     final theme = Theme.of(context);
-    final features = <(IconData, String)>[
-      (PhosphorIcons.timer(), l10n.paywall_allPlans),
-      (PhosphorIcons.chartBar(), l10n.paywall_advancedStats),
-      (PhosphorIcons.forkKnife(), l10n.paywall_mealPlanner),
-      (
-        PhosphorIcons.heartbeat(),
-        Platform.isIOS ? l10n.paywall_healthKit : l10n.paywall_healthConnect,
-      ),
-      (PhosphorIcons.prohibit(), l10n.paywall_noAds),
+    // Only what premium actually delivers today: the six locked plans and the
+    // ad-free experience. Nothing else in the app is gated.
+    final features = <(IconData, String, String)>[
+      (PhosphorIcons.timer(), l10n.paywall_allPlans, l10n.paywall_allPlansDesc),
+      (PhosphorIcons.prohibit(), l10n.paywall_noAds, l10n.paywall_noAdsDesc),
     ];
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: AppSpacing.borderRadiusLg,
         color: AppColors.primary.withValues(alpha: .05),
@@ -359,20 +355,37 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           for (final (index, feature) in features.indexed)
             Padding(
               padding: EdgeInsets.only(
-                bottom: index == features.length - 1 ? 0 : 12,
+                bottom: index == features.length - 1 ? 0 : 16,
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(feature.$1, color: AppColors.primary, size: 20),
+                  Icon(feature.$1, color: AppColors.primary, size: 22),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: Text(
-                      feature.$2,
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          feature.$2,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          feature.$3,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: .6,
+                            ),
+                            height: 1.3,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
+                  const SizedBox(width: 8),
                   const Icon(
                     Icons.check_circle,
                     color: AppColors.success,

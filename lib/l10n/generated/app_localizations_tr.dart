@@ -209,8 +209,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profile_upgradePremium => 'Premium\'a Yükselt';
 
   @override
-  String get profile_premiumDesc =>
-      'Tüm planlar, gelişmiş istatistikler ve daha fazlası';
+  String get profile_premiumDesc => 'Tüm oruç planları ve reklamsız kullanım';
 
   @override
   String get profile_bodyMetrics => 'Vücut Ölçüleri';
@@ -381,7 +380,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paywall_title => 'Premium\'a Yükselt';
 
   @override
-  String get paywall_subtitle => 'Tüm özelliklere erişim sağla';
+  String get paywall_subtitle => 'Tüm oruç planlarını aç, reklamları kaldır';
 
   @override
   String get paywall_allPlans => 'Tüm oruç planları';
@@ -423,7 +422,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paywall_premiumActive => 'Premium Aktif!';
 
   @override
-  String get paywall_premiumActiveDesc => 'Tüm özelliklerin kilidini açtın';
+  String get paywall_premiumActiveDesc =>
+      'Tüm oruç planları açık, reklamlar kapalı';
 
   @override
   String get water_title => 'Su Tüketimi';
@@ -1551,4 +1551,11 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get paywall_healthConnect => 'Health Connect entegrasyonu';
+
+  @override
+  String get paywall_allPlansDesc =>
+      '18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ve Warrior kilidi açılır';
+
+  @override
+  String get paywall_noAdsDesc => 'Banner ve geçiş reklamları tamamen kapanır';
 }
