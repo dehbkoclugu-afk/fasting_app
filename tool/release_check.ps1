@@ -19,16 +19,16 @@ if (-not (Test-Path $Config)) {
 }
 
 # The RevenueCat public SDK keys may come from $Config or from the in-source
-# fallbacks in RevenueCatService. Either one keeps purchases working.
-$service = Get-Content -Raw "lib/services/revenue_cat_service.dart"
+# fallbacks in BuildConfig. Either one keeps purchases working.
+$service = Get-Content -Raw "lib/core/config/build_config.dart"
 foreach ($entry in @(
-    @{ Key = "REVENUECAT_ANDROID_API_KEY"; Field = "_androidApiKeyFallback" },
-    @{ Key = "REVENUECAT_IOS_API_KEY"; Field = "_iosApiKeyFallback" }
+    @{ Key = "REVENUECAT_ANDROID_API_KEY"; Field = "_revenueCatAndroidKeyFallback" },
+    @{ Key = "REVENUECAT_IOS_API_KEY"; Field = "_revenueCatIosKeyFallback" }
   )) {
   $fromConfig = if ($values) { $values.($entry.Key) } else { $null }
   $inSource = $service -match "$($entry.Field) = '[^']+'"
   if ([string]::IsNullOrWhiteSpace($fromConfig) -and -not $inSource) {
-    $errors += "Missing $($entry.Key) - set it in $Config or paste the public SDK key into RevenueCatService.$($entry.Field)"
+    $errors += "Missing $($entry.Key) - set it in $Config or paste the public SDK key into BuildConfig.$($entry.Field)"
   }
 }
 

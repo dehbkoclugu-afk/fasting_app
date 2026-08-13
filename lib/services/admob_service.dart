@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../core/config/build_config.dart';
+
 class AdmobService {
   static final AdmobService _instance = AdmobService._();
   factory AdmobService() => _instance;
@@ -15,10 +17,7 @@ class AdmobService {
           ? 'ca-app-pub-3940256099942544/6300978111'
           : 'ca-app-pub-3940256099942544/2934735716';
     }
-    // TODO: Gerçek reklam ID'leri
-    return Platform.isAndroid
-        ? const String.fromEnvironment('ADMOB_ANDROID_BANNER_ID')
-        : const String.fromEnvironment('ADMOB_IOS_BANNER_ID');
+    return BuildConfig.admobBannerId;
   }
 
   // Interstitial Ad Unit IDs
@@ -28,9 +27,7 @@ class AdmobService {
           ? 'ca-app-pub-3940256099942544/1033173712'
           : 'ca-app-pub-3940256099942544/4411468910';
     }
-    return Platform.isAndroid
-        ? const String.fromEnvironment('ADMOB_ANDROID_INTERSTITIAL_ID')
-        : const String.fromEnvironment('ADMOB_IOS_INTERSTITIAL_ID');
+    return BuildConfig.admobInterstitialId;
   }
 
   BannerAd? _bannerAd;

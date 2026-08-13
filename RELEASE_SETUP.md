@@ -43,18 +43,23 @@ IOS_STORE_URL
 Replace the Google test AdMob application IDs in AndroidManifest.xml and
 Info.plist with the production application IDs before enabling ad unit IDs.
 
-### RevenueCat keys
+### In-source fallbacks
 
-The two RevenueCat values are the only ones with an in-source fallback:
-`_iosApiKeyFallback` and `_androidApiKeyFallback` in
-`lib/services/revenue_cat_service.dart`. Paste the public SDK keys there
-(RevenueCat > Project settings > Apps > Show key) so a build made without the
-dart-defines still sells subscriptions instead of quietly disabling purchases.
-A `--dart-define` of the same name takes precedence.
+Every one of these values also has a fallback constant in
+`lib/core/config/build_config.dart`, under "PASTE PRODUCTION VALUES HERE". A
+`--dart-define` of the same name always wins; the constant is what a build made
+without `--dart-define-from-file` falls back to, so it ships working instead of
+quietly disabling purchases and ads. That is what happened to 1.0.0+5: the
+build carried no dart-defines, so the RevenueCat key, both AdMob unit ids and
+the store links were all empty.
 
-Public SDK keys (`appl_…`, `goog_…`) ship inside every build and cannot read or
-change account data, so they belong in source. Secret keys (`sk_…`) and the
-Play service account JSON must never be committed.
+The store and legal URLs are already filled in. Still to paste: the four AdMob
+ad unit ids and, when the app is live on iOS, the App Store listing URL.
+
+Public SDK keys (`appl_…`, `goog_…`), AdMob unit ids and public URLs ship
+inside every build and cannot read or change account data, so they belong in
+source. Secret keys (`sk_…`), the Play service account JSON and the upload
+keystore must never be committed.
 
 ## Paywall shows no purchase option
 

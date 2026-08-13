@@ -7,6 +7,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../core/config/build_config.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
@@ -25,19 +26,6 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   /// Selected package identifier. Held by identifier rather than list index so
   /// the selection survives the product list arriving or being reloaded.
   String? _selectedId;
-
-  static const _privacyUrlEnv = String.fromEnvironment('PRIVACY_POLICY_URL');
-  static const _termsUrlEnv = String.fromEnvironment('TERMS_OF_USE_URL');
-  // Fallback so the required legal links always render even if the build-time
-  // dart-define is empty. App Review rejects a subscription paywall without them.
-  String get _privacyUrl =>
-      _privacyUrlEnv.isNotEmpty
-          ? _privacyUrlEnv
-          : 'https://dehbkoclugu-afk.github.io/privacy/';
-  String get _termsUrl =>
-      _termsUrlEnv.isNotEmpty
-          ? _termsUrlEnv
-          : 'https://dehbkoclugu-afk.github.io/terms/';
 
   /// The package the CTA will buy: the user's pick, or the best default.
   Package? _selected(SubscriptionState state) {
@@ -650,11 +638,11 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                 child: Text(l10n.paywall_restore),
               ),
               TextButton(
-                onPressed: () => _open(_privacyUrl),
+                onPressed: () => _open(BuildConfig.privacyPolicyUrl),
                 child: Text(l10n.profile_privacyPolicy),
               ),
               TextButton(
-                onPressed: () => _open(_termsUrl),
+                onPressed: () => _open(BuildConfig.termsOfUseUrl),
                 child: Text(l10n.paywall_terms),
               ),
             ],

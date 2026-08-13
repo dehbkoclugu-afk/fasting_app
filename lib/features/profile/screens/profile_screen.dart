@@ -11,14 +11,11 @@ import '../../../core/constants/fasting_plans.dart';
 import '../../../core/utils/calculations.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../services/admob_service.dart';
+import '../../../core/config/build_config.dart';
 import '../providers/settings_provider.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
-
-  static const _privacyUrl = String.fromEnvironment('PRIVACY_POLICY_URL');
-  static const _androidStoreUrl = String.fromEnvironment('ANDROID_STORE_URL');
-  static const _iosStoreUrl = String.fromEnvironment('IOS_STORE_URL');
 
   Future<void> _openUrl(BuildContext context, String value) async {
     final uri = Uri.tryParse(value);
@@ -35,18 +32,11 @@ class ProfileScreen extends ConsumerWidget {
     }
   }
 
-  Future<void> _rate(BuildContext context) => _openUrl(
-    context,
-    Theme.of(context).platform == TargetPlatform.iOS
-        ? _iosStoreUrl
-        : _androidStoreUrl,
-  );
+  Future<void> _rate(BuildContext context) =>
+      _openUrl(context, BuildConfig.storeUrl);
 
   Future<void> _share(BuildContext context) async {
-    final url =
-        Theme.of(context).platform == TargetPlatform.iOS
-            ? _iosStoreUrl
-            : _androidStoreUrl;
+    final url = BuildConfig.storeUrl;
     if (url.isEmpty) return _openUrl(context, url);
     await Clipboard.setData(ClipboardData(text: url));
     if (context.mounted) {
@@ -388,7 +378,8 @@ class ProfileScreen extends ConsumerWidget {
                       context,
                       icon: PhosphorIcons.shieldCheck(),
                       title: l10n.profile_privacyPolicy,
-                      onTap: () => _openUrl(context, _privacyUrl),
+                      onTap:
+                          () => _openUrl(context, BuildConfig.privacyPolicyUrl),
                     ),
                     const Divider(height: 1),
                     _buildSettingsTile(
