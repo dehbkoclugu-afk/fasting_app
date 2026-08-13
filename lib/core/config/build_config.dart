@@ -30,9 +30,15 @@ class BuildConfig {
       'goog_pbvdYlYnKpjUqxDiMCCdBOJhjuP';
 
   /// AdMob > Apps > FastTrack > Ad units. Format: ca-app-pub-…/…
-  static const _admobAndroidBannerFallback = '';
+  ///
+  /// Matched on the unit's *format*, not its name: the Android banner unit is
+  /// the one AdMob calls "FastTrack Android Interstitial", and the interstitial
+  /// is "FastTrack Android Interstitial2".
+  static const _admobAndroidBannerFallback =
+      'ca-app-pub-2554058432197193/6471439925';
   static const _admobIosBannerFallback = '';
-  static const _admobAndroidInterstitialFallback = '';
+  static const _admobAndroidInterstitialFallback =
+      'ca-app-pub-2554058432197193/5809215089';
   static const _admobIosInterstitialFallback = '';
 
   /// App Store listing URL, from App Store Connect once the app is live.
