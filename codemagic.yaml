@@ -83,7 +83,9 @@ workflows:
 
   android-playstore:
     name: FastTrack Android → Play Store
-    instance_type: linux_x2
+    # Same machine as the iOS workflow: linux_x2 needs a paid Codemagic plan,
+    # and Android builds the same on macOS.
+    instance_type: mac_mini_m2
     max_build_duration: 60
     environment:
       # Code signing. The keystore lives in the Codemagic UI under Teams >
