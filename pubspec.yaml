@@ -1,7 +1,7 @@
 name: fasting_app
 description: "Intermittent Fasting Tracker - Track your fasting journey"
 publish_to: 'none'
-version: 1.0.0+6
+version: 1.0.0+7
 
 environment:
   sdk: ^3.7.0-323.2.beta
