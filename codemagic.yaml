@@ -140,11 +140,17 @@ workflows:
         # of one: fail here instead of at the store.
         script: |
           set -e
-          AAB=$(find build -name "*.aab" | head -1)
+          # Only the bundle under outputs/ is the finished one; Gradle also
+          # leaves unsigned intermediates behind.
+          AAB=$(find build/app/outputs -name "*.aab" | head -1)
+          test -n "$AAB" || { echo "No bundle under build/app/outputs"; exit 1; }
           jarsigner -verify "$AAB" | grep -q "jar verified" || {
             echo "$AAB is NOT signed"; exit 1;
           }
           echo "Signed: $AAB"
+          # Print the signer so the certificate can be checked against the
+          # upload key Play has registered (SHA-256 BC:C9:42:DC:...).
+          keytool -printcert -jarfile "$AAB" | grep -E "Owner:|SHA256:" | head -4
     artifacts:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
