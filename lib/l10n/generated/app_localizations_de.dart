@@ -57,13 +57,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get timer_completed => 'Glückwunsch!';
 
   @override
-  String get timer_completedMessage => 'Du hast dein Fasten erfolgreich abgeschlossen!';
+  String get timer_completedMessage =>
+      'Du hast dein Fasten erfolgreich abgeschlossen!';
 
   @override
   String get timer_selectPlan => 'Wählen Sie Fastenplan';
 
   @override
-  String get timer_stopConfirm => 'Sind Sie sicher, dass Sie das Fasten vorzeitig beenden möchten?';
+  String get timer_stopConfirm =>
+      'Sind Sie sicher, dass Sie das Fasten vorzeitig beenden möchten?';
 
   @override
   String get timer_stopTitle => 'Schluss schnell';
@@ -209,7 +211,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get profile_upgradePremium => 'Upgrade auf Premium';
 
   @override
-  String get profile_premiumDesc => 'Alle Pläne, erweiterte Statistiken und mehr';
+  String get profile_premiumDesc => 'Alle Fastenpläne, ohne Werbung';
 
   @override
   String get profile_bodyMetrics => 'Körpermetriken';
@@ -263,13 +265,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get onboarding_welcome => 'Willkommen';
 
   @override
-  String get onboarding_welcomeDesc => 'Übernehmen Sie die Kontrolle über Ihr\nintermittierende Fastenreise';
+  String get onboarding_welcomeDesc =>
+      'Übernehmen Sie die Kontrolle über Ihr\nintermittierende Fastenreise';
 
   @override
   String get onboarding_featureTimer => 'Intelligenter Fasten-Timer';
 
   @override
-  String get onboarding_featureStats => 'Detaillierte Statistiken und Diagramme';
+  String get onboarding_featureStats =>
+      'Detaillierte Statistiken und Diagramme';
 
   @override
   String get onboarding_featureMeals => 'Speiseplaner und Rezeptvorschläge';
@@ -323,7 +327,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get onboarding_selectPlan => 'Wählen Sie Ihren Plan';
 
   @override
-  String get onboarding_selectPlanDesc => 'Wählen Sie den für Sie besten Fastenplan';
+  String get onboarding_selectPlanDesc =>
+      'Wählen Sie den für Sie besten Fastenplan';
 
   @override
   String get onboarding_bodyInfo => 'Geben Sie Ihre Daten ein';
@@ -344,13 +349,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get onboarding_age => 'Alter';
 
   @override
-  String get onboarding_bodyInfoDisclaimer => 'Diese Informationen werden nur auf Ihrem Gerät gespeichert und für Kalorienberechnungen verwendet.';
+  String get onboarding_bodyInfoDisclaimer =>
+      'Diese Informationen werden nur auf Ihrem Gerät gespeichert und für Kalorienberechnungen verwendet.';
 
   @override
   String get onboarding_permissions => 'Letzter Schritt';
 
   @override
-  String get onboarding_permissionsDesc => 'Aktivieren Sie Berechtigungen für das beste Erlebnis';
+  String get onboarding_permissionsDesc =>
+      'Aktivieren Sie Berechtigungen für das beste Erlebnis';
 
   @override
   String get onboarding_next => 'Weitermachen';
@@ -377,7 +384,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get paywall_title => 'Upgrade auf Premium';
 
   @override
-  String get paywall_subtitle => 'Schalten Sie alle Funktionen frei';
+  String get paywall_subtitle =>
+      'Alle Fastenpläne freischalten, Werbung entfernen';
 
   @override
   String get paywall_allPlans => 'Alle Fastenpläne';
@@ -416,7 +424,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get paywall_premiumActive => 'Premium Aktiv!';
 
   @override
-  String get paywall_premiumActiveDesc => 'Sie haben alle Funktionen freigeschaltet';
+  String get paywall_premiumActiveDesc =>
+      'Alle Fastenpläne sind freigeschaltet, Werbung ist aus';
 
   @override
   String get water_title => 'Wasseraufnahme';
@@ -575,7 +584,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get streak_incredible => 'Unglaublich!';
 
   @override
-  String get weight_noRecord => 'Noch keine Gewichtsaufzeichnungen\nAus Profil > Körpermetriken hinzufügen';
+  String get weight_noRecord =>
+      'Noch keine Gewichtsaufzeichnungen\nAus Profil > Körpermetriken hinzufügen';
 
   @override
   String get day_mon => 'Mo';
@@ -761,7 +771,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get profile_calmGamification => 'Ruhige Gamifizierung';
 
   @override
-  String get profile_calmGamificationDesc => 'Reduziert den Liga- und Saisondruck';
+  String get profile_calmGamificationDesc =>
+      'Reduziert den Liga- und Saisondruck';
 
   @override
   String get profile_editName => 'Bearbeiten Sie Ihren Namen';
@@ -779,7 +790,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get circle_tagline => 'Gemeinsam, ohne Druck.';
 
   @override
-  String get circle_privacy => 'Gewicht und private Messwerte bleiben verborgen. Nur Fortschritt und Unterstützung sind sichtbar.';
+  String get circle_privacy =>
+      'Gewicht und private Messwerte bleiben verborgen. Nur Fortschritt und Unterstützung sind sichtbar.';
 
   @override
   String circle_sendSupport(int count) {
@@ -805,10 +817,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get crisis_waterDesc => 'Dann machen Sie drei langsame Atemzüge.';
 
   @override
-  String get crisis_delayTitle => 'Verzögern Sie die Entscheidung um 10 Minuten';
+  String get crisis_delayTitle =>
+      'Verzögern Sie die Entscheidung um 10 Minuten';
 
   @override
-  String get crisis_delayDesc => 'Wenn Sie sich unwohl fühlen, ist das Beenden des Fastens kein Misserfolg.';
+  String get crisis_delayDesc =>
+      'Wenn Sie sich unwohl fühlen, ist das Beenden des Fastens kein Misserfolg.';
 
   @override
   String get crisis_hunger => 'Hunger';
@@ -823,7 +837,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get crisis_tenMore => 'Geben Sie ihm 10 Minuten Zeit';
 
   @override
-  String get stats_storyEmpty => 'Mit Ihrem ersten Fasten beginnt Ihre persönliche Geschichte.';
+  String get stats_storyEmpty =>
+      'Mit Ihrem ersten Fasten beginnt Ihre persönliche Geschichte.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -863,13 +878,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get weather_water => 'Ein Glas Wasser kann helfen.';
 
   @override
-  String get weather_listen => 'Du bist weit gekommen; Hören Sie auf Ihren Körper.';
+  String get weather_listen =>
+      'Du bist weit gekommen; Hören Sie auf Ihren Körper.';
 
   @override
   String get weather_onPlan => 'Das heutige Tempo entspricht Ihrem Plan.';
 
   @override
-  String get weather_challenging => 'Diese Stunde war vorher eine Herausforderung; Der Support-Modus ist bereit.';
+  String get weather_challenging =>
+      'Diese Stunde war vorher eine Herausforderung; Der Support-Modus ist bereit.';
 
   @override
   String get replay_copied => 'Fasting Replay kopiert';
@@ -894,7 +911,8 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort => 'Das Phasentiming ist eine allgemeine Schätzung, keine medizinische Messung.';
+  String get phase_estimateShort =>
+      'Das Phasentiming ist eine allgemeine Schätzung, keine medizinische Messung.';
 
   @override
   String phase_hours(int start, int end) {
@@ -902,7 +920,8 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong => 'Bei diesem Zeitpunkt handelt es sich um eine allgemeine Schätzung. Stoffwechselreaktionen können von Mensch zu Mensch unterschiedlich sein.';
+  String get phase_estimateLong =>
+      'Bei diesem Zeitpunkt handelt es sich um eine allgemeine Schätzung. Stoffwechselreaktionen können von Mensch zu Mensch unterschiedlich sein.';
 
   @override
   String get bmi_underweight => 'Untergewicht';
@@ -925,10 +944,12 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get notification_phaseCatabolic => 'In die katabole Phase eingetreten 📉';
+  String get notification_phaseCatabolic =>
+      'In die katabole Phase eingetreten 📉';
 
   @override
-  String get notification_phaseFatBurning => 'Die Fettverbrennung hat begonnen! 🔥';
+  String get notification_phaseFatBurning =>
+      'Die Fettverbrennung hat begonnen! 🔥';
 
   @override
   String get notification_phaseKetosis => 'Du bist in Ketose ⚡';
@@ -945,13 +966,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get notification_waterTitle => 'Wasser trinken 💧';
 
   @override
-  String get notification_waterBody => 'Vergessen Sie nicht, während des Fastens viel Wasser zu trinken!';
+  String get notification_waterBody =>
+      'Vergessen Sie nicht, während des Fastens viel Wasser zu trinken!';
 
   @override
   String get notification_windowTitle => 'Essfenster schließen ⏰';
 
   @override
-  String get notification_windowBody => 'Ihr Essfenster schließt sich in 30 Minuten.';
+  String get notification_windowBody =>
+      'Ihr Essfenster schließt sich in 30 Minuten.';
 
   @override
   String notification_streakTitle(int days) {
@@ -959,7 +982,8 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody => 'Du machst das großartig! Machen Sie heute weiter so.';
+  String get notification_streakBody =>
+      'Du machst das großartig! Machen Sie heute weiter so.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -990,28 +1014,33 @@ class AppLocalizationsDe extends AppLocalizations {
   String get explore_guide => 'Fastenführer';
 
   @override
-  String get explore_guideDesc => 'Alles, was Sie über intermittierendes Fasten wissen müssen';
+  String get explore_guideDesc =>
+      'Alles, was Sie über intermittierendes Fasten wissen müssen';
 
   @override
-  String get explore_circleDesc => 'Teilen Sie stille Unterstützung mit Ihrer privaten Gruppe.';
+  String get explore_circleDesc =>
+      'Teilen Sie stille Unterstützung mit Ihrer privaten Gruppe.';
 
   @override
   String get explore_faq => 'Häufig gestellte Fragen';
 
   @override
-  String get explore_education => 'Dieser Inhalt dient nur der allgemeinen Aufklärung und stellt keine medizinische Diagnose oder Behandlungsberatung dar.';
+  String get explore_education =>
+      'Dieser Inhalt dient nur der allgemeinen Aufklärung und stellt keine medizinische Diagnose oder Behandlungsberatung dar.';
 
   @override
   String get explore_safety => 'Gesundheit und Sicherheit';
 
   @override
-  String get explore_safetyDesc => 'Wenn Sie an einer Krankheit leiden, regelmäßig Medikamente einnehmen, besorgniserregende Symptome haben, schwanger sind oder stillen, konsultieren Sie vor dem Fasten einen qualifizierten Arzt. Hören Sie auf, wenn Sie sich unwohl fühlen.';
+  String get explore_safetyDesc =>
+      'Wenn Sie an einer Krankheit leiden, regelmäßig Medikamente einnehmen, besorgniserregende Symptome haben, schwanger sind oder stillen, konsultieren Sie vor dem Fasten einen qualifizierten Arzt. Hören Sie auf, wenn Sie sich unwohl fühlen.';
 
   @override
   String get explore_sources => 'Quellen';
 
   @override
-  String get explore_sourcesDesc => 'Der Inhalt ist aus den unten aufgeführten Referenzen zum Thema öffentliche Gesundheit vereinfacht.';
+  String get explore_sourcesDesc =>
+      'Der Inhalt ist aus den unten aufgeführten Referenzen zum Thema öffentliche Gesundheit vereinfacht.';
 
   @override
   String get explore_sourceError => 'Die Quelle konnte nicht geöffnet werden';
@@ -1020,124 +1049,146 @@ class AppLocalizationsDe extends AppLocalizations {
   String get explore_rules => 'Wichtige Regeln';
 
   @override
-  String get explore_rule1 => 'Nehmen Sie während des Fastens keine kalorienreichen Lebensmittel zu sich';
+  String get explore_rule1 =>
+      'Nehmen Sie während des Fastens keine kalorienreichen Lebensmittel zu sich';
 
   @override
   String get explore_rule2 => 'Trinken Sie viel Wasser und Flüssigkeit';
 
   @override
-  String get explore_rule3 => 'Ernähren Sie sich während Ihres Essfensters ausgewogen';
+  String get explore_rule3 =>
+      'Ernähren Sie sich während Ihres Essfensters ausgewogen';
 
   @override
-  String get explore_rule4 => 'Hören Sie auf zu fasten, wenn Sie sich unwohl fühlen';
+  String get explore_rule4 =>
+      'Hören Sie auf zu fasten, wenn Sie sich unwohl fühlen';
 
   @override
-  String get explore_rule5 => 'Schwangere und stillende Frauen sollten nicht fasten';
+  String get explore_rule5 =>
+      'Schwangere und stillende Frauen sollten nicht fasten';
 
   @override
-  String get explore_rule6 => 'Konsultieren Sie Ihren Arzt, wenn Sie an chronischen Erkrankungen leiden';
+  String get explore_rule6 =>
+      'Konsultieren Sie Ihren Arzt, wenn Sie an chronischen Erkrankungen leiden';
 
   @override
   String get tip_water => 'Bleiben Sie hydriert';
 
   @override
-  String get tip_waterDesc => 'Trinken Sie Wasser, wenn Sie durstig sind, und nehmen Sie Flüssigkeit zu den Mahlzeiten zu sich. Die Bedürfnisse können je nach Gesundheitszustand, Wetter und Aktivität variieren.';
+  String get tip_waterDesc =>
+      'Trinken Sie Wasser, wenn Sie durstig sind, und nehmen Sie Flüssigkeit zu den Mahlzeiten zu sich. Die Bedürfnisse können je nach Gesundheitszustand, Wetter und Aktivität variieren.';
 
   @override
   String get tip_food => 'Essen Sie richtig';
 
   @override
-  String get tip_foodDesc => 'Wählen Sie während der Essensfenster proteinreiche Lebensmittel mit Ballaststoffen und gesunden Fetten. Vermeiden Sie verarbeitete Lebensmittel.';
+  String get tip_foodDesc =>
+      'Wählen Sie während der Essensfenster proteinreiche Lebensmittel mit Ballaststoffen und gesunden Fetten. Vermeiden Sie verarbeitete Lebensmittel.';
 
   @override
   String get tip_sleep => 'Schlaf gut';
 
   @override
-  String get tip_sleepDesc => 'Regelmäßiger, ausreichender Schlaf unterstützt das allgemeine Wohlbefinden. Planen Sie das Fasten so ein, dass es Ihren Schlaf nicht stört.';
+  String get tip_sleepDesc =>
+      'Regelmäßiger, ausreichender Schlaf unterstützt das allgemeine Wohlbefinden. Planen Sie das Fasten so ein, dass es Ihren Schlaf nicht stört.';
 
   @override
   String get tip_exercise => 'Leichte Übung';
 
   @override
-  String get tip_exerciseDesc => 'Während des Fastens können Sie leichte Spaziergänge oder Yoga machen. Vermeiden Sie schwere körperliche Betätigung, insbesondere in den ersten Wochen, bis sich Ihr Körper daran gewöhnt hat.';
+  String get tip_exerciseDesc =>
+      'Während des Fastens können Sie leichte Spaziergänge oder Yoga machen. Vermeiden Sie schwere körperliche Betätigung, insbesondere in den ersten Wochen, bis sich Ihr Körper daran gewöhnt hat.';
 
   @override
   String get tip_drinks => 'Erlaubte Getränke';
 
   @override
-  String get tip_drinksDesc => 'Während des Fastens können Sie Wasser, einfachen Tee und schwarzen Kaffee (kein Zucker, keine Milch) zu sich nehmen. Diese Getränke brechen Ihr Fasten nicht.';
+  String get tip_drinksDesc =>
+      'Während des Fastens können Sie Wasser, einfachen Tee und schwarzen Kaffee (kein Zucker, keine Milch) zu sich nehmen. Diese Getränke brechen Ihr Fasten nicht.';
 
   @override
   String get faq_drinks => 'Was kann ich während des Fastens trinken?';
 
   @override
-  String get faq_drinksAnswer => 'Sie können Wasser, einfachen Tee und schwarzen Kaffee (ohne Zucker/Milch) trinken. Kalorienhaltige Getränke brechen das Fasten.';
+  String get faq_drinksAnswer =>
+      'Sie können Wasser, einfachen Tee und schwarzen Kaffee (ohne Zucker/Milch) trinken. Kalorienhaltige Getränke brechen das Fasten.';
 
   @override
   String get faq_plan => 'Welchen Fastenplan soll ich wählen?';
 
   @override
-  String get faq_planAnswer => 'Wenn Sie neu sind, beginnen Sie mit 12:12 oder 14:10. Wenn Sie Erfahrung haben, versuchen Sie es mit 16:8 oder 18:6. 20:4 und OMAD sind für fortgeschrittene Schneller.';
+  String get faq_planAnswer =>
+      'Wenn Sie neu sind, beginnen Sie mit 12:12 oder 14:10. Wenn Sie Erfahrung haben, versuchen Sie es mit 16:8 oder 18:6. 20:4 und OMAD sind für fortgeschrittene Schneller.';
 
   @override
   String get faq_exercise => 'Kann ich während des Fastens Sport treiben?';
 
   @override
-  String get faq_exerciseAnswer => 'Ja, aber vermeiden Sie intensive Trainingseinheiten. Leichtes Cardiotraining, Walking und Yoga sind ideal. Wenn Sie Gewichte heben, planen Sie die Übungen in der Nähe Ihres Essensfensters ein.';
+  String get faq_exerciseAnswer =>
+      'Ja, aber vermeiden Sie intensive Trainingseinheiten. Leichtes Cardiotraining, Walking und Yoga sind ideal. Wenn Sie Gewichte heben, planen Sie die Übungen in der Nähe Ihres Essensfensters ein.';
 
   @override
   String get faq_weight => 'Hilft Fasten beim Abnehmen?';
 
   @override
-  String get faq_weightAnswer => 'Bei manchen Menschen kann die Begrenzung der Essenszeit die Gesamtenergieaufnahme verringern. Die Ergebnisse variieren und die langfristigen Auswirkungen werden noch untersucht.';
+  String get faq_weightAnswer =>
+      'Bei manchen Menschen kann die Begrenzung der Essenszeit die Gesamtenergieaufnahme verringern. Die Ergebnisse variieren und die langfristigen Auswirkungen werden noch untersucht.';
 
   @override
   String get plan_12_desc => 'Anfängerniveau';
 
   @override
-  String get plan_12_detail => 'Ideal für Anfänger. Schnelle 12 Stunden inklusive Ihrer Schlafzeit.';
+  String get plan_12_detail =>
+      'Ideal für Anfänger. Schnelle 12 Stunden inklusive Ihrer Schlafzeit.';
 
   @override
   String get plan_16_desc => 'Beliebtester Plan';
 
   @override
-  String get plan_16_detail => 'Der gebräuchlichste IF-Plan. 16 Stunden Fasten, 8 Stunden Essensfenster. Normalerweise Mittag- bis Abendessen.';
+  String get plan_16_detail =>
+      'Der gebräuchlichste IF-Plan. 16 Stunden Fasten, 8 Stunden Essensfenster. Normalerweise Mittag- bis Abendessen.';
 
   @override
   String get plan_18_desc => 'Mittelstufe';
 
   @override
-  String get plan_18_detail => '18 Stunden Fasten, 6 Stunden Essensfenster. Längere Fettverbrennungsdauer.';
+  String get plan_18_detail =>
+      '18 Stunden Fasten, 6 Stunden Essensfenster. Längere Fettverbrennungsdauer.';
 
   @override
   String get plan_20_desc => 'Fortgeschrittenes Niveau';
 
   @override
-  String get plan_20_detail => '20 Stunden Fasten, 4 Stunden Essensfenster. Ideal zum Erreichen von Ketose und Autophagie.';
+  String get plan_20_detail =>
+      '20 Stunden Fasten, 4 Stunden Essensfenster. Ideal zum Erreichen von Ketose und Autophagie.';
 
   @override
   String get plan_omad_desc => 'Eine Mahlzeit am Tag';
 
   @override
-  String get plan_omad_detail => 'Eine Mahlzeit am Tag. 23 Stunden Fasten, 1 Stunde Essensfenster. Expertenniveau.';
+  String get plan_omad_detail =>
+      'Eine Mahlzeit am Tag. 23 Stunden Fasten, 1 Stunde Essensfenster. Expertenniveau.';
 
   @override
   String get plan_52_desc => '2 Tage pro Woche';
 
   @override
-  String get plan_52_detail => 'Essen Sie 5 Tage lang normal, an 2 Tagen nur ~500 Kalorien. Ein alternativer Ansatz.';
+  String get plan_52_detail =>
+      'Essen Sie 5 Tage lang normal, an 2 Tagen nur ~500 Kalorien. Ein alternativer Ansatz.';
 
   @override
   String get plan_ese_desc => '24 Stunden schnell';
 
   @override
-  String get plan_ese_detail => 'Fasten Sie 1–2 Mal pro Woche 24 Stunden lang. Für fortgeschrittene Benutzer.';
+  String get plan_ese_detail =>
+      'Fasten Sie 1–2 Mal pro Woche 24 Stunden lang. Für fortgeschrittene Benutzer.';
 
   @override
   String get plan_warrior_desc => 'Kriegerdiät';
 
   @override
-  String get plan_warrior_detail => 'Essen Sie tagsüber wenig (Obst, Gemüse) und nehmen Sie Ihre Hauptmahlzeit in einem 4-Stunden-Fenster am Abend ein.';
+  String get plan_warrior_detail =>
+      'Essen Sie tagsüber wenig (Obst, Gemüse) und nehmen Sie Ihre Hauptmahlzeit in einem 4-Stunden-Fenster am Abend ein.';
 
   @override
   String get award_first_title => 'Erster Schritt';
@@ -1149,7 +1200,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get award_rhythm3_title => '3-Tage-Rhythmus';
 
   @override
-  String get award_rhythm3_desc => 'Behalten Sie Ihren Rhythmus drei Tage lang bei';
+  String get award_rhythm3_desc =>
+      'Behalten Sie Ihren Rhythmus drei Tage lang bei';
 
   @override
   String get award_hours24_title => '24 Stunden';
@@ -1289,7 +1341,8 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc => 'Alle sieben Abschlüsse verdient. Ein verpasster Tag macht Ihren Fortschritt nie zunichte.';
+  String get game_shieldsDesc =>
+      'Alle sieben Abschlüsse verdient. Ein verpasster Tag macht Ihren Fortschritt nie zunichte.';
 
   @override
   String get game_league => 'Private wöchentliche Liga';
@@ -1389,7 +1442,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get badge_fast16_title => '16 Stunden';
 
   @override
-  String get badge_fast16_desc => 'Erreichen Sie 16 Stunden in einem Schnelldurchlauf';
+  String get badge_fast16_desc =>
+      'Erreichen Sie 16 Stunden in einem Schnelldurchlauf';
 
   @override
   String get badge_hours50_title => '50 Stunden';
@@ -1441,26 +1495,77 @@ class AppLocalizationsDe extends AppLocalizations {
   String get paywall_continue => 'Weiter';
 
   @override
-  String get paywall_productsUnavailable => 'Käufe sind derzeit nicht verfügbar. Bitte versuchen Sie es später erneut.';
+  String get paywall_productsUnavailable =>
+      'Käufe sind derzeit nicht verfügbar. Bitte versuchen Sie es später erneut.';
 
   @override
-  String get paywall_purchaseFailed => 'Der Kauf konnte nicht abgeschlossen werden.';
+  String get paywall_purchaseFailed =>
+      'Der Kauf konnte nicht abgeschlossen werden.';
 
   @override
-  String get paywall_nothingToRestore => 'Es wurde kein früherer Kauf gefunden.';
+  String get paywall_nothingToRestore =>
+      'Es wurde kein früherer Kauf gefunden.';
 
   @override
-  String get paywall_restoreFailed => 'Käufe konnten nicht wiederhergestellt werden.';
+  String get paywall_restoreFailed =>
+      'Käufe konnten nicht wiederhergestellt werden.';
 
   @override
   String get paywall_terms => 'Nutzungsbedingungen';
 
   @override
-  String get permission_notificationDesc => 'Fastenerinnerungen, Phasenaktualisierungen und Abschlussmeldungen';
+  String get permission_notificationDesc =>
+      'Fastenerinnerungen, Phasenaktualisierungen und Abschlussmeldungen';
 
   @override
   String get profile_privacyChoices => 'Datenschutzeinstellungen';
 
   @override
-  String get paywall_autoRenewInfo => 'Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwaltung jederzeit in den App-Store-Einstellungen.';
+  String get paywall_autoRenewInfo =>
+      'Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwaltung jederzeit in den App-Store-Einstellungen.';
+
+  @override
+  String paywall_perMonth(String price) {
+    return '$price / Monat';
+  }
+
+  @override
+  String paywall_savePercent(int percent) {
+    return '$percent% sparen';
+  }
+
+  @override
+  String paywall_freeTrialDays(int days) {
+    return '$days Tage kostenlos testen';
+  }
+
+  @override
+  String get paywall_startFreeTrial => 'Kostenlos testen';
+
+  @override
+  String get paywall_retry => 'Erneut versuchen';
+
+  @override
+  String get paywall_alreadyOwned =>
+      'Du besitzt dieses Abo bereits. Tippe auf „Käufe wiederherstellen“.';
+
+  @override
+  String get paywall_storeUnavailable =>
+      'Der Store ist gerade nicht erreichbar. Prüfe deine Verbindung und versuche es erneut.';
+
+  @override
+  String get paywall_secureNote =>
+      'Jederzeit kündbar. Die Zahlung erfolgt über dein Store-Konto.';
+
+  @override
+  String get paywall_autoRenewInfoPlay =>
+      'Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwaltung jederzeit unter Google Play > Abos.';
+
+  @override
+  String get paywall_allPlansDesc =>
+      'Schaltet 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat und Warrior frei';
+
+  @override
+  String get paywall_noAdsDesc =>
+      'Banner- und Interstitial-Werbung wird vollständig deaktiviert';
 }

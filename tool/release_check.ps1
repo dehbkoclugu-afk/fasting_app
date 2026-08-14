@@ -2,19 +2,33 @@ param([string]$Config = "release.json")
 
 $errors = @()
 $required = @(
-  "REVENUECAT_ANDROID_API_KEY", "REVENUECAT_IOS_API_KEY",
   "ADMOB_ANDROID_BANNER_ID", "ADMOB_IOS_BANNER_ID",
   "ADMOB_ANDROID_INTERSTITIAL_ID", "ADMOB_IOS_INTERSTITIAL_ID",
   "PRIVACY_POLICY_URL", "TERMS_OF_USE_URL",
   "ANDROID_STORE_URL", "IOS_STORE_URL"
 )
 
+$values = $null
 if (-not (Test-Path $Config)) {
   $errors += "Missing $Config"
 } else {
   $values = Get-Content -Raw $Config | ConvertFrom-Json
   foreach ($key in $required) {
     if ([string]::IsNullOrWhiteSpace($values.$key)) { $errors += "Missing $key" }
+  }
+}
+
+# The RevenueCat public SDK keys may come from $Config or from the in-source
+# fallbacks in BuildConfig. Either one keeps purchases working.
+$service = Get-Content -Raw "lib/core/config/build_config.dart"
+foreach ($entry in @(
+    @{ Key = "REVENUECAT_ANDROID_API_KEY"; Field = "_revenueCatAndroidKeyFallback" },
+    @{ Key = "REVENUECAT_IOS_API_KEY"; Field = "_revenueCatIosKeyFallback" }
+  )) {
+  $fromConfig = if ($values) { $values.($entry.Key) } else { $null }
+  $inSource = $service -match "$($entry.Field) = '[^']+'"
+  if ([string]::IsNullOrWhiteSpace($fromConfig) -and -not $inSource) {
+    $errors += "Missing $($entry.Key) - set it in $Config or paste the public SDK key into BuildConfig.$($entry.Field)"
   }
 }
 

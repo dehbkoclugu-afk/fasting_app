@@ -5,92 +5,136 @@ import '../../../services/revenue_cat_service.dart';
 
 class SubscriptionState {
   final bool isPremium;
+
+  /// A purchase or restore is running.
   final bool isLoading;
-  final Offerings? offerings;
+
+  /// The product list is being fetched from the store.
+  final bool isLoadingProducts;
+
+  /// Purchasable packages, shortest duration first.
+  final List<Package> availablePackages;
+
+  /// True when the SDK never configured (missing API key / failed configure).
+  final bool isStoreAvailable;
+
   final String? errorMessage;
 
   const SubscriptionState({
     this.isPremium = false,
     this.isLoading = false,
-    this.offerings,
+    this.isLoadingProducts = false,
+    this.availablePackages = const [],
+    this.isStoreAvailable = true,
     this.errorMessage,
   });
 
   SubscriptionState copyWith({
     bool? isPremium,
     bool? isLoading,
-    Offerings? offerings,
+    bool? isLoadingProducts,
+    List<Package>? availablePackages,
+    bool? isStoreAvailable,
     String? errorMessage,
+    bool clearError = false,
   }) {
     return SubscriptionState(
       isPremium: isPremium ?? this.isPremium,
       isLoading: isLoading ?? this.isLoading,
-      offerings: offerings ?? this.offerings,
-      errorMessage: errorMessage,
+      isLoadingProducts: isLoadingProducts ?? this.isLoadingProducts,
+      availablePackages: availablePackages ?? this.availablePackages,
+      isStoreAvailable: isStoreAvailable ?? this.isStoreAvailable,
+      errorMessage: clearError ? null : (errorMessage ?? this.errorMessage),
     );
   }
 
-  /// Get available packages sorted by duration
-  List<Package> get availablePackages {
-    final offering = offerings?.current;
-    if (offering == null) return [];
-    return offering.availablePackages;
-  }
+  /// True when there is nothing to sell — the paywall then offers a retry
+  /// instead of a disabled purchase button.
+  bool get hasNoProducts => availablePackages.isEmpty && !isLoadingProducts;
 }
 
 class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
-  SubscriptionNotifier() : super(const SubscriptionState()) {
-    _init();
+  /// [initialState] is a test seam: passing one skips the store round-trip.
+  SubscriptionNotifier({SubscriptionState? initialState})
+    : super(initialState ?? const SubscriptionState()) {
+    if (initialState == null) _init();
   }
 
   final _service = RevenueCatService();
 
   Future<void> _init() async {
-    state = state.copyWith(isLoading: true);
+    // Picks up renewals, expiries and purchases made on another device.
+    _service.addPremiumListener((isPremium) {
+      if (mounted) state = state.copyWith(isPremium: isPremium);
+    });
+    await loadProducts();
+  }
+
+  /// Loads entitlement status and the purchasable packages. Safe to call
+  /// again — the paywall's retry button does exactly that.
+  Future<void> loadProducts() async {
+    state = state.copyWith(isLoadingProducts: true, clearError: true);
     try {
+      // The SDK may not have configured yet on a cold start (or configure
+      // failed); try once more before giving up on the store.
+      if (!_service.isConfigured) await _service.initialize();
+
       final isPremium = await _service.isPremium();
-      final offerings = await _service.getOfferings();
+      final packages = await _service.getPackages();
       state = state.copyWith(
         isPremium: isPremium,
-        offerings: offerings,
-        isLoading: false,
+        availablePackages: packages,
+        isStoreAvailable: _service.isConfigured,
+        isLoadingProducts: false,
       );
     } catch (e) {
-      debugPrint('Subscription init error: $e');
-      state = state.copyWith(isLoading: false);
+      debugPrint('Subscription load error: $e');
+      state = state.copyWith(
+        isLoadingProducts: false,
+        isStoreAvailable: _service.isConfigured,
+      );
     }
   }
 
-  Future<bool> purchase(Package package) async {
-    state = state.copyWith(isLoading: true, errorMessage: null);
-    try {
-      final success = await _service.purchasePackage(package);
-      state = state.copyWith(isPremium: success, isLoading: false);
-      return success;
-    } catch (e) {
-      state = state.copyWith(isLoading: false, errorMessage: 'purchase_failed');
-      return false;
-    }
+  Future<PurchaseOutcome> purchase(Package package) async {
+    state = state.copyWith(isLoading: true, clearError: true);
+    final outcome = await _service.purchasePackage(package);
+    final error = switch (outcome) {
+      PurchaseOutcome.success || PurchaseOutcome.cancelled => null,
+      PurchaseOutcome.alreadyOwned => 'already_owned',
+      PurchaseOutcome.notConfigured => 'store_unavailable',
+      PurchaseOutcome.failed => 'purchase_failed',
+    };
+    state = state.copyWith(
+      isPremium: outcome == PurchaseOutcome.success ? true : state.isPremium,
+      isLoading: false,
+      errorMessage: error,
+      clearError: error == null,
+    );
+    return outcome;
   }
 
-  Future<bool> restore() async {
-    state = state.copyWith(isLoading: true, errorMessage: null);
-    try {
-      final success = await _service.restorePurchases();
-      state = state.copyWith(isPremium: success, isLoading: false);
-      if (!success) {
-        state = state.copyWith(errorMessage: 'nothing_to_restore');
-      }
-      return success;
-    } catch (e) {
-      state = state.copyWith(isLoading: false, errorMessage: 'restore_failed');
-      return false;
-    }
+  Future<RestoreOutcome> restore() async {
+    state = state.copyWith(isLoading: true, clearError: true);
+    final outcome = await _service.restorePurchases();
+    final error = switch (outcome) {
+      RestoreOutcome.success => null,
+      RestoreOutcome.nothingToRestore => 'nothing_to_restore',
+      RestoreOutcome.notConfigured => 'store_unavailable',
+      RestoreOutcome.failed => 'restore_failed',
+    };
+    state = state.copyWith(
+      isPremium: outcome == RestoreOutcome.success ? true : state.isPremium,
+      isLoading: false,
+      errorMessage: error,
+      clearError: error == null,
+    );
+    return outcome;
   }
 
   Future<void> refreshStatus() async {
     final isPremium = await _service.isPremium();
-    state = state.copyWith(isPremium: isPremium);
+    if (mounted) state = state.copyWith(isPremium: isPremium);
   }
 }
 

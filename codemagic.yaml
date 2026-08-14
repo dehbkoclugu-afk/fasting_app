@@ -80,3 +80,91 @@ workflows:
         notify:
           success: true
           failure: true
+
+  android-playstore:
+    name: FastTrack Android → Play Store
+    # Same machine as the iOS workflow: linux_x2 needs a paid Codemagic plan,
+    # and Android builds the same on macOS.
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      # Code signing. The keystore lives in the Codemagic UI under Teams >
+      # Code signing identities > Android keystores; this is its reference
+      # name. Its certificate matches the upload key Play has registered for
+      # com.dehbkoclugu.fasttrack (SHA-256 BC:C9:42:DC:…), so bundles built
+      # here are accepted by Play. A name that does not exist fails the build.
+      android_signing:
+        - fasttrack_upload
+      flutter: 3.38.10
+      java: 17
+      groups:
+        - fasttrack_release
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Generate l10n
+        script: flutter gen-l10n
+      - name: Analyze
+        # Infos are not fatal: the repo carries pre-existing Radio deprecations.
+        script: flutter analyze --no-fatal-infos
+      - name: Test
+        script: flutter test
+      - name: Set up key.properties
+        # android_signing places the keystore on disk and exports these
+        # variables; build.gradle.kts reads key.properties, so without this
+        # bridge the release signingConfig is null and the bundle comes out
+        # unsigned — which is what Play rejected.
+        script: |
+          set -e
+          cat > "$CM_BUILD_DIR/android/key.properties" <<EOF
+          storePassword=$CM_KEYSTORE_PASSWORD
+          keyPassword=${CM_KEY_PASSWORD:-$CM_KEY_ALIAS_PASSWORD}
+          keyAlias=${CM_KEY_ALIAS:-$CM_KEY_ALIAS_USERNAME}
+          storeFile=$CM_KEYSTORE_PATH
+          EOF
+          test -s "$CM_KEYSTORE_PATH" || { echo "No keystore: check the android_signing reference name"; exit 1; }
+      - name: Build AAB
+        # Every one of these also has a fallback in BuildConfig, so an empty
+        # variable degrades to the in-source value instead of shipping a build
+        # with purchases and ads switched off.
+        script: |
+          flutter build appbundle --release \
+            --dart-define=REVENUECAT_ANDROID_API_KEY=$REVENUECAT_ANDROID_API_KEY \
+            --dart-define=ADMOB_ANDROID_BANNER_ID=$ADMOB_ANDROID_BANNER_ID \
+            --dart-define=ADMOB_ANDROID_INTERSTITIAL_ID=$ADMOB_ANDROID_INTERSTITIAL_ID \
+            --dart-define=PRIVACY_POLICY_URL=$PRIVACY_POLICY_URL \
+            --dart-define=TERMS_OF_USE_URL=$TERMS_OF_USE_URL \
+            --dart-define=ANDROID_STORE_URL=$ANDROID_STORE_URL
+      - name: Verify the bundle is signed
+        # Play refuses an unsigned upload, and a successful build is not proof
+        # of one: fail here instead of at the store.
+        script: |
+          set -e
+          # Only the bundle under outputs/ is the finished one; Gradle also
+          # leaves unsigned intermediates behind.
+          AAB=$(find build/app/outputs -name "*.aab" | head -1)
+          test -n "$AAB" || { echo "No bundle under build/app/outputs"; exit 1; }
+          jarsigner -verify "$AAB" | grep -q "jar verified" || {
+            echo "$AAB is NOT signed"; exit 1;
+          }
+          echo "Signed: $AAB"
+          # Print the signer so the certificate can be checked against the
+          # upload key Play has registered (SHA-256 BC:C9:42:DC:...).
+          keytool -printcert -jarfile "$AAB" | grep -E "Owner:|SHA256:" | head -4
+    artifacts:
+      - build/**/outputs/**/*.aab
+      - build/**/outputs/**/mapping.txt
+    publishing:
+      # Uncomment once a Google Play service account JSON is stored in the
+      # "fasttrack_release" group as GCLOUD_SERVICE_ACCOUNT_CREDENTIALS. Until
+      # then the bundle arrives by email and is uploaded by hand.
+      # google_play:
+      #   credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+      #   track: internal
+      #   submit_as_draft: true
+      email:
+        recipients:
+          - dehbkoclugu@gmail.com
+        notify:
+          success: true
+          failure: true

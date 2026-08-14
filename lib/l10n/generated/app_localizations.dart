@@ -66,7 +66,8 @@ import 'app_localizations_tr.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -74,7 +75,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -86,12 +88,13 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -100,7 +103,7 @@ abstract class AppLocalizations {
     Locale('es'),
     Locale('fr'),
     Locale('pt'),
-    Locale('tr')
+    Locale('tr'),
   ];
 
   /// No description provided for @appTitle.
@@ -502,7 +505,7 @@ abstract class AppLocalizations {
   /// No description provided for @profile_premiumDesc.
   ///
   /// In en, this message translates to:
-  /// **'All plans, advanced stats, and more'**
+  /// **'Every fasting plan, with no ads'**
   String get profile_premiumDesc;
 
   /// No description provided for @profile_bodyMetrics.
@@ -838,7 +841,7 @@ abstract class AppLocalizations {
   /// No description provided for @paywall_subtitle.
   ///
   /// In en, this message translates to:
-  /// **'Unlock all features'**
+  /// **'Unlock every fasting plan and remove ads'**
   String get paywall_subtitle;
 
   /// No description provided for @paywall_allPlans.
@@ -916,7 +919,7 @@ abstract class AppLocalizations {
   /// No description provided for @paywall_premiumActiveDesc.
   ///
   /// In en, this message translates to:
-  /// **'You unlocked all features'**
+  /// **'Every fasting plan is unlocked and ads are off'**
   String get paywall_premiumActiveDesc;
 
   /// No description provided for @water_title.
@@ -2898,9 +2901,76 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in your App Store settings.'**
   String get paywall_autoRenewInfo;
+
+  /// No description provided for @paywall_perMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} / month'**
+  String paywall_perMonth(String price);
+
+  /// No description provided for @paywall_savePercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Save {percent}%'**
+  String paywall_savePercent(int percent);
+
+  /// No description provided for @paywall_freeTrialDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{days}-day free trial'**
+  String paywall_freeTrialDays(int days);
+
+  /// No description provided for @paywall_startFreeTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'Start free trial'**
+  String get paywall_startFreeTrial;
+
+  /// No description provided for @paywall_retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get paywall_retry;
+
+  /// No description provided for @paywall_alreadyOwned.
+  ///
+  /// In en, this message translates to:
+  /// **'You already own this subscription. Tap “Restore purchases”.'**
+  String get paywall_alreadyOwned;
+
+  /// No description provided for @paywall_storeUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Can\'t reach the store right now. Check your connection and try again.'**
+  String get paywall_storeUnavailable;
+
+  /// No description provided for @paywall_secureNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel anytime. Payment is charged to your store account.'**
+  String get paywall_secureNote;
+
+  /// No description provided for @paywall_autoRenewInfoPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.'**
+  String get paywall_autoRenewInfoPlay;
+
+  /// No description provided for @paywall_allPlansDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocks 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat and Warrior'**
+  String get paywall_allPlansDesc;
+
+  /// No description provided for @paywall_noAdsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Banner and interstitial ads are turned off completely'**
+  String get paywall_noAdsDesc;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -2909,29 +2979,40 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['de', 'en', 'es', 'fr', 'pt', 'tr'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>[
+    'de',
+    'en',
+    'es',
+    'fr',
+    'pt',
+    'tr',
+  ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'de': return AppLocalizationsDe();
-    case 'en': return AppLocalizationsEn();
-    case 'es': return AppLocalizationsEs();
-    case 'fr': return AppLocalizationsFr();
-    case 'pt': return AppLocalizationsPt();
-    case 'tr': return AppLocalizationsTr();
+    case 'de':
+      return AppLocalizationsDe();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'es':
+      return AppLocalizationsEs();
+    case 'fr':
+      return AppLocalizationsFr();
+    case 'pt':
+      return AppLocalizationsPt();
+    case 'tr':
+      return AppLocalizationsTr();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }

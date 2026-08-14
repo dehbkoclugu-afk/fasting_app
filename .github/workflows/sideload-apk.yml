@@ -1,0 +1,64 @@
+name: Sideload APK
+
+# Builds an installable test APK so the app can be checked on a real device.
+#
+# It is signed with a keystore generated inside the run and carries the
+# ".sideload" application id suffix, so it installs beside the Play version
+# instead of replacing it. It is not, and cannot become, a Play upload: Play
+# only accepts bundles signed with the registered upload key.
+
+on:
+  push:
+    branches: ['claude/**']
+  workflow_dispatch:
+
+jobs:
+  apk:
+    name: Build sideload APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.38.10
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+
+      - run: flutter gen-l10n
+
+      # Throwaway signing material: it exists only so Android will install the
+      # APK. A new one is generated every run, so a rebuild does not upgrade a
+      # previously installed test app — uninstall it first.
+      - name: Generate a throwaway keystore
+        run: |
+          keytool -genkeypair -v -keystore "$RUNNER_TEMP/sideload.jks" \
+            -storepass sideload -keypass sideload -alias sideload \
+            -keyalg RSA -keysize 2048 -validity 3650 \
+            -dname "CN=FastTrack Sideload, O=Test, C=TR"
+          cat > android/key.properties <<EOF
+          storePassword=sideload
+          keyPassword=sideload
+          keyAlias=sideload
+          storeFile=$RUNNER_TEMP/sideload.jks
+          EOF
+
+      # Split per ABI: a phone only needs its own slice, which keeps the
+      # download small enough to hand over directly.
+      - name: Build APK
+        env:
+          ORG_GRADLE_PROJECT_sideloadSuffix: 'true'
+        run: flutter build apk --release --split-per-abi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sideload-apk
+          path: build/app/outputs/flutter-apk/app-*-release.apk
+          if-no-files-found: error
