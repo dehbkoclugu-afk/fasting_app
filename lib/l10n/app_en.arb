@@ -133,7 +133,6 @@
   "paywall_allPlans": "All fasting plans",
   "paywall_advancedStats": "Advanced statistics",
   "paywall_mealPlanner": "Meal planner",
-  "paywall_healthKit": "HealthKit integration",
   "paywall_themes": "Theme customization",
   "paywall_noAds": "No ads",
   "paywall_weekly": "Weekly",
@@ -695,8 +694,6 @@
   "paywall_restoreFailed": "Purchases could not be restored.",
   "paywall_terms": "Terms of Use",
   "permission_notificationDesc": "Fasting reminders, phase updates and completion notifications",
-  "permission_healthTitle": "Health Connect / HealthKit",
-  "permission_healthDesc": "Sync steps, active calories and weight with your permission",
   "profile_privacyChoices": "Privacy choices",
   "paywall_autoRenewInfo": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in your App Store settings."
 }
