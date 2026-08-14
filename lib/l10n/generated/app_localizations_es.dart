@@ -397,9 +397,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get paywall_mealPlanner => 'Planificador de comidas';
 
   @override
-  String get paywall_healthKit => 'Integración de HealthKit';
-
-  @override
   String get paywall_themes => 'Personalización del tema';
 
   @override
@@ -1512,13 +1509,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Recordatorios de ayuno, cambios de fase y avisos de finalización';
 
   @override
-  String get permission_healthTitle => 'Health Connect / HealthKit';
-
-  @override
-  String get permission_healthDesc =>
-      'Sincroniza pasos, calorías activas y peso con tu permiso';
-
-  @override
   String get profile_privacyChoices => 'Opciones de privacidad';
 
   @override
@@ -1561,9 +1551,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get paywall_autoRenewInfoPlay =>
       'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del final del periodo. Gestiónalas o cancélalas cuando quieras en Google Play > Suscripciones.';
-
-  @override
-  String get paywall_healthConnect => 'Integración con Health Connect';
 
   @override
   String get paywall_allPlansDesc =>

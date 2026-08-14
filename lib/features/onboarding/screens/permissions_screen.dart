@@ -6,7 +6,6 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../../services/notification_service.dart';
-import '../../../services/health_service.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../widgets/onboarding_progress.dart';
 
@@ -19,7 +18,6 @@ class PermissionsScreen extends ConsumerStatefulWidget {
 
 class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
   bool _notificationGranted = false;
-  bool _healthGranted = false;
 
   @override
   Widget build(BuildContext context) {
@@ -67,21 +65,6 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
                   }
                 },
               ),
-              const SizedBox(height: 16),
-
-              _buildPermissionCard(
-                context,
-                icon: PhosphorIcons.heartbeat(PhosphorIconsStyle.fill),
-                title: l10n.permission_healthTitle,
-                description: l10n.permission_healthDesc,
-                color: AppColors.success,
-                granted: _healthGranted,
-                onEnable: () async {
-                  final granted = await HealthService().requestAuthorization();
-                  setState(() => _healthGranted = granted);
-                },
-              ),
-
               const Spacer(),
 
               GradientButton(

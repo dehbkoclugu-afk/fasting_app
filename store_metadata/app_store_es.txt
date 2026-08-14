@@ -12,9 +12,9 @@ Crea con FastTrack una rutina de ayuno que se adapte a tu vida.
 
 Consulta el tiempo transcurrido y restante, conoce las etapas metabólicas generales, registra agua y peso y revisa tu progreso sin presión.
 
-Incluye planes 12:12, 14:10, 16:8, 18:6, 20:4 y OMAD; informes visuales; recordatorios opcionales; integración con Health Connect y Apple Health; y temas claro y oscuro.
+Incluye planes 12:12, 14:10, 16:8, 18:6, 20:4 y OMAD; informes visuales; recordatorios opcionales; y temas claro y oscuro.
 
-Los registros principales se guardan en tu dispositivo. El acceso a datos de salud es opcional y requiere tu permiso. FastTrack está disponible en español, inglés, turco, portugués, alemán y francés.
+Los registros principales se guardan en tu dispositivo. FastTrack está disponible en español, inglés, turco, portugués, alemán y francés.
 
 PREMIUM
 Premium desbloquea todos los planes de ayuno (18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior) y quita los anuncios. Puede haber opciones mensuales, anuales y de por vida. La tienda muestra el precio antes de comprar.

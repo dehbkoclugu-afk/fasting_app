@@ -12,9 +12,9 @@ Crie com o FastTrack uma rotina de jejum que combine com a sua vida.
 
 Veja o tempo decorrido e restante, conheça estágios metabólicos gerais, registre água e peso e acompanhe seu progresso sem pressão.
 
-Inclui planos 12:12, 14:10, 16:8, 18:6, 20:4 e OMAD; relatórios visuais; lembretes opcionais; integração com Health Connect e Apple Health; e temas claro e escuro.
+Inclui planos 12:12, 14:10, 16:8, 18:6, 20:4 e OMAD; relatórios visuais; lembretes opcionais; e temas claro e escuro.
 
-Os registros principais ficam armazenados no seu dispositivo. O acesso a dados de saúde é opcional e exige sua permissão. O FastTrack oferece suporte a português, inglês, turco, espanhol, alemão e francês.
+Os registros principais ficam armazenados no seu dispositivo. O FastTrack oferece suporte a português, inglês, turco, espanhol, alemão e francês.
 
 PREMIUM
 O Premium desbloqueia todos os planos de jejum (18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior) e remove os anúncios. Podem ser oferecidas opções mensal, anual e vitalícia. A loja mostra o preço antes da compra.

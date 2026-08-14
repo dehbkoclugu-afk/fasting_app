@@ -862,12 +862,6 @@ abstract class AppLocalizations {
   /// **'Meal planner'**
   String get paywall_mealPlanner;
 
-  /// No description provided for @paywall_healthKit.
-  ///
-  /// In en, this message translates to:
-  /// **'HealthKit integration'**
-  String get paywall_healthKit;
-
   /// No description provided for @paywall_themes.
   ///
   /// In en, this message translates to:
@@ -2896,18 +2890,6 @@ abstract class AppLocalizations {
   /// **'Fasting reminders, phase updates and completion notifications'**
   String get permission_notificationDesc;
 
-  /// No description provided for @permission_healthTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Health Connect / HealthKit'**
-  String get permission_healthTitle;
-
-  /// No description provided for @permission_healthDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Sync steps, active calories and weight with your permission'**
-  String get permission_healthDesc;
-
   /// No description provided for @profile_privacyChoices.
   ///
   /// In en, this message translates to:
@@ -2973,12 +2955,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.'**
   String get paywall_autoRenewInfoPlay;
-
-  /// No description provided for @paywall_healthConnect.
-  ///
-  /// In en, this message translates to:
-  /// **'Health Connect integration'**
-  String get paywall_healthConnect;
 
   /// No description provided for @paywall_allPlansDesc.
   ///

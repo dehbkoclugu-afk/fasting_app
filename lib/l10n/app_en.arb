@@ -133,7 +133,6 @@
   "paywall_allPlans": "All fasting plans",
   "paywall_advancedStats": "Advanced statistics",
   "paywall_mealPlanner": "Meal planner",
-  "paywall_healthKit": "HealthKit integration",
   "paywall_themes": "Theme customization",
   "paywall_noAds": "No ads",
   "paywall_weekly": "Weekly",
@@ -695,8 +694,6 @@
   "paywall_restoreFailed": "Purchases could not be restored.",
   "paywall_terms": "Terms of Use",
   "permission_notificationDesc": "Fasting reminders, phase updates and completion notifications",
-  "permission_healthTitle": "Health Connect / HealthKit",
-  "permission_healthDesc": "Sync steps, active calories and weight with your permission",
   "profile_privacyChoices": "Privacy choices",
   "paywall_autoRenewInfo": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in your App Store settings.",
   "paywall_perMonth": "{price} / month",
@@ -729,7 +726,6 @@
   "paywall_storeUnavailable": "Can't reach the store right now. Check your connection and try again.",
   "paywall_secureNote": "Cancel anytime. Payment is charged to your store account.",
   "paywall_autoRenewInfoPlay": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.",
-  "paywall_healthConnect": "Health Connect integration",
   "paywall_allPlansDesc": "Unlocks 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat and Warrior",
   "paywall_noAdsDesc": "Banner and interstitial ads are turned off completely"
 }

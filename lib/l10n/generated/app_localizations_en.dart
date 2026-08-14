@@ -394,9 +394,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paywall_mealPlanner => 'Meal planner';
 
   @override
-  String get paywall_healthKit => 'HealthKit integration';
-
-  @override
   String get paywall_themes => 'Theme customization';
 
   @override
@@ -1504,13 +1501,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Fasting reminders, phase updates and completion notifications';
 
   @override
-  String get permission_healthTitle => 'Health Connect / HealthKit';
-
-  @override
-  String get permission_healthDesc =>
-      'Sync steps, active calories and weight with your permission';
-
-  @override
   String get profile_privacyChoices => 'Privacy choices';
 
   @override
@@ -1553,9 +1543,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get paywall_autoRenewInfoPlay =>
       'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.';
-
-  @override
-  String get paywall_healthConnect => 'Health Connect integration';
 
   @override
   String get paywall_allPlansDesc =>

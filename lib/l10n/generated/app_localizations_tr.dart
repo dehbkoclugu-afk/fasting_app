@@ -392,9 +392,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paywall_mealPlanner => 'Yemek planlayıcı';
 
   @override
-  String get paywall_healthKit => 'HealthKit entegrasyonu';
-
-  @override
   String get paywall_themes => 'Tema özelleştirme';
 
   @override
@@ -1499,13 +1496,6 @@ class AppLocalizationsTr extends AppLocalizations {
       'Oruç hatırlatmaları, faz güncellemeleri ve tamamlanma bildirimleri';
 
   @override
-  String get permission_healthTitle => 'Health Connect / HealthKit';
-
-  @override
-  String get permission_healthDesc =>
-      'İzninizle adım, aktif kalori ve kilo verilerini eşitleyin';
-
-  @override
   String get profile_privacyChoices => 'Gizlilik tercihleri';
 
   @override
@@ -1548,9 +1538,6 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get paywall_autoRenewInfoPlay =>
       'Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. Google Play > Abonelikler bölümünden istediğin zaman yönetebilir veya iptal edebilirsin.';
-
-  @override
-  String get paywall_healthConnect => 'Health Connect entegrasyonu';
 
   @override
   String get paywall_allPlansDesc =>
