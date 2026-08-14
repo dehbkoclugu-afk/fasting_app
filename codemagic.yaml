@@ -86,16 +86,13 @@ workflows:
     instance_type: linux_x2
     max_build_duration: 60
     environment:
-      # Code signing. Upload the keystore once in the Codemagic UI under
-      # Teams > Code signing identities > Android keystores, then uncomment
-      # this and put its *reference name* in place of the placeholder.
-      #
-      # Until then the bundle builds unsigned: fine as a build check, but Play
-      # rejects an unsigned upload. A reference name that does not exist fails
-      # the whole build, which is why this stays commented out rather than
-      # guessing.
-      # android_signing:
-      #   - fasttrack_upload
+      # Code signing. The keystore lives in the Codemagic UI under Teams >
+      # Code signing identities > Android keystores; this is its reference
+      # name. Its certificate matches the upload key Play has registered for
+      # com.dehbkoclugu.fasttrack (SHA-256 BC:C9:42:DC:…), so bundles built
+      # here are accepted by Play. A name that does not exist fails the build.
+      android_signing:
+        - fasttrack_upload
       flutter: 3.38.10
       java: 17
       groups:
