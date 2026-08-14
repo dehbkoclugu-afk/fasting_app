@@ -389,9 +389,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get paywall_mealPlanner => 'Planificador de comidas';
 
   @override
-  String get paywall_healthKit => 'Integración de HealthKit';
-
-  @override
   String get paywall_themes => 'Personalización del tema';
 
   @override
@@ -1460,12 +1457,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get permission_notificationDesc => 'Recordatorios de ayuno, cambios de fase y avisos de finalización';
-
-  @override
-  String get permission_healthTitle => 'Health Connect / HealthKit';
-
-  @override
-  String get permission_healthDesc => 'Sincroniza pasos, calorías activas y peso con tu permiso';
 
   @override
   String get profile_privacyChoices => 'Opciones de privacidad';
