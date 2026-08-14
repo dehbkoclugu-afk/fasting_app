@@ -29,9 +29,6 @@ Tamamlanan oruçlarını, düzenini, sürelerini ve kilo eğilimini anlaşılır
 • Su ve kilo takibi
 Günlük su tüketimini ve kilo kayıtlarını uygulamadan çıkmadan ekle.
 
-• Sağlık entegrasyonu
-İzin verdiğinde Health Connect veya Apple Health üzerinden desteklenen adım, aktif kalori ve vücut ölçümü verilerini oku.
-
 • Yararlı hatırlatmalar
 İsteğe bağlı oruç, evre, su ve tamamlama bildirimleri al.
 
@@ -39,7 +36,7 @@ Günlük su tüketimini ve kilo kayıtlarını uygulamadan çıkmadan ekle.
 FastTrack sistem dilini ve açık veya karanlık görünümünü izler. Türkçe, İngilizce, İspanyolca, Portekizce, Almanca ve Fransızca desteklenir.
 
 • Gizlilik odaklı
-Temel oruç, su, öğün ve kilo kayıtları cihazında saklanır. Sağlık erişimi isteğe bağlıdır.
+Temel oruç, su, öğün ve kilo kayıtları cihazında saklanır.
 
 PREMIUM
 Premium; tüm oruç planlarını, gelişmiş raporları, ek kişiselleştirmeyi ve reklamsız deneyimi açar. Aylık, yıllık ve ömür boyu seçenekler sunulabilir. Fiyat satın alma öncesinde mağazan tarafından gösterilir.
@@ -48,7 +45,7 @@ Premium; tüm oruç planlarını, gelişmiş raporları, ek kişiselleştirmeyi 
 FastTrack genel eğitim ve iyi yaşam bilgileri sunar. Herhangi bir hastalığa tanı koymaz, tedavi etmez veya önlemez. Metabolik evre saatleri tahminidir ve kişisel yanıtlar değişebilir. Bir hastalığın varsa, ilaç kullanıyorsan, hamileysen, emziriyorsan veya kendini kötü hissediyorsan oruç tutmadan önce yetkin bir sağlık uzmanına danış.
 
 ANAHTAR KELİMELER
-oruç, aralıklı oruç, oruç sayacı, su takibi, kilo takibi, sağlık, ilerleme, Health Connect
+oruç, aralıklı oruç, oruç sayacı, su takibi, kilo takibi, sağlık, ilerleme
 
 KATEGORİ
 Sağlık ve Fitness

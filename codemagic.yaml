@@ -11,7 +11,7 @@
 #
 # Prerequisites on the Apple side (done once, in App Store Connect):
 #   - App record created with bundle id com.dehbkoclugu.fasttrack
-#   - HealthKit + In-App Purchase capabilities enabled
+#   - In-App Purchase capability enabled
 #   - IAP products: fasttrack_premium_monthly / _yearly / _lifetime
 #     attached to the RevenueCat "premium" entitlement.
 

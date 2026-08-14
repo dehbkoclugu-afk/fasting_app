@@ -389,9 +389,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paywall_mealPlanner => 'Yemek planlayıcı';
 
   @override
-  String get paywall_healthKit => 'HealthKit entegrasyonu';
-
-  @override
   String get paywall_themes => 'Tema özelleştirme';
 
   @override
@@ -1460,12 +1457,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get permission_notificationDesc => 'Oruç hatırlatmaları, faz güncellemeleri ve tamamlanma bildirimleri';
-
-  @override
-  String get permission_healthTitle => 'Health Connect / HealthKit';
-
-  @override
-  String get permission_healthDesc => 'İzninizle adım, aktif kalori ve kilo verilerini eşitleyin';
 
   @override
   String get profile_privacyChoices => 'Gizlilik tercihleri';

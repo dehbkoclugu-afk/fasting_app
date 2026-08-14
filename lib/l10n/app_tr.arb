@@ -133,7 +133,6 @@
   "paywall_allPlans": "Tüm oruç planları",
   "paywall_advancedStats": "Gelişmiş istatistikler",
   "paywall_mealPlanner": "Yemek planlayıcı",
-  "paywall_healthKit": "HealthKit entegrasyonu",
   "paywall_themes": "Tema özelleştirme",
   "paywall_noAds": "Reklam yok",
   "paywall_weekly": "Haftalık",
@@ -695,8 +694,6 @@
   "paywall_restoreFailed": "Satın almalar geri yüklenemedi.",
   "paywall_terms": "Kullanım Şartları",
   "permission_notificationDesc": "Oruç hatırlatmaları, faz güncellemeleri ve tamamlanma bildirimleri",
-  "permission_healthTitle": "Health Connect / HealthKit",
-  "permission_healthDesc": "İzninizle adım, aktif kalori ve kilo verilerini eşitleyin",
   "profile_privacyChoices": "Gizlilik tercihleri",
   "paywall_autoRenewInfo": "Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. App Store ayarlarından istediğin zaman yönetebilir veya iptal edebilirsin."
 }

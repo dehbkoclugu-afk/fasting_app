@@ -29,9 +29,6 @@ Review completed fasts, consistency, duration and weight trends with readable ch
 • Water and weight tracking
 Record hydration and body-weight entries without leaving the app.
 
-• Health integration
-With your permission, read supported step, active-calorie and body-measurement data from Health Connect or Apple Health.
-
 • Helpful reminders
 Receive optional fasting, phase, hydration and completion notifications.
 
@@ -39,7 +36,7 @@ Receive optional fasting, phase, hydration and completion notifications.
 FastTrack follows your system language and light or dark appearance. English, Turkish, Spanish, Portuguese, German and French are supported.
 
 • Private by design
-Core fasting, water, meal and weight records are stored on your device. Health access is optional.
+Core fasting, water, meal and weight records are stored on your device.
 
 PREMIUM
 Premium unlocks all fasting plans, advanced reports, additional personalization and an ad-free experience. Monthly, yearly and lifetime options may be available. Prices are shown by your store before purchase.
@@ -48,7 +45,7 @@ IMPORTANT
 FastTrack provides general educational and wellness information. It does not diagnose, treat or prevent any condition. Metabolic stage times are estimates and individual responses vary. Consult a qualified healthcare professional before fasting if you have a medical condition, take medication, are pregnant or breastfeeding, or feel unwell.
 
 KEYWORDS
-fasting, intermittent fasting, fasting timer, hydration, water tracker, weight tracker, wellness, progress, health connect
+fasting, intermittent fasting, fasting timer, hydration, water tracker, weight tracker, wellness, progress
 
 CATEGORY
 Health & Fitness

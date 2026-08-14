@@ -181,8 +181,8 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                     ),
                     _feature(
                       context,
-                      PhosphorIcons.heartbeat(),
-                      l10n.paywall_healthKit,
+                      PhosphorIcons.sparkle(),
+                      l10n.paywall_themes,
                     ),
                     _feature(
                       context,
