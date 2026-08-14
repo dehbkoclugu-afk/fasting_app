@@ -859,12 +859,6 @@ abstract class AppLocalizations {
   /// **'Meal planner'**
   String get paywall_mealPlanner;
 
-  /// No description provided for @paywall_healthKit.
-  ///
-  /// In en, this message translates to:
-  /// **'HealthKit integration'**
-  String get paywall_healthKit;
-
   /// No description provided for @paywall_themes.
   ///
   /// In en, this message translates to:
@@ -2892,18 +2886,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fasting reminders, phase updates and completion notifications'**
   String get permission_notificationDesc;
-
-  /// No description provided for @permission_healthTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Health Connect / HealthKit'**
-  String get permission_healthTitle;
-
-  /// No description provided for @permission_healthDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Sync steps, active calories and weight with your permission'**
-  String get permission_healthDesc;
 
   /// No description provided for @profile_privacyChoices.
   ///
