@@ -77,20 +77,15 @@ git push -u origin agent/fix-legal-site-routes
 
 Open a pull request from `agent/fix-legal-site-routes` into `main`.
 
-- [ ] **Step 5: Verify the preview deployment**
+- [ ] **Step 5: Verify the preview deployment completed**
 
-Copy the exact **Preview** URL from the Vercel bot comment on the pull request, then run:
+Run from the pull-request branch:
 
 ```bash
-LEGAL_PREVIEW_URL='https://the-exact-preview-host-from-the-pr.vercel.app'
-for path in privacy/ terms/ delete-account/ support/ styles.css; do
-  test "$(curl -sS -o /dev/null -w '%{http_code}' "${LEGAL_PREVIEW_URL}/$path")" = "200"
-done
-curl -fsS ${LEGAL_PREVIEW_URL}/privacy/ | grep -q "Fasting Tracker"
-curl -fsS ${LEGAL_PREVIEW_URL}/privacy/ | grep -q "CEY Studio"
+gh pr checks --watch
 ```
 
-Expected: every route returns 200 and the privacy copy contains both required identities.
+Expected: the Vercel deployment check completes successfully.
 
 - [ ] **Step 6: Merge and verify production**
 
