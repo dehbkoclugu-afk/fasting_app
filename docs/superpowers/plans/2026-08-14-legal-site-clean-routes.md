@@ -79,14 +79,15 @@ Open a pull request from `agent/fix-legal-site-routes` into `main`.
 
 - [ ] **Step 5: Verify the preview deployment**
 
-Run against the Vercel preview URL:
+Copy the exact **Preview** URL from the Vercel bot comment on the pull request, then run:
 
 ```bash
+LEGAL_PREVIEW_URL='https://the-exact-preview-host-from-the-pr.vercel.app'
 for path in privacy/ terms/ delete-account/ support/ styles.css; do
-  test "$(curl -sS -o /dev/null -w '%{http_code}' "https://PREVIEW_HOST/$path")" = "200"
+  test "$(curl -sS -o /dev/null -w '%{http_code}' "${LEGAL_PREVIEW_URL}/$path")" = "200"
 done
-curl -fsS https://PREVIEW_HOST/privacy/ | grep -q "Fasting Tracker"
-curl -fsS https://PREVIEW_HOST/privacy/ | grep -q "CEY Studio"
+curl -fsS ${LEGAL_PREVIEW_URL}/privacy/ | grep -q "Fasting Tracker"
+curl -fsS ${LEGAL_PREVIEW_URL}/privacy/ | grep -q "CEY Studio"
 ```
 
 Expected: every route returns 200 and the privacy copy contains both required identities.
