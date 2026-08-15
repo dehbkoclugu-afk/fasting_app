@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
@@ -15,6 +16,23 @@ void main() {
     GoogleFonts.config.allowRuntimeFetching = false;
     final messenger =
         TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+    messenger.setMockMessageHandler('flutter/assets', (ByteData? message) async {
+      final key = utf8.decode(message!.buffer.asUint8List());
+      if (key != 'AssetManifest.json') {
+        return null;
+      }
+      const fontAssets = [
+        'test/fonts/Inter-Regular.ttf',
+        'test/fonts/Inter-Medium.ttf',
+        'test/fonts/Inter-SemiBold.ttf',
+        'test/fonts/Inter-Bold.ttf',
+        'test/fonts/Inter-ExtraBold.ttf',
+      ];
+      final manifest = {
+        for (final asset in fontAssets) asset: [asset],
+      };
+      return ByteData.sublistView(utf8.encode(jsonEncode(manifest)));
+    });
     messenger.setMockMethodCallHandler(
       const MethodChannel('plugins.flutter.io/google_mobile_ads'),
       (_) async => null,
