@@ -42,7 +42,7 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('Bugünün ritmi'), findsOneWidget);
+    expect(find.text('Bugünkü ritmin'), findsOneWidget);
     await expectLater(
       find.byType(FastingApp),
       matchesGoldenFile('goldens/fasttrack-timer-dark-tr.png'),
