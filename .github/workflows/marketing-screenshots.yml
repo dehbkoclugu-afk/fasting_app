@@ -1,0 +1,42 @@
+name: Capture FastTrack marketing screens
+
+on:
+  pull_request:
+    paths:
+      - "test/marketing_screenshots_test.dart"
+      - ".github/workflows/marketing-screenshots.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.38.10
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+      - run: flutter gen-l10n
+
+      - name: Render Turkish dark-mode screens
+        run: flutter test test/marketing_screenshots_test.dart --update-goldens
+
+      - name: Verify generated screens
+        run: |
+          test "$(find test/goldens -name 'fasttrack-*-dark-tr.png' | wc -l)" -eq 5
+          file test/goldens/fasttrack-*-dark-tr.png
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fasttrack-dark-tr-marketing-screens
+          path: test/goldens/fasttrack-*-dark-tr.png
+          if-no-files-found: error
+          retention-days: 14
