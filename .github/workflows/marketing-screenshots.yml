@@ -27,10 +27,11 @@ jobs:
         run: |
           mkdir -p test/fonts
           curl -L --fail \
-            'https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf' \
-            -o test/fonts/Inter-Regular.ttf
-          for weight in Medium SemiBold Bold ExtraBold; do
-            cp test/fonts/Inter-Regular.ttf "test/fonts/Inter-${weight}.ttf"
+            'https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip' \
+            -o /tmp/inter.zip
+          for weight in Regular Medium SemiBold Bold ExtraBold; do
+            unzip -p /tmp/inter.zip "extras/ttf/Inter-${weight}.ttf" \
+              > "test/fonts/Inter-${weight}.ttf"
           done
           python3 - <<'PY'
           from pathlib import Path
