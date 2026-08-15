@@ -2,16 +2,17 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:fasting_app/app.dart';
-import 'package:fasting_app/features/profile/providers/settings_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   setUpAll(() {
     TestWidgetsFlutterBinding.ensureInitialized();
+    GoogleFonts.config.allowRuntimeFetching = false;
     final messenger =
         TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
     messenger.setMockMessageHandler('flutter/assets', (ByteData? message) async {
@@ -28,6 +29,10 @@ void main() {
     messenger.setMockMethodCallHandler(
       const MethodChannel('purchases_flutter'),
       (_) async => null,
+    );
+    messenger.setMockMethodCallHandler(
+      const MethodChannel('plugins.flutter.io/path_provider'),
+      (_) async => '/tmp',
     );
   });
 
@@ -57,20 +62,18 @@ void main() {
       matchesGoldenFile('goldens/fasttrack-timer-dark-tr.png'),
     );
 
-    await tester.tap(find.text('16:8').first);
-    await tester.pumpAndSettle();
-    await expectLater(
-      find.byType(FastingApp),
-      matchesGoldenFile('goldens/fasttrack-plans-dark-tr.png'),
-    );
-    await tester.tap(find.text('16:8').last);
-    await tester.pumpAndSettle();
-
-    await tester.drag(find.byType(Scrollable).first, const Offset(0, -900));
+    await tester.drag(find.byType(Scrollable).first, const Offset(0, -480));
     await tester.pumpAndSettle();
     await expectLater(
       find.byType(FastingApp),
       matchesGoldenFile('goldens/fasttrack-hydration-dark-tr.png'),
+    );
+
+    await tester.drag(find.byType(Scrollable).first, const Offset(0, -480));
+    await tester.pumpAndSettle();
+    await expectLater(
+      find.byType(FastingApp),
+      matchesGoldenFile('goldens/fasttrack-details-dark-tr.png'),
     );
 
     await tester.tap(find.text('Hesap'));
