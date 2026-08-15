@@ -23,10 +23,34 @@ jobs:
           channel: stable
           cache: true
 
+      - name: Prepare Inter test fonts
+        run: |
+          mkdir -p test/fonts
+          curl -L --fail \
+            'https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf' \
+            -o test/fonts/Inter-Regular.ttf
+          for weight in Medium SemiBold Bold ExtraBold; do
+            cp test/fonts/Inter-Regular.ttf "test/fonts/Inter-${weight}.ttf"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("pubspec.yaml")
+          text = path.read_text()
+          marker = "    - assets/animations/\n"
+          if "    - test/fonts/\n" not in text:
+              if marker not in text:
+                  raise SystemExit("assets marker not found in pubspec.yaml")
+              text = text.replace(marker, marker + "    - test/fonts/\n")
+              path.write_text(text)
+          PY
+
       - run: flutter pub get
       - run: flutter gen-l10n
 
       - name: Render Turkish dark-mode screens
+        env:
+          CAPTURE_MARKETING_SCREENSHOTS: "1"
         run: flutter test test/marketing_screenshots_test.dart --update-goldens
 
       - name: Verify generated screens
