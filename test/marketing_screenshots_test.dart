@@ -18,6 +18,10 @@ void main() {
         TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
     messenger.setMockMessageHandler('flutter/assets', (ByteData? message) async {
       final key = utf8.decode(message!.buffer.asUint8List());
+      if (key.startsWith('test/fonts/')) {
+        final bytes = await File(key).readAsBytes();
+        return ByteData.sublistView(bytes);
+      }
       if (key != 'AssetManifest.json') {
         return null;
       }
