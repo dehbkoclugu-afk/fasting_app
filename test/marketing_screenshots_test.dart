@@ -12,14 +12,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() {
   setUpAll(() {
     TestWidgetsFlutterBinding.ensureInitialized();
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMessageHandler('flutter/assets', (ByteData? message) async {
-          final key = utf8.decode(message!.buffer.asUint8List());
-          if (key == 'AssetManifest.json') {
-            return ByteData.sublistView(utf8.encode('{}'));
-          }
-          return null;
-        });
+    final messenger =
+        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+    messenger.setMockMessageHandler('flutter/assets', (ByteData? message) async {
+      final key = utf8.decode(message!.buffer.asUint8List());
+      if (key == 'AssetManifest.json') {
+        return ByteData.sublistView(utf8.encode('{}'));
+      }
+      return null;
+    });
+    messenger.setMockMethodCallHandler(
+      const MethodChannel('plugins.flutter.io/google_mobile_ads'),
+      (_) async => null,
+    );
+    messenger.setMockMethodCallHandler(
+      const MethodChannel('purchases_flutter'),
+      (_) async => null,
+    );
   });
 
   testWidgets('captures Turkish dark-mode marketing screens', (tester) async {
@@ -48,18 +57,20 @@ void main() {
       matchesGoldenFile('goldens/fasttrack-timer-dark-tr.png'),
     );
 
-    await tester.tap(find.text('Rapor'));
+    await tester.tap(find.text('16:8').first);
     await tester.pumpAndSettle();
     await expectLater(
       find.byType(FastingApp),
-      matchesGoldenFile('goldens/fasttrack-stats-dark-tr.png'),
+      matchesGoldenFile('goldens/fasttrack-plans-dark-tr.png'),
     );
+    await tester.tap(find.text('16:8').last);
+    await tester.pumpAndSettle();
 
-    await tester.tap(find.text('Keşfet'));
+    await tester.drag(find.byType(Scrollable).first, const Offset(0, -900));
     await tester.pumpAndSettle();
     await expectLater(
       find.byType(FastingApp),
-      matchesGoldenFile('goldens/fasttrack-explore-dark-tr.png'),
+      matchesGoldenFile('goldens/fasttrack-hydration-dark-tr.png'),
     );
 
     await tester.tap(find.text('Hesap'));
