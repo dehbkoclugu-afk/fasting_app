@@ -11,9 +11,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  setUpAll(() {
+  setUpAll(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
     GoogleFonts.config.allowRuntimeFetching = false;
+    Future<ByteData> fontBytes(String path) async =>
+        ByteData.sublistView(await File(path).readAsBytes());
+    final inter = FontLoader('Inter')
+      ..addFont(fontBytes('test/fonts/Inter-Regular.ttf'));
+    final materialIcons = FontLoader('MaterialIcons')
+      ..addFont(fontBytes('test/fonts/MaterialIcons-Regular.otf'));
+    await Future.wait([inter.load(), materialIcons.load()]);
+
     final messenger =
         TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
     messenger.setMockMessageHandler('flutter/assets', (ByteData? message) async {
