@@ -88,8 +88,6 @@ void main() {
         const ProviderScope(child: FastingApp(showOnboarding: false)),
       );
       await tester.pumpAndSettle();
-      await GoogleFonts.pendingFonts();
-      await tester.pumpAndSettle();
 
       expect(find.text('Bugünkü ritmin'), findsOneWidget);
       await expectLater(
