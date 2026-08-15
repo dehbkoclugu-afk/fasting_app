@@ -16,11 +16,19 @@ void main() {
     GoogleFonts.config.allowRuntimeFetching = false;
     Future<ByteData> fontBytes(String path) async =>
         ByteData.sublistView(await File(path).readAsBytes());
-    final inter = FontLoader('Inter')
-      ..addFont(fontBytes('test/fonts/Inter-Regular.ttf'));
-    final materialIcons = FontLoader('MaterialIcons')
-      ..addFont(fontBytes('test/fonts/MaterialIcons-Regular.otf'));
-    await Future.wait([inter.load(), materialIcons.load()]);
+    final fontLoaders = {
+      'Inter_regular': 'Inter-Regular.ttf',
+      'Inter_500': 'Inter-Medium.ttf',
+      'Inter_600': 'Inter-SemiBold.ttf',
+      'Inter_700': 'Inter-Bold.ttf',
+      'Inter_800': 'Inter-ExtraBold.ttf',
+      'MaterialIcons': 'MaterialIcons-Regular.otf',
+    }.entries.map((entry) {
+      final loader = FontLoader(entry.key)
+        ..addFont(fontBytes('test/fonts/${entry.value}'));
+      return loader.load();
+    });
+    await Future.wait(fontLoaders);
 
     final messenger =
         TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
@@ -79,6 +87,8 @@ void main() {
       await tester.pumpWidget(
         const ProviderScope(child: FastingApp(showOnboarding: false)),
       );
+      await tester.pumpAndSettle();
+      await GoogleFonts.pendingFonts();
       await tester.pumpAndSettle();
 
       expect(find.text('Bugünkü ritmin'), findsOneWidget);
