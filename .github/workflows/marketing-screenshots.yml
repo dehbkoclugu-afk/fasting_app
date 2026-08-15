@@ -33,6 +33,8 @@ jobs:
             unzip -p /tmp/inter.zip "extras/ttf/Inter-${weight}.ttf" \
               > "test/fonts/Inter-${weight}.ttf"
           done
+          cp "$FLUTTER_ROOT/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf" \
+            test/fonts/MaterialIcons-Regular.otf
           python3 - <<'PY'
           from pathlib import Path
 
