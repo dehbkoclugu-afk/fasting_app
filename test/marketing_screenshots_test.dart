@@ -12,6 +12,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   setUpAll(() async {
+    if (Platform.environment['CAPTURE_MARKETING_SCREENSHOTS'] != '1') {
+      return;
+    }
     TestWidgetsFlutterBinding.ensureInitialized();
     GoogleFonts.config.allowRuntimeFetching = false;
     Future<ByteData> fontBytes(String path) async =>
