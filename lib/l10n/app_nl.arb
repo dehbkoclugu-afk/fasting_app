@@ -1,0 +1,773 @@
+{
+  "@@locale": "nl",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Goedemorgen",
+  "greeting_afternoon": "Goedemiddag",
+  "greeting_evening": "Goedenavond",
+  "tab_timer": "Start",
+  "tab_explore": "Ontdekken",
+  "tab_stats": "Rapport",
+  "tab_meals": "Maaltijden",
+  "tab_achievements": "Beloningen",
+  "tab_profile": "Account",
+  "timer_fasting": "Vastentijd",
+  "timer_remaining": "Resterend",
+  "timer_elapsed": "Verstreken",
+  "timer_start": "Starten",
+  "timer_stop": "Stoppen",
+  "timer_completed": "Gefeliciteerd!",
+  "timer_completedMessage": "Je hebt je vasten succesvol voltooid!",
+  "timer_selectPlan": "Kies een vastenplan",
+  "timer_stopConfirm": "Weet je zeker dat je het vasten voortijdig wilt beëindigen?",
+  "timer_stopTitle": "Vasten beëindigen",
+  "timer_cancel": "Annuleren",
+  "timer_confirmStop": "Ja, beëindigen",
+  "phase_anabolic": "Anabool",
+  "phase_anabolicDesc": "Spijsvertering bezig",
+  "phase_catabolic": "Katabool",
+  "phase_catabolicDesc": "Energietransitie",
+  "phase_fatBurning": "Vetverbranding",
+  "phase_fatBurningDesc": "Vetverbranding is begonnen",
+  "phase_ketosis": "Ketose",
+  "phase_ketosisDesc": "Ketonproductie actief",
+  "phase_autophagy": "Autofagie",
+  "phase_autophagyDesc": "Celvernieuwing",
+  "stats_title": "Statistieken",
+  "stats_week": "Week",
+  "stats_month": "Maand",
+  "stats_year": "Jaar",
+  "stats_totalFasts": "Totaal aantal vastenperiodes",
+  "stats_average": "Gemiddelde",
+  "stats_fastDuration": "vastenduur",
+  "stats_streak": "Reeks",
+  "stats_daysConsecutive": "opeenvolgende dagen",
+  "stats_success": "Succes",
+  "stats_completion": "voltooiing",
+  "stats_weeklyFasting": "Wekelijks vasten",
+  "stats_monthlyView": "Maandoverzicht",
+  "stats_weightChange": "Gewichtsverandering",
+  "heatmap_none": "Geen",
+  "heatmap_low": "Laag",
+  "heatmap_good": "Goed",
+  "heatmap_full": "Volledig",
+  "meals_title": "Maaltijdplanner",
+  "meals_eatingWindow": "Eetvenster",
+  "meals_windowOpen": "Open",
+  "meals_windowFasting": "Vasten",
+  "meals_calories": "Calorieën",
+  "meals_protein": "Eiwitten",
+  "meals_carbs": "Koolhydraten",
+  "meals_fat": "Vet",
+  "meals_todayMeals": "Maaltijden van vandaag",
+  "meals_noMeals": "Nog geen maaltijden toegevoegd",
+  "meals_breakfastSuggestions": "Suggesties om het vasten te breken",
+  "meals_addMeal": "Maaltijd toevoegen",
+  "profile_title": "Profiel",
+  "profile_user": "Gebruiker",
+  "profile_planActive": "Plan {plan} actief",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Upgraden naar Premium",
+  "profile_premiumDesc": "Alle vastenplannen, zonder advertenties",
+  "profile_bodyMetrics": "Lichaamsmetingen",
+  "profile_height": "Lengte",
+  "profile_weight": "Gewicht",
+  "profile_targetWeight": "Streefgewicht",
+  "profile_bmi": "BMI",
+  "profile_settings": "Instellingen",
+  "profile_notifications": "Meldingen",
+  "profile_darkTheme": "Donker thema",
+  "profile_waterReminder": "Waterherinnering",
+  "profile_phaseNotifications": "Fasemeldingen",
+  "profile_language": "Taal",
+  "profile_about": "Over",
+  "profile_rateApp": "App beoordelen",
+  "profile_share": "Delen",
+  "profile_privacyPolicy": "Privacybeleid",
+  "profile_version": "Versie",
+  "onboarding_welcome": "Welkom",
+  "onboarding_welcomeDesc": "Neem de regie over je\nreis met periodiek vasten",
+  "onboarding_featureTimer": "Slimme vastentimer",
+  "onboarding_featureStats": "Gedetailleerde statistieken en grafieken",
+  "onboarding_featureMeals": "Maaltijdplanner en receptsuggesties",
+  "onboarding_getStarted": "Aan de slag",
+  "onboarding_selectGoal": "Wat is je doel?",
+  "onboarding_selectGoalDesc": "Je kunt meerdere doelen kiezen",
+  "onboarding_goalWeight": "Afvallen",
+  "onboarding_goalWeightDesc": "Gezond gewichtsverlies",
+  "onboarding_goalHealth": "Gezondheid verbeteren",
+  "onboarding_goalHealthDesc": "Algemene gezondheid en weerstand",
+  "onboarding_goalEnergy": "Meer energie",
+  "onboarding_goalEnergyDesc": "De hele dag energie",
+  "onboarding_goalMental": "Mentale helderheid",
+  "onboarding_goalMentalDesc": "Focus en helderheid",
+  "onboarding_goalLongevity": "Lang leven",
+  "onboarding_goalLongevityDesc": "Celvernieuwing en gezond ouder worden",
+  "onboarding_goalDiscipline": "Discipline",
+  "onboarding_goalDisciplineDesc": "Zelfdiscipline opbouwen",
+  "onboarding_selectPlan": "Kies je plan",
+  "onboarding_selectPlanDesc": "Kies het vastenplan dat het beste bij je past",
+  "onboarding_bodyInfo": "Vul je gegevens in",
+  "onboarding_bodyInfoDesc": "Voor persoonlijke aanbevelingen",
+  "onboarding_gender": "Geslacht",
+  "onboarding_male": "Man",
+  "onboarding_female": "Vrouw",
+  "onboarding_age": "Leeftijd",
+  "onboarding_bodyInfoDisclaimer": "Deze informatie wordt alleen op je apparaat opgeslagen en gebruikt voor calorieberekeningen.",
+  "onboarding_permissions": "Laatste stap",
+  "onboarding_permissionsDesc": "Schakel machtigingen in voor de beste ervaring",
+  "onboarding_next": "Doorgaan",
+  "onboarding_start": "Aan de slag!",
+  "onboarding_skipForNow": "Later instellen",
+  "waterAdded": "+250 ml water toegevoegd",
+  "languageSelect": "Taal kiezen",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Upgraden naar Premium",
+  "paywall_subtitle": "Ontgrendel alle vastenplannen en verwijder advertenties",
+  "paywall_allPlans": "Alle vastenplannen",
+  "paywall_advancedStats": "Geavanceerde statistieken",
+  "paywall_mealPlanner": "Maaltijdplanner",
+  "paywall_themes": "Thema aanpassen",
+  "paywall_noAds": "Geen advertenties",
+  "paywall_weekly": "Wekelijks",
+  "paywall_monthly": "Maandelijks",
+  "paywall_yearly": "Jaarlijks",
+  "paywall_bestValue": "Beste keuze",
+  "paywall_freeTrial": "Gratis proefperiode (3 dagen)",
+  "paywall_restore": "Aankopen herstellen",
+  "paywall_premiumActive": "Premium actief!",
+  "paywall_premiumActiveDesc": "Alle vastenplannen zijn ontgrendeld en advertenties zijn uitgeschakeld",
+  "water_title": "Waterinname",
+  "water_addWater": "Water toevoegen",
+  "water_goal": "Doel",
+  "water_ml": "ml",
+  "common_ok": "OK",
+  "common_cancel": "Annuleren",
+  "common_save": "Opslaan",
+  "common_delete": "Verwijderen",
+  "common_hours": "uur",
+  "common_minutes": "minuten",
+  "common_days": "dagen",
+  "common_enable": "Inschakelen",
+  "streakCard_currentStreak": "Huidige reeks",
+  "streakCard_longestStreak": "Langste reeks",
+  "streakCard_totalSessions": "Totaal aantal vastenperiodes",
+  "meals_mealType": "Maaltijdtype",
+  "meals_breakfast": "Ontbijt",
+  "meals_lunch": "Lunch",
+  "meals_dinner": "Avondeten",
+  "meals_snack": "Tussendoortje",
+  "meals_carbohydrate": "Koolhydraten",
+  "meals_add": "Toevoegen",
+  "meals_mealName": "Naam van maaltijd",
+  "bodyMetrics_title": "Lichaamsmetingen",
+  "bodyMetrics_weight": "Gewicht",
+  "bodyMetrics_target": "Doel",
+  "bodyMetrics_save": "Opslaan",
+  "bodyMetrics_history": "Geschiedenis",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Nog geen gegevens",
+  "meals_quickAdd": "Snel toevoegen",
+  "meals_manualEntry": "Handmatig invoeren",
+  "meals_added": "{name} toegevoegd",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Naam en calorieën zijn verplicht",
+  "bodyMetrics_addWeight": "Gewicht toevoegen",
+  "bodyMetrics_hintWeight": "bijv. 74,5",
+  "bodyMetrics_invalidWeight": "Voer een geldig gewicht in",
+  "bodyMetrics_weightSaved": "{value} kg opgeslagen",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Duur",
+  "completion_plan": "Plan",
+  "completion_lastPhase": "Laatste fase",
+  "timer_remainingTime": "Resterende tijd",
+  "timer_ready": "Klaar om te starten",
+  "streak_status": "Status",
+  "streak_startToday": "Begin vandaag!",
+  "streak_goodStart": "Goed begin!",
+  "streak_goingGreat": "Je bent goed bezig!",
+  "streak_superb": "Geweldig!",
+  "streak_legendary": "Legendarisch!",
+  "streak_incredible": "Ongelooflijk!",
+  "weight_noRecord": "Nog geen gewichtsmetingen\nVoeg ze toe via Profiel > Lichaamsmetingen",
+  "day_mon": "Ma",
+  "day_tue": "Di",
+  "day_wed": "Wo",
+  "day_thu": "Do",
+  "day_fri": "Vr",
+  "day_sat": "Za",
+  "day_sun": "Zo",
+  "day_short_mon": "M",
+  "day_short_tue": "D",
+  "day_short_wed": "W",
+  "day_short_thu": "D",
+  "day_short_fri": "V",
+  "day_short_sat": "Z",
+  "day_short_sun": "Z",
+  "month_jan": "Januari",
+  "month_feb": "Februari",
+  "month_mar": "Maart",
+  "month_apr": "April",
+  "month_may": "Mei",
+  "month_jun": "Juni",
+  "month_jul": "Juli",
+  "month_aug": "Augustus",
+  "month_sep": "September",
+  "month_oct": "Oktober",
+  "month_nov": "November",
+  "month_dec": "December",
+  "meals_fastingWindow": "Vasten ({hours} u)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Eten ({hours} u)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Havermoutsmoothie",
+  "recipe_avocadoToast": "Avocadotoast",
+  "recipe_yogurtBowl": "Yoghurtkom",
+  "elapsed_time": "Verstreken tijd",
+  "fast_ends_on": "Je vasten eindigt om",
+  "end_fasting": "Vasten beëindigen",
+  "start_fasting": "Vasten starten",
+  "water_tracker": "Watertracker",
+  "weight_tracker": "Gewichtstracker",
+  "drink": "Drinken",
+  "log_weight": "Gewicht registreren",
+  "bmi": "BMI",
+  "weight_lost": "Gewicht verloren",
+  "current_weight": "Huidig gewicht",
+  "goal_weight": "Streefgewicht",
+  "daily_goal": "Dagelijks doel",
+  "completed_percent": "{percent}% voltooid",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Ontdekken",
+  "achievements": "Prestaties",
+  "profile_theme": "Weergave",
+  "theme_select": "Weergave kiezen",
+  "theme_system": "Systeemstandaard",
+  "theme_light": "Licht",
+  "theme_dark": "Donker",
+  "language_system": "Systeemtaal",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Voltooiingsgeluid",
+  "profile_calmGamification": "Rustige gamificatie",
+  "profile_calmGamificationDesc": "Vermindert de druk van competities en seizoenen",
+  "profile_editName": "Je naam bewerken",
+  "profile_name": "Naam",
+  "circle_title": "Vastenkring",
+  "circle_you": "Jij",
+  "circle_tagline": "Samen, zonder druk.",
+  "circle_privacy": "Gewicht en persoonlijke metingen blijven verborgen. Alleen voortgang en steun zijn zichtbaar.",
+  "circle_sendSupport": "Steun sturen · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Uitnodigingscode gekopieerd",
+  "circle_createInvite": "Privé-uitnodiging maken",
+  "crisis_nameTitle": "Benoem eerst wat er gebeurt",
+  "crisis_nameDesc": "Het kan honger, gewoonte of emotie zijn.",
+  "crisis_waterTitle": "Drink een glas water",
+  "crisis_waterDesc": "Adem daarna drie keer langzaam in en uit.",
+  "crisis_delayTitle": "Stel de beslissing 10 minuten uit",
+  "crisis_delayDesc": "Als je je niet goed voelt, is stoppen met vasten geen mislukking.",
+  "crisis_hunger": "Honger",
+  "crisis_habit": "Gewoonte",
+  "crisis_stress": "Stress",
+  "crisis_tenMore": "Geef het 10 minuten",
+  "stats_storyEmpty": "Je eerste vastenperiode begint jouw persoonlijke verhaal.",
+  "stats_story": "Je hebt in deze periode {sessions} keer gevast, je ritme {hours} uur volgehouden en een voltooiingspercentage van {rate}% bereikt.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "Het verhaal van jouw ritme",
+  "home_todayRhythm": "Het ritme van vandaag",
+  "home_finalHourSupport": "Steun voor het laatste uur",
+  "home_needSupport": "Ik heb wat steun nodig",
+  "home_todaySummary": "Vandaag in één oogopslag",
+  "home_dayStreak": "dagen op rij",
+  "home_weightGoal": "doel {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Je ritme is stabiel",
+  "weather_gentle": "Een rustige dag",
+  "weather_water": "Een glas water kan helpen.",
+  "weather_listen": "Je bent al ver gekomen; luister naar je lichaam.",
+  "weather_onPlan": "Het tempo van vandaag past bij je plan.",
+  "weather_challenging": "Dit uur was eerder lastig; de ondersteuningsmodus staat klaar.",
+  "replay_copied": "Vastenoverzicht gekopieerd",
+  "replay_button": "Overzicht",
+  "replay_text": "Ik voltooide mijn vasten volgens {plan} in {hours} u {minutes} min · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Metabole reis",
+  "journey_now": "Nu",
+  "journey_next": "Nog {time} tot {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "De timing van fasen is een algemene schatting, geen medische meting.",
+  "phase_hours": "Uur {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Deze timing is een algemene schatting. Metabole reacties verschillen per persoon.",
+  "bmi_underweight": "Ondergewicht",
+  "bmi_normal": "Gezond gewicht",
+  "bmi_overweight": "Overgewicht",
+  "bmi_obese": "Obesitas",
+  "notification_halfwayTitle": "Je bent halverwege! 💪",
+  "notification_halfwayBody": "Je hebt de helft van je vasten volgens {plan} voltooid. Ga zo door!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Katabole fase bereikt 📉",
+  "notification_phaseFatBurning": "Vetverbranding begonnen! 🔥",
+  "notification_phaseKetosis": "Je bent in ketose ⚡",
+  "notification_phaseAutophagy": "Autofagie actief! 🔄",
+  "notification_completedBody": "Je hebt je vasten volgens {plan} voltooid! Je eetvenster is open.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Drink water 💧",
+  "notification_waterBody": "Vergeet niet voldoende water te drinken tijdens het vasten!",
+  "notification_windowTitle": "Eetvenster sluit bijna ⏰",
+  "notification_windowBody": "Je eetvenster sluit over 30 minuten.",
+  "notification_streakTitle": "Reeks van {days} dagen! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Je bent goed bezig! Houd het vandaag vol.",
+  "notification_ongoingTitle": "Vasten bezig - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Resterend: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Vasten gestart - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Doel: {hours} uur",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours} u {minutes} min",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Vastengids",
+  "explore_guideDesc": "Alles wat je moet weten over periodiek vasten",
+  "explore_circleDesc": "Deel rustige steun met je privégroep.",
+  "explore_faq": "Veelgestelde vragen",
+  "explore_education": "Deze inhoud is uitsluitend bedoeld voor algemene voorlichting en is geen medische diagnose of behandeladvies.",
+  "explore_safety": "Gezondheid en veiligheid",
+  "explore_safetyDesc": "Heb je een medische aandoening, gebruik je regelmatig medicijnen, heb je zorgwekkende klachten, ben je zwanger of geef je borstvoeding? Raadpleeg dan vóór het vasten een bevoegde zorgverlener. Stop als je je niet goed voelt.",
+  "explore_sources": "Bronnen",
+  "explore_sourcesDesc": "De inhoud is vereenvoudigd op basis van de onderstaande bronnen voor volksgezondheid.",
+  "explore_sourceError": "De bron kon niet worden geopend",
+  "explore_rules": "Belangrijke regels",
+  "explore_rule1": "Gebruik tijdens het vasten geen calorierijk eten",
+  "explore_rule2": "Drink voldoende water en andere vloeistoffen",
+  "explore_rule3": "Eet evenwichtig tijdens je eetvenster",
+  "explore_rule4": "Stop met vasten als je je niet goed voelt",
+  "explore_rule5": "Zwangere vrouwen en vrouwen die borstvoeding geven, moeten niet vasten",
+  "explore_rule6": "Raadpleeg je arts als je een chronische aandoening hebt",
+  "tip_water": "Blijf gehydrateerd",
+  "tip_waterDesc": "Drink water wanneer je dorst hebt en neem vocht bij de maaltijden. Je behoefte kan verschillen door gezondheid, weer en activiteit.",
+  "tip_food": "Eet gezond",
+  "tip_foodDesc": "Kies tijdens eetvensters voor eiwitrijke voeding met vezels en gezonde vetten. Vermijd sterk bewerkte voeding.",
+  "tip_sleep": "Slaap goed",
+  "tip_sleepDesc": "Regelmatige en voldoende slaap ondersteunt je algemene welzijn. Plan het vasten zo dat het je slaap niet verstoort.",
+  "tip_exercise": "Lichte beweging",
+  "tip_exerciseDesc": "Tijdens het vasten kun je rustig wandelen of yoga doen. Vermijd zware inspanning, vooral in de eerste weken terwijl je lichaam zich aanpast.",
+  "tip_drinks": "Toegestane dranken",
+  "tip_drinksDesc": "Tijdens het vasten kun je water, thee zonder toevoegingen en zwarte koffie drinken (zonder suiker of melk). Deze dranken verbreken het vasten niet.",
+  "faq_drinks": "Wat kan ik drinken tijdens het vasten?",
+  "faq_drinksAnswer": "Je kunt water, thee zonder toevoegingen en zwarte koffie drinken (zonder suiker of melk). Calorierijke dranken verbreken het vasten.",
+  "faq_plan": "Welk vastenplan moet ik kiezen?",
+  "faq_planAnswer": "Begin als nieuwkomer met 12:12 of 14:10. Heb je ervaring, probeer dan 16:8 of 18:6. 20:4 en OMAD zijn bedoeld voor gevorderden.",
+  "faq_exercise": "Kan ik sporten tijdens het vasten?",
+  "faq_exerciseAnswer": "Ja, maar vermijd intensieve trainingen. Lichte cardio, wandelen en yoga zijn ideaal. Plan krachttraining dicht bij je eetvenster.",
+  "faq_weight": "Helpt vasten bij gewichtsverlies?",
+  "faq_weightAnswer": "Voor sommige mensen kan een beperkt eetvenster de totale energie-inname verlagen. Resultaten verschillen en de langetermijneffecten worden nog onderzocht.",
+  "plan_12_desc": "Beginnersniveau",
+  "plan_12_detail": "Ideaal voor beginners. Vast 12 uur, inclusief je slaaptijd.",
+  "plan_16_desc": "Populairste plan",
+  "plan_16_detail": "Het meest gebruikte plan voor periodiek vasten: 16 uur vasten en een eetvenster van 8 uur, meestal van lunch tot avondeten.",
+  "plan_18_desc": "Gemiddeld niveau",
+  "plan_18_detail": "18 uur vasten en een eetvenster van 6 uur. De vetverbranding duurt langer.",
+  "plan_20_desc": "Gevorderd niveau",
+  "plan_20_detail": "20 uur vasten en een eetvenster van 4 uur. Ideaal om ketose en autofagie te bereiken.",
+  "plan_omad_desc": "Eén maaltijd per dag",
+  "plan_omad_detail": "Eén maaltijd per dag: 23 uur vasten en een eetvenster van 1 uur. Expert-niveau.",
+  "plan_52_desc": "2 dagen per week",
+  "plan_52_detail": "Eet 5 dagen normaal en beperk je op 2 dagen tot ongeveer 500 calorieën. Een alternatieve aanpak.",
+  "plan_ese_desc": "24 uur vasten",
+  "plan_ese_detail": "Vast 1–2 keer per week 24 uur. Voor gevorderden.",
+  "plan_warrior_desc": "Krijgersdieet",
+  "plan_warrior_detail": "Eet overdag licht (fruit en groenten) en neem je hoofdmaaltijd binnen een eetvenster van 4 uur in de avond.",
+  "award_first_title": "Eerste stap",
+  "award_first_desc": "Voltooi je eerste vastenperiode",
+  "award_rhythm3_title": "Driedaags ritme",
+  "award_rhythm3_desc": "Houd je ritme drie dagen vol",
+  "award_hours24_title": "24 uur",
+  "award_hours24_desc": "Vast in totaal 24 uur",
+  "award_week_title": "Een week ritme",
+  "award_week_desc": "Bouw een reeks van zeven dagen op",
+  "award_fasts10_title": "10 vastenperiodes",
+  "award_fasts10_desc": "Voltooi tien vastenperiodes",
+  "award_hours100_title": "100 uur",
+  "award_hours100_desc": "Bereik in totaal 100 uur",
+  "award_rhythm30_title": "30-daags ritme",
+  "award_rhythm30_desc": "Bouw een reeks van dertig dagen op",
+  "award_fasts50_title": "50 vastenperiodes",
+  "award_fasts50_desc": "Voltooi vijftig vastenperiodes",
+  "award_hours500_title": "500 uur",
+  "award_hours500_desc": "Bereik in totaal 500 uur",
+  "award_fasts100_title": "100 vastenperiodes",
+  "award_fasts100_desc": "Voltooi honderd vastenperiodes",
+  "award_rhythm90_title": "90-daags ritme",
+  "award_rhythm90_desc": "Bouw een reeks van negentig dagen op",
+  "award_year_title": "Een jaar onderweg",
+  "award_year_desc": "Bereik een ritme van 365 dagen",
+  "awards_loadError": "Voortgang kon niet worden geladen",
+  "awards_journeyComplete": "Reis voltooid",
+  "awards_nextGoal": "Volgend doel",
+  "awards_allYours": "Alle prestaties zijn van jou",
+  "awards_dayStreak": "dagen op rij",
+  "awards_fasts": "vastenperiodes",
+  "awards_total": "totaal",
+  "awards_stageStart": "Begin",
+  "awards_stageRhythm": "Ritme",
+  "awards_stageEndurance": "Uithoudingsvermogen",
+  "awards_stageMastery": "Meesterschap",
+  "awards_completed": "Voltooid",
+  "awards_fastsRemaining": "Nog {count} vastenperiodes te gaan",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "Nog {count} dagen te gaan",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "Nog {count} uur te gaan",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Opnieuw proberen",
+  "game_title": "Voortgangshub",
+  "game_quests": "Opdrachten van vandaag",
+  "game_questsDesc": "Kleine stappen, een duurzaam ritme.",
+  "game_season": "Seizoen van 30 stappen",
+  "game_seasonDesc": "Na elke vijfde stap ontvang je een verzamelzegel.",
+  "game_badges": "Badgeverzameling",
+  "game_shields": "{count} ritmeschilden",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Je verdient er één na elke zeven voltooide stappen. Een gemiste dag wist je voortgang nooit.",
+  "game_league": "Privé-weekcompetitie",
+  "game_leagueDesc": "Je ritmescore valt binnen het {percent}e percentiel van een privé lokaal model. Gewicht en extreem vasten worden nooit gerangschikt.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Niveau {level}, {xp} ervaringspunten",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Ritmeverkenner",
+  "game_streak": "Reeks",
+  "game_targets": "Doelen",
+  "game_best": "Beste",
+  "quest_rhythm": "Bouw aan het ritme van vandaag",
+  "quest_hydrate": "Bereik de helft van je waterdoel",
+  "quest_steady": "Bescherm je reeks",
+  "badge_first_title": "Eerste stap",
+  "badge_first_desc": "Registreer je eerste vastenperiode",
+  "badge_rhythm7_title": "Ritmebewaker",
+  "badge_rhythm7_desc": "Bereik een reeks van 7 dagen",
+  "badge_rhythm3_title": "Driedaags ritme",
+  "badge_rhythm3_desc": "Bereik een reeks van 3 dagen",
+  "badge_target1_title": "Eerste doel",
+  "badge_target1_desc": "Voltooi je eerste vastendoel",
+  "badge_target3_title": "Drie stappen",
+  "badge_target3_desc": "Voltooi 3 doelen",
+  "badge_water_title": "In balans",
+  "badge_water_desc": "Behaal je dagelijkse waterdoel",
+  "badge_support_title": "Zelfbewust",
+  "badge_support_desc": "Gebruik de ondersteuningsmodus",
+  "badge_hours10_title": "10 uur",
+  "badge_hours10_desc": "Registreer in totaal 10 uur",
+  "badge_target10_title": "Tien keer sterk",
+  "badge_target10_desc": "Voltooi 10 doelen",
+  "badge_target20_title": "Twintig doelen",
+  "badge_target20_desc": "Voltooi 20 doelen",
+  "badge_fast16_title": "16 uur",
+  "badge_fast16_desc": "Bereik 16 uur in één vastenperiode",
+  "badge_hours50_title": "50 uur",
+  "badge_hours50_desc": "Registreer in totaal 50 uur",
+  "badge_hours100_title": "Honderd uur",
+  "badge_hours100_desc": "Registreer in totaal 100 uur",
+  "badge_target30_title": "Dertig doelen",
+  "badge_target30_desc": "Voltooi 30 doelen",
+  "badge_rhythm30_title": "30-daags ritme",
+  "badge_rhythm30_desc": "Bereik een reeks van 30 dagen",
+  "paywall_restoreSuccess": "Aankopen hersteld!",
+  "fasting_progressSemantics": "Voortgang van vasten: {percent} procent",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour} u",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "Levenslang",
+  "paywall_once": "eenmalig",
+  "paywall_processing": "Bezig met verwerken…",
+  "paywall_continue": "Doorgaan",
+  "paywall_productsUnavailable": "Aankopen zijn momenteel niet beschikbaar. Probeer het later opnieuw.",
+  "paywall_purchaseFailed": "De aankoop kon niet worden voltooid.",
+  "paywall_nothingToRestore": "Er is geen eerdere aankoop gevonden.",
+  "paywall_restoreFailed": "Aankopen konden niet worden hersteld.",
+  "paywall_terms": "Gebruiksvoorwaarden",
+  "permission_notificationDesc": "Herinneringen voor vasten, fase-updates en meldingen bij voltooiing",
+  "profile_privacyChoices": "Privacykeuzes",
+  "paywall_autoRenewInfo": "Abonnementen worden automatisch verlengd, tenzij ze minstens 24 uur voor het einde van de periode worden opgezegd. Je kunt je abonnement op elk moment beheren of opzeggen in de instellingen van de App Store.",
+  "paywall_perMonth": "{price} / maand",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Bespaar {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "{days} dagen gratis proberen",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Gratis proefperiode starten",
+  "paywall_retry": "Opnieuw proberen",
+  "paywall_alreadyOwned": "Je hebt dit abonnement al. Tik op ‘Aankopen herstellen’.",
+  "paywall_storeUnavailable": "De winkel is momenteel niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
+  "paywall_secureNote": "Je kunt op elk moment opzeggen. De betaling wordt in rekening gebracht via je winkelaccount.",
+  "paywall_autoRenewInfoPlay": "Abonnementen worden automatisch verlengd, tenzij ze minstens 24 uur voor het einde van de periode worden opgezegd. Je kunt je abonnement op elk moment beheren of opzeggen via Google Play > Abonnementen.",
+  "paywall_allPlansDesc": "Ontgrendelt 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat en Warrior",
+  "paywall_noAdsDesc": "Banner- en interstitial-advertenties worden volledig uitgeschakeld",
+  "foodScan_title": "AI-voedingsscan",
+  "foodScan_scanCta": "Maaltijd scannen",
+  "foodScan_scanCtaDesc": "Fotografeer je bord en ontvang een schatting van calorieën en macro's",
+  "foodScan_introTitle": "Fotografeer je bord",
+  "foodScan_introDesc": "AI leest de foto en schat de calorieën, eiwitten, koolhydraten en vetten.",
+  "foodScan_tipLight": "Goed, gelijkmatig licht zorgt voor een betere schatting",
+  "foodScan_tipFrame": "Zorg dat het hele bord binnen het kader past",
+  "foodScan_tipScale": "Leg bestek of een hand in beeld om de portiegrootte te kunnen inschatten",
+  "foodScan_takePhoto": "Foto maken",
+  "foodScan_chooseFromGallery": "Uit galerij kiezen",
+  "foodScan_scansLeft": "Vandaag nog {count} scans over",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Je hebt de scans van vandaag gebruikt. Probeer het morgen opnieuw.",
+  "foodScan_privacyNote": "De foto wordt voor analyse naar de Gemini-API van Google gestuurd en wordt niet op onze servers opgeslagen.",
+  "foodScan_analyzing": "Je maaltijd wordt geanalyseerd…",
+  "foodScan_analyzingHint": "Dit duurt meestal enkele seconden",
+  "foodScan_detectedItems": "Herkende items",
+  "foodScan_disclaimer": "AI-schattingen zijn bij benadering. Tik op een item om het te corrigeren.",
+  "foodScan_lowConfidence": "Het model is niet zeker over deze foto. Controleer de waarden voordat je ze opslaat.",
+  "foodScan_save": "Aan maaltijden toevoegen",
+  "foodScan_retake": "Nieuwe foto",
+  "foodScan_retry": "Opnieuw proberen",
+  "foodScan_editItem": "Item bewerken",
+  "foodScan_portion": "Portie",
+  "foodScan_saveEdit": "Opslaan",
+  "foodScan_premiumTitle": "Een Premium-functie",
+  "foodScan_premiumDesc": "Calorieanalyse via een foto is inbegrepen bij Premium.",
+  "foodScan_upgrade": "Premium bekijken",
+  "foodScan_errorNetwork": "Geen verbinding. Controleer je internetverbinding en probeer het opnieuw.",
+  "foodScan_errorRateLimited": "Er worden momenteel te veel scans uitgevoerd. Probeer het over een paar minuten opnieuw.",
+  "foodScan_errorUnavailable": "Fotoanalyse is momenteel niet beschikbaar.",
+  "foodScan_errorServer": "Er is een probleem met de analyseservice. Probeer het zo opnieuw.",
+  "foodScan_errorNoFood": "Er is geen eten op deze foto gevonden. Maak een duidelijkere foto van het bord.",
+  "foodScan_errorUnreadable": "Deze foto kon niet worden geanalyseerd. Probeer een andere foto.",
+  "paywall_aiFoodScan": "AI-voedingsscan",
+  "paywall_aiFoodScanDesc": "Fotografeer een maaltijd en registreer binnen enkele seconden de calorieën en macro's"
+}
