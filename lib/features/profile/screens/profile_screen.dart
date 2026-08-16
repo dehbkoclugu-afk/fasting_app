@@ -486,25 +486,59 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 
+  static const _languageOptions = <(String, String)>[
+    ('en', 'English'),
+    ('ar', 'العربية'),
+    ('cs', 'Čeština'),
+    ('da', 'Dansk'),
+    ('de', 'Deutsch'),
+    ('es_ES', 'Español (España)'),
+    ('es_419', 'Español (Latinoamérica)'),
+    ('fi', 'Suomi'),
+    ('fr', 'Français'),
+    ('hi', 'हिन्दी'),
+    ('hu', 'Magyar'),
+    ('id', 'Bahasa Indonesia'),
+    ('it', 'Italiano'),
+    ('he', 'עברית'),
+    ('ja', '日本語'),
+    ('ko', '한국어'),
+    ('nl', 'Nederlands'),
+    ('no', 'Norsk'),
+    ('pl', 'Polski'),
+    ('pt_BR', 'Português (Brasil)'),
+    ('ro', 'Română'),
+    ('ru', 'Русский'),
+    ('sk', 'Slovenčina'),
+    ('sv', 'Svenska'),
+    ('th', 'ไทย'),
+    ('tr', 'Türkçe'),
+    ('uk', 'Українська'),
+    ('vi', 'Tiếng Việt'),
+    ('zh_CN', '简体中文'),
+  ];
+
   void _showLanguageDialog(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final settings = ref.read(settingsProvider);
 
-    showDialog(
+    final options = <(String?, String)>[
+      (null, l10n.language_system),
+      ..._languageOptions,
+    ];
+
+    showDialog<void>(
       context: context,
       builder:
-          (ctx) => SimpleDialog(
+          (ctx) => AlertDialog(
             title: Text(l10n.languageSelect),
-            children:
-                <(String?, String)>[
-                  (null, l10n.language_system),
-                  ('en', l10n.languageEnglish),
-                  ('tr', l10n.languageTurkish),
-                  ('es', l10n.languageSpanish),
-                  ('pt', l10n.languagePortugueseBrazil),
-                  ('de', l10n.languageGerman),
-                  ('fr', l10n.languageFrench),
-                ].map((option) {
+            content: SizedBox(
+              width: double.maxFinite,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: options.length,
+                itemBuilder: (context, index) {
+                  final option = options[index];
                   return RadioListTile<String?>(
                     title: Text(option.$2),
                     value: option.$1,
@@ -514,7 +548,9 @@ class ProfileScreen extends ConsumerWidget {
                       Navigator.pop(ctx);
                     },
                   );
-                }).toList(),
+                },
+              ),
+            ),
           ),
     );
   }
@@ -550,16 +586,14 @@ class ProfileScreen extends ConsumerWidget {
     ThemeMode.dark => l10n.theme_dark,
   };
 
-  String _localeLabel(AppLocalizations l10n, String? locale) =>
-      switch (locale) {
-        null => l10n.language_system,
-        'tr' => l10n.languageTurkish,
-        'es' => l10n.languageSpanish,
-        'pt' => l10n.languagePortugueseBrazil,
-        'de' => l10n.languageGerman,
-        'fr' => l10n.languageFrench,
-        _ => l10n.languageEnglish,
-      };
+  String _localeLabel(AppLocalizations l10n, String? locale) {
+    if (locale == null) return l10n.language_system;
+    return _languageOptions
+        .where((option) => option.$1 == locale)
+        .map((option) => option.$2)
+        .firstOrNull ??
+        l10n.languageEnglish;
+  }
 
   Future<void> _showNameDialog(
     BuildContext context,
