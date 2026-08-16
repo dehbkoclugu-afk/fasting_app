@@ -1,16 +1,16 @@
 UYGULAMA ADI
-FastTrack: Oruç Takibi
+FastTrack: Aralıklı Oruç
 
 ALT BAŞLIK
-Sürdürülebilir ritmini kur
+Baskısız bir oruç ritmi
 
 PLAY STORE KISA AÇIKLAMA
-Oruç, su, kilo ve ilerlemeni sakin ve özel bir uygulamada takip et.
+Aralıklı oruç zamanlayıcısı; su, kilo ve ilerleme takibi. Sakin ve özel.
 
 TAM AÇIKLAMA
-FastTrack ile hayatına uygun, sürdürülebilir bir oruç düzeni oluştur.
+Sana bağırmayan bir aralıklı oruç takipçisi. Orucu başlat, saatlerin geçişini izle, bu sırada vücudunda neler olduğunu gör.
 
-Oruç süreni takip et, genel metabolik evreleri öğren, su ve kilo kayıtlarını tut, ilerlemeni baskı hissetmeden incele.
+Hesap yok. Kilo vaadi yok. Kayıtların cihazında kalıyor.
 
 ÖZELLİKLER
 
@@ -21,7 +21,7 @@ Bir oruç planı seç; geçen ve kalan süreyi tek bakışta gör.
 Anabolik, katabolik, yağ yakımı, ketozis ve otofaji evreleri hakkında bilgi edin. Evre saatleri genel tahmindir; tıbbi ölçüm değildir.
 
 • Esnek oruç planları
-12:12, 14:10, 16:8, 18:6, 20:4 ve OMAD gibi bilinen programları kullan.
+12:12, 16:8, 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ve Warrior gibi bilinen programları kullan.
 
 • İlerleme raporları
 Tamamlanan oruçlarını, düzenini, sürelerini ve kilo eğilimini anlaşılır grafiklerle incele.
@@ -36,7 +36,7 @@ Günlük su tüketimini ve kilo kayıtlarını uygulamadan çıkmadan ekle.
 FastTrack sistem dilini ve açık veya karanlık görünümünü izler. Türkçe, İngilizce, İspanyolca, Portekizce, Almanca ve Fransızca desteklenir.
 
 • Gizlilik odaklı
-Temel oruç, su, öğün ve kilo kayıtları cihazında saklanır.
+Temel oruç, su, öğün ve kilo kayıtların cihazında saklanır.
 
 PREMIUM
 Premium; tüm oruç planlarını (18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior) açar ve reklamları kaldırır. Aylık, yıllık ve ömür boyu seçenekler sunulabilir. Fiyat satın alma öncesinde mağazan tarafından gösterilir.
@@ -45,7 +45,7 @@ Premium; tüm oruç planlarını (18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior) 
 FastTrack genel eğitim ve iyi yaşam bilgileri sunar. Herhangi bir hastalığa tanı koymaz, tedavi etmez veya önlemez. Metabolik evre saatleri tahminidir ve kişisel yanıtlar değişebilir. Bir hastalığın varsa, ilaç kullanıyorsan, hamileysen, emziriyorsan veya kendini kötü hissediyorsan oruç tutmadan önce yetkin bir sağlık uzmanına danış.
 
 ANAHTAR KELİMELER
-oruç, aralıklı oruç, oruç sayacı, su takibi, kilo takibi, sağlık, ilerleme
+zamanlayıcı,16:8,omad,ketozis,otofaji,su,kilo,vki,seri,takip,günlük,sağlık
 
 KATEGORİ
 Sağlık ve Fitness

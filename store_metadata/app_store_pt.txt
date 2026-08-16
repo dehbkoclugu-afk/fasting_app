@@ -1,20 +1,42 @@
 NOME
-FastTrack: Jejum
+FastTrack: Jejum Intermitente
 
 SUBTÍTULO
-Crie um ritmo sustentável
+Jejuar sem pressão
 
 DESCRIÇÃO CURTA
-Acompanhe jejum, água, peso e progresso em um app calmo e privado.
+Cronômetro de jejum intermitente com água, peso e progresso. Calmo e privado.
 
 DESCRIÇÃO
-Crie com o FastTrack uma rotina de jejum que combine com a sua vida.
+Um registro de jejum intermitente que nunca pressiona você. Comece um jejum, acompanhe as horas passarem e veja o que acontece no seu corpo nesse tempo.
 
-Veja o tempo decorrido e restante, conheça estágios metabólicos gerais, registre água e peso e acompanhe seu progresso sem pressão.
+Sem conta. Sem promessas de peso. Seus registros ficam no seu dispositivo.
 
-Inclui planos 12:12, 14:10, 16:8, 18:6, 20:4 e OMAD; relatórios visuais; lembretes opcionais; e temas claro e escuro.
+RECURSOS
 
-Os registros principais ficam armazenados no seu dispositivo. O FastTrack oferece suporte a português, inglês, turco, espanhol, alemão e francês.
+• Cronômetro claro
+Escolha um plano de jejum e veja o tempo decorrido e restante de relance.
+
+• Jornada metabólica
+Conheça os estágios anabólico, catabólico, de queima de gordura, cetose e autofagia. Os horários dos estágios são estimativas gerais, não medições médicas.
+
+• Planos flexíveis
+Use programas conhecidos como 12:12, 16:8, 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat e Warrior.
+
+• Relatórios de progresso
+Revise jejuns concluídos, constância, duração e tendência de peso com gráficos legíveis.
+
+• Água e peso
+Registre a hidratação e o peso corporal sem sair do aplicativo.
+
+• Lembretes úteis
+Receba notificações opcionais de jejum, estágio, hidratação e conclusão.
+
+• Seu idioma e sua aparência
+O FastTrack segue o idioma do sistema e o tema claro ou escuro. Disponível em português, inglês, turco, espanhol, alemão e francês.
+
+• Privado por padrão
+Os registros principais de jejum, água, refeições e peso ficam no seu dispositivo.
 
 PREMIUM
 O Premium desbloqueia todos os planos de jejum (18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior) e remove os anúncios. Podem ser oferecidas opções mensal, anual e vitalícia. A loja mostra o preço antes da compra.
@@ -23,7 +45,7 @@ IMPORTANTE
 O FastTrack fornece informações gerais de educação e bem-estar. Ele não diagnostica, trata nem previne doenças. Os horários dos estágios metabólicos são estimativas e as respostas individuais variam. Consulte um profissional de saúde antes de jejuar se você tiver uma condição médica, usar medicamentos, estiver grávida ou amamentando, ou não se sentir bem.
 
 PALAVRAS-CHAVE
-jejum, jejum intermitente, cronômetro, água, hidratação, peso, bem-estar
+cronômetro,16:8,omad,cetose,autofagia,água,peso,imc,sequência,registro,diário,saúde
 
 CATEGORIA
 Saúde e fitness
