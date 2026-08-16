@@ -58,7 +58,13 @@ class _FastingAppState extends ConsumerState<FastingApp> {
       localeListResolutionCallback: (deviceLocales, supportedLocales) {
         if (settings.locale != null) return _localeFromTag(settings.locale);
 
-        for (final deviceLocale in deviceLocales ?? const <Locale>[]) {
+        final devices = deviceLocales ?? const <Locale>[];
+        for (final deviceLocale in devices) {
+          for (final supportedLocale in supportedLocales) {
+            if (supportedLocale == deviceLocale) return supportedLocale;
+          }
+        }
+        for (final deviceLocale in devices) {
           for (final supportedLocale in supportedLocales) {
             if (supportedLocale.languageCode == deviceLocale.languageCode) {
               return supportedLocale;
