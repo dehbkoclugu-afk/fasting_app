@@ -1,0 +1,773 @@
+{
+  "@@locale": "ro",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Bună dimineața",
+  "greeting_afternoon": "Bună ziua",
+  "greeting_evening": "Bună seara",
+  "tab_timer": "Acasă",
+  "tab_explore": "Explorează",
+  "tab_stats": "Raport",
+  "tab_meals": "Mese",
+  "tab_achievements": "Premii",
+  "tab_profile": "Cont",
+  "timer_fasting": "Timp de post",
+  "timer_remaining": "Rămas",
+  "timer_elapsed": "Scurs",
+  "timer_start": "Începe",
+  "timer_stop": "Oprește",
+  "timer_completed": "Felicitări!",
+  "timer_completedMessage": "Ai încheiat postul cu succes!",
+  "timer_selectPlan": "Alege planul de post",
+  "timer_stopConfirm": "Sigur vrei să închei postul mai devreme?",
+  "timer_stopTitle": "Încheie postul",
+  "timer_cancel": "Anulează",
+  "timer_confirmStop": "Da, încheie",
+  "phase_anabolic": "Anabolică",
+  "phase_anabolicDesc": "Digestie în curs",
+  "phase_catabolic": "Catabolică",
+  "phase_catabolicDesc": "Tranziție energetică",
+  "phase_fatBurning": "Arderea grăsimilor",
+  "phase_fatBurningDesc": "Arderea grăsimilor a început",
+  "phase_ketosis": "Cetoză",
+  "phase_ketosisDesc": "Producția de cetone este activă",
+  "phase_autophagy": "Autofagie",
+  "phase_autophagyDesc": "Reînnoire celulară",
+  "stats_title": "Statistici",
+  "stats_week": "Săptămână",
+  "stats_month": "Lună",
+  "stats_year": "An",
+  "stats_totalFasts": "Total posturi",
+  "stats_average": "Medie",
+  "stats_fastDuration": "durata postului",
+  "stats_streak": "Serie",
+  "stats_daysConsecutive": "zile consecutive",
+  "stats_success": "Succes",
+  "stats_completion": "finalizare",
+  "stats_weeklyFasting": "Post săptămânal",
+  "stats_monthlyView": "Vizualizare lunară",
+  "stats_weightChange": "Schimbarea greutății",
+  "heatmap_none": "Deloc",
+  "heatmap_low": "Scăzut",
+  "heatmap_good": "Bun",
+  "heatmap_full": "Complet",
+  "meals_title": "Planificator de mese",
+  "meals_eatingWindow": "Fereastră de alimentație",
+  "meals_windowOpen": "Deschisă",
+  "meals_windowFasting": "Post",
+  "meals_calories": "Calorii",
+  "meals_protein": "Proteine",
+  "meals_carbs": "Carbohidrați",
+  "meals_fat": "Grăsimi",
+  "meals_todayMeals": "Mesele de azi",
+  "meals_noMeals": "Nu ai adăugat încă nicio masă",
+  "meals_breakfastSuggestions": "Sugestii pentru întreruperea postului",
+  "meals_addMeal": "Adaugă masă",
+  "profile_title": "Profil",
+  "profile_user": "Utilizator",
+  "profile_planActive": "Planul {plan} este activ",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Treci la Premium",
+  "profile_premiumDesc": "Toate planurile de post, fără reclame",
+  "profile_bodyMetrics": "Măsurători corporale",
+  "profile_height": "Înălțime",
+  "profile_weight": "Greutate",
+  "profile_targetWeight": "Greutate țintă",
+  "profile_bmi": "IMC",
+  "profile_settings": "Setări",
+  "profile_notifications": "Notificări",
+  "profile_darkTheme": "Temă întunecată",
+  "profile_waterReminder": "Memento pentru apă",
+  "profile_phaseNotifications": "Notificări de fază",
+  "profile_language": "Limbă",
+  "profile_about": "Despre",
+  "profile_rateApp": "Evaluează aplicația",
+  "profile_share": "Distribuie",
+  "profile_privacyPolicy": "Politica de confidențialitate",
+  "profile_version": "Versiune",
+  "onboarding_welcome": "Bun venit",
+  "onboarding_welcomeDesc": "Preia controlul asupra călătoriei tale\ncu postul intermitent",
+  "onboarding_featureTimer": "Cronometru inteligent pentru post",
+  "onboarding_featureStats": "Statistici și grafice detaliate",
+  "onboarding_featureMeals": "Planificator de mese și sugestii de rețete",
+  "onboarding_getStarted": "Începe",
+  "onboarding_selectGoal": "Care este obiectivul tău?",
+  "onboarding_selectGoalDesc": "Poți selecta mai multe",
+  "onboarding_goalWeight": "Slăbește",
+  "onboarding_goalWeightDesc": "Slăbire sănătoasă",
+  "onboarding_goalHealth": "Îmbunătățește sănătatea",
+  "onboarding_goalHealthDesc": "Sănătate generală și imunitate",
+  "onboarding_goalEnergy": "Mai multă energie",
+  "onboarding_goalEnergyDesc": "Energie pe tot parcursul zilei",
+  "onboarding_goalMental": "Claritate mentală",
+  "onboarding_goalMentalDesc": "Concentrare și claritate",
+  "onboarding_goalLongevity": "Longevitate",
+  "onboarding_goalLongevityDesc": "Reînnoire celulară și îmbătrânire sănătoasă",
+  "onboarding_goalDiscipline": "Disciplină",
+  "onboarding_goalDisciplineDesc": "Dezvoltă autodisciplina",
+  "onboarding_selectPlan": "Alege-ți planul",
+  "onboarding_selectPlanDesc": "Alege planul de post potrivit pentru tine",
+  "onboarding_bodyInfo": "Introdu datele tale",
+  "onboarding_bodyInfoDesc": "Pentru recomandări personalizate",
+  "onboarding_gender": "Sex",
+  "onboarding_male": "Bărbat",
+  "onboarding_female": "Femeie",
+  "onboarding_age": "Vârstă",
+  "onboarding_bodyInfoDisclaimer": "Aceste informații sunt stocate doar pe dispozitivul tău și sunt folosite pentru calcularea caloriilor.",
+  "onboarding_permissions": "Ultimul pas",
+  "onboarding_permissionsDesc": "Activează permisiunile pentru cea mai bună experiență",
+  "onboarding_next": "Continuă",
+  "onboarding_start": "Să începem!",
+  "onboarding_skipForNow": "Configurează mai târziu",
+  "waterAdded": "S-au adăugat 250 ml de apă",
+  "languageSelect": "Selectează limba",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Treci la Premium",
+  "paywall_subtitle": "Deblochează toate planurile de post și elimină reclamele",
+  "paywall_allPlans": "Toate planurile de post",
+  "paywall_advancedStats": "Statistici avansate",
+  "paywall_mealPlanner": "Planificator de mese",
+  "paywall_themes": "Personalizarea temei",
+  "paywall_noAds": "Fără reclame",
+  "paywall_weekly": "Săptămânal",
+  "paywall_monthly": "Lunar",
+  "paywall_yearly": "Anual",
+  "paywall_bestValue": "Cea mai bună ofertă",
+  "paywall_freeTrial": "Perioadă de probă gratuită (3 zile)",
+  "paywall_restore": "Restaurează achizițiile",
+  "paywall_premiumActive": "Premium este activ!",
+  "paywall_premiumActiveDesc": "Toate planurile de post sunt deblocate, iar reclamele sunt dezactivate",
+  "water_title": "Aport de apă",
+  "water_addWater": "Adaugă apă",
+  "water_goal": "Obiectiv",
+  "water_ml": "ml",
+  "common_ok": "OK",
+  "common_cancel": "Anulează",
+  "common_save": "Salvează",
+  "common_delete": "Șterge",
+  "common_hours": "ore",
+  "common_minutes": "minute",
+  "common_days": "zile",
+  "common_enable": "Activează",
+  "streakCard_currentStreak": "Seria actuală",
+  "streakCard_longestStreak": "Cea mai lungă serie",
+  "streakCard_totalSessions": "Total posturi",
+  "meals_mealType": "Tipul mesei",
+  "meals_breakfast": "Mic dejun",
+  "meals_lunch": "Prânz",
+  "meals_dinner": "Cină",
+  "meals_snack": "Gustare",
+  "meals_carbohydrate": "Carbohidrați",
+  "meals_add": "Adaugă",
+  "meals_mealName": "Numele mesei",
+  "bodyMetrics_title": "Măsurători corporale",
+  "bodyMetrics_weight": "Greutate",
+  "bodyMetrics_target": "Țintă",
+  "bodyMetrics_save": "Salvează",
+  "bodyMetrics_history": "Istoric",
+  "bodyMetrics_bmiValue": "IMC: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Nu există încă date",
+  "meals_quickAdd": "Adăugare rapidă",
+  "meals_manualEntry": "Introducere manuală",
+  "meals_added": "{name} a fost adăugat",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Numele și caloriile sunt obligatorii",
+  "bodyMetrics_addWeight": "Adaugă greutatea",
+  "bodyMetrics_hintWeight": "de ex. 74,5",
+  "bodyMetrics_invalidWeight": "Introdu o greutate validă",
+  "bodyMetrics_weightSaved": "{value} kg salvate",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Durată",
+  "completion_plan": "Plan",
+  "completion_lastPhase": "Ultima fază",
+  "timer_remainingTime": "Timp rămas",
+  "timer_ready": "Gata de început",
+  "streak_status": "Stare",
+  "streak_startToday": "Începe azi!",
+  "streak_goodStart": "Un început bun!",
+  "streak_goingGreat": "Te descurci excelent!",
+  "streak_superb": "Superb!",
+  "streak_legendary": "Legendar!",
+  "streak_incredible": "Incredibil!",
+  "weight_noRecord": "Nu există încă înregistrări ale greutății\nAdaugă-le din Profil > Măsurători corporale",
+  "day_mon": "Lun",
+  "day_tue": "Mar",
+  "day_wed": "Mie",
+  "day_thu": "Joi",
+  "day_fri": "Vin",
+  "day_sat": "Sâm",
+  "day_sun": "Dum",
+  "day_short_mon": "L",
+  "day_short_tue": "M",
+  "day_short_wed": "M",
+  "day_short_thu": "J",
+  "day_short_fri": "V",
+  "day_short_sat": "S",
+  "day_short_sun": "D",
+  "month_jan": "Ianuarie",
+  "month_feb": "Februarie",
+  "month_mar": "Martie",
+  "month_apr": "Aprilie",
+  "month_may": "Mai",
+  "month_jun": "Iunie",
+  "month_jul": "Iulie",
+  "month_aug": "August",
+  "month_sep": "Septembrie",
+  "month_oct": "Octombrie",
+  "month_nov": "Noiembrie",
+  "month_dec": "Decembrie",
+  "meals_fastingWindow": "Post ({hours} h)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Alimentație ({hours} h)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Smoothie cu ovăz",
+  "recipe_avocadoToast": "Pâine prăjită cu avocado",
+  "recipe_yogurtBowl": "Bol cu iaurt",
+  "elapsed_time": "Timp scurs",
+  "fast_ends_on": "Postul tău se încheie la",
+  "end_fasting": "Încheie postul",
+  "start_fasting": "Începe postul",
+  "water_tracker": "Monitor de apă",
+  "weight_tracker": "Monitor de greutate",
+  "drink": "Bea",
+  "log_weight": "Înregistrează greutatea",
+  "bmi": "IMC",
+  "weight_lost": "Greutate pierdută",
+  "current_weight": "Greutate actuală",
+  "goal_weight": "Greutate țintă",
+  "daily_goal": "Obiectiv zilnic",
+  "completed_percent": "{percent}% finalizat",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Explorează",
+  "achievements": "Realizări",
+  "profile_theme": "Aspect",
+  "theme_select": "Alege aspectul",
+  "theme_system": "Implicit de sistem",
+  "theme_light": "Luminos",
+  "theme_dark": "Întunecat",
+  "language_system": "Limba sistemului",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Sunet de finalizare",
+  "profile_calmGamification": "Gamificare relaxată",
+  "profile_calmGamificationDesc": "Reduce presiunea ligii și a sezonului",
+  "profile_editName": "Editează-ți numele",
+  "profile_name": "Nume",
+  "circle_title": "Cercul de post",
+  "circle_you": "Tu",
+  "circle_tagline": "Împreună, fără presiune.",
+  "circle_privacy": "Greutatea și măsurătorile private rămân ascunse. Sunt vizibile doar progresul și sprijinul.",
+  "circle_sendSupport": "Trimite sprijin · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Codul invitației a fost copiat",
+  "circle_createInvite": "Creează invitație privată",
+  "crisis_nameTitle": "Mai întâi, numește ceea ce se întâmplă",
+  "crisis_nameDesc": "Poate fi foame, obișnuință sau emoție.",
+  "crisis_waterTitle": "Bea un pahar cu apă",
+  "crisis_waterDesc": "Apoi respiră lent de trei ori.",
+  "crisis_delayTitle": "Amână decizia cu 10 minute",
+  "crisis_delayDesc": "Dacă nu te simți bine, încheierea postului nu este un eșec.",
+  "crisis_hunger": "Foame",
+  "crisis_habit": "Obișnuință",
+  "crisis_stress": "Stres",
+  "crisis_tenMore": "Acordă-i 10 minute",
+  "stats_storyEmpty": "Primul tău post va începe povestea ta personală.",
+  "stats_story": "Ai ținut post de {sessions} ori în această perioadă, ți-ai menținut ritmul timp de {hours} ore și ai atins o rată de finalizare de {rate}%.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "Povestea ritmului tău",
+  "home_todayRhythm": "Ritmul de azi",
+  "home_finalHourSupport": "Sprijin pentru ultima oră",
+  "home_needSupport": "Am nevoie de puțin sprijin",
+  "home_todaySummary": "Astăzi dintr-o privire",
+  "home_dayStreak": "zile consecutive",
+  "home_weightGoal": "țintă {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Ritmul tău este constant",
+  "weather_gentle": "O zi liniștită",
+  "weather_water": "Un pahar cu apă poate ajuta.",
+  "weather_listen": "Ai ajuns departe; ascultă-ți corpul.",
+  "weather_onPlan": "Ritmul de azi corespunde planului tău.",
+  "weather_challenging": "Această oră a fost dificilă înainte; modul de sprijin este pregătit.",
+  "replay_copied": "Recapitularea postului a fost copiată",
+  "replay_button": "Recapitulare",
+  "replay_text": "Am finalizat postul {plan} în {hours} h {minutes} min · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Călătorie metabolică",
+  "journey_now": "Acum",
+  "journey_next": "{time} până la {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "Momentele fazelor sunt estimări generale, nu măsurători medicale.",
+  "phase_hours": "Orele {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Această temporizare este o estimare generală. Răspunsurile metabolice pot varia de la o persoană la alta.",
+  "bmi_underweight": "Subponderal",
+  "bmi_normal": "Greutate normală",
+  "bmi_overweight": "Supraponderal",
+  "bmi_obese": "Obezitate",
+  "notification_halfwayTitle": "Ai ajuns la jumătate! 💪",
+  "notification_halfwayBody": "Ai finalizat jumătate din postul {plan}. Continuă!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Ai intrat în faza catabolică 📉",
+  "notification_phaseFatBurning": "Arderea grăsimilor a început! 🔥",
+  "notification_phaseKetosis": "Ești în cetoză ⚡",
+  "notification_phaseAutophagy": "Autofagia este activă! 🔄",
+  "notification_completedBody": "Ai finalizat postul {plan}! Fereastra ta de alimentație este deschisă.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Bea apă 💧",
+  "notification_waterBody": "Nu uita să bei suficientă apă în timpul postului!",
+  "notification_windowTitle": "Fereastra de alimentație se închide ⏰",
+  "notification_windowBody": "Fereastra ta de alimentație se va închide în 30 de minute.",
+  "notification_streakTitle": "{days} zile consecutive! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Te descurci excelent! Continuă și azi.",
+  "notification_ongoingTitle": "Post în desfășurare – {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Rămas: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Post început – {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Țintă: {hours} ore",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours} h {minutes} min",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Ghid de post",
+  "explore_guideDesc": "Tot ce trebuie să știi despre postul intermitent",
+  "explore_circleDesc": "Împărtășește sprijin discret cu grupul tău privat.",
+  "explore_faq": "Întrebări frecvente",
+  "explore_education": "Acest conținut este doar pentru educație generală și nu reprezintă diagnostic medical sau recomandare de tratament.",
+  "explore_safety": "Sănătate și siguranță",
+  "explore_safetyDesc": "Dacă ai o afecțiune medicală, iei medicamente regulat, ai simptome îngrijorătoare, ești însărcinată sau alăptezi, consultă un cadru medical calificat înainte de a ține post. Oprește-te dacă nu te simți bine.",
+  "explore_sources": "Surse",
+  "explore_sourcesDesc": "Conținutul este simplificat pe baza surselor publice de sănătate de mai jos.",
+  "explore_sourceError": "Sursa nu a putut fi deschisă",
+  "explore_rules": "Reguli importante",
+  "explore_rule1": "Nu consuma alimente cu calorii în timpul postului",
+  "explore_rule2": "Bea suficientă apă și lichide",
+  "explore_rule3": "Mănâncă echilibrat în fereastra de alimentație",
+  "explore_rule4": "Oprește postul dacă nu te simți bine",
+  "explore_rule5": "Femeile însărcinate sau care alăptează nu ar trebui să țină post",
+  "explore_rule6": "Consultă medicul dacă ai afecțiuni cronice",
+  "tip_water": "Hidratează-te",
+  "tip_waterDesc": "Bea apă când îți este sete și consumă lichide la mese. Nevoile pot varia în funcție de sănătate, vreme și activitate.",
+  "tip_food": "Mănâncă sănătos",
+  "tip_foodDesc": "În ferestrele de alimentație, alege alimente bogate în proteine și fibre, precum și grăsimi sănătoase. Evită alimentele procesate.",
+  "tip_sleep": "Dormi bine",
+  "tip_sleepDesc": "Somnul regulat și suficient susține starea generală de bine. Programează postul astfel încât să nu-ți perturbe somnul.",
+  "tip_exercise": "Mișcare ușoară",
+  "tip_exerciseDesc": "Poți face plimbări ușoare sau yoga în timpul postului. Evită exercițiile intense, mai ales în primele săptămâni, până când corpul se adaptează.",
+  "tip_drinks": "Băuturi permise",
+  "tip_drinksDesc": "În timpul postului poți bea apă, ceai simplu și cafea neagră fără zahăr sau lapte. Aceste băuturi nu întrerup postul.",
+  "faq_drinks": "Ce pot bea în timpul postului?",
+  "faq_drinksAnswer": "Poți bea apă, ceai simplu și cafea neagră fără zahăr sau lapte. Băuturile cu calorii întrerup postul.",
+  "faq_plan": "Ce plan de post ar trebui să aleg?",
+  "faq_planAnswer": "Dacă ești începător, începe cu 12:12 sau 14:10. Dacă ai experiență, încearcă 16:8 sau 18:6. 20:4 și OMAD sunt pentru avansați.",
+  "faq_exercise": "Pot face mișcare în timpul postului?",
+  "faq_exerciseAnswer": "Da, dar evită antrenamentele intense. Exercițiile cardio ușoare, mersul și yoga sunt ideale. Programează antrenamentul de forță aproape de fereastra de alimentație.",
+  "faq_weight": "Postul ajută la slăbit?",
+  "faq_weightAnswer": "Pentru unele persoane, limitarea intervalului de alimentație poate reduce aportul total de energie. Rezultatele variază, iar efectele pe termen lung sunt încă studiate.",
+  "plan_12_desc": "Nivel începător",
+  "plan_12_detail": "Ideal pentru începători. Ține post 12 ore, inclusiv timpul de somn.",
+  "plan_16_desc": "Cel mai popular plan",
+  "plan_16_detail": "Cel mai obișnuit plan de post intermitent: 16 ore de post și o fereastră de alimentație de 8 ore, de obicei de la prânz până la cină.",
+  "plan_18_desc": "Nivel intermediar",
+  "plan_18_detail": "18 ore de post și o fereastră de alimentație de 6 ore. Arderea grăsimilor durează mai mult.",
+  "plan_20_desc": "Nivel avansat",
+  "plan_20_detail": "20 de ore de post și o fereastră de alimentație de 4 ore. Ideal pentru atingerea cetozei și autofagiei.",
+  "plan_omad_desc": "O masă pe zi",
+  "plan_omad_detail": "O masă pe zi: 23 de ore de post și o fereastră de alimentație de 1 oră. Nivel expert.",
+  "plan_52_desc": "2 zile pe săptămână",
+  "plan_52_detail": "Mănâncă normal 5 zile și limitează-te la aproximativ 500 de calorii în 2 zile. O abordare alternativă.",
+  "plan_ese_desc": "Post de 24 de ore",
+  "plan_ese_detail": "Ține post 24 de ore de 1–2 ori pe săptămână. Pentru avansați.",
+  "plan_warrior_desc": "Dieta războinicului",
+  "plan_warrior_detail": "Mănâncă ușor în timpul zilei, iar masa principală într-o fereastră de patru ore seara.",
+  "award_first_title": "Primul pas",
+  "award_first_desc": "Finalizează primul post",
+  "award_rhythm3_title": "Ritm de 3 zile",
+  "award_rhythm3_desc": "Menține ritmul timp de trei zile",
+  "award_hours24_title": "24 de ore",
+  "award_hours24_desc": "Ține post în total 24 de ore",
+  "award_week_title": "Ritm de o săptămână",
+  "award_week_desc": "Construiește o serie de șapte zile",
+  "award_fasts10_title": "10 posturi",
+  "award_fasts10_desc": "Finalizează zece posturi",
+  "award_hours100_title": "100 de ore",
+  "award_hours100_desc": "Atinge 100 de ore în total",
+  "award_rhythm30_title": "Ritm de 30 de zile",
+  "award_rhythm30_desc": "Construiește o serie de treizeci de zile",
+  "award_fasts50_title": "50 de posturi",
+  "award_fasts50_desc": "Finalizează cincizeci de posturi",
+  "award_hours500_title": "500 de ore",
+  "award_hours500_desc": "Atinge 500 de ore în total",
+  "award_fasts100_title": "100 de posturi",
+  "award_fasts100_desc": "Finalizează o sută de posturi",
+  "award_rhythm90_title": "Ritm de 90 de zile",
+  "award_rhythm90_desc": "Construiește o serie de nouăzeci de zile",
+  "award_year_title": "Călătorie de un an",
+  "award_year_desc": "Atinge un ritm de 365 de zile",
+  "awards_loadError": "Progresul nu a putut fi încărcat",
+  "awards_journeyComplete": "Călătorie finalizată",
+  "awards_nextGoal": "Următorul obiectiv",
+  "awards_allYours": "Toate realizările sunt ale tale",
+  "awards_dayStreak": "zile consecutive",
+  "awards_fasts": "posturi",
+  "awards_total": "total",
+  "awards_stageStart": "Început",
+  "awards_stageRhythm": "Ritm",
+  "awards_stageEndurance": "Rezistență",
+  "awards_stageMastery": "Măiestrie",
+  "awards_completed": "Finalizat",
+  "awards_fastsRemaining": "Mai sunt {count} posturi",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "Mai sunt {count} zile",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "Mai sunt {count} ore",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Încearcă din nou",
+  "game_title": "Centrul progresului",
+  "game_quests": "Misiunile de azi",
+  "game_questsDesc": "Pași mici, ritm sustenabil.",
+  "game_season": "Sezon cu 30 de pași",
+  "game_seasonDesc": "O insignă de colecție la fiecare al cincilea pas.",
+  "game_badges": "Colecție de insigne",
+  "game_shields": "{count} scuturi de ritm",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Primești unul la fiecare șapte finalizări. O zi ratată nu îți șterge niciodată progresul.",
+  "game_league": "Ligă săptămânală privată",
+  "game_leagueDesc": "Scorul ritmului tău se află în percentila {percent} a unui model local privat. Greutatea și postul extrem nu sunt niciodată clasificate.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Nivel {level}, {xp} puncte de experiență",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Explorator de ritm",
+  "game_streak": "Serie",
+  "game_targets": "Obiective",
+  "game_best": "Cel mai bun",
+  "quest_rhythm": "Construiește ritmul de azi",
+  "quest_hydrate": "Atinge jumătate din obiectivul de apă",
+  "quest_steady": "Protejează-ți seria",
+  "badge_first_title": "Primul pas",
+  "badge_first_desc": "Înregistrează primul post",
+  "badge_rhythm7_title": "Păstrătorul ritmului",
+  "badge_rhythm7_desc": "Atinge o serie de 7 zile",
+  "badge_rhythm3_title": "Ritm de trei zile",
+  "badge_rhythm3_desc": "Atinge o serie de 3 zile",
+  "badge_target1_title": "Primul obiectiv",
+  "badge_target1_desc": "Finalizează primul post-țintă",
+  "badge_target3_title": "Trei pași",
+  "badge_target3_desc": "Finalizează 3 obiective",
+  "badge_water_title": "Echilibrat",
+  "badge_water_desc": "Atinge obiectivul zilnic de apă",
+  "badge_support_title": "Conștient de sine",
+  "badge_support_desc": "Folosește modul de sprijin",
+  "badge_hours10_title": "10 ore",
+  "badge_hours10_desc": "Înregistrează în total 10 ore",
+  "badge_target10_title": "Zece reușite",
+  "badge_target10_desc": "Finalizează 10 obiective",
+  "badge_target20_title": "Douăzeci de obiective",
+  "badge_target20_desc": "Finalizează 20 de obiective",
+  "badge_fast16_title": "16 ore",
+  "badge_fast16_desc": "Atinge 16 ore într-un singur post",
+  "badge_hours50_title": "50 de ore",
+  "badge_hours50_desc": "Înregistrează în total 50 de ore",
+  "badge_hours100_title": "O sută de ore",
+  "badge_hours100_desc": "Înregistrează în total 100 de ore",
+  "badge_target30_title": "Treizeci de obiective",
+  "badge_target30_desc": "Finalizează 30 de obiective",
+  "badge_rhythm30_title": "Ritm de 30 de zile",
+  "badge_rhythm30_desc": "Atinge o serie de 30 de zile",
+  "paywall_restoreSuccess": "Achizițiile au fost restaurate!",
+  "fasting_progressSemantics": "Progresul postului: {percent} la sută",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour} h",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "Pe viață",
+  "paywall_once": "o singură dată",
+  "paywall_processing": "Se procesează…",
+  "paywall_continue": "Continuă",
+  "paywall_productsUnavailable": "Achizițiile nu sunt disponibile momentan. Încearcă din nou mai târziu.",
+  "paywall_purchaseFailed": "Achiziția nu a putut fi finalizată.",
+  "paywall_nothingToRestore": "Nu a fost găsită nicio achiziție anterioară.",
+  "paywall_restoreFailed": "Achizițiile nu au putut fi restaurate.",
+  "paywall_terms": "Condiții de utilizare",
+  "permission_notificationDesc": "Mementouri de post, actualizări de fază și notificări de finalizare",
+  "profile_privacyChoices": "Opțiuni de confidențialitate",
+  "paywall_autoRenewInfo": "Abonamentele se reînnoiesc automat dacă nu sunt anulate cu cel puțin 24 de ore înainte de sfârșitul perioadei. Gestionează-le sau anulează-le oricând în setările App Store.",
+  "paywall_perMonth": "{price} / lună",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Economisești {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "Perioadă de probă gratuită de {days} zile",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Începe perioada de probă gratuită",
+  "paywall_retry": "Încearcă din nou",
+  "paywall_alreadyOwned": "Deții deja acest abonament. Atinge Restaurează achizițiile.",
+  "paywall_storeUnavailable": "Magazinul nu poate fi accesat momentan. Verifică conexiunea și încearcă din nou.",
+  "paywall_secureNote": "Anulează oricând. Plata este debitată din contul magazinului.",
+  "paywall_autoRenewInfoPlay": "Abonamentele se reînnoiesc automat dacă nu sunt anulate cu cel puțin 24 de ore înainte de sfârșitul perioadei. Gestionează-le sau anulează-le în Google Play > Abonamente.",
+  "paywall_allPlansDesc": "Deblochează 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat și Warrior",
+  "paywall_noAdsDesc": "Reclamele banner și pe ecran complet sunt dezactivate complet",
+  "foodScan_title": "Scanare alimentară cu IA",
+  "foodScan_scanCta": "Scanează masa",
+  "foodScan_scanCtaDesc": "Fotografiază farfuria și află caloriile și macronutrienții",
+  "foodScan_introTitle": "Fotografiază farfuria",
+  "foodScan_introDesc": "IA citește fotografia și estimează caloriile, proteinele, carbohidrații și grăsimile.",
+  "foodScan_tipLight": "Lumina bună și uniformă oferă o estimare mai precisă",
+  "foodScan_tipFrame": "Încadrează toată farfuria",
+  "foodScan_tipScale": "Include tacâmuri sau o mână pentru a putea estima porția",
+  "foodScan_takePhoto": "Fotografiază",
+  "foodScan_chooseFromGallery": "Alege din galerie",
+  "foodScan_scansLeft": "Mai ai {count} scanări azi",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Ai folosit scanările de azi. Încearcă din nou mâine.",
+  "foodScan_privacyNote": "Fotografia este trimisă către Gemini API de la Google pentru analiză și nu este stocată pe serverele noastre.",
+  "foodScan_analyzing": "Îți analizăm masa…",
+  "foodScan_analyzingHint": "De obicei durează câteva secunde",
+  "foodScan_detectedItems": "Alimente detectate",
+  "foodScan_disclaimer": "Estimările IA sunt aproximative. Atinge un aliment pentru a-l corecta.",
+  "foodScan_lowConfidence": "Modelul nu este sigur de această fotografie. Verifică valorile înainte de salvare.",
+  "foodScan_save": "Adaugă la mese",
+  "foodScan_retake": "Fotografie nouă",
+  "foodScan_retry": "Încearcă din nou",
+  "foodScan_editItem": "Editează alimentul",
+  "foodScan_portion": "Porție",
+  "foodScan_saveEdit": "Salvează",
+  "foodScan_premiumTitle": "O funcție Premium",
+  "foodScan_premiumDesc": "Analiza caloriilor din fotografie este inclusă în Premium.",
+  "foodScan_upgrade": "Vezi Premium",
+  "foodScan_errorNetwork": "Nu există conexiune. Verifică internetul și încearcă din nou.",
+  "foodScan_errorRateLimited": "Sunt prea multe scanări acum. Încearcă din nou peste câteva minute.",
+  "foodScan_errorUnavailable": "Analiza fotografiei nu este disponibilă momentan.",
+  "foodScan_errorServer": "Serviciul de analiză întâmpină probleme. Încearcă din nou în curând.",
+  "foodScan_errorNoFood": "Nu s-a găsit mâncare în această fotografie. Încearcă o imagine mai clară a farfuriei.",
+  "foodScan_errorUnreadable": "Această fotografie nu a putut fi analizată. Încearcă alta.",
+  "paywall_aiFoodScan": "Scanare alimentară cu IA",
+  "paywall_aiFoodScanDesc": "Fotografiază o masă și înregistrează caloriile și macronutrienții în câteva secunde"
+}
