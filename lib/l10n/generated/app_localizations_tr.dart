@@ -1545,4 +1545,126 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get paywall_noAdsDesc => 'Banner ve geçiş reklamları tamamen kapanır';
+
+  @override
+  String get foodScan_title => 'Yapay Zekâ Yemek Analizi';
+
+  @override
+  String get foodScan_scanCta => 'Yemeği tara';
+
+  @override
+  String get foodScan_scanCtaDesc =>
+      'Tabağının fotoğrafını çek, kalori ve makroları al';
+
+  @override
+  String get foodScan_introTitle => 'Tabağının fotoğrafını çek';
+
+  @override
+  String get foodScan_introDesc =>
+      'Yapay zekâ fotoğrafı okur; kalori, protein, karbonhidrat ve yağ tahmini yapar.';
+
+  @override
+  String get foodScan_tipLight => 'İyi ve dengeli ışık tahmini iyileştirir';
+
+  @override
+  String get foodScan_tipFrame => 'Tüm tabağı kareye sığdır';
+
+  @override
+  String get foodScan_tipScale =>
+      'Porsiyonun ölçeklenmesi için çatal bıçak veya elini de kadraja al';
+
+  @override
+  String get foodScan_takePhoto => 'Fotoğraf çek';
+
+  @override
+  String get foodScan_chooseFromGallery => 'Galeriden seç';
+
+  @override
+  String foodScan_scansLeft(int count) {
+    return 'Bugün $count tarama hakkın kaldı';
+  }
+
+  @override
+  String get foodScan_quotaReached =>
+      'Bugünkü tarama hakkın doldu. Yarın tekrar dene.';
+
+  @override
+  String get foodScan_privacyNote =>
+      'Fotoğraf analiz için Google Gemini API\'sine gönderilir ve sunucularımızda saklanmaz.';
+
+  @override
+  String get foodScan_analyzing => 'Öğünün analiz ediliyor…';
+
+  @override
+  String get foodScan_analyzingHint => 'Bu genelde birkaç saniye sürer';
+
+  @override
+  String get foodScan_detectedItems => 'Tespit edilenler';
+
+  @override
+  String get foodScan_disclaimer =>
+      'Yapay zekâ tahminleri yaklaşıktır. Düzeltmek için bir öğeye dokun.';
+
+  @override
+  String get foodScan_lowConfidence =>
+      'Model bu fotoğraftan emin değil. Kaydetmeden önce değerleri kontrol et.';
+
+  @override
+  String get foodScan_save => 'Öğünlere ekle';
+
+  @override
+  String get foodScan_retake => 'Yeni fotoğraf';
+
+  @override
+  String get foodScan_retry => 'Tekrar dene';
+
+  @override
+  String get foodScan_editItem => 'Öğeyi düzenle';
+
+  @override
+  String get foodScan_portion => 'Porsiyon';
+
+  @override
+  String get foodScan_saveEdit => 'Kaydet';
+
+  @override
+  String get foodScan_premiumTitle => 'Premium özellik';
+
+  @override
+  String get foodScan_premiumDesc =>
+      'Fotoğraftan kalori analizi Premium\'a dahildir.';
+
+  @override
+  String get foodScan_upgrade => 'Premium\'u gör';
+
+  @override
+  String get foodScan_errorNetwork =>
+      'Bağlantı yok. İnternetini kontrol edip tekrar dene.';
+
+  @override
+  String get foodScan_errorRateLimited =>
+      'Şu anda çok fazla tarama var. Birkaç dakika sonra tekrar dene.';
+
+  @override
+  String get foodScan_errorUnavailable =>
+      'Fotoğraf analizi şu anda kullanılamıyor.';
+
+  @override
+  String get foodScan_errorServer =>
+      'Analiz servisinde sorun var. Kısa süre sonra tekrar dene.';
+
+  @override
+  String get foodScan_errorNoFood =>
+      'Bu fotoğrafta yemek bulunamadı. Tabağın daha net bir karesini dene.';
+
+  @override
+  String get foodScan_errorUnreadable =>
+      'Bu fotoğraf analiz edilemedi. Başka bir tane dene.';
+
+  @override
+  String get paywall_aiFoodScan => 'Yapay zekâ yemek analizi';
+
+  @override
+  String get paywall_aiFoodScanDesc =>
+      'Öğünün fotoğrafını çek, kalori ve makrolarını saniyeler içinde kaydet';
 }

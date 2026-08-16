@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import '../../../core/config/build_config.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../providers/meal_provider.dart';
 
@@ -61,6 +66,13 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
             children: [
               Text(l10n.meals_addMeal, style: theme.textTheme.titleLarge),
               const SizedBox(height: 20),
+
+              // Shortcut into the AI scan — the sheet is where a user lands
+              // when they want to log a meal, so the faster path belongs here.
+              if (BuildConfig.isFoodScanEnabled) ...[
+                _buildScanBanner(context, l10n),
+                const SizedBox(height: 20),
+              ],
 
               // Meal type selector
               Text(l10n.meals_mealType, style: theme.textTheme.titleSmall),
@@ -175,6 +187,64 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildScanBanner(BuildContext context, AppLocalizations l10n) {
+    final theme = Theme.of(context);
+    return InkWell(
+      borderRadius: AppSpacing.borderRadiusMd,
+      onTap: () {
+        Navigator.of(context).pop();
+        context.push('/food-scan');
+      },
+      child: Container(
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              AppColors.primary.withValues(alpha: .14),
+              AppColors.secondary.withValues(alpha: .08),
+            ],
+          ),
+          borderRadius: AppSpacing.borderRadiusMd,
+          border: Border.all(color: AppColors.primary.withValues(alpha: .2)),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              PhosphorIcons.camera(PhosphorIconsStyle.fill),
+              color: AppColors.primary,
+              size: 22,
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.foodScan_scanCta,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    l10n.foodScan_scanCtaDesc,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurface.withValues(alpha: .55),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(
+              PhosphorIcons.caretRight(),
+              size: 16,
+              color: theme.colorScheme.onSurface.withValues(alpha: .35),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

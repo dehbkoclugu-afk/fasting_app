@@ -1559,4 +1559,127 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get paywall_noAdsDesc =>
       'Los anuncios de banner e intersticiales se desactivan por completo';
+
+  @override
+  String get foodScan_title => 'Análisis de comida con IA';
+
+  @override
+  String get foodScan_scanCta => 'Escanear comida';
+
+  @override
+  String get foodScan_scanCtaDesc =>
+      'Fotografía tu plato y obtén calorías y macros';
+
+  @override
+  String get foodScan_introTitle => 'Fotografía tu plato';
+
+  @override
+  String get foodScan_introDesc =>
+      'La IA lee la foto y estima calorías, proteínas, carbohidratos y grasas.';
+
+  @override
+  String get foodScan_tipLight =>
+      'Una luz buena y uniforme mejora la estimación';
+
+  @override
+  String get foodScan_tipFrame => 'Encuadra el plato completo';
+
+  @override
+  String get foodScan_tipScale =>
+      'Incluye cubiertos o una mano para calcular la porción';
+
+  @override
+  String get foodScan_takePhoto => 'Tomar foto';
+
+  @override
+  String get foodScan_chooseFromGallery => 'Elegir de la galería';
+
+  @override
+  String foodScan_scansLeft(int count) {
+    return 'Te quedan $count escaneos hoy';
+  }
+
+  @override
+  String get foodScan_quotaReached =>
+      'Has usado los escaneos de hoy. Inténtalo mañana.';
+
+  @override
+  String get foodScan_privacyNote =>
+      'La foto se envía a la API Gemini de Google para su análisis y no se almacena en nuestros servidores.';
+
+  @override
+  String get foodScan_analyzing => 'Analizando tu comida…';
+
+  @override
+  String get foodScan_analyzingHint => 'Suele tardar unos segundos';
+
+  @override
+  String get foodScan_detectedItems => 'Alimentos detectados';
+
+  @override
+  String get foodScan_disclaimer =>
+      'Las estimaciones de la IA son aproximadas. Toca un elemento para corregirlo.';
+
+  @override
+  String get foodScan_lowConfidence =>
+      'El modelo no está seguro con esta foto. Revisa los valores antes de guardar.';
+
+  @override
+  String get foodScan_save => 'Añadir a comidas';
+
+  @override
+  String get foodScan_retake => 'Nueva foto';
+
+  @override
+  String get foodScan_retry => 'Reintentar';
+
+  @override
+  String get foodScan_editItem => 'Editar elemento';
+
+  @override
+  String get foodScan_portion => 'Porción';
+
+  @override
+  String get foodScan_saveEdit => 'Guardar';
+
+  @override
+  String get foodScan_premiumTitle => 'Función Premium';
+
+  @override
+  String get foodScan_premiumDesc =>
+      'El análisis de calorías por foto está incluido en Premium.';
+
+  @override
+  String get foodScan_upgrade => 'Ver Premium';
+
+  @override
+  String get foodScan_errorNetwork =>
+      'Sin conexión. Revisa tu internet e inténtalo de nuevo.';
+
+  @override
+  String get foodScan_errorRateLimited =>
+      'Demasiados escaneos ahora mismo. Inténtalo en unos minutos.';
+
+  @override
+  String get foodScan_errorUnavailable =>
+      'El análisis de fotos no está disponible ahora.';
+
+  @override
+  String get foodScan_errorServer =>
+      'El servicio de análisis tiene problemas. Inténtalo en breve.';
+
+  @override
+  String get foodScan_errorNoFood =>
+      'No se encontró comida en esta foto. Prueba con una toma más clara del plato.';
+
+  @override
+  String get foodScan_errorUnreadable =>
+      'No se pudo analizar esta foto. Prueba con otra.';
+
+  @override
+  String get paywall_aiFoodScan => 'Escáner de comida con IA';
+
+  @override
+  String get paywall_aiFoodScanDesc =>
+      'Fotografía una comida y registra sus calorías y macros en segundos';
 }
