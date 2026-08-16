@@ -1,0 +1,773 @@
+{
+  "@@locale": "ar",
+  "appTitle": "FastTrack",
+  "greeting_morning": "صباح الخير",
+  "greeting_afternoon": "مساء الخير",
+  "greeting_evening": "مساء الخير",
+  "tab_timer": "الرئيسية",
+  "tab_explore": "استكشاف",
+  "tab_stats": "التقرير",
+  "tab_meals": "الوجبات",
+  "tab_achievements": "الإنجازات",
+  "tab_profile": "الحساب",
+  "timer_fasting": "مدة الصيام",
+  "timer_remaining": "المتبقي",
+  "timer_elapsed": "المنقضي",
+  "timer_start": "بدء",
+  "timer_stop": "إيقاف",
+  "timer_completed": "تهانينا!",
+  "timer_completedMessage": "أتممت صيامك بنجاح!",
+  "timer_selectPlan": "اختر خطة الصيام",
+  "timer_stopConfirm": "هل أنت متأكد من رغبتك في إنهاء الصيام مبكرًا؟",
+  "timer_stopTitle": "إنهاء الصيام",
+  "timer_cancel": "إلغاء",
+  "timer_confirmStop": "نعم، إنهاء",
+  "phase_anabolic": "مرحلة البناء",
+  "phase_anabolicDesc": "الهضم جارٍ",
+  "phase_catabolic": "مرحلة الهدم",
+  "phase_catabolicDesc": "انتقال الطاقة",
+  "phase_fatBurning": "حرق الدهون",
+  "phase_fatBurningDesc": "بدأ حرق الدهون",
+  "phase_ketosis": "الكيتوزية",
+  "phase_ketosisDesc": "إنتاج الكيتونات نشط",
+  "phase_autophagy": "الالتهام الذاتي",
+  "phase_autophagyDesc": "تجدد الخلايا",
+  "stats_title": "الإحصاءات",
+  "stats_week": "أسبوع",
+  "stats_month": "شهر",
+  "stats_year": "سنة",
+  "stats_totalFasts": "إجمالي مرات الصيام",
+  "stats_average": "المتوسط",
+  "stats_fastDuration": "مدة الصيام",
+  "stats_streak": "السلسلة",
+  "stats_daysConsecutive": "أيام متتالية",
+  "stats_success": "النجاح",
+  "stats_completion": "الإكمال",
+  "stats_weeklyFasting": "الصيام الأسبوعي",
+  "stats_monthlyView": "العرض الشهري",
+  "stats_weightChange": "تغير الوزن",
+  "heatmap_none": "لا شيء",
+  "heatmap_low": "منخفض",
+  "heatmap_good": "جيد",
+  "heatmap_full": "كامل",
+  "meals_title": "مخطط الوجبات",
+  "meals_eatingWindow": "نافذة الأكل",
+  "meals_windowOpen": "مفتوحة",
+  "meals_windowFasting": "صيام",
+  "meals_calories": "السعرات الحرارية",
+  "meals_protein": "البروتين",
+  "meals_carbs": "الكربوهيدرات",
+  "meals_fat": "الدهون",
+  "meals_todayMeals": "وجبات اليوم",
+  "meals_noMeals": "لم تُضف وجبات بعد",
+  "meals_breakfastSuggestions": "اقتراحات الإفطار",
+  "meals_addMeal": "إضافة وجبة",
+  "profile_title": "الملف الشخصي",
+  "profile_user": "المستخدم",
+  "profile_planActive": "خطة {plan} نشطة",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "الترقية إلى Premium",
+  "profile_premiumDesc": "كل خطط الصيام بلا إعلانات",
+  "profile_bodyMetrics": "قياسات الجسم",
+  "profile_height": "الطول",
+  "profile_weight": "الوزن",
+  "profile_targetWeight": "الوزن المستهدف",
+  "profile_bmi": "مؤشر كتلة الجسم",
+  "profile_settings": "الإعدادات",
+  "profile_notifications": "الإشعارات",
+  "profile_darkTheme": "المظهر الداكن",
+  "profile_waterReminder": "تذكير شرب الماء",
+  "profile_phaseNotifications": "إشعارات المراحل",
+  "profile_language": "اللغة",
+  "profile_about": "حول",
+  "profile_rateApp": "تقييم التطبيق",
+  "profile_share": "مشاركة",
+  "profile_privacyPolicy": "سياسة الخصوصية",
+  "profile_version": "الإصدار",
+  "onboarding_welcome": "مرحبًا",
+  "onboarding_welcomeDesc": "تحكم في رحلة\nالصيام المتقطع الخاصة بك",
+  "onboarding_featureTimer": "مؤقت صيام ذكي",
+  "onboarding_featureStats": "إحصاءات ورسوم بيانية مفصلة",
+  "onboarding_featureMeals": "مخطط وجبات واقتراحات وصفات",
+  "onboarding_getStarted": "ابدأ",
+  "onboarding_selectGoal": "ما هدفك؟",
+  "onboarding_selectGoalDesc": "يمكنك اختيار أكثر من هدف",
+  "onboarding_goalWeight": "خسارة الوزن",
+  "onboarding_goalWeightDesc": "خسارة وزن صحية",
+  "onboarding_goalHealth": "تحسين الصحة",
+  "onboarding_goalHealthDesc": "الصحة العامة والمناعة",
+  "onboarding_goalEnergy": "طاقة أكبر",
+  "onboarding_goalEnergyDesc": "طاقة طوال اليوم",
+  "onboarding_goalMental": "صفاء الذهن",
+  "onboarding_goalMentalDesc": "التركيز والوضوح",
+  "onboarding_goalLongevity": "طول العمر",
+  "onboarding_goalLongevityDesc": "تجدد الخلايا والشيخوخة الصحية",
+  "onboarding_goalDiscipline": "الانضباط",
+  "onboarding_goalDisciplineDesc": "بناء الانضباط الذاتي",
+  "onboarding_selectPlan": "اختر خطتك",
+  "onboarding_selectPlanDesc": "اختر خطة الصيام الأنسب لك",
+  "onboarding_bodyInfo": "أدخل معلوماتك",
+  "onboarding_bodyInfoDesc": "للحصول على توصيات مخصصة",
+  "onboarding_gender": "الجنس",
+  "onboarding_male": "ذكر",
+  "onboarding_female": "أنثى",
+  "onboarding_age": "العمر",
+  "onboarding_bodyInfoDisclaimer": "تُحفظ هذه المعلومات على جهازك فقط وتُستخدم لحساب السعرات الحرارية.",
+  "onboarding_permissions": "الخطوة الأخيرة",
+  "onboarding_permissionsDesc": "فعّل الأذونات لأفضل تجربة",
+  "onboarding_next": "متابعة",
+  "onboarding_start": "لنبدأ!",
+  "onboarding_skipForNow": "الإعداد لاحقًا",
+  "waterAdded": "تمت إضافة 250 مل من الماء",
+  "languageSelect": "اختر اللغة",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "الترقية إلى Premium",
+  "paywall_subtitle": "افتح جميع خطط الصيام وأزل الإعلانات",
+  "paywall_allPlans": "جميع خطط الصيام",
+  "paywall_advancedStats": "إحصاءات متقدمة",
+  "paywall_mealPlanner": "مخطط الوجبات",
+  "paywall_themes": "تخصيص المظهر",
+  "paywall_noAds": "بلا إعلانات",
+  "paywall_weekly": "أسبوعي",
+  "paywall_monthly": "شهري",
+  "paywall_yearly": "سنوي",
+  "paywall_bestValue": "أفضل قيمة",
+  "paywall_freeTrial": "تجربة مجانية (3 أيام)",
+  "paywall_restore": "استعادة المشتريات",
+  "paywall_premiumActive": "Premium نشط!",
+  "paywall_premiumActiveDesc": "تم فتح جميع خطط الصيام وإيقاف الإعلانات",
+  "water_title": "كمية الماء",
+  "water_addWater": "إضافة ماء",
+  "water_goal": "الهدف",
+  "water_ml": "مل",
+  "common_ok": "حسنًا",
+  "common_cancel": "إلغاء",
+  "common_save": "حفظ",
+  "common_delete": "حذف",
+  "common_hours": "ساعات",
+  "common_minutes": "دقائق",
+  "common_days": "أيام",
+  "common_enable": "تفعيل",
+  "streakCard_currentStreak": "السلسلة الحالية",
+  "streakCard_longestStreak": "أطول سلسلة",
+  "streakCard_totalSessions": "إجمالي مرات الصيام",
+  "meals_mealType": "نوع الوجبة",
+  "meals_breakfast": "الإفطار",
+  "meals_lunch": "الغداء",
+  "meals_dinner": "العشاء",
+  "meals_snack": "وجبة خفيفة",
+  "meals_carbohydrate": "الكربوهيدرات",
+  "meals_add": "إضافة",
+  "meals_mealName": "اسم الوجبة",
+  "bodyMetrics_title": "قياسات الجسم",
+  "bodyMetrics_weight": "الوزن",
+  "bodyMetrics_target": "الهدف",
+  "bodyMetrics_save": "حفظ",
+  "bodyMetrics_history": "السجل",
+  "bodyMetrics_bmiValue": "مؤشر كتلة الجسم: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "لا توجد بيانات بعد",
+  "meals_quickAdd": "إضافة سريعة",
+  "meals_manualEntry": "إدخال يدوي",
+  "meals_added": "تمت إضافة {name}",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "الاسم والسعرات الحرارية مطلوبان",
+  "bodyMetrics_addWeight": "إضافة وزن",
+  "bodyMetrics_hintWeight": "مثلًا 74.5",
+  "bodyMetrics_invalidWeight": "أدخل وزنًا صالحًا",
+  "bodyMetrics_weightSaved": "تم حفظ {value} كغ",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "المدة",
+  "completion_plan": "الخطة",
+  "completion_lastPhase": "المرحلة الأخيرة",
+  "timer_remainingTime": "الوقت المتبقي",
+  "timer_ready": "جاهز للبدء",
+  "streak_status": "الحالة",
+  "streak_startToday": "ابدأ اليوم!",
+  "streak_goodStart": "بداية جيدة!",
+  "streak_goingGreat": "تقدم رائع!",
+  "streak_superb": "ممتاز!",
+  "streak_legendary": "أسطوري!",
+  "streak_incredible": "مذهل!",
+  "weight_noRecord": "لا توجد سجلات وزن بعد\nأضفها من الملف الشخصي > قياسات الجسم",
+  "day_mon": "الاثنين",
+  "day_tue": "الثلاثاء",
+  "day_wed": "الأربعاء",
+  "day_thu": "الخميس",
+  "day_fri": "الجمعة",
+  "day_sat": "السبت",
+  "day_sun": "الأحد",
+  "day_short_mon": "ن",
+  "day_short_tue": "ث",
+  "day_short_wed": "ر",
+  "day_short_thu": "خ",
+  "day_short_fri": "ج",
+  "day_short_sat": "س",
+  "day_short_sun": "ح",
+  "month_jan": "يناير",
+  "month_feb": "فبراير",
+  "month_mar": "مارس",
+  "month_apr": "أبريل",
+  "month_may": "مايو",
+  "month_jun": "يونيو",
+  "month_jul": "يوليو",
+  "month_aug": "أغسطس",
+  "month_sep": "سبتمبر",
+  "month_oct": "أكتوبر",
+  "month_nov": "نوفمبر",
+  "month_dec": "ديسمبر",
+  "meals_fastingWindow": "الصيام ({hours} س)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "الأكل ({hours} س)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "سموذي الشوفان",
+  "recipe_avocadoToast": "خبز محمص بالأفوكادو",
+  "recipe_yogurtBowl": "وعاء الزبادي",
+  "elapsed_time": "الوقت المنقضي",
+  "fast_ends_on": "ينتهي صيامك عند",
+  "end_fasting": "إنهاء الصيام",
+  "start_fasting": "بدء الصيام",
+  "water_tracker": "متتبع الماء",
+  "weight_tracker": "متتبع الوزن",
+  "drink": "اشرب",
+  "log_weight": "تسجيل الوزن",
+  "bmi": "مؤشر كتلة الجسم",
+  "weight_lost": "الوزن المفقود",
+  "current_weight": "الوزن الحالي",
+  "goal_weight": "الوزن المستهدف",
+  "daily_goal": "الهدف اليومي",
+  "completed_percent": "اكتمل {percent}%",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "استكشاف",
+  "achievements": "الإنجازات",
+  "profile_theme": "المظهر",
+  "theme_select": "اختر المظهر",
+  "theme_system": "إعداد النظام",
+  "theme_light": "فاتح",
+  "theme_dark": "داكن",
+  "language_system": "لغة النظام",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "صوت الإكمال",
+  "profile_calmGamification": "تحفيز هادئ",
+  "profile_calmGamificationDesc": "يقلل ضغط الدوري والموسم",
+  "profile_editName": "تعديل اسمك",
+  "profile_name": "الاسم",
+  "circle_title": "دائرة الصيام",
+  "circle_you": "أنت",
+  "circle_tagline": "معًا، بلا ضغط.",
+  "circle_privacy": "يظل الوزن والقياسات الخاصة مخفية. يظهر التقدم والدعم فقط.",
+  "circle_sendSupport": "إرسال دعم · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "تم نسخ رمز الدعوة",
+  "circle_createInvite": "إنشاء دعوة خاصة",
+  "crisis_nameTitle": "أولًا، سمِّ ما يحدث",
+  "crisis_nameDesc": "قد يكون جوعًا أو عادة أو شعورًا.",
+  "crisis_waterTitle": "اشرب كوبًا من الماء",
+  "crisis_waterDesc": "ثم خذ ثلاثة أنفاس بطيئة.",
+  "crisis_delayTitle": "أجّل القرار 10 دقائق",
+  "crisis_delayDesc": "إذا شعرت بتوعك، فإن إنهاء الصيام ليس فشلًا.",
+  "crisis_hunger": "الجوع",
+  "crisis_habit": "العادة",
+  "crisis_stress": "التوتر",
+  "crisis_tenMore": "امنحه 10 دقائق",
+  "stats_storyEmpty": "سيبدأ صيامك الأول قصتك الشخصية.",
+  "stats_story": "صمت {sessions} مرات في هذه الفترة، وحافظت على إيقاعك {hours} ساعة، وبلغ معدل إكمالك {rate}%.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "قصة إيقاعك",
+  "home_todayRhythm": "إيقاع اليوم",
+  "home_finalHourSupport": "دعم الساعة الأخيرة",
+  "home_needSupport": "أحتاج إلى قليل من الدعم",
+  "home_todaySummary": "لمحة عن اليوم",
+  "home_dayStreak": "أيام متتالية",
+  "home_weightGoal": "الهدف {weight} كغ",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "إيقاعك مستقر",
+  "weather_gentle": "يوم هادئ",
+  "weather_water": "قد يساعد كوب من الماء.",
+  "weather_listen": "لقد قطعت شوطًا طويلًا؛ استمع إلى جسدك.",
+  "weather_onPlan": "وتيرة اليوم توافق خطتك.",
+  "weather_challenging": "كانت هذه الساعة صعبة سابقًا؛ وضع الدعم جاهز.",
+  "replay_copied": "تم نسخ ملخص الصيام",
+  "replay_button": "إعادة العرض",
+  "replay_text": "أكملت صيام {plan} خلال {hours}س {minutes}د · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "رحلة الأيض",
+  "journey_now": "الآن",
+  "journey_next": "{time} حتى {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "توقيت المرحلة تقدير عام وليس قياسًا طبيًا.",
+  "phase_hours": "الساعات {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "هذا التوقيت تقدير عام. قد تختلف استجابات الأيض بين الأشخاص.",
+  "bmi_underweight": "نقص الوزن",
+  "bmi_normal": "طبيعي",
+  "bmi_overweight": "زيادة الوزن",
+  "bmi_obese": "سمنة",
+  "notification_halfwayTitle": "وصلت إلى المنتصف! 💪",
+  "notification_halfwayBody": "أتممت نصف صيام {plan}. واصل التقدم!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "دخلت مرحلة الهدم 📉",
+  "notification_phaseFatBurning": "بدأ حرق الدهون! 🔥",
+  "notification_phaseKetosis": "أنت في حالة الكيتوزية ⚡",
+  "notification_phaseAutophagy": "الالتهام الذاتي نشط! 🔄",
+  "notification_completedBody": "أتممت صيام {plan}! نافذة الأكل مفتوحة.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "اشرب الماء 💧",
+  "notification_waterBody": "لا تنس شرب كمية كافية من الماء أثناء الصيام!",
+  "notification_windowTitle": "نافذة الأكل توشك على الإغلاق ⏰",
+  "notification_windowBody": "ستغلق نافذة الأكل خلال 30 دقيقة.",
+  "notification_streakTitle": "سلسلة {days} أيام! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "أداء رائع! واصل اليوم.",
+  "notification_ongoingTitle": "الصيام جارٍ - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "المتبقي: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "بدأ الصيام - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "الهدف: {hours} ساعة",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours}س {minutes}د",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "دليل الصيام",
+  "explore_guideDesc": "كل ما تحتاج معرفته عن الصيام المتقطع",
+  "explore_circleDesc": "شارك دعمًا هادئًا مع مجموعتك الخاصة.",
+  "explore_faq": "الأسئلة الشائعة",
+  "explore_education": "هذا المحتوى للتثقيف العام فقط وليس تشخيصًا طبيًا أو نصيحة علاجية.",
+  "explore_safety": "الصحة والسلامة",
+  "explore_safetyDesc": "إذا كنت تعاني حالة طبية أو تتناول دواءً بانتظام أو لديك أعراض مقلقة أو كنتِ حاملًا أو مرضعة، فاستشر مختصًا صحيًا مؤهلًا قبل الصيام. توقف إذا شعرت بتوعك.",
+  "explore_sources": "المصادر",
+  "explore_sourcesDesc": "المحتوى مبسط من مراجع الصحة العامة أدناه.",
+  "explore_sourceError": "تعذر فتح المصدر",
+  "explore_rules": "قواعد مهمة",
+  "explore_rule1": "لا تتناول أطعمة تحتوي سعرات أثناء الصيام",
+  "explore_rule2": "اشرب الكثير من الماء والسوائل",
+  "explore_rule3": "تناول طعامًا متوازنًا في نافذة الأكل",
+  "explore_rule4": "توقف عن الصيام إذا شعرت بتوعك",
+  "explore_rule5": "ينبغي ألا تصوم الحوامل أو المرضعات",
+  "explore_rule6": "استشر طبيبك إذا كانت لديك حالات مزمنة",
+  "tip_water": "حافظ على الترطيب",
+  "tip_waterDesc": "اشرب الماء عند العطش وتناول السوائل مع الوجبات. تختلف الحاجة حسب الصحة والطقس والنشاط.",
+  "tip_food": "تناول طعامًا صحيًا",
+  "tip_foodDesc": "اختر في نوافذ الأكل أطعمة غنية بالبروتين والألياف والدهون الصحية. تجنب الأطعمة المصنعة.",
+  "tip_sleep": "نم جيدًا",
+  "tip_sleepDesc": "يدعم النوم المنتظم والكافي الصحة العامة. نظّم الصيام بحيث لا يعطل نومك.",
+  "tip_exercise": "تمارين خفيفة",
+  "tip_exerciseDesc": "يمكنك المشي الخفيف أو ممارسة اليوغا أثناء الصيام. تجنب التمارين الشديدة، خصوصًا في الأسابيع الأولى حتى يتكيف جسمك.",
+  "tip_drinks": "المشروبات المسموحة",
+  "tip_drinksDesc": "أثناء الصيام يمكنك شرب الماء والشاي السادة والقهوة السوداء (من دون سكر أو حليب). لن تقطع هذه المشروبات صيامك.",
+  "faq_drinks": "ماذا يمكنني أن أشرب أثناء الصيام؟",
+  "faq_drinksAnswer": "يمكنك شرب الماء والشاي السادة والقهوة السوداء (من دون سكر أو حليب). المشروبات ذات السعرات تقطع الصيام.",
+  "faq_plan": "أي خطة صيام أختار؟",
+  "faq_planAnswer": "إن كنت مبتدئًا فابدأ بـ12:12 أو 14:10. وإن كنت متمرسًا فجرب 16:8 أو 18:6. خطتا 20:4 وOMAD للمتقدمين.",
+  "faq_exercise": "هل يمكنني ممارسة الرياضة أثناء الصيام؟",
+  "faq_exerciseAnswer": "نعم، لكن تجنب التمارين الشديدة. المشي والكارديو الخفيف واليوغا مناسبة. اجعل تمارين الأوزان قرب نافذة الأكل.",
+  "faq_weight": "هل يساعد الصيام على خسارة الوزن؟",
+  "faq_weightAnswer": "قد يقلل تقييد وقت الأكل إجمالي الطاقة المتناولة لدى بعض الأشخاص. تختلف النتائج وما زالت الآثار طويلة المدى قيد الدراسة.",
+  "plan_12_desc": "مستوى مبتدئ",
+  "plan_12_detail": "مثالي للمبتدئين. صم 12 ساعة تشمل وقت نومك.",
+  "plan_16_desc": "الخطة الأكثر شيوعًا",
+  "plan_16_detail": "خطة الصيام المتقطع الأشهر. 16 ساعة صيام و8 ساعات أكل، عادة من الغداء إلى العشاء.",
+  "plan_18_desc": "مستوى متوسط",
+  "plan_18_detail": "18 ساعة صيام و6 ساعات أكل. مدة أطول لحرق الدهون.",
+  "plan_20_desc": "مستوى متقدم",
+  "plan_20_detail": "20 ساعة صيام و4 ساعات أكل. مناسبة للوصول إلى الكيتوزية والالتهام الذاتي.",
+  "plan_omad_desc": "وجبة واحدة يوميًا",
+  "plan_omad_detail": "وجبة واحدة يوميًا. 23 ساعة صيام وساعة واحدة للأكل. مستوى خبير.",
+  "plan_52_desc": "يومان في الأسبوع",
+  "plan_52_detail": "كُل بصورة طبيعية 5 أيام، ونحو 500 سعرة فقط في يومين. نهج بديل.",
+  "plan_ese_desc": "صيام 24 ساعة",
+  "plan_ese_detail": "صم 24 ساعة مرة أو مرتين أسبوعيًا. للمستخدمين المتقدمين.",
+  "plan_warrior_desc": "حمية المحارب",
+  "plan_warrior_detail": "تناول طعامًا خفيفًا نهارًا (فواكه وخضار)، واجعل وجبتك الرئيسية ضمن نافذة مسائية مدتها 4 ساعات.",
+  "award_first_title": "الخطوة الأولى",
+  "award_first_desc": "أكمل صيامك الأول",
+  "award_rhythm3_title": "إيقاع 3 أيام",
+  "award_rhythm3_desc": "حافظ على إيقاعك ثلاثة أيام",
+  "award_hours24_title": "24 ساعة",
+  "award_hours24_desc": "صم 24 ساعة إجمالًا",
+  "award_week_title": "إيقاع أسبوع",
+  "award_week_desc": "أنشئ سلسلة سبعة أيام",
+  "award_fasts10_title": "10 مرات صيام",
+  "award_fasts10_desc": "أكمل عشر مرات صيام",
+  "award_hours100_title": "100 ساعة",
+  "award_hours100_desc": "بلغ 100 ساعة إجمالًا",
+  "award_rhythm30_title": "إيقاع 30 يومًا",
+  "award_rhythm30_desc": "أنشئ سلسلة ثلاثين يومًا",
+  "award_fasts50_title": "50 مرة صيام",
+  "award_fasts50_desc": "أكمل خمسين مرة صيام",
+  "award_hours500_title": "500 ساعة",
+  "award_hours500_desc": "بلغ 500 ساعة إجمالًا",
+  "award_fasts100_title": "100 مرة صيام",
+  "award_fasts100_desc": "أكمل مئة مرة صيام",
+  "award_rhythm90_title": "إيقاع 90 يومًا",
+  "award_rhythm90_desc": "أنشئ سلسلة تسعين يومًا",
+  "award_year_title": "رحلة عام",
+  "award_year_desc": "بلغ إيقاع 365 يومًا",
+  "awards_loadError": "تعذر تحميل التقدم",
+  "awards_journeyComplete": "اكتملت الرحلة",
+  "awards_nextGoal": "الهدف التالي",
+  "awards_allYours": "كل الإنجازات لك",
+  "awards_dayStreak": "أيام متتالية",
+  "awards_fasts": "مرات صيام",
+  "awards_total": "الإجمالي",
+  "awards_stageStart": "البداية",
+  "awards_stageRhythm": "الإيقاع",
+  "awards_stageEndurance": "التحمل",
+  "awards_stageMastery": "الإتقان",
+  "awards_completed": "مكتمل",
+  "awards_fastsRemaining": "تبقى {count} من مرات الصيام",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "تبقى {count} أيام",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "تبقى {count} ساعات",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "إعادة المحاولة",
+  "game_title": "مركز التقدم",
+  "game_quests": "مهام اليوم",
+  "game_questsDesc": "خطوات صغيرة، وإيقاع مستدام.",
+  "game_season": "موسم من 30 خطوة",
+  "game_seasonDesc": "ختم قابل للجمع كل خمس خطوات.",
+  "game_badges": "مجموعة الشارات",
+  "game_shields": "{count} من دروع الإيقاع",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "تُكتسب كل سبع عمليات إكمال. لا يمحو يوم فائت تقدمك أبدًا.",
+  "game_league": "دوري أسبوعي خاص",
+  "game_leagueDesc": "درجة إيقاعك في المئين {percent} ضمن نموذج محلي خاص. لا يُصنف الوزن أو الصيام المفرط أبدًا.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "المستوى {level}، {xp} نقطة خبرة",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "مستكشف الإيقاع",
+  "game_streak": "السلسلة",
+  "game_targets": "الأهداف",
+  "game_best": "الأفضل",
+  "quest_rhythm": "ابنِ إيقاع اليوم",
+  "quest_hydrate": "بلغ نصف هدف الماء",
+  "quest_steady": "احمِ سلسلتك",
+  "badge_first_title": "الخطوة الأولى",
+  "badge_first_desc": "سجّل صيامك الأول",
+  "badge_rhythm7_title": "حارس الإيقاع",
+  "badge_rhythm7_desc": "بلغ سلسلة 7 أيام",
+  "badge_rhythm3_title": "إيقاع ثلاثة أيام",
+  "badge_rhythm3_desc": "بلغ سلسلة 3 أيام",
+  "badge_target1_title": "الهدف الأول",
+  "badge_target1_desc": "أكمل صيامك المستهدف الأول",
+  "badge_target3_title": "ثلاث خطوات",
+  "badge_target3_desc": "أكمل 3 أهداف",
+  "badge_water_title": "متوازن",
+  "badge_water_desc": "أكمل هدف الماء اليومي",
+  "badge_support_title": "واعي بذاتك",
+  "badge_support_desc": "استخدم وضع الدعم",
+  "badge_hours10_title": "10 ساعات",
+  "badge_hours10_desc": "سجّل 10 ساعات إجمالًا",
+  "badge_target10_title": "عشرة أقوياء",
+  "badge_target10_desc": "أكمل 10 أهداف",
+  "badge_target20_title": "عشرون هدفًا",
+  "badge_target20_desc": "أكمل 20 هدفًا",
+  "badge_fast16_title": "16 ساعة",
+  "badge_fast16_desc": "بلغ 16 ساعة في صيام واحد",
+  "badge_hours50_title": "50 ساعة",
+  "badge_hours50_desc": "سجّل 50 ساعة إجمالًا",
+  "badge_hours100_title": "مئة ساعة",
+  "badge_hours100_desc": "سجّل 100 ساعة إجمالًا",
+  "badge_target30_title": "ثلاثون هدفًا",
+  "badge_target30_desc": "أكمل 30 هدفًا",
+  "badge_rhythm30_title": "إيقاع 30 يومًا",
+  "badge_rhythm30_desc": "بلغ سلسلة 30 يومًا",
+  "paywall_restoreSuccess": "تمت استعادة المشتريات!",
+  "fasting_progressSemantics": "تقدم الصيام {percent} بالمئة",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}س",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "مدى الحياة",
+  "paywall_once": "دفعة واحدة",
+  "paywall_processing": "جارٍ المعالجة…",
+  "paywall_continue": "متابعة",
+  "paywall_productsUnavailable": "المشتريات غير متاحة الآن. حاول لاحقًا.",
+  "paywall_purchaseFailed": "تعذر إكمال عملية الشراء.",
+  "paywall_nothingToRestore": "لم يُعثر على شراء سابق.",
+  "paywall_restoreFailed": "تعذرت استعادة المشتريات.",
+  "paywall_terms": "شروط الاستخدام",
+  "permission_notificationDesc": "تذكيرات الصيام وتحديثات المراحل وإشعارات الإكمال",
+  "profile_privacyChoices": "خيارات الخصوصية",
+  "paywall_autoRenewInfo": "تتجدد الاشتراكات تلقائيًا ما لم تُلغَ قبل نهاية الفترة بـ24 ساعة على الأقل. يمكنك إدارتها أو إلغاؤها في إعدادات App Store.",
+  "paywall_perMonth": "{price} / شهر",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "وفّر {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "تجربة مجانية لمدة {days} أيام",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "بدء التجربة المجانية",
+  "paywall_retry": "إعادة المحاولة",
+  "paywall_alreadyOwned": "أنت تملك هذا الاشتراك بالفعل. اضغط «استعادة المشتريات».",
+  "paywall_storeUnavailable": "يتعذر الوصول إلى المتجر الآن. تحقق من اتصالك وحاول مجددًا.",
+  "paywall_secureNote": "يمكنك الإلغاء في أي وقت. تُحمّل الدفعة على حساب المتجر.",
+  "paywall_autoRenewInfoPlay": "تتجدد الاشتراكات تلقائيًا ما لم تُلغَ قبل نهاية الفترة بـ24 ساعة على الأقل. يمكنك إدارتها أو إلغاؤها في Google Play > الاشتراكات.",
+  "paywall_allPlansDesc": "يفتح 18:6 و20:4 وOMAD و5:2 وEat-Stop-Eat وWarrior",
+  "paywall_noAdsDesc": "تُوقف إعلانات البانر والإعلانات البينية تمامًا",
+  "foodScan_title": "مسح الطعام بالذكاء الاصطناعي",
+  "foodScan_scanCta": "مسح الوجبة",
+  "foodScan_scanCtaDesc": "صوّر طبقك واحصل على السعرات والمغذيات الكبرى",
+  "foodScan_introTitle": "صوّر طبقك",
+  "foodScan_introDesc": "يقرأ الذكاء الاصطناعي الصورة ويقدّر السعرات والبروتين والكربوهيدرات والدهون.",
+  "foodScan_tipLight": "الإضاءة الجيدة والمتساوية تعطي تقديرًا أفضل",
+  "foodScan_tipFrame": "ضع الطبق كاملًا داخل الإطار",
+  "foodScan_tipScale": "أظهر أدوات المائدة أو يدًا للمساعدة في تقدير الحصص",
+  "foodScan_takePhoto": "التقاط صورة",
+  "foodScan_chooseFromGallery": "اختيار من المعرض",
+  "foodScan_scansLeft": "تبقى {count} عمليات مسح اليوم",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "استخدمت عمليات مسح اليوم. حاول غدًا.",
+  "foodScan_privacyNote": "تُرسل الصورة إلى واجهة Gemini من Google للتحليل ولا تُخزن على خوادمنا.",
+  "foodScan_analyzing": "جارٍ تحليل وجبتك…",
+  "foodScan_analyzingHint": "يستغرق ذلك عادة بضع ثوانٍ",
+  "foodScan_detectedItems": "العناصر المكتشفة",
+  "foodScan_disclaimer": "تقديرات الذكاء الاصطناعي تقريبية. اضغط عنصرًا لتصحيحه.",
+  "foodScan_lowConfidence": "النموذج غير واثق من هذه الصورة. تحقق من الأرقام قبل الحفظ.",
+  "foodScan_save": "إضافة إلى الوجبات",
+  "foodScan_retake": "صورة جديدة",
+  "foodScan_retry": "إعادة المحاولة",
+  "foodScan_editItem": "تعديل العنصر",
+  "foodScan_portion": "الحصة",
+  "foodScan_saveEdit": "حفظ",
+  "foodScan_premiumTitle": "ميزة Premium",
+  "foodScan_premiumDesc": "تحليل السعرات من الصور مشمول في Premium.",
+  "foodScan_upgrade": "عرض Premium",
+  "foodScan_errorNetwork": "لا يوجد اتصال. تحقق من الإنترنت وحاول مجددًا.",
+  "foodScan_errorRateLimited": "عمليات المسح كثيرة الآن. حاول بعد بضع دقائق.",
+  "foodScan_errorUnavailable": "تحليل الصور غير متاح الآن.",
+  "foodScan_errorServer": "تواجه خدمة التحليل مشكلة. حاول بعد قليل.",
+  "foodScan_errorNoFood": "لم يُعثر على طعام في الصورة. التقط صورة أوضح للطبق.",
+  "foodScan_errorUnreadable": "تعذر تحليل هذه الصورة. جرّب صورة أخرى.",
+  "paywall_aiFoodScan": "مسح الطعام بالذكاء الاصطناعي",
+  "paywall_aiFoodScanDesc": "صوّر وجبة وسجّل سعراتها ومغذياتها الكبرى خلال ثوانٍ"
+}

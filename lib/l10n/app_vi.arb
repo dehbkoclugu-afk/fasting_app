@@ -1,0 +1,773 @@
+{
+  "@@locale": "vi",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Chào buổi sáng",
+  "greeting_afternoon": "Chào buổi chiều",
+  "greeting_evening": "Chào buổi tối",
+  "tab_timer": "Trang chủ",
+  "tab_explore": "Khám phá",
+  "tab_stats": "Báo cáo",
+  "tab_meals": "Bữa ăn",
+  "tab_achievements": "Phần thưởng",
+  "tab_profile": "Tài khoản",
+  "timer_fasting": "Thời gian nhịn ăn",
+  "timer_remaining": "Còn lại",
+  "timer_elapsed": "Đã qua",
+  "timer_start": "Bắt đầu",
+  "timer_stop": "Dừng",
+  "timer_completed": "Chúc mừng!",
+  "timer_completedMessage": "Bạn đã hoàn thành kỳ nhịn ăn!",
+  "timer_selectPlan": "Chọn kế hoạch nhịn ăn",
+  "timer_stopConfirm": "Bạn có chắc muốn kết thúc kỳ nhịn ăn sớm không?",
+  "timer_stopTitle": "Kết thúc nhịn ăn",
+  "timer_cancel": "Hủy",
+  "timer_confirmStop": "Có, kết thúc",
+  "phase_anabolic": "Đồng hóa",
+  "phase_anabolicDesc": "Đang tiêu hóa",
+  "phase_catabolic": "Dị hóa",
+  "phase_catabolicDesc": "Chuyển đổi năng lượng",
+  "phase_fatBurning": "Đốt mỡ",
+  "phase_fatBurningDesc": "Đã bắt đầu đốt mỡ",
+  "phase_ketosis": "Ketosis",
+  "phase_ketosisDesc": "Quá trình tạo ketone đang hoạt động",
+  "phase_autophagy": "Tự thực bào",
+  "phase_autophagyDesc": "Tái tạo tế bào",
+  "stats_title": "Thống kê",
+  "stats_week": "Tuần",
+  "stats_month": "Tháng",
+  "stats_year": "Năm",
+  "stats_totalFasts": "Tổng số lần nhịn ăn",
+  "stats_average": "Trung bình",
+  "stats_fastDuration": "thời lượng nhịn ăn",
+  "stats_streak": "Chuỗi",
+  "stats_daysConsecutive": "ngày liên tiếp",
+  "stats_success": "Thành công",
+  "stats_completion": "hoàn thành",
+  "stats_weeklyFasting": "Nhịn ăn hằng tuần",
+  "stats_monthlyView": "Xem theo tháng",
+  "stats_weightChange": "Thay đổi cân nặng",
+  "heatmap_none": "Không có",
+  "heatmap_low": "Thấp",
+  "heatmap_good": "Tốt",
+  "heatmap_full": "Đầy đủ",
+  "meals_title": "Lập kế hoạch bữa ăn",
+  "meals_eatingWindow": "Khung giờ ăn",
+  "meals_windowOpen": "Đang mở",
+  "meals_windowFasting": "Nhịn ăn",
+  "meals_calories": "Calo",
+  "meals_protein": "Protein",
+  "meals_carbs": "Carbohydrate",
+  "meals_fat": "Chất béo",
+  "meals_todayMeals": "Bữa ăn hôm nay",
+  "meals_noMeals": "Chưa thêm bữa ăn nào",
+  "meals_breakfastSuggestions": "Gợi ý kết thúc nhịn ăn",
+  "meals_addMeal": "Thêm bữa ăn",
+  "profile_title": "Hồ sơ",
+  "profile_user": "Người dùng",
+  "profile_planActive": "Kế hoạch {plan} đang hoạt động",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Nâng cấp lên Premium",
+  "profile_premiumDesc": "Mọi kế hoạch nhịn ăn, không quảng cáo",
+  "profile_bodyMetrics": "Chỉ số cơ thể",
+  "profile_height": "Chiều cao",
+  "profile_weight": "Cân nặng",
+  "profile_targetWeight": "Cân nặng mục tiêu",
+  "profile_bmi": "BMI",
+  "profile_settings": "Cài đặt",
+  "profile_notifications": "Thông báo",
+  "profile_darkTheme": "Giao diện tối",
+  "profile_waterReminder": "Nhắc uống nước",
+  "profile_phaseNotifications": "Thông báo giai đoạn",
+  "profile_language": "Ngôn ngữ",
+  "profile_about": "Giới thiệu",
+  "profile_rateApp": "Đánh giá ứng dụng",
+  "profile_share": "Chia sẻ",
+  "profile_privacyPolicy": "Chính sách quyền riêng tư",
+  "profile_version": "Phiên bản",
+  "onboarding_welcome": "Chào mừng",
+  "onboarding_welcomeDesc": "Làm chủ hành trình\nnhịn ăn gián đoạn của bạn",
+  "onboarding_featureTimer": "Bộ hẹn giờ nhịn ăn thông minh",
+  "onboarding_featureStats": "Thống kê và biểu đồ chi tiết",
+  "onboarding_featureMeals": "Lập kế hoạch bữa ăn và gợi ý công thức",
+  "onboarding_getStarted": "Bắt đầu",
+  "onboarding_selectGoal": "Mục tiêu của bạn là gì?",
+  "onboarding_selectGoalDesc": "Bạn có thể chọn nhiều mục",
+  "onboarding_goalWeight": "Giảm cân",
+  "onboarding_goalWeightDesc": "Giảm cân lành mạnh",
+  "onboarding_goalHealth": "Cải thiện sức khỏe",
+  "onboarding_goalHealthDesc": "Sức khỏe tổng thể và miễn dịch",
+  "onboarding_goalEnergy": "Nhiều năng lượng hơn",
+  "onboarding_goalEnergyDesc": "Năng lượng suốt cả ngày",
+  "onboarding_goalMental": "Minh mẫn",
+  "onboarding_goalMentalDesc": "Tập trung và sáng suốt",
+  "onboarding_goalLongevity": "Sống lâu",
+  "onboarding_goalLongevityDesc": "Tái tạo tế bào và lão hóa khỏe mạnh",
+  "onboarding_goalDiscipline": "Kỷ luật",
+  "onboarding_goalDisciplineDesc": "Xây dựng tính tự giác",
+  "onboarding_selectPlan": "Chọn kế hoạch của bạn",
+  "onboarding_selectPlanDesc": "Chọn kế hoạch nhịn ăn phù hợp nhất",
+  "onboarding_bodyInfo": "Nhập thông tin của bạn",
+  "onboarding_bodyInfoDesc": "Để nhận đề xuất cá nhân hóa",
+  "onboarding_gender": "Giới tính",
+  "onboarding_male": "Nam",
+  "onboarding_female": "Nữ",
+  "onboarding_age": "Tuổi",
+  "onboarding_bodyInfoDisclaimer": "Thông tin này chỉ được lưu trên thiết bị của bạn và dùng để tính calo.",
+  "onboarding_permissions": "Bước cuối",
+  "onboarding_permissionsDesc": "Bật quyền để có trải nghiệm tốt nhất",
+  "onboarding_next": "Tiếp tục",
+  "onboarding_start": "Bắt đầu thôi!",
+  "onboarding_skipForNow": "Thiết lập sau",
+  "waterAdded": "Đã thêm 250 ml nước",
+  "languageSelect": "Chọn ngôn ngữ",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Nâng cấp lên Premium",
+  "paywall_subtitle": "Mở khóa mọi kế hoạch nhịn ăn và loại bỏ quảng cáo",
+  "paywall_allPlans": "Mọi kế hoạch nhịn ăn",
+  "paywall_advancedStats": "Thống kê nâng cao",
+  "paywall_mealPlanner": "Lập kế hoạch bữa ăn",
+  "paywall_themes": "Tùy chỉnh giao diện",
+  "paywall_noAds": "Không quảng cáo",
+  "paywall_weekly": "Hằng tuần",
+  "paywall_monthly": "Hằng tháng",
+  "paywall_yearly": "Hằng năm",
+  "paywall_bestValue": "Tốt nhất",
+  "paywall_freeTrial": "Dùng thử miễn phí (3 ngày)",
+  "paywall_restore": "Khôi phục giao dịch mua",
+  "paywall_premiumActive": "Premium đang hoạt động!",
+  "paywall_premiumActiveDesc": "Mọi kế hoạch nhịn ăn đã được mở khóa và quảng cáo đã tắt",
+  "water_title": "Lượng nước uống",
+  "water_addWater": "Thêm nước",
+  "water_goal": "Mục tiêu",
+  "water_ml": "ml",
+  "common_ok": "OK",
+  "common_cancel": "Hủy",
+  "common_save": "Lưu",
+  "common_delete": "Xóa",
+  "common_hours": "giờ",
+  "common_minutes": "phút",
+  "common_days": "ngày",
+  "common_enable": "Bật",
+  "streakCard_currentStreak": "Chuỗi hiện tại",
+  "streakCard_longestStreak": "Chuỗi dài nhất",
+  "streakCard_totalSessions": "Tổng số lần nhịn ăn",
+  "meals_mealType": "Loại bữa ăn",
+  "meals_breakfast": "Bữa sáng",
+  "meals_lunch": "Bữa trưa",
+  "meals_dinner": "Bữa tối",
+  "meals_snack": "Bữa phụ",
+  "meals_carbohydrate": "Carbohydrate",
+  "meals_add": "Thêm",
+  "meals_mealName": "Tên món ăn",
+  "bodyMetrics_title": "Chỉ số cơ thể",
+  "bodyMetrics_weight": "Cân nặng",
+  "bodyMetrics_target": "Mục tiêu",
+  "bodyMetrics_save": "Lưu",
+  "bodyMetrics_history": "Lịch sử",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Chưa có dữ liệu",
+  "meals_quickAdd": "Thêm nhanh",
+  "meals_manualEntry": "Nhập thủ công",
+  "meals_added": "Đã thêm {name}",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Cần nhập tên và lượng calo",
+  "bodyMetrics_addWeight": "Thêm cân nặng",
+  "bodyMetrics_hintWeight": "ví dụ 74,5",
+  "bodyMetrics_invalidWeight": "Nhập cân nặng hợp lệ",
+  "bodyMetrics_weightSaved": "Đã lưu {value} kg",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Thời lượng",
+  "completion_plan": "Kế hoạch",
+  "completion_lastPhase": "Giai đoạn cuối",
+  "timer_remainingTime": "Thời gian còn lại",
+  "timer_ready": "Sẵn sàng bắt đầu",
+  "streak_status": "Trạng thái",
+  "streak_startToday": "Bắt đầu hôm nay!",
+  "streak_goodStart": "Khởi đầu tốt!",
+  "streak_goingGreat": "Đang tiến triển tốt!",
+  "streak_superb": "Tuyệt vời!",
+  "streak_legendary": "Huyền thoại!",
+  "streak_incredible": "Không thể tin được!",
+  "weight_noRecord": "Chưa có bản ghi cân nặng\nThêm tại Hồ sơ > Chỉ số cơ thể",
+  "day_mon": "T2",
+  "day_tue": "T3",
+  "day_wed": "T4",
+  "day_thu": "T5",
+  "day_fri": "T6",
+  "day_sat": "T7",
+  "day_sun": "CN",
+  "day_short_mon": "2",
+  "day_short_tue": "3",
+  "day_short_wed": "4",
+  "day_short_thu": "5",
+  "day_short_fri": "6",
+  "day_short_sat": "7",
+  "day_short_sun": "CN",
+  "month_jan": "Tháng 1",
+  "month_feb": "Tháng 2",
+  "month_mar": "Tháng 3",
+  "month_apr": "Tháng 4",
+  "month_may": "Tháng 5",
+  "month_jun": "Tháng 6",
+  "month_jul": "Tháng 7",
+  "month_aug": "Tháng 8",
+  "month_sep": "Tháng 9",
+  "month_oct": "Tháng 10",
+  "month_nov": "Tháng 11",
+  "month_dec": "Tháng 12",
+  "meals_fastingWindow": "Nhịn ăn ({hours} giờ)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Ăn ({hours} giờ)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Sinh tố yến mạch",
+  "recipe_avocadoToast": "Bánh mì nướng bơ",
+  "recipe_yogurtBowl": "Bát sữa chua",
+  "elapsed_time": "Thời gian đã qua",
+  "fast_ends_on": "Kỳ nhịn ăn kết thúc lúc",
+  "end_fasting": "Kết thúc nhịn ăn",
+  "start_fasting": "Bắt đầu nhịn ăn",
+  "water_tracker": "Theo dõi nước",
+  "weight_tracker": "Theo dõi cân nặng",
+  "drink": "Uống",
+  "log_weight": "Ghi cân nặng",
+  "bmi": "BMI",
+  "weight_lost": "Cân nặng đã giảm",
+  "current_weight": "Cân nặng hiện tại",
+  "goal_weight": "Cân nặng mục tiêu",
+  "daily_goal": "Mục tiêu hằng ngày",
+  "completed_percent": "Đã hoàn thành {percent}%",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Khám phá",
+  "achievements": "Thành tích",
+  "profile_theme": "Giao diện",
+  "theme_select": "Chọn giao diện",
+  "theme_system": "Mặc định hệ thống",
+  "theme_light": "Sáng",
+  "theme_dark": "Tối",
+  "language_system": "Ngôn ngữ hệ thống",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Âm thanh hoàn thành",
+  "profile_calmGamification": "Trò chơi hóa nhẹ nhàng",
+  "profile_calmGamificationDesc": "Giảm áp lực từ giải đấu và mùa",
+  "profile_editName": "Sửa tên của bạn",
+  "profile_name": "Tên",
+  "circle_title": "Vòng tròn nhịn ăn",
+  "circle_you": "Bạn",
+  "circle_tagline": "Cùng nhau, không áp lực.",
+  "circle_privacy": "Cân nặng và các chỉ số riêng tư luôn được ẩn. Chỉ tiến độ và sự hỗ trợ được hiển thị.",
+  "circle_sendSupport": "Gửi lời động viên · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Đã sao chép mã mời",
+  "circle_createInvite": "Tạo lời mời riêng tư",
+  "crisis_nameTitle": "Trước tiên, hãy gọi tên điều đang xảy ra",
+  "crisis_nameDesc": "Đó có thể là đói, thói quen hoặc cảm xúc.",
+  "crisis_waterTitle": "Uống một cốc nước",
+  "crisis_waterDesc": "Sau đó hít thở chậm ba lần.",
+  "crisis_delayTitle": "Trì hoãn quyết định trong 10 phút",
+  "crisis_delayDesc": "Nếu bạn thấy không khỏe, kết thúc nhịn ăn không phải là thất bại.",
+  "crisis_hunger": "Đói",
+  "crisis_habit": "Thói quen",
+  "crisis_stress": "Căng thẳng",
+  "crisis_tenMore": "Cho bản thân thêm 10 phút",
+  "stats_storyEmpty": "Lần nhịn ăn đầu tiên sẽ mở đầu câu chuyện của riêng bạn.",
+  "stats_story": "Bạn đã nhịn ăn {sessions} lần trong giai đoạn này, duy trì nhịp điệu trong {hours} giờ và đạt tỷ lệ hoàn thành {rate}%.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "Câu chuyện về nhịp điệu của bạn",
+  "home_todayRhythm": "Nhịp điệu hôm nay",
+  "home_finalHourSupport": "Hỗ trợ giờ cuối",
+  "home_needSupport": "Tôi cần một chút động viên",
+  "home_todaySummary": "Tổng quan hôm nay",
+  "home_dayStreak": "ngày liên tiếp",
+  "home_weightGoal": "mục tiêu {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Nhịp điệu của bạn đang ổn định",
+  "weather_gentle": "Một ngày nhẹ nhàng",
+  "weather_water": "Một cốc nước có thể giúp ích.",
+  "weather_listen": "Bạn đã đi được một chặng dài; hãy lắng nghe cơ thể.",
+  "weather_onPlan": "Nhịp độ hôm nay phù hợp với kế hoạch của bạn.",
+  "weather_challenging": "Giờ này trước đây từng khó khăn; chế độ hỗ trợ đã sẵn sàng.",
+  "replay_copied": "Đã sao chép bản tóm tắt nhịn ăn",
+  "replay_button": "Xem lại",
+  "replay_text": "Tôi đã hoàn thành kỳ nhịn ăn {plan} trong {hours}g {minutes}p · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Hành trình chuyển hóa",
+  "journey_now": "Hiện tại",
+  "journey_next": "Còn {time} đến {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "Thời điểm của giai đoạn chỉ là ước tính chung, không phải phép đo y khoa.",
+  "phase_hours": "Giờ {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Thời điểm này chỉ là ước tính chung. Phản ứng chuyển hóa có thể khác nhau ở mỗi người.",
+  "bmi_underweight": "Thiếu cân",
+  "bmi_normal": "Bình thường",
+  "bmi_overweight": "Thừa cân",
+  "bmi_obese": "Béo phì",
+  "notification_halfwayTitle": "Đã đi được nửa chặng! 💪",
+  "notification_halfwayBody": "Bạn đã hoàn thành một nửa kỳ nhịn ăn {plan}. Tiếp tục nhé!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Đã vào giai đoạn dị hóa 📉",
+  "notification_phaseFatBurning": "Bắt đầu đốt mỡ! 🔥",
+  "notification_phaseKetosis": "Bạn đang ở trạng thái ketosis ⚡",
+  "notification_phaseAutophagy": "Quá trình tự thực bào đang hoạt động! 🔄",
+  "notification_completedBody": "Bạn đã hoàn thành kỳ nhịn ăn {plan}! Khung giờ ăn đã mở.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Uống nước 💧",
+  "notification_waterBody": "Đừng quên uống đủ nước khi nhịn ăn!",
+  "notification_windowTitle": "Khung giờ ăn sắp kết thúc ⏰",
+  "notification_windowBody": "Khung giờ ăn của bạn sẽ kết thúc sau 30 phút.",
+  "notification_streakTitle": "Chuỗi {days} ngày! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Bạn đang làm rất tốt! Hãy tiếp tục hôm nay.",
+  "notification_ongoingTitle": "Đang nhịn ăn - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Còn lại: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Đã bắt đầu nhịn ăn - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Mục tiêu: {hours} giờ",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours}g {minutes}p",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Hướng dẫn nhịn ăn",
+  "explore_guideDesc": "Mọi điều bạn cần biết về nhịn ăn gián đoạn",
+  "explore_circleDesc": "Chia sẻ sự động viên nhẹ nhàng với nhóm riêng tư của bạn.",
+  "explore_faq": "Câu hỏi thường gặp",
+  "explore_education": "Nội dung này chỉ nhằm giáo dục phổ thông, không phải chẩn đoán hay tư vấn điều trị y khoa.",
+  "explore_safety": "Sức khỏe và an toàn",
+  "explore_safetyDesc": "Nếu bạn có bệnh lý, dùng thuốc thường xuyên, có triệu chứng đáng lo, đang mang thai hoặc cho con bú, hãy hỏi ý kiến chuyên gia y tế đủ chuyên môn trước khi nhịn ăn. Hãy dừng lại nếu thấy không khỏe.",
+  "explore_sources": "Nguồn",
+  "explore_sourcesDesc": "Nội dung được đơn giản hóa từ các tài liệu y tế công cộng bên dưới.",
+  "explore_sourceError": "Không thể mở nguồn",
+  "explore_rules": "Quy tắc quan trọng",
+  "explore_rule1": "Không dùng thực phẩm có calo trong thời gian nhịn ăn",
+  "explore_rule2": "Uống nhiều nước và chất lỏng",
+  "explore_rule3": "Ăn cân bằng trong khung giờ ăn",
+  "explore_rule4": "Dừng nhịn ăn nếu bạn thấy không khỏe",
+  "explore_rule5": "Phụ nữ mang thai hoặc cho con bú không nên nhịn ăn",
+  "explore_rule6": "Tham khảo bác sĩ nếu bạn có bệnh mạn tính",
+  "tip_water": "Giữ đủ nước",
+  "tip_waterDesc": "Uống nước khi khát và bổ sung chất lỏng trong bữa ăn. Nhu cầu có thể thay đổi theo sức khỏe, thời tiết và mức vận động.",
+  "tip_food": "Ăn đúng cách",
+  "tip_foodDesc": "Trong khung giờ ăn, hãy chọn thực phẩm giàu protein, chất xơ và chất béo lành mạnh. Tránh thực phẩm chế biến sẵn.",
+  "tip_sleep": "Ngủ ngon",
+  "tip_sleepDesc": "Giấc ngủ đều đặn và đầy đủ hỗ trợ sức khỏe tổng thể. Hãy sắp xếp nhịn ăn để không làm gián đoạn giấc ngủ.",
+  "tip_exercise": "Vận động nhẹ",
+  "tip_exerciseDesc": "Bạn có thể đi bộ nhẹ hoặc tập yoga khi nhịn ăn. Tránh vận động nặng, đặc biệt trong những tuần đầu khi cơ thể chưa thích nghi.",
+  "tip_drinks": "Đồ uống được phép",
+  "tip_drinksDesc": "Trong thời gian nhịn ăn, bạn có thể uống nước, trà nguyên chất và cà phê đen (không đường, không sữa). Những đồ uống này không phá vỡ kỳ nhịn ăn.",
+  "faq_drinks": "Tôi có thể uống gì khi nhịn ăn?",
+  "faq_drinksAnswer": "Bạn có thể uống nước, trà nguyên chất và cà phê đen (không đường/sữa). Đồ uống có calo sẽ phá vỡ kỳ nhịn ăn.",
+  "faq_plan": "Tôi nên chọn kế hoạch nhịn ăn nào?",
+  "faq_planAnswer": "Nếu mới bắt đầu, hãy thử 12:12 hoặc 14:10. Nếu đã có kinh nghiệm, hãy thử 16:8 hoặc 18:6. 20:4 và OMAD dành cho người nhịn ăn nâng cao.",
+  "faq_exercise": "Tôi có thể tập thể dục khi nhịn ăn không?",
+  "faq_exerciseAnswer": "Có, nhưng hãy tránh tập cường độ cao. Cardio nhẹ, đi bộ và yoga là lựa chọn lý tưởng. Nếu tập tạ, hãy sắp xếp gần khung giờ ăn.",
+  "faq_weight": "Nhịn ăn có giúp giảm cân không?",
+  "faq_weightAnswer": "Với một số người, giới hạn thời gian ăn có thể làm giảm tổng năng lượng nạp vào. Kết quả khác nhau và tác động dài hạn vẫn đang được nghiên cứu.",
+  "plan_12_desc": "Mức người mới",
+  "plan_12_detail": "Lý tưởng cho người mới. Nhịn ăn 12 giờ, bao gồm thời gian ngủ.",
+  "plan_16_desc": "Kế hoạch phổ biến nhất",
+  "plan_16_detail": "Kế hoạch nhịn ăn gián đoạn phổ biến nhất. Nhịn 16 giờ, ăn trong 8 giờ. Thường từ bữa trưa đến bữa tối.",
+  "plan_18_desc": "Mức trung cấp",
+  "plan_18_detail": "Nhịn 18 giờ, ăn trong 6 giờ. Thời gian đốt mỡ lâu hơn.",
+  "plan_20_desc": "Mức nâng cao",
+  "plan_20_detail": "Nhịn 20 giờ, ăn trong 4 giờ. Lý tưởng để đạt ketosis và tự thực bào.",
+  "plan_omad_desc": "Một bữa mỗi ngày",
+  "plan_omad_detail": "Một bữa mỗi ngày. Nhịn 23 giờ, ăn trong 1 giờ. Mức chuyên sâu.",
+  "plan_52_desc": "2 ngày mỗi tuần",
+  "plan_52_detail": "Ăn bình thường 5 ngày, chỉ khoảng 500 calo trong 2 ngày. Một phương pháp thay thế.",
+  "plan_ese_desc": "Nhịn ăn 24 giờ",
+  "plan_ese_detail": "Nhịn ăn 24 giờ, 1–2 lần mỗi tuần. Dành cho người dùng nâng cao.",
+  "plan_warrior_desc": "Chế độ ăn chiến binh",
+  "plan_warrior_detail": "Ăn nhẹ ban ngày (trái cây, rau củ), dùng bữa chính trong khung 4 giờ vào buổi tối.",
+  "award_first_title": "Bước đầu tiên",
+  "award_first_desc": "Hoàn thành lần nhịn ăn đầu tiên",
+  "award_rhythm3_title": "Nhịp điệu 3 ngày",
+  "award_rhythm3_desc": "Duy trì nhịp điệu trong ba ngày",
+  "award_hours24_title": "24 giờ",
+  "award_hours24_desc": "Nhịn ăn tổng cộng 24 giờ",
+  "award_week_title": "Nhịp điệu một tuần",
+  "award_week_desc": "Tạo chuỗi bảy ngày",
+  "award_fasts10_title": "10 lần nhịn ăn",
+  "award_fasts10_desc": "Hoàn thành mười lần nhịn ăn",
+  "award_hours100_title": "100 giờ",
+  "award_hours100_desc": "Đạt tổng cộng 100 giờ",
+  "award_rhythm30_title": "Nhịp điệu 30 ngày",
+  "award_rhythm30_desc": "Tạo chuỗi ba mươi ngày",
+  "award_fasts50_title": "50 lần nhịn ăn",
+  "award_fasts50_desc": "Hoàn thành năm mươi lần nhịn ăn",
+  "award_hours500_title": "500 giờ",
+  "award_hours500_desc": "Đạt tổng cộng 500 giờ",
+  "award_fasts100_title": "100 lần nhịn ăn",
+  "award_fasts100_desc": "Hoàn thành một trăm lần nhịn ăn",
+  "award_rhythm90_title": "Nhịp điệu 90 ngày",
+  "award_rhythm90_desc": "Tạo chuỗi chín mươi ngày",
+  "award_year_title": "Hành trình một năm",
+  "award_year_desc": "Đạt nhịp điệu 365 ngày",
+  "awards_loadError": "Không thể tải tiến độ",
+  "awards_journeyComplete": "Hoàn thành hành trình",
+  "awards_nextGoal": "Mục tiêu tiếp theo",
+  "awards_allYours": "Mọi thành tích đều thuộc về bạn",
+  "awards_dayStreak": "ngày liên tiếp",
+  "awards_fasts": "lần nhịn ăn",
+  "awards_total": "tổng cộng",
+  "awards_stageStart": "Khởi đầu",
+  "awards_stageRhythm": "Nhịp điệu",
+  "awards_stageEndurance": "Sức bền",
+  "awards_stageMastery": "Tinh thông",
+  "awards_completed": "Đã hoàn thành",
+  "awards_fastsRemaining": "Còn {count} lần nhịn ăn",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "Còn {count} ngày",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "Còn {count} giờ",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Thử lại",
+  "game_title": "Trung tâm tiến độ",
+  "game_quests": "Nhiệm vụ hôm nay",
+  "game_questsDesc": "Những bước nhỏ, nhịp điệu bền vững.",
+  "game_season": "Mùa 30 bước",
+  "game_seasonDesc": "Nhận một con dấu sưu tầm sau mỗi năm bước.",
+  "game_badges": "Bộ sưu tập huy hiệu",
+  "game_shields": "{count} khiên nhịp điệu",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Nhận được sau mỗi bảy lần hoàn thành. Một ngày bỏ lỡ không bao giờ xóa tiến độ của bạn.",
+  "game_league": "Giải đấu tuần riêng tư",
+  "game_leagueDesc": "Điểm nhịp điệu của bạn nằm ở phân vị {percent} trong mô hình cục bộ riêng tư. Cân nặng và nhịn ăn cực đoan không bao giờ được xếp hạng.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Cấp {level}, {xp} điểm kinh nghiệm",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Nhà khám phá nhịp điệu",
+  "game_streak": "Chuỗi",
+  "game_targets": "Mục tiêu",
+  "game_best": "Tốt nhất",
+  "quest_rhythm": "Xây dựng nhịp điệu hôm nay",
+  "quest_hydrate": "Đạt một nửa mục tiêu nước",
+  "quest_steady": "Bảo vệ chuỗi của bạn",
+  "badge_first_title": "Bước đầu tiên",
+  "badge_first_desc": "Ghi lại lần nhịn ăn đầu tiên",
+  "badge_rhythm7_title": "Người giữ nhịp",
+  "badge_rhythm7_desc": "Đạt chuỗi 7 ngày",
+  "badge_rhythm3_title": "Nhịp điệu ba ngày",
+  "badge_rhythm3_desc": "Đạt chuỗi 3 ngày",
+  "badge_target1_title": "Mục tiêu đầu tiên",
+  "badge_target1_desc": "Hoàn thành kỳ nhịn ăn mục tiêu đầu tiên",
+  "badge_target3_title": "Ba bước",
+  "badge_target3_desc": "Hoàn thành 3 mục tiêu",
+  "badge_water_title": "Cân bằng",
+  "badge_water_desc": "Hoàn thành mục tiêu nước hằng ngày",
+  "badge_support_title": "Tự nhận thức",
+  "badge_support_desc": "Sử dụng chế độ hỗ trợ",
+  "badge_hours10_title": "10 giờ",
+  "badge_hours10_desc": "Ghi lại tổng cộng 10 giờ",
+  "badge_target10_title": "Mười mục tiêu vững vàng",
+  "badge_target10_desc": "Hoàn thành 10 mục tiêu",
+  "badge_target20_title": "Hai mươi mục tiêu",
+  "badge_target20_desc": "Hoàn thành 20 mục tiêu",
+  "badge_fast16_title": "16 giờ",
+  "badge_fast16_desc": "Đạt 16 giờ trong một lần nhịn ăn",
+  "badge_hours50_title": "50 giờ",
+  "badge_hours50_desc": "Ghi lại tổng cộng 50 giờ",
+  "badge_hours100_title": "Một trăm giờ",
+  "badge_hours100_desc": "Ghi lại tổng cộng 100 giờ",
+  "badge_target30_title": "Ba mươi mục tiêu",
+  "badge_target30_desc": "Hoàn thành 30 mục tiêu",
+  "badge_rhythm30_title": "Nhịp điệu 30 ngày",
+  "badge_rhythm30_desc": "Đạt chuỗi 30 ngày",
+  "paywall_restoreSuccess": "Đã khôi phục giao dịch mua!",
+  "fasting_progressSemantics": "Tiến độ nhịn ăn {percent} phần trăm",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}g",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "Trọn đời",
+  "paywall_once": "một lần",
+  "paywall_processing": "Đang xử lý…",
+  "paywall_continue": "Tiếp tục",
+  "paywall_productsUnavailable": "Hiện không thể mua hàng. Vui lòng thử lại sau.",
+  "paywall_purchaseFailed": "Không thể hoàn tất giao dịch mua.",
+  "paywall_nothingToRestore": "Không tìm thấy giao dịch mua trước đó.",
+  "paywall_restoreFailed": "Không thể khôi phục giao dịch mua.",
+  "paywall_terms": "Điều khoản sử dụng",
+  "permission_notificationDesc": "Nhắc nhở nhịn ăn, cập nhật giai đoạn và thông báo hoàn thành",
+  "profile_privacyChoices": "Lựa chọn quyền riêng tư",
+  "paywall_autoRenewInfo": "Gói đăng ký tự động gia hạn trừ khi bị hủy ít nhất 24 giờ trước khi kết thúc kỳ hạn. Quản lý hoặc hủy bất cứ lúc nào trong cài đặt App Store.",
+  "paywall_perMonth": "{price} / tháng",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Tiết kiệm {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "Dùng thử miễn phí {days} ngày",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Bắt đầu dùng thử miễn phí",
+  "paywall_retry": "Thử lại",
+  "paywall_alreadyOwned": "Bạn đã sở hữu gói đăng ký này. Nhấn “Khôi phục giao dịch mua”.",
+  "paywall_storeUnavailable": "Hiện không thể kết nối với cửa hàng. Hãy kiểm tra kết nối và thử lại.",
+  "paywall_secureNote": "Hủy bất cứ lúc nào. Khoản thanh toán được tính vào tài khoản cửa hàng của bạn.",
+  "paywall_autoRenewInfoPlay": "Gói đăng ký tự động gia hạn trừ khi bị hủy ít nhất 24 giờ trước khi kết thúc kỳ hạn. Quản lý hoặc hủy bất cứ lúc nào trong Google Play > Gói thuê bao.",
+  "paywall_allPlansDesc": "Mở khóa 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat và Warrior",
+  "paywall_noAdsDesc": "Quảng cáo biểu ngữ và quảng cáo xen kẽ được tắt hoàn toàn",
+  "foodScan_title": "Quét món ăn bằng AI",
+  "foodScan_scanCta": "Quét bữa ăn",
+  "foodScan_scanCtaDesc": "Chụp đĩa thức ăn để nhận lượng calo và các chất dinh dưỡng đa lượng",
+  "foodScan_introTitle": "Chụp đĩa thức ăn của bạn",
+  "foodScan_introDesc": "AI đọc ảnh và ước tính calo, protein, carbohydrate và chất béo.",
+  "foodScan_tipLight": "Ánh sáng đều, đủ sáng giúp ước tính chính xác hơn",
+  "foodScan_tipFrame": "Đặt toàn bộ đĩa thức ăn trong khung hình",
+  "foodScan_tipScale": "Đặt thêm dao nĩa hoặc bàn tay để ước lượng khẩu phần",
+  "foodScan_takePhoto": "Chụp ảnh",
+  "foodScan_chooseFromGallery": "Chọn từ thư viện",
+  "foodScan_scansLeft": "Hôm nay còn {count} lượt quét",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Bạn đã dùng hết lượt quét hôm nay. Hãy thử lại vào ngày mai.",
+  "foodScan_privacyNote": "Ảnh được gửi tới API Gemini của Google để phân tích và không được lưu trên máy chủ của chúng tôi.",
+  "foodScan_analyzing": "Đang phân tích bữa ăn…",
+  "foodScan_analyzingHint": "Quá trình này thường mất vài giây",
+  "foodScan_detectedItems": "Món ăn đã nhận diện",
+  "foodScan_disclaimer": "Ước tính của AI chỉ mang tính tương đối. Nhấn vào một món để chỉnh sửa.",
+  "foodScan_lowConfidence": "Mô hình chưa chắc chắn về ảnh này. Hãy kiểm tra số liệu trước khi lưu.",
+  "foodScan_save": "Thêm vào bữa ăn",
+  "foodScan_retake": "Ảnh mới",
+  "foodScan_retry": "Thử lại",
+  "foodScan_editItem": "Sửa món",
+  "foodScan_portion": "Khẩu phần",
+  "foodScan_saveEdit": "Lưu",
+  "foodScan_premiumTitle": "Tính năng Premium",
+  "foodScan_premiumDesc": "Phân tích calo từ ảnh được bao gồm trong Premium.",
+  "foodScan_upgrade": "Xem Premium",
+  "foodScan_errorNetwork": "Không có kết nối. Hãy kiểm tra Internet và thử lại.",
+  "foodScan_errorRateLimited": "Hiện có quá nhiều lượt quét. Hãy thử lại sau vài phút.",
+  "foodScan_errorUnavailable": "Hiện không thể phân tích ảnh.",
+  "foodScan_errorServer": "Dịch vụ phân tích đang gặp sự cố. Hãy thử lại sau ít phút.",
+  "foodScan_errorNoFood": "Không tìm thấy thức ăn trong ảnh. Hãy thử chụp đĩa rõ hơn.",
+  "foodScan_errorUnreadable": "Không thể phân tích ảnh này. Hãy thử ảnh khác.",
+  "paywall_aiFoodScan": "Quét món ăn bằng AI",
+  "paywall_aiFoodScanDesc": "Chụp bữa ăn và ghi lại calo cùng chất dinh dưỡng đa lượng trong vài giây"
+}

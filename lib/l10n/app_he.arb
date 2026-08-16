@@ -1,0 +1,773 @@
+{
+  "@@locale": "he",
+  "appTitle": "FastTrack",
+  "greeting_morning": "בוקר טוב",
+  "greeting_afternoon": "צהריים טובים",
+  "greeting_evening": "ערב טוב",
+  "tab_timer": "בית",
+  "tab_explore": "גילוי",
+  "tab_stats": "דוח",
+  "tab_meals": "ארוחות",
+  "tab_achievements": "הישגים",
+  "tab_profile": "חשבון",
+  "timer_fasting": "זמן הצום",
+  "timer_remaining": "נותר",
+  "timer_elapsed": "חלף",
+  "timer_start": "התחלה",
+  "timer_stop": "עצירה",
+  "timer_completed": "כל הכבוד!",
+  "timer_completedMessage": "השלמת את הצום בהצלחה!",
+  "timer_selectPlan": "בחירת תוכנית צום",
+  "timer_stopConfirm": "האם לסיים את הצום מוקדם?",
+  "timer_stopTitle": "סיום הצום",
+  "timer_cancel": "ביטול",
+  "timer_confirmStop": "כן, לסיים",
+  "phase_anabolic": "שלב אנבולי",
+  "phase_anabolicDesc": "העיכול בתהליך",
+  "phase_catabolic": "שלב קטבולי",
+  "phase_catabolicDesc": "מעבר אנרגיה",
+  "phase_fatBurning": "שריפת שומן",
+  "phase_fatBurningDesc": "שריפת השומן החלה",
+  "phase_ketosis": "קטוזיס",
+  "phase_ketosisDesc": "ייצור הקטונים פעיל",
+  "phase_autophagy": "אוטופגיה",
+  "phase_autophagyDesc": "התחדשות תאים",
+  "stats_title": "סטטיסטיקות",
+  "stats_week": "שבוע",
+  "stats_month": "חודש",
+  "stats_year": "שנה",
+  "stats_totalFasts": "סך הצומות",
+  "stats_average": "ממוצע",
+  "stats_fastDuration": "משך הצום",
+  "stats_streak": "רצף",
+  "stats_daysConsecutive": "ימים רצופים",
+  "stats_success": "הצלחה",
+  "stats_completion": "השלמה",
+  "stats_weeklyFasting": "צום שבועי",
+  "stats_monthlyView": "תצוגה חודשית",
+  "stats_weightChange": "שינוי במשקל",
+  "heatmap_none": "ללא",
+  "heatmap_low": "נמוך",
+  "heatmap_good": "טוב",
+  "heatmap_full": "מלא",
+  "meals_title": "מתכנן ארוחות",
+  "meals_eatingWindow": "חלון אכילה",
+  "meals_windowOpen": "פתוח",
+  "meals_windowFasting": "בצום",
+  "meals_calories": "קלוריות",
+  "meals_protein": "חלבון",
+  "meals_carbs": "פחמימות",
+  "meals_fat": "שומן",
+  "meals_todayMeals": "הארוחות של היום",
+  "meals_noMeals": "טרם נוספו ארוחות",
+  "meals_breakfastSuggestions": "הצעות לשבירת הצום",
+  "meals_addMeal": "הוספת ארוחה",
+  "profile_title": "פרופיל",
+  "profile_user": "משתמש",
+  "profile_planActive": "תוכנית {plan} פעילה",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "שדרוג ל-Premium",
+  "profile_premiumDesc": "כל תוכניות הצום, ללא פרסומות",
+  "profile_bodyMetrics": "מדדי גוף",
+  "profile_height": "גובה",
+  "profile_weight": "משקל",
+  "profile_targetWeight": "משקל יעד",
+  "profile_bmi": "BMI",
+  "profile_settings": "הגדרות",
+  "profile_notifications": "התראות",
+  "profile_darkTheme": "ערכת נושא כהה",
+  "profile_waterReminder": "תזכורת מים",
+  "profile_phaseNotifications": "התראות שלבים",
+  "profile_language": "שפה",
+  "profile_about": "אודות",
+  "profile_rateApp": "דירוג האפליקציה",
+  "profile_share": "שיתוף",
+  "profile_privacyPolicy": "מדיניות פרטיות",
+  "profile_version": "גרסה",
+  "onboarding_welcome": "ברוכים הבאים",
+  "onboarding_welcomeDesc": "קחו שליטה על מסע\nהצום לסירוגין שלכם",
+  "onboarding_featureTimer": "טיימר צום חכם",
+  "onboarding_featureStats": "סטטיסטיקות ותרשימים מפורטים",
+  "onboarding_featureMeals": "מתכנן ארוחות והצעות למתכונים",
+  "onboarding_getStarted": "מתחילים",
+  "onboarding_selectGoal": "מה היעד שלך?",
+  "onboarding_selectGoalDesc": "אפשר לבחור כמה",
+  "onboarding_goalWeight": "ירידה במשקל",
+  "onboarding_goalWeightDesc": "ירידה בריאה במשקל",
+  "onboarding_goalHealth": "שיפור הבריאות",
+  "onboarding_goalHealthDesc": "בריאות כללית וחסינות",
+  "onboarding_goalEnergy": "יותר אנרגיה",
+  "onboarding_goalEnergyDesc": "אנרגיה לאורך כל היום",
+  "onboarding_goalMental": "בהירות מחשבתית",
+  "onboarding_goalMentalDesc": "מיקוד ובהירות",
+  "onboarding_goalLongevity": "אריכות ימים",
+  "onboarding_goalLongevityDesc": "התחדשות תאים והזדקנות בריאה",
+  "onboarding_goalDiscipline": "משמעת",
+  "onboarding_goalDisciplineDesc": "פיתוח משמעת עצמית",
+  "onboarding_selectPlan": "בחירת התוכנית",
+  "onboarding_selectPlanDesc": "בחרו את תוכנית הצום המתאימה ביותר",
+  "onboarding_bodyInfo": "הזנת פרטים",
+  "onboarding_bodyInfoDesc": "לקבלת המלצות אישיות",
+  "onboarding_gender": "מגדר",
+  "onboarding_male": "זכר",
+  "onboarding_female": "נקבה",
+  "onboarding_age": "גיל",
+  "onboarding_bodyInfoDisclaimer": "מידע זה נשמר במכשיר בלבד ומשמש לחישוב קלוריות.",
+  "onboarding_permissions": "שלב אחרון",
+  "onboarding_permissionsDesc": "הפעילו הרשאות לחוויה הטובה ביותר",
+  "onboarding_next": "המשך",
+  "onboarding_start": "בואו נתחיל!",
+  "onboarding_skipForNow": "הגדרה מאוחר יותר",
+  "waterAdded": "נוספו 250 מ״ל מים",
+  "languageSelect": "בחירת שפה",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "שדרוג ל-Premium",
+  "paywall_subtitle": "פתיחת כל תוכניות הצום והסרת פרסומות",
+  "paywall_allPlans": "כל תוכניות הצום",
+  "paywall_advancedStats": "סטטיסטיקות מתקדמות",
+  "paywall_mealPlanner": "מתכנן ארוחות",
+  "paywall_themes": "התאמת ערכת נושא",
+  "paywall_noAds": "ללא פרסומות",
+  "paywall_weekly": "שבועי",
+  "paywall_monthly": "חודשי",
+  "paywall_yearly": "שנתי",
+  "paywall_bestValue": "הכי משתלם",
+  "paywall_freeTrial": "ניסיון חינם (3 ימים)",
+  "paywall_restore": "שחזור רכישות",
+  "paywall_premiumActive": "Premium פעיל!",
+  "paywall_premiumActiveDesc": "כל תוכניות הצום פתוחות והפרסומות כבויות",
+  "water_title": "צריכת מים",
+  "water_addWater": "הוספת מים",
+  "water_goal": "יעד",
+  "water_ml": "מ״ל",
+  "common_ok": "אישור",
+  "common_cancel": "ביטול",
+  "common_save": "שמירה",
+  "common_delete": "מחיקה",
+  "common_hours": "שעות",
+  "common_minutes": "דקות",
+  "common_days": "ימים",
+  "common_enable": "הפעלה",
+  "streakCard_currentStreak": "הרצף הנוכחי",
+  "streakCard_longestStreak": "הרצף הארוך ביותר",
+  "streakCard_totalSessions": "סך הצומות",
+  "meals_mealType": "סוג הארוחה",
+  "meals_breakfast": "ארוחת בוקר",
+  "meals_lunch": "ארוחת צהריים",
+  "meals_dinner": "ארוחת ערב",
+  "meals_snack": "חטיף",
+  "meals_carbohydrate": "פחמימות",
+  "meals_add": "הוספה",
+  "meals_mealName": "שם הארוחה",
+  "bodyMetrics_title": "מדדי גוף",
+  "bodyMetrics_weight": "משקל",
+  "bodyMetrics_target": "יעד",
+  "bodyMetrics_save": "שמירה",
+  "bodyMetrics_history": "היסטוריה",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "אין עדיין נתונים",
+  "meals_quickAdd": "הוספה מהירה",
+  "meals_manualEntry": "הזנה ידנית",
+  "meals_added": "{name} נוסף",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "נדרשים שם וקלוריות",
+  "bodyMetrics_addWeight": "הוספת משקל",
+  "bodyMetrics_hintWeight": "למשל 74.5",
+  "bodyMetrics_invalidWeight": "יש להזין משקל תקין",
+  "bodyMetrics_weightSaved": "{value} ק״ג נשמרו",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "משך",
+  "completion_plan": "תוכנית",
+  "completion_lastPhase": "שלב אחרון",
+  "timer_remainingTime": "זמן שנותר",
+  "timer_ready": "מוכן להתחלה",
+  "streak_status": "מצב",
+  "streak_startToday": "מתחילים היום!",
+  "streak_goodStart": "התחלה טובה!",
+  "streak_goingGreat": "הולך מצוין!",
+  "streak_superb": "מעולה!",
+  "streak_legendary": "אגדי!",
+  "streak_incredible": "מדהים!",
+  "weight_noRecord": "אין עדיין רישומי משקל\nאפשר להוסיף בפרופיל > מדדי גוף",
+  "day_mon": "ב׳",
+  "day_tue": "ג׳",
+  "day_wed": "ד׳",
+  "day_thu": "ה׳",
+  "day_fri": "ו׳",
+  "day_sat": "ש׳",
+  "day_sun": "א׳",
+  "day_short_mon": "ב",
+  "day_short_tue": "ג",
+  "day_short_wed": "ד",
+  "day_short_thu": "ה",
+  "day_short_fri": "ו",
+  "day_short_sat": "ש",
+  "day_short_sun": "א",
+  "month_jan": "ינואר",
+  "month_feb": "פברואר",
+  "month_mar": "מרץ",
+  "month_apr": "אפריל",
+  "month_may": "מאי",
+  "month_jun": "יוני",
+  "month_jul": "יולי",
+  "month_aug": "אוגוסט",
+  "month_sep": "ספטמבר",
+  "month_oct": "אוקטובר",
+  "month_nov": "נובמבר",
+  "month_dec": "דצמבר",
+  "meals_fastingWindow": "צום ({hours} ש׳)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "אכילה ({hours} ש׳)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "שייק שיבולת שועל",
+  "recipe_avocadoToast": "טוסט אבוקדו",
+  "recipe_yogurtBowl": "קערת יוגורט",
+  "elapsed_time": "זמן שחלף",
+  "fast_ends_on": "הצום מסתיים בשעה",
+  "end_fasting": "סיום הצום",
+  "start_fasting": "התחלת צום",
+  "water_tracker": "מעקב מים",
+  "weight_tracker": "מעקב משקל",
+  "drink": "שתייה",
+  "log_weight": "רישום משקל",
+  "bmi": "BMI",
+  "weight_lost": "משקל שירד",
+  "current_weight": "משקל נוכחי",
+  "goal_weight": "משקל יעד",
+  "daily_goal": "יעד יומי",
+  "completed_percent": "{percent}% הושלמו",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "גילוי",
+  "achievements": "הישגים",
+  "profile_theme": "מראה",
+  "theme_select": "בחירת מראה",
+  "theme_system": "ברירת מחדל של המערכת",
+  "theme_light": "בהיר",
+  "theme_dark": "כהה",
+  "language_system": "שפת המערכת",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "צליל השלמה",
+  "profile_calmGamification": "משחקיות רגועה",
+  "profile_calmGamificationDesc": "מפחית לחץ מליגות ועונות",
+  "profile_editName": "עריכת השם",
+  "profile_name": "שם",
+  "circle_title": "מעגל הצום",
+  "circle_you": "אתם",
+  "circle_tagline": "ביחד, בלי לחץ.",
+  "circle_privacy": "המשקל והמדדים הפרטיים נשארים מוסתרים. רק ההתקדמות והתמיכה גלויות.",
+  "circle_sendSupport": "שליחת תמיכה · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "קוד ההזמנה הועתק",
+  "circle_createInvite": "יצירת הזמנה פרטית",
+  "crisis_nameTitle": "ראשית, תנו שם למה שקורה",
+  "crisis_nameDesc": "ייתכן שזה רעב, הרגל או רגש.",
+  "crisis_waterTitle": "שתו כוס מים",
+  "crisis_waterDesc": "ואז קחו שלוש נשימות איטיות.",
+  "crisis_delayTitle": "דחו את ההחלטה ב-10 דקות",
+  "crisis_delayDesc": "אם אינכם מרגישים טוב, סיום הצום אינו כישלון.",
+  "crisis_hunger": "רעב",
+  "crisis_habit": "הרגל",
+  "crisis_stress": "לחץ",
+  "crisis_tenMore": "תנו לזה 10 דקות",
+  "stats_storyEmpty": "הצום הראשון יתחיל את הסיפור האישי שלכם.",
+  "stats_story": "צמתם {sessions} פעמים בתקופה זו, שמרתם על הקצב במשך {hours} שעות והגעתם לשיעור השלמה של {rate}%.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "סיפור הקצב שלכם",
+  "home_todayRhythm": "הקצב של היום",
+  "home_finalHourSupport": "תמיכה לשעה האחרונה",
+  "home_needSupport": "אני צריך קצת תמיכה",
+  "home_todaySummary": "היום במבט אחד",
+  "home_dayStreak": "ימי רצף",
+  "home_weightGoal": "יעד {weight} ק״ג",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "הקצב שלכם יציב",
+  "weather_gentle": "יום רגוע",
+  "weather_water": "כוס מים עשויה לעזור.",
+  "weather_listen": "הגעתם רחוק; הקשיבו לגוף.",
+  "weather_onPlan": "הקצב היום תואם לתוכנית.",
+  "weather_challenging": "השעה הזאת הייתה מאתגרת בעבר; מצב התמיכה מוכן.",
+  "replay_copied": "סיכום הצום הועתק",
+  "replay_button": "הצגה חוזרת",
+  "replay_text": "השלמתי צום {plan} בתוך {hours}ש׳ {minutes}דק׳ · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "המסע המטבולי",
+  "journey_now": "עכשיו",
+  "journey_next": "{time} עד {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "תזמון השלב הוא הערכה כללית, לא מדידה רפואית.",
+  "phase_hours": "שעות {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "תזמון זה הוא הערכה כללית. התגובות המטבוליות עשויות להשתנות בין אנשים.",
+  "bmi_underweight": "תת-משקל",
+  "bmi_normal": "תקין",
+  "bmi_overweight": "עודף משקל",
+  "bmi_obese": "השמנה",
+  "notification_halfwayTitle": "הגעתם לחצי! 💪",
+  "notification_halfwayBody": "השלמתם חצי מצום {plan}. המשיכו כך!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "נכנסתם לשלב הקטבולי 📉",
+  "notification_phaseFatBurning": "שריפת השומן החלה! 🔥",
+  "notification_phaseKetosis": "אתם בקטוזיס ⚡",
+  "notification_phaseAutophagy": "האוטופגיה פעילה! 🔄",
+  "notification_completedBody": "השלמתם צום {plan}! חלון האכילה פתוח.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "שתו מים 💧",
+  "notification_waterBody": "אל תשכחו לשתות מספיק מים בזמן הצום!",
+  "notification_windowTitle": "חלון האכילה נסגר בקרוב ⏰",
+  "notification_windowBody": "חלון האכילה ייסגר בעוד 30 דקות.",
+  "notification_streakTitle": "רצף של {days} ימים! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "אתם עושים עבודה נהדרת! המשיכו גם היום.",
+  "notification_ongoingTitle": "הצום בתהליך - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "נותר: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "הצום התחיל - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "יעד: {hours} שעות",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours}ש׳ {minutes}דק׳",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "מדריך הצום",
+  "explore_guideDesc": "כל מה שצריך לדעת על צום לסירוגין",
+  "explore_circleDesc": "שתפו תמיכה שקטה עם הקבוצה הפרטית שלכם.",
+  "explore_faq": "שאלות נפוצות",
+  "explore_education": "תוכן זה מיועד להשכלה כללית בלבד ואינו אבחון רפואי או ייעוץ טיפולי.",
+  "explore_safety": "בריאות ובטיחות",
+  "explore_safetyDesc": "אם יש לכם מצב רפואי, אתם נוטלים תרופות בקביעות, יש תסמינים מדאיגים, או שאתן בהיריון או מניקות, התייעצו עם איש מקצוע רפואי מוסמך לפני הצום. הפסיקו אם אינכם מרגישים טוב.",
+  "explore_sources": "מקורות",
+  "explore_sourcesDesc": "התוכן פושט מתוך מקורות בריאות הציבור שלהלן.",
+  "explore_sourceError": "לא ניתן לפתוח את המקור",
+  "explore_rules": "כללים חשובים",
+  "explore_rule1": "אין לצרוך מזון עם קלוריות בזמן הצום",
+  "explore_rule2": "שתו הרבה מים ונוזלים",
+  "explore_rule3": "אכלו באופן מאוזן בחלון האכילה",
+  "explore_rule4": "הפסיקו לצום אם אינכם מרגישים טוב",
+  "explore_rule5": "נשים בהיריון או מניקות לא צריכות לצום",
+  "explore_rule6": "התייעצו עם רופא אם יש לכם מחלה כרונית",
+  "tip_water": "שמרו על נוזלים",
+  "tip_waterDesc": "שתו מים כשאתם צמאים ושלבו נוזלים בארוחות. הצורך משתנה לפי הבריאות, מזג האוויר והפעילות.",
+  "tip_food": "אכלו נכון",
+  "tip_foodDesc": "בחלונות האכילה בחרו מזונות עשירים בחלבון עם סיבים ושומנים בריאים. הימנעו ממזון מעובד.",
+  "tip_sleep": "שנו היטב",
+  "tip_sleepDesc": "שינה סדירה ומספקת תומכת בבריאות הכללית. תזמנו את הצום כך שלא יפגע בשינה.",
+  "tip_exercise": "פעילות קלה",
+  "tip_exerciseDesc": "אפשר לצאת להליכה קלה או לעשות יוגה בזמן הצום. הימנעו מפעילות מאומצת, במיוחד בשבועות הראשונים עד שהגוף מסתגל.",
+  "tip_drinks": "משקאות מותרים",
+  "tip_drinksDesc": "בזמן הצום אפשר לשתות מים, תה ללא תוספות וקפה שחור (ללא סוכר או חלב). משקאות אלה לא ישברו את הצום.",
+  "faq_drinks": "מה אפשר לשתות בזמן הצום?",
+  "faq_drinksAnswer": "אפשר לשתות מים, תה ללא תוספות וקפה שחור (ללא סוכר/חלב). משקאות עם קלוריות שוברים את הצום.",
+  "faq_plan": "באיזו תוכנית צום כדאי לבחור?",
+  "faq_planAnswer": "אם אתם מתחילים, התחילו ב-12:12 או 14:10. אם יש לכם ניסיון, נסו 16:8 או 18:6. תוכניות 20:4 ו-OMAD מיועדות למתקדמים.",
+  "faq_exercise": "אפשר להתאמן בזמן הצום?",
+  "faq_exerciseAnswer": "כן, אך הימנעו מאימונים עצימים. פעילות אירובית קלה, הליכה ויוגה מתאימות. תזמנו אימוני כוח סמוך לחלון האכילה.",
+  "faq_weight": "האם צום מסייע בירידה במשקל?",
+  "faq_weightAnswer": "אצל חלק מהאנשים, הגבלת שעות האכילה עשויה להפחית את צריכת האנרגיה הכוללת. התוצאות משתנות וההשפעות לטווח ארוך עדיין נחקרות.",
+  "plan_12_desc": "רמת מתחילים",
+  "plan_12_detail": "מתאים למתחילים. צמים 12 שעות, כולל זמן השינה.",
+  "plan_16_desc": "התוכנית הפופולרית ביותר",
+  "plan_16_detail": "תוכנית הצום לסירוגין הנפוצה ביותר. 16 שעות צום ו-8 שעות אכילה, בדרך כלל מצהריים עד הערב.",
+  "plan_18_desc": "רמת ביניים",
+  "plan_18_detail": "18 שעות צום ו-6 שעות אכילה. משך שריפת שומן ארוך יותר.",
+  "plan_20_desc": "רמה מתקדמת",
+  "plan_20_detail": "20 שעות צום ו-4 שעות אכילה. מתאים להגעה לקטוזיס ולאוטופגיה.",
+  "plan_omad_desc": "ארוחה אחת ביום",
+  "plan_omad_detail": "ארוחה אחת ביום. 23 שעות צום ושעת אכילה אחת. רמת מומחים.",
+  "plan_52_desc": "יומיים בשבוע",
+  "plan_52_detail": "אוכלים כרגיל 5 ימים ורק כ-500 קלוריות ביומיים. גישה חלופית.",
+  "plan_ese_desc": "צום של 24 שעות",
+  "plan_ese_detail": "צמים 24 שעות פעם או פעמיים בשבוע. למשתמשים מתקדמים.",
+  "plan_warrior_desc": "דיאטת הלוחם",
+  "plan_warrior_detail": "אוכלים קל במהלך היום (פירות וירקות) ואת הארוחה העיקרית בחלון ערב של 4 שעות.",
+  "award_first_title": "צעד ראשון",
+  "award_first_desc": "השלמת הצום הראשון",
+  "award_rhythm3_title": "קצב של 3 ימים",
+  "award_rhythm3_desc": "שמירה על הקצב במשך שלושה ימים",
+  "award_hours24_title": "24 שעות",
+  "award_hours24_desc": "צום של 24 שעות בסך הכול",
+  "award_week_title": "קצב של שבוע",
+  "award_week_desc": "בניית רצף של שבעה ימים",
+  "award_fasts10_title": "10 צומות",
+  "award_fasts10_desc": "השלמת עשרה צומות",
+  "award_hours100_title": "100 שעות",
+  "award_hours100_desc": "הגעה ל-100 שעות בסך הכול",
+  "award_rhythm30_title": "קצב של 30 יום",
+  "award_rhythm30_desc": "בניית רצף של שלושים יום",
+  "award_fasts50_title": "50 צומות",
+  "award_fasts50_desc": "השלמת חמישים צומות",
+  "award_hours500_title": "500 שעות",
+  "award_hours500_desc": "הגעה ל-500 שעות בסך הכול",
+  "award_fasts100_title": "100 צומות",
+  "award_fasts100_desc": "השלמת מאה צומות",
+  "award_rhythm90_title": "קצב של 90 יום",
+  "award_rhythm90_desc": "בניית רצף של תשעים יום",
+  "award_year_title": "מסע של שנה",
+  "award_year_desc": "הגעה לקצב של 365 ימים",
+  "awards_loadError": "לא ניתן לטעון את ההתקדמות",
+  "awards_journeyComplete": "המסע הושלם",
+  "awards_nextGoal": "היעד הבא",
+  "awards_allYours": "כל ההישגים שלכם",
+  "awards_dayStreak": "ימי רצף",
+  "awards_fasts": "צומות",
+  "awards_total": "סך הכול",
+  "awards_stageStart": "התחלה",
+  "awards_stageRhythm": "קצב",
+  "awards_stageEndurance": "סיבולת",
+  "awards_stageMastery": "שליטה",
+  "awards_completed": "הושלם",
+  "awards_fastsRemaining": "נותרו {count} צומות",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "נותרו {count} ימים",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "נותרו {count} שעות",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "ניסיון חוזר",
+  "game_title": "מרכז ההתקדמות",
+  "game_quests": "המשימות של היום",
+  "game_questsDesc": "צעדים קטנים, קצב בר-קיימא.",
+  "game_season": "עונה של 30 צעדים",
+  "game_seasonDesc": "חותמת לאוסף בכל צעד חמישי.",
+  "game_badges": "אוסף תגים",
+  "game_shields": "{count} מגני קצב",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "מתקבלים בכל שבע השלמות. יום שהוחמץ לעולם לא מוחק את ההתקדמות.",
+  "game_league": "ליגה שבועית פרטית",
+  "game_leagueDesc": "ציון הקצב שלכם נמצא באחוזון {percent} של מודל מקומי פרטי. משקל וצום קיצוני לעולם אינם מדורגים.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "רמה {level}, ‏{xp} נקודות ניסיון",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "חוקר הקצב",
+  "game_streak": "רצף",
+  "game_targets": "יעדים",
+  "game_best": "הטוב ביותר",
+  "quest_rhythm": "בניית הקצב של היום",
+  "quest_hydrate": "הגעה למחצית מיעד המים",
+  "quest_steady": "שמירה על הרצף",
+  "badge_first_title": "צעד ראשון",
+  "badge_first_desc": "רישום הצום הראשון",
+  "badge_rhythm7_title": "שומר הקצב",
+  "badge_rhythm7_desc": "הגעה לרצף של 7 ימים",
+  "badge_rhythm3_title": "קצב של שלושה ימים",
+  "badge_rhythm3_desc": "הגעה לרצף של 3 ימים",
+  "badge_target1_title": "יעד ראשון",
+  "badge_target1_desc": "השלמת צום היעד הראשון",
+  "badge_target3_title": "שלושה צעדים",
+  "badge_target3_desc": "השלמת 3 יעדים",
+  "badge_water_title": "מאוזן",
+  "badge_water_desc": "השלמת יעד המים היומי",
+  "badge_support_title": "מודעות עצמית",
+  "badge_support_desc": "שימוש במצב התמיכה",
+  "badge_hours10_title": "10 שעות",
+  "badge_hours10_desc": "רישום 10 שעות בסך הכול",
+  "badge_target10_title": "עשר בעוצמה",
+  "badge_target10_desc": "השלמת 10 יעדים",
+  "badge_target20_title": "עשרים יעדים",
+  "badge_target20_desc": "השלמת 20 יעדים",
+  "badge_fast16_title": "16 שעות",
+  "badge_fast16_desc": "הגעה ל-16 שעות בצום אחד",
+  "badge_hours50_title": "50 שעות",
+  "badge_hours50_desc": "רישום 50 שעות בסך הכול",
+  "badge_hours100_title": "מאה שעות",
+  "badge_hours100_desc": "רישום 100 שעות בסך הכול",
+  "badge_target30_title": "שלושים יעדים",
+  "badge_target30_desc": "השלמת 30 יעדים",
+  "badge_rhythm30_title": "קצב של 30 יום",
+  "badge_rhythm30_desc": "הגעה לרצף של 30 יום",
+  "paywall_restoreSuccess": "הרכישות שוחזרו!",
+  "fasting_progressSemantics": "התקדמות הצום {percent} אחוז",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}ש׳",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "לכל החיים",
+  "paywall_once": "חד-פעמי",
+  "paywall_processing": "בעיבוד…",
+  "paywall_continue": "המשך",
+  "paywall_productsUnavailable": "הרכישות אינן זמינות כרגע. נסו שוב מאוחר יותר.",
+  "paywall_purchaseFailed": "לא ניתן להשלים את הרכישה.",
+  "paywall_nothingToRestore": "לא נמצאה רכישה קודמת.",
+  "paywall_restoreFailed": "לא ניתן לשחזר את הרכישות.",
+  "paywall_terms": "תנאי שימוש",
+  "permission_notificationDesc": "תזכורות צום, עדכוני שלבים והתראות השלמה",
+  "profile_privacyChoices": "אפשרויות פרטיות",
+  "paywall_autoRenewInfo": "המינויים מתחדשים אוטומטית אלא אם מבטלים לפחות 24 שעות לפני תום התקופה. אפשר לנהל או לבטל בכל עת בהגדרות ה-App Store.",
+  "paywall_perMonth": "{price} / חודש",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "חיסכון של {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "ניסיון חינם ל-{days} ימים",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "התחלת ניסיון חינם",
+  "paywall_retry": "ניסיון חוזר",
+  "paywall_alreadyOwned": "המינוי הזה כבר בבעלותכם. הקישו על ״שחזור רכישות״.",
+  "paywall_storeUnavailable": "לא ניתן להגיע לחנות כרגע. בדקו את החיבור ונסו שוב.",
+  "paywall_secureNote": "אפשר לבטל בכל עת. התשלום מחויב בחשבון החנות.",
+  "paywall_autoRenewInfoPlay": "המינויים מתחדשים אוטומטית אלא אם מבטלים לפחות 24 שעות לפני תום התקופה. אפשר לנהל או לבטל בכל עת ב-Google Play > מינויים.",
+  "paywall_allPlansDesc": "פותח את 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ו-Warrior",
+  "paywall_noAdsDesc": "פרסומות באנר ופרסומות מעבר מושבתות לחלוטין",
+  "foodScan_title": "סריקת מזון ב-AI",
+  "foodScan_scanCta": "סריקת ארוחה",
+  "foodScan_scanCtaDesc": "צלמו את הצלחת וקבלו קלוריות ומאקרו",
+  "foodScan_introTitle": "צלמו את הצלחת",
+  "foodScan_introDesc": "ה-AI קורא את התמונה ומעריך קלוריות, חלבון, פחמימות ושומן.",
+  "foodScan_tipLight": "תאורה טובה ואחידה מספקת הערכה טובה יותר",
+  "foodScan_tipFrame": "הכניסו את כל הצלחת למסגרת",
+  "foodScan_tipScale": "כללו סכו״ם או יד כדי לאמוד את גודל המנות",
+  "foodScan_takePhoto": "צילום תמונה",
+  "foodScan_chooseFromGallery": "בחירה מהגלריה",
+  "foodScan_scansLeft": "נותרו {count} סריקות היום",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "השתמשתם בכל הסריקות של היום. נסו שוב מחר.",
+  "foodScan_privacyNote": "התמונה נשלחת ל-Gemini API של Google לניתוח ואינה נשמרת בשרתים שלנו.",
+  "foodScan_analyzing": "הארוחה בניתוח…",
+  "foodScan_analyzingHint": "התהליך נמשך בדרך כלל כמה שניות",
+  "foodScan_detectedItems": "פריטים שזוהו",
+  "foodScan_disclaimer": "הערכות AI הן בקירוב. הקישו על פריט כדי לתקן אותו.",
+  "foodScan_lowConfidence": "המודל אינו בטוח לגבי התמונה. בדקו את המספרים לפני השמירה.",
+  "foodScan_save": "הוספה לארוחות",
+  "foodScan_retake": "תמונה חדשה",
+  "foodScan_retry": "ניסיון חוזר",
+  "foodScan_editItem": "עריכת פריט",
+  "foodScan_portion": "מנה",
+  "foodScan_saveEdit": "שמירה",
+  "foodScan_premiumTitle": "תכונת Premium",
+  "foodScan_premiumDesc": "ניתוח קלוריות מתמונה כלול ב-Premium.",
+  "foodScan_upgrade": "הצגת Premium",
+  "foodScan_errorNetwork": "אין חיבור. בדקו את האינטרנט ונסו שוב.",
+  "foodScan_errorRateLimited": "יש יותר מדי סריקות כרגע. נסו שוב בעוד כמה דקות.",
+  "foodScan_errorUnavailable": "ניתוח תמונות אינו זמין כרגע.",
+  "foodScan_errorServer": "שירות הניתוח נתקל בבעיה. נסו שוב בקרוב.",
+  "foodScan_errorNoFood": "לא נמצא מזון בתמונה. נסו צילום ברור יותר של הצלחת.",
+  "foodScan_errorUnreadable": "לא ניתן לנתח את התמונה. נסו תמונה אחרת.",
+  "paywall_aiFoodScan": "סריקת מזון ב-AI",
+  "paywall_aiFoodScanDesc": "צלמו ארוחה ורשמו קלוריות ומאקרו בתוך שניות"
+}

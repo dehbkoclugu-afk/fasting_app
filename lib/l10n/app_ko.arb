@@ -1,0 +1,773 @@
+{
+  "@@locale": "ko",
+  "appTitle": "FastTrack",
+  "greeting_morning": "좋은 아침이에요",
+  "greeting_afternoon": "좋은 오후예요",
+  "greeting_evening": "좋은 저녁이에요",
+  "tab_timer": "홈",
+  "tab_explore": "둘러보기",
+  "tab_stats": "보고서",
+  "tab_meals": "식사",
+  "tab_achievements": "업적",
+  "tab_profile": "계정",
+  "timer_fasting": "단식 시간",
+  "timer_remaining": "남은 시간",
+  "timer_elapsed": "경과 시간",
+  "timer_start": "시작",
+  "timer_stop": "중지",
+  "timer_completed": "축하합니다!",
+  "timer_completedMessage": "단식을 성공적으로 완료했습니다!",
+  "timer_selectPlan": "단식 계획 선택",
+  "timer_stopConfirm": "단식을 일찍 종료하시겠어요?",
+  "timer_stopTitle": "단식 종료",
+  "timer_cancel": "취소",
+  "timer_confirmStop": "예, 종료",
+  "phase_anabolic": "동화 단계",
+  "phase_anabolicDesc": "소화 진행 중",
+  "phase_catabolic": "이화 단계",
+  "phase_catabolicDesc": "에너지 전환 중",
+  "phase_fatBurning": "지방 연소",
+  "phase_fatBurningDesc": "지방 연소가 시작되었습니다",
+  "phase_ketosis": "케토시스",
+  "phase_ketosisDesc": "케톤 생성 활성화",
+  "phase_autophagy": "자가포식",
+  "phase_autophagyDesc": "세포 재생",
+  "stats_title": "통계",
+  "stats_week": "주",
+  "stats_month": "월",
+  "stats_year": "년",
+  "stats_totalFasts": "총 단식 횟수",
+  "stats_average": "평균",
+  "stats_fastDuration": "단식 시간",
+  "stats_streak": "연속 기록",
+  "stats_daysConsecutive": "연속 일수",
+  "stats_success": "성공",
+  "stats_completion": "완료율",
+  "stats_weeklyFasting": "주간 단식",
+  "stats_monthlyView": "월간 보기",
+  "stats_weightChange": "체중 변화",
+  "heatmap_none": "없음",
+  "heatmap_low": "낮음",
+  "heatmap_good": "좋음",
+  "heatmap_full": "충분",
+  "meals_title": "식사 계획",
+  "meals_eatingWindow": "식사 시간",
+  "meals_windowOpen": "열림",
+  "meals_windowFasting": "단식 중",
+  "meals_calories": "칼로리",
+  "meals_protein": "단백질",
+  "meals_carbs": "탄수화물",
+  "meals_fat": "지방",
+  "meals_todayMeals": "오늘의 식사",
+  "meals_noMeals": "아직 추가된 식사가 없습니다",
+  "meals_breakfastSuggestions": "단식 종료 식사 추천",
+  "meals_addMeal": "식사 추가",
+  "profile_title": "프로필",
+  "profile_user": "사용자",
+  "profile_planActive": "{plan} 계획 활성화됨",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Premium으로 업그레이드",
+  "profile_premiumDesc": "모든 단식 계획을 광고 없이",
+  "profile_bodyMetrics": "신체 지표",
+  "profile_height": "키",
+  "profile_weight": "체중",
+  "profile_targetWeight": "목표 체중",
+  "profile_bmi": "BMI",
+  "profile_settings": "설정",
+  "profile_notifications": "알림",
+  "profile_darkTheme": "다크 테마",
+  "profile_waterReminder": "물 마시기 알림",
+  "profile_phaseNotifications": "단계 알림",
+  "profile_language": "언어",
+  "profile_about": "정보",
+  "profile_rateApp": "앱 평가",
+  "profile_share": "공유",
+  "profile_privacyPolicy": "개인정보 처리방침",
+  "profile_version": "버전",
+  "onboarding_welcome": "환영합니다",
+  "onboarding_welcomeDesc": "간헐적 단식 여정을\n직접 관리하세요",
+  "onboarding_featureTimer": "스마트 단식 타이머",
+  "onboarding_featureStats": "상세 통계와 차트",
+  "onboarding_featureMeals": "식사 계획과 레시피 추천",
+  "onboarding_getStarted": "시작하기",
+  "onboarding_selectGoal": "목표가 무엇인가요?",
+  "onboarding_selectGoalDesc": "여러 개 선택할 수 있습니다",
+  "onboarding_goalWeight": "체중 감량",
+  "onboarding_goalWeightDesc": "건강한 체중 감량",
+  "onboarding_goalHealth": "건강 개선",
+  "onboarding_goalHealthDesc": "전반적인 건강과 면역력",
+  "onboarding_goalEnergy": "활력 높이기",
+  "onboarding_goalEnergyDesc": "하루 종일 활기차게",
+  "onboarding_goalMental": "맑은 정신",
+  "onboarding_goalMentalDesc": "집중력과 명료함",
+  "onboarding_goalLongevity": "장수",
+  "onboarding_goalLongevityDesc": "세포 재생과 건강한 노화",
+  "onboarding_goalDiscipline": "절제력",
+  "onboarding_goalDisciplineDesc": "자기 절제력 기르기",
+  "onboarding_selectPlan": "계획 선택",
+  "onboarding_selectPlanDesc": "나에게 가장 적합한 단식 계획을 선택하세요",
+  "onboarding_bodyInfo": "정보 입력",
+  "onboarding_bodyInfoDesc": "맞춤 추천을 위해 사용됩니다",
+  "onboarding_gender": "성별",
+  "onboarding_male": "남성",
+  "onboarding_female": "여성",
+  "onboarding_age": "나이",
+  "onboarding_bodyInfoDisclaimer": "이 정보는 기기에만 저장되며 칼로리 계산에 사용됩니다.",
+  "onboarding_permissions": "마지막 단계",
+  "onboarding_permissionsDesc": "최상의 경험을 위해 권한을 활성화하세요",
+  "onboarding_next": "계속",
+  "onboarding_start": "시작해 볼까요!",
+  "onboarding_skipForNow": "나중에 설정",
+  "waterAdded": "물 250ml를 추가했습니다",
+  "languageSelect": "언어 선택",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Premium으로 업그레이드",
+  "paywall_subtitle": "모든 단식 계획을 잠금 해제하고 광고를 제거하세요",
+  "paywall_allPlans": "모든 단식 계획",
+  "paywall_advancedStats": "고급 통계",
+  "paywall_mealPlanner": "식사 계획",
+  "paywall_themes": "테마 맞춤 설정",
+  "paywall_noAds": "광고 없음",
+  "paywall_weekly": "주간",
+  "paywall_monthly": "월간",
+  "paywall_yearly": "연간",
+  "paywall_bestValue": "최고의 선택",
+  "paywall_freeTrial": "무료 체험(3일)",
+  "paywall_restore": "구매 복원",
+  "paywall_premiumActive": "Premium 활성화됨!",
+  "paywall_premiumActiveDesc": "모든 단식 계획이 잠금 해제되고 광고가 꺼졌습니다",
+  "water_title": "물 섭취량",
+  "water_addWater": "물 추가",
+  "water_goal": "목표",
+  "water_ml": "ml",
+  "common_ok": "확인",
+  "common_cancel": "취소",
+  "common_save": "저장",
+  "common_delete": "삭제",
+  "common_hours": "시간",
+  "common_minutes": "분",
+  "common_days": "일",
+  "common_enable": "활성화",
+  "streakCard_currentStreak": "현재 연속 기록",
+  "streakCard_longestStreak": "최장 연속 기록",
+  "streakCard_totalSessions": "총 단식 횟수",
+  "meals_mealType": "식사 유형",
+  "meals_breakfast": "아침 식사",
+  "meals_lunch": "점심 식사",
+  "meals_dinner": "저녁 식사",
+  "meals_snack": "간식",
+  "meals_carbohydrate": "탄수화물",
+  "meals_add": "추가",
+  "meals_mealName": "식사 이름",
+  "bodyMetrics_title": "신체 지표",
+  "bodyMetrics_weight": "체중",
+  "bodyMetrics_target": "목표",
+  "bodyMetrics_save": "저장",
+  "bodyMetrics_history": "기록",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "아직 데이터가 없습니다",
+  "meals_quickAdd": "빠른 추가",
+  "meals_manualEntry": "직접 입력",
+  "meals_added": "{name} 추가됨",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "이름과 칼로리를 입력해야 합니다",
+  "bodyMetrics_addWeight": "체중 추가",
+  "bodyMetrics_hintWeight": "예: 74.5",
+  "bodyMetrics_invalidWeight": "올바른 체중을 입력하세요",
+  "bodyMetrics_weightSaved": "{value}kg 저장됨",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "기간",
+  "completion_plan": "계획",
+  "completion_lastPhase": "마지막 단계",
+  "timer_remainingTime": "남은 시간",
+  "timer_ready": "시작 준비 완료",
+  "streak_status": "상태",
+  "streak_startToday": "오늘 시작하세요!",
+  "streak_goodStart": "좋은 시작이에요!",
+  "streak_goingGreat": "아주 잘하고 있어요!",
+  "streak_superb": "훌륭해요!",
+  "streak_legendary": "전설적이에요!",
+  "streak_incredible": "놀라워요!",
+  "weight_noRecord": "아직 체중 기록이 없습니다\n프로필 > 신체 지표에서 추가하세요",
+  "day_mon": "월",
+  "day_tue": "화",
+  "day_wed": "수",
+  "day_thu": "목",
+  "day_fri": "금",
+  "day_sat": "토",
+  "day_sun": "일",
+  "day_short_mon": "월",
+  "day_short_tue": "화",
+  "day_short_wed": "수",
+  "day_short_thu": "목",
+  "day_short_fri": "금",
+  "day_short_sat": "토",
+  "day_short_sun": "일",
+  "month_jan": "1월",
+  "month_feb": "2월",
+  "month_mar": "3월",
+  "month_apr": "4월",
+  "month_may": "5월",
+  "month_jun": "6월",
+  "month_jul": "7월",
+  "month_aug": "8월",
+  "month_sep": "9월",
+  "month_oct": "10월",
+  "month_nov": "11월",
+  "month_dec": "12월",
+  "meals_fastingWindow": "단식({hours}시간)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "식사({hours}시간)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "오트 스무디",
+  "recipe_avocadoToast": "아보카도 토스트",
+  "recipe_yogurtBowl": "요거트 볼",
+  "elapsed_time": "경과 시간",
+  "fast_ends_on": "단식 종료 시각",
+  "end_fasting": "단식 종료",
+  "start_fasting": "단식 시작",
+  "water_tracker": "물 섭취 추적",
+  "weight_tracker": "체중 추적",
+  "drink": "마시기",
+  "log_weight": "체중 기록",
+  "bmi": "BMI",
+  "weight_lost": "감량 체중",
+  "current_weight": "현재 체중",
+  "goal_weight": "목표 체중",
+  "daily_goal": "일일 목표",
+  "completed_percent": "{percent}% 완료",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "둘러보기",
+  "achievements": "업적",
+  "profile_theme": "화면 모드",
+  "theme_select": "화면 모드 선택",
+  "theme_system": "시스템 기본값",
+  "theme_light": "라이트",
+  "theme_dark": "다크",
+  "language_system": "시스템 언어",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "완료 소리",
+  "profile_calmGamification": "차분한 게임 요소",
+  "profile_calmGamificationDesc": "리그와 시즌의 부담을 줄입니다",
+  "profile_editName": "이름 수정",
+  "profile_name": "이름",
+  "circle_title": "단식 모임",
+  "circle_you": "나",
+  "circle_tagline": "부담 없이, 함께해요.",
+  "circle_privacy": "체중과 개인 지표는 숨겨집니다. 진행 상황과 응원만 표시됩니다.",
+  "circle_sendSupport": "응원 보내기 · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "초대 코드가 복사되었습니다",
+  "circle_createInvite": "비공개 초대 만들기",
+  "crisis_nameTitle": "먼저 지금의 상태를 말해 보세요",
+  "crisis_nameDesc": "배고픔, 습관 또는 감정일 수 있습니다.",
+  "crisis_waterTitle": "물 한 잔 마시기",
+  "crisis_waterDesc": "그런 다음 천천히 세 번 호흡하세요.",
+  "crisis_delayTitle": "결정을 10분 미루기",
+  "crisis_delayDesc": "몸이 불편하다면 단식을 끝내도 실패가 아닙니다.",
+  "crisis_hunger": "배고픔",
+  "crisis_habit": "습관",
+  "crisis_stress": "스트레스",
+  "crisis_tenMore": "10분만 더 기다리기",
+  "stats_storyEmpty": "첫 단식이 나만의 이야기를 시작합니다.",
+  "stats_story": "이 기간에 {sessions}회 단식하고 {hours}시간 동안 리듬을 지켰으며 {rate}%의 완료율을 달성했습니다.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "나의 리듬 이야기",
+  "home_todayRhythm": "오늘의 리듬",
+  "home_finalHourSupport": "마지막 한 시간 응원",
+  "home_needSupport": "조금 응원이 필요해요",
+  "home_todaySummary": "오늘 한눈에 보기",
+  "home_dayStreak": "일 연속",
+  "home_weightGoal": "목표 {weight}kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "리듬이 안정적이에요",
+  "weather_gentle": "편안한 하루",
+  "weather_water": "물 한 잔이 도움이 될 수 있어요.",
+  "weather_listen": "여기까지 잘 왔어요. 몸의 신호에 귀 기울이세요.",
+  "weather_onPlan": "오늘의 속도는 계획과 잘 맞아요.",
+  "weather_challenging": "이 시간은 전에도 힘들었어요. 지원 모드가 준비되었습니다.",
+  "replay_copied": "단식 리플레이가 복사되었습니다",
+  "replay_button": "다시 보기",
+  "replay_text": "{plan} 단식을 {hours}시간 {minutes}분 만에 완료했습니다 · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "대사 여정",
+  "journey_now": "현재",
+  "journey_next": "{phase}까지 {time}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "단계 시간은 일반적인 추정치이며 의학적 측정값이 아닙니다.",
+  "phase_hours": "{start}–{end}시간",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "이 시간은 일반적인 추정치입니다. 대사 반응은 사람마다 다를 수 있습니다.",
+  "bmi_underweight": "저체중",
+  "bmi_normal": "정상",
+  "bmi_overweight": "과체중",
+  "bmi_obese": "비만",
+  "notification_halfwayTitle": "절반을 완료했어요! 💪",
+  "notification_halfwayBody": "{plan} 단식의 절반을 완료했습니다. 계속 힘내세요!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "이화 단계에 진입했습니다 📉",
+  "notification_phaseFatBurning": "지방 연소가 시작되었습니다! 🔥",
+  "notification_phaseKetosis": "케토시스 상태입니다 ⚡",
+  "notification_phaseAutophagy": "자가포식이 활성화되었습니다! 🔄",
+  "notification_completedBody": "{plan} 단식을 완료했습니다! 식사 시간이 열렸습니다.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "물을 마시세요 💧",
+  "notification_waterBody": "단식 중 충분한 수분 섭취를 잊지 마세요!",
+  "notification_windowTitle": "식사 시간이 곧 종료됩니다 ⏰",
+  "notification_windowBody": "식사 시간이 30분 후 종료됩니다.",
+  "notification_streakTitle": "{days}일 연속! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "아주 잘하고 있어요! 오늘도 계속하세요.",
+  "notification_ongoingTitle": "단식 진행 중 - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "남은 시간: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "단식 시작 - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "목표: {hours}시간",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours}시간 {minutes}분",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "단식 가이드",
+  "explore_guideDesc": "간헐적 단식에 관해 알아야 할 모든 것",
+  "explore_circleDesc": "비공개 그룹과 조용히 응원을 나누세요.",
+  "explore_faq": "자주 묻는 질문",
+  "explore_education": "이 콘텐츠는 일반적인 교육 목적이며 의학적 진단이나 치료 조언이 아닙니다.",
+  "explore_safety": "건강과 안전",
+  "explore_safetyDesc": "질환이 있거나 정기적으로 약을 복용하거나 우려되는 증상이 있거나 임신 또는 수유 중이라면 단식 전 자격을 갖춘 의료 전문가와 상담하세요. 몸이 불편하면 중단하세요.",
+  "explore_sources": "출처",
+  "explore_sourcesDesc": "아래의 공중 보건 자료를 바탕으로 내용을 간소화했습니다.",
+  "explore_sourceError": "출처를 열 수 없습니다",
+  "explore_rules": "중요 규칙",
+  "explore_rule1": "단식 중 칼로리가 있는 음식을 섭취하지 마세요",
+  "explore_rule2": "물과 수분을 충분히 섭취하세요",
+  "explore_rule3": "식사 시간에는 균형 있게 드세요",
+  "explore_rule4": "몸이 불편하면 단식을 중단하세요",
+  "explore_rule5": "임신 또는 수유 중인 여성은 단식하지 마세요",
+  "explore_rule6": "만성 질환이 있다면 의사와 상담하세요",
+  "tip_water": "수분 유지",
+  "tip_waterDesc": "목이 마를 때 물을 마시고 식사와 함께 수분을 섭취하세요. 필요량은 건강, 날씨, 활동량에 따라 달라질 수 있습니다.",
+  "tip_food": "건강하게 먹기",
+  "tip_foodDesc": "식사 시간에는 섬유질과 건강한 지방이 포함된 고단백 식품을 선택하고 가공식품은 피하세요.",
+  "tip_sleep": "충분히 자기",
+  "tip_sleepDesc": "규칙적이고 충분한 수면은 전반적인 건강에 도움이 됩니다. 수면을 방해하지 않도록 단식 시간을 계획하세요.",
+  "tip_exercise": "가벼운 운동",
+  "tip_exerciseDesc": "단식 중 가볍게 걷거나 요가를 할 수 있습니다. 몸이 적응하는 첫 몇 주에는 특히 격렬한 운동을 피하세요.",
+  "tip_drinks": "허용되는 음료",
+  "tip_drinksDesc": "단식 중에는 물, 무가당 차, 블랙커피(설탕과 우유 제외)를 마실 수 있습니다. 이러한 음료는 단식을 깨지 않습니다.",
+  "faq_drinks": "단식 중 무엇을 마실 수 있나요?",
+  "faq_drinksAnswer": "물, 무가당 차, 블랙커피(설탕/우유 제외)를 마실 수 있습니다. 칼로리가 있는 음료는 단식을 깹니다.",
+  "faq_plan": "어떤 단식 계획을 선택해야 하나요?",
+  "faq_planAnswer": "초보자는 12:12 또는 14:10으로 시작하세요. 경험이 있다면 16:8 또는 18:6을 시도하세요. 20:4와 OMAD는 숙련자용입니다.",
+  "faq_exercise": "단식 중 운동해도 되나요?",
+  "faq_exerciseAnswer": "네. 다만 격렬한 운동은 피하세요. 가벼운 유산소, 걷기, 요가가 좋습니다. 웨이트 트레이닝은 식사 시간과 가깝게 하세요.",
+  "faq_weight": "단식이 체중 감량에 도움이 되나요?",
+  "faq_weightAnswer": "일부 사람은 식사 시간을 제한하면 총 에너지 섭취가 줄 수 있습니다. 결과는 사람마다 다르며 장기적 영향은 아직 연구 중입니다.",
+  "plan_12_desc": "초급",
+  "plan_12_detail": "초보자에게 적합합니다. 수면 시간을 포함해 12시간 단식합니다.",
+  "plan_16_desc": "가장 인기 있는 계획",
+  "plan_16_detail": "가장 일반적인 간헐적 단식 계획입니다. 16시간 단식하고 8시간 식사하며 보통 점심부터 저녁까지입니다.",
+  "plan_18_desc": "중급",
+  "plan_18_detail": "18시간 단식하고 6시간 식사합니다. 지방 연소 시간이 더 깁니다.",
+  "plan_20_desc": "고급",
+  "plan_20_detail": "20시간 단식하고 4시간 식사합니다. 케토시스와 자가포식에 도달하기에 적합합니다.",
+  "plan_omad_desc": "하루 한 끼",
+  "plan_omad_detail": "하루 한 끼. 23시간 단식하고 1시간 식사합니다. 전문가 수준입니다.",
+  "plan_52_desc": "주 2일",
+  "plan_52_detail": "5일은 평소대로 먹고 2일은 약 500칼로리만 섭취하는 대안적 방법입니다.",
+  "plan_ese_desc": "24시간 단식",
+  "plan_ese_detail": "주 1~2회 24시간 단식합니다. 숙련자용입니다.",
+  "plan_warrior_desc": "워리어 다이어트",
+  "plan_warrior_detail": "낮에는 과일과 채소를 가볍게 먹고 저녁 4시간 동안 주 식사를 합니다.",
+  "award_first_title": "첫걸음",
+  "award_first_desc": "첫 단식 완료",
+  "award_rhythm3_title": "3일 리듬",
+  "award_rhythm3_desc": "3일 동안 리듬 유지",
+  "award_hours24_title": "24시간",
+  "award_hours24_desc": "총 24시간 단식",
+  "award_week_title": "일주일 리듬",
+  "award_week_desc": "7일 연속 기록 만들기",
+  "award_fasts10_title": "단식 10회",
+  "award_fasts10_desc": "단식 10회 완료",
+  "award_hours100_title": "100시간",
+  "award_hours100_desc": "총 100시간 달성",
+  "award_rhythm30_title": "30일 리듬",
+  "award_rhythm30_desc": "30일 연속 기록 만들기",
+  "award_fasts50_title": "단식 50회",
+  "award_fasts50_desc": "단식 50회 완료",
+  "award_hours500_title": "500시간",
+  "award_hours500_desc": "총 500시간 달성",
+  "award_fasts100_title": "단식 100회",
+  "award_fasts100_desc": "단식 100회 완료",
+  "award_rhythm90_title": "90일 리듬",
+  "award_rhythm90_desc": "90일 연속 기록 만들기",
+  "award_year_title": "1년의 여정",
+  "award_year_desc": "365일 리듬 달성",
+  "awards_loadError": "진행 상황을 불러올 수 없습니다",
+  "awards_journeyComplete": "여정 완료",
+  "awards_nextGoal": "다음 목표",
+  "awards_allYours": "모든 업적을 달성했습니다",
+  "awards_dayStreak": "일 연속",
+  "awards_fasts": "회 단식",
+  "awards_total": "총",
+  "awards_stageStart": "시작",
+  "awards_stageRhythm": "리듬",
+  "awards_stageEndurance": "인내",
+  "awards_stageMastery": "숙련",
+  "awards_completed": "완료",
+  "awards_fastsRemaining": "단식 {count}회 남음",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "{count}일 남음",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "{count}시간 남음",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "다시 시도",
+  "game_title": "진행 허브",
+  "game_quests": "오늘의 퀘스트",
+  "game_questsDesc": "작은 걸음으로 지속 가능한 리듬을 만드세요.",
+  "game_season": "30단계 시즌",
+  "game_seasonDesc": "5단계마다 수집용 도장을 받습니다.",
+  "game_badges": "배지 모음",
+  "game_shields": "리듬 방패 {count}개",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "7회 완료할 때마다 획득합니다. 하루를 놓쳐도 진행 상황은 사라지지 않습니다.",
+  "game_league": "비공개 주간 리그",
+  "game_leagueDesc": "리듬 점수는 비공개 로컬 모델에서 {percent}백분위입니다. 체중과 극단적 단식은 절대 순위를 매기지 않습니다.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "레벨 {level}, 경험치 {xp}",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "리듬 탐험가",
+  "game_streak": "연속 기록",
+  "game_targets": "목표",
+  "game_best": "최고",
+  "quest_rhythm": "오늘의 리듬 만들기",
+  "quest_hydrate": "물 섭취 목표의 절반 달성",
+  "quest_steady": "연속 기록 지키기",
+  "badge_first_title": "첫걸음",
+  "badge_first_desc": "첫 단식 기록",
+  "badge_rhythm7_title": "리듬 지킴이",
+  "badge_rhythm7_desc": "7일 연속 달성",
+  "badge_rhythm3_title": "3일 리듬",
+  "badge_rhythm3_desc": "3일 연속 달성",
+  "badge_target1_title": "첫 목표",
+  "badge_target1_desc": "첫 목표 단식 완료",
+  "badge_target3_title": "세 걸음",
+  "badge_target3_desc": "목표 3개 완료",
+  "badge_water_title": "균형",
+  "badge_water_desc": "일일 물 섭취 목표 완료",
+  "badge_support_title": "자기 인식",
+  "badge_support_desc": "지원 모드 사용",
+  "badge_hours10_title": "10시간",
+  "badge_hours10_desc": "총 10시간 기록",
+  "badge_target10_title": "힘찬 열 번",
+  "badge_target10_desc": "목표 10개 완료",
+  "badge_target20_title": "목표 스무 개",
+  "badge_target20_desc": "목표 20개 완료",
+  "badge_fast16_title": "16시간",
+  "badge_fast16_desc": "한 번의 단식에서 16시간 달성",
+  "badge_hours50_title": "50시간",
+  "badge_hours50_desc": "총 50시간 기록",
+  "badge_hours100_title": "100시간",
+  "badge_hours100_desc": "총 100시간 기록",
+  "badge_target30_title": "목표 서른 개",
+  "badge_target30_desc": "목표 30개 완료",
+  "badge_rhythm30_title": "30일 리듬",
+  "badge_rhythm30_desc": "30일 연속 달성",
+  "paywall_restoreSuccess": "구매가 복원되었습니다!",
+  "fasting_progressSemantics": "단식 진행률 {percent}퍼센트",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}시간",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "평생 이용",
+  "paywall_once": "일회성",
+  "paywall_processing": "처리 중…",
+  "paywall_continue": "계속",
+  "paywall_productsUnavailable": "현재 구매할 수 없습니다. 나중에 다시 시도하세요.",
+  "paywall_purchaseFailed": "구매를 완료할 수 없습니다.",
+  "paywall_nothingToRestore": "이전 구매를 찾을 수 없습니다.",
+  "paywall_restoreFailed": "구매를 복원할 수 없습니다.",
+  "paywall_terms": "이용 약관",
+  "permission_notificationDesc": "단식 알림, 단계 업데이트 및 완료 알림",
+  "profile_privacyChoices": "개인정보 선택",
+  "paywall_autoRenewInfo": "기간 종료 최소 24시간 전에 취소하지 않으면 구독이 자동 갱신됩니다. App Store 설정에서 언제든 관리하거나 취소할 수 있습니다.",
+  "paywall_perMonth": "월 {price}",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "{percent}% 절약",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "{days}일 무료 체험",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "무료 체험 시작",
+  "paywall_retry": "다시 시도",
+  "paywall_alreadyOwned": "이미 이 구독을 보유하고 있습니다. ‘구매 복원’을 누르세요.",
+  "paywall_storeUnavailable": "현재 스토어에 연결할 수 없습니다. 연결을 확인하고 다시 시도하세요.",
+  "paywall_secureNote": "언제든 취소할 수 있습니다. 결제 금액은 스토어 계정으로 청구됩니다.",
+  "paywall_autoRenewInfoPlay": "기간 종료 최소 24시간 전에 취소하지 않으면 구독이 자동 갱신됩니다. Google Play > 구독에서 언제든 관리하거나 취소할 수 있습니다.",
+  "paywall_allPlansDesc": "18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior 잠금 해제",
+  "paywall_noAdsDesc": "배너 및 전면 광고가 완전히 꺼집니다",
+  "foodScan_title": "AI 음식 스캔",
+  "foodScan_scanCta": "식사 스캔",
+  "foodScan_scanCtaDesc": "접시를 촬영하고 칼로리와 주요 영양소를 확인하세요",
+  "foodScan_introTitle": "접시 촬영",
+  "foodScan_introDesc": "AI가 사진을 읽고 칼로리, 단백질, 탄수화물, 지방을 추정합니다.",
+  "foodScan_tipLight": "밝고 고른 조명에서 더 정확하게 추정됩니다",
+  "foodScan_tipFrame": "접시 전체가 화면에 들어오게 하세요",
+  "foodScan_tipScale": "양을 가늠할 수 있도록 식기나 손을 함께 담으세요",
+  "foodScan_takePhoto": "사진 촬영",
+  "foodScan_chooseFromGallery": "갤러리에서 선택",
+  "foodScan_scansLeft": "오늘 스캔 {count}회 남음",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "오늘의 스캔 횟수를 모두 사용했습니다. 내일 다시 시도하세요.",
+  "foodScan_privacyNote": "사진은 분석을 위해 Google Gemini API로 전송되며 당사 서버에는 저장되지 않습니다.",
+  "foodScan_analyzing": "식사 분석 중…",
+  "foodScan_analyzingHint": "보통 몇 초 정도 걸립니다",
+  "foodScan_detectedItems": "감지된 음식",
+  "foodScan_disclaimer": "AI 추정치는 대략적인 값입니다. 항목을 눌러 수정하세요.",
+  "foodScan_lowConfidence": "모델이 이 사진을 확신하지 못합니다. 저장 전에 수치를 확인하세요.",
+  "foodScan_save": "식사에 추가",
+  "foodScan_retake": "새 사진",
+  "foodScan_retry": "다시 시도",
+  "foodScan_editItem": "항목 수정",
+  "foodScan_portion": "분량",
+  "foodScan_saveEdit": "저장",
+  "foodScan_premiumTitle": "Premium 기능",
+  "foodScan_premiumDesc": "사진 칼로리 분석은 Premium에 포함됩니다.",
+  "foodScan_upgrade": "Premium 보기",
+  "foodScan_errorNetwork": "연결되지 않았습니다. 인터넷 연결을 확인하고 다시 시도하세요.",
+  "foodScan_errorRateLimited": "현재 스캔 요청이 너무 많습니다. 몇 분 후 다시 시도하세요.",
+  "foodScan_errorUnavailable": "현재 사진 분석을 사용할 수 없습니다.",
+  "foodScan_errorServer": "분석 서비스에 문제가 있습니다. 잠시 후 다시 시도하세요.",
+  "foodScan_errorNoFood": "사진에서 음식을 찾지 못했습니다. 접시를 더 선명하게 촬영하세요.",
+  "foodScan_errorUnreadable": "이 사진을 분석할 수 없습니다. 다른 사진을 시도하세요.",
+  "paywall_aiFoodScan": "AI 음식 스캔",
+  "paywall_aiFoodScanDesc": "식사를 촬영하고 몇 초 만에 칼로리와 주요 영양소를 기록하세요"
+}
