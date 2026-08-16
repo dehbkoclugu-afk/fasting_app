@@ -18,8 +18,14 @@ pluginManagement {
 
 plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
-    id("com.android.application") version "8.7.0" apply false
-    id("org.jetbrains.kotlin.android") version "2.1.0" apply false
+    // Kept in step with what `flutter create` produces on the pinned Flutter
+    // 3.38.10, so the toolchain matches the one that SDK is tested against.
+    //
+    // The floor is not arbitrary: image_picker_android pulls in
+    // androidx.core 1.18 and androidx.activity 1.12, whose AAR metadata
+    // refuses to build under an AGP older than 8.9.1.
+    id("com.android.application") version "8.11.1" apply false
+    id("org.jetbrains.kotlin.android") version "2.2.20" apply false
 }
 
 include(":app")
