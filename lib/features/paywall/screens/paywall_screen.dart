@@ -325,10 +325,18 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
   Widget _features(BuildContext context, AppLocalizations l10n) {
     final theme = Theme.of(context);
-    // Only what premium actually delivers today: the six locked plans and the
-    // ad-free experience. Nothing else in the app is gated.
+    // Only what premium actually delivers today: the six locked plans, the
+    // AI food scan and the ad-free experience. Nothing else in the app is
+    // gated. The scan row is dropped when the build has no Gemini key, so the
+    // paywall never sells a feature that build cannot run.
     final features = <(IconData, String, String)>[
       (PhosphorIcons.timer(), l10n.paywall_allPlans, l10n.paywall_allPlansDesc),
+      if (BuildConfig.isFoodScanEnabled)
+        (
+          PhosphorIcons.camera(),
+          l10n.paywall_aiFoodScan,
+          l10n.paywall_aiFoodScanDesc,
+        ),
       (PhosphorIcons.prohibit(), l10n.paywall_noAds, l10n.paywall_noAdsDesc),
     ];
     return Container(

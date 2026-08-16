@@ -1568,4 +1568,127 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get paywall_noAdsDesc =>
       'Banner- und Interstitial-Werbung wird vollständig deaktiviert';
+
+  @override
+  String get foodScan_title => 'KI-Foto-Analyse';
+
+  @override
+  String get foodScan_scanCta => 'Mahlzeit scannen';
+
+  @override
+  String get foodScan_scanCtaDesc =>
+      'Teller fotografieren, Kalorien und Makros erhalten';
+
+  @override
+  String get foodScan_introTitle => 'Fotografiere deinen Teller';
+
+  @override
+  String get foodScan_introDesc =>
+      'Die KI liest das Foto und schätzt Kalorien, Eiweiß, Kohlenhydrate und Fett.';
+
+  @override
+  String get foodScan_tipLight =>
+      'Gutes, gleichmäßiges Licht verbessert die Schätzung';
+
+  @override
+  String get foodScan_tipFrame => 'Den ganzen Teller ins Bild nehmen';
+
+  @override
+  String get foodScan_tipScale =>
+      'Besteck oder Hand mit aufnehmen, damit Portionen skaliert werden können';
+
+  @override
+  String get foodScan_takePhoto => 'Foto aufnehmen';
+
+  @override
+  String get foodScan_chooseFromGallery => 'Aus Galerie wählen';
+
+  @override
+  String foodScan_scansLeft(int count) {
+    return 'Heute noch $count Scans übrig';
+  }
+
+  @override
+  String get foodScan_quotaReached =>
+      'Die heutigen Scans sind aufgebraucht. Versuche es morgen wieder.';
+
+  @override
+  String get foodScan_privacyNote =>
+      'Das Foto wird zur Analyse an die Gemini-API von Google gesendet und nicht auf unseren Servern gespeichert.';
+
+  @override
+  String get foodScan_analyzing => 'Deine Mahlzeit wird analysiert…';
+
+  @override
+  String get foodScan_analyzingHint => 'Das dauert meist ein paar Sekunden';
+
+  @override
+  String get foodScan_detectedItems => 'Erkannte Lebensmittel';
+
+  @override
+  String get foodScan_disclaimer =>
+      'KI-Schätzungen sind Näherungswerte. Tippe auf einen Eintrag, um ihn zu korrigieren.';
+
+  @override
+  String get foodScan_lowConfidence =>
+      'Das Modell ist sich bei diesem Foto unsicher. Prüfe die Werte vor dem Speichern.';
+
+  @override
+  String get foodScan_save => 'Zu Mahlzeiten hinzufügen';
+
+  @override
+  String get foodScan_retake => 'Neues Foto';
+
+  @override
+  String get foodScan_retry => 'Erneut versuchen';
+
+  @override
+  String get foodScan_editItem => 'Eintrag bearbeiten';
+
+  @override
+  String get foodScan_portion => 'Portion';
+
+  @override
+  String get foodScan_saveEdit => 'Speichern';
+
+  @override
+  String get foodScan_premiumTitle => 'Premium-Funktion';
+
+  @override
+  String get foodScan_premiumDesc =>
+      'Die Kalorienanalyse per Foto ist in Premium enthalten.';
+
+  @override
+  String get foodScan_upgrade => 'Premium ansehen';
+
+  @override
+  String get foodScan_errorNetwork =>
+      'Keine Verbindung. Prüfe dein Internet und versuche es erneut.';
+
+  @override
+  String get foodScan_errorRateLimited =>
+      'Gerade zu viele Scans. Versuche es in ein paar Minuten erneut.';
+
+  @override
+  String get foodScan_errorUnavailable =>
+      'Die Fotoanalyse ist derzeit nicht verfügbar.';
+
+  @override
+  String get foodScan_errorServer =>
+      'Der Analysedienst hat gerade Probleme. Versuche es gleich noch einmal.';
+
+  @override
+  String get foodScan_errorNoFood =>
+      'Auf diesem Foto ist kein Essen zu erkennen. Versuche eine klarere Aufnahme.';
+
+  @override
+  String get foodScan_errorUnreadable =>
+      'Dieses Foto konnte nicht analysiert werden. Versuche ein anderes.';
+
+  @override
+  String get paywall_aiFoodScan => 'KI-Foto-Analyse';
+
+  @override
+  String get paywall_aiFoodScanDesc =>
+      'Mahlzeit fotografieren und Kalorien und Makros in Sekunden erfassen';
 }

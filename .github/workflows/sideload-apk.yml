@@ -55,7 +55,11 @@ jobs:
       - name: Build APK
         env:
           ORG_GRADLE_PROJECT_sideloadSuffix: 'true'
-        run: flutter build apk --release --split-per-abi
+        # GEMINI_API_KEY is optional: without the repository secret the build
+        # still succeeds, it just ships without the AI food scan.
+        run: |
+          flutter build apk --release --split-per-abi \
+            --dart-define=GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
 
       - uses: actions/upload-artifact@v4
         with:

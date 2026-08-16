@@ -45,6 +45,38 @@ class BuildConfig {
   static const _iosStoreUrlFallback = '';
 
   // ===========================================================================
+  // Gemini — the AI food photo analysis (premium only).
+  // ===========================================================================
+
+  /// Google AI Studio API key (https://aistudio.google.com/apikey). The free
+  /// tier is enough for the feature; billing is only needed past its quota.
+  ///
+  /// Unlike the keys above this one is NOT public information: it bills a
+  /// Google Cloud project and anyone who pulls it out of the binary can spend
+  /// the quota. So there is deliberately no fallback constant — pass it with
+  /// `--dart-define=GEMINI_API_KEY=…` from CI secrets and keep it out of git.
+  /// A build without it simply hides the feature instead of failing.
+  ///
+  /// The key still ships inside the binary and can be extracted from it. Lock
+  /// it down in Google Cloud (restrict to the Generative Language API, set a
+  /// quota cap), and move the call behind a backend proxy if the spend ever
+  /// justifies one.
+  static const _geminiApiKeyEnv = String.fromEnvironment('GEMINI_API_KEY');
+
+  /// Overridable so a model swap does not need an app update on the store
+  /// side — it is just a build flag.
+  static const _geminiModelFallback = 'gemini-2.5-flash';
+  static const _geminiModelEnv = String.fromEnvironment('GEMINI_MODEL');
+
+  /// Scans allowed per device per day. Guards the shared free-tier quota from
+  /// a single user burning it for everyone. 0 disables the cap.
+  static const _geminiDailyLimitFallback = 20;
+  static const _geminiDailyLimitEnv = int.fromEnvironment(
+    'GEMINI_DAILY_SCAN_LIMIT',
+    defaultValue: -1,
+  );
+
+  // ===========================================================================
   // Already filled in — change only if the addresses change.
   // ===========================================================================
 
@@ -123,4 +155,19 @@ class BuildConfig {
 
   static String get termsOfUseUrl =>
       _pick(_termsOfUseUrlEnv, _termsOfUseUrlFallback);
+
+  /// Google AI Studio key for the food photo analysis. Empty when the build
+  /// carried no `GEMINI_API_KEY`.
+  static String get geminiApiKey => _geminiApiKeyEnv;
+
+  /// False when the build has no key: the scan entry points stay hidden
+  /// instead of leading to a feature that can only fail.
+  static bool get isFoodScanEnabled => _geminiApiKeyEnv.isNotEmpty;
+
+  static String get geminiModel => _pick(_geminiModelEnv, _geminiModelFallback);
+
+  static int get geminiDailyScanLimit =>
+      _geminiDailyLimitEnv >= 0
+          ? _geminiDailyLimitEnv
+          : _geminiDailyLimitFallback;
 }

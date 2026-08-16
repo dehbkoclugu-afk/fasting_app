@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
+import '../../../core/config/build_config.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/section_header.dart';
 import '../providers/meal_provider.dart';
 import '../widgets/add_meal_sheet.dart';
+import '../../paywall/providers/subscription_provider.dart';
 import '../../timer/providers/timer_provider.dart';
 
 class MealsScreen extends ConsumerWidget {
@@ -17,6 +20,7 @@ class MealsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final mealState = ref.watch(mealProvider);
     final timerState = ref.watch(timerProvider);
+    final isPremium = ref.watch(isPremiumProvider);
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
 
@@ -281,16 +285,41 @@ class MealsScreen extends ConsumerWidget {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            showDragHandle: true,
-            builder: (_) => const AddMealSheet(),
-          );
-        },
-        child: const Icon(Icons.add),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          // Hidden when the build carries no Gemini key: the feature would
+          // only ever be able to fail.
+          if (BuildConfig.isFoodScanEnabled) ...[
+            FloatingActionButton.extended(
+              heroTag: 'meals_scan_fab',
+              onPressed: () => context.push('/food-scan'),
+              backgroundColor: AppColors.primary,
+              foregroundColor: Colors.white,
+              icon: Icon(
+                isPremium
+                    ? PhosphorIcons.camera(PhosphorIconsStyle.fill)
+                    : PhosphorIcons.lockKey(PhosphorIconsStyle.fill),
+                size: 20,
+              ),
+              label: Text(l10n.foodScan_scanCta),
+            ),
+            const SizedBox(height: 12),
+          ],
+          FloatingActionButton(
+            heroTag: 'meals_add_fab',
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                showDragHandle: true,
+                builder: (_) => const AddMealSheet(),
+              );
+            },
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }

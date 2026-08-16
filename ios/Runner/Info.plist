@@ -45,6 +45,10 @@
 		<string>ca-app-pub-2554058432197193~5536068139</string>
 		<key>NSUserTrackingUsageDescription</key>
 		<string>Your data is used to show you more relevant ads. You can change this anytime in Settings.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>FastTrack uses the camera so you can photograph a meal and get an AI estimate of its calories and macros.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>FastTrack needs access to your photos so you can pick a meal picture to analyse for calories and macros.</string>
 		<key>SKAdNetworkItems</key>
 		<array>
 			<dict>

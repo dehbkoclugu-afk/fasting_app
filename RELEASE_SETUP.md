@@ -38,10 +38,41 @@ PRIVACY_POLICY_URL
 TERMS_OF_USE_URL
 ANDROID_STORE_URL
 IOS_STORE_URL
+GEMINI_API_KEY
 ```
 
 Replace the Google test AdMob application IDs in AndroidManifest.xml and
 Info.plist with the production application IDs before enabling ad unit IDs.
+
+### GEMINI_API_KEY — the AI food scan
+
+The premium "scan a meal photo" feature calls Google's Generative Language
+API. Create the key at <https://aistudio.google.com/apikey>; the free tier
+covers the feature and no billing account is required to start.
+
+Two optional overrides go with it:
+
+```text
+GEMINI_MODEL             # default gemini-2.5-flash
+GEMINI_DAILY_SCAN_LIMIT  # scans per device per day, default 20, 0 = unlimited
+```
+
+`GEMINI_API_KEY` is the one build value here that is **not** public
+information — unlike the RevenueCat and AdMob ids it bills a Google Cloud
+project, so it has no fallback constant in `build_config.dart` and must never
+be committed. Pass it from CI secrets only. A build without it hides the scan
+entry points and drops the feature row from the paywall, so nothing sells a
+capability that build cannot deliver.
+
+The key still ships inside the binary and can be extracted from it. Restrict
+it in Google Cloud to the Generative Language API and set a quota cap. If the
+feature ever carries real volume, move the call behind a small backend proxy
+and have the app talk to that instead.
+
+The photo is uploaded to Google for analysis, which is a data disclosure the
+store listings have to declare: Play Data safety needs "Photos and videos —
+collected, not stored, for app functionality", and the App Store privacy
+questionnaire the equivalent. The privacy policy needs the same line.
 
 ### In-source fallbacks
 

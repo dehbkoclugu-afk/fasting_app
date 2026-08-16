@@ -2967,6 +2967,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Banner and interstitial ads are turned off completely'**
   String get paywall_noAdsDesc;
+
+  /// No description provided for @foodScan_title.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Food Scan'**
+  String get foodScan_title;
+
+  /// No description provided for @foodScan_scanCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan meal'**
+  String get foodScan_scanCta;
+
+  /// No description provided for @foodScan_scanCtaDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Photograph your plate, get calories and macros'**
+  String get foodScan_scanCtaDesc;
+
+  /// No description provided for @foodScan_introTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Photograph your plate'**
+  String get foodScan_introTitle;
+
+  /// No description provided for @foodScan_introDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'AI reads the photo and estimates calories, protein, carbs and fat.'**
+  String get foodScan_introDesc;
+
+  /// No description provided for @foodScan_tipLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Good, even light gives a better estimate'**
+  String get foodScan_tipLight;
+
+  /// No description provided for @foodScan_tipFrame.
+  ///
+  /// In en, this message translates to:
+  /// **'Fit the whole plate into the frame'**
+  String get foodScan_tipFrame;
+
+  /// No description provided for @foodScan_tipScale.
+  ///
+  /// In en, this message translates to:
+  /// **'Include cutlery or a hand so portions can be scaled'**
+  String get foodScan_tipScale;
+
+  /// No description provided for @foodScan_takePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take photo'**
+  String get foodScan_takePhoto;
+
+  /// No description provided for @foodScan_chooseFromGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from gallery'**
+  String get foodScan_chooseFromGallery;
+
+  /// No description provided for @foodScan_scansLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} scans left today'**
+  String foodScan_scansLeft(int count);
+
+  /// No description provided for @foodScan_quotaReached.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve used today\'s scans. Try again tomorrow.'**
+  String get foodScan_quotaReached;
+
+  /// No description provided for @foodScan_privacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The photo is sent to Google\'s Gemini API for analysis and is not stored on our servers.'**
+  String get foodScan_privacyNote;
+
+  /// No description provided for @foodScan_analyzing.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysing your meal…'**
+  String get foodScan_analyzing;
+
+  /// No description provided for @foodScan_analyzingHint.
+  ///
+  /// In en, this message translates to:
+  /// **'This usually takes a few seconds'**
+  String get foodScan_analyzingHint;
+
+  /// No description provided for @foodScan_detectedItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Detected items'**
+  String get foodScan_detectedItems;
+
+  /// No description provided for @foodScan_disclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'AI estimates are approximate. Tap an item to correct it.'**
+  String get foodScan_disclaimer;
+
+  /// No description provided for @foodScan_lowConfidence.
+  ///
+  /// In en, this message translates to:
+  /// **'The model is unsure about this photo. Check the numbers before saving.'**
+  String get foodScan_lowConfidence;
+
+  /// No description provided for @foodScan_save.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to meals'**
+  String get foodScan_save;
+
+  /// No description provided for @foodScan_retake.
+  ///
+  /// In en, this message translates to:
+  /// **'New photo'**
+  String get foodScan_retake;
+
+  /// No description provided for @foodScan_retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get foodScan_retry;
+
+  /// No description provided for @foodScan_editItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit item'**
+  String get foodScan_editItem;
+
+  /// No description provided for @foodScan_portion.
+  ///
+  /// In en, this message translates to:
+  /// **'Portion'**
+  String get foodScan_portion;
+
+  /// No description provided for @foodScan_saveEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get foodScan_saveEdit;
+
+  /// No description provided for @foodScan_premiumTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A Premium feature'**
+  String get foodScan_premiumTitle;
+
+  /// No description provided for @foodScan_premiumDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo calorie analysis is included in Premium.'**
+  String get foodScan_premiumDesc;
+
+  /// No description provided for @foodScan_upgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'See Premium'**
+  String get foodScan_upgrade;
+
+  /// No description provided for @foodScan_errorNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'No connection. Check your internet and try again.'**
+  String get foodScan_errorNetwork;
+
+  /// No description provided for @foodScan_errorRateLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many scans right now. Try again in a few minutes.'**
+  String get foodScan_errorRateLimited;
+
+  /// No description provided for @foodScan_errorUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo analysis is unavailable right now.'**
+  String get foodScan_errorUnavailable;
+
+  /// No description provided for @foodScan_errorServer.
+  ///
+  /// In en, this message translates to:
+  /// **'The analysis service is having trouble. Try again shortly.'**
+  String get foodScan_errorServer;
+
+  /// No description provided for @foodScan_errorNoFood.
+  ///
+  /// In en, this message translates to:
+  /// **'No food found in this photo. Try a clearer shot of the plate.'**
+  String get foodScan_errorNoFood;
+
+  /// No description provided for @foodScan_errorUnreadable.
+  ///
+  /// In en, this message translates to:
+  /// **'This photo couldn\'t be analysed. Try another one.'**
+  String get foodScan_errorUnreadable;
+
+  /// No description provided for @paywall_aiFoodScan.
+  ///
+  /// In en, this message translates to:
+  /// **'AI food scan'**
+  String get paywall_aiFoodScan;
+
+  /// No description provided for @paywall_aiFoodScanDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Photograph a meal and log its calories and macros in seconds'**
+  String get paywall_aiFoodScanDesc;
 }
 
 class _AppLocalizationsDelegate
