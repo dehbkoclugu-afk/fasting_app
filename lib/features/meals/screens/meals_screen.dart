@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
-import '../../../core/config/build_config.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/glass_card.dart';
@@ -36,17 +35,15 @@ class MealsScreen extends ConsumerWidget {
             children: [
               const SizedBox(height: 8),
               InkWell(
-                onTap: () => _showAddMealSheet(context),
+                onTap: () => context.push('/food-scan'),
                 borderRadius: BorderRadius.circular(24),
                 child: FastingArtSlot(
-                  assetPath:
-                      'assets/images/editorial/tip-balanced-meal.webp',
-                  height: 178,
+                  assetPath: 'assets/images/editorial/v2/meal-planner.webp',
+                  height: 196,
                   variant: FastingArtVariant.hero,
-                  alignment: Alignment.centerRight,
-                  semanticLabel: l10n.meals_addMeal,
+                  semanticLabel: l10n.foodScan_scanCta,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 18, 122, 18),
+                    padding: const EdgeInsets.fromLTRB(20, 20, 132, 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -59,7 +56,17 @@ class MealsScreen extends ConsumerWidget {
                             letterSpacing: -.45,
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 5),
+                        Text(
+                          l10n.foodScan_scanCtaDesc,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: Colors.white.withValues(alpha: .8),
+                            height: 1.25,
+                          ),
+                        ),
+                        const SizedBox(height: 11),
                         Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 13,
@@ -72,14 +79,20 @@ class MealsScreen extends ConsumerWidget {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(
-                                Icons.add,
+                              Icon(
+                                isPremium
+                                    ? PhosphorIcons.camera(
+                                      PhosphorIconsStyle.fill,
+                                    )
+                                    : PhosphorIcons.lockKey(
+                                      PhosphorIconsStyle.fill,
+                                    ),
                                 color: Colors.white,
                                 size: 17,
                               ),
                               const SizedBox(width: 5),
                               Text(
-                                l10n.meals_addMeal,
+                                l10n.foodScan_scanCta,
                                 style: theme.textTheme.labelMedium?.copyWith(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w800,
@@ -90,6 +103,18 @@ class MealsScreen extends ConsumerWidget {
                         ),
                       ],
                     ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: () => _showAddMealSheet(context),
+                  icon: Icon(PhosphorIcons.pencilSimple(), size: 18),
+                  label: Text(l10n.meals_manualEntry),
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(48),
                   ),
                 ),
               ),
@@ -188,50 +213,51 @@ class MealsScreen extends ConsumerWidget {
               const SizedBox(height: 20),
 
               // Calorie summary from real data
-              Row(
+              GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 2.25,
                 children: [
-                  Expanded(
-                    child: _buildNutrientCard(
-                      context,
-                      label: l10n.meals_calories,
-                      value: '${mealState.totalCalories}',
-                      target: '${mealState.calorieGoal}',
-                      color: AppColors.secondary,
-                      icon: PhosphorIcons.fire(PhosphorIconsStyle.fill),
-                    ),
+                  _buildNutrientCard(
+                    context,
+                    label: l10n.meals_calories,
+                    value: '${mealState.totalCalories}',
+                    target: '${mealState.calorieGoal}',
+                    progress: mealState.calorieGoal <= 0
+                        ? 0
+                        : mealState.totalCalories / mealState.calorieGoal,
+                    color: AppColors.secondary,
+                    icon: PhosphorIcons.fire(PhosphorIconsStyle.fill),
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: _buildNutrientCard(
-                      context,
-                      label: l10n.meals_protein,
-                      value: '${mealState.totalProtein.toStringAsFixed(0)}g',
-                      target: '120g',
-                      color: Colors.blue,
-                      icon: PhosphorIcons.barbell(PhosphorIconsStyle.fill),
-                    ),
+                  _buildNutrientCard(
+                    context,
+                    label: l10n.meals_protein,
+                    value: '${mealState.totalProtein.toStringAsFixed(0)}g',
+                    target: '120g',
+                    progress: mealState.totalProtein / 120,
+                    color: Colors.blue,
+                    icon: PhosphorIcons.barbell(PhosphorIconsStyle.fill),
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: _buildNutrientCard(
-                      context,
-                      label: l10n.meals_carbs,
-                      value: '${mealState.totalCarbs.toStringAsFixed(0)}g',
-                      target: '200g',
-                      color: Colors.orange,
-                      icon: PhosphorIcons.bread(PhosphorIconsStyle.fill),
-                    ),
+                  _buildNutrientCard(
+                    context,
+                    label: l10n.meals_carbs,
+                    value: '${mealState.totalCarbs.toStringAsFixed(0)}g',
+                    target: '200g',
+                    progress: mealState.totalCarbs / 200,
+                    color: Colors.orange,
+                    icon: PhosphorIcons.bread(PhosphorIconsStyle.fill),
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: _buildNutrientCard(
-                      context,
-                      label: l10n.meals_fat,
-                      value: '${mealState.totalFat.toStringAsFixed(0)}g',
-                      target: '65g',
-                      color: Colors.purple,
-                      icon: PhosphorIcons.drop(PhosphorIconsStyle.fill),
-                    ),
+                  _buildNutrientCard(
+                    context,
+                    label: l10n.meals_fat,
+                    value: '${mealState.totalFat.toStringAsFixed(0)}g',
+                    target: '65g',
+                    progress: mealState.totalFat / 65,
+                    color: Colors.purple,
+                    icon: PhosphorIcons.drop(PhosphorIconsStyle.fill),
                   ),
                 ],
               ),
@@ -240,28 +266,43 @@ class MealsScreen extends ConsumerWidget {
               // Today's meals from DB
               SectionHeader(title: l10n.meals_todayMeals),
               if (mealState.meals.isEmpty)
-                GlassCard(
-                  padding: const EdgeInsets.all(24),
-                  child: Center(
-                    child: Column(
-                      children: [
-                        Icon(
-                          PhosphorIcons.forkKnife(),
-                          size: 40,
-                          color: theme.colorScheme.onSurface.withValues(
-                            alpha: 0.2,
+                InkWell(
+                  onTap: () => context.push('/food-scan'),
+                  borderRadius: BorderRadius.circular(22),
+                  child: FastingArtSlot(
+                    assetPath: 'assets/images/editorial/v2/meal-empty.webp',
+                    height: 132,
+                    borderRadius: 22,
+                    variant: FastingArtVariant.row,
+                    semanticLabel: l10n.meals_noMeals,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(18, 16, 150, 16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            PhosphorIcons.camera(PhosphorIconsStyle.fill),
+                            color: Colors.white,
+                            size: 24,
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          l10n.meals_noMeals,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withValues(
-                              alpha: 0.4,
+                          const SizedBox(height: 8),
+                          Text(
+                            l10n.meals_noMeals,
+                            maxLines: 2,
+                            style: theme.textTheme.titleSmall?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800,
                             ),
                           ),
-                        ),
-                      ],
+                          Text(
+                            l10n.foodScan_scanCta,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: Colors.white.withValues(alpha: .72),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 )
@@ -306,7 +347,7 @@ class MealsScreen extends ConsumerWidget {
               // Suggestions
               SectionHeader(title: l10n.meals_breakfastSuggestions),
               SizedBox(
-                height: 140,
+                height: 168,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -314,21 +355,21 @@ class MealsScreen extends ConsumerWidget {
                       context,
                       l10n.recipe_oatSmoothie,
                       '280 kcal',
-                      Icons.blender_outlined,
+                      'assets/images/editorial/v2/recipe-smoothie.webp',
                     ),
                     const SizedBox(width: 12),
                     _buildRecipeCard(
                       context,
                       l10n.recipe_avocadoToast,
                       '350 kcal',
-                      Icons.breakfast_dining_outlined,
+                      'assets/images/editorial/v2/recipe-toast.webp',
                     ),
                     const SizedBox(width: 12),
                     _buildRecipeCard(
                       context,
                       l10n.recipe_yogurtBowl,
                       '220 kcal',
-                      Icons.rice_bowl_outlined,
+                      'assets/images/editorial/v2/recipe-yogurt.webp',
                     ),
                   ],
                 ),
@@ -342,24 +383,20 @@ class MealsScreen extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // Hidden when the build carries no Gemini key: the feature would
-          // only ever be able to fail.
-          if (BuildConfig.isFoodScanEnabled) ...[
-            FloatingActionButton.extended(
-              heroTag: 'meals_scan_fab',
-              onPressed: () => context.push('/food-scan'),
-              backgroundColor: AppColors.primary,
-              foregroundColor: Colors.white,
-              icon: Icon(
-                isPremium
-                    ? PhosphorIcons.camera(PhosphorIconsStyle.fill)
-                    : PhosphorIcons.lockKey(PhosphorIconsStyle.fill),
-                size: 20,
-              ),
-              label: Text(l10n.foodScan_scanCta),
+          FloatingActionButton.extended(
+            heroTag: 'meals_scan_fab',
+            onPressed: () => context.push('/food-scan'),
+            backgroundColor: AppColors.primary,
+            foregroundColor: Colors.white,
+            icon: Icon(
+              isPremium
+                  ? PhosphorIcons.camera(PhosphorIconsStyle.fill)
+                  : PhosphorIcons.lockKey(PhosphorIconsStyle.fill),
+              size: 20,
             ),
-            const SizedBox(height: 12),
-          ],
+            label: Text(l10n.foodScan_scanCta),
+          ),
+          const SizedBox(height: 12),
           FloatingActionButton(
             heroTag: 'meals_add_fab',
             onPressed: () => _showAddMealSheet(context),
@@ -414,36 +451,64 @@ class MealsScreen extends ConsumerWidget {
     required String label,
     required String value,
     required String target,
+    required double progress,
     required Color color,
     required IconData icon,
   }) {
     final theme = Theme.of(context);
     return GlassCard(
-      padding: const EdgeInsets.all(10),
-      child: Column(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      child: Row(
         children: [
-          Icon(icon, color: color, size: 18),
-          const SizedBox(height: 6),
-          Text(
-            value,
-            style: theme.textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w700,
+          Container(
+            width: 34,
+            height: 34,
+            decoration: BoxDecoration(
+              color: color.withValues(alpha: .12),
+              borderRadius: BorderRadius.circular(10),
             ),
+            child: Icon(icon, color: color, size: 18),
           ),
-          Text(
-            '/ $target',
-            style: TextStyle(
-              fontSize: 10,
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 10,
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-              fontWeight: FontWeight.w500,
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: theme.colorScheme.onSurface.withValues(alpha: .55),
+                  ),
+                ),
+                Text.rich(
+                  TextSpan(
+                    text: value,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w800,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: ' / $target',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: theme.colorScheme.onSurface.withValues(alpha: .4),
+                        ),
+                      ),
+                    ],
+                  ),
+                  maxLines: 1,
+                ),
+                const SizedBox(height: 5),
+                LinearProgressIndicator(
+                  value: progress.clamp(0, 1).toDouble(),
+                  minHeight: 3,
+                  borderRadius: BorderRadius.circular(4),
+                  backgroundColor: color.withValues(alpha: .12),
+                  valueColor: AlwaysStoppedAnimation(color),
+                ),
+              ],
             ),
           ),
         ],
@@ -515,40 +580,41 @@ class MealsScreen extends ConsumerWidget {
     BuildContext context,
     String title,
     String cal,
-    IconData icon,
+    String artPath,
   ) {
     final theme = Theme.of(context);
-    return GlassCard(
-      padding: const EdgeInsets.all(14),
-      child: SizedBox(
-        width: 120,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(14),
+    return SizedBox(
+      width: 156,
+      child: FastingArtSlot(
+        assetPath: artPath,
+        height: 168,
+        borderRadius: 20,
+        variant: FastingArtVariant.card,
+        semanticLabel: title,
+        child: Padding(
+          padding: const EdgeInsets.all(13),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
-              child: Icon(icon, color: AppColors.primary, size: 28),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.labelMedium,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 2),
-            Text(
-              cal,
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+              const SizedBox(height: 3),
+              Text(
+                cal,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: Colors.white.withValues(alpha: .75),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

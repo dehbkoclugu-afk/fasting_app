@@ -49,10 +49,15 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
+          child: LayoutBuilder(
+            builder: (context, constraints) => SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: IntrinsicHeight(
+                  child: Column(
+                    children: [
               const OnboardingProgress(currentStep: 0),
-              const Spacer(flex: 2),
+              const Spacer(),
 
               // Logo / Icon
               FadeTransition(
@@ -62,7 +67,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   child: FastingArtSlot(
                     assetPath:
                         'assets/images/editorial/onboarding-welcome.webp',
-                    height: 170,
+                    height: 218,
                     borderRadius: 30,
                     variant: FastingArtVariant.bare,
                     semanticLabel: 'FastTrack',
@@ -102,7 +107,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ),
               ),
 
-              const Spacer(flex: 2),
+              const Spacer(),
 
               // Features preview
               FadeTransition(
@@ -137,7 +142,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 onPressed: () => context.go('/onboarding/goals'),
               ),
               const SizedBox(height: 16),
-            ],
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
         ),
       ),

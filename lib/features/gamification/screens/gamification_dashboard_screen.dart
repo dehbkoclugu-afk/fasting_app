@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
@@ -368,51 +367,82 @@ class _BadgeToken extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Tooltip(
     message: _badgeDescription(l10n, badge.id),
-    child: Opacity(
-      opacity: badge.unlocked ? 1 : .35,
-      child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
-        decoration: BoxDecoration(
-          color:
-              badge.unlocked
-                  ? AppColors.primary.withValues(alpha: .09)
-                  : Theme.of(context).colorScheme.surface,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: Theme.of(context).dividerColor),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(_badgeIcon(badge.icon), size: 28, color: AppColors.primary),
-            const SizedBox(height: 6),
-            Text(
-              _badgeTitle(l10n, badge.id),
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.labelMedium,
+    child: LayoutBuilder(
+      builder: (context, constraints) => Opacity(
+        opacity: badge.unlocked ? 1 : .42,
+        child: FastingArtSlot(
+          assetPath: _badgeArtwork(badge.id, badge.icon),
+          height: constraints.maxHeight,
+          borderRadius: 18,
+          variant: FastingArtVariant.bare,
+          semanticLabel: _badgeTitle(l10n, badge.id),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.transparent,
+                  const Color(0xFF0F1424).withValues(alpha: .18),
+                  const Color(0xFF0F1424).withValues(alpha: .96),
+                ],
+                stops: const [0, .48, 1],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+              border: Border.all(
+                color: badge.unlocked
+                    ? AppColors.primary.withValues(alpha: .55)
+                    : Theme.of(context).dividerColor,
+              ),
+              borderRadius: BorderRadius.circular(18),
             ),
-          ],
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 8, 10),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Icon(
+                      badge.unlocked ? Icons.check_circle : Icons.lock_outline,
+                      size: 16,
+                      color: Colors.white.withValues(alpha: .86),
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    _badgeTitle(l10n, badge.id),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      height: 1.1,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     ),
   );
 
-  IconData _badgeIcon(String key) => switch (key) {
-    'leaf' => PhosphorIcons.leaf(),
-    'fire' => PhosphorIcons.fire(PhosphorIconsStyle.fill),
-    'water' => PhosphorIcons.drop(PhosphorIconsStyle.fill),
-    'compass' => PhosphorIcons.compass(),
-    'medal' => PhosphorIcons.medal(PhosphorIconsStyle.fill),
-    'target' => PhosphorIcons.target(),
-    'clock' => PhosphorIcons.clock(),
-    'shield' => PhosphorIcons.shieldCheck(),
-    'crown' => PhosphorIcons.crown(PhosphorIconsStyle.fill),
-    _ => PhosphorIcons.sparkle(PhosphorIconsStyle.fill),
-  };
+  String _badgeArtwork(String id, String icon) {
+    if (id == 'water' || icon == 'water') {
+      return 'assets/images/editorial/v2/badge-water.webp';
+    }
+    if (icon == 'clock' || id.startsWith('hours') || id == 'fast16') {
+      return 'assets/images/editorial/v2/badge-clock.webp';
+    }
+    if (icon == 'crown' || id == 'rhythm30' || id == 'target30') {
+      return 'assets/images/editorial/v2/badge-crown.webp';
+    }
+    if (icon == 'leaf' || id == 'first') {
+      return 'assets/images/editorial/v2/badge-sprout.webp';
+    }
+    return 'assets/images/editorial/v2/badge-rhythm.webp';
+  }
 
   String _badgeTitle(AppLocalizations l10n, String id) => switch (id) {
     'first' => l10n.badge_first_title,
