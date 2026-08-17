@@ -40,27 +40,35 @@ class FastingArtSlot extends StatelessWidget {
           width: double.infinity,
           height: height,
           child: Stack(
-            fit: StackFit.expand,
             children: [
-              Image.asset(
-                assetPath,
-                fit: fit,
-                alignment: alignment,
-                excludeFromSemantics: true,
-                errorBuilder:
-                    (context, error, stackTrace) => const DecoratedBox(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Color(0xFF11172A), Color(0xFF30203A)],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
+              Positioned.fill(
+                child: Image.asset(
+                  assetPath,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: fit,
+                  alignment: alignment,
+                  filterQuality: FilterQuality.medium,
+                  excludeFromSemantics: true,
+                  errorBuilder:
+                      (context, error, stackTrace) => const DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Color(0xFF11172A), Color(0xFF30203A)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
                         ),
                       ),
-                    ),
+                ),
               ),
               if (variant != FastingArtVariant.bare)
-                DecoratedBox(decoration: BoxDecoration(gradient: _scrim)),
-              child,
+                Positioned.fill(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(gradient: _scrim),
+                  ),
+                ),
+              Positioned.fill(child: child),
             ],
           ),
         ),

@@ -1,0 +1,28 @@
+import 'dart:io';
+
+import 'package:flutter_test/flutter_test.dart';
+
+void main() {
+  test('editorial artwork folders are bundled and every referenced asset exists', () {
+    final pubspec = File('pubspec.yaml').readAsStringSync();
+    expect(pubspec, contains('- assets/images/editorial/'));
+    expect(pubspec, contains('- assets/images/editorial/v2/'));
+
+    final dartFiles = Directory('lib')
+        .listSync(recursive: true)
+        .whereType<File>()
+        .where((file) => file.path.endsWith('.dart'));
+    final assetPattern = RegExp(r"assets/images/editorial/[A-Za-z0-9_./-]+\.(?:webp|png|jpg)");
+    final referencedAssets = <String>{
+      for (final file in dartFiles)
+        ...assetPattern
+            .allMatches(file.readAsStringSync())
+            .map((match) => match.group(0)!),
+    };
+
+    expect(referencedAssets, isNotEmpty);
+    for (final asset in referencedAssets) {
+      expect(File(asset).existsSync(), isTrue, reason: 'Missing artwork: $asset');
+    }
+  });
+}

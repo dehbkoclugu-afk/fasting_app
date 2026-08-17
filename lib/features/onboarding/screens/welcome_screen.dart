@@ -52,7 +52,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           child: Column(
             children: [
               const OnboardingProgress(currentStep: 0),
-              const Spacer(flex: 2),
+              const Spacer(),
 
               // Logo / Icon
               FadeTransition(
@@ -62,7 +62,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   child: FastingArtSlot(
                     assetPath:
                         'assets/images/editorial/onboarding-welcome.webp',
-                    height: 170,
+                    height: 218,
                     borderRadius: 30,
                     variant: FastingArtVariant.bare,
                     semanticLabel: 'FastTrack',
@@ -102,7 +102,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ),
               ),
 
-              const Spacer(flex: 2),
+              const Spacer(),
 
               // Features preview
               FadeTransition(

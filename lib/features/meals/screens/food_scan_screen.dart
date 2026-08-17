@@ -126,7 +126,7 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           EditorialScreenHero(
-            assetPath: 'assets/images/editorial/tip-balanced-meal.webp',
+            assetPath: 'assets/images/editorial/v2/meal-scan.webp',
             title: l10n.foodScan_introTitle,
             subtitle: l10n.foodScan_introDesc,
             icon: Icons.document_scanner_outlined,

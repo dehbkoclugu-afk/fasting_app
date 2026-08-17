@@ -8,6 +8,7 @@ import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/banner_ad_widget.dart';
 import '../../../shared/widgets/section_header.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../providers/stats_provider.dart';
 import '../widgets/monthly_heatmap.dart';
 import '../widgets/streak_card.dart';
@@ -38,6 +39,16 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       l10n.day_sat,
       l10n.day_sun,
     ];
+    final selectedDays = [7, 30, 365][_selectedPeriod];
+    final selectedStats =
+        ref.watch(statsProvider(selectedDays)).valueOrNull ?? const StatsData();
+    final story = selectedStats.totalSessions == 0
+        ? l10n.stats_storyEmpty
+        : l10n.stats_story(
+            selectedStats.totalSessions,
+            selectedStats.totalFastingHours,
+            (selectedStats.completionRate * 100).round(),
+          );
 
     return Scaffold(
       body: SafeArea(
@@ -57,8 +68,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               EditorialScreenHero(
                 assetPath: 'assets/images/editorial/stats-progress.webp',
                 title: l10n.stats_storyTitle,
-                subtitle: l10n.stats_storyEmpty,
+                subtitle: story,
                 icon: Icons.insights_outlined,
+                height: 190,
               ),
               const SizedBox(height: 20),
 
@@ -82,49 +94,6 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               ),
               const SizedBox(height: 24),
 
-              Builder(
-                builder: (context) {
-                  final l10n = AppLocalizations.of(context)!;
-                  final days = [7, 30, 365][_selectedPeriod];
-                  final stats =
-                      ref.watch(statsProvider(days)).valueOrNull ??
-                      const StatsData();
-                  final story =
-                      stats.totalSessions == 0
-                          ? l10n.stats_storyEmpty
-                          : l10n.stats_story(
-                            stats.totalSessions,
-                            stats.totalFastingHours,
-                            (stats.completionRate * 100).round(),
-                          );
-                  return Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(18),
-                    decoration: BoxDecoration(
-                      color: AppColors.primary.withValues(alpha: .07),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          l10n.stats_storyTitle,
-                          style: theme.textTheme.titleMedium,
-                        ),
-                        const SizedBox(height: 6),
-                        Text(
-                          story,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            height: 1.45,
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 20),
-
               // Summary cards with real data
               Builder(
                 builder: (context) {
@@ -144,6 +113,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               subtitle: periods[_selectedPeriod].toLowerCase(),
                               icon: Icons.timer_outlined,
                               color: AppColors.primary,
+                              artPath:
+                                  'assets/images/editorial/v2/stats-consistency.webp',
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -156,6 +127,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               subtitle: l10n.stats_fastDuration,
                               icon: Icons.analytics_outlined,
                               color: AppColors.tertiary,
+                              artPath:
+                                  'assets/images/editorial/v2/stats-hours.webp',
                             ),
                           ),
                         ],
@@ -171,6 +144,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               subtitle: l10n.stats_daysConsecutive,
                               icon: Icons.local_fire_department_outlined,
                               color: Colors.orange,
+                              artPath:
+                                  'assets/images/editorial/v2/stats-streak.webp',
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -182,6 +157,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               subtitle: l10n.stats_completion,
                               icon: Icons.emoji_events_outlined,
                               color: AppColors.success,
+                              artPath:
+                                  'assets/images/editorial/v2/stats-consistency.webp',
                             ),
                           ),
                         ],
@@ -404,29 +381,37 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     required String subtitle,
     required IconData icon,
     required Color color,
+    required String artPath,
   }) {
     final theme = Theme.of(context);
-    return GlassCard(
-      padding: const EdgeInsets.all(16),
-      child: SizedBox(
-        height: 120,
+    return FastingArtSlot(
+      assetPath: artPath,
+      height: 142,
+      borderRadius: 22,
+      variant: FastingArtVariant.card,
+      semanticLabel: title,
+      child: Padding(
+        padding: const EdgeInsets.all(15),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(icon, color: color, size: 20),
-            ),
-            const SizedBox(height: 10),
+            Icon(icon, color: color, size: 22),
+            const SizedBox(height: 8),
             Text(
               value,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.headlineMedium?.copyWith(
+              maxLines: 1,
+              style: theme.textTheme.headlineSmall?.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            Text(
+              title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: Colors.white,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -434,9 +419,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               subtitle,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                color: Colors.white.withValues(alpha: .66),
+                fontSize: 10,
               ),
             ),
           ],

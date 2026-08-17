@@ -7,6 +7,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../../paywall/providers/subscription_provider.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
@@ -68,156 +69,105 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                       },
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 200),
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color:
-                              isLocked
-                                  ? theme.colorScheme.onSurface.withValues(
-                                    alpha: 0.02,
-                                  )
-                                  : isSelected
-                                  ? AppColors.primary.withValues(alpha: 0.08)
-                                  : theme.colorScheme.onSurface.withValues(
-                                    alpha: 0.03,
-                                  ),
-                          borderRadius: AppSpacing.borderRadiusLg,
-                          border: Border.all(
-                            color:
-                                isSelected && !isLocked
-                                    ? AppColors.primary
-                                    : theme.colorScheme.onSurface.withValues(
-                                      alpha: 0.08,
-                                    ),
-                            width: isSelected && !isLocked ? 2 : 1,
-                          ),
+                        padding: EdgeInsets.all(
+                          isSelected && !isLocked ? 2 : 1,
                         ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 56,
-                              height: 56,
-                              decoration: BoxDecoration(
-                                color:
-                                    isLocked
-                                        ? theme.colorScheme.onSurface
-                                            .withValues(alpha: 0.04)
-                                        : isSelected
-                                        ? AppColors.primary.withValues(
-                                          alpha: 0.15,
-                                        )
-                                        : theme.colorScheme.onSurface
-                                            .withValues(alpha: 0.05),
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  plan.shortName,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w800,
-                                    color:
-                                        isLocked
-                                            ? theme.colorScheme.onSurface
-                                                .withValues(alpha: 0.3)
-                                            : isSelected
-                                            ? AppColors.primary
-                                            : theme.colorScheme.onSurface
-                                                .withValues(alpha: 0.6),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 14),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                        decoration: BoxDecoration(
+                          color: isSelected && !isLocked
+                              ? AppColors.primary
+                              : theme.dividerColor,
+                          borderRadius: AppSpacing.borderRadiusLg,
+                        ),
+                        child: Opacity(
+                          opacity: isLocked ? .58 : 1,
+                          child: FastingArtSlot(
+                            assetPath: _planArtwork(plan.fastingHours),
+                            height: 102,
+                            borderRadius: 17,
+                            variant: FastingArtVariant.row,
+                            semanticLabel: plan.name,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+                              child: Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        plan.name,
-                                        style: theme.textTheme.titleSmall
-                                            ?.copyWith(
-                                              fontWeight: FontWeight.w600,
-                                              color:
-                                                  isLocked
-                                                      ? theme
-                                                          .colorScheme
-                                                          .onSurface
-                                                          .withValues(
-                                                            alpha: 0.4,
-                                                          )
-                                                      : null,
-                                            ),
+                                  Container(
+                                    width: 54,
+                                    height: 54,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black.withValues(alpha: .3),
+                                      borderRadius: BorderRadius.circular(14),
+                                      border: Border.all(
+                                        color: Colors.white.withValues(alpha: .16),
                                       ),
-                                      if (isLocked) ...[
-                                        const SizedBox(width: 6),
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 6,
-                                            vertical: 2,
+                                    ),
+                                    child: Text(
+                                      plan.shortName,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 13),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Flexible(
+                                              child: Text(
+                                                plan.name,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: theme.textTheme.titleSmall
+                                                    ?.copyWith(
+                                                      color: Colors.white,
+                                                      fontWeight: FontWeight.w800,
+                                                    ),
+                                              ),
+                                            ),
+                                            if (isLocked) ...[
+                                              const SizedBox(width: 6),
+                                              _proBadge(),
+                                            ],
+                                          ],
+                                        ),
+                                        const SizedBox(height: 3),
+                                        Text(
+                                          '${plan.fastingHours}s oruç · ${plan.eatingHours}s yemek',
+                                          style: theme.textTheme.bodySmall?.copyWith(
+                                            color: Colors.white.withValues(alpha: .76),
                                           ),
-                                          decoration: BoxDecoration(
-                                            gradient: const LinearGradient(
-                                              colors: [
-                                                AppColors.primary,
-                                                AppColors.secondary,
-                                              ],
-                                            ),
-                                            borderRadius: BorderRadius.circular(
-                                              8,
-                                            ),
-                                          ),
-                                          child: const Text(
-                                            'PRO',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 9,
-                                              fontWeight: FontWeight.w700,
-                                            ),
+                                        ),
+                                        Text(
+                                          plan.description(l10n),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: theme.textTheme.bodySmall?.copyWith(
+                                            color: Colors.white.withValues(alpha: .58),
+                                            fontSize: 10,
                                           ),
                                         ),
                                       ],
-                                    ],
-                                  ),
-                                  const SizedBox(height: 2),
-                                  Text(
-                                    '${plan.fastingHours}s oruç · ${plan.eatingHours}s yemek',
-                                    style: theme.textTheme.bodySmall?.copyWith(
-                                      color: theme.colorScheme.onSurface
-                                          .withValues(
-                                            alpha: isLocked ? 0.3 : 0.5,
-                                          ),
                                     ),
                                   ),
-                                  Text(
-                                    plan.description(l10n),
-                                    style: theme.textTheme.bodySmall?.copyWith(
-                                      color: theme.colorScheme.onSurface
-                                          .withValues(
-                                            alpha: isLocked ? 0.25 : 0.4,
-                                          ),
-                                      fontSize: 11,
-                                    ),
+                                  Icon(
+                                    isLocked
+                                        ? Icons.lock_outline
+                                        : isSelected
+                                        ? Icons.check_circle
+                                        : Icons.chevron_right,
+                                    color: Colors.white,
+                                    size: isSelected ? 24 : 20,
                                   ),
                                 ],
                               ),
                             ),
-                            if (isLocked)
-                              Icon(
-                                Icons.lock_outline,
-                                color: theme.colorScheme.onSurface.withValues(
-                                  alpha: 0.3,
-                                ),
-                                size: 20,
-                              )
-                            else if (isSelected)
-                              const Icon(
-                                Icons.check_circle,
-                                color: AppColors.primary,
-                                size: 24,
-                              ),
-                          ],
+                          ),
                         ),
                       ),
                     );
@@ -240,4 +190,36 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
       ),
     );
   }
+
+  String _planArtwork(int fastingHours) {
+    if (fastingHours <= 12) {
+      return 'assets/images/editorial/v2/plan-12-12.webp';
+    }
+    if (fastingHours <= 16) {
+      return 'assets/images/editorial/v2/plan-16-8.webp';
+    }
+    if (fastingHours <= 18) {
+      return 'assets/images/editorial/v2/plan-18-6.webp';
+    }
+    if (fastingHours <= 20) {
+      return 'assets/images/editorial/v2/plan-20-4.webp';
+    }
+    return 'assets/images/editorial/v2/plan-omad.webp';
+  }
+
+  Widget _proBadge() => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+    decoration: BoxDecoration(
+      color: AppColors.primary,
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: const Text(
+      'PRO',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 9,
+        fontWeight: FontWeight.w800,
+      ),
+    ),
+  );
 }
