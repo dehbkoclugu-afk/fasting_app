@@ -8,6 +8,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/section_header.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../providers/meal_provider.dart';
 import '../widgets/add_meal_sheet.dart';
 import '../../paywall/providers/subscription_provider.dart';
@@ -34,10 +35,62 @@ class MealsScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 8),
-              Text(
-                l10n.meals_title,
-                style: theme.textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w700,
+              InkWell(
+                onTap: () => _showAddMealSheet(context),
+                borderRadius: BorderRadius.circular(24),
+                child: FastingArtSlot(
+                  assetPath:
+                      'assets/images/editorial/tip-balanced-meal.webp',
+                  height: 178,
+                  variant: FastingArtVariant.hero,
+                  alignment: Alignment.centerRight,
+                  semanticLabel: l10n.meals_addMeal,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 18, 122, 18),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          l10n.meals_title,
+                          style: theme.textTheme.headlineSmall?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -.45,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 13,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(999),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 17,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                l10n.meals_addMeal,
+                                style: theme.textTheme.labelMedium?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -309,18 +362,20 @@ class MealsScreen extends ConsumerWidget {
           ],
           FloatingActionButton(
             heroTag: 'meals_add_fab',
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                showDragHandle: true,
-                builder: (_) => const AddMealSheet(),
-              );
-            },
+            onPressed: () => _showAddMealSheet(context),
             child: const Icon(Icons.add),
           ),
         ],
       ),
+    );
+  }
+
+  void _showAddMealSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (_) => const AddMealSheet(),
     );
   }
 

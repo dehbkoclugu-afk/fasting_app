@@ -23,6 +23,7 @@ import '../widgets/metabolic_weather.dart';
 import '../../../services/admob_service.dart';
 import '../../paywall/providers/subscription_provider.dart';
 import '../../stats/providers/stats_provider.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 
 class TimerScreen extends ConsumerStatefulWidget {
   const TimerScreen({super.key});
@@ -357,6 +358,10 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                               waterGoalMl: waterState.goalMl,
                               onAddWater: () => _addWater(context, ref),
                             ),
+                          const SizedBox(height: 14),
+                          _buildMealsCard(context, l10n),
+                          const SizedBox(height: 14),
+                          _buildGuideCard(context, l10n),
                         ],
                       ),
                     ),
@@ -390,6 +395,130 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
     if (hour < 12) return l10n.greeting_morning;
     if (hour < 18) return l10n.greeting_afternoon;
     return l10n.greeting_evening;
+  }
+
+  Widget _buildGuideCard(BuildContext context, AppLocalizations l10n) {
+    final theme = Theme.of(context);
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => context.push('/explore'),
+        borderRadius: BorderRadius.circular(24),
+        child: FastingArtSlot(
+          assetPath: 'assets/images/editorial/fasting-guide-hero.webp',
+          height: 146,
+          variant: FastingArtVariant.card,
+          semanticLabel: l10n.explore_guide,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 18, 110, 18),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  l10n.explore_guide,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: -.35,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  l10n.explore_guideDesc,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: Colors.white.withValues(alpha: .74),
+                    height: 1.35,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMealsCard(BuildContext context, AppLocalizations l10n) {
+    final theme = Theme.of(context);
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => context.push('/meals'),
+        borderRadius: BorderRadius.circular(24),
+        child: FastingArtSlot(
+          assetPath: 'assets/images/editorial/tip-balanced-meal.webp',
+          height: 136,
+          variant: FastingArtVariant.row,
+          alignment: Alignment.centerRight,
+          semanticLabel: l10n.meals_addMeal,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(18, 16, 122, 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 34,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        color: AppColors.success.withValues(alpha: .25),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        PhosphorIcons.forkKnife(
+                          PhosphorIconsStyle.fill,
+                        ),
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      l10n.meals_title,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 13,
+                    vertical: 7,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.add, color: Colors.white, size: 17),
+                      const SizedBox(width: 5),
+                      Text(
+                        l10n.meals_addMeal,
+                        style: theme.textTheme.labelMedium?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   String _phaseName(AppLocalizations l10n, MetabolicPhase phase) {
