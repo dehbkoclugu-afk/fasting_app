@@ -139,6 +139,18 @@ workflows:
             --dart-define=TERMS_OF_USE_URL=$TERMS_OF_USE_URL \
             --dart-define=ANDROID_STORE_URL=$ANDROID_STORE_URL \
             --dart-define=GEMINI_API_KEY=$GEMINI_API_KEY
+      - name: Build APK
+        # Produces an installable release APK for direct distribution. The same
+        # release signing configuration and dart-defines as the AAB are used.
+        script: |
+          flutter build apk --release \
+            --dart-define=REVENUECAT_ANDROID_API_KEY=$REVENUECAT_ANDROID_API_KEY \
+            --dart-define=ADMOB_ANDROID_BANNER_ID=$ADMOB_ANDROID_BANNER_ID \
+            --dart-define=ADMOB_ANDROID_INTERSTITIAL_ID=$ADMOB_ANDROID_INTERSTITIAL_ID \
+            --dart-define=PRIVACY_POLICY_URL=$PRIVACY_POLICY_URL \
+            --dart-define=TERMS_OF_USE_URL=$TERMS_OF_USE_URL \
+            --dart-define=ANDROID_STORE_URL=$ANDROID_STORE_URL \
+            --dart-define=GEMINI_API_KEY=$GEMINI_API_KEY
       - name: Verify the bundle is signed
         # Play refuses an unsigned upload, and a successful build is not proof
         # of one: fail here instead of at the store.
@@ -157,6 +169,7 @@ workflows:
           keytool -printcert -jarfile "$AAB" | grep -E "Owner:|SHA256:" | head -4
     artifacts:
       - build/**/outputs/**/*.aab
+      - build/**/outputs/**/*.apk
       - build/**/outputs/**/mapping.txt
     publishing:
       # Uncomment once a Google Play service account JSON is stored in the
