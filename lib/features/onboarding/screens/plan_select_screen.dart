@@ -6,6 +6,7 @@ import '../../../core/constants/fasting_plans.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../../paywall/providers/subscription_provider.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
@@ -36,20 +37,14 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
               const OnboardingProgress(currentStep: 2),
               const SizedBox(height: 24),
 
-              Text(
-                l10n.onboarding_selectPlan,
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+              EditorialScreenHero(
+                assetPath: 'assets/images/editorial/goals-path.webp',
+                title: l10n.onboarding_selectPlan,
+                subtitle: l10n.onboarding_selectPlanDesc,
+                icon: Icons.schedule_outlined,
+                height: 124,
               ),
-              const SizedBox(height: 8),
-              Text(
-                l10n.onboarding_selectPlanDesc,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                ),
-              ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 18),
 
               Expanded(
                 child: ListView.separated(

@@ -11,6 +11,7 @@ import '../../../core/config/build_config.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../../shared/widgets/skeleton_loader.dart';
 import '../../../services/revenue_cat_service.dart';
 import '../providers/subscription_provider.dart';
@@ -241,7 +242,6 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   }
 
   Widget _premiumActive(BuildContext context, AppLocalizations l10n) {
-    final theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -250,21 +250,14 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
-                  PhosphorIconsFill.crown,
-                  color: AppColors.primary,
-                  size: 56,
+                EditorialScreenHero(
+                  assetPath: 'assets/images/editorial/premium-gem.webp',
+                  title: l10n.paywall_premiumActive,
+                  subtitle: l10n.paywall_premiumActiveDesc,
+                  icon: Icons.auto_awesome_outlined,
+                  height: 164,
                 ),
                 const SizedBox(height: 20),
-                Text(
-                  l10n.paywall_premiumActive,
-                  style: theme.textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(l10n.paywall_premiumActiveDesc),
-                const SizedBox(height: 28),
                 GradientButton(
                   text: l10n.common_ok,
                   onPressed: () => Navigator.pop(context),
@@ -278,48 +271,12 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   }
 
   Widget _header(BuildContext context, AppLocalizations l10n) {
-    final theme = Theme.of(context);
-    return Column(
-      children: [
-        Container(
-          width: 72,
-          height: 72,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: const LinearGradient(
-              colors: [AppColors.primary, AppColors.secondary],
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.primary.withValues(alpha: .3),
-                blurRadius: 24,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: const Icon(
-            PhosphorIconsFill.crown,
-            color: Colors.white,
-            size: 36,
-          ),
-        ),
-        const SizedBox(height: 16),
-        Text(
-          l10n.paywall_title,
-          textAlign: TextAlign.center,
-          style: theme.textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          l10n.paywall_subtitle,
-          textAlign: TextAlign.center,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurface.withValues(alpha: .6),
-          ),
-        ),
-      ],
+    return EditorialScreenHero(
+      assetPath: 'assets/images/editorial/premium-gem.webp',
+      title: l10n.paywall_title,
+      subtitle: l10n.paywall_subtitle,
+      icon: Icons.auto_awesome_outlined,
+      height: 184,
     );
   }
 

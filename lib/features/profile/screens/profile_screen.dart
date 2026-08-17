@@ -10,6 +10,7 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../core/constants/fasting_plans.dart';
 import '../../../core/utils/calculations.dart';
 import '../../../shared/widgets/glass_card.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../../services/admob_service.dart';
 import '../../../core/config/build_config.dart';
 import '../providers/settings_provider.dart';
@@ -86,7 +87,16 @@ class ProfileScreen extends ConsumerWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 14),
+              EditorialScreenHero(
+                assetPath: 'assets/images/editorial/profile-progress.webp',
+                title: settings.userName.isNotEmpty
+                    ? settings.userName
+                    : l10n.profile_user,
+                subtitle: l10n.profile_planActive(plan.name),
+                icon: Icons.person_outline,
+              ),
+              const SizedBox(height: 20),
 
               // Profile card
               GlassCard(

@@ -4,6 +4,7 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/gradient_button.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 
 class CompletionOverlay extends StatefulWidget {
   final int durationMinutes;
@@ -116,22 +117,14 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // Trophy icon
-                      Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: AppColors.primary.withValues(alpha: .08),
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: AppColors.primary,
-                            width: 2,
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.workspace_premium_outlined,
-                          color: AppColors.primary,
-                          size: 48,
-                        ),
+                      FastingArtSlot(
+                        assetPath:
+                            'assets/images/editorial/fast-complete.webp',
+                        height: 128,
+                        borderRadius: 22,
+                        variant: FastingArtVariant.bare,
+                        semanticLabel: l10n.timer_completed,
+                        child: const SizedBox.shrink(),
                       ),
                       const SizedBox(height: 10),
                       Text(

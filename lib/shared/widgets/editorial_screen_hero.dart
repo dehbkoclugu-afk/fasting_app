@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+
+import 'fasting_art_slot.dart';
+
+/// Consistent editorial header used by the app's secondary screens.
+class EditorialScreenHero extends StatelessWidget {
+  const EditorialScreenHero({
+    super.key,
+    required this.assetPath,
+    required this.title,
+    required this.subtitle,
+    this.icon,
+    this.height = 172,
+    this.semanticLabel,
+  });
+
+  final String assetPath;
+  final String title;
+  final String subtitle;
+  final IconData? icon;
+  final double height;
+  final String? semanticLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return FastingArtSlot(
+      assetPath: assetPath,
+      height: height,
+      variant: FastingArtVariant.hero,
+      semanticLabel: semanticLabel ?? title,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 220),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (icon != null) ...[
+                  Icon(icon, color: Colors.white, size: 26),
+                  const SizedBox(height: 10),
+                ],
+                Text(
+                  title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    height: 1.05,
+                  ),
+                ),
+                const SizedBox(height: 7),
+                Text(
+                  subtitle,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: Colors.white.withValues(alpha: .82),
+                    height: 1.3,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

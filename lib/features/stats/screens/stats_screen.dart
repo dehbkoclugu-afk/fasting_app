@@ -7,6 +7,7 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/banner_ad_widget.dart';
 import '../../../shared/widgets/section_header.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../providers/stats_provider.dart';
 import '../widgets/monthly_heatmap.dart';
 import '../widgets/streak_card.dart';
@@ -51,6 +52,13 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
+              ),
+              const SizedBox(height: 14),
+              EditorialScreenHero(
+                assetPath: 'assets/images/editorial/stats-progress.webp',
+                title: l10n.stats_storyTitle,
+                subtitle: l10n.stats_storyEmpty,
+                icon: Icons.insights_outlined,
               ),
               const SizedBox(height: 20),
 

@@ -6,6 +6,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../../services/notification_service.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../widgets/onboarding_progress.dart';
 
@@ -34,20 +35,15 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
               const OnboardingProgress(currentStep: 4),
               const SizedBox(height: 24),
 
-              Text(
-                l10n.onboarding_permissions,
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+              EditorialScreenHero(
+                assetPath:
+                    'assets/images/editorial/onboarding-welcome.webp',
+                title: l10n.onboarding_permissions,
+                subtitle: l10n.onboarding_permissionsDesc,
+                icon: Icons.notifications_none,
+                height: 132,
               ),
-              const SizedBox(height: 8),
-              Text(
-                l10n.onboarding_permissionsDesc,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                ),
-              ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 24),
 
               _buildPermissionCard(
                 context,

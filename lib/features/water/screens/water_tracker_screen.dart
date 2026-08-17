@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/glass_card.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../timer/providers/water_provider.dart';
 import '../widgets/water_drop_painter.dart';
 
@@ -34,6 +35,14 @@ class WaterTrackerScreen extends ConsumerWidget {
         padding: AppSpacing.screenPadding,
         child: Column(
           children: [
+            EditorialScreenHero(
+              assetPath: 'assets/images/editorial/tip-hydration.webp',
+              title: l10n.water_title,
+              subtitle: '${l10n.water_goal}: ${waterState.goalMl} ml',
+              icon: Icons.water_drop_outlined,
+              height: 150,
+            ),
+            const SizedBox(height: 24),
             // Hafta gün seçici
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
