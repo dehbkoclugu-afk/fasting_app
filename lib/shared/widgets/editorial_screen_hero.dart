@@ -33,37 +33,41 @@ class EditorialScreenHero extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Align(
           alignment: Alignment.centerLeft,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 220),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (icon != null) ...[
-                  Icon(icon, color: Colors.white, size: 26),
-                  const SizedBox(height: 10),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: SizedBox(
+              width: 220,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (icon != null) ...[
+                    Icon(icon, color: Colors.white, size: 26),
+                    const SizedBox(height: 10),
+                  ],
+                  Text(
+                    title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      height: 1.05,
+                    ),
+                  ),
+                  const SizedBox(height: 7),
+                  Text(
+                    subtitle,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: Colors.white.withValues(alpha: .82),
+                      height: 1.3,
+                    ),
+                  ),
                 ],
-                Text(
-                  title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w800,
-                    height: 1.05,
-                  ),
-                ),
-                const SizedBox(height: 7),
-                Text(
-                  subtitle,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: Colors.white.withValues(alpha: .82),
-                    height: 1.3,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),
