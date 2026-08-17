@@ -3,6 +3,7 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
@@ -19,18 +20,54 @@ class ExploreScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Başlık
-            Text(
-              l10n.explore_guide,
-              style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              l10n.explore_guideDesc,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+            FastingArtSlot(
+              assetPath: 'assets/images/editorial/fasting-guide-hero.webp',
+              height: 190,
+              variant: FastingArtVariant.hero,
+              semanticLabel: l10n.explore_guide,
+              child: Padding(
+                padding: const EdgeInsets.all(22),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: .14),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        PhosphorIcons.clockCountdown(),
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      l10n.explore_guide,
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -.5,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 285),
+                      child: Text(
+                        l10n.explore_guideDesc,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.white.withValues(alpha: .76),
+                          height: 1.35,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 20),
@@ -77,30 +114,35 @@ class ExploreScreen extends StatelessWidget {
       title: l10n.tip_water,
       description: l10n.tip_waterDesc,
       color: AppColors.tertiary,
+      artPath: 'assets/images/editorial/tip-hydration.webp',
     ),
     _Tip(
       icon: PhosphorIcons.bowlFood(),
       title: l10n.tip_food,
       description: l10n.tip_foodDesc,
       color: AppColors.success,
+      artPath: 'assets/images/editorial/tip-balanced-meal.webp',
     ),
     _Tip(
       icon: PhosphorIcons.moonStars(),
       title: l10n.tip_sleep,
       description: l10n.tip_sleepDesc,
       color: AppColors.primary,
+      artPath: 'assets/images/editorial/tip-sleep.webp',
     ),
     _Tip(
       icon: PhosphorIcons.personSimpleRun(),
       title: l10n.tip_exercise,
       description: l10n.tip_exerciseDesc,
       color: AppColors.warning,
+      artPath: 'assets/images/editorial/tip-light-movement.webp',
     ),
     _Tip(
       icon: PhosphorIcons.coffee(),
       title: l10n.tip_drinks,
       description: l10n.tip_drinksDesc,
       color: const Color(0xFF8B6914),
+      artPath: 'assets/images/editorial/tip-zero-calorie-drinks.webp',
     ),
   ];
 
@@ -231,51 +273,52 @@ class ExploreScreen extends StatelessWidget {
 
   Widget _buildTipCard(BuildContext context, _Tip tip) {
     final theme = Theme.of(context);
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(
-          color: theme.colorScheme.onSurface.withValues(alpha: .065),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: FastingArtSlot(
+        assetPath: tip.artPath,
+        height: 136,
+        variant: FastingArtVariant.row,
+        alignment: Alignment.centerRight,
+        semanticLabel: tip.title,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 15, 112, 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 34,
+                height: 34,
+                decoration: BoxDecoration(
+                  color: tip.color.withValues(alpha: .24),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(tip.icon, color: Colors.white, size: 18),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                tip.title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                tip.description,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: Colors.white.withValues(alpha: .72),
+                  height: 1.3,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: tip.color.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(tip.icon, color: tip.color, size: 22),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  tip.title,
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  tip.description,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                    height: 1.4,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -396,12 +439,14 @@ class _Tip {
   final String title;
   final String description;
   final Color color;
+  final String artPath;
 
   const _Tip({
     required this.icon,
     required this.title,
     required this.description,
     required this.color,
+    required this.artPath,
   });
 }
 
