@@ -359,6 +359,8 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                               onAddWater: () => _addWater(context, ref),
                             ),
                           const SizedBox(height: 14),
+                          _buildMealsCard(context, l10n),
+                          const SizedBox(height: 14),
                           _buildGuideCard(context, l10n),
                         ],
                       ),
@@ -429,6 +431,86 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: Colors.white.withValues(alpha: .74),
                     height: 1.35,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMealsCard(BuildContext context, AppLocalizations l10n) {
+    final theme = Theme.of(context);
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => context.push('/meals'),
+        borderRadius: BorderRadius.circular(24),
+        child: FastingArtSlot(
+          assetPath: 'assets/images/editorial/tip-balanced-meal.webp',
+          height: 136,
+          variant: FastingArtVariant.row,
+          alignment: Alignment.centerRight,
+          semanticLabel: l10n.meals_addMeal,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(18, 16, 122, 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 34,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        color: AppColors.success.withValues(alpha: .25),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        PhosphorIcons.forkKnife(
+                          PhosphorIconsStyle.fill,
+                        ),
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      l10n.meals_title,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 13,
+                    vertical: 7,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.add, color: Colors.white, size: 17),
+                      const SizedBox(width: 5),
+                      Text(
+                        l10n.meals_addMeal,
+                        style: theme.textTheme.labelMedium?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
