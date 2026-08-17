@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../shared/widgets/gradient_button.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../widgets/onboarding_progress.dart';
 
@@ -44,20 +45,14 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
               const OnboardingProgress(currentStep: 3),
               const SizedBox(height: 24),
 
-              Text(
-                l10n.onboarding_bodyInfo,
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+              EditorialScreenHero(
+                assetPath: 'assets/images/editorial/profile-progress.webp',
+                title: l10n.onboarding_bodyInfo,
+                subtitle: l10n.onboarding_bodyInfoDesc,
+                icon: Icons.person_outline,
+                height: 118,
               ),
-              const SizedBox(height: 8),
-              Text(
-                l10n.onboarding_bodyInfoDesc,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                ),
-              ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 18),
 
               // Gender
               Text(l10n.onboarding_gender, style: theme.textTheme.titleSmall),

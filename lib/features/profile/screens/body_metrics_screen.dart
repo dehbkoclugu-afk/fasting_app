@@ -8,6 +8,7 @@ import '../../../core/utils/calculations.dart';
 import '../../../data/database/app_database.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/gradient_button.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../stats/widgets/weight_chart.dart';
 import '../../timer/providers/water_provider.dart';
 import '../providers/settings_provider.dart';
@@ -66,6 +67,14 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 8),
+
+            EditorialScreenHero(
+              assetPath: 'assets/images/editorial/profile-progress.webp',
+              title: l10n.bodyMetrics_title,
+              subtitle: l10n.bodyMetrics_weight,
+              icon: Icons.monitor_weight_outlined,
+            ),
+            const SizedBox(height: 20),
 
             // Current stats
             Row(

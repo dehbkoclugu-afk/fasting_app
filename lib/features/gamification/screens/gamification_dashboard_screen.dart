@@ -4,6 +4,7 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../providers/gamification_provider.dart';
 
@@ -133,13 +134,14 @@ class _LevelHero extends StatelessWidget {
     final theme = Theme.of(context);
     return Semantics(
       label: l10n.game_levelSemantics(game.level, game.xp),
-      child: Container(
-        padding: const EdgeInsets.all(22),
-        decoration: BoxDecoration(
-          color: AppColors.primary,
-          borderRadius: BorderRadius.circular(26),
-        ),
-        child: Column(
+      child: FastingArtSlot(
+        assetPath: 'assets/images/editorial/achievements.webp',
+        height: 174,
+        borderRadius: 26,
+        variant: FastingArtVariant.hero,
+        child: Padding(
+          padding: const EdgeInsets.all(22),
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
@@ -197,6 +199,7 @@ class _LevelHero extends StatelessWidget {
               valueColor: const AlwaysStoppedAnimation(Colors.white),
             ),
           ],
+          ),
         ),
       ),
     );

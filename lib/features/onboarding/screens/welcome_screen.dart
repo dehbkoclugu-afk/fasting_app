@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/gradient_button.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../widgets/onboarding_progress.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -58,34 +59,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 opacity: _fadeIn,
                 child: SlideTransition(
                   position: _slideUp,
-                  child: Container(
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [AppColors.primary, AppColors.secondary],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(32),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.primary.withValues(alpha: 0.3),
-                          blurRadius: 30,
-                          offset: const Offset(0, 10),
-                        ),
-                      ],
-                    ),
-                    child: const Icon(
-                      Icons.timer_outlined,
-                      color: Colors.white,
-                      size: 56,
-                    ),
+                  child: FastingArtSlot(
+                    assetPath:
+                        'assets/images/editorial/onboarding-welcome.webp',
+                    height: 170,
+                    borderRadius: 30,
+                    variant: FastingArtVariant.bare,
+                    semanticLabel: 'FastTrack',
+                    child: const SizedBox.shrink(),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: 28),
 
               FadeTransition(
                 opacity: _fadeIn,

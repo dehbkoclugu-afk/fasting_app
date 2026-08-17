@@ -10,6 +10,7 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../services/food_vision_service.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/gradient_button.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../paywall/providers/subscription_provider.dart';
 import '../providers/food_scan_provider.dart';
 import '../providers/meal_provider.dart';
@@ -84,36 +85,20 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
   // --- Premium gate -------------------------------------------------------
 
   Widget _buildLocked(BuildContext context, AppLocalizations l10n) {
-    final theme = Theme.of(context);
     return Center(
       child: Padding(
         padding: AppSpacing.screenPadding,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: .1),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                PhosphorIcons.lockKey(),
-                size: 40,
-                color: AppColors.primary,
-              ),
+            EditorialScreenHero(
+              assetPath: 'assets/images/editorial/premium-gem.webp',
+              title: l10n.foodScan_premiumTitle,
+              subtitle: l10n.foodScan_premiumDesc,
+              icon: Icons.lock_outline,
+              height: 164,
             ),
             const SizedBox(height: 20),
-            Text(l10n.foodScan_premiumTitle, style: theme.textTheme.titleLarge),
-            const SizedBox(height: 8),
-            Text(
-              l10n.foodScan_premiumDesc,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: .6),
-              ),
-            ),
-            const SizedBox(height: 28),
             GradientButton(
               text: l10n.foodScan_upgrade,
               width: double.infinity,
@@ -140,6 +125,12 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          EditorialScreenHero(
+            assetPath: 'assets/images/editorial/tip-balanced-meal.webp',
+            title: l10n.foodScan_introTitle,
+            subtitle: l10n.foodScan_introDesc,
+            icon: Icons.document_scanner_outlined,
+          ),
           const SizedBox(height: 24),
           Center(
             child: Container(
