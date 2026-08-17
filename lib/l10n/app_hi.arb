@@ -1,0 +1,773 @@
+{
+  "@@locale": "hi",
+  "appTitle": "FastTrack",
+  "greeting_morning": "सुप्रभात",
+  "greeting_afternoon": "नमस्कार",
+  "greeting_evening": "शुभ संध्या",
+  "tab_timer": "होम",
+  "tab_explore": "खोजें",
+  "tab_stats": "रिपोर्ट",
+  "tab_meals": "भोजन",
+  "tab_achievements": "उपलब्धियाँ",
+  "tab_profile": "खाता",
+  "timer_fasting": "उपवास का समय",
+  "timer_remaining": "शेष",
+  "timer_elapsed": "बीता समय",
+  "timer_start": "शुरू करें",
+  "timer_stop": "रोकें",
+  "timer_completed": "बधाई हो!",
+  "timer_completedMessage": "आपने अपना उपवास सफलतापूर्वक पूरा किया!",
+  "timer_selectPlan": "उपवास योजना चुनें",
+  "timer_stopConfirm": "क्या आप उपवास समय से पहले समाप्त करना चाहते हैं?",
+  "timer_stopTitle": "उपवास समाप्त करें",
+  "timer_cancel": "रद्द करें",
+  "timer_confirmStop": "हाँ, समाप्त करें",
+  "phase_anabolic": "उपचय चरण",
+  "phase_anabolicDesc": "पाचन जारी है",
+  "phase_catabolic": "अपचय चरण",
+  "phase_catabolicDesc": "ऊर्जा परिवर्तन",
+  "phase_fatBurning": "वसा दहन",
+  "phase_fatBurningDesc": "वसा जलना शुरू हुआ",
+  "phase_ketosis": "कीटोसिस",
+  "phase_ketosisDesc": "कीटोन उत्पादन सक्रिय",
+  "phase_autophagy": "ऑटोफैजी",
+  "phase_autophagyDesc": "कोशिका नवीनीकरण",
+  "stats_title": "आँकड़े",
+  "stats_week": "सप्ताह",
+  "stats_month": "महीना",
+  "stats_year": "वर्ष",
+  "stats_totalFasts": "कुल उपवास",
+  "stats_average": "औसत",
+  "stats_fastDuration": "उपवास अवधि",
+  "stats_streak": "लगातार क्रम",
+  "stats_daysConsecutive": "लगातार दिन",
+  "stats_success": "सफलता",
+  "stats_completion": "पूर्णता",
+  "stats_weeklyFasting": "साप्ताहिक उपवास",
+  "stats_monthlyView": "मासिक दृश्य",
+  "stats_weightChange": "वजन में बदलाव",
+  "heatmap_none": "कोई नहीं",
+  "heatmap_low": "कम",
+  "heatmap_good": "अच्छा",
+  "heatmap_full": "पूरा",
+  "meals_title": "भोजन योजनाकार",
+  "meals_eatingWindow": "भोजन अवधि",
+  "meals_windowOpen": "खुली है",
+  "meals_windowFasting": "उपवास जारी",
+  "meals_calories": "कैलोरी",
+  "meals_protein": "प्रोटीन",
+  "meals_carbs": "कार्बोहाइड्रेट",
+  "meals_fat": "वसा",
+  "meals_todayMeals": "आज के भोजन",
+  "meals_noMeals": "अभी कोई भोजन नहीं जोड़ा गया",
+  "meals_breakfastSuggestions": "उपवास खोलने के सुझाव",
+  "meals_addMeal": "भोजन जोड़ें",
+  "profile_title": "प्रोफ़ाइल",
+  "profile_user": "उपयोगकर्ता",
+  "profile_planActive": "{plan} योजना सक्रिय",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Premium में अपग्रेड करें",
+  "profile_premiumDesc": "सभी उपवास योजनाएँ, बिना विज्ञापन",
+  "profile_bodyMetrics": "शारीरिक माप",
+  "profile_height": "कद",
+  "profile_weight": "वजन",
+  "profile_targetWeight": "लक्षित वजन",
+  "profile_bmi": "BMI",
+  "profile_settings": "सेटिंग्स",
+  "profile_notifications": "सूचनाएँ",
+  "profile_darkTheme": "डार्क थीम",
+  "profile_waterReminder": "पानी पीने का रिमाइंडर",
+  "profile_phaseNotifications": "चरण सूचनाएँ",
+  "profile_language": "भाषा",
+  "profile_about": "परिचय",
+  "profile_rateApp": "ऐप को रेट करें",
+  "profile_share": "साझा करें",
+  "profile_privacyPolicy": "गोपनीयता नीति",
+  "profile_version": "संस्करण",
+  "onboarding_welcome": "स्वागत है",
+  "onboarding_welcomeDesc": "अपनी अंतराल उपवास यात्रा का\nनियंत्रण अपने हाथ में लें",
+  "onboarding_featureTimer": "स्मार्ट उपवास टाइमर",
+  "onboarding_featureStats": "विस्तृत आँकड़े और चार्ट",
+  "onboarding_featureMeals": "भोजन योजना और रेसिपी सुझाव",
+  "onboarding_getStarted": "शुरू करें",
+  "onboarding_selectGoal": "आपका लक्ष्य क्या है?",
+  "onboarding_selectGoalDesc": "आप एक से अधिक चुन सकते हैं",
+  "onboarding_goalWeight": "वजन घटाएँ",
+  "onboarding_goalWeightDesc": "स्वस्थ तरीके से वजन घटाना",
+  "onboarding_goalHealth": "स्वास्थ्य सुधारें",
+  "onboarding_goalHealthDesc": "समग्र स्वास्थ्य और प्रतिरक्षा",
+  "onboarding_goalEnergy": "अधिक ऊर्जा",
+  "onboarding_goalEnergyDesc": "दिन भर ऊर्जा",
+  "onboarding_goalMental": "मानसिक स्पष्टता",
+  "onboarding_goalMentalDesc": "एकाग्रता और स्पष्टता",
+  "onboarding_goalLongevity": "दीर्घायु",
+  "onboarding_goalLongevityDesc": "कोशिका नवीनीकरण और स्वस्थ उम्र बढ़ना",
+  "onboarding_goalDiscipline": "अनुशासन",
+  "onboarding_goalDisciplineDesc": "आत्म-अनुशासन विकसित करें",
+  "onboarding_selectPlan": "अपनी योजना चुनें",
+  "onboarding_selectPlanDesc": "अपने लिए सबसे अच्छी उपवास योजना चुनें",
+  "onboarding_bodyInfo": "अपनी जानकारी दर्ज करें",
+  "onboarding_bodyInfoDesc": "व्यक्तिगत सुझावों के लिए",
+  "onboarding_gender": "लिंग",
+  "onboarding_male": "पुरुष",
+  "onboarding_female": "महिला",
+  "onboarding_age": "आयु",
+  "onboarding_bodyInfoDisclaimer": "यह जानकारी केवल आपके डिवाइस पर सहेजी जाती है और कैलोरी गणना के लिए उपयोग होती है।",
+  "onboarding_permissions": "अंतिम चरण",
+  "onboarding_permissionsDesc": "बेहतरीन अनुभव के लिए अनुमतियाँ चालू करें",
+  "onboarding_next": "जारी रखें",
+  "onboarding_start": "चलिए शुरू करें!",
+  "onboarding_skipForNow": "बाद में सेट करें",
+  "waterAdded": "250 मि.ली. पानी जोड़ा गया",
+  "languageSelect": "भाषा चुनें",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Premium में अपग्रेड करें",
+  "paywall_subtitle": "सभी उपवास योजनाएँ अनलॉक करें और विज्ञापन हटाएँ",
+  "paywall_allPlans": "सभी उपवास योजनाएँ",
+  "paywall_advancedStats": "उन्नत आँकड़े",
+  "paywall_mealPlanner": "भोजन योजनाकार",
+  "paywall_themes": "थीम अनुकूलन",
+  "paywall_noAds": "कोई विज्ञापन नहीं",
+  "paywall_weekly": "साप्ताहिक",
+  "paywall_monthly": "मासिक",
+  "paywall_yearly": "वार्षिक",
+  "paywall_bestValue": "सबसे अच्छा मूल्य",
+  "paywall_freeTrial": "निःशुल्क परीक्षण (3 दिन)",
+  "paywall_restore": "खरीदारी पुनर्स्थापित करें",
+  "paywall_premiumActive": "Premium सक्रिय है!",
+  "paywall_premiumActiveDesc": "सभी उपवास योजनाएँ अनलॉक हैं और विज्ञापन बंद हैं",
+  "water_title": "पानी का सेवन",
+  "water_addWater": "पानी जोड़ें",
+  "water_goal": "लक्ष्य",
+  "water_ml": "मि.ली.",
+  "common_ok": "ठीक है",
+  "common_cancel": "रद्द करें",
+  "common_save": "सहेजें",
+  "common_delete": "हटाएँ",
+  "common_hours": "घंटे",
+  "common_minutes": "मिनट",
+  "common_days": "दिन",
+  "common_enable": "चालू करें",
+  "streakCard_currentStreak": "वर्तमान क्रम",
+  "streakCard_longestStreak": "सबसे लंबा क्रम",
+  "streakCard_totalSessions": "कुल उपवास",
+  "meals_mealType": "भोजन का प्रकार",
+  "meals_breakfast": "नाश्ता",
+  "meals_lunch": "दोपहर का भोजन",
+  "meals_dinner": "रात का भोजन",
+  "meals_snack": "हल्का नाश्ता",
+  "meals_carbohydrate": "कार्बोहाइड्रेट",
+  "meals_add": "जोड़ें",
+  "meals_mealName": "भोजन का नाम",
+  "bodyMetrics_title": "शारीरिक माप",
+  "bodyMetrics_weight": "वजन",
+  "bodyMetrics_target": "लक्ष्य",
+  "bodyMetrics_save": "सहेजें",
+  "bodyMetrics_history": "इतिहास",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "अभी कोई डेटा नहीं",
+  "meals_quickAdd": "तुरंत जोड़ें",
+  "meals_manualEntry": "मैन्युअल प्रविष्टि",
+  "meals_added": "{name} जोड़ा गया",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "नाम और कैलोरी आवश्यक हैं",
+  "bodyMetrics_addWeight": "वजन जोड़ें",
+  "bodyMetrics_hintWeight": "जैसे 74.5",
+  "bodyMetrics_invalidWeight": "सही वजन दर्ज करें",
+  "bodyMetrics_weightSaved": "{value} किग्रा सहेजा गया",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "अवधि",
+  "completion_plan": "योजना",
+  "completion_lastPhase": "अंतिम चरण",
+  "timer_remainingTime": "शेष समय",
+  "timer_ready": "शुरू करने के लिए तैयार",
+  "streak_status": "स्थिति",
+  "streak_startToday": "आज शुरू करें!",
+  "streak_goodStart": "अच्छी शुरुआत!",
+  "streak_goingGreat": "बहुत अच्छा चल रहा है!",
+  "streak_superb": "शानदार!",
+  "streak_legendary": "अद्भुत!",
+  "streak_incredible": "अविश्वसनीय!",
+  "weight_noRecord": "अभी कोई वजन रिकॉर्ड नहीं\nप्रोफ़ाइल > शारीरिक माप से जोड़ें",
+  "day_mon": "सोम",
+  "day_tue": "मंगल",
+  "day_wed": "बुध",
+  "day_thu": "गुरु",
+  "day_fri": "शुक्र",
+  "day_sat": "शनि",
+  "day_sun": "रवि",
+  "day_short_mon": "सो",
+  "day_short_tue": "मं",
+  "day_short_wed": "बु",
+  "day_short_thu": "गु",
+  "day_short_fri": "शु",
+  "day_short_sat": "श",
+  "day_short_sun": "र",
+  "month_jan": "जनवरी",
+  "month_feb": "फ़रवरी",
+  "month_mar": "मार्च",
+  "month_apr": "अप्रैल",
+  "month_may": "मई",
+  "month_jun": "जून",
+  "month_jul": "जुलाई",
+  "month_aug": "अगस्त",
+  "month_sep": "सितंबर",
+  "month_oct": "अक्टूबर",
+  "month_nov": "नवंबर",
+  "month_dec": "दिसंबर",
+  "meals_fastingWindow": "उपवास ({hours} घंटे)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "भोजन ({hours} घंटे)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "ओट स्मूदी",
+  "recipe_avocadoToast": "एवोकाडो टोस्ट",
+  "recipe_yogurtBowl": "योगर्ट बाउल",
+  "elapsed_time": "बीता समय",
+  "fast_ends_on": "आपका उपवास समाप्त होगा",
+  "end_fasting": "उपवास समाप्त करें",
+  "start_fasting": "उपवास शुरू करें",
+  "water_tracker": "पानी ट्रैकर",
+  "weight_tracker": "वजन ट्रैकर",
+  "drink": "पिएँ",
+  "log_weight": "वजन दर्ज करें",
+  "bmi": "BMI",
+  "weight_lost": "घटा हुआ वजन",
+  "current_weight": "वर्तमान वजन",
+  "goal_weight": "लक्षित वजन",
+  "daily_goal": "दैनिक लक्ष्य",
+  "completed_percent": "{percent}% पूरा",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "खोजें",
+  "achievements": "उपलब्धियाँ",
+  "profile_theme": "रूप-रंग",
+  "theme_select": "रूप-रंग चुनें",
+  "theme_system": "सिस्टम डिफ़ॉल्ट",
+  "theme_light": "हल्का",
+  "theme_dark": "गहरा",
+  "language_system": "सिस्टम भाषा",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "पूर्णता ध्वनि",
+  "profile_calmGamification": "शांत गेमिफ़िकेशन",
+  "profile_calmGamificationDesc": "लीग और सीज़न का दबाव कम करता है",
+  "profile_editName": "अपना नाम बदलें",
+  "profile_name": "नाम",
+  "circle_title": "उपवास मंडली",
+  "circle_you": "आप",
+  "circle_tagline": "बिना दबाव, साथ-साथ।",
+  "circle_privacy": "वजन और निजी माप छिपे रहते हैं। केवल प्रगति और सहयोग दिखाई देते हैं।",
+  "circle_sendSupport": "सहयोग भेजें · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "आमंत्रण कोड कॉपी हुआ",
+  "circle_createInvite": "निजी आमंत्रण बनाएँ",
+  "crisis_nameTitle": "पहले बताएँ कि क्या हो रहा है",
+  "crisis_nameDesc": "यह भूख, आदत या भावना हो सकती है।",
+  "crisis_waterTitle": "एक गिलास पानी पिएँ",
+  "crisis_waterDesc": "फिर तीन धीमी साँसें लें।",
+  "crisis_delayTitle": "निर्णय को 10 मिनट टालें",
+  "crisis_delayDesc": "यदि आप अस्वस्थ महसूस करें तो उपवास समाप्त करना असफलता नहीं है।",
+  "crisis_hunger": "भूख",
+  "crisis_habit": "आदत",
+  "crisis_stress": "तनाव",
+  "crisis_tenMore": "इसे 10 मिनट दें",
+  "stats_storyEmpty": "आपका पहला उपवास आपकी निजी कहानी शुरू करेगा।",
+  "stats_story": "इस अवधि में आपने {sessions} बार उपवास किया, {hours} घंटे अपनी लय बनाए रखी और {rate}% पूर्णता दर हासिल की।",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "आपकी लय की कहानी",
+  "home_todayRhythm": "आज की लय",
+  "home_finalHourSupport": "अंतिम घंटे का सहयोग",
+  "home_needSupport": "मुझे थोड़ा सहयोग चाहिए",
+  "home_todaySummary": "आज एक नज़र में",
+  "home_dayStreak": "दिन का क्रम",
+  "home_weightGoal": "लक्ष्य {weight} किग्रा",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "आपकी लय स्थिर है",
+  "weather_gentle": "एक सहज दिन",
+  "weather_water": "एक गिलास पानी मदद कर सकता है।",
+  "weather_listen": "आप बहुत आगे आ चुके हैं; अपने शरीर की सुनें।",
+  "weather_onPlan": "आज की गति आपकी योजना के अनुरूप है।",
+  "weather_challenging": "यह घंटा पहले कठिन था; सहयोग मोड तैयार है।",
+  "replay_copied": "उपवास रीप्ले कॉपी हुआ",
+  "replay_button": "रीप्ले",
+  "replay_text": "मैंने {plan} उपवास {hours}घं {minutes}मि में पूरा किया · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "चयापचय यात्रा",
+  "journey_now": "अभी",
+  "journey_next": "{phase} तक {time}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "चरण का समय सामान्य अनुमान है, चिकित्सकीय माप नहीं।",
+  "phase_hours": "घंटे {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "यह समय सामान्य अनुमान है। चयापचय प्रतिक्रियाएँ हर व्यक्ति में अलग हो सकती हैं।",
+  "bmi_underweight": "कम वजन",
+  "bmi_normal": "सामान्य",
+  "bmi_overweight": "अधिक वजन",
+  "bmi_obese": "मोटापा",
+  "notification_halfwayTitle": "आधा रास्ता पूरा! 💪",
+  "notification_halfwayBody": "आपने {plan} उपवास का आधा हिस्सा पूरा किया। जारी रखें!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "अपचय चरण शुरू हुआ 📉",
+  "notification_phaseFatBurning": "वसा दहन शुरू हुआ! 🔥",
+  "notification_phaseKetosis": "आप कीटोसिस में हैं ⚡",
+  "notification_phaseAutophagy": "ऑटोफैजी सक्रिय! 🔄",
+  "notification_completedBody": "आपने {plan} उपवास पूरा किया! आपकी भोजन अवधि खुली है।",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "पानी पिएँ 💧",
+  "notification_waterBody": "उपवास के दौरान पर्याप्त पानी पीना न भूलें!",
+  "notification_windowTitle": "भोजन अवधि बंद होने वाली है ⏰",
+  "notification_windowBody": "आपकी भोजन अवधि 30 मिनट में बंद होगी।",
+  "notification_streakTitle": "{days} दिन का क्रम! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "आप बहुत अच्छा कर रहे हैं! आज भी जारी रखें।",
+  "notification_ongoingTitle": "उपवास जारी - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "शेष: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "उपवास शुरू - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "लक्ष्य: {hours} घंटे",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours}घं {minutes}मि",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "उपवास मार्गदर्शिका",
+  "explore_guideDesc": "अंतराल उपवास के बारे में जानने योग्य सब कुछ",
+  "explore_circleDesc": "अपने निजी समूह के साथ सहज सहयोग साझा करें।",
+  "explore_faq": "अक्सर पूछे जाने वाले प्रश्न",
+  "explore_education": "यह सामग्री केवल सामान्य शिक्षा के लिए है, चिकित्सकीय निदान या उपचार सलाह नहीं।",
+  "explore_safety": "स्वास्थ्य और सुरक्षा",
+  "explore_safetyDesc": "यदि आपको कोई बीमारी है, आप नियमित दवा लेते हैं, चिंताजनक लक्षण हैं, आप गर्भवती हैं या स्तनपान करा रही हैं, तो उपवास से पहले योग्य स्वास्थ्य विशेषज्ञ से सलाह लें। अस्वस्थ लगने पर रुक जाएँ।",
+  "explore_sources": "स्रोत",
+  "explore_sourcesDesc": "सामग्री को नीचे दिए सार्वजनिक स्वास्थ्य संदर्भों से सरल बनाया गया है।",
+  "explore_sourceError": "स्रोत नहीं खोला जा सका",
+  "explore_rules": "महत्वपूर्ण नियम",
+  "explore_rule1": "उपवास में कैलोरी वाला भोजन न लें",
+  "explore_rule2": "पर्याप्त पानी और तरल पिएँ",
+  "explore_rule3": "भोजन अवधि में संतुलित आहार लें",
+  "explore_rule4": "अस्वस्थ लगने पर उपवास रोकें",
+  "explore_rule5": "गर्भवती या स्तनपान कराने वाली महिलाओं को उपवास नहीं करना चाहिए",
+  "explore_rule6": "पुरानी बीमारी हो तो डॉक्टर से सलाह लें",
+  "tip_water": "शरीर में पानी बनाए रखें",
+  "tip_waterDesc": "प्यास लगने पर पानी पिएँ और भोजन के साथ तरल लें। आवश्यकता स्वास्थ्य, मौसम और गतिविधि के अनुसार बदल सकती है।",
+  "tip_food": "सही खाएँ",
+  "tip_foodDesc": "भोजन अवधि में फाइबर और स्वस्थ वसा वाले प्रोटीन-समृद्ध खाद्य चुनें। प्रसंस्कृत भोजन से बचें।",
+  "tip_sleep": "अच्छी नींद लें",
+  "tip_sleepDesc": "नियमित और पर्याप्त नींद समग्र स्वास्थ्य में सहायक है। उपवास ऐसे रखें कि नींद बाधित न हो।",
+  "tip_exercise": "हल्का व्यायाम",
+  "tip_exerciseDesc": "उपवास में हल्की सैर या योग कर सकते हैं। भारी व्यायाम से बचें, खासकर शुरुआती हफ्तों में जब शरीर अनुकूल हो रहा हो।",
+  "tip_drinks": "अनुमत पेय",
+  "tip_drinksDesc": "उपवास में पानी, सादी चाय और ब्लैक कॉफ़ी (बिना चीनी और दूध) ले सकते हैं। ये पेय उपवास नहीं तोड़ेंगे।",
+  "faq_drinks": "उपवास में क्या पी सकता हूँ?",
+  "faq_drinksAnswer": "आप पानी, सादी चाय और ब्लैक कॉफ़ी (बिना चीनी/दूध) पी सकते हैं। कैलोरी वाले पेय उपवास तोड़ते हैं।",
+  "faq_plan": "मुझे कौन-सी उपवास योजना चुननी चाहिए?",
+  "faq_planAnswer": "यदि आप नए हैं तो 12:12 या 14:10 से शुरू करें। अनुभवी हैं तो 16:8 या 18:6 आज़माएँ। 20:4 और OMAD उन्नत उपवास करने वालों के लिए हैं।",
+  "faq_exercise": "क्या उपवास में व्यायाम कर सकता हूँ?",
+  "faq_exerciseAnswer": "हाँ, लेकिन तीव्र कसरत से बचें। हल्का कार्डियो, पैदल चलना और योग आदर्श हैं। वजन प्रशिक्षण भोजन अवधि के पास रखें।",
+  "faq_weight": "क्या उपवास वजन घटाने में मदद करता है?",
+  "faq_weightAnswer": "कुछ लोगों में भोजन का समय सीमित करने से कुल ऊर्जा सेवन घट सकता है। परिणाम अलग-अलग होते हैं और दीर्घकालीन प्रभावों का अभी अध्ययन जारी है।",
+  "plan_12_desc": "शुरुआती स्तर",
+  "plan_12_detail": "शुरुआती लोगों के लिए आदर्श। नींद सहित 12 घंटे उपवास करें।",
+  "plan_16_desc": "सबसे लोकप्रिय योजना",
+  "plan_16_detail": "सबसे आम अंतराल उपवास योजना। 16 घंटे उपवास, 8 घंटे भोजन। सामान्यतः दोपहर से रात के भोजन तक।",
+  "plan_18_desc": "मध्यम स्तर",
+  "plan_18_detail": "18 घंटे उपवास, 6 घंटे भोजन। वसा दहन की अवधि अधिक।",
+  "plan_20_desc": "उन्नत स्तर",
+  "plan_20_detail": "20 घंटे उपवास, 4 घंटे भोजन। कीटोसिस और ऑटोफैजी तक पहुँचने के लिए उपयुक्त।",
+  "plan_omad_desc": "दिन में एक भोजन",
+  "plan_omad_detail": "दिन में एक भोजन। 23 घंटे उपवास, 1 घंटे भोजन। विशेषज्ञ स्तर।",
+  "plan_52_desc": "सप्ताह में 2 दिन",
+  "plan_52_detail": "5 दिन सामान्य खाएँ, 2 दिन केवल लगभग 500 कैलोरी। एक वैकल्पिक तरीका।",
+  "plan_ese_desc": "24 घंटे का उपवास",
+  "plan_ese_detail": "सप्ताह में 1–2 बार 24 घंटे उपवास करें। उन्नत उपयोगकर्ताओं के लिए।",
+  "plan_warrior_desc": "वॉरियर डाइट",
+  "plan_warrior_detail": "दिन में हल्का खाएँ (फल, सब्ज़ियाँ), शाम की 4 घंटे की अवधि में मुख्य भोजन लें।",
+  "award_first_title": "पहला कदम",
+  "award_first_desc": "अपना पहला उपवास पूरा करें",
+  "award_rhythm3_title": "3-दिवसीय लय",
+  "award_rhythm3_desc": "तीन दिन अपनी लय बनाए रखें",
+  "award_hours24_title": "24 घंटे",
+  "award_hours24_desc": "कुल 24 घंटे उपवास करें",
+  "award_week_title": "एक-सप्ताह की लय",
+  "award_week_desc": "सात दिन का क्रम बनाएँ",
+  "award_fasts10_title": "10 उपवास",
+  "award_fasts10_desc": "दस उपवास पूरे करें",
+  "award_hours100_title": "100 घंटे",
+  "award_hours100_desc": "कुल 100 घंटे तक पहुँचें",
+  "award_rhythm30_title": "30-दिवसीय लय",
+  "award_rhythm30_desc": "तीस दिन का क्रम बनाएँ",
+  "award_fasts50_title": "50 उपवास",
+  "award_fasts50_desc": "पचास उपवास पूरे करें",
+  "award_hours500_title": "500 घंटे",
+  "award_hours500_desc": "कुल 500 घंटे तक पहुँचें",
+  "award_fasts100_title": "100 उपवास",
+  "award_fasts100_desc": "एक सौ उपवास पूरे करें",
+  "award_rhythm90_title": "90-दिवसीय लय",
+  "award_rhythm90_desc": "नब्बे दिन का क्रम बनाएँ",
+  "award_year_title": "एक-वर्षीय यात्रा",
+  "award_year_desc": "365 दिन की लय तक पहुँचें",
+  "awards_loadError": "प्रगति लोड नहीं हो सकी",
+  "awards_journeyComplete": "यात्रा पूरी",
+  "awards_nextGoal": "अगला लक्ष्य",
+  "awards_allYours": "हर उपलब्धि आपकी है",
+  "awards_dayStreak": "दिन का क्रम",
+  "awards_fasts": "उपवास",
+  "awards_total": "कुल",
+  "awards_stageStart": "शुरुआत",
+  "awards_stageRhythm": "लय",
+  "awards_stageEndurance": "सहनशक्ति",
+  "awards_stageMastery": "निपुणता",
+  "awards_completed": "पूरा हुआ",
+  "awards_fastsRemaining": "{count} उपवास शेष",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "{count} दिन शेष",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "{count} घंटे शेष",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "फिर कोशिश करें",
+  "game_title": "प्रगति केंद्र",
+  "game_quests": "आज के लक्ष्य",
+  "game_questsDesc": "छोटे कदम, टिकाऊ लय।",
+  "game_season": "30-कदम का सीज़न",
+  "game_seasonDesc": "हर पाँचवें कदम पर संग्रह योग्य मुहर।",
+  "game_badges": "बैज संग्रह",
+  "game_shields": "{count} लय कवच",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "हर सात पूर्णताओं पर मिलता है। एक दिन छूटने से आपकी प्रगति कभी नहीं मिटती।",
+  "game_league": "निजी साप्ताहिक लीग",
+  "game_leagueDesc": "आपका लय स्कोर निजी स्थानीय मॉडल के {percent}वें प्रतिशतक में है। वजन और अत्यधिक उपवास की कभी रैंकिंग नहीं होती।",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "स्तर {level}, {xp} अनुभव अंक",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "लय खोजकर्ता",
+  "game_streak": "क्रम",
+  "game_targets": "लक्ष्य",
+  "game_best": "सर्वश्रेष्ठ",
+  "quest_rhythm": "आज की लय बनाएँ",
+  "quest_hydrate": "पानी के लक्ष्य का आधा पूरा करें",
+  "quest_steady": "अपना क्रम सुरक्षित रखें",
+  "badge_first_title": "पहला कदम",
+  "badge_first_desc": "अपना पहला उपवास दर्ज करें",
+  "badge_rhythm7_title": "लय रक्षक",
+  "badge_rhythm7_desc": "7 दिन का क्रम पूरा करें",
+  "badge_rhythm3_title": "तीन-दिवसीय लय",
+  "badge_rhythm3_desc": "3 दिन का क्रम पूरा करें",
+  "badge_target1_title": "पहला लक्ष्य",
+  "badge_target1_desc": "अपना पहला लक्षित उपवास पूरा करें",
+  "badge_target3_title": "तीन कदम",
+  "badge_target3_desc": "3 लक्ष्य पूरे करें",
+  "badge_water_title": "संतुलित",
+  "badge_water_desc": "दैनिक पानी लक्ष्य पूरा करें",
+  "badge_support_title": "आत्म-जागरूक",
+  "badge_support_desc": "सहयोग मोड उपयोग करें",
+  "badge_hours10_title": "10 घंटे",
+  "badge_hours10_desc": "कुल 10 घंटे दर्ज करें",
+  "badge_target10_title": "मज़बूत दस",
+  "badge_target10_desc": "10 लक्ष्य पूरे करें",
+  "badge_target20_title": "बीस लक्ष्य",
+  "badge_target20_desc": "20 लक्ष्य पूरे करें",
+  "badge_fast16_title": "16 घंटे",
+  "badge_fast16_desc": "एक उपवास में 16 घंटे तक पहुँचें",
+  "badge_hours50_title": "50 घंटे",
+  "badge_hours50_desc": "कुल 50 घंटे दर्ज करें",
+  "badge_hours100_title": "एक सौ घंटे",
+  "badge_hours100_desc": "कुल 100 घंटे दर्ज करें",
+  "badge_target30_title": "तीस लक्ष्य",
+  "badge_target30_desc": "30 लक्ष्य पूरे करें",
+  "badge_rhythm30_title": "30-दिवसीय लय",
+  "badge_rhythm30_desc": "30 दिन का क्रम पूरा करें",
+  "paywall_restoreSuccess": "खरीदारी पुनर्स्थापित हुई!",
+  "fasting_progressSemantics": "उपवास प्रगति {percent} प्रतिशत",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}घं",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "आजीवन",
+  "paywall_once": "एक बार",
+  "paywall_processing": "प्रक्रिया जारी…",
+  "paywall_continue": "जारी रखें",
+  "paywall_productsUnavailable": "अभी खरीदारी उपलब्ध नहीं है। कृपया बाद में फिर प्रयास करें।",
+  "paywall_purchaseFailed": "खरीदारी पूरी नहीं हो सकी।",
+  "paywall_nothingToRestore": "कोई पिछली खरीदारी नहीं मिली।",
+  "paywall_restoreFailed": "खरीदारी पुनर्स्थापित नहीं हो सकी।",
+  "paywall_terms": "उपयोग की शर्तें",
+  "permission_notificationDesc": "उपवास रिमाइंडर, चरण अपडेट और पूर्णता सूचनाएँ",
+  "profile_privacyChoices": "गोपनीयता विकल्प",
+  "paywall_autoRenewInfo": "अवधि समाप्त होने से कम से कम 24 घंटे पहले रद्द न करने पर सदस्यता स्वतः नवीनीकृत होती है। App Store सेटिंग्स में कभी भी प्रबंधित या रद्द करें।",
+  "paywall_perMonth": "{price} / महीना",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "{percent}% बचाएँ",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "{days}-दिन का निःशुल्क परीक्षण",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "निःशुल्क परीक्षण शुरू करें",
+  "paywall_retry": "फिर कोशिश करें",
+  "paywall_alreadyOwned": "यह सदस्यता आपके पास पहले से है। “खरीदारी पुनर्स्थापित करें” पर टैप करें।",
+  "paywall_storeUnavailable": "अभी स्टोर तक नहीं पहुँच पा रहे। कनेक्शन जाँचें और फिर प्रयास करें।",
+  "paywall_secureNote": "कभी भी रद्द करें। भुगतान आपके स्टोर खाते से लिया जाता है।",
+  "paywall_autoRenewInfoPlay": "अवधि समाप्त होने से कम से कम 24 घंटे पहले रद्द न करने पर सदस्यता स्वतः नवीनीकृत होती है। Google Play > सदस्यताएँ में कभी भी प्रबंधित या रद्द करें।",
+  "paywall_allPlansDesc": "18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat और Warrior अनलॉक करता है",
+  "paywall_noAdsDesc": "बैनर और इंटरस्टिशियल विज्ञापन पूरी तरह बंद होते हैं",
+  "foodScan_title": "AI भोजन स्कैन",
+  "foodScan_scanCta": "भोजन स्कैन करें",
+  "foodScan_scanCtaDesc": "अपनी प्लेट की तस्वीर लें, कैलोरी और मैक्रो पाएँ",
+  "foodScan_introTitle": "अपनी प्लेट की तस्वीर लें",
+  "foodScan_introDesc": "AI तस्वीर पढ़कर कैलोरी, प्रोटीन, कार्बोहाइड्रेट और वसा का अनुमान लगाता है।",
+  "foodScan_tipLight": "अच्छी, समान रोशनी से बेहतर अनुमान मिलता है",
+  "foodScan_tipFrame": "पूरी प्लेट को फ़्रेम में रखें",
+  "foodScan_tipScale": "मात्रा मापने के लिए चम्मच-काँटा या हाथ शामिल करें",
+  "foodScan_takePhoto": "तस्वीर लें",
+  "foodScan_chooseFromGallery": "गैलरी से चुनें",
+  "foodScan_scansLeft": "आज {count} स्कैन शेष",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "आज के स्कैन पूरे हो गए। कल फिर प्रयास करें।",
+  "foodScan_privacyNote": "तस्वीर विश्लेषण के लिए Google के Gemini API को भेजी जाती है और हमारे सर्वर पर संग्रहीत नहीं होती।",
+  "foodScan_analyzing": "आपके भोजन का विश्लेषण हो रहा है…",
+  "foodScan_analyzingHint": "आमतौर पर इसमें कुछ सेकंड लगते हैं",
+  "foodScan_detectedItems": "पहचाने गए खाद्य",
+  "foodScan_disclaimer": "AI अनुमान लगभग हैं। सुधारने के लिए किसी आइटम पर टैप करें।",
+  "foodScan_lowConfidence": "मॉडल इस तस्वीर को लेकर अनिश्चित है। सहेजने से पहले संख्याएँ जाँचें।",
+  "foodScan_save": "भोजन में जोड़ें",
+  "foodScan_retake": "नई तस्वीर",
+  "foodScan_retry": "फिर कोशिश करें",
+  "foodScan_editItem": "आइटम बदलें",
+  "foodScan_portion": "मात्रा",
+  "foodScan_saveEdit": "सहेजें",
+  "foodScan_premiumTitle": "Premium सुविधा",
+  "foodScan_premiumDesc": "तस्वीर से कैलोरी विश्लेषण Premium में शामिल है।",
+  "foodScan_upgrade": "Premium देखें",
+  "foodScan_errorNetwork": "कनेक्शन नहीं है। इंटरनेट जाँचें और फिर प्रयास करें।",
+  "foodScan_errorRateLimited": "अभी बहुत अधिक स्कैन हो रहे हैं। कुछ मिनट बाद फिर प्रयास करें।",
+  "foodScan_errorUnavailable": "तस्वीर विश्लेषण अभी उपलब्ध नहीं है।",
+  "foodScan_errorServer": "विश्लेषण सेवा में समस्या है। थोड़ी देर बाद फिर प्रयास करें।",
+  "foodScan_errorNoFood": "इस तस्वीर में भोजन नहीं मिला। प्लेट की अधिक स्पष्ट तस्वीर लें।",
+  "foodScan_errorUnreadable": "इस तस्वीर का विश्लेषण नहीं हो सका। दूसरी तस्वीर आज़माएँ।",
+  "paywall_aiFoodScan": "AI भोजन स्कैन",
+  "paywall_aiFoodScanDesc": "भोजन की तस्वीर लें और सेकंडों में कैलोरी व मैक्रो दर्ज करें"
+}

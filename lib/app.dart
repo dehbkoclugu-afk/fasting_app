@@ -8,6 +8,15 @@ import 'core/theme/app_theme.dart';
 import 'features/profile/providers/settings_provider.dart';
 import 'services/notification_service.dart';
 
+Locale? _localeFromTag(String? tag) {
+  if (tag == null) return null;
+  final parts = tag.replaceAll('-', '_').split('_');
+  return Locale.fromSubtags(
+    languageCode: parts.first,
+    countryCode: parts.length > 1 ? parts[1] : null,
+  );
+}
+
 class FastingApp extends ConsumerStatefulWidget {
   final bool showOnboarding;
 
@@ -45,11 +54,17 @@ class _FastingAppState extends ConsumerState<FastingApp> {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: settings.themeMode,
-      locale: settings.locale == null ? null : Locale(settings.locale!),
+      locale: _localeFromTag(settings.locale),
       localeListResolutionCallback: (deviceLocales, supportedLocales) {
-        if (settings.locale != null) return Locale(settings.locale!);
+        if (settings.locale != null) return _localeFromTag(settings.locale);
 
-        for (final deviceLocale in deviceLocales ?? const <Locale>[]) {
+        final devices = deviceLocales ?? const <Locale>[];
+        for (final deviceLocale in devices) {
+          for (final supportedLocale in supportedLocales) {
+            if (supportedLocale == deviceLocale) return supportedLocale;
+          }
+        }
+        for (final deviceLocale in devices) {
           for (final supportedLocale in supportedLocales) {
             if (supportedLocale.languageCode == deviceLocale.languageCode) {
               return supportedLocale;
