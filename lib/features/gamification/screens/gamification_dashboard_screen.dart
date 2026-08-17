@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
@@ -444,19 +443,6 @@ class _BadgeToken extends StatelessWidget {
     }
     return 'assets/images/editorial/v2/badge-rhythm.webp';
   }
-
-  IconData _badgeIcon(String key) => switch (key) {
-    'leaf' => PhosphorIcons.leaf(),
-    'fire' => PhosphorIcons.fire(PhosphorIconsStyle.fill),
-    'water' => PhosphorIcons.drop(PhosphorIconsStyle.fill),
-    'compass' => PhosphorIcons.compass(),
-    'medal' => PhosphorIcons.medal(PhosphorIconsStyle.fill),
-    'target' => PhosphorIcons.target(),
-    'clock' => PhosphorIcons.clock(),
-    'shield' => PhosphorIcons.shieldCheck(),
-    'crown' => PhosphorIcons.crown(PhosphorIconsStyle.fill),
-    _ => PhosphorIcons.sparkle(PhosphorIconsStyle.fill),
-  };
 
   String _badgeTitle(AppLocalizations l10n, String id) => switch (id) {
     'first' => l10n.badge_first_title,
