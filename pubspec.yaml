@@ -1,7 +1,7 @@
 name: fasting_app
 description: "Intermittent Fasting Tracker - Track your fasting journey"
 publish_to: 'none'
-version: 1.2.2+14
+version: 1.2.3+15
 
 environment:
   sdk: ^3.7.0-323.2.beta
@@ -93,5 +93,6 @@ flutter:
     - assets/images/editorial/v2/
     - assets/images/editorial/v3/
     - assets/images/editorial/v4/
+    - assets/images/editorial/v4/quick/
     - assets/icons/
     - assets/animations/
