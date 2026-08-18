@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
-import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/banner_ad_widget.dart';
 import '../../../shared/widgets/section_header.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
@@ -177,9 +176,16 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                   final weekStatsAsync = ref.watch(statsProvider(7));
                   final weekStats =
                       weekStatsAsync.valueOrNull ?? const StatsData();
-                  return GlassCard(
-                    padding: const EdgeInsets.all(20),
-                    child: SizedBox(
+                  return FastingArtSlot(
+                    assetPath: 'assets/images/editorial/v4/report-weekly.webp',
+                    height: 236,
+                    borderRadius: 24,
+                    variant: FastingArtVariant.card,
+                    alignment: Alignment.centerRight,
+                    semanticLabel: l10n.stats_weeklyFasting,
+                    child: Padding(
+                      padding: const EdgeInsets.all(18),
+                      child: SizedBox(
                       height: 200,
                       child: BarChart(
                         BarChartData(
@@ -248,6 +254,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                             (i) => _makeBarGroup(i, weekStats.weeklyHours[i]),
                           ),
                         ),
+                      ),
                       ),
                     ),
                   );
@@ -321,11 +328,19 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                     heatmapProvider(_heatmapMonth),
                   );
                   final heatmapData = heatmapAsync.valueOrNull ?? const {};
-                  return GlassCard(
-                    padding: const EdgeInsets.all(16),
-                    child: MonthlyHeatmap(
-                      data: heatmapData,
-                      month: _heatmapMonth,
+                  return FastingArtSlot(
+                    assetPath: 'assets/images/editorial/v4/report-monthly.webp',
+                    height: 300,
+                    borderRadius: 24,
+                    variant: FastingArtVariant.card,
+                    alignment: Alignment.centerRight,
+                    semanticLabel: l10n.stats_monthlyView,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: MonthlyHeatmap(
+                        data: heatmapData,
+                        month: _heatmapMonth,
+                      ),
                     ),
                   );
                 },

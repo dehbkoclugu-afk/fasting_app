@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../shared/widgets/glass_card.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 
 class StreakCard extends StatelessWidget {
   final int currentStreak;
@@ -20,9 +20,16 @@ class StreakCard extends StatelessWidget {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
 
-    return GlassCard(
-      padding: const EdgeInsets.all(20),
-      child: Row(
+    return FastingArtSlot(
+      assetPath: 'assets/images/editorial/v4/report-streak.webp',
+      height: 184,
+      borderRadius: 24,
+      variant: FastingArtVariant.card,
+      alignment: Alignment.centerLeft,
+      semanticLabel: l10n.stats_streak,
+      child: Padding(
+        padding: const EdgeInsets.all(18),
+        child: Row(
         children: [
           // Current streak (big)
           Expanded(
@@ -59,7 +66,7 @@ class StreakCard extends StatelessWidget {
               ],
             ),
           ),
-          Container(width: 1, height: 80, color: theme.dividerTheme.color),
+          Container(width: 1, height: 94, color: Colors.white.withValues(alpha: .12)),
           // Stats
           Expanded(
             flex: 3,
@@ -96,6 +103,7 @@ class StreakCard extends StatelessWidget {
             ),
           ),
         ],
+        ),
       ),
     );
   }
@@ -118,13 +126,14 @@ class StreakCard extends StatelessWidget {
             Text(
               label,
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withAlpha(120),
+                color: Colors.white.withValues(alpha: .56),
                 fontSize: 11,
               ),
             ),
             Text(
               value,
               style: theme.textTheme.bodyMedium?.copyWith(
+                color: Colors.white,
                 fontWeight: FontWeight.w600,
               ),
             ),

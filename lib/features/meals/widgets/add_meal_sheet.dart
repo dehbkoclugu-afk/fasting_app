@@ -7,7 +7,6 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
-import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../providers/meal_provider.dart';
 
@@ -51,173 +50,238 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     final l10n = AppLocalizations.of(context)!;
 
     return DraggableScrollableSheet(
-      initialChildSize: .92,
+      initialChildSize: .94,
       maxChildSize: .97,
-      minChildSize: .62,
+      minChildSize: .68,
       expand: false,
-      builder: (context, scrollController) => SingleChildScrollView(
-        controller: scrollController,
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 28),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    l10n.meals_addMeal,
-                    style: theme.textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w800,
+      builder: (context, scrollController) => SafeArea(
+        top: false,
+        child: SingleChildScrollView(
+          controller: scrollController,
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      l10n.meals_addMeal,
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -.4,
+                      ),
+                    ),
+                  ),
+                  IconButton.filledTonal(
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(Icons.close, size: 20),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 14),
+              InkWell(
+                borderRadius: BorderRadius.circular(24),
+                onTap: _openPhotoScan,
+                child: FastingArtSlot(
+                  assetPath: 'assets/images/editorial/v2/meal-scan.webp',
+                  height: 164,
+                  borderRadius: 24,
+                  variant: FastingArtVariant.hero,
+                  semanticLabel: l10n.foodScan_scanCta,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(18, 16, 128, 14),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          l10n.foodScan_scanCta,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.titleLarge?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          l10n.foodScan_scanCtaDesc,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: Colors.white.withValues(alpha: .75),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            _scanAction(
+                              icon: PhosphorIcons.camera(PhosphorIconsStyle.fill),
+                              label: l10n.foodScan_takePhoto,
+                            ),
+                            const SizedBox(width: 8),
+                            _scanAction(
+                              icon: PhosphorIcons.images(PhosphorIconsStyle.fill),
+                              label: l10n.foodScan_chooseFromGallery,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                IconButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  icon: const Icon(Icons.close),
+              ),
+              const SizedBox(height: 24),
+              _sectionTitle(context, l10n.meals_mealType, Icons.schedule_outlined),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 72,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    _mealTypeCard('breakfast', l10n.meals_breakfast, Icons.wb_sunny_outlined),
+                    _mealTypeCard('lunch', l10n.meals_lunch, Icons.light_mode_outlined),
+                    _mealTypeCard('dinner', l10n.meals_dinner, Icons.nightlight_outlined),
+                    _mealTypeCard('snack', l10n.meals_snack, Icons.cookie_outlined),
+                  ],
                 ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            InkWell(
-              borderRadius: BorderRadius.circular(22),
-              onTap: _openPhotoScan,
-              child: FastingArtSlot(
-                assetPath: 'assets/images/editorial/v2/meal-scan.webp',
-                height: 154,
-                borderRadius: 22,
-                variant: FastingArtVariant.hero,
-                semanticLabel: l10n.foodScan_scanCta,
+              ),
+              const SizedBox(height: 24),
+              _sectionTitle(context, l10n.meals_quickAdd, Icons.bolt_outlined),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 86,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _quickMeals.length,
+                  separatorBuilder: (_, __) => const SizedBox(width: 10),
+                  itemBuilder: (context, index) => _quickMealCard(
+                    context,
+                    _quickMeals[index],
+                    index,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+              FastingArtSlot(
+                assetPath: 'assets/images/editorial/v4/meal-manual-entry.webp',
+                height: 126,
+                borderRadius: 24,
+                variant: FastingArtVariant.row,
+                alignment: Alignment.centerRight,
+                semanticLabel: l10n.meals_manualEntry,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(18, 16, 142, 16),
+                  padding: const EdgeInsets.fromLTRB(18, 18, 150, 18),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 38,
-                        height: 38,
-                        decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(
-                          PhosphorIcons.camera(PhosphorIconsStyle.fill),
-                          color: Colors.white,
-                          size: 21,
-                        ),
-                      ),
-                      const SizedBox(height: 9),
+                      Icon(PhosphorIcons.notepad(), color: AppColors.primaryLight),
+                      const SizedBox(height: 8),
                       Text(
-                        l10n.foodScan_scanCta,
-                        maxLines: 1,
+                        l10n.meals_manualEntry,
+                        maxLines: 2,
                         style: theme.textTheme.titleMedium?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
-                      const SizedBox(height: 3),
-                      Text(
-                        l10n.foodScan_scanCtaDesc,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: Colors.white.withValues(alpha: .78),
-                        ),
-                      ),
                     ],
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 10),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton.icon(
-                onPressed: _openPhotoScan,
-                icon: Icon(PhosphorIcons.camera(), size: 18),
-                label: Text(l10n.foodScan_takePhoto),
-                style: OutlinedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(46),
+              Container(
+                padding: const EdgeInsets.fromLTRB(14, 16, 14, 14),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surfaceContainer,
+                  borderRadius: const BorderRadius.vertical(
+                    bottom: Radius.circular(24),
+                  ),
+                  border: Border.all(
+                    color: theme.colorScheme.outlineVariant.withValues(alpha: .45),
+                  ),
                 ),
-              ),
-            ),
-            const SizedBox(height: 8),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton.icon(
-                onPressed: _openPhotoScan,
-                icon: Icon(PhosphorIcons.images(), size: 18),
-                label: Text(l10n.foodScan_chooseFromGallery),
-                style: OutlinedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(46),
-                ),
-              ),
-            ),
-            const SizedBox(height: 24),
-            Text(l10n.meals_mealType, style: theme.textTheme.titleSmall),
-            const SizedBox(height: 9),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                _mealTypeChip('breakfast', l10n.meals_breakfast, Icons.wb_sunny_outlined),
-                _mealTypeChip('lunch', l10n.meals_lunch, Icons.wb_cloudy_outlined),
-                _mealTypeChip('dinner', l10n.meals_dinner, Icons.nightlight_outlined),
-                _mealTypeChip('snack', l10n.meals_snack, Icons.cookie_outlined),
-              ],
-            ),
-            const SizedBox(height: 22),
-            Text(l10n.meals_quickAdd, style: theme.textTheme.titleSmall),
-            const SizedBox(height: 9),
-            Wrap(
-              spacing: 7,
-              runSpacing: 7,
-              children: [
-                for (final meal in _quickMeals)
-                  ActionChip(
-                    avatar: const Icon(Icons.add, size: 16),
-                    label: Text(
-                      '${meal['name']} · ${meal['cal']} kcal',
-                      style: const TextStyle(fontSize: 11),
+                child: Column(
+                  children: [
+                    _field(
+                      l10n.meals_mealName,
+                      _nameController,
+                      TextInputType.text,
+                      icon: PhosphorIcons.forkKnife(),
+                      textInputAction: TextInputAction.next,
                     ),
-                    onPressed: () => _quickAdd(meal),
-                  ),
-              ],
-            ),
-            const SizedBox(height: 22),
-            Text(l10n.meals_manualEntry, style: theme.textTheme.titleSmall),
-            const SizedBox(height: 9),
-            GlassCard(
-              padding: const EdgeInsets.all(14),
-              child: Column(
-                children: [
-                  _field(l10n.meals_mealName, _nameController, TextInputType.text),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Expanded(child: _field(l10n.meals_calories, _caloriesController, TextInputType.number, 'kcal')),
-                      const SizedBox(width: 10),
-                      Expanded(child: _field(l10n.meals_protein, _proteinController, TextInputType.number, 'g')),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Expanded(child: _field(l10n.meals_carbohydrate, _carbsController, TextInputType.number, 'g')),
-                      const SizedBox(width: 10),
-                      Expanded(child: _field(l10n.meals_fat, _fatController, TextInputType.number, 'g')),
-                    ],
-                  ),
-                ],
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Expanded(child: _field(l10n.meals_calories, _caloriesController, TextInputType.number, suffix: 'kcal', icon: PhosphorIcons.fire())),
+                        const SizedBox(width: 10),
+                        Expanded(child: _field(l10n.meals_protein, _proteinController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.barbell())),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Expanded(child: _field(l10n.meals_carbohydrate, _carbsController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.bread())),
+                        const SizedBox(width: 10),
+                        Expanded(child: _field(l10n.meals_fat, _fatController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.drop())),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    GradientButton(text: l10n.meals_add, onPressed: _saveMeal),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            GradientButton(text: l10n.meals_add, onPressed: _saveMeal),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
+
+  Widget _sectionTitle(BuildContext context, String title, IconData icon) => Row(
+    children: [
+      Icon(icon, size: 19, color: AppColors.primary),
+      const SizedBox(width: 8),
+      Text(
+        title,
+        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+          fontWeight: FontWeight.w800,
+        ),
+      ),
+    ],
+  );
+
+  Widget _scanAction({required IconData icon, required String label}) => Flexible(
+    child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: .14),
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(color: Colors.white.withValues(alpha: .16)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: Colors.white, size: 15),
+          const SizedBox(width: 5),
+          Flexible(
+            child: Text(
+              label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 
   void _openPhotoScan() {
     final router = GoRouter.of(context);
@@ -225,28 +289,133 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     router.push('/food-scan');
   }
 
-  Widget _mealTypeChip(String value, String label, IconData icon) => ChoiceChip(
-    selected: _mealType == value,
-    avatar: Icon(icon, size: 18),
-    label: Text(label),
-    onSelected: (_) {
-      HapticFeedback.selectionClick();
-      setState(() => _mealType = value);
-    },
-  );
+  Widget _mealTypeCard(String value, String label, IconData icon) {
+    final selected = _mealType == value;
+    return Padding(
+      padding: const EdgeInsets.only(right: 9),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(18),
+        onTap: () {
+          HapticFeedback.selectionClick();
+          setState(() => _mealType = value);
+        },
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 180),
+          width: 112,
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          decoration: BoxDecoration(
+            color: selected
+                ? AppColors.primary.withValues(alpha: .16)
+                : Theme.of(context).colorScheme.surfaceContainer,
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(
+              color: selected ? AppColors.primary : Theme.of(context).dividerColor,
+            ),
+          ),
+          child: Row(
+            children: [
+              Icon(icon, size: 20, color: selected ? AppColors.primary : null),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  label,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: selected ? FontWeight.w800 : FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _quickMealCard(
+    BuildContext context,
+    Map<String, Object> meal,
+    int index,
+  ) {
+    final icons = [
+      Icons.breakfast_dining_rounded,
+      Icons.set_meal_rounded,
+      Icons.rice_bowl_rounded,
+      Icons.egg_alt_rounded,
+      Icons.eco_rounded,
+      Icons.local_drink_rounded,
+    ];
+    return InkWell(
+      borderRadius: BorderRadius.circular(18),
+      onTap: () => _quickAdd(meal),
+      child: Container(
+        width: 176,
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surfaceContainer,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: Theme.of(context).dividerColor),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: AppColors.primary.withValues(alpha: .12),
+                borderRadius: BorderRadius.circular(13),
+              ),
+              child: Icon(icons[index], color: AppColors.primary, size: 20),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    meal['name']! as String,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  Text(
+                    '${meal['cal']} kcal',
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: AppColors.primary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(Icons.add_circle, color: AppColors.primary, size: 20),
+          ],
+        ),
+      ),
+    );
+  }
 
   Widget _field(
     String label,
     TextEditingController controller,
-    TextInputType type, [
+    TextInputType type, {
     String? suffix,
-  ]) => TextField(
+    IconData? icon,
+    TextInputAction textInputAction = TextInputAction.next,
+  }) => TextField(
     controller: controller,
     keyboardType: type,
+    textInputAction: textInputAction,
     decoration: InputDecoration(
       labelText: label,
       suffixText: suffix,
-      isDense: true,
+      prefixIcon: icon == null ? null : Icon(icon, size: 18),
+      filled: true,
+      isDense: false,
     ),
   );
 
