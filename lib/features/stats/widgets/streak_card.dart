@@ -35,21 +35,8 @@ class StreakCard extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.orange.withAlpha(40),
-                        Colors.deepOrange.withAlpha(20),
-                      ],
-                    ),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Text('🔥', style: TextStyle(fontSize: 32)),
-                ),
-                const SizedBox(height: 8),
                 Text(
                   '$currentStreak',
                   style: theme.textTheme.headlineLarge?.copyWith(
