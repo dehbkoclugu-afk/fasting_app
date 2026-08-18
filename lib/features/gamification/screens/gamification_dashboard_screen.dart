@@ -22,14 +22,15 @@ class GamificationDashboardScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         children: [
-          _LevelHero(game: game, l10n: l10n),
-          const SizedBox(height: 24),
+          _LevelHero(game: game, l10n: l10n, calm: calm),
+          const SizedBox(height: 38),
           _SectionTitle(
             title: l10n.game_quests,
             subtitle: l10n.game_questsDesc,
           ),
           const SizedBox(height: 12),
-          for (final quest in game.quests) _QuestRow(quest: quest, l10n: l10n),
+          for (final quest in game.quests)
+            _QuestRow(quest: quest, l10n: l10n, calm: calm),
           const SizedBox(height: 26),
           if (!calm) ...[
             _SectionTitle(
@@ -123,10 +124,11 @@ class GamificationDashboardScreen extends ConsumerWidget {
 }
 
 class _LevelHero extends StatelessWidget {
-  const _LevelHero({required this.game, required this.l10n});
+  const _LevelHero({required this.game, required this.l10n, required this.calm});
 
   final GamificationState game;
   final AppLocalizations l10n;
+  final bool calm;
 
   @override
   Widget build(BuildContext context) {
@@ -156,11 +158,10 @@ class _LevelHero extends StatelessWidget {
                       color: Colors.white.withValues(alpha: .55),
                     ),
                   ),
-                  child: Text(
-                    '${game.level}',
-                    style: theme.textTheme.headlineSmall?.copyWith(
-                      color: Colors.white,
-                    ),
+                  child: Icon(
+                    calm ? Icons.spa_outlined : Icons.auto_awesome,
+                    color: Colors.white,
+                    size: 28,
                   ),
                 ),
                 const SizedBox(width: 14),
@@ -175,7 +176,7 @@ class _LevelHero extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${game.xp} XP',
+                        calm ? l10n.game_questsDesc : '${game.xp} XP',
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: Colors.white.withValues(alpha: .8),
                         ),
@@ -183,20 +184,22 @@ class _LevelHero extends StatelessWidget {
                     ],
                   ),
                 ),
-                Text(
-                  '${GamificationState.levelSize - game.levelXp} XP',
-                  style: const TextStyle(color: Colors.white),
-                ),
+                if (!calm)
+                  Text(
+                    '${GamificationState.levelSize - game.levelXp} XP',
+                    style: const TextStyle(color: Colors.white),
+                  ),
               ],
             ),
             const SizedBox(height: 18),
-            LinearProgressIndicator(
-              value: game.levelProgress,
-              minHeight: 9,
-              borderRadius: BorderRadius.circular(10),
-              backgroundColor: Colors.white.withValues(alpha: .2),
-              valueColor: const AlwaysStoppedAnimation(Colors.white),
-            ),
+            if (!calm)
+              LinearProgressIndicator(
+                value: game.levelProgress,
+                minHeight: 9,
+                borderRadius: BorderRadius.circular(10),
+                backgroundColor: Colors.white.withValues(alpha: .2),
+                valueColor: const AlwaysStoppedAnimation(Colors.white),
+              ),
           ],
           ),
         ),
@@ -222,9 +225,10 @@ class _SectionTitle extends StatelessWidget {
 }
 
 class _QuestRow extends StatelessWidget {
-  const _QuestRow({required this.quest, required this.l10n});
+  const _QuestRow({required this.quest, required this.l10n, required this.calm});
   final GameQuest quest;
   final AppLocalizations l10n;
+  final bool calm;
 
   @override
   Widget build(BuildContext context) {
@@ -251,20 +255,23 @@ class _QuestRow extends StatelessWidget {
                         _ => l10n.quest_steady,
                       }, style: theme.textTheme.titleSmall),
                     ),
-                    Text(
-                      '+${quest.xp} XP',
-                      style: theme.textTheme.labelSmall?.copyWith(
-                        color: AppColors.primary,
+                    if (!calm)
+                      Text(
+                        '+${quest.xp} XP',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: AppColors.primary,
+                        ),
                       ),
-                    ),
                   ],
                 ),
-                const SizedBox(height: 6),
-                LinearProgressIndicator(
-                  value: quest.ratio,
-                  minHeight: 5,
-                  borderRadius: BorderRadius.circular(5),
-                ),
+                if (!calm) ...[
+                  const SizedBox(height: 6),
+                  LinearProgressIndicator(
+                    value: quest.ratio,
+                    minHeight: 5,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ],
               ],
             ),
           ),
@@ -279,47 +286,59 @@ class _SeasonPath extends StatelessWidget {
   final int current;
 
   @override
-  Widget build(BuildContext context) => SizedBox(
-    height: 74,
-    child: ListView.separated(
-      scrollDirection: Axis.horizontal,
-      itemCount: 30,
-      separatorBuilder:
-          (_, __) => Container(
-            width: 18,
-            height: 2,
-            color: Theme.of(context).dividerColor,
+  Widget build(BuildContext context) => FastingArtSlot(
+    assetPath: 'assets/images/editorial/v3/season-path.webp',
+    height: 148,
+    borderRadius: 24,
+    variant: FastingArtVariant.card,
+    alignment: Alignment.centerRight,
+    semanticLabel: '30 step season path',
+    child: Padding(
+      padding: const EdgeInsets.all(18),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  color: AppColors.primary,
+                  shape: BoxShape.circle,
+                ),
+                child: Text(
+                  '$current',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(99),
+                  child: LinearProgressIndicator(
+                    value: (current / 30).clamp(0, 1).toDouble(),
+                    minHeight: 8,
+                    backgroundColor: Colors.white.withValues(alpha: .18),
+                    valueColor: const AlwaysStoppedAnimation(AppColors.primary),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                '30',
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+              ),
+            ],
           ),
-      itemBuilder: (context, index) {
-        final step = index + 1;
-        final reached = step <= current;
-        final milestone = step % 5 == 0;
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AnimatedContainer(
-              duration:
-                  MediaQuery.of(context).disableAnimations
-                      ? Duration.zero
-                      : const Duration(milliseconds: 220),
-              width: milestone ? 44 : 34,
-              height: milestone ? 44 : 34,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color:
-                    reached
-                        ? AppColors.primary
-                        : Theme.of(context).dividerColor,
-              ),
-              child: Text(
-                milestone ? '✦' : '$step',
-                style: TextStyle(color: reached ? Colors.white : null),
-              ),
-            ),
-          ],
-        );
-      },
+        ],
+      ),
     ),
   );
 }
@@ -371,7 +390,7 @@ class _BadgeToken extends StatelessWidget {
       builder: (context, constraints) => Opacity(
         opacity: badge.unlocked ? 1 : .42,
         child: FastingArtSlot(
-          assetPath: _badgeArtwork(badge.id, badge.icon),
+          assetPath: _badgeArtwork(badge.id),
           height: constraints.maxHeight,
           borderRadius: 18,
           variant: FastingArtVariant.bare,
@@ -428,20 +447,24 @@ class _BadgeToken extends StatelessWidget {
     ),
   );
 
-  String _badgeArtwork(String id, String icon) {
-    if (id == 'water' || icon == 'water') {
-      return 'assets/images/editorial/v2/badge-water.webp';
-    }
-    if (icon == 'clock' || id.startsWith('hours') || id == 'fast16') {
-      return 'assets/images/editorial/v2/badge-clock.webp';
-    }
-    if (icon == 'crown' || id == 'rhythm30' || id == 'target30') {
-      return 'assets/images/editorial/v2/badge-crown.webp';
-    }
-    if (icon == 'leaf' || id == 'first') {
-      return 'assets/images/editorial/v2/badge-sprout.webp';
-    }
-    return 'assets/images/editorial/v2/badge-rhythm.webp';
+  String _badgeArtwork(String id) {
+    return switch (id) {
+      'first' => 'assets/images/editorial/v3/badge-first.webp',
+      'rhythm3' => 'assets/images/editorial/v3/badge-rhythm3.webp',
+      'rhythm7' => 'assets/images/editorial/v3/badge-rhythm7.webp',
+      'target1' => 'assets/images/editorial/v3/badge-target1.webp',
+      'target3' => 'assets/images/editorial/v3/badge-target3.webp',
+      'water' => 'assets/images/editorial/v3/badge-water.webp',
+      'support' => 'assets/images/editorial/v3/badge-support.webp',
+      'hours10' => 'assets/images/editorial/v3/badge-hours10.webp',
+      'target10' => 'assets/images/editorial/v3/badge-target10.webp',
+      'target20' => 'assets/images/editorial/v3/badge-target20.webp',
+      'fast16' => 'assets/images/editorial/v3/badge-fast16.webp',
+      'hours50' => 'assets/images/editorial/v3/badge-hours50.webp',
+      'hours100' => 'assets/images/editorial/v3/badge-hours100.webp',
+      'target30' => 'assets/images/editorial/v3/badge-target30.webp',
+      _ => 'assets/images/editorial/v3/badge-rhythm30.webp',
+    };
   }
 
   String _badgeTitle(AppLocalizations l10n, String id) => switch (id) {

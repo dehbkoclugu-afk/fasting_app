@@ -41,7 +41,8 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
                 title: l10n.onboarding_permissions,
                 subtitle: l10n.onboarding_permissionsDesc,
                 icon: Icons.notifications_none,
-                height: 132,
+                height: 210,
+                alignment: Alignment.centerRight,
               ),
               const SizedBox(height: 24),
 

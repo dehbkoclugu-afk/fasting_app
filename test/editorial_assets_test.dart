@@ -7,6 +7,7 @@ void main() {
     final pubspec = File('pubspec.yaml').readAsStringSync();
     expect(pubspec, contains('- assets/images/editorial/'));
     expect(pubspec, contains('- assets/images/editorial/v2/'));
+    expect(pubspec, contains('- assets/images/editorial/v3/'));
 
     final dartFiles = Directory('lib')
         .listSync(recursive: true)

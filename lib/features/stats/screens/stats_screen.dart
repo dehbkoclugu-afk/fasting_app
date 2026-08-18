@@ -114,7 +114,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               icon: Icons.timer_outlined,
                               color: AppColors.primary,
                               artPath:
-                                  'assets/images/editorial/v2/stats-consistency.webp',
+                                  'assets/images/editorial/v3/stats-total.webp',
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -128,7 +128,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               icon: Icons.analytics_outlined,
                               color: AppColors.tertiary,
                               artPath:
-                                  'assets/images/editorial/v2/stats-hours.webp',
+                                  'assets/images/editorial/v3/stats-average.webp',
                             ),
                           ),
                         ],
@@ -145,7 +145,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               icon: Icons.local_fire_department_outlined,
                               color: Colors.orange,
                               artPath:
-                                  'assets/images/editorial/v2/stats-streak.webp',
+                                  'assets/images/editorial/v3/stats-streak.webp',
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -158,7 +158,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               icon: Icons.emoji_events_outlined,
                               color: AppColors.success,
                               artPath:
-                                  'assets/images/editorial/v2/stats-consistency.webp',
+                                  'assets/images/editorial/v3/stats-success.webp',
                             ),
                           ),
                         ],
@@ -386,9 +386,10 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     final theme = Theme.of(context);
     return FastingArtSlot(
       assetPath: artPath,
-      height: 142,
+      height: 158,
       borderRadius: 22,
       variant: FastingArtVariant.card,
+      alignment: Alignment.centerRight,
       semanticLabel: title,
       child: Padding(
         padding: const EdgeInsets.all(15),
