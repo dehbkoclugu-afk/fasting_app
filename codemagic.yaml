@@ -128,9 +128,15 @@ workflows:
         # Every one of these except GEMINI_API_KEY also has a fallback in
         # BuildConfig, so an empty variable degrades to the in-source value
         # instead of shipping a build with purchases and ads switched off.
-        # GEMINI_API_KEY has none on purpose (it is a billable secret); an
-        # empty one just hides the AI food scan.
+        # GEMINI_API_KEY has no fallback because it is a billable secret.
+        # Fail before producing an AAB if Codemagic did not inject it; otherwise
+        # the release would expose a food scanner that can only show an error.
         script: |
+          set -e
+          test -n "${GEMINI_API_KEY:-}" || {
+            echo "Missing GEMINI_API_KEY in the fasttrack_release variable group"
+            exit 1
+          }
           flutter build appbundle --release \
             --dart-define=REVENUECAT_ANDROID_API_KEY=$REVENUECAT_ANDROID_API_KEY \
             --dart-define=ADMOB_ANDROID_BANNER_ID=$ADMOB_ANDROID_BANNER_ID \
