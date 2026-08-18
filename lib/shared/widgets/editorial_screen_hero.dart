@@ -12,6 +12,8 @@ class EditorialScreenHero extends StatelessWidget {
     this.icon,
     this.height = 172,
     this.semanticLabel,
+    this.alignment = Alignment.center,
+    this.fit = BoxFit.cover,
   });
 
   final String assetPath;
@@ -20,6 +22,8 @@ class EditorialScreenHero extends StatelessWidget {
   final IconData? icon;
   final double height;
   final String? semanticLabel;
+  final Alignment alignment;
+  final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +32,8 @@ class EditorialScreenHero extends StatelessWidget {
       assetPath: assetPath,
       height: height,
       variant: FastingArtVariant.hero,
+      alignment: alignment,
+      fit: fit,
       semanticLabel: semanticLabel ?? title,
       child: Padding(
         padding: const EdgeInsets.all(20),

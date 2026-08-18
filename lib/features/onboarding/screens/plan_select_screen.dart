@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,7 +41,7 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
               const SizedBox(height: 24),
 
               EditorialScreenHero(
-                assetPath: 'assets/images/editorial/goals-path.webp',
+                assetPath: 'assets/images/editorial/v3/plan-clock-16-8.webp',
                 title: l10n.onboarding_selectPlan,
                 subtitle: l10n.onboarding_selectPlanDesc,
                 icon: Icons.schedule_outlined,
@@ -81,14 +83,28 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                         child: Opacity(
                           opacity: isLocked ? .58 : 1,
                           child: FastingArtSlot(
-                            assetPath: _planArtwork(plan.fastingHours),
+                            assetPath: _planArtwork(plan.id),
                             height: 102,
                             borderRadius: 17,
                             variant: FastingArtVariant.row,
                             semanticLabel: plan.name,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
-                              child: Row(
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  right: 30,
+                                  top: 12,
+                                  child: _ClockDirectionDial(
+                                    progress: _fastingRatio(plan),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(
+                                    14,
+                                    12,
+                                    14,
+                                    12,
+                                  ),
+                                  child: Row(
                                 children: [
                                   Container(
                                     width: 54,
@@ -165,7 +181,9 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                                     size: isSelected ? 24 : 20,
                                   ),
                                 ],
-                              ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -191,21 +209,22 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
     );
   }
 
-  String _planArtwork(int fastingHours) {
-    if (fastingHours <= 12) {
-      return 'assets/images/editorial/v2/plan-12-12.webp';
-    }
-    if (fastingHours <= 16) {
-      return 'assets/images/editorial/v2/plan-16-8.webp';
-    }
-    if (fastingHours <= 18) {
-      return 'assets/images/editorial/v2/plan-18-6.webp';
-    }
-    if (fastingHours <= 20) {
-      return 'assets/images/editorial/v2/plan-20-4.webp';
-    }
-    return 'assets/images/editorial/v2/plan-omad.webp';
-  }
+  String _planArtwork(String id) => switch (id) {
+    '12_12' => 'assets/images/editorial/v3/plan-clock-12-12.webp',
+    '16_8' => 'assets/images/editorial/v3/plan-clock-16-8.webp',
+    '18_6' => 'assets/images/editorial/v3/plan-clock-18-6.webp',
+    '20_4' => 'assets/images/editorial/v3/plan-clock-20-4.webp',
+    'omad' => 'assets/images/editorial/v3/plan-clock-omad.webp',
+    '5_2' => 'assets/images/editorial/v3/plan-clock-5-2.webp',
+    'eat_stop_eat' => 'assets/images/editorial/v3/plan-clock-ese.webp',
+    _ => 'assets/images/editorial/v3/plan-clock-warrior.webp',
+  };
+
+  double _fastingRatio(FastingPlan plan) => switch (plan.id) {
+    '5_2' => 5 / 7,
+    'eat_stop_eat' => 1,
+    _ => plan.fastingHours / 24,
+  };
 
   Widget _proBadge() => Container(
     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
@@ -222,4 +241,63 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
       ),
     ),
   );
+}
+
+/// The fasting interval always starts at 12 o'clock and advances clockwise.
+/// Keeping this in code prevents the direction from being ambiguous in art.
+class _ClockDirectionDial extends StatelessWidget {
+  const _ClockDirectionDial({required this.progress});
+
+  final double progress;
+
+  @override
+  Widget build(BuildContext context) => IgnorePointer(
+    child: CustomPaint(
+      size: const Size.square(78),
+      painter: _ClockDirectionPainter(progress.clamp(0, 1).toDouble()),
+    ),
+  );
+}
+
+class _ClockDirectionPainter extends CustomPainter {
+  const _ClockDirectionPainter(this.progress);
+
+  final double progress;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = size.center(Offset.zero);
+    final radius = size.shortestSide / 2 - 7;
+    final rect = Rect.fromCircle(center: center, radius: radius);
+    final base = Paint()
+      ..color = Colors.white.withValues(alpha: .18)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 6;
+    final fast = Paint()
+      ..color = AppColors.primary.withValues(alpha: .94)
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 7;
+    canvas.drawCircle(center, radius, base);
+    final sweep = 2 * 3.141592653589793 * progress;
+    canvas.drawArc(rect, -3.141592653589793 / 2, sweep, false, fast);
+
+    final angle = -3.141592653589793 / 2 + sweep;
+    final end = Offset(
+      center.dx + radius * math.cos(angle),
+      center.dy + radius * math.sin(angle),
+    );
+    final tangent = Offset(-math.sin(angle), math.cos(angle));
+    final normal = Offset(math.cos(angle), math.sin(angle));
+    final path = Path()
+      ..moveTo(end.dx + tangent.dx * 6, end.dy + tangent.dy * 6)
+      ..lineTo(end.dx - tangent.dx * 6 + normal.dx * 3, end.dy - tangent.dy * 6 + normal.dy * 3)
+      ..lineTo(end.dx - tangent.dx * 6 - normal.dx * 3, end.dy - tangent.dy * 6 - normal.dy * 3)
+      ..close();
+    canvas.drawPath(path, Paint()..color = AppColors.primary);
+  }
+
+  @override
+  bool shouldRepaint(covariant _ClockDirectionPainter oldDelegate) =>
+      oldDelegate.progress != progress;
 }

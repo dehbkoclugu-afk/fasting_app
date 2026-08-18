@@ -44,6 +44,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    final artHeight = (MediaQuery.sizeOf(context).height * .42)
+        .clamp(280.0, 360.0)
+        .toDouble();
 
     return Scaffold(
       body: SafeArea(
@@ -67,7 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   child: FastingArtSlot(
                     assetPath:
                         'assets/images/editorial/onboarding-welcome.webp',
-                    height: 218,
+                    height: artHeight,
                     borderRadius: 30,
                     variant: FastingArtVariant.bare,
                     semanticLabel: 'FastTrack',
@@ -76,7 +79,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ),
               ),
 
-              const SizedBox(height: 28),
+              const SizedBox(height: 14),
+              const _WelcomeDots(),
+              const SizedBox(height: 18),
 
               FadeTransition(
                 opacity: _fadeIn,
@@ -109,24 +114,23 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
               const Spacer(),
 
-              // Features preview
+              // Three compact feature dots sit directly under the welcome art.
               FadeTransition(
                 opacity: _fadeIn,
-                child: Column(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    _buildFeatureRow(
+                    _buildFeatureDot(
                       context,
                       Icons.timer_outlined,
                       l10n.onboarding_featureTimer,
                     ),
-                    const SizedBox(height: 12),
-                    _buildFeatureRow(
+                    _buildFeatureDot(
                       context,
                       Icons.analytics_outlined,
                       l10n.onboarding_featureStats,
                     ),
-                    const SizedBox(height: 12),
-                    _buildFeatureRow(
+                    _buildFeatureDot(
                       context,
                       Icons.restaurant_outlined,
                       l10n.onboarding_featureMeals,
@@ -153,28 +157,66 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
-  Widget _buildFeatureRow(BuildContext context, IconData icon, String text) {
+  Widget _buildFeatureDot(BuildContext context, IconData icon, String text) {
     final theme = Theme.of(context);
-    return Row(
+    return Expanded(
+      child: Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(8),
+          width: 50,
+          height: 50,
           decoration: BoxDecoration(
-            color: AppColors.primary.withValues(alpha: 0.1),
-            borderRadius: BorderRadius.circular(10),
+            color: AppColors.primary.withValues(alpha: 0.14),
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: AppColors.primary.withValues(alpha: .32),
+            ),
           ),
-          child: Icon(icon, color: AppColors.primary, size: 20),
+          child: Icon(icon, color: AppColors.primary, size: 22),
         ),
-        const SizedBox(width: 14),
-        Expanded(
-          child: Text(
+        const SizedBox(height: 7),
+        Text(
             text,
-            style: theme.textTheme.bodyMedium?.copyWith(
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.labelSmall?.copyWith(
               color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
-        ),
       ],
+      ),
     );
   }
+}
+
+class _WelcomeDots extends StatelessWidget {
+  const _WelcomeDots();
+
+  @override
+  Widget build(BuildContext context) => Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Container(
+        width: 24,
+        height: 8,
+        decoration: BoxDecoration(
+          color: AppColors.primary,
+          borderRadius: BorderRadius.circular(99),
+        ),
+      ),
+      const SizedBox(width: 7),
+      for (var index = 0; index < 2; index++) ...[
+        Container(
+          width: 8,
+          height: 8,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .2),
+            shape: BoxShape.circle,
+          ),
+        ),
+        if (index == 0) const SizedBox(width: 7),
+      ],
+    ],
+  );
 }

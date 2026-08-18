@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../../stats/providers/stats_provider.dart';
 
@@ -61,6 +62,8 @@ class QuickStatsRow extends ConsumerWidget {
         ),
         const SizedBox(height: 12),
         _SummarySurface(
+          artPath: 'assets/images/editorial/v3/quick-water.webp',
+          height: 116,
           onTap: () => context.push('/water-tracker'),
           child: Column(
             children: [
@@ -126,6 +129,8 @@ class QuickStatsRow extends ConsumerWidget {
           children: [
             Expanded(
               child: _SummarySurface(
+                artPath: 'assets/images/editorial/v3/quick-streak.webp',
+                height: 118,
                 child: _Metric(
                   icon: PhosphorIcons.fire(PhosphorIconsStyle.fill),
                   color: AppColors.warning,
@@ -137,6 +142,8 @@ class QuickStatsRow extends ConsumerWidget {
             const SizedBox(width: 12),
             Expanded(
               child: _SummarySurface(
+                artPath: 'assets/images/editorial/v3/quick-weight.webp',
+                height: 118,
                 onTap: () => context.push('/weight-tracker'),
                 child: _Metric(
                   icon: PhosphorIcons.scales(),
@@ -165,26 +172,32 @@ class QuickStatsRow extends ConsumerWidget {
 }
 
 class _SummarySurface extends StatelessWidget {
-  const _SummarySurface({required this.child, this.onTap});
+  const _SummarySurface({
+    required this.child,
+    required this.artPath,
+    required this.height,
+    this.onTap,
+  });
 
   final Widget child;
+  final String artPath;
+  final double height;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Material(
-      color: theme.colorScheme.surface,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(22),
-        side: BorderSide(
-          color: theme.colorScheme.onSurface.withValues(alpha: .065),
+    return FastingArtSlot(
+      assetPath: artPath,
+      height: height,
+      borderRadius: 22,
+      alignment: Alignment.centerRight,
+      variant: FastingArtVariant.card,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(padding: const EdgeInsets.all(16), child: child),
         ),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(padding: const EdgeInsets.all(16), child: child),
       ),
     );
   }

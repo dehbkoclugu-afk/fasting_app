@@ -50,11 +50,7 @@ class ProfileScreen extends ConsumerWidget {
   Future<void> _privacyChoices(BuildContext context) async {
     final success = await AdmobService().showPrivacyOptions();
     if (!success && context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context)!.explore_sourceError),
-        ),
-      );
+      await _openUrl(context, BuildConfig.privacyPolicyUrl);
     }
   }
 
@@ -403,7 +399,7 @@ class ProfileScreen extends ConsumerWidget {
                       context,
                       icon: PhosphorIcons.info(),
                       title: l10n.profile_version,
-                      subtitle: '1.0.0',
+                      subtitle: '1.2.0 (12)',
                     ),
                   ],
                 ),

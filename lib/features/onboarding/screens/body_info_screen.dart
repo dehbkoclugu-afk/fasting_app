@@ -37,7 +37,8 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
 
     return Scaffold(
       body: SafeArea(
-        child: Padding(
+        minimum: const EdgeInsets.only(bottom: 16),
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +51,8 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
                 title: l10n.onboarding_bodyInfo,
                 subtitle: l10n.onboarding_bodyInfoDesc,
                 icon: Icons.person_outline,
-                height: 118,
+                height: 148,
+                alignment: Alignment.centerRight,
               ),
               const SizedBox(height: 18),
 
@@ -119,7 +121,7 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
                 icon: Icons.cake_outlined,
               ),
 
-              const Spacer(),
+              const SizedBox(height: 24),
 
               Text(
                 l10n.onboarding_bodyInfoDisclaimer,
@@ -147,6 +149,7 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
                   context.go('/onboarding/permissions');
                 },
               ),
+              const SizedBox(height: 8),
             ],
           ),
         ),

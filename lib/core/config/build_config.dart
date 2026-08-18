@@ -83,9 +83,9 @@ class BuildConfig {
   static const _androidStoreUrlFallback =
       'https://play.google.com/store/apps/details?id=com.dehbkoclugu.fasttrack';
   static const _privacyPolicyUrlFallback =
-      'https://dehbkoclugu-afk.github.io/privacy/';
+      'https://fasting-app-mauve.vercel.app/privacy/';
   static const _termsOfUseUrlFallback =
-      'https://dehbkoclugu-afk.github.io/terms/';
+      'https://fasting-app-mauve.vercel.app/terms/';
 
   // ===========================================================================
   // Build-time overrides (--dart-define / --dart-define-from-file).
