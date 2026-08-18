@@ -107,22 +107,57 @@ class MealsScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              SizedBox(
-                width: double.infinity,
-                child: OutlinedButton.icon(
-                  onPressed: () => _showAddMealSheet(context),
-                  icon: Icon(PhosphorIcons.pencilSimple(), size: 18),
-                  label: Text(l10n.meals_manualEntry),
-                  style: OutlinedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(48),
+              InkWell(
+                onTap: () => _showAddMealSheet(context),
+                borderRadius: BorderRadius.circular(20),
+                child: FastingArtSlot(
+                  assetPath: 'assets/images/editorial/v4/meal-manual-entry.webp',
+                  height: 72,
+                  borderRadius: 20,
+                  variant: FastingArtVariant.row,
+                  alignment: Alignment.centerRight,
+                  semanticLabel: l10n.meals_manualEntry,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18),
+                    child: Row(
+                      children: [
+                        Icon(
+                          PhosphorIcons.pencilSimple(),
+                          size: 20,
+                          color: AppColors.primaryLight,
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          l10n.meals_manualEntry,
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        const Spacer(),
+                        Icon(
+                          Icons.arrow_forward_rounded,
+                          color: Colors.white.withValues(alpha: .72),
+                          size: 20,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
               const SizedBox(height: 20),
 
               // Eating window bar
-              GlassCard(
-                child: Column(
+              FastingArtSlot(
+                assetPath: 'assets/images/editorial/v4/meal-window.webp',
+                height: 142,
+                borderRadius: 24,
+                variant: FastingArtVariant.row,
+                alignment: Alignment.centerRight,
+                semanticLabel: l10n.meals_eatingWindow,
+                child: Padding(
+                  padding: const EdgeInsets.all(18),
+                  child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
@@ -130,7 +165,10 @@ class MealsScreen extends ConsumerWidget {
                       children: [
                         Text(
                           l10n.meals_eatingWindow,
-                          style: theme.textTheme.titleSmall,
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(
@@ -210,6 +248,7 @@ class MealsScreen extends ConsumerWidget {
                   ],
                 ),
               ),
+            ),
               const SizedBox(height: 20),
 
               // Calorie summary from real data
@@ -231,6 +270,7 @@ class MealsScreen extends ConsumerWidget {
                         : mealState.totalCalories / mealState.calorieGoal,
                     color: AppColors.secondary,
                     icon: PhosphorIcons.fire(PhosphorIconsStyle.fill),
+                    artPath: 'assets/images/editorial/v4/macro-calories.webp',
                   ),
                   _buildNutrientCard(
                     context,
@@ -240,6 +280,7 @@ class MealsScreen extends ConsumerWidget {
                     progress: mealState.totalProtein / 120,
                     color: Colors.blue,
                     icon: PhosphorIcons.barbell(PhosphorIconsStyle.fill),
+                    artPath: 'assets/images/editorial/v4/macro-protein.webp',
                   ),
                   _buildNutrientCard(
                     context,
@@ -249,6 +290,7 @@ class MealsScreen extends ConsumerWidget {
                     progress: mealState.totalCarbs / 200,
                     color: Colors.orange,
                     icon: PhosphorIcons.bread(PhosphorIconsStyle.fill),
+                    artPath: 'assets/images/editorial/v4/macro-carbs.webp',
                   ),
                   _buildNutrientCard(
                     context,
@@ -258,6 +300,7 @@ class MealsScreen extends ConsumerWidget {
                     progress: mealState.totalFat / 65,
                     color: Colors.purple,
                     icon: PhosphorIcons.drop(PhosphorIconsStyle.fill),
+                    artPath: 'assets/images/editorial/v4/macro-fat.webp',
                   ),
                 ],
               ),
@@ -412,6 +455,9 @@ class MealsScreen extends ConsumerWidget {
       context: context,
       isScrollControlled: true,
       showDragHandle: true,
+      useSafeArea: true,
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      clipBehavior: Clip.antiAlias,
       builder: (_) => const AddMealSheet(),
     );
   }
@@ -454,11 +500,19 @@ class MealsScreen extends ConsumerWidget {
     required double progress,
     required Color color,
     required IconData icon,
+    required String artPath,
   }) {
     final theme = Theme.of(context);
-    return GlassCard(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      child: Row(
+    return FastingArtSlot(
+      assetPath: artPath,
+      height: 82,
+      borderRadius: 20,
+      variant: FastingArtVariant.card,
+      alignment: Alignment.centerRight,
+      semanticLabel: label,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        child: Row(
         children: [
           Container(
             width: 34,
@@ -469,7 +523,7 @@ class MealsScreen extends ConsumerWidget {
             ),
             child: Icon(icon, color: color, size: 18),
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: 8),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -480,20 +534,21 @@ class MealsScreen extends ConsumerWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.labelSmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withValues(alpha: .55),
+                    color: Colors.white.withValues(alpha: .62),
                   ),
                 ),
                 Text.rich(
                   TextSpan(
                     text: value,
                     style: theme.textTheme.titleSmall?.copyWith(
+                      color: Colors.white,
                       fontWeight: FontWeight.w800,
                     ),
                     children: [
                       TextSpan(
                         text: ' / $target',
                         style: theme.textTheme.labelSmall?.copyWith(
-                          color: theme.colorScheme.onSurface.withValues(alpha: .4),
+                          color: Colors.white.withValues(alpha: .45),
                         ),
                       ),
                     ],
@@ -512,6 +567,7 @@ class MealsScreen extends ConsumerWidget {
             ),
           ),
         ],
+        ),
       ),
     );
   }

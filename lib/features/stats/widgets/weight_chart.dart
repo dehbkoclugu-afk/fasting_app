@@ -1,64 +1,75 @@
+import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:fasting_app/l10n/generated/app_localizations.dart';
+
 import '../../../core/theme/app_colors.dart';
-import '../../../shared/widgets/glass_card.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 
 class WeightChart extends StatelessWidget {
-  final List<Map<String, dynamic>>
-  weightData; // [{date: DateTime, weight: double}]
-  final double? targetWeight;
+  const WeightChart({
+    super.key,
+    required this.weightData,
+    this.targetWeight,
+  });
 
-  const WeightChart({super.key, required this.weightData, this.targetWeight});
+  final List<Map<String, dynamic>> weightData;
+  final double? targetWeight;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     final l10n = AppLocalizations.of(context)!;
 
     if (weightData.isEmpty) {
-      return GlassCard(
-        padding: const EdgeInsets.all(20),
-        child: SizedBox(
-          height: 160,
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.monitor_weight_outlined,
-                  size: 40,
-                  color: theme.colorScheme.onSurface.withAlpha(50),
+      return FastingArtSlot(
+        assetPath: 'assets/images/editorial/v4/report-weight.webp',
+        height: 176,
+        borderRadius: 24,
+        variant: FastingArtVariant.row,
+        alignment: Alignment.centerRight,
+        semanticLabel: l10n.weight_noRecord,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 20, 160, 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(
+                Icons.monitor_weight_outlined,
+                size: 30,
+                color: AppColors.primaryLight,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                l10n.weight_noRecord,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: Colors.white.withValues(alpha: .76),
+                  fontWeight: FontWeight.w600,
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  l10n.weight_noRecord,
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withAlpha(100),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       );
     }
 
-    final spots =
-        weightData.asMap().entries.map((e) {
-          return FlSpot(e.key.toDouble(), e.value['weight'] as double);
-        }).toList();
-
-    final weights = weightData.map((d) => d['weight'] as double).toList();
+    final spots = weightData.asMap().entries.map((entry) {
+      return FlSpot(entry.key.toDouble(), entry.value['weight'] as double);
+    }).toList();
+    final weights = weightData.map((data) => data['weight'] as double).toList();
     final minWeight = weights.reduce((a, b) => a < b ? a : b) - 2;
     final maxWeight = weights.reduce((a, b) => a > b ? a : b) + 2;
 
-    return GlassCard(
-      padding: const EdgeInsets.all(20),
-      child: SizedBox(
-        height: 200,
+    return FastingArtSlot(
+      assetPath: 'assets/images/editorial/v4/report-weight.webp',
+      height: 236,
+      borderRadius: 24,
+      variant: FastingArtVariant.card,
+      alignment: Alignment.centerRight,
+      child: Padding(
+        padding: const EdgeInsets.all(18),
         child: LineChart(
           LineChartData(
             minY: minWeight,
@@ -67,11 +78,10 @@ class WeightChart extends StatelessWidget {
               show: true,
               drawVerticalLine: false,
               horizontalInterval: 2,
-              getDrawingHorizontalLine:
-                  (value) => FlLine(
-                    color: theme.colorScheme.onSurface.withAlpha(12),
-                    strokeWidth: 1,
-                  ),
+              getDrawingHorizontalLine: (_) => FlLine(
+                color: Colors.white.withValues(alpha: .08),
+                strokeWidth: 1,
+              ),
             ),
             titlesData: FlTitlesData(
               bottomTitles: AxisTitles(
@@ -91,7 +101,7 @@ class WeightChart extends StatelessWidget {
                         '${date.day}/${date.month}',
                         style: TextStyle(
                           fontSize: 10,
-                          color: theme.colorScheme.onSurface.withAlpha(100),
+                          color: Colors.white.withValues(alpha: .6),
                         ),
                       ),
                     );
@@ -103,15 +113,13 @@ class WeightChart extends StatelessWidget {
                   showTitles: true,
                   reservedSize: 40,
                   interval: 2,
-                  getTitlesWidget: (value, meta) {
-                    return Text(
-                      '${value.toInt()}',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: theme.colorScheme.onSurface.withAlpha(100),
-                      ),
-                    );
-                  },
+                  getTitlesWidget: (value, meta) => Text(
+                    '${value.toInt()}',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.white.withValues(alpha: .6),
+                    ),
+                  ),
                 ),
               ),
               topTitles: const AxisTitles(
@@ -123,23 +131,21 @@ class WeightChart extends StatelessWidget {
             ),
             borderData: FlBorderData(show: false),
             lineBarsData: [
-              // Weight line
               LineChartBarData(
                 spots: spots,
                 isCurved: true,
-                curveSmoothness: 0.3,
-                color: AppColors.primary,
+                curveSmoothness: .3,
+                color: AppColors.primaryLight,
                 barWidth: 3,
                 dotData: FlDotData(
                   show: true,
-                  getDotPainter: (spot, percent, barData, index) {
-                    return FlDotCirclePainter(
-                      radius: 4,
-                      color: AppColors.primary,
-                      strokeWidth: 2,
-                      strokeColor: Colors.white,
-                    );
-                  },
+                  getDotPainter: (spot, percent, barData, index) =>
+                      FlDotCirclePainter(
+                        radius: 4,
+                        color: AppColors.primary,
+                        strokeWidth: 2,
+                        strokeColor: Colors.white,
+                      ),
                 ),
                 belowBarData: BarAreaData(
                   show: true,
@@ -147,13 +153,12 @@ class WeightChart extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      AppColors.primary.withAlpha(60),
-                      AppColors.primary.withAlpha(0),
+                      AppColors.primary.withValues(alpha: .38),
+                      AppColors.primary.withValues(alpha: 0),
                     ],
                   ),
                 ),
               ),
-              // Target weight line
               if (targetWeight != null)
                 LineChartBarData(
                   spots: [
@@ -161,7 +166,7 @@ class WeightChart extends StatelessWidget {
                     FlSpot(spots.length.toDouble() - 1, targetWeight!),
                   ],
                   isCurved: false,
-                  color: AppColors.success.withAlpha(120),
+                  color: AppColors.success.withValues(alpha: .75),
                   barWidth: 1,
                   dashArray: [5, 5],
                   dotData: const FlDotData(show: false),
@@ -169,18 +174,18 @@ class WeightChart extends StatelessWidget {
             ],
             lineTouchData: LineTouchData(
               touchTooltipData: LineTouchTooltipData(
-                getTooltipItems: (touchedSpots) {
-                  return touchedSpots.map((spot) {
-                    return LineTooltipItem(
-                      '${spot.y.toStringAsFixed(1)} kg',
-                      TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12,
+                getTooltipItems: (touchedSpots) => touchedSpots
+                    .map(
+                      (spot) => LineTooltipItem(
+                        '${spot.y.toStringAsFixed(1)} kg',
+                        const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 12,
+                        ),
                       ),
-                    );
-                  }).toList();
-                },
+                    )
+                    .toList(),
               ),
             ),
           ),

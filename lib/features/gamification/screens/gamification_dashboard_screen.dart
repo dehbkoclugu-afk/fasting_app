@@ -64,14 +64,16 @@ class GamificationDashboardScreen extends ConsumerWidget {
                     _BadgeToken(badge: game.badges[index], l10n: l10n),
           ),
           const SizedBox(height: 26),
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surface,
-              borderRadius: BorderRadius.circular(22),
-              border: Border.all(color: theme.dividerColor),
-            ),
-            child: Row(
+          FastingArtSlot(
+            assetPath: 'assets/images/editorial/v4/rhythm-shield.webp',
+            height: 132,
+            borderRadius: 22,
+            variant: FastingArtVariant.row,
+            alignment: Alignment.centerRight,
+            semanticLabel: l10n.game_shields(game.shields),
+            child: Padding(
+              padding: const EdgeInsets.all(18),
+              child: Row(
               children: [
                 const Icon(
                   Icons.shield_outlined,
@@ -85,36 +87,43 @@ class GamificationDashboardScreen extends ConsumerWidget {
                     children: [
                       Text(
                         l10n.game_shields(game.shields),
-                        style: theme.textTheme.titleMedium,
+                        style: theme.textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w800),
                       ),
                       Text(
                         l10n.game_shieldsDesc,
-                        style: theme.textTheme.bodySmall,
+                        style: theme.textTheme.bodySmall?.copyWith(color: Colors.white.withValues(alpha: .72)),
                       ),
                     ],
                   ),
                 ),
               ],
+              ),
             ),
           ),
           const SizedBox(height: 14),
           if (!calm)
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: .08),
-                borderRadius: BorderRadius.circular(22),
-              ),
-              child: Column(
+            FastingArtSlot(
+              assetPath: 'assets/images/editorial/v4/weekly-league.webp',
+              height: 148,
+              borderRadius: 22,
+              variant: FastingArtVariant.row,
+              alignment: Alignment.centerRight,
+              semanticLabel: l10n.game_league,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(18, 18, 128, 18),
+                child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(l10n.game_league, style: theme.textTheme.titleMedium),
+                  Text(l10n.game_league, style: theme.textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w800)),
                   const SizedBox(height: 6),
                   Text(
                     l10n.game_leagueDesc(game.leaguePercentile),
-                    style: theme.textTheme.bodyMedium,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white.withValues(alpha: .78)),
                   ),
                 ],
+                ),
               ),
             ),
         ],
