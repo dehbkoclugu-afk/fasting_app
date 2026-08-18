@@ -9,6 +9,7 @@ void main() {
     expect(pubspec, contains('- assets/images/editorial/v2/'));
     expect(pubspec, contains('- assets/images/editorial/v3/'));
     expect(pubspec, contains('- assets/images/editorial/v4/'));
+    expect(pubspec, contains('- assets/images/editorial/v4/quick/'));
 
     final dartFiles = Directory('lib')
         .listSync(recursive: true)
