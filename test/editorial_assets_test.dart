@@ -28,4 +28,13 @@ void main() {
       expect(File(asset).lengthSync(), greaterThan(0), reason: 'Empty artwork: $asset');
     }
   });
+
+  test('manual meal entry offers at least twelve visual quick meals', () {
+    final quickMealAssets = Directory('assets/images/editorial/v4/quick')
+        .listSync()
+        .whereType<File>()
+        .where((file) => file.path.endsWith('.webp'));
+
+    expect(quickMealAssets.length, greaterThanOrEqualTo(12));
+  });
 }

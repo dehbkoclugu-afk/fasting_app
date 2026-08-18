@@ -26,12 +26,18 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
   String _mealType = 'lunch';
 
   final _quickMeals = const [
-    {'name': 'Yulaf Ezmesi', 'cal': 280, 'p': 10.0, 'c': 48.0, 'f': 6.0},
-    {'name': 'Tavuk Göğsü (150g)', 'cal': 230, 'p': 43.0, 'c': 0.0, 'f': 5.0},
-    {'name': 'Pilav (1 porsiyon)', 'cal': 200, 'p': 4.0, 'c': 44.0, 'f': 1.0},
-    {'name': 'Yumurta (2 adet)', 'cal': 155, 'p': 13.0, 'c': 1.0, 'f': 11.0},
-    {'name': 'Salata', 'cal': 120, 'p': 3.0, 'c': 12.0, 'f': 7.0},
-    {'name': 'Yoğurt (200g)', 'cal': 120, 'p': 7.0, 'c': 8.0, 'f': 6.0},
+    {'name': 'Meyveli Yulaf', 'cal': 320, 'p': 12.0, 'c': 48.0, 'f': 9.0, 'art': 'assets/images/editorial/v4/quick/oats.webp'},
+    {'name': 'Yaban Mersinli Yoğurt', 'cal': 240, 'p': 18.0, 'c': 26.0, 'f': 8.0, 'art': 'assets/images/editorial/v4/quick/yogurt.webp'},
+    {'name': 'Yumurtalı Avokado Tost', 'cal': 390, 'p': 22.0, 'c': 32.0, 'f': 19.0, 'art': 'assets/images/editorial/v4/quick/egg-toast.webp'},
+    {'name': 'Tavuklu Kinoa Kasesi', 'cal': 430, 'p': 42.0, 'c': 38.0, 'f': 11.0, 'art': 'assets/images/editorial/v4/quick/chicken-quinoa.webp'},
+    {'name': 'Mercimek Çorbası', 'cal': 310, 'p': 18.0, 'c': 48.0, 'f': 6.0, 'art': 'assets/images/editorial/v4/quick/lentil.webp'},
+    {'name': 'Somon ve Brokoli', 'cal': 520, 'p': 38.0, 'c': 42.0, 'f': 21.0, 'art': 'assets/images/editorial/v4/quick/salmon.webp'},
+    {'name': 'Sebzeli Hindi Wrap', 'cal': 360, 'p': 32.0, 'c': 40.0, 'f': 9.0, 'art': 'assets/images/editorial/v4/quick/turkey-wrap.webp'},
+    {'name': 'Nohutlu Tahin Kasesi', 'cal': 410, 'p': 19.0, 'c': 55.0, 'f': 14.0, 'art': 'assets/images/editorial/v4/quick/chickpea.webp'},
+    {'name': 'Ton Balıklı Fasulye Salatası', 'cal': 350, 'p': 35.0, 'c': 28.0, 'f': 10.0, 'art': 'assets/images/editorial/v4/quick/tuna.webp'},
+    {'name': 'Elmalı Lor Kasesi', 'cal': 230, 'p': 24.0, 'c': 25.0, 'f': 5.0, 'art': 'assets/images/editorial/v4/quick/cottage.webp'},
+    {'name': 'Humus ve Çıtır Sebze', 'cal': 280, 'p': 12.0, 'c': 34.0, 'f': 12.0, 'art': 'assets/images/editorial/v4/quick/hummus.webp'},
+    {'name': 'Kefirli Muz Kasesi', 'cal': 300, 'p': 15.0, 'c': 42.0, 'f': 9.0, 'art': 'assets/images/editorial/v4/quick/kefir.webp'},
   ];
 
   @override
@@ -136,32 +142,36 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
               const SizedBox(height: 24),
               _sectionTitle(context, l10n.meals_mealType, Icons.schedule_outlined),
               const SizedBox(height: 10),
-              SizedBox(
-                height: 72,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    _mealTypeCard('breakfast', l10n.meals_breakfast, Icons.wb_sunny_outlined),
-                    _mealTypeCard('lunch', l10n.meals_lunch, Icons.light_mode_outlined),
-                    _mealTypeCard('dinner', l10n.meals_dinner, Icons.nightlight_outlined),
-                    _mealTypeCard('snack', l10n.meals_snack, Icons.cookie_outlined),
-                  ],
-                ),
+              GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 1.9,
+                children: [
+                  _mealTypeCard('breakfast', l10n.meals_breakfast, Icons.wb_sunny_outlined, 'assets/images/editorial/v4/quick/oats.webp'),
+                  _mealTypeCard('lunch', l10n.meals_lunch, Icons.light_mode_outlined, 'assets/images/editorial/v4/quick/chicken-quinoa.webp'),
+                  _mealTypeCard('dinner', l10n.meals_dinner, Icons.nightlight_outlined, 'assets/images/editorial/v4/quick/salmon.webp'),
+                  _mealTypeCard('snack', l10n.meals_snack, Icons.cookie_outlined, 'assets/images/editorial/v4/quick/yogurt.webp'),
+                ],
               ),
               const SizedBox(height: 24),
               _sectionTitle(context, l10n.meals_quickAdd, Icons.bolt_outlined),
               const SizedBox(height: 10),
-              SizedBox(
-                height: 86,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: _quickMeals.length,
-                  separatorBuilder: (_, __) => const SizedBox(width: 10),
-                  itemBuilder: (context, index) => _quickMealCard(
-                    context,
-                    _quickMeals[index],
-                    index,
-                  ),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: _quickMeals.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 1,
+                ),
+                itemBuilder: (context, index) => _quickMealCard(
+                  context,
+                  _quickMeals[index],
                 ),
               ),
               const SizedBox(height: 24),
@@ -215,17 +225,17 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Expanded(child: _field(l10n.meals_calories, _caloriesController, TextInputType.number, suffix: 'kcal', icon: PhosphorIcons.fire())),
+                        Expanded(child: _field(l10n.meals_calories, _caloriesController, TextInputType.number, suffix: 'kcal', icon: PhosphorIcons.fire(), artPath: 'assets/images/editorial/v4/macro-calories.webp')),
                         const SizedBox(width: 10),
-                        Expanded(child: _field(l10n.meals_protein, _proteinController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.barbell())),
+                        Expanded(child: _field(l10n.meals_protein, _proteinController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.barbell(), artPath: 'assets/images/editorial/v4/macro-protein.webp')),
                       ],
                     ),
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Expanded(child: _field(l10n.meals_carbohydrate, _carbsController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.bread())),
+                        Expanded(child: _field(l10n.meals_carbohydrate, _carbsController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.bread(), artPath: 'assets/images/editorial/v4/macro-carbs.webp')),
                         const SizedBox(width: 10),
-                        Expanded(child: _field(l10n.meals_fat, _fatController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.drop())),
+                        Expanded(child: _field(l10n.meals_fat, _fatController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.drop(), artPath: 'assets/images/editorial/v4/macro-fat.webp')),
                       ],
                     ),
                     const SizedBox(height: 16),
@@ -289,7 +299,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     router.push('/food-scan');
   }
 
-  Widget _mealTypeCard(String value, String label, IconData icon) {
+  Widget _mealTypeCard(String value, String label, IconData icon, String artPath) {
     final selected = _mealType == value;
     return Padding(
       padding: const EdgeInsets.only(right: 9),
@@ -301,33 +311,41 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
         },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 180),
-          width: 112,
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: EdgeInsets.all(selected ? 2 : 1),
           decoration: BoxDecoration(
-            color: selected
-                ? AppColors.primary.withValues(alpha: .16)
-                : Theme.of(context).colorScheme.surfaceContainer,
             borderRadius: BorderRadius.circular(18),
             border: Border.all(
               color: selected ? AppColors.primary : Theme.of(context).dividerColor,
+              width: selected ? 2 : 1,
             ),
           ),
-          child: Row(
-            children: [
-              Icon(icon, size: 20, color: selected ? AppColors.primary : null),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  label,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: selected ? FontWeight.w800 : FontWeight.w600,
+          child: FastingArtSlot(
+            assetPath: artPath,
+            height: 76,
+            borderRadius: 15,
+            variant: FastingArtVariant.row,
+            semanticLabel: label,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Row(
+                children: [
+                  Icon(icon, size: 21, color: selected ? AppColors.primaryLight : Colors.white),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      label,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: selected ? FontWeight.w800 : FontWeight.w700,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -337,63 +355,57 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
   Widget _quickMealCard(
     BuildContext context,
     Map<String, Object> meal,
-    int index,
   ) {
-    final icons = [
-      Icons.breakfast_dining_rounded,
-      Icons.set_meal_rounded,
-      Icons.rice_bowl_rounded,
-      Icons.egg_alt_rounded,
-      Icons.eco_rounded,
-      Icons.local_drink_rounded,
-    ];
     return InkWell(
       borderRadius: BorderRadius.circular(18),
       onTap: () => _quickAdd(meal),
-      child: Container(
-        width: 176,
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceContainer,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: Theme.of(context).dividerColor),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: .12),
-                borderRadius: BorderRadius.circular(13),
-              ),
-              child: Icon(icons[index], color: AppColors.primary, size: 20),
+      child: FastingArtSlot(
+        assetPath: meal['art']! as String,
+        height: 154,
+        borderRadius: 18,
+        variant: FastingArtVariant.bare,
+        semanticLabel: meal['name']! as String,
+        child: DecoratedBox(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.transparent, Color(0xF20D1120)],
+              stops: [.34, 1],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                   Text(
                     meal['name']! as String,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      color: Colors.white,
                       fontWeight: FontWeight.w800,
                     ),
                   ),
-                  Text(
-                    '${meal['cal']} kcal',
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: AppColors.primary,
-                    ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Text(
+                        '${meal['cal']} kcal',
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: AppColors.primaryLight,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      const Spacer(),
+                      const Icon(Icons.add_circle, color: AppColors.primary, size: 22),
+                    ],
                   ),
-                ],
-              ),
+              ],
             ),
-            const Icon(Icons.add_circle, color: AppColors.primary, size: 20),
-          ],
+          ),
         ),
       ),
     );
@@ -405,19 +417,38 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     TextInputType type, {
     String? suffix,
     IconData? icon,
+    String? artPath,
     TextInputAction textInputAction = TextInputAction.next,
-  }) => TextField(
-    controller: controller,
-    keyboardType: type,
-    textInputAction: textInputAction,
-    decoration: InputDecoration(
-      labelText: label,
-      suffixText: suffix,
-      prefixIcon: icon == null ? null : Icon(icon, size: 18),
-      filled: true,
-      isDense: false,
-    ),
-  );
+  }) {
+    final foreground = artPath == null
+        ? Theme.of(context).colorScheme.onSurface
+        : Colors.white;
+    final field = TextField(
+      controller: controller,
+      keyboardType: type,
+      textInputAction: textInputAction,
+      style: TextStyle(color: foreground, fontWeight: FontWeight.w700),
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: foreground.withValues(alpha: .68)),
+        suffixText: suffix,
+        prefixIcon: icon == null ? null : Icon(icon, size: 18, color: foreground.withValues(alpha: .72)),
+        filled: true,
+        fillColor: artPath == null ? null : const Color(0xB3121628),
+        isDense: false,
+      ),
+    );
+    if (artPath == null) return field;
+    return FastingArtSlot(
+      assetPath: artPath,
+      height: 82,
+      borderRadius: 18,
+      variant: FastingArtVariant.card,
+      alignment: Alignment.centerRight,
+      semanticLabel: label,
+      child: Padding(padding: const EdgeInsets.all(6), child: field),
+    );
+  }
 
   void _quickAdd(Map<String, Object> meal) {
     ref.read(mealProvider.notifier).addMeal(
