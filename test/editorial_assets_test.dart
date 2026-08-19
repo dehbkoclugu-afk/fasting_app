@@ -27,6 +27,20 @@ void main() {
     for (final asset in referencedAssets) {
       expect(File(asset).existsSync(), isTrue, reason: 'Missing artwork: $asset');
       expect(File(asset).lengthSync(), greaterThan(0), reason: 'Empty artwork: $asset');
+
+      final extensionIndex = asset.lastIndexOf('.');
+      final lightAsset = '${asset.substring(0, extensionIndex)}-light'
+          '${asset.substring(extensionIndex)}';
+      expect(
+        File(lightAsset).existsSync(),
+        isTrue,
+        reason: 'Missing light-mode artwork: $lightAsset',
+      );
+      expect(
+        File(lightAsset).lengthSync(),
+        greaterThan(0),
+        reason: 'Empty light-mode artwork: $lightAsset',
+      );
     }
   });
 
@@ -34,7 +48,11 @@ void main() {
     final quickMealAssets = Directory('assets/images/editorial/v4/quick')
         .listSync()
         .whereType<File>()
-        .where((file) => file.path.endsWith('.webp'));
+        .where(
+          (file) =>
+              file.path.endsWith('.webp') &&
+              !file.path.endsWith('-light.webp'),
+        );
 
     expect(quickMealAssets.length, greaterThanOrEqualTo(12));
   });
