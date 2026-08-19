@@ -91,7 +91,7 @@ class GamificationDashboardScreen extends ConsumerWidget {
                       ),
                       Text(
                         l10n.game_shieldsDesc,
-                        style: theme.textTheme.bodySmall?.copyWith(color: Colors.white.withValues(alpha: .72)),
+                        style: theme.textTheme.bodySmall?.copyWith(color: Colors.white.withValues(alpha: .9)),
                       ),
                     ],
                   ),
@@ -120,7 +120,7 @@ class GamificationDashboardScreen extends ConsumerWidget {
                     l10n.game_leagueDesc(game.leaguePercentile),
                     maxLines: 4,
                     overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white.withValues(alpha: .78)),
+                    style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white.withValues(alpha: .9)),
                   ),
                 ],
                 ),
@@ -187,7 +187,7 @@ class _LevelHero extends StatelessWidget {
                       Text(
                         calm ? l10n.game_questsDesc : '${game.xp} XP',
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: Colors.white.withValues(alpha: .8),
+                          color: Colors.white.withValues(alpha: .9),
                         ),
                       ),
                     ],
@@ -432,7 +432,7 @@ class _BadgeToken extends StatelessWidget {
                     child: Icon(
                       badge.unlocked ? Icons.check_circle : Icons.lock_outline,
                       size: 16,
-                      color: Colors.white.withValues(alpha: .86),
+                      color: Colors.white.withValues(alpha: .9),
                     ),
                   ),
                   const Spacer(),

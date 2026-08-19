@@ -436,7 +436,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: theme.textTheme.bodySmall?.copyWith(
-                color: Colors.white.withValues(alpha: .66),
+                color: Colors.white.withValues(alpha: .9),
                 fontSize: 10,
               ),
             ),

@@ -62,7 +62,7 @@ class MealsScreen extends ConsumerWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color: Colors.white.withValues(alpha: .8),
+                            color: Colors.white.withValues(alpha: .9),
                             height: 1.25,
                           ),
                         ),
@@ -137,7 +137,7 @@ class MealsScreen extends ConsumerWidget {
                         const Spacer(),
                         Icon(
                           Icons.arrow_forward_rounded,
-                          color: Colors.white.withValues(alpha: .72),
+                          color: Colors.white.withValues(alpha: .9),
                           size: 20,
                         ),
                       ],
@@ -341,7 +341,7 @@ class MealsScreen extends ConsumerWidget {
                           Text(
                             l10n.foodScan_scanCta,
                             style: theme.textTheme.bodySmall?.copyWith(
-                              color: Colors.white.withValues(alpha: .72),
+                              color: Colors.white.withValues(alpha: .9),
                             ),
                           ),
                         ],
@@ -534,7 +534,7 @@ class MealsScreen extends ConsumerWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.labelSmall?.copyWith(
-                    color: Colors.white.withValues(alpha: .62),
+                    color: Colors.white.withValues(alpha: .9),
                   ),
                 ),
                 Text.rich(
@@ -548,7 +548,7 @@ class MealsScreen extends ConsumerWidget {
                       TextSpan(
                         text: ' / $target',
                         style: theme.textTheme.labelSmall?.copyWith(
-                          color: Colors.white.withValues(alpha: .45),
+                          color: Colors.white.withValues(alpha: .9),
                         ),
                       ),
                     ],
@@ -666,7 +666,7 @@ class MealsScreen extends ConsumerWidget {
               Text(
                 cal,
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: Colors.white.withValues(alpha: .75),
+                  color: Colors.white.withValues(alpha: .9),
                 ),
               ),
             ],

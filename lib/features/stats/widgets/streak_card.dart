@@ -47,7 +47,7 @@ class StreakCard extends StatelessWidget {
                 Text(
                   '${l10n.common_days} ${l10n.stats_streak.toLowerCase()}',
                   style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withAlpha(130),
+                    color: Colors.white.withValues(alpha: .9),
                   ),
                 ),
               ],
@@ -113,7 +113,7 @@ class StreakCard extends StatelessWidget {
             Text(
               label,
               style: theme.textTheme.bodySmall?.copyWith(
-                color: Colors.white.withValues(alpha: .56),
+                color: Colors.white.withValues(alpha: .9),
                 fontSize: 11,
               ),
             ),

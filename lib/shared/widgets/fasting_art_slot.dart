@@ -131,19 +131,19 @@ class FastingArtSlot extends StatelessWidget {
   // palette and away from a sterile white-card look.
   LinearGradient get _lightScrim => switch (variant) {
     FastingArtVariant.row => const LinearGradient(
-      colors: [Color(0xC9583C4E), Color(0x805C5264), Color(0x145C6173)],
+      colors: [Color(0xE64A3342), Color(0xCC4A3342), Color(0xB34A3342)],
       stops: [0, .52, 1],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
     ),
     FastingArtVariant.card => const LinearGradient(
-      colors: [Color(0xB8583C4E), Color(0x665C5264), Color(0x125C6173)],
+      colors: [Color(0xE04A3342), Color(0xC74A3342), Color(0xB34A3342)],
       stops: [0, .58, 1],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
     ),
     FastingArtVariant.hero => const LinearGradient(
-      colors: [Color(0xC9583C4E), Color(0x805C5264), Color(0x1F5C6173)],
+      colors: [Color(0xED4A3342), Color(0xD64A3342), Color(0xB34A3342)],
       stops: [0, .56, 1],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
