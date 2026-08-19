@@ -60,7 +60,7 @@ void main() {
     expect(stack.children, hasLength(2));
   });
 
-  testWidgets('light mode adds text-local contrast without covering artwork', (
+  testWidgets('light text cards reserve a clean left copy surface', (
     tester,
   ) async {
     await tester.pumpWidget(
@@ -70,22 +70,20 @@ void main() {
           body: FastingArtSlot(
             assetPath: darkPath,
             height: 180,
+            variant: FastingArtVariant.row,
             child: Text('Readable copy'),
           ),
         ),
       ),
     );
 
-    final readabilityStyle = tester.widget<DefaultTextStyle>(
+    final artworkPane = tester.widget<FractionallySizedBox>(
       find.descendant(
         of: find.byType(FastingArtSlot),
-        matching: find.byWidgetPredicate(
-          (widget) =>
-              widget is DefaultTextStyle &&
-              (widget.style.shadows?.isNotEmpty ?? false),
-        ),
+        matching: find.byType(FractionallySizedBox),
       ),
     );
-    expect(readabilityStyle.style.shadows, hasLength(2));
+    expect(artworkPane.widthFactor, .46);
+    expect(find.byType(DefaultTextStyle), findsWidgets);
   });
 }
