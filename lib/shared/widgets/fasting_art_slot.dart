@@ -33,8 +33,8 @@ Color fastingArtDivider(BuildContext context) =>
 
 /// A single, reusable connection point between editorial artwork and UI.
 ///
-/// Artwork always fills the frame. Variants only tune the protective scrim so
-/// copy remains readable without flattening the image into a generic gradient.
+/// Artwork always fills the frame. Dark mode keeps its protective scrim; light
+/// mode renders the physical `-light` asset without any color overlay.
 class FastingArtSlot extends StatelessWidget {
   const FastingArtSlot({
     super.key,
@@ -77,10 +77,10 @@ class FastingArtSlot extends StatelessWidget {
               Positioned.fill(
                 child: _artwork(isDark),
               ),
-              if (variant != FastingArtVariant.bare)
+              if (isDark && variant != FastingArtVariant.bare)
                 Positioned.fill(
                   child: DecoratedBox(
-                    decoration: BoxDecoration(gradient: _scrim(isDark)),
+                    decoration: BoxDecoration(gradient: _darkScrim),
                   ),
                 ),
               Positioned.fill(child: child),
@@ -121,10 +121,6 @@ class FastingArtSlot extends StatelessWidget {
     );
   }
 
-  LinearGradient _scrim(bool isDark) => isDark
-      ? _darkScrim
-      : _lightScrim;
-
   LinearGradient get _darkScrim => switch (variant) {
     FastingArtVariant.row => const LinearGradient(
       colors: [Color(0xF20F1424), Color(0xB30F1424), Color(0x190F1424)],
@@ -149,30 +145,4 @@ class FastingArtSlot extends StatelessWidget {
     ),
   };
 
-  // A warm, localized veil protects ink-colored copy while leaving most of the
-  // light artwork untouched. It avoids both the previous full-card purple wash
-  // and a sterile white-card treatment.
-  LinearGradient get _lightScrim => switch (variant) {
-    FastingArtVariant.row => const LinearGradient(
-      colors: [Color(0xE8F7ECE8), Color(0xA8F7ECE8), Color(0x00F7ECE8)],
-      stops: [0, .46, .84],
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-    ),
-    FastingArtVariant.card => const LinearGradient(
-      colors: [Color(0xDCF7ECE8), Color(0x78F7ECE8), Color(0x16F7ECE8)],
-      stops: [0, .48, 1],
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-    ),
-    FastingArtVariant.hero => const LinearGradient(
-      colors: [Color(0xEDF7ECE8), Color(0xA8F7ECE8), Color(0x08F7ECE8)],
-      stops: [0, .48, .9],
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-    ),
-    FastingArtVariant.bare => const LinearGradient(
-      colors: [Colors.transparent, Colors.transparent],
-    ),
-  };
 }
