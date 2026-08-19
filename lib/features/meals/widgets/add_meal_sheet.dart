@@ -107,7 +107,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.titleLarge?.copyWith(
-                            color: Colors.white,
+                            color: fastingArtForeground(context),
                             fontWeight: FontWeight.w800,
                           ),
                         ),
@@ -117,7 +117,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color: Colors.white.withValues(alpha: .9),
+                            color: fastingArtMutedForeground(context),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -194,7 +194,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                         l10n.meals_manualEntry,
                         maxLines: 2,
                         style: theme.textTheme.titleMedium?.copyWith(
-                          color: Colors.white,
+                          color: fastingArtForeground(context),
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -267,9 +267,15 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     child: Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: .14),
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.white.withValues(alpha: .14)
+            : const Color(0xE65A3E50),
         borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: Colors.white.withValues(alpha: .16)),
+        border: Border.all(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.white.withValues(alpha: .16)
+              : const Color(0xFF5A3E50),
+        ),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -329,7 +335,13 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Row(
                 children: [
-                  Icon(icon, size: 21, color: selected ? AppColors.primaryLight : Colors.white),
+                  Icon(
+                    icon,
+                    size: 21,
+                    color: selected
+                        ? AppColors.primary
+                        : fastingArtForeground(context),
+                  ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
@@ -337,7 +349,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: fastingArtForeground(context),
                         fontSize: 12,
                         fontWeight: selected ? FontWeight.w800 : FontWeight.w700,
                       ),
@@ -422,7 +434,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
   }) {
     final foreground = artPath == null
         ? Theme.of(context).colorScheme.onSurface
-        : Colors.white;
+        : fastingArtForeground(context);
     final field = TextField(
       controller: controller,
       keyboardType: type,
@@ -434,7 +446,11 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
         suffixText: suffix,
         prefixIcon: icon == null ? null : Icon(icon, size: 18, color: foreground.withValues(alpha: .72)),
         filled: true,
-        fillColor: artPath == null ? null : const Color(0xB3121628),
+        fillColor: artPath == null
+            ? null
+            : Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xB3121628)
+                : const Color(0xCCF7ECE8),
         isDense: false,
       ),
     );
