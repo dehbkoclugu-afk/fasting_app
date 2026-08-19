@@ -87,11 +87,11 @@ class GamificationDashboardScreen extends ConsumerWidget {
                     children: [
                       Text(
                         l10n.game_shields(game.shields),
-                        style: theme.textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w800),
+                        style: theme.textTheme.titleMedium?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w800),
                       ),
                       Text(
                         l10n.game_shieldsDesc,
-                        style: theme.textTheme.bodySmall?.copyWith(color: Colors.white.withValues(alpha: .9)),
+                        style: theme.textTheme.bodySmall?.copyWith(color: fastingArtMutedForeground(context)),
                       ),
                     ],
                   ),
@@ -114,13 +114,13 @@ class GamificationDashboardScreen extends ConsumerWidget {
                 child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(l10n.game_league, style: theme.textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w800)),
+                  Text(l10n.game_league, style: theme.textTheme.titleMedium?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w800)),
                   const SizedBox(height: 6),
                   Text(
                     l10n.game_leagueDesc(game.leaguePercentile),
                     maxLines: 4,
                     overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white.withValues(alpha: .9)),
+                    style: theme.textTheme.bodyMedium?.copyWith(color: fastingArtMutedForeground(context)),
                   ),
                 ],
                 ),
@@ -161,15 +161,15 @@ class _LevelHero extends StatelessWidget {
                   height: 58,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: .16),
+                    color: fastingArtForeground(context).withValues(alpha: .10),
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: .55),
+                      color: fastingArtForeground(context).withValues(alpha: .28),
                     ),
                   ),
                   child: Icon(
                     calm ? Icons.spa_outlined : Icons.auto_awesome,
-                    color: Colors.white,
+                    color: fastingArtForeground(context),
                     size: 28,
                   ),
                 ),
@@ -181,13 +181,13 @@ class _LevelHero extends StatelessWidget {
                       Text(
                         l10n.game_explorer,
                         style: theme.textTheme.titleLarge?.copyWith(
-                          color: Colors.white,
+                          color: fastingArtForeground(context),
                         ),
                       ),
                       Text(
                         calm ? l10n.game_questsDesc : '${game.xp} XP',
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: Colors.white.withValues(alpha: .9),
+                          color: fastingArtMutedForeground(context),
                         ),
                       ),
                     ],
@@ -196,7 +196,7 @@ class _LevelHero extends StatelessWidget {
                 if (!calm)
                   Text(
                     '${GamificationState.levelSize - game.levelXp} XP',
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(color: fastingArtForeground(context)),
                   ),
               ],
             ),
@@ -206,8 +206,8 @@ class _LevelHero extends StatelessWidget {
                 value: game.levelProgress,
                 minHeight: 9,
                 borderRadius: BorderRadius.circular(10),
-                backgroundColor: Colors.white.withValues(alpha: .2),
-                valueColor: const AlwaysStoppedAnimation(Colors.white),
+                backgroundColor: fastingArtForeground(context).withValues(alpha: .12),
+                valueColor: AlwaysStoppedAnimation(fastingArtForeground(context)),
               ),
           ],
           ),
@@ -334,15 +334,15 @@ class _SeasonPath extends StatelessWidget {
                   child: LinearProgressIndicator(
                     value: (current / 30).clamp(0, 1).toDouble(),
                     minHeight: 8,
-                    backgroundColor: Colors.white.withValues(alpha: .18),
+                    backgroundColor: fastingArtForeground(context).withValues(alpha: .14),
                     valueColor: const AlwaysStoppedAnimation(AppColors.primary),
                   ),
                 ),
               ),
               const SizedBox(width: 10),
-              const Text(
+              Text(
                 '30',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+                style: TextStyle(color: fastingArtForeground(context), fontWeight: FontWeight.w800),
               ),
             ],
           ),
@@ -397,12 +397,13 @@ class _BadgeToken extends StatelessWidget {
     message: _badgeDescription(l10n, badge.id),
     child: LayoutBuilder(
       builder: (context, constraints) => Opacity(
-        opacity: badge.unlocked ? 1 : .42,
+        opacity: badge.unlocked ? 1 : .62,
         child: FastingArtSlot(
           assetPath: _badgeArtwork(badge.id),
           height: constraints.maxHeight,
           borderRadius: 18,
           variant: FastingArtVariant.bare,
+          useThemedAsset: false,
           semanticLabel: _badgeTitle(l10n, badge.id),
           child: DecoratedBox(
             decoration: BoxDecoration(
