@@ -33,8 +33,9 @@ Color fastingArtDivider(BuildContext context) =>
 
 /// A single, reusable connection point between editorial artwork and UI.
 ///
-/// Artwork always fills the frame. Dark mode keeps its protective scrim; light
-/// mode renders the physical `-light` asset without any color overlay.
+/// Dark mode keeps its full-bleed artwork and protective scrim. Text-oriented
+/// light cards use a Lumen-style split layout: a calm ink-safe surface on the
+/// left and the physical `-light` artwork cropped into the right side.
 class FastingArtSlot extends StatelessWidget {
   const FastingArtSlot({
     super.key,
@@ -47,6 +48,7 @@ class FastingArtSlot extends StatelessWidget {
     this.alignment = Alignment.center,
     this.semanticLabel,
     this.useThemedAsset = true,
+    this.splitLightArtwork,
   });
 
   final String assetPath;
@@ -58,6 +60,7 @@ class FastingArtSlot extends StatelessWidget {
   final Alignment alignment;
   final String? semanticLabel;
   final bool useThemedAsset;
+  final bool? splitLightArtwork;
 
   @override
   Widget build(BuildContext context) {
@@ -83,28 +86,11 @@ class FastingArtSlot extends StatelessWidget {
                     decoration: BoxDecoration(gradient: _darkScrim),
                   ),
                 ),
-              Positioned.fill(child: _foregroundLayer(isDark)),
+              Positioned.fill(child: child),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget _foregroundLayer(bool isDark) {
-    if (isDark || variant == FastingArtVariant.bare) return child;
-
-    // Keep genuine light artwork untouched. A restrained warm halo belongs to
-    // the glyphs themselves, so copy stays readable without bringing back a
-    // full-card scrim or washing out the illustration.
-    return DefaultTextStyle.merge(
-      style: const TextStyle(
-        shadows: [
-          Shadow(color: Color(0xF2FFF9F4), blurRadius: 5),
-          Shadow(color: Color(0xB3FFF9F4), blurRadius: 2),
-        ],
-      ),
-      child: child,
     );
   }
 
@@ -116,7 +102,7 @@ class FastingArtSlot extends StatelessWidget {
           )
         : assetPath;
 
-    return Image.asset(
+    final artwork = Image.asset(
       resolvedAssetPath,
       width: double.infinity,
       height: double.infinity,
@@ -136,7 +122,30 @@ class FastingArtSlot extends StatelessWidget {
         ),
       ),
     );
+
+    if (isDark || !_usesSplitLightLayout) return artwork;
+
+    return ColoredBox(
+      color: const Color(0xFFF5ECE5),
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: FractionallySizedBox(
+          widthFactor: variant == FastingArtVariant.hero ? .54 : .46,
+          heightFactor: 1,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.horizontal(
+              left: Radius.circular(22),
+            ),
+            child: artwork,
+          ),
+        ),
+      ),
+    );
   }
+
+  bool get _usesSplitLightLayout =>
+      splitLightArtwork ??
+      (variant == FastingArtVariant.row || variant == FastingArtVariant.hero);
 
   LinearGradient get _darkScrim => switch (variant) {
     FastingArtVariant.row => const LinearGradient(
