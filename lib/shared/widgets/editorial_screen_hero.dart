@@ -68,7 +68,7 @@ class EditorialScreenHero extends StatelessWidget {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall?.copyWith(
-                      color: Colors.white.withValues(alpha: .82),
+                      color: Colors.white.withValues(alpha: .9),
                       height: 1.3,
                     ),
                   ),

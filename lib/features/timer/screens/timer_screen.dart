@@ -429,7 +429,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.bodySmall?.copyWith(
-                    color: Colors.white.withValues(alpha: .74),
+                    color: Colors.white.withValues(alpha: .9),
                     height: 1.35,
                   ),
                 ),

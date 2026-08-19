@@ -61,7 +61,7 @@ class ExploreScreen extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: Colors.white.withValues(alpha: .76),
+                          color: Colors.white.withValues(alpha: .9),
                           height: 1.35,
                         ),
                       ),
@@ -319,7 +319,7 @@ class ExploreScreen extends StatelessWidget {
               Text(
                 tip.description,
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: Colors.white.withValues(alpha: .72),
+                  color: Colors.white.withValues(alpha: .9),
                   height: 1.3,
                 ),
               ),

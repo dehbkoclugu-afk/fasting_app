@@ -117,7 +117,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color: Colors.white.withValues(alpha: .75),
+                            color: Colors.white.withValues(alpha: .9),
                           ),
                         ),
                         const SizedBox(height: 10),
