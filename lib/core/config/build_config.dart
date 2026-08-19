@@ -65,7 +65,7 @@ class BuildConfig {
 
   /// Overridable so a model swap does not need an app update on the store
   /// side — it is just a build flag.
-  static const _geminiModelFallback = 'gemini-2.5-flash';
+  static const _geminiModelFallback = 'gemini-3.1-flash-lite';
   static const _geminiModelEnv = String.fromEnvironment('GEMINI_MODEL');
 
   /// Scans allowed per device per day. Guards the shared free-tier quota from

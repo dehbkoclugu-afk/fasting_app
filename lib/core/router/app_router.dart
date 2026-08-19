@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,10 +27,17 @@ class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
-  static GoRouter router({required bool showOnboarding}) {
+  static GoRouter router({
+    required bool showOnboarding,
+    Uint8List? recoveredFoodImage,
+    String? recoveredFoodImageMimeType,
+  }) {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: showOnboarding ? '/onboarding' : '/timer',
+      initialLocation:
+          recoveredFoodImage != null
+              ? '/food-scan'
+              : (showOnboarding ? '/onboarding' : '/timer'),
       routes: [
         // Onboarding
         GoRoute(
@@ -116,7 +125,11 @@ class AppRouter {
         GoRoute(
           path: '/food-scan',
           parentNavigatorKey: _rootNavigatorKey,
-          builder: (context, state) => const FoodScanScreen(),
+          builder:
+              (context, state) => FoodScanScreen(
+                initialImageBytes: recoveredFoodImage,
+                initialImageMimeType: recoveredFoodImageMimeType,
+              ),
         ),
 
         // Water Tracker

@@ -11,11 +11,63 @@ enum FoodScanStatus { idle, analyzing, ready, failed }
 /// Where the photo should come from.
 enum PhotoSource { camera, gallery }
 
+/// Gemini needs the real media type; Android gallery photos are often HEIC,
+/// PNG or WebP even when the picker resized them.
+@visibleForTesting
+String detectImageMimeType(
+  Uint8List bytes, {
+  String? reportedMimeType,
+  String? path,
+}) {
+  bool startsWith(List<int> signature) {
+    if (bytes.length < signature.length) return false;
+    for (var i = 0; i < signature.length; i++) {
+      if (bytes[i] != signature[i]) return false;
+    }
+    return true;
+  }
+
+  if (startsWith(const [0xFF, 0xD8, 0xFF])) return 'image/jpeg';
+  if (startsWith(const [0x89, 0x50, 0x4E, 0x47])) return 'image/png';
+  if (bytes.length >= 12 &&
+      String.fromCharCodes(bytes.sublist(0, 4)) == 'RIFF' &&
+      String.fromCharCodes(bytes.sublist(8, 12)) == 'WEBP') {
+    return 'image/webp';
+  }
+  if (bytes.length >= 12 &&
+      String.fromCharCodes(bytes.sublist(4, 8)) == 'ftyp') {
+    final brand = String.fromCharCodes(bytes.sublist(8, 12)).toLowerCase();
+    if (brand.startsWith('hei') || brand.startsWith('hev')) {
+      return 'image/heic';
+    }
+    if (brand == 'mif1' || brand == 'msf1') return 'image/heif';
+  }
+
+  final reported = reportedMimeType?.split(';').first.trim().toLowerCase();
+  if (const {
+    'image/jpeg',
+    'image/png',
+    'image/webp',
+    'image/heic',
+    'image/heif',
+  }.contains(reported)) {
+    return reported!;
+  }
+
+  final lowerPath = path?.toLowerCase() ?? '';
+  if (lowerPath.endsWith('.png')) return 'image/png';
+  if (lowerPath.endsWith('.webp')) return 'image/webp';
+  if (lowerPath.endsWith('.heic')) return 'image/heic';
+  if (lowerPath.endsWith('.heif')) return 'image/heif';
+  return 'image/jpeg';
+}
+
 @immutable
 class FoodScanState {
   const FoodScanState({
     this.status = FoodScanStatus.idle,
     this.imageBytes,
+    this.imageMimeType = 'image/jpeg',
     this.analysis,
     this.error,
     this.scansLeftToday,
@@ -26,6 +78,7 @@ class FoodScanState {
   /// The photo under analysis, kept so the result screen can show it next to
   /// the numbers.
   final Uint8List? imageBytes;
+  final String imageMimeType;
 
   /// Present in [FoodScanStatus.ready]. Edits from the review sheet are
   /// applied here before saving.
@@ -43,6 +96,7 @@ class FoodScanState {
   FoodScanState copyWith({
     FoodScanStatus? status,
     Uint8List? imageBytes,
+    String? imageMimeType,
     FoodAnalysis? analysis,
     FoodVisionError? error,
     int? scansLeftToday,
@@ -52,6 +106,7 @@ class FoodScanState {
     return FoodScanState(
       status: status ?? this.status,
       imageBytes: imageBytes ?? this.imageBytes,
+      imageMimeType: imageMimeType ?? this.imageMimeType,
       analysis: clearAnalysis ? null : (analysis ?? this.analysis),
       error: clearError ? null : (error ?? this.error),
       scansLeftToday: scansLeftToday ?? this.scansLeftToday,
@@ -154,8 +209,25 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
     }
     if (file == null) return;
 
-    final bytes = await file.readAsBytes();
-    await analyzeBytes(bytes, languageCode: languageCode);
+    try {
+      final bytes = await file.readAsBytes();
+      await analyzeBytes(
+        bytes,
+        languageCode: languageCode,
+        mimeType: detectImageMimeType(
+          bytes,
+          reportedMimeType: file.mimeType,
+          path: file.path,
+        ),
+      );
+    } catch (e) {
+      debugPrint('Picked image could not be read: $e');
+      if (!mounted) return;
+      state = state.copyWith(
+        status: FoodScanStatus.failed,
+        error: FoodVisionError.unreadable,
+      );
+    }
   }
 
   /// Split out from [scan] so the retry button can re-run the same photo
@@ -163,16 +235,21 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   Future<void> analyzeBytes(
     Uint8List bytes, {
     String languageCode = 'en',
+    String? mimeType,
   }) async {
+    final resolvedMimeType =
+        mimeType ?? detectImageMimeType(bytes);
     state = FoodScanState(
       status: FoodScanStatus.analyzing,
       imageBytes: bytes,
+      imageMimeType: resolvedMimeType,
       scansLeftToday: state.scansLeftToday,
     );
     try {
       final analysis = await _service.analyze(
         imageBytes: bytes,
         languageCode: languageCode,
+        mimeType: resolvedMimeType,
       );
       await _recordScan();
       if (!mounted) return;
@@ -199,7 +276,11 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   Future<void> retry({String languageCode = 'en'}) async {
     final bytes = state.imageBytes;
     if (bytes == null) return;
-    await analyzeBytes(bytes, languageCode: languageCode);
+    await analyzeBytes(
+      bytes,
+      languageCode: languageCode,
+      mimeType: state.imageMimeType,
+    );
   }
 
   /// Applies a user edit from the review sheet.
