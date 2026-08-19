@@ -203,8 +203,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                                     child: Text(
                                       dayLabels[value.toInt()],
                                       style: TextStyle(
-                                        color: theme.colorScheme.onSurface
-                                            .withValues(alpha: 0.5),
+                                        color: fastingArtMutedForeground(context),
                                         fontSize: 11,
                                       ),
                                     ),
@@ -221,8 +220,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                                   return Text(
                                     '${value.toInt()}s',
                                     style: TextStyle(
-                                      color: theme.colorScheme.onSurface
-                                          .withValues(alpha: 0.4),
+                                      color: fastingArtMutedForeground(context),
                                       fontSize: 10,
                                     ),
                                   );
@@ -242,9 +240,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                             horizontalInterval: 8,
                             getDrawingHorizontalLine:
                                 (value) => FlLine(
-                                  color: theme.colorScheme.onSurface.withValues(
-                                    alpha: 0.05,
-                                  ),
+                                  color: fastingArtDivider(context),
                                   strokeWidth: 1,
                                 ),
                           ),
@@ -418,7 +414,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               value,
               maxLines: 1,
               style: theme.textTheme.headlineSmall?.copyWith(
-                color: Colors.white,
+                color: fastingArtForeground(context),
                 fontWeight: FontWeight.w800,
               ),
             ),
@@ -427,7 +423,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: theme.textTheme.labelMedium?.copyWith(
-                color: Colors.white,
+                color: fastingArtForeground(context),
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -436,7 +432,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: theme.textTheme.bodySmall?.copyWith(
-                color: Colors.white.withValues(alpha: .9),
+                color: fastingArtMutedForeground(context),
                 fontSize: 10,
               ),
             ),
