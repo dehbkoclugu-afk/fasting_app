@@ -287,6 +287,22 @@ void main() {
       expect(await errorFrom(service), FoodVisionError.unreadable);
     });
 
+    test('accepts fenced JSON from model versions that ignore JSON mode', () async {
+      final fenced = jsonEncode({
+        'candidates': [
+          {
+            'content': {
+              'parts': [
+                {'text': '```json\n${jsonEncode(_goodPayload)}\n```'},
+              ],
+            },
+          },
+        ],
+      });
+      final analysis = await analyzeWith(serviceReturning(fenced));
+      expect(analysis.totalCalories, 430);
+    });
+
     test('reports unreadable on non-JSON model output', () async {
       final service = serviceReturning(
         jsonEncode({
@@ -319,6 +335,11 @@ void main() {
     test('400 maps to auth — in a shipped build it is a bad key', () async {
       final service = serviceReturning('{"error":{}}', status: 400);
       expect(await errorFrom(service), FoodVisionError.auth);
+    });
+
+    test('404 maps to server instead of blaming the photo', () async {
+      final service = serviceReturning('{"error":{}}', status: 404);
+      expect(await errorFrom(service), FoodVisionError.server);
     });
 
     test('503 maps to server', () async {
