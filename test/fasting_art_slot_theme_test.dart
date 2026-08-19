@@ -45,4 +45,18 @@ void main() {
     );
     expect((image.image as AssetImage).assetName, lightPath);
   });
+
+  testWidgets('light mode renders artwork without a scrim layer', (
+    tester,
+  ) async {
+    await tester.pumpWidget(subject(Brightness.light));
+
+    final stack = tester.widget<Stack>(
+      find.descendant(
+        of: find.byType(FastingArtSlot),
+        matching: find.byType(Stack),
+      ),
+    );
+    expect(stack.children, hasLength(2));
+  });
 }
