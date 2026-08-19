@@ -1,20 +1,42 @@
 NOM
-FastTrack : Jeûne
+FastTrack : Jeûne Intermittent
 
 SOUS-TITRE
-Créez un rythme durable
+Jeûner sans pression
 
 DESCRIPTION COURTE
-Suivez jeûne, eau, poids et progrès dans une app calme et privée.
+Minuteur de jeûne intermittent avec eau, poids et progrès. Calme et privé.
 
 DESCRIPTION
-Créez avec FastTrack une routine de jeûne adaptée à votre quotidien.
+Un suivi de jeûne intermittent qui ne vous met jamais la pression. Lancez un jeûne, regardez les heures défiler et découvrez ce qui se passe dans votre corps.
 
-Consultez le temps écoulé et restant, découvrez les étapes métaboliques générales, enregistrez l’eau et le poids, puis suivez vos progrès sans pression.
+Pas de compte. Aucune promesse de poids. Vos données restent sur votre appareil.
 
-L’application comprend les programmes 12:12, 14:10, 16:8, 18:6, 20:4 et OMAD, des rapports lisibles, des rappels facultatifs, ainsi que les thèmes clair et sombre.
+FONCTIONNALITÉS
 
-Les données principales restent sur votre appareil. FastTrack prend en charge le français, l’anglais, le turc, l’espagnol, le portugais et l’allemand.
+• Minuteur clair
+Choisissez un programme de jeûne et consultez le temps écoulé et restant d’un coup d’œil.
+
+• Voyage métabolique
+Découvrez les étapes anabolique, catabolique, de combustion des graisses, cétose et autophagie. Les horaires des étapes sont des estimations générales, pas des mesures médicales.
+
+• Programmes flexibles
+Utilisez des rythmes connus comme 12:12, 16:8, 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat et Warrior.
+
+• Rapports de progression
+Consultez les jeûnes terminés, la régularité, la durée et la tendance du poids avec des graphiques lisibles.
+
+• Eau et poids
+Enregistrez l’hydratation et le poids sans quitter l’application.
+
+• Rappels utiles
+Recevez des notifications facultatives de jeûne, d’étape, d’hydratation et de fin.
+
+• Votre langue et votre thème
+FastTrack suit la langue de votre système et le thème clair ou sombre. Disponible en français, anglais, turc, espagnol, portugais et allemand.
+
+• Privé par conception
+Les données principales de jeûne, d’eau, de repas et de poids restent sur votre appareil.
 
 PREMIUM
 Premium débloque tous les plans de jeûne (18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior) et supprime les publicités. Des formules mensuelle, annuelle et à vie peuvent être proposées. Le prix est affiché par la boutique avant l’achat.
@@ -23,7 +45,7 @@ IMPORTANT
 FastTrack fournit des informations générales d’éducation et de bien-être. L’application ne diagnostique, ne traite et ne prévient aucune maladie. Les horaires des étapes métaboliques sont des estimations et les réactions individuelles varient. Consultez un professionnel de santé avant de jeûner en cas de maladie, de traitement, de grossesse, d’allaitement ou de malaise.
 
 MOTS-CLÉS
-jeûne, jeûne intermittent, minuteur, eau, hydratation, poids, bien-être
+minuteur,16:8,omad,cétose,autophagie,eau,poids,imc,série,suivi,journal,santé
 
 CATÉGORIE
 Forme et santé

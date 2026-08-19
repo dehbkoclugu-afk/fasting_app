@@ -21,6 +21,7 @@ import '../widgets/crisis_mode_sheet.dart';
 import '../widgets/metabolic_journey.dart';
 import '../widgets/metabolic_weather.dart';
 import '../../../services/admob_service.dart';
+import '../../../services/review_service.dart';
 import '../../paywall/providers/subscription_provider.dart';
 import '../../stats/providers/stats_provider.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
@@ -380,14 +381,25 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
               onDismiss: () {
                 ref.read(timerProvider.notifier).resetTimer();
                 setState(() => _showCompletion = false);
-                if (!ref.read(isPremiumProvider)) {
-                  AdmobService().showInterstitialAd();
-                }
+                _afterCompletionDismissed();
               },
             ),
         ],
       ),
     );
+  }
+
+  /// Finishing a fast is the best moment to ask for a rating, and also where
+  /// the interstitial runs. Both are full-screen, so they take turns: on the
+  /// one launch where the review sheet appears, the ad is skipped. That costs
+  /// a single impression per user, once in their lifetime.
+  Future<void> _afterCompletionDismissed() async {
+    final db = ref.read(databaseProvider);
+    final askedForReview = await ReviewService().maybeRequestReview(db);
+    if (!mounted || askedForReview) return;
+    if (!ref.read(isPremiumProvider)) {
+      await AdmobService().showInterstitialAd();
+    }
   }
 
   String _greeting(AppLocalizations l10n) {
