@@ -12,6 +12,7 @@ class FakeFoodVisionService extends FoodVisionService {
   final FoodAnalysis? result;
   final FoodVisionError? error;
   int calls = 0;
+  String? lastMimeType;
 
   @override
   Future<FoodAnalysis> analyze({
@@ -20,6 +21,7 @@ class FakeFoodVisionService extends FoodVisionService {
     String mimeType = 'image/jpeg',
   }) async {
     calls++;
+    lastMimeType = mimeType;
     if (error != null) throw FoodVisionException(error!);
     return result!;
   }
@@ -50,6 +52,49 @@ void main() {
 
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
+  group('image MIME detection', () {
+    test('recognizes JPEG, PNG and WebP signatures', () {
+      expect(
+        detectImageMimeType(Uint8List.fromList([0xFF, 0xD8, 0xFF, 0x00])),
+        'image/jpeg',
+      );
+      expect(
+        detectImageMimeType(
+          Uint8List.fromList([0x89, 0x50, 0x4E, 0x47, 0x00]),
+        ),
+        'image/png',
+      );
+      expect(
+        detectImageMimeType(
+          Uint8List.fromList([
+            0x52, 0x49, 0x46, 0x46, 0, 0, 0, 0,
+            0x57, 0x45, 0x42, 0x50,
+          ]),
+        ),
+        'image/webp',
+      );
+    });
+
+    test('recognizes Samsung HEIC photos and respects file metadata', () {
+      expect(
+        detectImageMimeType(
+          Uint8List.fromList([
+            0, 0, 0, 0, 0x66, 0x74, 0x79, 0x70,
+            0x68, 0x65, 0x69, 0x63,
+          ]),
+        ),
+        'image/heic',
+      );
+      expect(
+        detectImageMimeType(
+          Uint8List.fromList([1, 2, 3]),
+          reportedMimeType: 'image/png',
+        ),
+        'image/png',
+      );
+    });
+  });
+
   test('a successful analysis lands in the ready state', () async {
     final notifier = FoodScanNotifier(
       service: FakeFoodVisionService(result: analysisWith(300)),
@@ -57,12 +102,13 @@ void main() {
     );
     addTearDown(notifier.dispose);
 
-    await notifier.analyzeBytes(_bytes);
+    await notifier.analyzeBytes(_bytes, mimeType: 'image/png');
 
     expect(notifier.state.status, FoodScanStatus.ready);
     expect(notifier.state.analysis!.totalCalories, 300);
     expect(notifier.state.imageBytes, _bytes);
     expect(notifier.state.error, isNull);
+    expect(notifier.state.imageMimeType, 'image/png');
   });
 
   test(
@@ -72,7 +118,7 @@ void main() {
       final notifier = FoodScanNotifier(service: service, dailyLimit: 0);
       addTearDown(notifier.dispose);
 
-      await notifier.analyzeBytes(_bytes);
+      await notifier.analyzeBytes(_bytes, mimeType: 'image/webp');
 
       expect(notifier.state.status, FoodScanStatus.failed);
       expect(notifier.state.error, FoodVisionError.network);
@@ -80,6 +126,7 @@ void main() {
 
       await notifier.retry();
       expect(service.calls, 2);
+      expect(service.lastMimeType, 'image/webp');
     },
   );
 
