@@ -12,6 +12,8 @@ class EditorialScreenHero extends StatelessWidget {
     this.icon,
     this.height = 172,
     this.semanticLabel,
+    this.alignment = Alignment.center,
+    this.fit = BoxFit.cover,
   });
 
   final String assetPath;
@@ -20,6 +22,8 @@ class EditorialScreenHero extends StatelessWidget {
   final IconData? icon;
   final double height;
   final String? semanticLabel;
+  final Alignment alignment;
+  final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
@@ -28,42 +32,48 @@ class EditorialScreenHero extends StatelessWidget {
       assetPath: assetPath,
       height: height,
       variant: FastingArtVariant.hero,
+      alignment: alignment,
+      fit: fit,
       semanticLabel: semanticLabel ?? title,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Align(
           alignment: Alignment.centerLeft,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 220),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (icon != null) ...[
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: SizedBox(
+              width: 220,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (icon != null) ...[
                     Icon(icon, color: fastingArtForeground(context), size: 26),
-                  const SizedBox(height: 10),
-                ],
-                Text(
-                  title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.titleLarge?.copyWith(
+                    const SizedBox(height: 10),
+                  ],
+                  Text(
+                    title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.titleLarge?.copyWith(
                       color: fastingArtForeground(context),
-                    fontWeight: FontWeight.w800,
-                    height: 1.05,
+                      fontWeight: FontWeight.w800,
+                      height: 1.05,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 7),
-                Text(
-                  subtitle,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.bodySmall?.copyWith(
+                  const SizedBox(height: 7),
+                  Text(
+                    subtitle,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.bodySmall?.copyWith(
                       color: fastingArtMutedForeground(context),
-                    height: 1.3,
+                      height: 1.3,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
