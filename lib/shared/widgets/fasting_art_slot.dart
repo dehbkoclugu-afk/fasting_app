@@ -19,12 +19,12 @@ String themedEditorialAssetPath(String assetPath, Brightness brightness) {
 Color fastingArtForeground(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark
         ? Colors.white
-        : const Color(0xFF241E2E);
+        : const Color(0xFF17131F);
 
 Color fastingArtMutedForeground(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark
         ? Colors.white.withValues(alpha: .78)
-        : const Color(0xFF514756);
+        : const Color(0xFF3F3745);
 
 Color fastingArtDivider(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark
@@ -83,11 +83,28 @@ class FastingArtSlot extends StatelessWidget {
                     decoration: BoxDecoration(gradient: _darkScrim),
                   ),
                 ),
-              Positioned.fill(child: child),
+              Positioned.fill(child: _foregroundLayer(isDark)),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _foregroundLayer(bool isDark) {
+    if (isDark || variant == FastingArtVariant.bare) return child;
+
+    // Keep genuine light artwork untouched. A restrained warm halo belongs to
+    // the glyphs themselves, so copy stays readable without bringing back a
+    // full-card scrim or washing out the illustration.
+    return DefaultTextStyle.merge(
+      style: const TextStyle(
+        shadows: [
+          Shadow(color: Color(0xF2FFF9F4), blurRadius: 5),
+          Shadow(color: Color(0xB3FFF9F4), blurRadius: 2),
+        ],
+      ),
+      child: child,
     );
   }
 
