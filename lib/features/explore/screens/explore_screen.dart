@@ -40,7 +40,7 @@ class ExploreScreen extends StatelessWidget {
                       ),
                       child: Icon(
                         PhosphorIcons.clockCountdown(),
-                        color: Colors.white,
+                        color: fastingArtForeground(context),
                         size: 20,
                       ),
                     ),
@@ -48,7 +48,7 @@ class ExploreScreen extends StatelessWidget {
                     Text(
                       l10n.explore_guide,
                       style: theme.textTheme.headlineSmall?.copyWith(
-                        color: Colors.white,
+                        color: fastingArtForeground(context),
                         fontWeight: FontWeight.w800,
                         letterSpacing: -.5,
                       ),
@@ -61,7 +61,7 @@ class ExploreScreen extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: Colors.white.withValues(alpha: .9),
+                          color: fastingArtMutedForeground(context),
                           height: 1.35,
                         ),
                       ),
@@ -311,7 +311,7 @@ class ExploreScreen extends StatelessWidget {
               Text(
                 tip.title,
                 style: theme.textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
+                  color: fastingArtForeground(context),
                   fontWeight: FontWeight.w800,
                 ),
               ),
@@ -319,7 +319,7 @@ class ExploreScreen extends StatelessWidget {
               Text(
                 tip.description,
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: Colors.white.withValues(alpha: .9),
+                  color: fastingArtMutedForeground(context),
                   height: 1.3,
                 ),
               ),
