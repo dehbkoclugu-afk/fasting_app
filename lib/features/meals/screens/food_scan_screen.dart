@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,7 +21,14 @@ import '../widgets/food_item_edit_sheet.dart';
 /// Premium: photograph a plate, get calories and macros back, adjust them,
 /// save them as a meal.
 class FoodScanScreen extends ConsumerStatefulWidget {
-  const FoodScanScreen({super.key});
+  const FoodScanScreen({
+    super.key,
+    this.initialImageBytes,
+    this.initialImageMimeType,
+  });
+
+  final Uint8List? initialImageBytes;
+  final String? initialImageMimeType;
 
   @override
   ConsumerState<FoodScanScreen> createState() => _FoodScanScreenState();
@@ -28,6 +37,22 @@ class FoodScanScreen extends ConsumerStatefulWidget {
 class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
   final _nameController = TextEditingController();
   String _mealType = 'lunch';
+
+  @override
+  void initState() {
+    super.initState();
+    final bytes = widget.initialImageBytes;
+    if (bytes == null) return;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      ref.read(foodScanProvider.notifier).analyzeBytes(
+        bytes,
+        languageCode: _languageCode(context),
+        mimeType: widget.initialImageMimeType,
+      );
+    });
+  }
 
   @override
   void dispose() {
