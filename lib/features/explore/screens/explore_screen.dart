@@ -40,7 +40,7 @@ class ExploreScreen extends StatelessWidget {
                       ),
                       child: Icon(
                         PhosphorIcons.clockCountdown(),
-                        color: fastingArtForeground(context),
+                        color: Colors.white,
                         size: 20,
                       ),
                     ),
@@ -48,7 +48,7 @@ class ExploreScreen extends StatelessWidget {
                     Text(
                       l10n.explore_guide,
                       style: theme.textTheme.headlineSmall?.copyWith(
-                        color: fastingArtForeground(context),
+                        color: Colors.white,
                         fontWeight: FontWeight.w800,
                         letterSpacing: -.5,
                       ),
@@ -61,7 +61,7 @@ class ExploreScreen extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: fastingArtMutedForeground(context),
+                          color: Colors.white.withValues(alpha: .9),
                           height: 1.35,
                         ),
                       ),
@@ -73,8 +73,6 @@ class ExploreScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // Tip kartları
-            _buildEducationNotice(context),
-            const SizedBox(height: 20),
             ..._tips(l10n).map((tip) => _buildTipCard(context, tip)),
 
             const SizedBox(height: 20),
@@ -100,6 +98,9 @@ class ExploreScreen extends StatelessWidget {
 
             const SizedBox(height: 20),
             _buildSources(context),
+
+            const SizedBox(height: 20),
+            _buildEducationNotice(context),
 
             const SizedBox(height: 24),
           ],
@@ -221,9 +222,14 @@ class ExploreScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final sources = [
       const _Source(
-        title: 'National Institute on Aging — Fasting diets',
+        title: 'NIH / National Institute on Aging — Fasting diets',
         url:
             'https://www.nia.nih.gov/news/calorie-restriction-and-fasting-diets-what-do-we-know',
+      ),
+      const _Source(
+        title: 'NIH / NIA — Intermittent fasting research review',
+        url:
+            'https://www.nia.nih.gov/news/research-intermittent-fasting-shows-health-benefits',
       ),
       const _Source(
         title: 'NIDDK — Eating and physical activity',
@@ -233,6 +239,11 @@ class ExploreScreen extends StatelessWidget {
       const _Source(
         title: 'MedlinePlus — Water in diet',
         url: 'https://medlineplus.gov/ency/article/002471.htm',
+      ),
+      const _Source(
+        title: 'CDC — Physical activity guidance for adults',
+        url:
+            'https://www.cdc.gov/physical-activity-basics/guidelines/adults.html',
       ),
     ];
     return Column(
@@ -277,7 +288,7 @@ class ExploreScreen extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 12),
       child: FastingArtSlot(
         assetPath: tip.artPath,
-        height: 136,
+        height: 176,
         variant: FastingArtVariant.row,
         alignment: Alignment.centerRight,
         semanticLabel: tip.title,
@@ -299,20 +310,16 @@ class ExploreScreen extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 tip.title,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.titleSmall?.copyWith(
-                  color: fastingArtForeground(context),
+                  color: Colors.white,
                   fontWeight: FontWeight.w800,
                 ),
               ),
               const SizedBox(height: 2),
               Text(
                 tip.description,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: fastingArtMutedForeground(context),
+                  color: Colors.white.withValues(alpha: .9),
                   height: 1.3,
                 ),
               ),
