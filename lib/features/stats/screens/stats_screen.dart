@@ -400,6 +400,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       height: 158,
       borderRadius: 22,
       variant: FastingArtVariant.card,
+      splitLightArtwork: true,
       alignment: Alignment.centerRight,
       semanticLabel: title,
       child: Padding(
