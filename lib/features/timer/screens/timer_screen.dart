@@ -408,6 +408,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
           assetPath: 'assets/images/editorial/fasting-guide-hero.webp',
           height: 146,
           variant: FastingArtVariant.card,
+          splitLightArtwork: true,
           semanticLabel: l10n.explore_guide,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 18, 110, 18),

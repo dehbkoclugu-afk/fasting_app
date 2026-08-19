@@ -59,4 +59,31 @@ void main() {
     );
     expect(stack.children, hasLength(2));
   });
+
+  testWidgets('light text cards reserve a clean left copy surface', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData(brightness: Brightness.light),
+        home: const Scaffold(
+          body: FastingArtSlot(
+            assetPath: darkPath,
+            height: 180,
+            variant: FastingArtVariant.row,
+            child: Text('Readable copy'),
+          ),
+        ),
+      ),
+    );
+
+    final artworkPane = tester.widget<FractionallySizedBox>(
+      find.descendant(
+        of: find.byType(FastingArtSlot),
+        matching: find.byType(FractionallySizedBox),
+      ),
+    );
+    expect(artworkPane.widthFactor, .46);
+    expect(find.byType(DefaultTextStyle), findsWidgets);
+  });
 }
