@@ -418,7 +418,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                 Text(
                   l10n.explore_guide,
                   style: theme.textTheme.titleLarge?.copyWith(
-                    color: Colors.white,
+                    color: fastingArtForeground(context),
                     fontWeight: FontWeight.w800,
                     letterSpacing: -.35,
                   ),
@@ -429,7 +429,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.bodySmall?.copyWith(
-                    color: Colors.white.withValues(alpha: .9),
+                    color: fastingArtMutedForeground(context),
                     height: 1.35,
                   ),
                 ),
@@ -474,7 +474,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                         PhosphorIcons.forkKnife(
                           PhosphorIconsStyle.fill,
                         ),
-                        color: Colors.white,
+                        color: AppColors.success,
                         size: 18,
                       ),
                     ),
@@ -482,7 +482,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                     Text(
                       l10n.meals_title,
                       style: theme.textTheme.titleMedium?.copyWith(
-                        color: Colors.white,
+                        color: fastingArtForeground(context),
                         fontWeight: FontWeight.w800,
                       ),
                     ),

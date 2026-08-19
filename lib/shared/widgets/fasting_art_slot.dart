@@ -12,6 +12,25 @@ String themedEditorialAssetPath(String assetPath, Brightness brightness) {
       '${assetPath.substring(extensionIndex)}';
 }
 
+/// Foreground colors for copy placed directly over editorial artwork.
+///
+/// Light artwork is intentionally warm and airy, so it uses ink-colored copy
+/// instead of forcing every card back into a dark surface.
+Color fastingArtForeground(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark
+        ? Colors.white
+        : const Color(0xFF241E2E);
+
+Color fastingArtMutedForeground(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark
+        ? Colors.white.withValues(alpha: .78)
+        : const Color(0xFF514756);
+
+Color fastingArtDivider(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark
+        ? Colors.white.withValues(alpha: .14)
+        : const Color(0xFF514756).withValues(alpha: .20);
+
 /// A single, reusable connection point between editorial artwork and UI.
 ///
 /// Artwork always fills the frame. Variants only tune the protective scrim so
@@ -27,6 +46,7 @@ class FastingArtSlot extends StatelessWidget {
     this.fit = BoxFit.cover,
     this.alignment = Alignment.center,
     this.semanticLabel,
+    this.useThemedAsset = true,
   });
 
   final String assetPath;
@@ -37,6 +57,7 @@ class FastingArtSlot extends StatelessWidget {
   final BoxFit fit;
   final Alignment alignment;
   final String? semanticLabel;
+  final bool useThemedAsset;
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +92,12 @@ class FastingArtSlot extends StatelessWidget {
   }
 
   Widget _artwork(bool isDark) {
-    final resolvedAssetPath = themedEditorialAssetPath(
-      assetPath,
-      isDark ? Brightness.dark : Brightness.light,
-    );
+    final resolvedAssetPath = useThemedAsset
+        ? themedEditorialAssetPath(
+            assetPath,
+            isDark ? Brightness.dark : Brightness.light,
+          )
+        : assetPath;
 
     return Image.asset(
       resolvedAssetPath,
@@ -126,25 +149,25 @@ class FastingArtSlot extends StatelessWidget {
     ),
   };
 
-  // Copy remains legible in light mode without putting a black wall back over
-  // the newly lifted art. Coral-plum keeps this treatment inside FastTrack's
-  // palette and away from a sterile white-card look.
+  // A warm, localized veil protects ink-colored copy while leaving most of the
+  // light artwork untouched. It avoids both the previous full-card purple wash
+  // and a sterile white-card treatment.
   LinearGradient get _lightScrim => switch (variant) {
     FastingArtVariant.row => const LinearGradient(
-      colors: [Color(0xE64A3342), Color(0xCC4A3342), Color(0xB34A3342)],
-      stops: [0, .52, 1],
+      colors: [Color(0xE8F7ECE8), Color(0xA8F7ECE8), Color(0x00F7ECE8)],
+      stops: [0, .46, .84],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
     ),
     FastingArtVariant.card => const LinearGradient(
-      colors: [Color(0xE04A3342), Color(0xC74A3342), Color(0xB34A3342)],
-      stops: [0, .58, 1],
+      colors: [Color(0xDCF7ECE8), Color(0x78F7ECE8), Color(0x16F7ECE8)],
+      stops: [0, .48, 1],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
     ),
     FastingArtVariant.hero => const LinearGradient(
-      colors: [Color(0xED4A3342), Color(0xD64A3342), Color(0xB34A3342)],
-      stops: [0, .56, 1],
+      colors: [Color(0xEDF7ECE8), Color(0xA8F7ECE8), Color(0x08F7ECE8)],
+      stops: [0, .48, .9],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
     ),

@@ -45,7 +45,7 @@ class WeightChart extends StatelessWidget {
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: Colors.white.withValues(alpha: .9),
+                  color: fastingArtForeground(context),
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -79,7 +79,7 @@ class WeightChart extends StatelessWidget {
               drawVerticalLine: false,
               horizontalInterval: 2,
               getDrawingHorizontalLine: (_) => FlLine(
-                color: Colors.white.withValues(alpha: .08),
+                color: fastingArtDivider(context),
                 strokeWidth: 1,
               ),
             ),
@@ -101,7 +101,7 @@ class WeightChart extends StatelessWidget {
                         '${date.day}/${date.month}',
                         style: TextStyle(
                           fontSize: 10,
-                          color: Colors.white.withValues(alpha: .9),
+                          color: fastingArtMutedForeground(context),
                         ),
                       ),
                     );
@@ -117,7 +117,7 @@ class WeightChart extends StatelessWidget {
                     '${value.toInt()}',
                     style: TextStyle(
                       fontSize: 10,
-                      color: Colors.white.withValues(alpha: .9),
+                      color: fastingArtMutedForeground(context),
                     ),
                   ),
                 ),

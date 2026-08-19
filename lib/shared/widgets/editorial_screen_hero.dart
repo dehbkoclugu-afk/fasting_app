@@ -49,7 +49,7 @@ class EditorialScreenHero extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (icon != null) ...[
-                    Icon(icon, color: Colors.white, size: 26),
+                    Icon(icon, color: fastingArtForeground(context), size: 26),
                     const SizedBox(height: 10),
                   ],
                   Text(
@@ -57,7 +57,7 @@ class EditorialScreenHero extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.titleLarge?.copyWith(
-                      color: Colors.white,
+                      color: fastingArtForeground(context),
                       fontWeight: FontWeight.w800,
                       height: 1.05,
                     ),
@@ -68,7 +68,7 @@ class EditorialScreenHero extends StatelessWidget {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall?.copyWith(
-                      color: Colors.white.withValues(alpha: .9),
+                      color: fastingArtMutedForeground(context),
                       height: 1.3,
                     ),
                   ),

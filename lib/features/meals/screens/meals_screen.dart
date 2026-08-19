@@ -51,7 +51,7 @@ class MealsScreen extends ConsumerWidget {
                         Text(
                           l10n.meals_title,
                           style: theme.textTheme.headlineSmall?.copyWith(
-                            color: Colors.white,
+                            color: fastingArtForeground(context),
                             fontWeight: FontWeight.w800,
                             letterSpacing: -.45,
                           ),
@@ -62,7 +62,7 @@ class MealsScreen extends ConsumerWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color: Colors.white.withValues(alpha: .9),
+                            color: fastingArtMutedForeground(context),
                             height: 1.25,
                           ),
                         ),
@@ -130,14 +130,14 @@ class MealsScreen extends ConsumerWidget {
                         Text(
                           l10n.meals_manualEntry,
                           style: theme.textTheme.titleSmall?.copyWith(
-                            color: Colors.white,
+                            color: fastingArtForeground(context),
                             fontWeight: FontWeight.w800,
                           ),
                         ),
                         const Spacer(),
                         Icon(
                           Icons.arrow_forward_rounded,
-                          color: Colors.white.withValues(alpha: .9),
+                          color: fastingArtMutedForeground(context),
                           size: 20,
                         ),
                       ],
@@ -166,7 +166,7 @@ class MealsScreen extends ConsumerWidget {
                         Text(
                           l10n.meals_eatingWindow,
                           style: theme.textTheme.titleSmall?.copyWith(
-                            color: Colors.white,
+                            color: fastingArtForeground(context),
                             fontWeight: FontWeight.w800,
                           ),
                         ),
@@ -326,7 +326,7 @@ class MealsScreen extends ConsumerWidget {
                         children: [
                           Icon(
                             PhosphorIcons.camera(PhosphorIconsStyle.fill),
-                            color: Colors.white,
+                            color: fastingArtForeground(context),
                             size: 24,
                           ),
                           const SizedBox(height: 8),
@@ -334,14 +334,14 @@ class MealsScreen extends ConsumerWidget {
                             l10n.meals_noMeals,
                             maxLines: 2,
                             style: theme.textTheme.titleSmall?.copyWith(
-                              color: Colors.white,
+                              color: fastingArtForeground(context),
                               fontWeight: FontWeight.w800,
                             ),
                           ),
                           Text(
                             l10n.foodScan_scanCta,
                             style: theme.textTheme.bodySmall?.copyWith(
-                              color: Colors.white.withValues(alpha: .9),
+                              color: fastingArtMutedForeground(context),
                             ),
                           ),
                         ],
@@ -534,21 +534,21 @@ class MealsScreen extends ConsumerWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.labelSmall?.copyWith(
-                    color: Colors.white.withValues(alpha: .9),
+                    color: fastingArtMutedForeground(context),
                   ),
                 ),
                 Text.rich(
                   TextSpan(
                     text: value,
                     style: theme.textTheme.titleSmall?.copyWith(
-                      color: Colors.white,
+                      color: fastingArtForeground(context),
                       fontWeight: FontWeight.w800,
                     ),
                     children: [
                       TextSpan(
                         text: ' / $target',
                         style: theme.textTheme.labelSmall?.copyWith(
-                          color: Colors.white.withValues(alpha: .9),
+                          color: fastingArtMutedForeground(context),
                         ),
                       ),
                     ],
@@ -658,7 +658,7 @@ class MealsScreen extends ConsumerWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.labelLarge?.copyWith(
-                  color: Colors.white,
+                  color: fastingArtForeground(context),
                   fontWeight: FontWeight.w800,
                 ),
               ),
@@ -666,7 +666,7 @@ class MealsScreen extends ConsumerWidget {
               Text(
                 cal,
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: Colors.white.withValues(alpha: .9),
+                  color: fastingArtMutedForeground(context),
                 ),
               ),
             ],
