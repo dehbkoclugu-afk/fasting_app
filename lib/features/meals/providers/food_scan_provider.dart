@@ -13,7 +13,6 @@ enum PhotoSource { camera, gallery }
 
 /// Gemini needs the real media type; Android gallery photos are often HEIC,
 /// PNG or WebP even when the picker resized them.
-@visibleForTesting
 String detectImageMimeType(
   Uint8List bytes, {
   String? reportedMimeType,
