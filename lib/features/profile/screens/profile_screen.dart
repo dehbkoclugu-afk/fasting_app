@@ -540,21 +540,23 @@ class ProfileScreen extends ConsumerWidget {
             title: Text(l10n.languageSelect),
             content: SizedBox(
               width: double.maxFinite,
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: options.length,
-                itemBuilder: (context, index) {
-                  final option = options[index];
-                  return RadioListTile<String?>(
-                    title: Text(option.$2),
-                    value: option.$1,
-                    groupValue: settings.locale,
-                    onChanged: (value) {
-                      ref.read(settingsProvider.notifier).setLocale(value);
-                      Navigator.pop(ctx);
-                    },
-                  );
+              child: RadioGroup<String?>(
+                groupValue: settings.locale,
+                onChanged: (value) {
+                  ref.read(settingsProvider.notifier).setLocale(value);
+                  Navigator.pop(ctx);
                 },
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: options.length,
+                  itemBuilder: (context, index) {
+                    final option = options[index];
+                    return RadioListTile<String?>(
+                      title: Text(option.$2),
+                      value: option.$1,
+                    );
+                  },
+                ),
               ),
             ),
           ),
@@ -569,19 +571,26 @@ class ProfileScreen extends ConsumerWidget {
       builder:
           (dialogContext) => SimpleDialog(
             title: Text(l10n.theme_select),
-            children:
-                ThemeMode.values.map((mode) {
-                  return RadioListTile<ThemeMode>(
-                    title: Text(_themeLabel(l10n, mode)),
-                    value: mode,
-                    groupValue: settings.themeMode,
-                    onChanged: (value) {
-                      if (value == null) return;
-                      ref.read(settingsProvider.notifier).setThemeMode(value);
-                      Navigator.pop(dialogContext);
-                    },
-                  );
-                }).toList(),
+            children: [
+              RadioGroup<ThemeMode>(
+                groupValue: settings.themeMode,
+                onChanged: (value) {
+                  if (value == null) return;
+                  ref.read(settingsProvider.notifier).setThemeMode(value);
+                  Navigator.pop(dialogContext);
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children:
+                      ThemeMode.values.map((mode) {
+                        return RadioListTile<ThemeMode>(
+                          title: Text(_themeLabel(l10n, mode)),
+                          value: mode,
+                        );
+                      }).toList(),
+                ),
+              ),
+            ],
           ),
     );
   }
