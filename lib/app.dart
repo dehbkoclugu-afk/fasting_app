@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -19,8 +21,15 @@ Locale? _localeFromTag(String? tag) {
 
 class FastingApp extends ConsumerStatefulWidget {
   final bool showOnboarding;
+  final Uint8List? recoveredFoodImage;
+  final String? recoveredFoodImageMimeType;
 
-  const FastingApp({super.key, required this.showOnboarding});
+  const FastingApp({
+    super.key,
+    required this.showOnboarding,
+    this.recoveredFoodImage,
+    this.recoveredFoodImageMimeType,
+  });
 
   @override
   ConsumerState<FastingApp> createState() => _FastingAppState();
@@ -33,7 +42,11 @@ class _FastingAppState extends ConsumerState<FastingApp> {
   void initState() {
     super.initState();
     // Router'ı bir kez oluştur, settings değişikliklerinde yeniden oluşturma
-    _router = AppRouter.router(showOnboarding: widget.showOnboarding);
+    _router = AppRouter.router(
+      showOnboarding: widget.showOnboarding,
+      recoveredFoodImage: widget.recoveredFoodImage,
+      recoveredFoodImageMimeType: widget.recoveredFoodImageMimeType,
+    );
     NotificationService().notificationTapHandler = () => _router.go('/timer');
   }
 
