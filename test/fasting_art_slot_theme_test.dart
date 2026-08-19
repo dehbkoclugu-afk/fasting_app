@@ -59,4 +59,33 @@ void main() {
     );
     expect(stack.children, hasLength(2));
   });
+
+  testWidgets('light mode adds text-local contrast without covering artwork', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData(brightness: Brightness.light),
+        home: const Scaffold(
+          body: FastingArtSlot(
+            assetPath: darkPath,
+            height: 180,
+            child: Text('Readable copy'),
+          ),
+        ),
+      ),
+    );
+
+    final readabilityStyle = tester.widget<DefaultTextStyle>(
+      find.descendant(
+        of: find.byType(FastingArtSlot),
+        matching: find.byWidgetPredicate(
+          (widget) =>
+              widget is DefaultTextStyle &&
+              (widget.style.shadows?.isNotEmpty ?? false),
+        ),
+      ),
+    );
+    expect(readabilityStyle.style.shadows, hasLength(2));
+  });
 }
