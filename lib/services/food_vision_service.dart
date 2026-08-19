@@ -254,6 +254,7 @@ class FoodVisionService {
   static FoodVisionError _errorForStatus(int status) {
     if (status == 429) return FoodVisionError.rateLimited;
     if (status == 401 || status == 403) return FoodVisionError.auth;
+    if (status == 404) return FoodVisionError.server;
     // 400 is almost always a bad or restricted key in a shipped build — the
     // request shape itself is fixed and covered by tests.
     if (status == 400) return FoodVisionError.auth;
@@ -299,7 +300,7 @@ class FoodVisionService {
 
     final Map<String, dynamic> result;
     try {
-      result = jsonDecode(text) as Map<String, dynamic>;
+      result = _decodeModelJson(text);
     } catch (e) {
       throw FoodVisionException(FoodVisionError.unreadable, 'bad payload: $e');
     }
@@ -385,6 +386,31 @@ Rules:
     },
     'required': ['isFood', 'dishName', 'confidence', 'items'],
   };
+
+  static Map<String, dynamic> _decodeModelJson(String text) {
+    var normalized = text.trim();
+    if (normalized.startsWith('```')) {
+      final firstLineEnd = normalized.indexOf('\n');
+      if (firstLineEnd >= 0) {
+        normalized = normalized.substring(firstLineEnd + 1).trim();
+      }
+      if (normalized.endsWith('```')) {
+        normalized = normalized.substring(0, normalized.length - 3).trim();
+      }
+    }
+
+    try {
+      return jsonDecode(normalized) as Map<String, dynamic>;
+    } catch (_) {
+      // Some model versions may add a short sentence around JSON despite JSON
+      // mode. Recover the object rather than rejecting a valid food analysis.
+      final start = normalized.indexOf('{');
+      final end = normalized.lastIndexOf('}');
+      if (start < 0 || end <= start) rethrow;
+      return jsonDecode(normalized.substring(start, end + 1))
+          as Map<String, dynamic>;
+    }
+  }
 
   static String _truncate(String s) =>
       s.length <= 200 ? s : '${s.substring(0, 200)}…';
