@@ -32,7 +32,10 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const OnboardingProgress(currentStep: 4),
+              OnboardingProgress(
+                currentStep: 4,
+                onBack: () => context.go('/onboarding/body-info'),
+              ),
               const SizedBox(height: 24),
 
               EditorialScreenHero(

@@ -10,6 +10,7 @@ void main() {
     expect(pubspec, contains('- assets/images/editorial/v3/'));
     expect(pubspec, contains('- assets/images/editorial/v4/'));
     expect(pubspec, contains('- assets/images/editorial/v4/quick/'));
+    expect(pubspec, contains('- assets/images/editorial/v5/'));
 
     final dartFiles = Directory('lib')
         .listSync(recursive: true)
@@ -41,6 +42,24 @@ void main() {
         greaterThan(0),
         reason: 'Empty light-mode artwork: $lightAsset',
       );
+    }
+  });
+
+  test('every metabolic phase has a physical light and dark artwork pair', () {
+    for (final phase in [
+      'anabolic',
+      'catabolic',
+      'fat-burning',
+      'ketosis',
+      'autophagy',
+    ]) {
+      for (final suffix in ['', '-light']) {
+        final asset = File(
+          'assets/images/editorial/v5/phase-$phase$suffix.webp',
+        );
+        expect(asset.existsSync(), isTrue, reason: 'Missing ${asset.path}');
+        expect(asset.lengthSync(), greaterThan(0), reason: 'Empty ${asset.path}');
+      }
     }
   });
 

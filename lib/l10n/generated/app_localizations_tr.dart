@@ -1003,7 +1003,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get explore_guideDesc =>
-      'Intermittent fasting hakkında bilmeniz gerekenler.';
+      'Aralıklı oruç hakkında bilmeniz gerekenler.';
 
   @override
   String get explore_circleDesc => 'Özel grubunla sessizce destekleş.';

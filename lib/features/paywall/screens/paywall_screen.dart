@@ -214,7 +214,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                     const SizedBox(height: 4),
                     Text(
                       selected?.packageType == PackageType.lifetime
-                          ? 'Tek ödemedir; otomatik yenilenmez.'
+                          ? l10n.paywall_once
                           : Platform.isIOS
                           ? l10n.paywall_autoRenewInfo
                           : l10n.paywall_autoRenewInfoPlay,

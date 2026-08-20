@@ -31,6 +31,7 @@ class MealsScreen extends ConsumerWidget {
     final eatingHours = selectedPlan.eatingHours;
 
     return Scaffold(
+      appBar: AppBar(title: Text(l10n.meals_title)),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: AppSpacing.screenPadding,
@@ -46,7 +47,7 @@ class MealsScreen extends ConsumerWidget {
                   height: 196,
                   variant: FastingArtVariant.hero,
                   alignment: Alignment.centerRight,
-                  artOffset: const Offset(-18, 0),
+                  artOffset: const Offset(-12, 0),
                   artScale: 1.08,
                   semanticLabel: l10n.foodScan_scanCta,
                   child: Padding(
@@ -233,7 +234,7 @@ class MealsScreen extends ConsumerWidget {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    'Oruç · $fastingHours saat',
+                                    l10n.meals_fastingWindow(fastingHours),
                                     style: TextStyle(
                                       fontSize: 10,
                                       color: AppColors.primary,
@@ -252,7 +253,7 @@ class MealsScreen extends ConsumerWidget {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    'Yemek · $eatingHours saat',
+                                    l10n.meals_eatingWindowHours(eatingHours),
                                     style: TextStyle(
                                       fontSize: 10,
                                       color: AppColors.success,

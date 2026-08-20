@@ -76,7 +76,10 @@ class _GoalScreenState extends State<GoalScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const OnboardingProgress(currentStep: 1),
+              OnboardingProgress(
+                currentStep: 1,
+                onBack: () => context.go('/onboarding'),
+              ),
               const SizedBox(height: 24),
 
               EditorialScreenHero(

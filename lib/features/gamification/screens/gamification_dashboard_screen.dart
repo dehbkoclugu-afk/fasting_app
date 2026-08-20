@@ -16,6 +16,15 @@ class GamificationDashboardScreen extends ConsumerWidget {
     final calm = ref.watch(settingsProvider).calmGamification;
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    final visibleBadges = (calm
+            ? game.badges.where((badge) => badge.unlocked)
+            : game.badges)
+        .toList()
+      ..sort((a, b) {
+        if (a.unlocked != b.unlocked) return a.unlocked ? -1 : 1;
+        if (!a.unlocked) return b.ratio.compareTo(a.ratio);
+        return game.badges.indexOf(a).compareTo(game.badges.indexOf(b));
+      });
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.game_title)),
@@ -41,8 +50,10 @@ class GamificationDashboardScreen extends ConsumerWidget {
             _SeasonPath(current: game.seasonStep),
             const SizedBox(height: 26),
           ],
-          _NextSealCard(game: game, l10n: l10n),
-          const SizedBox(height: 26),
+          if (!calm) ...[
+            _NextSealCard(game: game, l10n: l10n),
+            const SizedBox(height: 26),
+          ],
           _SectionTitle(
             title: l10n.game_badges,
             subtitle:
@@ -58,10 +69,10 @@ class GamificationDashboardScreen extends ConsumerWidget {
               mainAxisSpacing: 10,
               childAspectRatio: .9,
             ),
-            itemCount: game.badges.length,
+            itemCount: visibleBadges.length,
             itemBuilder:
                 (context, index) =>
-                    _BadgeToken(badge: game.badges[index], l10n: l10n),
+                    _BadgeToken(badge: visibleBadges[index], l10n: l10n),
           ),
           const SizedBox(height: 26),
           FastingArtSlot(
@@ -159,7 +170,7 @@ class _LevelHero extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        calm ? l10n.game_questsDesc : 'Seviye ${game.level}',
+                        calm ? l10n.game_questsDesc : '${game.level}',
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: fastingArtMutedForeground(context),
                         ),
@@ -172,7 +183,7 @@ class _LevelHero extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text('${game.levelXp} / ${GamificationState.levelSize} XP', style: TextStyle(color: fastingArtForeground(context), fontWeight: FontWeight.w800)),
-                      Text('${GamificationState.levelSize - game.levelXp} XP kaldı', style: theme.textTheme.labelSmall?.copyWith(color: fastingArtMutedForeground(context))),
+                      Text('${GamificationState.levelSize - game.levelXp} XP', style: theme.textTheme.labelSmall?.copyWith(color: fastingArtMutedForeground(context))),
                     ],
                   ),
               ],
@@ -274,32 +285,33 @@ class _SeasonPath extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      height: 168,
+    return FastingArtSlot(
+      assetPath: 'assets/images/editorial/v3/season-path.webp',
+      height: 190,
+      borderRadius: 24,
+      variant: FastingArtVariant.hero,
+      alignment: Alignment.center,
+      child: Padding(
       padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: theme.dividerColor.withValues(alpha: .45)),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(children: [
-            Text('Adım $current / 30', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800)),
-            const Spacer(),
-            Text('Her 5 adımda mühür', style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.primary)),
+            Text('$current / 30', style: theme.textTheme.titleMedium?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w900)),
           ]),
           const Spacer(),
-          SizedBox(
-            height: 76,
-            child: CustomPaint(
-              painter: _SeasonPathPainter(current: current, color: theme.colorScheme.primary, track: theme.colorScheme.outlineVariant),
-              child: const SizedBox.expand(),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(99),
+            child: LinearProgressIndicator(
+              value: current / 30,
+              minHeight: 9,
+              backgroundColor: fastingArtForeground(context).withValues(alpha: .18),
             ),
           ),
+          const SizedBox(height: 7),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [5, 10, 15, 20, 25, 30].map((step) => Text('$step', style: theme.textTheme.labelSmall?.copyWith(color: fastingArtMutedForeground(context), fontWeight: step <= current ? FontWeight.w900 : FontWeight.w500))).toList()),
         ],
-      ),
+      )),
     );
   }
 }
@@ -321,57 +333,15 @@ class _NextSealCard extends StatelessWidget {
         Icon(Icons.workspace_premium_outlined, color: theme.colorScheme.primary),
         const SizedBox(width: 12),
         Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Sıradaki koleksiyon mührü', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800)),
+          Text(l10n.game_seasonDesc, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800)),
           const SizedBox(height: 4),
-          Text('$remaining ritim tamamlayınca açılır', style: theme.textTheme.bodySmall),
+          Text('${game.seasonStep - 1} / ${(game.seasonStep - 1) + remaining}', style: theme.textTheme.bodySmall),
           const SizedBox(height: 9),
           LinearProgressIndicator(value: completedInBlock / 5, minHeight: 7, borderRadius: BorderRadius.circular(99)),
         ])),
       ]),
     );
   }
-}
-
-class _SeasonPathPainter extends CustomPainter {
-  const _SeasonPathPainter({required this.current, required this.color, required this.track});
-  final int current;
-  final Color color;
-  final Color track;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final points = List.generate(30, (index) {
-      final row = index ~/ 10;
-      final position = index % 10;
-      final x = row.isOdd ? size.width - (position / 9 * size.width) : position / 9 * size.width;
-      return Offset(x, 12 + row * 26);
-    });
-    final path = Path()..moveTo(points.first.dx, points.first.dy);
-    for (final point in points.skip(1)) {
-      path.lineTo(point.dx, point.dy);
-    }
-    final trackPaint = Paint()
-      ..color = track
-      ..strokeWidth = 4
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round;
-    canvas.drawPath(path, trackPaint);
-    for (var i = 0; i < points.length; i++) {
-      final reached = i < current;
-      final checkpoint = (i + 1) % 5 == 0;
-      canvas.drawCircle(points[i], checkpoint ? 7 : 4, Paint()..color = reached ? color : track);
-      if (checkpoint) {
-        final halo = Paint()
-          ..color = reached ? color.withValues(alpha: .55) : track
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 2;
-        canvas.drawCircle(points[i], 9, halo);
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant _SeasonPathPainter oldDelegate) => oldDelegate.current != current || oldDelegate.color != color;
 }
 
 class _BadgeToken extends StatelessWidget {
@@ -386,6 +356,9 @@ class _BadgeToken extends StatelessWidget {
     final labelColor = isDark ? Colors.white : theme.colorScheme.onSurface;
     return Tooltip(
       message: _badgeDescription(l10n, badge.id),
+      child: InkWell(
+      borderRadius: BorderRadius.circular(18),
+      onTap: () => _showBadgeDetails(context),
       child: LayoutBuilder(
       builder: (context, constraints) => Opacity(
         opacity: badge.unlocked ? 1 : .62,
@@ -450,9 +423,42 @@ class _BadgeToken extends StatelessWidget {
           ),
         ),
       ),
-      ),
+      )),
     );
   }
+
+  Future<void> _showBadgeDetails(BuildContext context) => showModalBottomSheet<void>(
+    context: context,
+    useRootNavigator: true,
+    isScrollControlled: true,
+    builder: (sheetContext) {
+      final theme = Theme.of(sheetContext);
+      final title = _badgeTitle(l10n, badge.id);
+      final description = _badgeDescription(l10n, badge.id);
+      return SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
+          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Row(children: [
+              Expanded(child: Text(title, style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900))),
+              IconButton(onPressed: () => Navigator.pop(sheetContext), icon: const Icon(Icons.close_rounded)),
+            ]),
+            const SizedBox(height: 10),
+            FastingArtSlot(assetPath: _badgeArtwork(badge.id), height: 190, borderRadius: 22, variant: FastingArtVariant.bare, child: const SizedBox.shrink()),
+            const SizedBox(height: 18),
+            Text(description, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700)),
+            const SizedBox(height: 14),
+            LinearProgressIndicator(value: badge.ratio, minHeight: 9, borderRadius: BorderRadius.circular(99)),
+            const SizedBox(height: 8),
+            Text(badge.unlocked ? l10n.timer_completed : '${badge.progress} / ${badge.target}', style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            const SizedBox(height: 20),
+            SizedBox(width: double.infinity, child: FilledButton(onPressed: () => Navigator.pop(sheetContext), child: Text(l10n.common_ok))),
+          ]),
+        ),
+      );
+    },
+  );
 
   String _badgeArtwork(String id) {
     return switch (id) {

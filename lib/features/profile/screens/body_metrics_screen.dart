@@ -10,7 +10,6 @@ import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../stats/widgets/weight_chart.dart';
-import '../../timer/providers/water_provider.dart';
 import '../providers/settings_provider.dart';
 import '../../stats/providers/stats_provider.dart';
 
@@ -72,7 +71,7 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
             EditorialScreenHero(
               assetPath: 'assets/images/editorial/profile-progress.webp',
               title: l10n.bodyMetrics_title,
-              subtitle: 'Değişimi tek rakamla değil, zaman içindeki eğilimle izle.',
+              subtitle: l10n.stats_weightChange,
               textWidth: 230,
             ),
             const SizedBox(height: 20),
@@ -92,7 +91,7 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(color: theme.colorScheme.primaryContainer.withValues(alpha: .35), borderRadius: BorderRadius.circular(18)),
-                child: Text('${(settings.weight! - settings.targetWeight!).abs().toStringAsFixed(1)} kg hedef farkı · günlük dalgalanmalardan çok haftalık eğilime odaklan.', style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600)),
+                child: Text('${l10n.bodyMetrics_target}: ${(settings.weight! - settings.targetWeight!).abs().toStringAsFixed(1)} kg', style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700)),
               ),
             ],
             const SizedBox(height: 24),
@@ -153,13 +152,6 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
             ),
 
             const SizedBox(height: 24),
-
-            if (bmi != null) ...[
-              Text('BMI ne anlatır?', style: theme.textTheme.titleMedium),
-              const SizedBox(height: 8),
-              Text('BMI genel bir tarama göstergesidir; kas kütlesini ve vücut kompozisyonunu doğrudan ölçmez. Sonucu tek başına sağlık değerlendirmesi olarak kullanma.', style: theme.textTheme.bodyMedium?.copyWith(height: 1.45)),
-              const SizedBox(height: 24),
-            ],
 
             // Weight history list
             if (_weightHistory.isNotEmpty) ...[

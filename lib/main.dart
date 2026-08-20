@@ -57,7 +57,13 @@ void main() async {
     ),
   );
 
-  // Servisleri başlat
+  // Servisleri başlat. Bildirim kanalı ilk oluşturulurken kullanıcının seçili
+  // dili hazır olsun; aksi halde kanal adı ilk kurulum dilinde kalabiliyor.
+  final prefs = await SharedPreferences.getInstance();
+  NotificationService().setLocale(
+    prefs.getString('locale') ??
+        WidgetsBinding.instance.platformDispatcher.locale.toLanguageTag(),
+  );
   await NotificationService().initialize();
   await BackgroundService().initialize();
   await RevenueCatService().initialize();
@@ -71,7 +77,6 @@ void main() async {
   await WidgetService().initialize();
 
   // Onboarding durumunu başlangıçta oku (router oluşmadan önce)
-  final prefs = await SharedPreferences.getInstance();
   final onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
 
   runApp(

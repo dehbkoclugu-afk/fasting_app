@@ -12,6 +12,7 @@ import '../../../core/utils/calculations.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../../services/admob_service.dart';
+import '../../../services/notification_service.dart';
 import '../../../core/config/build_config.dart';
 import '../providers/settings_provider.dart';
 
@@ -42,7 +43,7 @@ class ProfileScreen extends ConsumerWidget {
     await Clipboard.setData(ClipboardData(text: url));
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context)!.replay_copied)),
+        SnackBar(content: Text(AppLocalizations.of(context)!.profile_share)),
       );
     }
   }
@@ -89,8 +90,8 @@ class ProfileScreen extends ConsumerWidget {
                 onTap: () => _showNameDialog(context, ref, settings.userName),
                 child: EditorialScreenHero(
                   assetPath: 'assets/images/editorial/profile-progress.webp',
-                  title: settings.userName.isNotEmpty ? settings.userName : 'Profilini tamamla',
-                  subtitle: '${l10n.profile_planActive(plan.name)} · Düzenle',
+                  title: settings.userName.isNotEmpty ? settings.userName : l10n.profile_user,
+                  subtitle: l10n.profile_planActive(plan.name),
                   height: 156,
                   textWidth: 220,
                 ),
@@ -140,7 +141,7 @@ class ProfileScreen extends ConsumerWidget {
                               ),
                             ),
                             Text(
-                              '${l10n.profile_premiumDesc} · Planları gör',
+                              l10n.profile_premiumDesc,
                               style: theme.textTheme.bodySmall?.copyWith(
                                 color: theme.colorScheme.onSurface.withValues(
                                   alpha: 0.5,
@@ -219,7 +220,12 @@ class ProfileScreen extends ConsumerWidget {
                       title: l10n.profile_notifications,
                       trailing: Switch(
                         value: settings.notificationsEnabled,
-                        onChanged: (v) {
+                        onChanged: (v) async {
+                          if (v) {
+                            final granted = await NotificationService()
+                                .requestPermission();
+                            if (!granted) return;
+                          }
                           ref
                               .read(settingsProvider.notifier)
                               .setNotifications(v);
@@ -247,11 +253,11 @@ class ProfileScreen extends ConsumerWidget {
                       title: l10n.profile_waterReminder,
                       trailing: Switch(
                         value: settings.waterReminders,
-                        onChanged: (v) {
+                        onChanged: settings.notificationsEnabled ? (v) {
                           ref
                               .read(settingsProvider.notifier)
                               .setWaterReminders(v);
-                        },
+                        } : null,
                       ),
                     ),
                     const Divider(height: 1),
@@ -261,11 +267,11 @@ class ProfileScreen extends ConsumerWidget {
                       title: l10n.profile_phaseNotifications,
                       trailing: Switch(
                         value: settings.phaseNotifications,
-                        onChanged: (v) {
+                        onChanged: settings.notificationsEnabled ? (v) {
                           ref
                               .read(settingsProvider.notifier)
                               .setPhaseNotifications(v);
-                        },
+                        } : null,
                       ),
                     ),
                     const Divider(height: 1),
@@ -276,7 +282,9 @@ class ProfileScreen extends ConsumerWidget {
                       trailing: Switch(
                         value: settings.soundEnabled,
                         onChanged:
-                            ref.read(settingsProvider.notifier).setSoundEnabled,
+                            ref
+                                .read(settingsProvider.notifier)
+                                .setSoundEnabled,
                       ),
                     ),
                     const Divider(height: 1),
@@ -352,7 +360,7 @@ class ProfileScreen extends ConsumerWidget {
                       context,
                       icon: PhosphorIcons.info(),
                       title: l10n.profile_version,
-                      subtitle: '1.2.0 (12)',
+                      subtitle: '1.2.6 (18)',
                     ),
                   ],
                 ),
@@ -486,42 +494,59 @@ class ProfileScreen extends ConsumerWidget {
       offset: controller.text.length,
     );
 
-    await showDialog<void>(
+    await showModalBottomSheet<void>(
       context: context,
+      useRootNavigator: true,
+      isScrollControlled: true,
+      showDragHandle: false,
       builder:
-          (dialogContext) => AlertDialog(
-            title: Text(l10n.profile_editName),
-            content: TextField(
-              controller: controller,
-              autofocus: true,
-              textCapitalization: TextCapitalization.words,
-              textInputAction: TextInputAction.done,
-              decoration: InputDecoration(
-                labelText: l10n.profile_name,
-                prefixIcon: const Icon(Icons.person_outline),
+          (sheetContext) => Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(sheetContext).bottom),
+            child: SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(children: [
+                      Expanded(child: Text(l10n.profile_editName, style: Theme.of(sheetContext).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900))),
+                      IconButton(onPressed: () => Navigator.pop(sheetContext), icon: const Icon(Icons.close_rounded)),
+                    ]),
+                    const SizedBox(height: 12),
+                    TextField(
+                      controller: controller,
+                      autofocus: true,
+                      maxLength: 32,
+                      textCapitalization: TextCapitalization.words,
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(labelText: l10n.profile_name, hintText: l10n.profile_user),
+                      onSubmitted: (value) {
+                        final name = value.trim();
+                        if (name.isEmpty) return;
+                        ref.read(settingsProvider.notifier).setUserName(name);
+                        Navigator.pop(sheetContext);
+                      },
+                    ),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton.icon(
+                        onPressed: () {
+                          final name = controller.text.trim();
+                          if (name.isEmpty) return;
+                          ref.read(settingsProvider.notifier).setUserName(name);
+                          Navigator.pop(sheetContext);
+                        },
+                        icon: const Icon(Icons.check_rounded),
+                        label: Text(l10n.common_save),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              onSubmitted: (value) {
-                final name = value.trim();
-                if (name.isEmpty) return;
-                ref.read(settingsProvider.notifier).setUserName(name);
-                Navigator.pop(dialogContext);
-              },
             ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(dialogContext),
-                child: Text(l10n.common_cancel),
-              ),
-              FilledButton(
-                onPressed: () {
-                  final name = controller.text.trim();
-                  if (name.isEmpty) return;
-                  ref.read(settingsProvider.notifier).setUserName(name);
-                  Navigator.pop(dialogContext);
-                },
-                child: Text(l10n.common_save),
-              ),
-            ],
           ),
     );
     controller.dispose();
@@ -551,7 +576,7 @@ class _LanguagePickerPageState extends State<_LanguagePickerPage> {
       body: Column(children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
-          child: SearchBar(leading: const Icon(Icons.search), hintText: 'Dil ara', onChanged: (value) => setState(() => _query = value)),
+          child: SearchBar(leading: const Icon(Icons.search), hintText: l10n.profile_language, onChanged: (value) => setState(() => _query = value)),
         ),
         Expanded(child: ListView.separated(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
@@ -563,7 +588,7 @@ class _LanguagePickerPageState extends State<_LanguagePickerPage> {
             return ListTile(
               contentPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
               title: Text(option.$2),
-              subtitle: option.$1 == null ? const Text('Cihaz ayarını kullan') : Text(option.$1!),
+              subtitle: option.$1 == null ? Text(l10n.language_system) : Text(option.$1!),
               trailing: selected ? Icon(Icons.check_circle, color: Theme.of(context).colorScheme.primary) : null,
               onTap: () { widget.onSelected(option.$1); Navigator.pop(context); },
             );

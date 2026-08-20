@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../services/notification_service.dart';
 
 class AppSettings {
   final ThemeMode themeMode;
@@ -134,17 +138,17 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
 
   void setNotifications(bool enabled) {
     state = state.copyWith(notificationsEnabled: enabled);
-    _save();
+    unawaited(_saveAndRefreshNotifications());
   }
 
   void setWaterReminders(bool enabled) {
     state = state.copyWith(waterReminders: enabled);
-    _save();
+    unawaited(_saveAndRefreshNotifications());
   }
 
   void setPhaseNotifications(bool enabled) {
     state = state.copyWith(phaseNotifications: enabled);
-    _save();
+    unawaited(_saveAndRefreshNotifications());
   }
 
   void setSoundEnabled(bool enabled) {
@@ -191,7 +195,35 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
 
   void setLocale(String? locale) {
     state = state.copyWith(locale: locale);
-    _save();
+    unawaited(_saveAndRefreshNotifications());
+  }
+
+  Future<void> _saveAndRefreshNotifications() async {
+    await _save();
+    final prefs = await SharedPreferences.getInstance();
+    final notifications = NotificationService();
+    final locale = state.locale ?? WidgetsBinding.instance.platformDispatcher.locale.toLanguageTag();
+    notifications.setLocale(locale);
+    if (!state.notificationsEnabled) {
+      await notifications.cancelAll();
+      return;
+    }
+    final active = prefs.getBool('fasting_active') ?? false;
+    final startMs = prefs.getInt('fasting_start_time');
+    final targetMinutes = prefs.getInt('fasting_target_minutes');
+    final planName = prefs.getString('fasting_plan_name');
+    if (!active || startMs == null || targetMinutes == null || planName == null) return;
+    await notifications.scheduleFastingNotifications(
+      startTime: DateTime.fromMillisecondsSinceEpoch(startMs),
+      targetMinutes: targetMinutes,
+      planName: planName,
+      phaseNotifications: state.phaseNotifications,
+      waterReminders: state.waterReminders,
+    );
+    await notifications.showActiveFastingNotification(
+      planName: planName,
+      targetMinutes: targetMinutes,
+    );
   }
 }
 

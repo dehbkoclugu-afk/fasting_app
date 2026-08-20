@@ -37,7 +37,10 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const OnboardingProgress(currentStep: 2),
+              OnboardingProgress(
+                currentStep: 2,
+                onBack: () => context.go('/onboarding/goals'),
+              ),
               const SizedBox(height: 24),
 
               EditorialScreenHero(

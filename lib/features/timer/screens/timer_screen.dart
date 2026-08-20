@@ -16,7 +16,6 @@ import '../widgets/fasting_ring.dart';
 import '../widgets/timer_display.dart';
 import '../widgets/timer_controls.dart';
 import '../widgets/quick_stats_row.dart';
-import '../widgets/completion_overlay.dart';
 import '../widgets/crisis_mode_sheet.dart';
 import '../widgets/metabolic_journey.dart';
 import '../widgets/metabolic_weather.dart';
@@ -96,8 +95,6 @@ class _PlanButton extends StatelessWidget {
 }
 
 class _TimerScreenState extends ConsumerState<TimerScreen> {
-  bool _showCompletion = false;
-
   @override
   void initState() {
     super.initState();
@@ -131,7 +128,6 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
           next.progress >= 1.0) {
         ref.read(fastingSessionProvider.notifier).loadSessions();
         _invalidateStatsProviders(ref);
-        setState(() => _showCompletion = true);
       }
     });
 
@@ -370,21 +366,6 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
               },
             ),
           ),
-          // Completion overlay
-          if (_showCompletion)
-            CompletionOverlay(
-              durationMinutes: timerState.elapsedSeconds ~/ 60,
-              planName: plan.name,
-              phaseName: _phaseName(l10n, timerState.currentPhase),
-              targetMinutes: timerState.targetSeconds ~/ 60,
-              onDismiss: () {
-                ref.read(timerProvider.notifier).resetTimer();
-                setState(() => _showCompletion = false);
-                if (!ref.read(isPremiumProvider)) {
-                  AdmobService().showInterstitialAd();
-                }
-              },
-            ),
         ],
       ),
     );
@@ -411,14 +392,14 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
           splitLightArtwork: true,
           semanticLabel: l10n.explore_guide,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 18, 110, 18),
+            padding: const EdgeInsets.fromLTRB(20, 18, 170, 18),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   l10n.explore_guide,
-                  style: theme.textTheme.titleLarge?.copyWith(
+                  style: theme.textTheme.headlineSmall?.copyWith(
                     color: fastingArtForeground(context),
                     fontWeight: FontWeight.w800,
                     letterSpacing: -.35,
@@ -456,40 +437,19 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
           alignment: Alignment.centerRight,
           semanticLabel: l10n.meals_addMeal,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(18, 16, 122, 16),
+            padding: const EdgeInsets.fromLTRB(20, 18, 170, 18),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: 34,
-                      height: 34,
-                      decoration: BoxDecoration(
-                        color: AppColors.success.withValues(alpha: .25),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        PhosphorIcons.forkKnife(
-                          PhosphorIconsStyle.fill,
-                        ),
-                        color: AppColors.success,
-                        size: 18,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                      l10n.meals_title,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        color: fastingArtForeground(context),
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ],
+                Text(
+                  l10n.meals_title,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    color: fastingArtForeground(context),
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 13,
@@ -575,91 +535,114 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
   void _showPlanSelector(BuildContext context, WidgetRef ref) {
     final isActive = ref.read(timerProvider).status == TimerStatus.running;
     if (isActive) return;
-
-    showModalBottomSheet(
+    final router = GoRouter.of(context);
+    var selectedId = ref.read(timerProvider).planId;
+    showModalBottomSheet<void>(
       context: context,
-      builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                AppLocalizations.of(context)!.timer_selectPlan,
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const SizedBox(height: 16),
-              ...FastingPlans.all.map((plan) {
-                final isPremium = ref.read(isPremiumProvider);
-                final isLocked = plan.isPremium && !isPremium;
-                return ListTile(
-                  leading: Icon(
-                    plan.icon,
-                    color:
-                        isLocked
-                            ? Theme.of(
-                              context,
-                            ).colorScheme.onSurface.withValues(alpha: 0.3)
-                            : null,
-                  ),
-                  title: Text(
-                    plan.name,
-                    style:
-                        isLocked
-                            ? TextStyle(
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.4),
-                            )
-                            : null,
-                  ),
-                  subtitle: Text(
-                    plan.description(AppLocalizations.of(context)!),
-                  ),
-                  trailing:
-                      isLocked
-                          ? Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 2,
-                            ),
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [
-                                  AppColors.primary,
-                                  AppColors.secondary,
-                                ],
+      useRootNavigator: true,
+      isScrollControlled: true,
+      builder: (sheetContext) => StatefulBuilder(builder: (context, setSheetState) {
+        final theme = Theme.of(context);
+        final l10n = AppLocalizations.of(context)!;
+        final isPremium = ref.read(isPremiumProvider);
+        final selected = FastingPlans.getById(selectedId);
+        return SafeArea(
+          top: false,
+          child: FractionallySizedBox(
+            heightFactor: .82,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 8, 16, 12),
+                  child: Row(children: [
+                    Expanded(child: Text(l10n.timer_selectPlan, style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900))),
+                    IconButton(onPressed: () => Navigator.pop(sheetContext), icon: const Icon(Icons.close_rounded)),
+                  ]),
+                ),
+                Expanded(
+                  child: ListView.separated(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    itemCount: FastingPlans.all.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 10),
+                    itemBuilder: (context, index) {
+                      final plan = FastingPlans.all[index];
+                      final locked = plan.isPremium && !isPremium;
+                      final active = plan.id == selectedId;
+                      return Material(
+                        color: active ? theme.colorScheme.primaryContainer.withValues(alpha: .42) : theme.colorScheme.surfaceContainerLow,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          side: BorderSide(color: active ? theme.colorScheme.primary : theme.dividerColor.withValues(alpha: .45), width: active ? 1.6 : 1),
+                        ),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(20),
+                          onTap: () {
+                            HapticFeedback.selectionClick();
+                            if (locked) {
+                              Navigator.pop(sheetContext);
+                              router.push('/paywall');
+                            } else {
+                              setSheetState(() => selectedId = plan.id);
+                            }
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: Row(children: [
+                              SizedBox(
+                                width: 54,
+                                height: 54,
+                                child: FastingArtSlot(
+                                  assetPath: 'assets/images/editorial/v3/plan-clock-${switch (plan.id) { 'eat_stop_eat' => 'ese', _ => plan.id.replaceAll('_', '-') }}.webp',
+                                  height: 54,
+                                  borderRadius: 15,
+                                  variant: FastingArtVariant.bare,
+                                  child: const SizedBox.shrink(),
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: const Text(
-                              'PRO',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          )
-                          : null,
-                  onTap: () {
-                    if (isLocked) {
-                      Navigator.pop(context);
-                      context.push('/paywall');
-                      return;
-                    }
-                    HapticFeedback.selectionClick();
-                    ref.read(timerProvider.notifier).changePlan(plan.id);
-                    Navigator.pop(context);
-                  },
-                );
-              }),
-              const SizedBox(height: 16),
-            ],
+                              const SizedBox(width: 14),
+                              Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                Row(children: [
+                                  Text(plan.name, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w900)),
+                                  if (locked) ...[
+                                    const SizedBox(width: 8),
+                                    Icon(Icons.lock_outline_rounded, size: 16, color: theme.colorScheme.primary),
+                                  ],
+                                ]),
+                                const SizedBox(height: 3),
+                                Text(plan.description(l10n), maxLines: 2, overflow: TextOverflow.ellipsis, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, height: 1.25)),
+                                const SizedBox(height: 7),
+                                Row(children: [
+                                  Expanded(flex: plan.fastingHours, child: Container(height: 5, decoration: BoxDecoration(color: AppColors.primary, borderRadius: BorderRadius.circular(9)))),
+                                  if (plan.eatingHours > 0) Expanded(flex: plan.eatingHours, child: Container(height: 5, decoration: BoxDecoration(color: AppColors.success.withValues(alpha: .55), borderRadius: BorderRadius.circular(9)))),
+                                ]),
+                              ])),
+                              const SizedBox(width: 10),
+                              Icon(active ? Icons.check_circle_rounded : Icons.circle_outlined, color: active ? theme.colorScheme.primary : theme.colorScheme.outlineVariant),
+                            ]),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 14, 20, 18),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: FilledButton(
+                      onPressed: () {
+                        ref.read(timerProvider.notifier).changePlan(selected.id);
+                        Navigator.pop(sheetContext);
+                      },
+                      child: Text('${l10n.common_save} · ${selected.name}'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
-      },
+      }),
     );
   }
 
