@@ -23,20 +23,26 @@ void main() {
     ),
   );
 
-  testWidgets('theme loads the matching physical artwork pair', (tester) async {
-    for (final (brightness, expectedPath) in [
-      (Brightness.dark, darkPath),
-      (Brightness.light, lightPath),
-    ]) {
-      await tester.pumpWidget(subject(brightness));
-      final image = tester.widget<Image>(
-        find.descendant(
-          of: find.byType(FastingArtSlot),
-          matching: find.byType(Image),
-        ),
-      );
-      expect((image.image as AssetImage).assetName, expectedPath);
-    }
+  testWidgets('dark theme loads the vigil artwork', (tester) async {
+    await tester.pumpWidget(subject(Brightness.dark));
+    final image = tester.widget<Image>(
+      find.descendant(
+        of: find.byType(FastingArtSlot),
+        matching: find.byType(Image),
+      ),
+    );
+    expect((image.image as AssetImage).assetName, darkPath);
+  });
+
+  testWidgets('light theme loads the dawn artwork', (tester) async {
+    await tester.pumpWidget(subject(Brightness.light));
+    final image = tester.widget<Image>(
+      find.descendant(
+        of: find.byType(FastingArtSlot),
+        matching: find.byType(Image),
+      ),
+    );
+    expect((image.image as AssetImage).assetName, lightPath);
   });
 
   testWidgets('paired artwork stays full-bleed in both themes', (tester) async {
