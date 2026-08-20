@@ -29,9 +29,10 @@ Color fastingArtDivider(BuildContext context) =>
 
 /// A single, reusable connection point between paired editorial artwork and UI.
 ///
-/// Both theme assets already reserve the left 60% for copy, so the source is
-/// rendered full-bleed. Cropping it into a second right-side pane would enlarge
-/// the subject and destroy the copy-safe area baked into the artwork.
+/// Paired artwork is separated into two views of the same physical asset. Its
+/// clean left half is stretched into the card surface, while its illustrated
+/// right half is scaled into a feathered lane. Because both layers come from
+/// the same file, there is no flat-color rectangle or visible pasted edge.
 class FastingArtSlot extends StatelessWidget {
   const FastingArtSlot({
     super.key,
@@ -98,27 +99,127 @@ class FastingArtSlot extends StatelessWidget {
           )
         : assetPath;
 
-    return Image.asset(
-      resolvedAssetPath,
-      width: double.infinity,
-      height: double.infinity,
-      fit: fit,
-      alignment: alignment,
-      filterQuality: FilterQuality.medium,
-      excludeFromSemantics: true,
-      errorBuilder: (context, error, stackTrace) => DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: isDark
-                ? const [Color(0xFF11172A), Color(0xFF30203A)]
-                : const [Color(0xFFE4D4CC), Color(0xFFC9C3D1)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+    Widget image({
+      required double width,
+      required double height,
+      required BoxFit imageFit,
+      required Alignment imageAlignment,
+    }) =>
+        Image.asset(
+          resolvedAssetPath,
+          width: width,
+          height: height,
+          fit: imageFit,
+          alignment: imageAlignment,
+          filterQuality: FilterQuality.medium,
+          excludeFromSemantics: true,
+          errorBuilder: (context, error, stackTrace) => DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: isDark
+                    ? const [Color(0xFF11172A), Color(0xFF30203A)]
+                    : const [Color(0xFFE4D4CC), Color(0xFFC9C3D1)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
+        );
+
+    if (variant == FastingArtVariant.bare || !useThemedAsset) {
+      return image(
+        width: double.infinity,
+        height: double.infinity,
+        imageFit: fit,
+        imageAlignment: alignment,
+      );
+    }
+
+    final background = image(
+      width: 1672,
+      height: 941,
+      imageFit: BoxFit.cover,
+      imageAlignment: Alignment.centerLeft,
+    );
+
+    final subject = image(
+      width: 1672,
+      height: 941,
+      imageFit: BoxFit.cover,
+      imageAlignment: Alignment.centerRight,
+    );
+
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        FittedBox(
+          fit: BoxFit.fill,
+          child: _cropArtwork(
+            background,
+            fraction: .5,
+            alignment: Alignment.centerLeft,
           ),
         ),
-      ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: FractionallySizedBox(
+            widthFactor: .30,
+            heightFactor: 1,
+            child: FittedBox(
+              fit: BoxFit.contain,
+              alignment: Alignment.centerRight,
+              child: _featherArtwork(
+                _cropArtwork(
+                  subject,
+                  fraction: .5,
+                  alignment: Alignment.centerRight,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
+
+  Widget _cropArtwork(
+    Widget artwork, {
+    required double fraction,
+    required Alignment alignment,
+  }) =>
+      ClipRect(
+        child: Align(
+          widthFactor: fraction,
+          heightFactor: 1,
+          alignment: alignment,
+          child: artwork,
+        ),
+      );
+
+  Widget _featherArtwork(Widget artwork) => ShaderMask(
+    blendMode: BlendMode.dstIn,
+    shaderCallback: (bounds) => const LinearGradient(
+      colors: [Colors.transparent, Colors.black, Colors.black],
+      stops: [0, .14, 1],
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+    ).createShader(bounds),
+    child: ShaderMask(
+      blendMode: BlendMode.dstIn,
+      shaderCallback: (bounds) => const LinearGradient(
+        colors: [
+          Colors.transparent,
+          Colors.black,
+          Colors.black,
+          Colors.transparent,
+        ],
+        stops: [0, .06, .94, 1],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ).createShader(bounds),
+      child: artwork,
+    ),
+  );
 
   LinearGradient get _darkScrim => switch (variant) {
     FastingArtVariant.row => const LinearGradient(
