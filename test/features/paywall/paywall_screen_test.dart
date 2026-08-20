@@ -66,7 +66,7 @@ void main() {
     expect(find.text('₺499,99'), findsOneWidget);
 
     final button = tester.widget<GradientButton>(find.byType(GradientButton));
-    expect(button.text, 'Continue');
+    expect(button.text, 'Annual · ₺499,99');
     expect(button.onPressed, isNotNull);
   });
 

@@ -267,12 +267,15 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   }
 
   Widget _header(BuildContext context, AppLocalizations l10n) {
+    final textScale = MediaQuery.textScalerOf(context).scale(1);
+    final accessibleHeight =
+        184.0 + ((textScale - 1).clamp(0.0, 1.0) * 80);
     return EditorialScreenHero(
       assetPath: 'assets/images/editorial/premium-gem.webp',
       title: l10n.paywall_title,
       subtitle: l10n.paywall_subtitle,
       icon: Icons.auto_awesome_outlined,
-      height: 184,
+      height: accessibleHeight,
     );
   }
 
