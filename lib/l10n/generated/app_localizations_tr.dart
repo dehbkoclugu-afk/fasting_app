@@ -736,7 +736,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get theme_select => 'Görünüm seç';
 
   @override
-  String get theme_system => 'Sistem varsayılanı';
+  String get theme_system => 'Otomatik';
 
   @override
   String get theme_light => 'Aydınlık';
@@ -1003,7 +1003,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get explore_guideDesc =>
-      'Intermittent fasting hakkında bilmeniz gerekenler';
+      'Intermittent fasting hakkında bilmeniz gerekenler.';
 
   @override
   String get explore_circleDesc => 'Özel grubunla sessizce destekleş.';

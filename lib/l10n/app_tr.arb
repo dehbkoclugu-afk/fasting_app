@@ -285,7 +285,7 @@
   "achievements": "Başarılar",
   "profile_theme": "Görünüm",
   "theme_select": "Görünüm seç",
-  "theme_system": "Sistem varsayılanı",
+  "theme_system": "Otomatik",
   "theme_light": "Aydınlık",
   "theme_dark": "Karanlık",
   "language_system": "Sistem dili",
@@ -484,7 +484,7 @@
     }
   },
   "explore_guide": "Oruç Rehberi",
-  "explore_guideDesc": "Intermittent fasting hakkında bilmeniz gerekenler",
+  "explore_guideDesc": "Intermittent fasting hakkında bilmeniz gerekenler.",
   "explore_circleDesc": "Özel grubunla sessizce destekleş.",
   "explore_faq": "Sık Sorulan Sorular",
   "explore_education": "Bu içerik yalnızca genel eğitim amaçlıdır; tıbbi tanı veya tedavi önerisi değildir.",

@@ -134,8 +134,10 @@ class _PhaseMarker extends StatelessWidget {
             ? 0.0
             : (phase.startHour / targetHours).clamp(0.0, 1.0);
     final angle = -math.pi / 2 + 2 * math.pi * fraction;
-    final orbit = ringSize * .36;
-    const markerSize = 48.0;
+    // Keep phase controls clearly inside the progress stroke. Their labels
+    // remain tappable without visually merging with the animated ring.
+    final orbit = ringSize * .30;
+    const markerSize = 44.0;
     final center = ringSize / 2;
     final color = phase.gradientColors.first;
     final active = isCurrent || isCompleted;

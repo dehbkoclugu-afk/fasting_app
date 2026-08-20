@@ -40,6 +40,7 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
   Future<void> _loadWeightHistory() async {
     final db = ref.read(databaseProvider);
     final metrics = await db.getAllMetrics();
+    if (!mounted) return;
     setState(() {
       _weightHistory =
           metrics
