@@ -460,38 +460,6 @@ class ProfileScreen extends ConsumerWidget {
     MaterialPageRoute<void>(builder: (_) => _LanguagePickerPage(current: ref.read(settingsProvider).locale, onSelected: ref.read(settingsProvider.notifier).setLocale)),
   );
 
-  void _showThemeDialog(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
-    final settings = ref.read(settingsProvider);
-    showDialog<void>(
-      context: context,
-      builder:
-          (dialogContext) => SimpleDialog(
-            title: Text(l10n.theme_select),
-            children: [
-              RadioGroup<ThemeMode>(
-                groupValue: settings.themeMode,
-                onChanged: (value) {
-                  if (value == null) return;
-                  ref.read(settingsProvider.notifier).setThemeMode(value);
-                  Navigator.pop(dialogContext);
-                },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children:
-                      ThemeMode.values.map((mode) {
-                        return RadioListTile<ThemeMode>(
-                          title: Text(_themeLabel(l10n, mode)),
-                          value: mode,
-                        );
-                      }).toList(),
-                ),
-              ),
-            ],
-          ),
-    );
-  }
-
   String _themeLabel(AppLocalizations l10n, ThemeMode mode) => switch (mode) {
     ThemeMode.system => l10n.theme_system,
     ThemeMode.light => l10n.theme_light,
