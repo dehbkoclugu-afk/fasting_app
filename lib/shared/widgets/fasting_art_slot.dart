@@ -12,10 +12,6 @@ String themedEditorialAssetPath(String assetPath, Brightness brightness) {
       '${assetPath.substring(extensionIndex)}';
 }
 
-/// Foreground colors for copy placed directly over editorial artwork.
-///
-/// Light artwork is intentionally warm and airy, so it uses ink-colored copy
-/// instead of forcing every card back into a dark surface.
 Color fastingArtForeground(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark
         ? Colors.white
@@ -31,11 +27,11 @@ Color fastingArtDivider(BuildContext context) =>
         ? Colors.white.withValues(alpha: .14)
         : const Color(0xFF514756).withValues(alpha: .20);
 
-/// A single, reusable connection point between editorial artwork and UI.
+/// A single, reusable connection point between paired editorial artwork and UI.
 ///
-/// Dark mode keeps its full-bleed artwork and protective scrim. Text-oriented
-/// light cards use a Lumen-style split layout: a calm ink-safe surface on the
-/// left and the physical `-light` artwork cropped into the right side.
+/// Both theme assets already reserve the left 60% for copy, so the source is
+/// rendered full-bleed. Cropping it into a second right-side pane would enlarge
+/// the subject and destroy the copy-safe area baked into the artwork.
 class FastingArtSlot extends StatelessWidget {
   const FastingArtSlot({
     super.key,
@@ -60,6 +56,8 @@ class FastingArtSlot extends StatelessWidget {
   final Alignment alignment;
   final String? semanticLabel;
   final bool useThemedAsset;
+
+  /// Kept for source compatibility; paired artwork is now always full-bleed.
   final bool? splitLightArtwork;
 
   @override
@@ -77,9 +75,7 @@ class FastingArtSlot extends StatelessWidget {
           height: height,
           child: Stack(
             children: [
-              Positioned.fill(
-                child: _artwork(isDark),
-              ),
+              Positioned.fill(child: _artwork(isDark)),
               if (isDark && variant != FastingArtVariant.bare)
                 Positioned.fill(
                   child: DecoratedBox(
@@ -102,7 +98,7 @@ class FastingArtSlot extends StatelessWidget {
           )
         : assetPath;
 
-    final artwork = Image.asset(
+    return Image.asset(
       resolvedAssetPath,
       width: double.infinity,
       height: double.infinity,
@@ -122,30 +118,7 @@ class FastingArtSlot extends StatelessWidget {
         ),
       ),
     );
-
-    if (isDark || !_usesSplitLightLayout) return artwork;
-
-    return ColoredBox(
-      color: const Color(0xFFF5ECE5),
-      child: Align(
-        alignment: Alignment.centerRight,
-        child: FractionallySizedBox(
-          widthFactor: variant == FastingArtVariant.hero ? .54 : .46,
-          heightFactor: 1,
-          child: ClipRRect(
-            borderRadius: const BorderRadius.horizontal(
-              left: Radius.circular(22),
-            ),
-            child: artwork,
-          ),
-        ),
-      ),
-    );
   }
-
-  bool get _usesSplitLightLayout =>
-      splitLightArtwork ??
-      (variant == FastingArtVariant.row || variant == FastingArtVariant.hero);
 
   LinearGradient get _darkScrim => switch (variant) {
     FastingArtVariant.row => const LinearGradient(
@@ -170,5 +143,4 @@ class FastingArtSlot extends StatelessWidget {
       colors: [Colors.transparent, Colors.transparent],
     ),
   };
-
 }
