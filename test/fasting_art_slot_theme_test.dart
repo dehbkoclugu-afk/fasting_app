@@ -25,37 +25,97 @@ void main() {
 
   testWidgets('dark theme loads the vigil artwork', (tester) async {
     await tester.pumpWidget(subject(Brightness.dark));
-    final image = tester.widget<Image>(
+    final images = tester.widgetList<Image>(
       find.descendant(
         of: find.byType(FastingArtSlot),
         matching: find.byType(Image),
       ),
     );
-    expect((image.image as AssetImage).assetName, darkPath);
+    expect(images, isNotEmpty);
+    expect(
+      images.map((image) => (image.image as AssetImage).assetName).toSet(),
+      {darkPath},
+    );
   });
 
   testWidgets('light theme loads the dawn artwork', (tester) async {
     await tester.pumpWidget(subject(Brightness.light));
-    final image = tester.widget<Image>(
+    final images = tester.widgetList<Image>(
       find.descendant(
         of: find.byType(FastingArtSlot),
         matching: find.byType(Image),
       ),
     );
-    expect((image.image as AssetImage).assetName, lightPath);
+    expect(images, isNotEmpty);
+    expect(
+      images.map((image) => (image.image as AssetImage).assetName).toSet(),
+      {lightPath},
+    );
   });
 
-  testWidgets('paired artwork stays full-bleed in both themes', (tester) async {
-    for (final brightness in Brightness.values) {
-      await tester.pumpWidget(subject(brightness));
-      expect(
-        find.descendant(
-          of: find.byType(FastingArtSlot),
-          matching: find.byType(FractionallySizedBox),
+  testWidgets('paired artwork uses a feathered copy-safe right lane', (
+    tester,
+  ) async {
+    await tester.pumpWidget(subject(Brightness.light));
+
+    final lane = tester.widget<FractionallySizedBox>(
+      find.descendant(
+        of: find.byType(FastingArtSlot),
+        matching: find.byType(FractionallySizedBox),
+      ),
+    );
+    expect(lane.widthFactor, .30);
+    expect(lane.heightFactor, 1);
+
+    final fittedArtwork = tester.widgetList<FittedBox>(
+      find.descendant(
+        of: find.byType(FastingArtSlot),
+        matching: find.byType(FittedBox),
+      ),
+    );
+    expect(fittedArtwork.map((box) => box.fit), containsAll([BoxFit.fill, BoxFit.contain]));
+    expect(
+      fittedArtwork.any(
+        (box) =>
+            box.fit == BoxFit.contain &&
+            box.alignment == Alignment.centerRight,
+      ),
+      isTrue,
+    );
+    expect(
+      find.descendant(
+        of: find.byType(FastingArtSlot),
+        matching: find.byType(ShaderMask),
+      ),
+      findsNWidgets(2),
+    );
+  });
+
+  testWidgets('bare artwork keeps its original full-bleed rendering', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData(brightness: Brightness.light),
+        home: const Scaffold(
+          body: FastingArtSlot(
+            assetPath: darkPath,
+            height: 180,
+            variant: FastingArtVariant.bare,
+            useThemedAsset: false,
+            child: SizedBox.shrink(),
+          ),
         ),
-        findsNothing,
-      );
-    }
+      ),
+    );
+
+    expect(
+      find.descendant(
+        of: find.byType(FastingArtSlot),
+        matching: find.byType(FractionallySizedBox),
+      ),
+      findsNothing,
+    );
   });
 
   testWidgets('light mode renders artwork without a scrim layer', (
@@ -63,10 +123,12 @@ void main() {
   ) async {
     await tester.pumpWidget(subject(Brightness.light));
     final stack = tester.widget<Stack>(
-      find.descendant(
+      find
+          .descendant(
         of: find.byType(FastingArtSlot),
         matching: find.byType(Stack),
-      ),
+          )
+          .first,
     );
     expect(stack.children, hasLength(2));
   });
