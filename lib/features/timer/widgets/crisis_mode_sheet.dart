@@ -29,12 +29,10 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    final steps = [
-      (l10n.crisis_nameTitle, l10n.crisis_nameDesc),
-      (l10n.crisis_waterTitle, l10n.crisis_waterDesc),
-      (l10n.crisis_delayTitle, l10n.crisis_delayDesc),
-    ];
-    final current = steps[_step];
+    final guidance = _guidance(l10n);
+    final current = _step == 0
+        ? (l10n.crisis_nameTitle, l10n.crisis_nameDesc, Icons.favorite_outline, '', l10n.onboarding_next)
+        : guidance;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 18, 24, 28),
@@ -53,7 +51,7 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
             ),
           ),
           const SizedBox(height: 26),
-          Icon(Icons.favorite_outline, color: AppColors.primary, size: 36),
+          Icon(_step == 0 ? Icons.favorite_outline : current.$3, color: AppColors.primary, size: 40),
           const SizedBox(height: 16),
           Text(
             current.$1,
@@ -87,33 +85,53 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
               ],
             ),
           ],
+          if (_step == 1) ...[
+            const SizedBox(height: 18),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: theme.colorScheme.surfaceContainer, borderRadius: BorderRadius.circular(18)),
+              child: Text(current.$4, textAlign: TextAlign.center, style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700, height: 1.45)),
+            ),
+          ],
           const SizedBox(height: 26),
           FilledButton(
-            onPressed: () async {
+            onPressed: _step == 0 && _reason == null ? null : () async {
               HapticFeedback.selectionClick();
-              if (_step < steps.length - 1) {
+              if (_step == 0) {
                 setState(() => _step++);
                 return;
               }
-              final prefs = await SharedPreferences.getInstance();
-              await prefs.setInt(
-                'crisis_support_count',
-                (prefs.getInt('crisis_support_count') ?? 0) + 1,
-              );
-              await prefs.setInt('last_crisis_hour', DateTime.now().hour);
-              if (_reason != null) {
-                await prefs.setString('last_crisis_reason', _reason!);
-              }
-              if (context.mounted) Navigator.pop(context);
+              await _finish();
             },
             child: Text(
-              _step == steps.length - 1
-                  ? l10n.crisis_tenMore
-                  : l10n.onboarding_next,
+              _step == 0 ? l10n.onboarding_next : current.$5,
             ),
           ),
+          if (_step == 1) ...[
+            const SizedBox(height: 8),
+            TextButton(onPressed: () => Navigator.pop(context), child: Text('Orucu bitirme ekranına dön')),
+            Text('Kendini kötü hissediyorsan devam etmek zorunda değilsin.', textAlign: TextAlign.center, style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+          ],
         ],
       ),
     );
+  }
+
+  (String, String, IconData, String, String) _guidance(AppLocalizations l10n) {
+    if (_reason == l10n.crisis_habit) {
+      return ('Alışkanlık döngüsünü değiştir', 'Bu istek çoğu zaman bulunduğun yer veya saatle tetiklenir.', Icons.route_outlined, 'Mutfağın dışına çık, dişini fırçala veya beş dakikalık kısa bir yürüyüş seç.', 'Yeni bir rutin seç');
+    }
+    if (_reason == l10n.crisis_stress) {
+      return ('Önce sinir sistemini sakinleştir', 'Stres açlık gibi hissedilebilir; su içmek tek çözüm değildir.', Icons.air_outlined, 'Dört saniye nefes al, altı saniye ver. Bunu beş kez tekrarla ve omuzlarını gevşet.', 'Nefese başla');
+    }
+    return ('Açlığı güvenle değerlendir', 'Hafif açlık dalga gibi geçebilir; belirgin halsizlik veya baş dönmesi farklıdır.', Icons.restaurant_outlined, 'Hafifse su içip 10 dakika bekleyebilirsin. Baş dönmesi, titreme ya da kötüleşme varsa orucu bitir.', '10 dakika gözlemle');
+  }
+
+  Future<void> _finish() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('crisis_support_count', (prefs.getInt('crisis_support_count') ?? 0) + 1);
+    await prefs.setInt('last_crisis_hour', DateTime.now().hour);
+    if (_reason != null) await prefs.setString('last_crisis_reason', _reason!);
+    if (mounted) Navigator.pop(context);
   }
 }

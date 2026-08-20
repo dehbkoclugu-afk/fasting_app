@@ -1,11 +1,11 @@
 {
-    "name": "fasting_app",
-    "short_name": "fasting_app",
+    "name": "Ritim - Oruç Takibi",
+    "short_name": "Ritim",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#FFF7EC",
+    "theme_color": "#EF4962",
+    "description": "Sürdürülebilir aralıklı oruç ve ritim takibi.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -175,40 +175,13 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                 ),
               ),
               const SizedBox(height: 24),
-              FastingArtSlot(
-                assetPath: 'assets/images/editorial/v4/meal-manual-entry.webp',
-                height: 126,
-                borderRadius: 24,
-                variant: FastingArtVariant.row,
-                alignment: Alignment.centerRight,
-                semanticLabel: l10n.meals_manualEntry,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(18, 18, 150, 18),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(PhosphorIcons.notepad(), color: AppColors.primaryLight),
-                      const SizedBox(height: 8),
-                      Text(
-                        l10n.meals_manualEntry,
-                        maxLines: 2,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          color: fastingArtForeground(context),
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              _sectionTitle(context, l10n.meals_manualEntry, PhosphorIcons.notepad()),
+              const SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.fromLTRB(14, 16, 14, 14),
                 decoration: BoxDecoration(
                   color: theme.colorScheme.surfaceContainer,
-                  borderRadius: const BorderRadius.vertical(
-                    bottom: Radius.circular(24),
-                  ),
+                  borderRadius: BorderRadius.circular(24),
                   border: Border.all(
                     color: theme.colorScheme.outlineVariant.withValues(alpha: .45),
                   ),
@@ -225,17 +198,17 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Expanded(child: _field(l10n.meals_calories, _caloriesController, TextInputType.number, suffix: 'kcal', icon: PhosphorIcons.fire(), artPath: 'assets/images/editorial/v4/macro-calories.webp')),
+                        Expanded(child: _field(l10n.meals_calories, _caloriesController, TextInputType.number, suffix: 'kcal')),
                         const SizedBox(width: 10),
-                        Expanded(child: _field(l10n.meals_protein, _proteinController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.barbell(), artPath: 'assets/images/editorial/v4/macro-protein.webp')),
+                        Expanded(child: _field(l10n.meals_protein, _proteinController, TextInputType.number, suffix: 'g')),
                       ],
                     ),
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Expanded(child: _field(l10n.meals_carbohydrate, _carbsController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.bread(), artPath: 'assets/images/editorial/v4/macro-carbs.webp')),
+                        Expanded(child: _field(l10n.meals_carbohydrate, _carbsController, TextInputType.number, suffix: 'g')),
                         const SizedBox(width: 10),
-                        Expanded(child: _field(l10n.meals_fat, _fatController, TextInputType.number, suffix: 'g', icon: PhosphorIcons.drop(), artPath: 'assets/images/editorial/v4/macro-fat.webp')),
+                        Expanded(child: _field(l10n.meals_fat, _fatController, TextInputType.number, suffix: 'g')),
                       ],
                     ),
                     const SizedBox(height: 16),
@@ -432,10 +405,8 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     String? artPath,
     TextInputAction textInputAction = TextInputAction.next,
   }) {
-    final foreground = artPath == null
-        ? Theme.of(context).colorScheme.onSurface
-        : fastingArtForeground(context);
-    final field = TextField(
+    final foreground = Theme.of(context).colorScheme.onSurface;
+    return TextField(
       controller: controller,
       keyboardType: type,
       textInputAction: textInputAction,
@@ -446,23 +417,9 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
         suffixText: suffix,
         prefixIcon: icon == null ? null : Icon(icon, size: 18, color: foreground.withValues(alpha: .72)),
         filled: true,
-        fillColor: artPath == null
-            ? null
-            : Theme.of(context).brightness == Brightness.dark
-                ? const Color(0xB3121628)
-                : const Color(0xCCF7ECE8),
+        fillColor: Theme.of(context).colorScheme.surface,
         isDense: false,
       ),
-    );
-    if (artPath == null) return field;
-    return FastingArtSlot(
-      assetPath: artPath,
-      height: 82,
-      borderRadius: 18,
-      variant: FastingArtVariant.card,
-      alignment: Alignment.centerRight,
-      semanticLabel: label,
-      child: Padding(padding: const EdgeInsets.all(6), child: field),
     );
   }
 

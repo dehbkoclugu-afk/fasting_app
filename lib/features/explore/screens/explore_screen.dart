@@ -26,7 +26,7 @@ class ExploreScreen extends StatelessWidget {
               variant: FastingArtVariant.hero,
               semanticLabel: l10n.explore_guide,
               child: Padding(
-                padding: const EdgeInsets.all(22),
+                padding: const EdgeInsets.fromLTRB(22, 22, 190, 22),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -55,7 +55,7 @@ class ExploreScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 285),
+                      constraints: const BoxConstraints(maxWidth: 210),
                       child: Text(
                         l10n.explore_guideDesc,
                         maxLines: 2,

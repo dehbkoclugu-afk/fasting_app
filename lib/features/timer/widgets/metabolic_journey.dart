@@ -5,6 +5,7 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 
 import '../../../core/constants/metabolic_phases.dart';
 import '../../../core/utils/metabolic_phase_l10n.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 
 class MetabolicJourney extends StatelessWidget {
   const MetabolicJourney({
@@ -33,20 +34,20 @@ class MetabolicJourney extends StatelessWidget {
 
     return Semantics(
       label: l10n.journey_label,
-      child: Container(
-        padding: const EdgeInsets.all(18),
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
-          borderRadius: BorderRadius.circular(22),
-          border: Border.all(color: theme.dividerColor.withValues(alpha: .55)),
-        ),
-        child: Column(
+      child: FastingArtSlot(
+        assetPath: _phaseArtwork(current),
+        height: 238,
+        borderRadius: 22,
+        variant: FastingArtVariant.card,
+        alignment: Alignment.centerRight,
+        semanticLabel: metabolicPhaseName(l10n, current),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(18, 18, 146, 18),
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                Icon(current.icon, color: current.gradientColors.first),
-                const SizedBox(width: 10),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,9 +59,7 @@ class MetabolicJourney extends StatelessWidget {
                       Text(
                         metabolicPhaseDescription(l10n, current),
                         style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurface.withValues(
-                            alpha: .64,
-                          ),
+                          color: fastingArtMutedForeground(context),
                         ),
                       ),
                     ],
@@ -122,9 +121,12 @@ class MetabolicJourney extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+          ),
+        ),
+      );
   }
+
+  String _phaseArtwork(MetabolicPhase phase) => 'assets/images/editorial/v5/phase-${switch (phase.id) { 'fatBurning' => 'fat-burning', _ => phase.id }}.webp';
 
   String _remaining(int startHour) {
     final minutes = math.max(0, ((startHour - elapsedHours) * 60).round());

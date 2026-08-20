@@ -176,13 +176,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                   final weekStatsAsync = ref.watch(statsProvider(7));
                   final weekStats =
                       weekStatsAsync.valueOrNull ?? const StatsData();
-                  return FastingArtSlot(
-                    assetPath: 'assets/images/editorial/v4/report-weekly.webp',
+                  return Container(
                     height: 236,
-                    borderRadius: 24,
-                    variant: FastingArtVariant.card,
-                    alignment: Alignment.centerRight,
-                    semanticLabel: l10n.stats_weeklyFasting,
+                    decoration: BoxDecoration(color: theme.colorScheme.surfaceContainerLow, borderRadius: BorderRadius.circular(24), border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .45))),
                     child: Padding(
                       padding: const EdgeInsets.all(18),
                       child: SizedBox(
@@ -203,7 +199,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                                     child: Text(
                                       dayLabels[value.toInt()],
                                       style: TextStyle(
-                                        color: fastingArtMutedForeground(context),
+                                        color: theme.colorScheme.onSurfaceVariant,
                                         fontSize: 11,
                                       ),
                                     ),
@@ -220,7 +216,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                                   return Text(
                                     '${value.toInt()}s',
                                     style: TextStyle(
-                                      color: fastingArtMutedForeground(context),
+                                      color: theme.colorScheme.onSurfaceVariant,
                                       fontSize: 10,
                                     ),
                                   );
@@ -240,7 +236,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                             horizontalInterval: 8,
                             getDrawingHorizontalLine:
                                 (value) => FlLine(
-                                  color: fastingArtDivider(context),
+                                  color: theme.colorScheme.outlineVariant,
                                   strokeWidth: 1,
                                 ),
                           ),
@@ -324,13 +320,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                     heatmapProvider(_heatmapMonth),
                   );
                   final heatmapData = heatmapAsync.valueOrNull ?? const {};
-                  return FastingArtSlot(
-                    assetPath: 'assets/images/editorial/v4/report-monthly.webp',
-                    height: 300,
-                    borderRadius: 24,
-                    variant: FastingArtVariant.card,
-                    alignment: Alignment.centerRight,
-                    semanticLabel: l10n.stats_monthlyView,
+                  return Container(
+                    constraints: const BoxConstraints(minHeight: 300),
+                    decoration: BoxDecoration(color: theme.colorScheme.surfaceContainerLow, borderRadius: BorderRadius.circular(24), border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .45))),
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: MonthlyHeatmap(
@@ -400,17 +392,15 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       height: 158,
       borderRadius: 22,
       variant: FastingArtVariant.card,
-      splitLightArtwork: true,
       alignment: Alignment.centerRight,
+      artScale: 1.14,
       semanticLabel: title,
       child: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.fromLTRB(15, 15, 66, 15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, color: color, size: 22),
-            const SizedBox(height: 8),
             Text(
               value,
               maxLines: 1,

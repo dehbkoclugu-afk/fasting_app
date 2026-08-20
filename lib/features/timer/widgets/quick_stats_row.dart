@@ -50,12 +50,10 @@ class QuickStatsRow extends ConsumerWidget {
                 ),
               ),
               const Spacer(),
-              Text(
-                '${(waterProgress * 100).round()}%',
-                style: theme.textTheme.labelMedium?.copyWith(
-                  color: AppColors.tertiary,
-                  fontWeight: FontWeight.w800,
-                ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(color: AppColors.tertiary.withValues(alpha: .12), borderRadius: BorderRadius.circular(99)),
+                child: Text('${(waterProgress * 100).round()}% tamamlandı', style: theme.textTheme.labelSmall?.copyWith(color: AppColors.tertiary, fontWeight: FontWeight.w800)),
               ),
             ],
           ),
@@ -63,9 +61,11 @@ class QuickStatsRow extends ConsumerWidget {
         const SizedBox(height: 12),
         _SummarySurface(
           artPath: 'assets/images/editorial/v3/quick-water.webp',
-          height: 116,
+          height: 158,
           onTap: () => context.push('/water-tracker'),
-          child: Column(
+          child: Padding(
+            padding: const EdgeInsets.only(right: 126),
+            child: Column(
             children: [
               Row(
                 children: [
@@ -97,18 +97,6 @@ class QuickStatsRow extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  IconButton.filled(
-                    tooltip: l10n.water_addWater,
-                    onPressed: () {
-                      HapticFeedback.lightImpact();
-                      onAddWater();
-                    },
-                    style: IconButton.styleFrom(
-                      backgroundColor: AppColors.tertiary,
-                      foregroundColor: Colors.white,
-                    ),
-                    icon: Icon(PhosphorIcons.plus(), size: 20),
-                  ),
                 ],
               ),
               const SizedBox(height: 14),
@@ -121,7 +109,12 @@ class QuickStatsRow extends ConsumerWidget {
                   valueColor: const AlwaysStoppedAnimation(AppColors.tertiary),
                 ),
               ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(onPressed: () { HapticFeedback.lightImpact(); onAddWater(); }, icon: Icon(PhosphorIcons.plus(), size: 17), label: const Text('250 ml ekle')),
+              ),
             ],
+            ),
           ),
         ),
         const SizedBox(height: 12),
@@ -196,7 +189,7 @@ class _SummarySurface extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
-          child: Padding(padding: const EdgeInsets.all(16), child: child),
+      child: Padding(padding: const EdgeInsets.all(16), child: child),
         ),
       ),
     );
@@ -239,9 +232,11 @@ class _Metric extends StatelessWidget {
     final theme = Theme.of(context);
     return SizedBox(
       height: 86,
-      child: Column(
+      child: Padding(
+        padding: const EdgeInsets.only(right: 58),
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(icon, size: 22, color: color),
           const SizedBox(height: 10),
@@ -249,7 +244,7 @@ class _Metric extends StatelessWidget {
             value,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
+          textAlign: TextAlign.left,
             style: theme.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w800,
               letterSpacing: -.25,
@@ -260,12 +255,13 @@ class _Metric extends StatelessWidget {
             label,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
+          textAlign: TextAlign.left,
             style: theme.textTheme.bodySmall?.copyWith(
               color: theme.colorScheme.onSurface.withValues(alpha: .52),
             ),
           ),
         ],
+        ),
       ),
     );
   }

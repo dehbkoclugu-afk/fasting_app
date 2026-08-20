@@ -53,42 +53,20 @@ void main() {
     );
   });
 
-  testWidgets('paired artwork uses a feathered copy-safe right lane', (
+  testWidgets('paired artwork renders a single full-bleed asset', (
     tester,
   ) async {
     await tester.pumpWidget(subject(Brightness.light));
 
-    final lane = tester.widget<FractionallySizedBox>(
+    final images = tester.widgetList<Image>(
       find.descendant(
         of: find.byType(FastingArtSlot),
-        matching: find.byType(FractionallySizedBox),
+        matching: find.byType(Image),
       ),
     );
-    expect(lane.widthFactor, .30);
-    expect(lane.heightFactor, 1);
-
-    final fittedArtwork = tester.widgetList<FittedBox>(
-      find.descendant(
-        of: find.byType(FastingArtSlot),
-        matching: find.byType(FittedBox),
-      ),
-    );
-    expect(fittedArtwork.map((box) => box.fit), containsAll([BoxFit.fill, BoxFit.contain]));
-    expect(
-      fittedArtwork.any(
-        (box) =>
-            box.fit == BoxFit.contain &&
-            box.alignment == Alignment.centerRight,
-      ),
-      isTrue,
-    );
-    expect(
-      find.descendant(
-        of: find.byType(FastingArtSlot),
-        matching: find.byType(ShaderMask),
-      ),
-      findsNWidgets(2),
-    );
+    expect(images, hasLength(1));
+    expect(images.single.fit, BoxFit.cover);
+    expect(find.byType(ShaderMask), findsNothing);
   });
 
   testWidgets('bare artwork keeps its original full-bleed rendering', (
