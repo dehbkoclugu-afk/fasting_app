@@ -71,7 +71,6 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                 icon: Icons.insights_outlined,
                 height: 190,
                 alignment: Alignment.bottomRight,
-                artScale: .96,
                 textWidth: 168,
                 contentAlignment: Alignment.topLeft,
               ),
@@ -387,7 +386,6 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       borderRadius: 22,
       variant: FastingArtVariant.card,
       alignment: Alignment.bottomRight,
-      artScale: .92,
       semanticLabel: title,
       child: Padding(
         padding: const EdgeInsets.all(15),

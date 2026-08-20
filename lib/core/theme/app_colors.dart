@@ -43,9 +43,9 @@ class AppColors {
 
   // Dark Theme
   static const darkBg = Color(0xFF0F0F1A);
-  static const darkSurface = Color(0xFF1A1A2E);
-  static const darkCard = Color(0xFF16213E);
-  static const darkSurfaceVariant = Color(0xFF222238);
+  static const darkSurface = Color(0xFF17171F);
+  static const darkCard = Color(0xFF1D1D26);
+  static const darkSurfaceVariant = Color(0xFF262631);
   static const darkTextPrimary = Color(0xFFE8E8E8);
   static const darkTextSecondary = Color(0xFFA0A0B0);
   static const darkDivider = Color(0xFF2A2A3E);

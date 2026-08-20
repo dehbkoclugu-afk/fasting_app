@@ -22,40 +22,21 @@ class ExploreScreen extends StatelessWidget {
           children: [
             FastingArtSlot(
               assetPath: 'assets/images/editorial/fasting-guide-hero.webp',
-              height: 190,
+              height: 196,
               variant: FastingArtVariant.hero,
               alignment: Alignment.bottomRight,
-              artScale: .94,
               semanticLabel: l10n.explore_guide,
               child: Padding(
-                padding: const EdgeInsets.all(22),
+                padding: const EdgeInsets.fromLTRB(22, 22, 164, 22),
                 child: Align(
                   alignment: Alignment.topLeft,
-                  child: SizedBox(
-                    width: 168,
-                    child: Column(
+                  child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 38,
-                          height: 38,
-                          decoration: BoxDecoration(
-                            color: fastingArtForeground(
-                              context,
-                            ).withValues(alpha: .10),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            PhosphorIcons.clockCountdown(),
-                            color: fastingArtForeground(context),
-                            size: 20,
-                          ),
-                        ),
-                        const SizedBox(height: 12),
                         Text(
                           l10n.explore_guide,
-                          maxLines: 1,
+                          maxLines: 2,
                           style: theme.textTheme.headlineSmall?.copyWith(
                             color: fastingArtForeground(context),
                             fontWeight: FontWeight.w800,
@@ -65,14 +46,13 @@ class ExploreScreen extends StatelessWidget {
                         const SizedBox(height: 3),
                         Text(
                           l10n.explore_guideDesc,
-                          maxLines: 3,
+                          maxLines: 4,
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: fastingArtMutedForeground(context),
                             height: 1.25,
                           ),
                         ),
                       ],
-                    ),
                   ),
                 ),
               ),
@@ -118,38 +98,28 @@ class ExploreScreen extends StatelessWidget {
 
   List<_Tip> _tips(AppLocalizations l10n) => [
     _Tip(
-      icon: PhosphorIcons.drop(PhosphorIconsStyle.fill),
       title: l10n.tip_water,
       description: l10n.tip_waterDesc,
-      color: AppColors.tertiary,
       artPath: 'assets/images/editorial/tip-hydration.webp',
     ),
     _Tip(
-      icon: PhosphorIcons.bowlFood(),
       title: l10n.tip_food,
       description: l10n.tip_foodDesc,
-      color: AppColors.success,
       artPath: 'assets/images/editorial/tip-balanced-meal.webp',
     ),
     _Tip(
-      icon: PhosphorIcons.moonStars(),
       title: l10n.tip_sleep,
       description: l10n.tip_sleepDesc,
-      color: AppColors.primary,
       artPath: 'assets/images/editorial/tip-sleep.webp',
     ),
     _Tip(
-      icon: PhosphorIcons.personSimpleRun(),
       title: l10n.tip_exercise,
       description: l10n.tip_exerciseDesc,
-      color: AppColors.warning,
       artPath: 'assets/images/editorial/tip-light-movement.webp',
     ),
     _Tip(
-      icon: PhosphorIcons.coffee(),
       title: l10n.tip_drinks,
       description: l10n.tip_drinksDesc,
-      color: const Color(0xFF8B6914),
       artPath: 'assets/images/editorial/tip-zero-calorie-drinks.webp',
     ),
   ];
@@ -298,51 +268,33 @@ class ExploreScreen extends StatelessWidget {
         height: 184,
         variant: FastingArtVariant.row,
         alignment: Alignment.bottomRight,
-        artScale: .9,
         semanticLabel: tip.title,
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.fromLTRB(16, 16, 150, 16),
           child: Align(
             alignment: Alignment.topLeft,
-            child: FractionallySizedBox(
-              widthFactor: .62,
-              child: Column(
+            child: Column(
                 mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: 34,
-                  height: 34,
-                  decoration: BoxDecoration(
-                    color: tip.color.withValues(alpha: .24),
-                    shape: BoxShape.circle,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    tip.title,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: fastingArtForeground(context),
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
-                  child: Icon(
-                    tip.icon,
-                    color: fastingArtForeground(context),
-                    size: 18,
+                  const SizedBox(height: 5),
+                  Text(
+                    tip.description,
+                    maxLines: 6,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: fastingArtMutedForeground(context),
+                      height: 1.32,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  tip.title,
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    color: fastingArtForeground(context),
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  tip.description,
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: fastingArtMutedForeground(context),
-                    height: 1.3,
-                  ),
-                ),
-              ],
-              ),
+                ],
             ),
           ),
         ),
@@ -462,17 +414,13 @@ class ExploreScreen extends StatelessWidget {
 }
 
 class _Tip {
-  final IconData icon;
   final String title;
   final String description;
-  final Color color;
   final String artPath;
 
   const _Tip({
-    required this.icon,
     required this.title,
     required this.description,
-    required this.color,
     required this.artPath,
   });
 }

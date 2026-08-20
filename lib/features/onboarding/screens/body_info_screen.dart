@@ -43,7 +43,10 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const OnboardingProgress(currentStep: 3),
+              OnboardingProgress(
+                currentStep: 3,
+                onBack: () => context.go('/onboarding/plan'),
+              ),
               const SizedBox(height: 24),
 
               EditorialScreenHero(

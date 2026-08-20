@@ -103,30 +103,32 @@ class FastingArtSlot extends StatelessWidget {
           )
         : assetPath;
 
-    return ColoredBox(
-      color: isDark ? const Color(0xFF11172A) : const Color(0xFFFFF8EE),
-      child: Transform.translate(
-        offset: artOffset,
-        child: Transform.scale(
-          scale: artScale,
+    // Scaling a full-bleed bitmap below 1 exposes the fallback color around
+    // its edges. On real devices that presented as a dark/light strip above
+    // otherwise seamless artwork. Editorial art may zoom, but never shrink
+    // inside its clipping viewport.
+    final safeScale = artScale < 1 ? 1.0 : artScale;
+    return Transform.translate(
+      offset: artOffset,
+      child: Transform.scale(
+        scale: safeScale,
+        alignment: alignment,
+        child: Image.asset(
+          resolvedAssetPath,
+          width: double.infinity,
+          height: double.infinity,
+          fit: fit,
           alignment: alignment,
-          child: Image.asset(
-            resolvedAssetPath,
-            width: double.infinity,
-            height: double.infinity,
-            fit: fit,
-            alignment: alignment,
-            filterQuality: FilterQuality.high,
-            excludeFromSemantics: true,
-            errorBuilder: (context, error, stackTrace) => DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: isDark
-                      ? const [Color(0xFF11172A), Color(0xFF30203A)]
-                      : const [Color(0xFFFFF8EE), Color(0xFFF5ECE1)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
+          filterQuality: FilterQuality.high,
+          excludeFromSemantics: true,
+          errorBuilder: (context, error, stackTrace) => DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: isDark
+                    ? const [Color(0xFF11172A), Color(0xFF30203A)]
+                    : const [Color(0xFFFFF8EE), Color(0xFFF5ECE1)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
             ),
           ),

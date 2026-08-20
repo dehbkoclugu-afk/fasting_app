@@ -53,7 +53,14 @@ class StreakCard extends StatelessWidget {
               const SizedBox(height: 8),
               Text(_getStreakMessage(context, currentStreak), maxLines: 2, style: theme.textTheme.titleSmall?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w700)),
               const SizedBox(height: 10),
-              Text('En uzun $longestStreak gün  ·  $totalSessions toplam oruç', maxLines: 2, style: theme.textTheme.labelSmall?.copyWith(color: fastingArtMutedForeground(context))),
+              Text(
+                '${l10n.streakCard_longestStreak}: $longestStreak ${l10n.common_days} · '
+                '${l10n.streakCard_totalSessions}: $totalSessions',
+                maxLines: 2,
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: fastingArtMutedForeground(context),
+                ),
+              ),
             ],
           ),
         ),

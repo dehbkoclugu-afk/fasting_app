@@ -53,7 +53,7 @@ class QuickStatsRow extends ConsumerWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(color: AppColors.tertiary.withValues(alpha: .12), borderRadius: BorderRadius.circular(99)),
-                child: Text('${(waterProgress * 100).round()}% tamamlandı', style: theme.textTheme.labelSmall?.copyWith(color: AppColors.tertiary, fontWeight: FontWeight.w800)),
+                child: Text('${(waterProgress * 100).round()}%', style: theme.textTheme.labelSmall?.copyWith(color: AppColors.tertiary, fontWeight: FontWeight.w800)),
               ),
             ],
           ),
@@ -66,54 +66,46 @@ class QuickStatsRow extends ConsumerWidget {
           child: Padding(
             padding: const EdgeInsets.only(right: 126),
             child: Column(
-            children: [
-              Row(
-                children: [
-                  _IconTile(
-                    color: AppColors.tertiary,
-                    icon: PhosphorIcons.drop(PhosphorIconsStyle.fill),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.water_title,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w900,
                   ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          l10n.water_title,
-                          style: theme.textTheme.labelLarge?.copyWith(
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          '${_formatWater(waterMl)} / ${_formatWater(waterGoalMl)}',
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withValues(
-                              alpha: .55,
-                            ),
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  '${_formatWater(waterMl)} / ${_formatWater(waterGoalMl)}',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurface.withValues(alpha: .62),
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 14),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(99),
+                  child: LinearProgressIndicator(
+                    value: waterProgress,
+                    minHeight: 7,
+                    backgroundColor: AppColors.tertiary.withValues(alpha: .1),
+                    valueColor: const AlwaysStoppedAnimation(
+                      AppColors.tertiary,
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 14),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(99),
-                child: LinearProgressIndicator(
-                  value: waterProgress,
-                  minHeight: 7,
-                  backgroundColor: AppColors.tertiary.withValues(alpha: .1),
-                  valueColor: const AlwaysStoppedAnimation(AppColors.tertiary),
                 ),
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: TextButton.icon(onPressed: () { HapticFeedback.lightImpact(); onAddWater(); }, icon: Icon(PhosphorIcons.plus(), size: 17), label: const Text('250 ml ekle')),
-              ),
-            ],
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton.icon(
+                    onPressed: () {
+                      HapticFeedback.lightImpact();
+                      onAddWater();
+                    },
+                    icon: Icon(PhosphorIcons.plus(), size: 17),
+                    label: const Text('+250 ml'),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -125,8 +117,6 @@ class QuickStatsRow extends ConsumerWidget {
                 artPath: 'assets/images/editorial/v3/quick-streak.webp',
                 height: 118,
                 child: _Metric(
-                  icon: PhosphorIcons.fire(PhosphorIconsStyle.fill),
-                  color: AppColors.warning,
                   value: '$streak',
                   label: l10n.home_dayStreak,
                 ),
@@ -139,8 +129,6 @@ class QuickStatsRow extends ConsumerWidget {
                 height: 118,
                 onTap: () => context.push('/weight-tracker'),
                 child: _Metric(
-                  icon: PhosphorIcons.scales(),
-                  color: theme.colorScheme.primary,
                   value:
                       currentWeight == null
                           ? '—'
@@ -189,41 +177,19 @@ class _SummarySurface extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
-      child: Padding(padding: const EdgeInsets.all(16), child: child),
+          child: Padding(padding: const EdgeInsets.all(16), child: child),
         ),
       ),
     );
   }
 }
 
-class _IconTile extends StatelessWidget {
-  const _IconTile({required this.color, required this.icon});
-
-  final Color color;
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) => Container(
-    width: 48,
-    height: 48,
-    decoration: BoxDecoration(
-      color: color.withValues(alpha: .1),
-      borderRadius: BorderRadius.circular(15),
-    ),
-    child: Icon(icon, color: color, size: 23),
-  );
-}
-
 class _Metric extends StatelessWidget {
   const _Metric({
-    required this.icon,
-    required this.color,
     required this.value,
     required this.label,
   });
 
-  final IconData icon;
-  final Color color;
   final String value;
   final String label;
 
@@ -233,34 +199,33 @@ class _Metric extends StatelessWidget {
     return SizedBox(
       height: 86,
       child: Padding(
-        padding: const EdgeInsets.only(right: 58),
+        padding: const EdgeInsets.only(right: 48),
         child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, size: 22, color: color),
-          const SizedBox(height: 10),
-          Text(
-            value,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.left,
-            style: theme.textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w800,
-              letterSpacing: -.25,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              value,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.left,
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w900,
+                letterSpacing: -.25,
+              ),
             ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            label,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.left,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: .52),
+            const SizedBox(height: 2),
+            Text(
+              label,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.left,
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: theme.colorScheme.onSurface.withValues(alpha: .72),
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-        ],
+          ],
         ),
       ),
     );
