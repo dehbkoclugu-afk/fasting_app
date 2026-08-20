@@ -201,6 +201,7 @@ class _PhaseMarker extends StatelessWidget {
   Future<void> _showPhaseInfo(BuildContext context) =>
       showModalBottomSheet<void>(
         context: context,
+        isScrollControlled: true,
         showDragHandle: true,
         builder: (context) {
           final theme = Theme.of(context);
@@ -209,7 +210,7 @@ class _PhaseMarker extends StatelessWidget {
           final description = metabolicPhaseDescription(l10n, phase);
           return SafeArea(
             top: false,
-            child: Padding(
+            child: SingleChildScrollView(
               padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
