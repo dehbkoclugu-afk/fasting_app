@@ -105,82 +105,93 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                                     12,
                                   ),
                                   child: Row(
-                                children: [
-                                  Container(
-                                    width: 54,
-                                    height: 54,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black.withValues(alpha: .3),
-                                      borderRadius: BorderRadius.circular(14),
-                                      border: Border.all(
-                                        color: Colors.white.withValues(alpha: .16),
+                                    children: [
+                                      Container(
+                                        width: 54,
+                                        height: 54,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: theme.colorScheme.surface
+                                              .withValues(alpha: .84),
+                                          borderRadius: BorderRadius.circular(
+                                            14,
+                                          ),
+                                          border: Border.all(
+                                            color:
+                                                theme.colorScheme.outlineVariant,
+                                          ),
+                                        ),
+                                        child: Text(
+                                          plan.shortName,
+                                          style: TextStyle(
+                                            color: fastingArtForeground(context),
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                    child: Text(
-                                      plan.shortName,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.w900,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 13),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
+                                      const SizedBox(width: 13),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Flexible(
-                                              child: Text(
-                                                plan.name,
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: theme.textTheme.titleSmall
-                                                    ?.copyWith(
-                                                      color: Colors.white,
-                                                      fontWeight: FontWeight.w800,
-                                                    ),
-                                              ),
+                                            Row(
+                                              children: [
+                                                Flexible(
+                                                  child: Text(
+                                                    plan.name,
+                                                    maxLines: 1,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: theme
+                                                        .textTheme
+                                                        .titleSmall
+                                                        ?.copyWith(
+                                                          color:
+                                                              fastingArtForeground(
+                                                                context,
+                                                              ),
+                                                          fontWeight:
+                                                              FontWeight.w800,
+                                                        ),
+                                                  ),
+                                                ),
+                                                if (isLocked) ...[
+                                                  const SizedBox(width: 6),
+                                                  _proBadge(),
+                                                ],
+                                              ],
                                             ),
-                                            if (isLocked) ...[
-                                              const SizedBox(width: 6),
-                                              _proBadge(),
-                                            ],
+                                            const SizedBox(height: 3),
+                                            Text(
+                                              plan.description(l10n),
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: theme.textTheme.bodySmall
+                                                  ?.copyWith(
+                                                    color:
+                                                        fastingArtMutedForeground(
+                                                          context,
+                                                        ),
+                                                    fontSize: 11,
+                                                  ),
+                                            ),
                                           ],
                                         ),
-                                        const SizedBox(height: 3),
-                                        Text(
-                                          '${plan.fastingHours}s oruç · ${plan.eatingHours}s yemek',
-                                          style: theme.textTheme.bodySmall?.copyWith(
-                                            color: Colors.white.withValues(alpha: .76),
-                                          ),
-                                        ),
-                                        Text(
-                                          plan.description(l10n),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: theme.textTheme.bodySmall?.copyWith(
-                                            color: Colors.white.withValues(alpha: .58),
-                                            fontSize: 10,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Icon(
-                                    isLocked
-                                        ? Icons.lock_outline
-                                        : isSelected
-                                        ? Icons.check_circle
-                                        : Icons.chevron_right,
-                                    color: Colors.white,
-                                    size: isSelected ? 24 : 20,
-                                  ),
-                                ],
+                                      ),
+                                      Icon(
+                                        isLocked
+                                            ? Icons.lock_outline
+                                            : isSelected
+                                            ? Icons.check_circle
+                                            : Icons.chevron_right,
+                                        color: fastingArtForeground(context),
+                                        size: isSelected ? 24 : 20,
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],

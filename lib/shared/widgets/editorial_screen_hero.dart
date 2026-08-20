@@ -16,6 +16,7 @@ class EditorialScreenHero extends StatelessWidget {
     this.fit = BoxFit.cover,
     this.textWidth = 210,
     this.artScale = 1,
+    this.contentAlignment = Alignment.centerLeft,
   });
 
   final String assetPath;
@@ -28,6 +29,7 @@ class EditorialScreenHero extends StatelessWidget {
   final BoxFit fit;
   final double textWidth;
   final double artScale;
+  final Alignment contentAlignment;
 
   @override
   Widget build(BuildContext context) {
@@ -43,39 +45,39 @@ class EditorialScreenHero extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Align(
-          alignment: Alignment.centerLeft,
+          alignment: contentAlignment,
           child: SizedBox(
-              width: textWidth,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (icon != null) ...[
-                    Icon(icon, color: fastingArtForeground(context), size: 26),
-                    const SizedBox(height: 10),
-                  ],
-                  Text(
-                    title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.titleLarge?.copyWith(
-                      color: fastingArtForeground(context),
-                      fontWeight: FontWeight.w800,
-                      height: 1.05,
-                    ),
-                  ),
-                  const SizedBox(height: 7),
-                  Text(
-                    subtitle,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: fastingArtMutedForeground(context),
-                      height: 1.3,
-                    ),
-                  ),
+            width: textWidth,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (icon != null) ...[
+                  Icon(icon, color: fastingArtForeground(context), size: 26),
+                  const SizedBox(height: 10),
                 ],
-              ),
+                Text(
+                  title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    color: fastingArtForeground(context),
+                    fontWeight: FontWeight.w800,
+                    height: 1.05,
+                  ),
+                ),
+                const SizedBox(height: 7),
+                Text(
+                  subtitle,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: fastingArtMutedForeground(context),
+                    height: 1.3,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

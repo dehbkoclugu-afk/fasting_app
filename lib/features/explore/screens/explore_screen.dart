@@ -24,49 +24,56 @@ class ExploreScreen extends StatelessWidget {
               assetPath: 'assets/images/editorial/fasting-guide-hero.webp',
               height: 190,
               variant: FastingArtVariant.hero,
+              alignment: Alignment.bottomRight,
+              artScale: .94,
               semanticLabel: l10n.explore_guide,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(22, 22, 190, 22),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      width: 38,
-                      height: 38,
-                      decoration: BoxDecoration(
-                        color: fastingArtForeground(context).withValues(alpha: .10),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        PhosphorIcons.clockCountdown(),
-                        color: fastingArtForeground(context),
-                        size: 20,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      l10n.explore_guide,
-                      style: theme.textTheme.headlineSmall?.copyWith(
-                        color: fastingArtForeground(context),
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: -.5,
-                      ),
-                    ),
-                    const SizedBox(height: 3),
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 210),
-                      child: Text(
-                        l10n.explore_guideDesc,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: fastingArtMutedForeground(context),
-                          height: 1.35,
+                padding: const EdgeInsets.all(22),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: SizedBox(
+                    width: 168,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 38,
+                          height: 38,
+                          decoration: BoxDecoration(
+                            color: fastingArtForeground(
+                              context,
+                            ).withValues(alpha: .10),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            PhosphorIcons.clockCountdown(),
+                            color: fastingArtForeground(context),
+                            size: 20,
+                          ),
                         ),
-                      ),
+                        const SizedBox(height: 12),
+                        Text(
+                          l10n.explore_guide,
+                          maxLines: 1,
+                          style: theme.textTheme.headlineSmall?.copyWith(
+                            color: fastingArtForeground(context),
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -.5,
+                          ),
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          l10n.explore_guideDesc,
+                          maxLines: 3,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: fastingArtMutedForeground(context),
+                            height: 1.25,
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
@@ -288,42 +295,55 @@ class ExploreScreen extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 12),
       child: FastingArtSlot(
         assetPath: tip.artPath,
-        height: 176,
+        height: 184,
         variant: FastingArtVariant.row,
-        alignment: Alignment.centerRight,
+        alignment: Alignment.bottomRight,
+        artScale: .9,
         semanticLabel: tip.title,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 15, 112, 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 34,
-                height: 34,
-                decoration: BoxDecoration(
-                  color: tip.color.withValues(alpha: .24),
-                  shape: BoxShape.circle,
+          padding: const EdgeInsets.all(16),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: FractionallySizedBox(
+              widthFactor: .62,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 34,
+                  height: 34,
+                  decoration: BoxDecoration(
+                    color: tip.color.withValues(alpha: .24),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    tip.icon,
+                    color: fastingArtForeground(context),
+                    size: 18,
+                  ),
                 ),
-                child: Icon(tip.icon, color: fastingArtForeground(context), size: 18),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                tip.title,
-                style: theme.textTheme.titleSmall?.copyWith(
-                  color: fastingArtForeground(context),
-                  fontWeight: FontWeight.w800,
+                const SizedBox(height: 8),
+                Text(
+                  tip.title,
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    color: fastingArtForeground(context),
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                tip.description,
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: fastingArtMutedForeground(context),
-                  height: 1.3,
+                const SizedBox(height: 2),
+                Text(
+                  tip.description,
+                  maxLines: 5,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: fastingArtMutedForeground(context),
+                    height: 1.3,
+                  ),
                 ),
+              ],
               ),
-            ],
+            ),
           ),
         ),
       ),

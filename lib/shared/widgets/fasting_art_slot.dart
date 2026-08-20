@@ -103,30 +103,33 @@ class FastingArtSlot extends StatelessWidget {
           )
         : assetPath;
 
-    return Transform.translate(
-      offset: artOffset,
-      child: Transform.scale(
-        scale: artScale,
-        alignment: alignment,
-        child: Image.asset(
-        resolvedAssetPath,
-        width: double.infinity,
-        height: double.infinity,
-        fit: fit,
-        alignment: alignment,
-        filterQuality: FilterQuality.high,
-        excludeFromSemantics: true,
-        errorBuilder: (context, error, stackTrace) => DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: isDark
-                  ? const [Color(0xFF11172A), Color(0xFF30203A)]
-                  : const [Color(0xFFFFF8EE), Color(0xFFF5ECE1)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+    return ColoredBox(
+      color: isDark ? const Color(0xFF11172A) : const Color(0xFFFFF8EE),
+      child: Transform.translate(
+        offset: artOffset,
+        child: Transform.scale(
+          scale: artScale,
+          alignment: alignment,
+          child: Image.asset(
+            resolvedAssetPath,
+            width: double.infinity,
+            height: double.infinity,
+            fit: fit,
+            alignment: alignment,
+            filterQuality: FilterQuality.high,
+            excludeFromSemantics: true,
+            errorBuilder: (context, error, stackTrace) => DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: isDark
+                      ? const [Color(0xFF11172A), Color(0xFF30203A)]
+                      : const [Color(0xFFFFF8EE), Color(0xFFF5ECE1)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
             ),
           ),
-        ),
         ),
       ),
     );

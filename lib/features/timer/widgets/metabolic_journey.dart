@@ -31,99 +31,121 @@ class MetabolicJourney extends StatelessWidget {
         break;
       }
     }
+    final progress = targetHours <= 0
+        ? 0.0
+        : (elapsedHours / targetHours).clamp(0.0, 1.0);
+    final endTime = startTime.add(
+      Duration(minutes: (targetHours * 60).round()),
+    );
 
     return Semantics(
       label: l10n.journey_label,
       child: FastingArtSlot(
         assetPath: _phaseArtwork(current),
-        height: 238,
+        height: 250,
         borderRadius: 22,
         variant: FastingArtVariant.card,
-        alignment: Alignment.centerRight,
+        alignment: Alignment.bottomRight,
+        artScale: .82,
         semanticLabel: metabolicPhaseName(l10n, current),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(18, 18, 146, 18),
-          child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+          padding: const EdgeInsets.all(18),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: FractionallySizedBox(
+              widthFactor: .64,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    metabolicPhaseName(l10n, current),
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    metabolicPhaseDescription(l10n, current),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: fastingArtMutedForeground(context),
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  Row(
                     children: [
-                      Text(
-                        metabolicPhaseName(l10n, current),
-                        style: theme.textTheme.titleMedium,
+                      Expanded(
+                        child: Text(
+                          l10n.journey_now,
+                          style: theme.textTheme.labelSmall?.copyWith(
+                            color: current.gradientColors.first,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
                       ),
                       Text(
-                        metabolicPhaseDescription(l10n, current),
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: fastingArtMutedForeground(context),
+                        '%${(progress * 100).round()}',
+                        style: theme.textTheme.labelMedium?.copyWith(
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 18),
-            SizedBox(
-              height: 54,
-              width: double.infinity,
-              child: CustomPaint(
-                painter: _DayArcPainter(
-                  elapsedHours: elapsedHours,
-                  targetHours: targetHours,
-                  color: current.gradientColors.first,
-                  trackColor: theme.dividerColor.withValues(alpha: .45),
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(_clock(startTime), style: theme.textTheme.labelSmall),
-                Text(
-                  l10n.journey_now,
-                  style: theme.textTheme.labelSmall?.copyWith(
-                    color: current.gradientColors.first,
-                  ),
-                ),
-                Text(
-                  _clock(
-                    startTime.add(
-                      Duration(minutes: (targetHours * 60).round()),
+                  const SizedBox(height: 6),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(99),
+                    child: LinearProgressIndicator(
+                      value: progress,
+                      minHeight: 9,
+                      backgroundColor: theme.colorScheme.outlineVariant
+                          .withValues(alpha: .55),
+                      valueColor: AlwaysStoppedAnimation(
+                        current.gradientColors.first,
+                      ),
                     ),
                   ),
-                  style: theme.textTheme.labelSmall,
-                ),
-              ],
-            ),
-            if (next != null) ...[
-              const SizedBox(height: 8),
-              Text(
-                l10n.journey_next(
-                  _remaining(next.startHour),
-                  metabolicPhaseName(l10n, next),
-                ),
-                style: theme.textTheme.labelMedium?.copyWith(
-                  color: theme.colorScheme.primary,
-                ),
+                  const SizedBox(height: 6),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(_clock(startTime), style: theme.textTheme.labelSmall),
+                      Text(_clock(endTime), style: theme.textTheme.labelSmall),
+                    ],
+                  ),
+                  if (next != null) ...[
+                    const SizedBox(height: 9),
+                    Text(
+                      l10n.journey_next(
+                        _remaining(next.startHour),
+                        metabolicPhaseName(l10n, next),
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.labelMedium?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                  const SizedBox(height: 9),
+                  Text(
+                    l10n.phase_estimateShort,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.onSurface.withValues(alpha: .5),
+                      height: 1.25,
+                    ),
+                  ),
+                ],
               ),
-            ],
-            const SizedBox(height: 10),
-            Text(
-              l10n.phase_estimateShort,
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: .48),
-              ),
             ),
-          ],
-        ),
           ),
         ),
-      );
+      ),
+    );
   }
 
   String _phaseArtwork(MetabolicPhase phase) => 'assets/images/editorial/v5/phase-${switch (phase.id) { 'fatBurning' => 'fat-burning', _ => phase.id }}.webp';
@@ -137,49 +159,4 @@ class MetabolicJourney extends StatelessWidget {
 
   String _clock(DateTime time) =>
       '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
-}
-
-class _DayArcPainter extends CustomPainter {
-  const _DayArcPainter({
-    required this.elapsedHours,
-    required this.targetHours,
-    required this.color,
-    required this.trackColor,
-  });
-
-  final double elapsedHours;
-  final double targetHours;
-  final Color color;
-  final Color trackColor;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final rect = Rect.fromLTWH(8, 8, size.width - 16, size.height * 1.45);
-    final track =
-        Paint()
-          ..color = trackColor
-          ..style = PaintingStyle.stroke
-          ..strokeCap = StrokeCap.round
-          ..strokeWidth = 7;
-    final active =
-        Paint()
-          ..color = color
-          ..style = PaintingStyle.stroke
-          ..strokeCap = StrokeCap.round
-          ..strokeWidth = 7;
-    canvas.drawArc(rect, math.pi, math.pi, false, track);
-    final progress = (elapsedHours / targetHours).clamp(0.0, 1.0);
-    canvas.drawArc(rect, math.pi, math.pi * progress, false, active);
-    final angle = math.pi + math.pi * progress;
-    final center = rect.center;
-    final point = Offset(
-      center.dx + rect.width / 2 * math.cos(angle),
-      center.dy + rect.height / 2 * math.sin(angle),
-    );
-    canvas.drawCircle(point, 6, Paint()..color = color);
-  }
-
-  @override
-  bool shouldRepaint(covariant _DayArcPainter oldDelegate) =>
-      oldDelegate.elapsedHours != elapsedHours || oldDelegate.color != color;
 }

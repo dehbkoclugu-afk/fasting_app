@@ -70,6 +70,10 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                 subtitle: story,
                 icon: Icons.insights_outlined,
                 height: 190,
+                alignment: Alignment.bottomRight,
+                artScale: .96,
+                textWidth: 168,
+                contentAlignment: Alignment.topLeft,
               ),
               const SizedBox(height: 20),
 
@@ -110,8 +114,6 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               title: l10n.stats_totalFasts,
                               value: '${stats.totalSessions}',
                               subtitle: periods[_selectedPeriod].toLowerCase(),
-                              icon: Icons.timer_outlined,
-                              color: AppColors.primary,
                               artPath:
                                   'assets/images/editorial/v3/stats-total.webp',
                             ),
@@ -124,8 +126,6 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               value:
                                   '${stats.averageDurationHours.toStringAsFixed(1)}s',
                               subtitle: l10n.stats_fastDuration,
-                              icon: Icons.analytics_outlined,
-                              color: AppColors.tertiary,
                               artPath:
                                   'assets/images/editorial/v3/stats-average.webp',
                             ),
@@ -141,8 +141,6 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               title: l10n.stats_streak,
                               value: '${stats.currentStreak}',
                               subtitle: l10n.stats_daysConsecutive,
-                              icon: Icons.local_fire_department_outlined,
-                              color: Colors.orange,
                               artPath:
                                   'assets/images/editorial/v3/stats-streak.webp',
                             ),
@@ -154,8 +152,6 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               title: l10n.stats_success,
                               value: '%${(stats.completionRate * 100).round()}',
                               subtitle: l10n.stats_completion,
-                              icon: Icons.emoji_events_outlined,
-                              color: AppColors.success,
                               artPath:
                                   'assets/images/editorial/v3/stats-success.webp',
                             ),
@@ -382,8 +378,6 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     required String title,
     required String value,
     required String subtitle,
-    required IconData icon,
-    required Color color,
     required String artPath,
   }) {
     final theme = Theme.of(context);
@@ -392,42 +386,48 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       height: 158,
       borderRadius: 22,
       variant: FastingArtVariant.card,
-      alignment: Alignment.centerRight,
-      artScale: 1.14,
+      alignment: Alignment.bottomRight,
+      artScale: .92,
       semanticLabel: title,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(15, 15, 66, 15),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              value,
-              maxLines: 1,
-              style: theme.textTheme.headlineSmall?.copyWith(
-                color: fastingArtForeground(context),
-                fontWeight: FontWeight.w800,
-              ),
+        padding: const EdgeInsets.all(15),
+        child: Align(
+          alignment: Alignment.topLeft,
+          child: FractionallySizedBox(
+            widthFactor: .64,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  value,
+                  maxLines: 1,
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    color: fastingArtForeground(context),
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                Text(
+                  title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: fastingArtForeground(context),
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  subtitle,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: fastingArtMutedForeground(context),
+                    fontSize: 10,
+                  ),
+                ),
+              ],
             ),
-            Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.labelMedium?.copyWith(
-                color: fastingArtForeground(context),
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            Text(
-              subtitle,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: fastingArtMutedForeground(context),
-                fontSize: 10,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

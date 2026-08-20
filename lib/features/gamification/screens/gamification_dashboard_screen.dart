@@ -380,9 +380,13 @@ class _BadgeToken extends StatelessWidget {
   final AppLocalizations l10n;
 
   @override
-  Widget build(BuildContext context) => Tooltip(
-    message: _badgeDescription(l10n, badge.id),
-    child: LayoutBuilder(
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final labelColor = isDark ? Colors.white : theme.colorScheme.onSurface;
+    return Tooltip(
+      message: _badgeDescription(l10n, badge.id),
+      child: LayoutBuilder(
       builder: (context, constraints) => Opacity(
         opacity: badge.unlocked ? 1 : .62,
         child: FastingArtSlot(
@@ -390,16 +394,21 @@ class _BadgeToken extends StatelessWidget {
           height: constraints.maxHeight,
           borderRadius: 18,
           variant: FastingArtVariant.bare,
-          useThemedAsset: false,
           semanticLabel: _badgeTitle(l10n, badge.id),
           child: DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  Colors.transparent,
-                  const Color(0xFF0F1424).withValues(alpha: .18),
-                  const Color(0xFF0F1424).withValues(alpha: .96),
-                ],
+                colors: isDark
+                    ? [
+                        Colors.transparent,
+                        const Color(0xFF0F1424).withValues(alpha: .18),
+                        const Color(0xFF0F1424).withValues(alpha: .96),
+                      ]
+                    : [
+                        Colors.transparent,
+                        theme.colorScheme.surface.withValues(alpha: .18),
+                        theme.colorScheme.surface.withValues(alpha: .96),
+                      ],
                 stops: const [0, .48, 1],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -407,7 +416,7 @@ class _BadgeToken extends StatelessWidget {
               border: Border.all(
                 color: badge.unlocked
                     ? AppColors.primary.withValues(alpha: .55)
-                    : Theme.of(context).dividerColor,
+                    : theme.dividerColor,
               ),
               borderRadius: BorderRadius.circular(18),
             ),
@@ -420,7 +429,7 @@ class _BadgeToken extends StatelessWidget {
                     child: Icon(
                       badge.unlocked ? Icons.check_circle : Icons.lock_outline,
                       size: 16,
-                      color: Colors.white.withValues(alpha: .9),
+                      color: labelColor.withValues(alpha: .9),
                     ),
                   ),
                   const Spacer(),
@@ -429,8 +438,8 @@ class _BadgeToken extends StatelessWidget {
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      color: Colors.white,
+                    style: theme.textTheme.labelMedium?.copyWith(
+                      color: labelColor,
                       fontWeight: FontWeight.w800,
                       height: 1.1,
                     ),
@@ -441,8 +450,9 @@ class _BadgeToken extends StatelessWidget {
           ),
         ),
       ),
-    ),
-  );
+      ),
+    );
+  }
 
   String _badgeArtwork(String id) {
     return switch (id) {

@@ -134,11 +134,11 @@ class _GoalScreenState extends State<GoalScreen> {
                                   child: Stack(
                                     children: [
                                       if (isSelected)
-                                        const Align(
+                                        Align(
                                           alignment: Alignment.topRight,
                                           child: Icon(
                                             Icons.check_circle,
-                                            color: Colors.white,
+                                            color: theme.colorScheme.primary,
                                             size: 22,
                                           ),
                                         ),
@@ -155,7 +155,10 @@ class _GoalScreenState extends State<GoalScreen> {
                                               overflow: TextOverflow.ellipsis,
                                               style: theme.textTheme.titleSmall
                                                   ?.copyWith(
-                                                    color: Colors.white,
+                                                    color:
+                                                        fastingArtForeground(
+                                                          context,
+                                                        ),
                                                     fontWeight: FontWeight.w800,
                                                   ),
                                             ),
@@ -166,8 +169,10 @@ class _GoalScreenState extends State<GoalScreen> {
                                               overflow: TextOverflow.ellipsis,
                                               style: theme.textTheme.bodySmall
                                                   ?.copyWith(
-                                                    color: Colors.white
-                                                        .withValues(alpha: .74),
+                                                    color:
+                                                        fastingArtMutedForeground(
+                                                          context,
+                                                        ),
                                                     fontSize: 10,
                                                     height: 1.15,
                                                   ),
