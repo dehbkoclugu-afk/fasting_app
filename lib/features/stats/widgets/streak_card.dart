@@ -25,18 +25,17 @@ class StreakCard extends StatelessWidget {
       height: 184,
       borderRadius: 24,
       variant: FastingArtVariant.card,
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.centerRight,
       semanticLabel: l10n.stats_streak,
       child: Padding(
         padding: const EdgeInsets.all(18),
-        child: Row(
-        children: [
-          // Current streak (big)
-          Expanded(
-            flex: 2,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+        child: Padding(
+          padding: const EdgeInsets.only(right: 168),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
                 Text(
                   '$currentStreak',
                   style: theme.textTheme.headlineLarge?.copyWith(
@@ -44,52 +43,20 @@ class StreakCard extends StatelessWidget {
                     color: Colors.orange,
                   ),
                 ),
-                Text(
+                const SizedBox(width: 6),
+                Padding(padding: const EdgeInsets.only(bottom: 5), child: Text(
                   '${l10n.common_days} ${l10n.stats_streak.toLowerCase()}',
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: fastingArtMutedForeground(context),
                   ),
-                ),
-              ],
-            ),
+                )),
+              ]),
+              const SizedBox(height: 8),
+              Text(_getStreakMessage(context, currentStreak), maxLines: 2, style: theme.textTheme.titleSmall?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w700)),
+              const SizedBox(height: 10),
+              Text('En uzun $longestStreak gün  ·  $totalSessions toplam oruç', maxLines: 2, style: theme.textTheme.labelSmall?.copyWith(color: fastingArtMutedForeground(context))),
+            ],
           ),
-          Container(width: 1, height: 94, color: fastingArtDivider(context)),
-          // Stats
-          Expanded(
-            flex: 3,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildStatRow(
-                    context,
-                    icon: Icons.emoji_events_outlined,
-                    label: l10n.streakCard_longestStreak,
-                    value: '$longestStreak ${l10n.common_days}',
-                    color: AppColors.primary,
-                  ),
-                  const SizedBox(height: 14),
-                  _buildStatRow(
-                    context,
-                    icon: Icons.check_circle_outline,
-                    label: l10n.streakCard_totalSessions,
-                    value: '$totalSessions',
-                    color: AppColors.success,
-                  ),
-                  const SizedBox(height: 14),
-                  _buildStatRow(
-                    context,
-                    icon: Icons.trending_up,
-                    label: l10n.streak_status,
-                    value: _getStreakMessage(context, currentStreak),
-                    color: Colors.orange,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
         ),
       ),
     );

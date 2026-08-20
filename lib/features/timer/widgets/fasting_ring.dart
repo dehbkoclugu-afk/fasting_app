@@ -6,6 +6,7 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/constants/metabolic_phases.dart';
 import '../../../core/utils/metabolic_phase_l10n.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../painters/ring_painter.dart';
 
 class FastingRing extends StatelessWidget {
@@ -214,23 +215,20 @@ class _PhaseMarker extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          color: color.withValues(alpha: .12),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Icon(phase.icon, color: color),
-                      ),
-                      const SizedBox(width: 14),
-                      Expanded(
-                        child: Column(
+                  FastingArtSlot(
+                    assetPath: _phaseArtwork(phase),
+                    height: 142,
+                    borderRadius: 22,
+                    variant: FastingArtVariant.row,
+                    alignment: Alignment.centerRight,
+                    semanticLabel: name,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(18, 18, 150, 18),
+                      child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(name, style: theme.textTheme.titleLarge),
+                            Text(name, style: theme.textTheme.titleLarge?.copyWith(color: fastingArtForeground(context))),
                             Text(
                               l10n.phase_hours(phase.startHour, phase.endHour),
                               style: theme.textTheme.bodySmall?.copyWith(
@@ -239,9 +237,8 @@ class _PhaseMarker extends StatelessWidget {
                               ),
                             ),
                           ],
-                        ),
                       ),
-                    ],
+                    ),
                   ),
                   const SizedBox(height: 18),
                   Text(
@@ -267,4 +264,6 @@ class _PhaseMarker extends StatelessWidget {
           );
         },
       );
+
+  String _phaseArtwork(MetabolicPhase phase) => 'assets/images/editorial/v5/phase-${switch (phase.id) { 'fatBurning' => 'fat-burning', _ => phase.id }}.webp';
 }

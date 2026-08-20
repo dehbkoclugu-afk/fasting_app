@@ -41,7 +41,7 @@ class GamificationDashboardScreen extends ConsumerWidget {
             _SeasonPath(current: game.seasonStep),
             const SizedBox(height: 26),
           ],
-          _RecordsStrip(game: game, l10n: l10n),
+          _NextSealCard(game: game, l10n: l10n),
           const SizedBox(height: 26),
           _SectionTitle(
             title: l10n.game_badges,
@@ -72,33 +72,25 @@ class GamificationDashboardScreen extends ConsumerWidget {
             alignment: Alignment.centerRight,
             semanticLabel: l10n.game_shields(game.shields),
             child: Padding(
-              padding: const EdgeInsets.all(18),
-              child: Row(
-              children: [
-                const Icon(
-                  Icons.shield_outlined,
-                  color: AppColors.tertiary,
-                  size: 34,
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.game_shields(game.shields),
-                        style: theme.textTheme.titleMedium?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w800),
-                      ),
-                      Text(
-                        l10n.game_shieldsDesc,
-                        style: theme.textTheme.bodySmall?.copyWith(color: fastingArtMutedForeground(context)),
-                      ),
-                    ],
+              padding: const EdgeInsets.fromLTRB(18, 18, 190, 18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    l10n.game_shields(game.shields),
+                    style: theme.textTheme.titleMedium?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w800),
                   ),
+                  const SizedBox(height: 4),
+                  Text(
+                    l10n.game_shieldsDesc,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.bodySmall?.copyWith(color: fastingArtMutedForeground(context)),
+                  ),
+                ],
                 ),
-              ],
               ),
-            ),
           ),
           const SizedBox(height: 14),
           if (!calm)
@@ -145,7 +137,7 @@ class _LevelHero extends StatelessWidget {
     return Semantics(
       label: l10n.game_levelSemantics(game.level, game.xp),
       child: FastingArtSlot(
-        assetPath: 'assets/images/editorial/achievements.webp',
+        assetPath: 'assets/images/editorial/v4/weekly-league.webp',
         height: 174,
         borderRadius: 26,
         variant: FastingArtVariant.hero,
@@ -156,24 +148,6 @@ class _LevelHero extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
-                  width: 58,
-                  height: 58,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: fastingArtForeground(context).withValues(alpha: .10),
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: fastingArtForeground(context).withValues(alpha: .28),
-                    ),
-                  ),
-                  child: Icon(
-                    calm ? Icons.spa_outlined : Icons.auto_awesome,
-                    color: fastingArtForeground(context),
-                    size: 28,
-                  ),
-                ),
-                const SizedBox(width: 14),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,7 +159,7 @@ class _LevelHero extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        calm ? l10n.game_questsDesc : '${game.xp} XP',
+                        calm ? l10n.game_questsDesc : 'Seviye ${game.level}',
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: fastingArtMutedForeground(context),
                         ),
@@ -194,9 +168,12 @@ class _LevelHero extends StatelessWidget {
                   ),
                 ),
                 if (!calm)
-                  Text(
-                    '${GamificationState.levelSize - game.levelXp} XP',
-                    style: TextStyle(color: fastingArtForeground(context)),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text('${game.levelXp} / ${GamificationState.levelSize} XP', style: TextStyle(color: fastingArtForeground(context), fontWeight: FontWeight.w800)),
+                      Text('${GamificationState.levelSize - game.levelXp} XP kaldı', style: theme.textTheme.labelSmall?.copyWith(color: fastingArtMutedForeground(context))),
+                    ],
                   ),
               ],
             ),
@@ -295,96 +272,104 @@ class _SeasonPath extends StatelessWidget {
   final int current;
 
   @override
-  Widget build(BuildContext context) => FastingArtSlot(
-    assetPath: 'assets/images/editorial/v3/season-path.webp',
-    height: 148,
-    borderRadius: 24,
-    variant: FastingArtVariant.card,
-    alignment: Alignment.centerRight,
-    semanticLabel: '30 step season path',
-    child: Padding(
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      height: 168,
       padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: theme.dividerColor.withValues(alpha: .45)),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Row(
-            children: [
-              Container(
-                width: 48,
-                height: 48,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  color: AppColors.primary,
-                  shape: BoxShape.circle,
-                ),
-                child: Text(
-                  '$current',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(99),
-                  child: LinearProgressIndicator(
-                    value: (current / 30).clamp(0, 1).toDouble(),
-                    minHeight: 8,
-                    backgroundColor: fastingArtForeground(context).withValues(alpha: .14),
-                    valueColor: const AlwaysStoppedAnimation(AppColors.primary),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              Text(
-                '30',
-                style: TextStyle(color: fastingArtForeground(context), fontWeight: FontWeight.w800),
-              ),
-            ],
+          Row(children: [
+            Text('Adım $current / 30', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800)),
+            const Spacer(),
+            Text('Her 5 adımda mühür', style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.primary)),
+          ]),
+          const Spacer(),
+          SizedBox(
+            height: 76,
+            child: CustomPaint(
+              painter: _SeasonPathPainter(current: current, color: theme.colorScheme.primary, track: theme.colorScheme.outlineVariant),
+              child: const SizedBox.expand(),
+            ),
           ),
         ],
       ),
-    ),
-  );
+    );
+  }
 }
 
-class _RecordsStrip extends StatelessWidget {
-  const _RecordsStrip({required this.game, required this.l10n});
+class _NextSealCard extends StatelessWidget {
+  const _NextSealCard({required this.game, required this.l10n});
   final GamificationState game;
   final AppLocalizations l10n;
 
   @override
-  Widget build(BuildContext context) => Row(
-    children: [
-      _Record(value: '${game.streak}', label: l10n.game_streak),
-      _Record(value: '${game.completedFasts}', label: l10n.game_targets),
-      _Record(value: '${game.totalHours}h', label: l10n.awards_total),
-      _Record(
-        value: '${game.personalBestMinutes ~/ 60}h',
-        label: l10n.game_best,
-      ),
-    ],
-  );
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final completedInBlock = (game.seasonStep - 1) % 5;
+    final remaining = 5 - completedInBlock;
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(color: theme.colorScheme.primaryContainer.withValues(alpha: .38), borderRadius: BorderRadius.circular(20)),
+      child: Row(children: [
+        Icon(Icons.workspace_premium_outlined, color: theme.colorScheme.primary),
+        const SizedBox(width: 12),
+        Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text('Sıradaki koleksiyon mührü', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800)),
+          const SizedBox(height: 4),
+          Text('$remaining ritim tamamlayınca açılır', style: theme.textTheme.bodySmall),
+          const SizedBox(height: 9),
+          LinearProgressIndicator(value: completedInBlock / 5, minHeight: 7, borderRadius: BorderRadius.circular(99)),
+        ])),
+      ]),
+    );
+  }
 }
 
-class _Record extends StatelessWidget {
-  const _Record({required this.value, required this.label});
-  final String value;
-  final String label;
+class _SeasonPathPainter extends CustomPainter {
+  const _SeasonPathPainter({required this.current, required this.color, required this.track});
+  final int current;
+  final Color color;
+  final Color track;
 
   @override
-  Widget build(BuildContext context) => Expanded(
-    child: Column(
-      children: [
-        Text(value, style: Theme.of(context).textTheme.titleLarge),
-        Text(label, style: Theme.of(context).textTheme.labelSmall),
-      ],
-    ),
-  );
+  void paint(Canvas canvas, Size size) {
+    final points = List.generate(30, (index) {
+      final row = index ~/ 10;
+      final position = index % 10;
+      final x = row.isOdd ? size.width - (position / 9 * size.width) : position / 9 * size.width;
+      return Offset(x, 12 + row * 26);
+    });
+    final path = Path()..moveTo(points.first.dx, points.first.dy);
+    for (final point in points.skip(1)) path.lineTo(point.dx, point.dy);
+    final trackPaint = Paint()
+      ..color = track
+      ..strokeWidth = 4
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
+    canvas.drawPath(path, trackPaint);
+    for (var i = 0; i < points.length; i++) {
+      final reached = i < current;
+      final checkpoint = (i + 1) % 5 == 0;
+      canvas.drawCircle(points[i], checkpoint ? 7 : 4, Paint()..color = reached ? color : track);
+      if (checkpoint) {
+        final halo = Paint()
+          ..color = reached ? color.withValues(alpha: .55) : track
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2;
+        canvas.drawCircle(points[i], 9, halo);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _SeasonPathPainter oldDelegate) => oldDelegate.current != current || oldDelegate.color != color;
 }
 
 class _BadgeToken extends StatelessWidget {

@@ -14,6 +14,8 @@ class EditorialScreenHero extends StatelessWidget {
     this.semanticLabel,
     this.alignment = Alignment.center,
     this.fit = BoxFit.cover,
+    this.textWidth = 210,
+    this.artScale = 1,
   });
 
   final String assetPath;
@@ -24,6 +26,8 @@ class EditorialScreenHero extends StatelessWidget {
   final String? semanticLabel;
   final Alignment alignment;
   final BoxFit fit;
+  final double textWidth;
+  final double artScale;
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +38,14 @@ class EditorialScreenHero extends StatelessWidget {
       variant: FastingArtVariant.hero,
       alignment: alignment,
       fit: fit,
+      artScale: artScale,
       semanticLabel: semanticLabel ?? title,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Align(
           alignment: Alignment.centerLeft,
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            alignment: Alignment.centerLeft,
-            child: SizedBox(
-              width: 220,
+          child: SizedBox(
+              width: textWidth,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +76,6 @@ class EditorialScreenHero extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
           ),
         ),
       ),

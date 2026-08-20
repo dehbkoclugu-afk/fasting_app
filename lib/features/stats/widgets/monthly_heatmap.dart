@@ -99,6 +99,8 @@ class MonthlyHeatmap extends StatelessWidget {
                 final hours =
                     data[DateTime(date.year, date.month, date.day)] ?? 0;
                 final isFuture = date.isAfter(DateTime.now());
+                final now = DateTime.now();
+                final isToday = date.year == now.year && date.month == now.month && date.day == now.day;
 
                 return Expanded(
                   child: AspectRatio(
@@ -111,14 +113,10 @@ class MonthlyHeatmap extends StatelessWidget {
                                 ? Colors.transparent
                                 : _getHeatColor(hours, theme),
                         borderRadius: BorderRadius.circular(4),
-                        border:
-                            isFuture
-                                ? Border.all(
-                                  color: theme.colorScheme.onSurface.withAlpha(
-                                    20,
-                                  ),
-                                )
-                                : null,
+                        border: Border.all(
+                          color: isToday ? theme.colorScheme.primary : theme.colorScheme.outlineVariant.withValues(alpha: isFuture ? .45 : .22),
+                          width: isToday ? 2 : 1,
+                        ),
                       ),
                       child: Center(
                         child: Text(

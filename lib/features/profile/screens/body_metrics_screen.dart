@@ -71,60 +71,29 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
             EditorialScreenHero(
               assetPath: 'assets/images/editorial/profile-progress.webp',
               title: l10n.bodyMetrics_title,
-              subtitle: l10n.bodyMetrics_weight,
-              icon: Icons.monitor_weight_outlined,
+              subtitle: 'Değişimi tek rakamla değil, zaman içindeki eğilimle izle.',
+              textWidth: 230,
             ),
             const SizedBox(height: 20),
 
-            // Current stats
-            Row(
-              children: [
-                Expanded(
-                  child: _buildMetricCard(
-                    context,
-                    label: l10n.bodyMetrics_weight,
-                    value:
-                        settings.weight != null
-                            ? '${settings.weight!.toStringAsFixed(1)} kg'
-                            : '-- kg',
-                    icon: Icons.monitor_weight_outlined,
-                    color: AppColors.primary,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: InkWell(
-                    borderRadius: AppSpacing.borderRadiusMd,
-                    onTap:
-                        () => _showTargetWeightDialog(settings.targetWeight),
-                    child: _buildMetricCard(
-                      context,
-                      label: l10n.bodyMetrics_target,
-                      value:
-                          settings.targetWeight != null
-                              ? '${settings.targetWeight!.toStringAsFixed(1)} kg'
-                              : '-- kg',
-                      icon: Icons.flag_outlined,
-                      color: AppColors.success,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: _buildMetricCard(
-                    context,
-                    label: l10n.bmi,
-                    value: bmi != null ? bmi.toStringAsFixed(1) : '--',
-                    icon: Icons.favorite_outline,
-                    color: _getBmiColor(bmi),
-                    subtitle:
-                        bmi != null
-                            ? Calculations.getBMICategory(bmi, l10n)
-                            : null,
-                  ),
-                ),
-              ],
-            ),
+            LayoutBuilder(builder: (context, constraints) {
+              final width = (constraints.maxWidth - 12) / 2;
+              return Wrap(spacing: 12, runSpacing: 12, children: [
+                SizedBox(width: width, child: _buildMetricCard(context, label: l10n.bodyMetrics_weight, value: settings.weight != null ? '${settings.weight!.toStringAsFixed(1)} kg' : '-- kg', icon: Icons.monitor_weight_outlined, color: AppColors.primary)),
+                SizedBox(width: width, child: InkWell(borderRadius: AppSpacing.borderRadiusMd, onTap: () => _showTargetWeightDialog(settings.targetWeight), child: _buildMetricCard(context, label: l10n.bodyMetrics_target, value: settings.targetWeight != null ? '${settings.targetWeight!.toStringAsFixed(1)} kg' : '-- kg', icon: Icons.flag_outlined, color: AppColors.success))),
+                SizedBox(width: width, child: InkWell(borderRadius: AppSpacing.borderRadiusMd, onTap: () => _showHeightDialog(settings.height), child: _buildMetricCard(context, label: l10n.profile_height, value: settings.height != null ? '${settings.height!.toStringAsFixed(0)} cm' : '-- cm', icon: Icons.straighten, color: AppColors.tertiary))),
+                SizedBox(width: width, child: _buildMetricCard(context, label: l10n.bmi, value: bmi != null ? bmi.toStringAsFixed(1) : '--', icon: Icons.favorite_outline, color: _getBmiColor(bmi), subtitle: bmi != null ? Calculations.getBMICategory(bmi, l10n) : null)),
+              ]);
+            }),
+            if (settings.weight != null && settings.targetWeight != null) ...[
+              const SizedBox(height: 14),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(color: theme.colorScheme.primaryContainer.withValues(alpha: .35), borderRadius: BorderRadius.circular(18)),
+                child: Text('${(settings.weight! - settings.targetWeight!).abs().toStringAsFixed(1)} kg hedef farkı · günlük dalgalanmalardan çok haftalık eğilime odaklan.', style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600)),
+              ),
+            ],
             const SizedBox(height: 24),
 
             // Add weight
@@ -183,6 +152,13 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
             ),
 
             const SizedBox(height: 24),
+
+            if (bmi != null) ...[
+              Text('BMI ne anlatır?', style: theme.textTheme.titleMedium),
+              const SizedBox(height: 8),
+              Text('BMI genel bir tarama göstergesidir; kas kütlesini ve vücut kompozisyonunu doğrudan ölçmez. Sonucu tek başına sağlık değerlendirmesi olarak kullanma.', style: theme.textTheme.bodyMedium?.copyWith(height: 1.45)),
+              const SizedBox(height: 24),
+            ],
 
             // Weight history list
             if (_weightHistory.isNotEmpty) ...[
@@ -323,6 +299,24 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
             ],
           ),
     );
+  }
+
+  Future<void> _showHeightDialog(double? current) async {
+    final l10n = AppLocalizations.of(context)!;
+    final controller = TextEditingController(text: current?.toStringAsFixed(0) ?? '');
+    await showDialog<void>(context: context, builder: (ctx) => AlertDialog(
+      title: Text(l10n.profile_height),
+      content: TextField(controller: controller, autofocus: true, keyboardType: TextInputType.number, decoration: const InputDecoration(suffixText: 'cm')),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(ctx), child: Text(l10n.common_cancel)),
+        FilledButton(onPressed: () {
+          final height = double.tryParse(controller.text.trim().replaceAll(',', '.'));
+          if (height == null || height < 100 || height > 250) return;
+          ref.read(settingsProvider.notifier).setBodyInfo(height: height);
+          Navigator.pop(ctx);
+        }, child: Text(l10n.bodyMetrics_save)),
+      ],
+    ));
   }
 
   Color _getBmiColor(double? bmi) {

@@ -5,6 +5,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/constants/fasting_plans.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/section_header.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
@@ -25,6 +26,9 @@ class MealsScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
 
     final isEatingWindow = timerState.status == TimerStatus.idle;
+    final selectedPlan = FastingPlans.getById(timerState.planId);
+    final fastingHours = selectedPlan.fastingHours;
+    final eatingHours = selectedPlan.eatingHours;
 
     return Scaffold(
       body: SafeArea(
@@ -41,6 +45,9 @@ class MealsScreen extends ConsumerWidget {
                   assetPath: 'assets/images/editorial/v2/meal-planner.webp',
                   height: 196,
                   variant: FastingArtVariant.hero,
+                  alignment: Alignment.centerRight,
+                  artOffset: const Offset(-18, 0),
+                  artScale: 1.08,
                   semanticLabel: l10n.foodScan_scanCta,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 20, 132, 20),
@@ -148,13 +155,13 @@ class MealsScreen extends ConsumerWidget {
               const SizedBox(height: 20),
 
               // Eating window bar
-              FastingArtSlot(
-                assetPath: 'assets/images/editorial/v4/meal-window.webp',
+              Container(
                 height: 142,
-                borderRadius: 24,
-                variant: FastingArtVariant.row,
-                alignment: Alignment.centerRight,
-                semanticLabel: l10n.meals_eatingWindow,
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surfaceContainerLow,
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .45)),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(18),
                   child: Column(
@@ -166,7 +173,7 @@ class MealsScreen extends ConsumerWidget {
                         Text(
                           l10n.meals_eatingWindow,
                           style: theme.textTheme.titleSmall?.copyWith(
-                            color: fastingArtForeground(context),
+                            color: theme.colorScheme.onSurface,
                             fontWeight: FontWeight.w800,
                           ),
                         ),
@@ -198,7 +205,20 @@ class MealsScreen extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 8),
+                    Row(children: [
+                      Text('00:00', style: theme.textTheme.labelSmall),
+                      const Spacer(),
+                      Text(
+                        '${fastingHours.toString().padLeft(2, '0')}:00',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text('24:00', style: theme.textTheme.labelSmall),
+                    ]),
+                    const SizedBox(height: 6),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(6),
                       child: SizedBox(
@@ -206,14 +226,14 @@ class MealsScreen extends ConsumerWidget {
                         child: Row(
                           children: [
                             Expanded(
-                              flex: 16,
+                              flex: fastingHours,
                               child: Container(
                                 color: AppColors.primary.withValues(
                                   alpha: 0.15,
                                 ),
                                 child: Center(
                                   child: Text(
-                                    l10n.meals_fastingWindow('16'),
+                                    'Oruç · $fastingHours saat',
                                     style: TextStyle(
                                       fontSize: 10,
                                       color: AppColors.primary,
@@ -223,15 +243,16 @@ class MealsScreen extends ConsumerWidget {
                                 ),
                               ),
                             ),
-                            Expanded(
-                              flex: 8,
+                            if (eatingHours > 0)
+                              Expanded(
+                              flex: eatingHours,
                               child: Container(
                                 color: AppColors.success.withValues(
                                   alpha: 0.15,
                                 ),
                                 child: Center(
                                   child: Text(
-                                    l10n.meals_eatingWindowHours('8'),
+                                    'Yemek · $eatingHours saat',
                                     style: TextStyle(
                                       fontSize: 10,
                                       color: AppColors.success,
@@ -248,7 +269,7 @@ class MealsScreen extends ConsumerWidget {
                   ],
                 ),
               ),
-            ),
+              ),
               const SizedBox(height: 20),
 
               // Calorie summary from real data
@@ -398,26 +419,36 @@ class MealsScreen extends ConsumerWidget {
                       context,
                       l10n.recipe_oatSmoothie,
                       '280 kcal',
-                      'assets/images/editorial/v2/recipe-smoothie.webp',
+                      'assets/images/editorial/v4/quick/oats.webp',
                     ),
                     const SizedBox(width: 12),
                     _buildRecipeCard(
                       context,
                       l10n.recipe_avocadoToast,
                       '350 kcal',
-                      'assets/images/editorial/v2/recipe-toast.webp',
+                      'assets/images/editorial/v4/quick/egg-toast.webp',
                     ),
                     const SizedBox(width: 12),
                     _buildRecipeCard(
                       context,
                       l10n.recipe_yogurtBowl,
                       '220 kcal',
-                      'assets/images/editorial/v2/recipe-yogurt.webp',
+                      'assets/images/editorial/v4/quick/yogurt.webp',
                     ),
+                    const SizedBox(width: 12),
+                    _buildRecipeCard(context, 'Tavuklu Kinoa', '430 kcal', 'assets/images/editorial/v4/quick/chicken-quinoa.webp'),
+                    const SizedBox(width: 12),
+                    _buildRecipeCard(context, 'Mercimek Çorbası', '310 kcal', 'assets/images/editorial/v4/quick/lentil.webp'),
+                    const SizedBox(width: 12),
+                    _buildRecipeCard(context, 'Somon ve Brokoli', '520 kcal', 'assets/images/editorial/v4/quick/salmon.webp'),
+                    const SizedBox(width: 12),
+                    _buildRecipeCard(context, 'Nohutlu Tahin', '410 kcal', 'assets/images/editorial/v4/quick/chickpea.webp'),
+                    const SizedBox(width: 12),
+                    _buildRecipeCard(context, 'Kefirli Muz', '300 kcal', 'assets/images/editorial/v4/quick/kefir.webp'),
                   ],
                 ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 128),
             ],
           ),
         ),
@@ -511,24 +542,11 @@ class MealsScreen extends ConsumerWidget {
       alignment: Alignment.centerRight,
       semanticLabel: label,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-        child: Row(
-        children: [
-          Container(
-            width: 34,
-            height: 34,
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: .12),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(icon, color: color, size: 18),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+        padding: const EdgeInsets.fromLTRB(14, 8, 72, 8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
                 Text(
                   label,
                   maxLines: 1,
@@ -563,10 +581,7 @@ class MealsScreen extends ConsumerWidget {
                   backgroundColor: color.withValues(alpha: .12),
                   valueColor: AlwaysStoppedAnimation(color),
                 ),
-              ],
-            ),
-          ),
-        ],
+          ],
         ),
       ),
     );

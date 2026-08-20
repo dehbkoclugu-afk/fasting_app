@@ -169,8 +169,11 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
+        child: SingleChildScrollView(
+          padding: AppSpacing.screenPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -179,16 +182,10 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                 icon: const Icon(Icons.close),
               ),
             ),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: AppSpacing.screenPadding,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    _header(context, l10n),
-                    const SizedBox(height: 24),
-                    _features(context, l10n),
-                    const SizedBox(height: 20),
+            _header(context, l10n),
+            const SizedBox(height: 24),
+            _features(context, l10n),
+            const SizedBox(height: 20),
                     if (state.isLoadingProducts &&
                         state.availablePackages.isEmpty)
                       ...List.generate(
@@ -216,7 +213,9 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                       ),
                     const SizedBox(height: 4),
                     Text(
-                      Platform.isIOS
+                      selected?.packageType == PackageType.lifetime
+                          ? 'Tek ödemedir; otomatik yenilenmez.'
+                          : Platform.isIOS
                           ? l10n.paywall_autoRenewInfo
                           : l10n.paywall_autoRenewInfoPlay,
                       textAlign: TextAlign.center,
@@ -228,15 +227,12 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                  ],
-                ),
-              ),
-            ),
-            // Pinned so the purchase button is reachable without scrolling,
-            // whatever the device height or text scale.
+            const SizedBox(height: 4),
             _bottomBar(context, l10n, state, selected, trialDays),
+            const SizedBox(height: 12),
           ],
         ),
+      ),
       ),
     );
   }
@@ -337,12 +333,6 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                         ),
                       ],
                     ),
-                  ),
-                  const SizedBox(width: 8),
-                  const Icon(
-                    Icons.check_circle,
-                    color: AppColors.success,
-                    size: 20,
                   ),
                 ],
               ),
@@ -544,20 +534,15 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
             ? l10n.paywall_processing
             : canRetry
             ? l10n.paywall_retry
+            : selected == null
+            ? l10n.paywall_continue
             : trialDays != null
-            ? l10n.paywall_startFreeTrial
-            : l10n.paywall_continue;
+            ? '${l10n.paywall_startFreeTrial} · ${selected.storeProduct.priceString}'
+            : '${_planTitle(l10n, selected)} · ${selected.storeProduct.priceString}';
 
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        border: Border(
-          top: BorderSide(
-            color: theme.colorScheme.onSurface.withValues(alpha: .07),
-          ),
-        ),
-      ),
+      decoration: BoxDecoration(color: theme.colorScheme.surfaceContainerLow, borderRadius: BorderRadius.circular(24)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

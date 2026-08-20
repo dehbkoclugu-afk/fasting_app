@@ -71,17 +71,22 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/icons/app_icon.png"
-  adaptive_icon_background: "#6C63FF"
+  adaptive_icon_background: "#FFF7EC"
   adaptive_icon_foreground: "assets/icons/app_icon_foreground.png"
+  adaptive_icon_monochrome: "assets/icons/app_icon_monochrome.png"
 
 flutter_native_splash:
-  color: "#0F0F1A"
+  color: "#FFF7EC"
   color_dark: "#0F0F1A"
   image: "assets/icons/splash_logo.png"
+  image_dark: "assets/icons/splash_logo_dark.png"
   android_12:
-    color: "#0F0F1A"
-    icon_background_color: "#0F0F1A"
+    color: "#FFF7EC"
+    color_dark: "#0F0F1A"
+    icon_background_color: "#FFF7EC"
+    icon_background_color_dark: "#0F0F1A"
     image: "assets/icons/splash_logo.png"
+    image_dark: "assets/icons/splash_logo_dark.png"
 
 flutter:
   generate: true
@@ -94,5 +99,6 @@ flutter:
     - assets/images/editorial/v3/
     - assets/images/editorial/v4/
     - assets/images/editorial/v4/quick/
+    - assets/images/editorial/v5/
     - assets/icons/
     - assets/animations/

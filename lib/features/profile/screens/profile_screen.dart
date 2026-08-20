@@ -84,84 +84,38 @@ class ProfileScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 14),
-              EditorialScreenHero(
-                assetPath: 'assets/images/editorial/profile-progress.webp',
-                title: settings.userName.isNotEmpty
-                    ? settings.userName
-                    : l10n.profile_user,
-                subtitle: l10n.profile_planActive(plan.name),
-                icon: Icons.person_outline,
-              ),
-              const SizedBox(height: 20),
-
-              // Profile card
-              GlassCard(
+              InkWell(
+                borderRadius: BorderRadius.circular(26),
                 onTap: () => _showNameDialog(context, ref, settings.userName),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: AppColors.primary.withValues(alpha: 0.1),
-                      child: const Icon(
-                        Icons.person,
-                        size: 32,
-                        color: AppColors.primary,
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            settings.userName.isNotEmpty
-                                ? settings.userName
-                                : l10n.profile_user,
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          Text(
-                            l10n.profile_planActive(plan.name),
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: theme.colorScheme.onSurface.withValues(
-                                alpha: 0.5,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Icon(
-                      PhosphorIcons.pencilSimple(),
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
-                    ),
-                  ],
+                child: EditorialScreenHero(
+                  assetPath: 'assets/images/editorial/profile-progress.webp',
+                  title: settings.userName.isNotEmpty ? settings.userName : 'Profilini tamamla',
+                  subtitle: '${l10n.profile_planActive(plan.name)} · Düzenle',
+                  height: 156,
+                  textWidth: 220,
                 ),
               ),
               const SizedBox(height: 16),
 
               // Premium card
-              GlassCard(
+              InkWell(
                 onTap: () => context.push('/paywall'),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 4,
-                    vertical: 4,
-                  ),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        AppColors.primary.withValues(alpha: 0.05),
-                        AppColors.secondary.withValues(alpha: 0.05),
+                        AppColors.primary.withValues(alpha: 0.16),
+                        AppColors.secondary.withValues(alpha: 0.10),
                       ],
                     ),
-                    borderRadius: AppSpacing.borderRadiusLg,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: AppColors.primary.withValues(alpha: .22)),
                   ),
                   child: Row(
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(9),
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             colors: [AppColors.primary, AppColors.secondary],
@@ -186,7 +140,7 @@ class ProfileScreen extends ConsumerWidget {
                               ),
                             ),
                             Text(
-                              l10n.profile_premiumDesc,
+                              '${l10n.profile_premiumDesc} · Planları gör',
                               style: theme.textTheme.bodySmall?.copyWith(
                                 color: theme.colorScheme.onSurface.withValues(
                                   alpha: 0.5,
@@ -273,19 +227,18 @@ class ProfileScreen extends ConsumerWidget {
                       ),
                     ),
                     const Divider(height: 1),
-                    _buildSettingsTile(
-                      context,
-                      icon: PhosphorIcons.moon(),
-                      title: l10n.profile_theme,
-                      subtitle: _themeLabel(l10n, settings.themeMode),
-                      trailing: Icon(
-                        PhosphorIcons.caretRight(),
-                        size: 20,
-                        color: theme.colorScheme.onSurface.withValues(
-                          alpha: 0.3,
-                        ),
-                      ),
-                      onTap: () => _showThemeDialog(context, ref),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        Row(children: [Icon(PhosphorIcons.moon(), size: 20, color: AppColors.primary), const SizedBox(width: 12), Text(l10n.profile_theme, style: theme.textTheme.bodyMedium)]),
+                        const SizedBox(height: 10),
+                        SizedBox(width: double.infinity, child: SegmentedButton<ThemeMode>(
+                          showSelectedIcon: false,
+                          segments: ThemeMode.values.map((mode) => ButtonSegment(value: mode, label: Text(_themeLabel(l10n, mode)))).toList(),
+                          selected: {settings.themeMode},
+                          onSelectionChanged: (selection) => ref.read(settingsProvider.notifier).setThemeMode(selection.first),
+                        )),
+                      ]),
                     ),
                     const Divider(height: 1),
                     _buildSettingsTile(
@@ -353,7 +306,7 @@ class ProfileScreen extends ConsumerWidget {
                           alpha: 0.3,
                         ),
                       ),
-                      onTap: () => _showLanguageDialog(context, ref),
+                      onTap: () => _showLanguageScreen(context, ref),
                     ),
                   ],
                 ),
@@ -493,75 +446,19 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   static const _languageOptions = <(String, String)>[
-    ('en', '🇬🇧 English'),
-    ('ar', '🇸🇦 العربية'),
-    ('cs', '🇨🇿 Čeština'),
-    ('da', '🇩🇰 Dansk'),
-    ('de', '🇩🇪 Deutsch'),
-    ('es_ES', '🇪🇸 Español (España)'),
-    ('es_419', '🌎 Español (Latinoamérica)'),
-    ('fi', '🇫🇮 Suomi'),
-    ('fr', '🇫🇷 Français'),
-    ('hi', '🇮🇳 हिन्दी'),
-    ('hu', '🇭🇺 Magyar'),
-    ('id', '🇮🇩 Bahasa Indonesia'),
-    ('it', '🇮🇹 Italiano'),
-    ('he', '🇮🇱 עברית'),
-    ('ja', '🇯🇵 日本語'),
-    ('ko', '🇰🇷 한국어'),
-    ('nl', '🇳🇱 Nederlands'),
-    ('no', '🇳🇴 Norsk'),
-    ('pl', '🇵🇱 Polski'),
-    ('pt_BR', '🇧🇷 Português (Brasil)'),
-    ('ro', '🇷🇴 Română'),
-    ('ru', '🇷🇺 Русский'),
-    ('sk', '🇸🇰 Slovenčina'),
-    ('sv', '🇸🇪 Svenska'),
-    ('th', '🇹🇭 ไทย'),
-    ('tr', '🇹🇷 Türkçe'),
-    ('uk', '🇺🇦 Українська'),
-    ('vi', '🇻🇳 Tiếng Việt'),
-    ('zh_CN', '🇨🇳 简体中文'),
+    ('en', 'English'), ('ar', 'العربية'), ('cs', 'Čeština'), ('da', 'Dansk'),
+    ('de', 'Deutsch'), ('es_ES', 'Español (España)'), ('es_419', 'Español (Latinoamérica)'),
+    ('fi', 'Suomi'), ('fr', 'Français'), ('hi', 'हिन्दी'), ('hu', 'Magyar'),
+    ('id', 'Bahasa Indonesia'), ('it', 'Italiano'), ('he', 'עברית'), ('ja', '日本語'),
+    ('ko', '한국어'), ('nl', 'Nederlands'), ('no', 'Norsk'), ('pl', 'Polski'),
+    ('pt_BR', 'Português (Brasil)'), ('ro', 'Română'), ('ru', 'Русский'),
+    ('sk', 'Slovenčina'), ('sv', 'Svenska'), ('th', 'ไทย'), ('tr', 'Türkçe'),
+    ('uk', 'Українська'), ('vi', 'Tiếng Việt'), ('zh_CN', '简体中文'),
   ];
 
-  void _showLanguageDialog(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
-    final settings = ref.read(settingsProvider);
-
-    final options = <(String?, String)>[
-      (null, l10n.language_system),
-      ..._languageOptions,
-    ];
-
-    showDialog<void>(
-      context: context,
-      builder:
-          (ctx) => AlertDialog(
-            title: Text(l10n.languageSelect),
-            content: SizedBox(
-              width: double.maxFinite,
-              child: RadioGroup<String?>(
-                groupValue: settings.locale,
-                onChanged: (value) {
-                  ref.read(settingsProvider.notifier).setLocale(value);
-                  Navigator.pop(ctx);
-                },
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: options.length,
-                  itemBuilder: (context, index) {
-                    final option = options[index];
-                    return RadioListTile<String?>(
-                      title: Text(option.$2),
-                      value: option.$1,
-                    );
-                  },
-                ),
-              ),
-            ),
-          ),
-    );
-  }
+  void _showLanguageScreen(BuildContext context, WidgetRef ref) => Navigator.of(context).push(
+    MaterialPageRoute<void>(builder: (_) => _LanguagePickerPage(current: ref.read(settingsProvider).locale, onSelected: ref.read(settingsProvider.notifier).setLocale)),
+  );
 
   void _showThemeDialog(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
@@ -660,5 +557,51 @@ class ProfileScreen extends ConsumerWidget {
           ),
     );
     controller.dispose();
+  }
+}
+
+class _LanguagePickerPage extends StatefulWidget {
+  const _LanguagePickerPage({required this.current, required this.onSelected});
+  final String? current;
+  final ValueChanged<String?> onSelected;
+
+  @override
+  State<_LanguagePickerPage> createState() => _LanguagePickerPageState();
+}
+
+class _LanguagePickerPageState extends State<_LanguagePickerPage> {
+  String _query = '';
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final options = <(String?, String)>[(null, l10n.language_system), ...ProfileScreen._languageOptions]
+        .where((item) => item.$2.toLowerCase().contains(_query.toLowerCase()))
+        .toList();
+    return Scaffold(
+      appBar: AppBar(title: Text(l10n.languageSelect)),
+      body: Column(children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
+          child: SearchBar(leading: const Icon(Icons.search), hintText: 'Dil ara', onChanged: (value) => setState(() => _query = value)),
+        ),
+        Expanded(child: ListView.separated(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+          itemCount: options.length,
+          separatorBuilder: (_, __) => const Divider(height: 1),
+          itemBuilder: (context, index) {
+            final option = options[index];
+            final selected = widget.current == option.$1;
+            return ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+              title: Text(option.$2),
+              subtitle: option.$1 == null ? const Text('Cihaz ayarını kullan') : Text(option.$1!),
+              trailing: selected ? Icon(Icons.check_circle, color: Theme.of(context).colorScheme.primary) : null,
+              onTap: () { widget.onSelected(option.$1); Navigator.pop(context); },
+            );
+          },
+        )),
+      ]),
+    );
   }
 }
