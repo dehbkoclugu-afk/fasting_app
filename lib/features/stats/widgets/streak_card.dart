@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
-import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
 
 class StreakCard extends StatelessWidget {
@@ -59,41 +58,6 @@ class StreakCard extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildStatRow(
-    BuildContext context, {
-    required IconData icon,
-    required String label,
-    required String value,
-    required Color color,
-  }) {
-    final theme = Theme.of(context);
-    return Row(
-      children: [
-        Icon(icon, size: 18, color: color),
-        const SizedBox(width: 8),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              label,
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: fastingArtMutedForeground(context),
-                fontSize: 11,
-              ),
-            ),
-            Text(
-              value,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: fastingArtForeground(context),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 

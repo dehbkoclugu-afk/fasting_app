@@ -347,7 +347,9 @@ class _SeasonPathPainter extends CustomPainter {
       return Offset(x, 12 + row * 26);
     });
     final path = Path()..moveTo(points.first.dx, points.first.dy);
-    for (final point in points.skip(1)) path.lineTo(point.dx, point.dy);
+    for (final point in points.skip(1)) {
+      path.lineTo(point.dx, point.dy);
+    }
     final trackPaint = Paint()
       ..color = track
       ..strokeWidth = 4

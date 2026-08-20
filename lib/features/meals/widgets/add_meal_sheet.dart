@@ -402,7 +402,6 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     TextInputType type, {
     String? suffix,
     IconData? icon,
-    String? artPath,
     TextInputAction textInputAction = TextInputAction.next,
   }) {
     final foreground = Theme.of(context).colorScheme.onSurface;
