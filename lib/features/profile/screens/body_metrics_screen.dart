@@ -10,6 +10,7 @@ import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../stats/widgets/weight_chart.dart';
+import '../../timer/providers/water_provider.dart';
 import '../providers/settings_provider.dart';
 import '../../stats/providers/stats_provider.dart';
 

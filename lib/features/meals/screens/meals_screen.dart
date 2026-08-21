@@ -234,7 +234,9 @@ class MealsScreen extends ConsumerWidget {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    l10n.meals_fastingWindow(fastingHours),
+                                    l10n.meals_fastingWindow(
+                                      fastingHours.toString(),
+                                    ),
                                     style: TextStyle(
                                       fontSize: 10,
                                       color: AppColors.primary,
@@ -253,7 +255,9 @@ class MealsScreen extends ConsumerWidget {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    l10n.meals_eatingWindowHours(eatingHours),
+                                    l10n.meals_eatingWindowHours(
+                                      eatingHours.toString(),
+                                    ),
                                     style: TextStyle(
                                       fontSize: 10,
                                       color: AppColors.success,
