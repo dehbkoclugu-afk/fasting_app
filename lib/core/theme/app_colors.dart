@@ -50,12 +50,12 @@ class AppColors {
   static const darkTextSecondary = Color(0xFFA0A0B0);
   static const darkDivider = Color(0xFF2A2A3E);
 
-  // Light Theme (Beyaz, temiz - Fastify)
-  static const lightBg = Color(0xFFFFFFFF);
-  static const lightSurface = Color(0xFFFFFFFF);
-  static const lightCard = Color(0xFFFFFFFF);
-  static const lightSurfaceVariant = Color(0xFFF5F5F7);
+  // Light Theme — warm paper surfaces avoid a clinical, overexposed canvas.
+  static const lightBg = Color(0xFFFAF6F2);
+  static const lightSurface = Color(0xFFFFFBF8);
+  static const lightCard = Color(0xFFFFFDFC);
+  static const lightSurfaceVariant = Color(0xFFF4ECE7);
   static const lightTextPrimary = Color(0xFF1A1A2E);
   static const lightTextSecondary = Color(0xFF6B6B80);
-  static const lightDivider = Color(0xFFE8E8E8);
+  static const lightDivider = Color(0xFFE8DDD8);
 }

@@ -71,7 +71,10 @@ class GamificationState {
 
   static const levelSize = 500;
   double get levelProgress => levelXp / levelSize;
-  int get seasonStep => math.min(30, xp ~/ 250 + 1);
+  /// Completed steps in the current 30-step season.
+  /// A new account starts at 0/30; progress is never presented as earned
+  /// before the user has accumulated the first 250 XP.
+  int get seasonStep => math.min(30, xp ~/ 250);
   int get leaguePercentile => math.min(95, 35 + level * 4 + streak * 2);
 }
 

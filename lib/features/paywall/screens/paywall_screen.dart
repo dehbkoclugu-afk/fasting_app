@@ -247,7 +247,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 EditorialScreenHero(
-                  assetPath: 'assets/images/editorial/premium-gem.webp',
+                  assetPath: 'assets/images/editorial/v6/premium-orbit.webp',
                   title: l10n.paywall_premiumActive,
                   subtitle: l10n.paywall_premiumActiveDesc,
                   icon: Icons.auto_awesome_outlined,
@@ -271,7 +271,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     final accessibleHeight =
         184.0 + ((textScale - 1).clamp(0.0, 1.0) * 80);
     return EditorialScreenHero(
-      assetPath: 'assets/images/editorial/premium-gem.webp',
+      assetPath: 'assets/images/editorial/v6/premium-orbit.webp',
       title: l10n.paywall_title,
       subtitle: l10n.paywall_subtitle,
       icon: Icons.auto_awesome_outlined,

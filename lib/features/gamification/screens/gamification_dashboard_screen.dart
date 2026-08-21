@@ -32,15 +32,9 @@ class GamificationDashboardScreen extends ConsumerWidget {
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         children: [
           _LevelHero(game: game, l10n: l10n, calm: calm),
-          const SizedBox(height: 38),
-          _SectionTitle(
-            title: l10n.game_quests,
-            subtitle: l10n.game_questsDesc,
-          ),
-          const SizedBox(height: 12),
-          for (final quest in game.quests)
-            _QuestRow(quest: quest, l10n: l10n, calm: calm),
-          const SizedBox(height: 26),
+          const SizedBox(height: 22),
+          _QuestPanel(game: game, l10n: l10n, calm: calm),
+          const SizedBox(height: 28),
           if (!calm) ...[
             _SectionTitle(
               title: l10n.game_season,
@@ -48,10 +42,6 @@ class GamificationDashboardScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 14),
             _SeasonPath(current: game.seasonStep),
-            const SizedBox(height: 26),
-          ],
-          if (!calm) ...[
-            _NextSealCard(game: game, l10n: l10n),
             const SizedBox(height: 26),
           ],
           _SectionTitle(
@@ -83,7 +73,7 @@ class GamificationDashboardScreen extends ConsumerWidget {
             alignment: Alignment.centerRight,
             semanticLabel: l10n.game_shields(game.shields),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(18, 18, 190, 18),
+              padding: const EdgeInsets.fromLTRB(18, 18, 104, 18),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -113,7 +103,7 @@ class GamificationDashboardScreen extends ConsumerWidget {
               alignment: Alignment.centerRight,
               semanticLabel: l10n.game_league,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(18, 18, 128, 18),
+                padding: const EdgeInsets.fromLTRB(18, 18, 104, 18),
                 child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -170,7 +160,7 @@ class _LevelHero extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        calm ? l10n.game_questsDesc : '${game.level}',
+                        calm ? l10n.game_questsDesc : '${game.xp} XP',
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: fastingArtMutedForeground(context),
                         ),
@@ -219,6 +209,71 @@ class _SectionTitle extends StatelessWidget {
       Text(subtitle, style: Theme.of(context).textTheme.bodySmall),
     ],
   );
+}
+
+class _QuestPanel extends StatelessWidget {
+  const _QuestPanel({required this.game, required this.l10n, required this.calm});
+
+  final GamificationState game;
+  final AppLocalizations l10n;
+  final bool calm;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final completed = game.quests.where((quest) => quest.completed).length;
+    return Container(
+      padding: const EdgeInsets.fromLTRB(18, 16, 18, 8),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withValues(alpha: .5),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.game_quests,
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(l10n.game_questsDesc, style: theme.textTheme.bodySmall),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                decoration: BoxDecoration(
+                  color: AppColors.primary.withValues(alpha: .1),
+                  borderRadius: BorderRadius.circular(99),
+                ),
+                child: Text(
+                  '$completed/${game.quests.length}',
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: AppColors.primary,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+          for (final quest in game.quests)
+            _QuestRow(quest: quest, l10n: l10n, calm: calm),
+        ],
+      ),
+    );
+  }
 }
 
 class _QuestRow extends StatelessWidget {
@@ -285,19 +340,21 @@ class _SeasonPath extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return FastingArtSlot(
-      assetPath: 'assets/images/editorial/v3/season-path.webp',
-      height: 190,
-      borderRadius: 24,
-      variant: FastingArtVariant.hero,
-      alignment: Alignment.center,
-      child: Padding(
+    return Container(
+      height: 136,
       padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withValues(alpha: .5),
+        ),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(children: [
-            Text('$current / 30', style: theme.textTheme.titleMedium?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w900)),
+            Text('$current / 30', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900)),
           ]),
           const Spacer(),
           ClipRRect(
@@ -305,41 +362,14 @@ class _SeasonPath extends StatelessWidget {
             child: LinearProgressIndicator(
               value: current / 30,
               minHeight: 9,
-              backgroundColor: fastingArtForeground(context).withValues(alpha: .18),
+              backgroundColor: theme.colorScheme.outlineVariant.withValues(alpha: .55),
+              color: AppColors.primary,
             ),
           ),
           const SizedBox(height: 7),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [5, 10, 15, 20, 25, 30].map((step) => Text('$step', style: theme.textTheme.labelSmall?.copyWith(color: fastingArtMutedForeground(context), fontWeight: step <= current ? FontWeight.w900 : FontWeight.w500))).toList()),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [0, 5, 10, 15, 20, 25, 30].map((step) => Text('$step', style: theme.textTheme.labelSmall?.copyWith(color: step <= current ? AppColors.primary : theme.colorScheme.onSurfaceVariant, fontWeight: step <= current ? FontWeight.w900 : FontWeight.w500))).toList()),
         ],
-      )),
-    );
-  }
-}
-
-class _NextSealCard extends StatelessWidget {
-  const _NextSealCard({required this.game, required this.l10n});
-  final GamificationState game;
-  final AppLocalizations l10n;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final completedInBlock = (game.seasonStep - 1) % 5;
-    final remaining = 5 - completedInBlock;
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: theme.colorScheme.primaryContainer.withValues(alpha: .38), borderRadius: BorderRadius.circular(20)),
-      child: Row(children: [
-        Icon(Icons.workspace_premium_outlined, color: theme.colorScheme.primary),
-        const SizedBox(width: 12),
-        Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(l10n.game_seasonDesc, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800)),
-          const SizedBox(height: 4),
-          Text('${game.seasonStep - 1} / ${(game.seasonStep - 1) + remaining}', style: theme.textTheme.bodySmall),
-          const SizedBox(height: 9),
-          LinearProgressIndicator(value: completedInBlock / 5, minHeight: 7, borderRadius: BorderRadius.circular(99)),
-        ])),
-      ]),
+      ),
     );
   }
 }
@@ -367,6 +397,7 @@ class _BadgeToken extends StatelessWidget {
           height: constraints.maxHeight,
           borderRadius: 18,
           variant: FastingArtVariant.bare,
+          fit: BoxFit.contain,
           semanticLabel: _badgeTitle(l10n, badge.id),
           child: DecoratedBox(
             decoration: BoxDecoration(
@@ -445,7 +476,20 @@ class _BadgeToken extends StatelessWidget {
               IconButton(onPressed: () => Navigator.pop(sheetContext), icon: const Icon(Icons.close_rounded)),
             ]),
             const SizedBox(height: 10),
-            FastingArtSlot(assetPath: _badgeArtwork(badge.id), height: 190, borderRadius: 22, variant: FastingArtVariant.bare, child: const SizedBox.shrink()),
+            DecoratedBox(
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surfaceContainerLow,
+                borderRadius: BorderRadius.circular(22),
+              ),
+              child: FastingArtSlot(
+                assetPath: _badgeArtwork(badge.id),
+                height: 210,
+                borderRadius: 22,
+                variant: FastingArtVariant.bare,
+                fit: BoxFit.contain,
+                child: const SizedBox.shrink(),
+              ),
+            ),
             const SizedBox(height: 18),
             Text(description, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700)),
             const SizedBox(height: 14),

@@ -27,7 +27,7 @@ class ExploreScreen extends StatelessWidget {
               alignment: Alignment.bottomRight,
               semanticLabel: l10n.explore_guide,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(22, 22, 164, 22),
+                padding: const EdgeInsets.fromLTRB(22, 22, 112, 22),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Column(
@@ -270,7 +270,7 @@ class ExploreScreen extends StatelessWidget {
         alignment: Alignment.bottomRight,
         semanticLabel: tip.title,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 150, 16),
+          padding: const EdgeInsets.fromLTRB(16, 16, 104, 16),
           child: Align(
             alignment: Alignment.topLeft,
             child: Column(

@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -87,117 +85,87 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                           opacity: isLocked ? .58 : 1,
                           child: FastingArtSlot(
                             assetPath: _planArtwork(plan.id),
-                            height: 102,
+                            height: 158,
                             borderRadius: 17,
-                            variant: FastingArtVariant.row,
+                            variant: FastingArtVariant.bare,
                             semanticLabel: plan.name,
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  right: 30,
-                                  top: 12,
-                                  child: _ClockDirectionDial(
-                                    progress: _fastingRatio(plan),
-                                  ),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: theme.brightness == Brightness.dark
+                                      ? const [Colors.transparent, Color(0xF20F1424)]
+                                      : [
+                                          Colors.transparent,
+                                          theme.colorScheme.surface.withValues(alpha: .96),
+                                        ],
+                                  stops: const [.28, 1],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(
-                                    14,
-                                    12,
-                                    14,
-                                    12,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        width: 54,
-                                        height: 54,
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                          color: theme.colorScheme.surface
-                                              .withValues(alpha: .84),
-                                          borderRadius: BorderRadius.circular(
-                                            14,
-                                          ),
-                                          border: Border.all(
-                                            color:
-                                                theme.colorScheme.outlineVariant,
-                                          ),
-                                        ),
-                                        child: Text(
-                                          plan.shortName,
-                                          style: TextStyle(
-                                            color: fastingArtForeground(context),
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.w900,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 13),
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Flexible(
-                                                  child: Text(
-                                                    plan.name,
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: theme
-                                                        .textTheme
-                                                        .titleSmall
-                                                        ?.copyWith(
-                                                          color:
-                                                              fastingArtForeground(
-                                                                context,
-                                                              ),
-                                                          fontWeight:
-                                                              FontWeight.w800,
-                                                        ),
-                                                  ),
-                                                ),
-                                                if (isLocked) ...[
-                                                  const SizedBox(width: 6),
-                                                  _proBadge(),
-                                                ],
-                                              ],
-                                            ),
-                                            const SizedBox(height: 3),
-                                            Text(
-                                              plan.description(l10n),
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: theme.textTheme.bodySmall
-                                                  ?.copyWith(
-                                                    color:
-                                                        fastingArtMutedForeground(
-                                                          context,
-                                                        ),
-                                                    fontSize: 11,
-                                                  ),
-                                            ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(14),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.topRight,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          if (isLocked) ...[
+                                            _proBadge(),
+                                            const SizedBox(width: 7),
                                           ],
+                                          Icon(
+                                            isLocked
+                                                ? Icons.lock_outline
+                                                : isSelected
+                                                    ? Icons.check_circle
+                                                    : Icons.circle_outlined,
+                                            color: isSelected && !isLocked
+                                                ? AppColors.primary
+                                                : fastingArtForeground(context),
+                                            size: 23,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${plan.shortName}  •  ${plan.name}',
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: theme.textTheme.titleMedium?.copyWith(
+                                                  color: fastingArtForeground(context),
+                                                  fontWeight: FontWeight.w900,
+                                                ),
+                                              ),
+                                              const SizedBox(height: 4),
+                                              Text(
+                                                plan.description(l10n),
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: theme.textTheme.bodySmall?.copyWith(
+                                                  color: fastingArtMutedForeground(context),
+                                                  height: 1.25,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      Icon(
-                                        isLocked
-                                            ? Icons.lock_outline
-                                            : isSelected
-                                            ? Icons.check_circle
-                                            : Icons.chevron_right,
-                                        color: fastingArtForeground(context),
-                                        size: isSelected ? 24 : 20,
-                                      ),
-                                    ],
-                                  ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                         ),
@@ -234,12 +202,6 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
     _ => 'assets/images/editorial/v3/plan-clock-warrior.webp',
   };
 
-  double _fastingRatio(FastingPlan plan) => switch (plan.id) {
-    '5_2' => 5 / 7,
-    'eat_stop_eat' => 1,
-    _ => plan.fastingHours / 24,
-  };
-
   Widget _proBadge() => Container(
     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
     decoration: BoxDecoration(
@@ -255,63 +217,4 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
       ),
     ),
   );
-}
-
-/// The fasting interval always starts at 12 o'clock and advances clockwise.
-/// Keeping this in code prevents the direction from being ambiguous in art.
-class _ClockDirectionDial extends StatelessWidget {
-  const _ClockDirectionDial({required this.progress});
-
-  final double progress;
-
-  @override
-  Widget build(BuildContext context) => IgnorePointer(
-    child: CustomPaint(
-      size: const Size.square(78),
-      painter: _ClockDirectionPainter(progress.clamp(0, 1).toDouble()),
-    ),
-  );
-}
-
-class _ClockDirectionPainter extends CustomPainter {
-  const _ClockDirectionPainter(this.progress);
-
-  final double progress;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = size.center(Offset.zero);
-    final radius = size.shortestSide / 2 - 7;
-    final rect = Rect.fromCircle(center: center, radius: radius);
-    final base = Paint()
-      ..color = Colors.white.withValues(alpha: .18)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 6;
-    final fast = Paint()
-      ..color = AppColors.primary.withValues(alpha: .94)
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = 7;
-    canvas.drawCircle(center, radius, base);
-    final sweep = 2 * 3.141592653589793 * progress;
-    canvas.drawArc(rect, -3.141592653589793 / 2, sweep, false, fast);
-
-    final angle = -3.141592653589793 / 2 + sweep;
-    final end = Offset(
-      center.dx + radius * math.cos(angle),
-      center.dy + radius * math.sin(angle),
-    );
-    final tangent = Offset(-math.sin(angle), math.cos(angle));
-    final normal = Offset(math.cos(angle), math.sin(angle));
-    final path = Path()
-      ..moveTo(end.dx + tangent.dx * 6, end.dy + tangent.dy * 6)
-      ..lineTo(end.dx - tangent.dx * 6 + normal.dx * 3, end.dy - tangent.dy * 6 + normal.dy * 3)
-      ..lineTo(end.dx - tangent.dx * 6 - normal.dx * 3, end.dy - tangent.dy * 6 - normal.dy * 3)
-      ..close();
-    canvas.drawPath(path, Paint()..color = AppColors.primary);
-  }
-
-  @override
-  bool shouldRepaint(covariant _ClockDirectionPainter oldDelegate) =>
-      oldDelegate.progress != progress;
 }

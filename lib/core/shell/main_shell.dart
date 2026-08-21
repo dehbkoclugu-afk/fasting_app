@@ -111,6 +111,7 @@ class MainShell extends ConsumerWidget {
               ? null
               : SafeArea(
                 top: false,
+                minimum: const EdgeInsets.only(bottom: 6),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: theme.colorScheme.surface,
@@ -131,7 +132,7 @@ class MainShell extends ConsumerWidget {
                     ],
                   ),
                   child: SizedBox(
-                    height: 68,
+                    height: 70,
                     child: Row(
                       children: List.generate(destinations.length, (index) {
                         final selected = index == currentIndex;

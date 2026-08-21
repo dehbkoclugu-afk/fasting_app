@@ -29,7 +29,7 @@ class WeightChart extends StatelessWidget {
         alignment: Alignment.centerRight,
         semanticLabel: l10n.weight_noRecord,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 20, 160, 20),
+          padding: const EdgeInsets.fromLTRB(20, 20, 112, 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,

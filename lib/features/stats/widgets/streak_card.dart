@@ -29,7 +29,7 @@ class StreakCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(18),
         child: Padding(
-          padding: const EdgeInsets.only(right: 168),
+          padding: const EdgeInsets.only(right: 104),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
