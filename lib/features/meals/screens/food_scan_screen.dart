@@ -115,7 +115,7 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             EditorialScreenHero(
-              assetPath: 'assets/images/editorial/premium-gem.webp',
+              assetPath: 'assets/images/editorial/v6/premium-orbit.webp',
               title: l10n.foodScan_premiumTitle,
               subtitle: l10n.foodScan_premiumDesc,
               icon: Icons.lock_outline,
@@ -149,7 +149,7 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           EditorialScreenHero(
-            assetPath: 'assets/images/editorial/v2/meal-scan.webp',
+            assetPath: 'assets/images/editorial/v6/meal-analysis.webp',
             title: l10n.foodScan_introTitle,
             subtitle: l10n.foodScan_introDesc,
             icon: Icons.document_scanner_outlined,

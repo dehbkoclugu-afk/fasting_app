@@ -5,14 +5,12 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
-import '../../../core/constants/fasting_plans.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/section_header.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
 import '../providers/meal_provider.dart';
 import '../widgets/add_meal_sheet.dart';
 import '../../paywall/providers/subscription_provider.dart';
-import '../../timer/providers/timer_provider.dart';
 
 class MealsScreen extends ConsumerWidget {
   const MealsScreen({super.key});
@@ -20,15 +18,9 @@ class MealsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final mealState = ref.watch(mealProvider);
-    final timerState = ref.watch(timerProvider);
     final isPremium = ref.watch(isPremiumProvider);
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
-
-    final isEatingWindow = timerState.status == TimerStatus.idle;
-    final selectedPlan = FastingPlans.getById(timerState.planId);
-    final fastingHours = selectedPlan.fastingHours;
-    final eatingHours = selectedPlan.eatingHours;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.meals_title)),
@@ -51,7 +43,7 @@ class MealsScreen extends ConsumerWidget {
                   artScale: 1.08,
                   semanticLabel: l10n.foodScan_scanCta,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 132, 20),
+                    padding: const EdgeInsets.fromLTRB(20, 20, 108, 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -155,128 +147,6 @@ class MealsScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 20),
 
-              // Eating window bar
-              Container(
-                height: 142,
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceContainerLow,
-                  borderRadius: BorderRadius.circular(24),
-                  border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .45)),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(18),
-                  child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          l10n.meals_eatingWindow,
-                          style: theme.textTheme.titleSmall?.copyWith(
-                            color: theme.colorScheme.onSurface,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: (isEatingWindow
-                                    ? AppColors.success
-                                    : AppColors.primary)
-                                .withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            isEatingWindow
-                                ? l10n.meals_windowOpen
-                                : l10n.meals_windowFasting,
-                            style: TextStyle(
-                              color:
-                                  isEatingWindow
-                                      ? AppColors.success
-                                      : AppColors.primary,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Row(children: [
-                      Text('00:00', style: theme.textTheme.labelSmall),
-                      const Spacer(),
-                      Text(
-                        '${fastingHours.toString().padLeft(2, '0')}:00',
-                        style: theme.textTheme.labelSmall?.copyWith(
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      const Spacer(),
-                      Text('24:00', style: theme.textTheme.labelSmall),
-                    ]),
-                    const SizedBox(height: 6),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: SizedBox(
-                        height: 32,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: fastingHours,
-                              child: Container(
-                                color: AppColors.primary.withValues(
-                                  alpha: 0.15,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    l10n.meals_fastingWindow(
-                                      fastingHours.toString(),
-                                    ),
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      color: AppColors.primary,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            if (eatingHours > 0)
-                              Expanded(
-                              flex: eatingHours,
-                              child: Container(
-                                color: AppColors.success.withValues(
-                                  alpha: 0.15,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    l10n.meals_eatingWindowHours(
-                                      eatingHours.toString(),
-                                    ),
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      color: AppColors.success,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ),
-              const SizedBox(height: 20),
-
               // Calorie summary from real data
               GridView.count(
                 shrinkWrap: true,
@@ -345,7 +215,7 @@ class MealsScreen extends ConsumerWidget {
                     variant: FastingArtVariant.row,
                     semanticLabel: l10n.meals_noMeals,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(18, 16, 150, 16),
+                      padding: const EdgeInsets.fromLTRB(18, 16, 104, 16),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,

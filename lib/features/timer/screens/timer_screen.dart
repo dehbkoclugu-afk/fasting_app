@@ -392,7 +392,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
           splitLightArtwork: true,
           semanticLabel: l10n.explore_guide,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 18, 170, 18),
+            padding: const EdgeInsets.fromLTRB(20, 18, 112, 18),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -437,7 +437,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
           alignment: Alignment.centerRight,
           semanticLabel: l10n.meals_addMeal,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 18, 170, 18),
+            padding: const EdgeInsets.fromLTRB(20, 18, 112, 18),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,

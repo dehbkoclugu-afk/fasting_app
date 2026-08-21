@@ -64,7 +64,7 @@ class QuickStatsRow extends ConsumerWidget {
           height: 158,
           onTap: () => context.push('/water-tracker'),
           child: Padding(
-            padding: const EdgeInsets.only(right: 126),
+            padding: const EdgeInsets.only(right: 104),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -173,11 +173,26 @@ class _SummarySurface extends StatelessWidget {
       borderRadius: 22,
       alignment: Alignment.centerRight,
       variant: FastingArtVariant.card,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          child: Padding(padding: const EdgeInsets.all(16), child: child),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: Theme.of(context).brightness == Brightness.dark
+                ? const [Colors.transparent, Color(0xE60F1424)]
+                : [
+                    Colors.transparent,
+                    Theme.of(context).colorScheme.surface.withValues(alpha: .94),
+                  ],
+            stops: const [.2, 1],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: onTap,
+            child: Padding(padding: const EdgeInsets.all(16), child: child),
+          ),
         ),
       ),
     );
@@ -198,9 +213,7 @@ class _Metric extends StatelessWidget {
     final theme = Theme.of(context);
     return SizedBox(
       height: 86,
-      child: Padding(
-        padding: const EdgeInsets.only(right: 48),
-        child: Column(
+      child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -226,7 +239,6 @@ class _Metric extends StatelessWidget {
               ),
             ),
           ],
-        ),
       ),
     );
   }

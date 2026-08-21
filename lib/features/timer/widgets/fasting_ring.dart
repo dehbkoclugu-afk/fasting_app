@@ -134,9 +134,9 @@ class _PhaseMarker extends StatelessWidget {
             ? 0.0
             : (phase.startHour / targetHours).clamp(0.0, 1.0);
     final angle = -math.pi / 2 + 2 * math.pi * fraction;
-    // Keep phase controls clearly inside the progress stroke. Their labels
-    // remain tappable without visually merging with the animated ring.
-    final orbit = ringSize * .24;
+    // Keep phase controls on the outer edge of the clock instead of letting
+    // them drift into the timer copy and hands.
+    final orbit = ringSize * .40;
     const markerSize = 44.0;
     final center = ringSize / 2;
     final color = phase.gradientColors.first;
@@ -251,7 +251,7 @@ class _PhaseMarker extends StatelessWidget {
                               alignment: Alignment.centerRight,
                               semanticLabel: name,
                               child: Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 20, 168, 20),
+                                padding: const EdgeInsets.fromLTRB(20, 20, 112, 20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,

@@ -139,6 +139,10 @@ class AppDatabase extends _$AppDatabase {
     return into(waterIntake).insert(entry);
   }
 
+  Future<int> deleteWater(int id) {
+    return (delete(waterIntake)..where((entry) => entry.id.equals(id))).go();
+  }
+
   Stream<int> watchTotalWaterForDate(DateTime date) {
     final start = DateTime(date.year, date.month, date.day);
     final end = start.add(const Duration(days: 1));

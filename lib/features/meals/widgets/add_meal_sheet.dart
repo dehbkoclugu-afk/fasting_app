@@ -91,13 +91,13 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                 borderRadius: BorderRadius.circular(24),
                 onTap: _openPhotoScan,
                 child: FastingArtSlot(
-                  assetPath: 'assets/images/editorial/v2/meal-scan.webp',
+                  assetPath: 'assets/images/editorial/v6/meal-analysis.webp',
                   height: 164,
                   borderRadius: 24,
                   variant: FastingArtVariant.hero,
                   semanticLabel: l10n.foodScan_scanCta,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(18, 16, 128, 14),
+                    padding: const EdgeInsets.fromLTRB(18, 16, 104, 14),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
