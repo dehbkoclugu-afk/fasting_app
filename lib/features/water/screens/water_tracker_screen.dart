@@ -5,7 +5,6 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../data/database/app_database.dart';
-import '../../../shared/widgets/fasting_art_slot.dart';
 import '../../timer/providers/water_provider.dart';
 
 class WaterTrackerScreen extends ConsumerWidget {
@@ -19,53 +18,54 @@ class WaterTrackerScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
     final progress = water.progress;
-    final remaining = (water.goalMl - water.totalMl).clamp(0, water.goalMl);
+    final remaining = (water.goalMl - water.totalMl)
+        .clamp(0, water.goalMl)
+        .toInt();
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.water_title)),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
         children: [
-          FastingArtSlot(
-            assetPath: 'assets/images/editorial/tip-hydration.webp',
-            height: 218,
-            borderRadius: 28,
-            alignment: Alignment.centerRight,
-            variant: FastingArtVariant.bare,
-            semanticLabel: l10n.water_title,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: theme.brightness == Brightness.dark
-                      ? const [
-                          Color(0xF20F1424),
-                          Color(0x7A0F1424),
-                          Colors.transparent,
-                        ]
-                      : [
-                          theme.colorScheme.surface.withValues(alpha: .98),
-                          theme.colorScheme.surface.withValues(alpha: .72),
-                          Colors.transparent,
-                        ],
-                  stops: const [0, .56, 1],
-                ),
+          Container(
+            padding: const EdgeInsets.all(22),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surfaceContainerLow,
+              borderRadius: BorderRadius.circular(28),
+              border: Border.all(
+                color: theme.colorScheme.outlineVariant.withValues(alpha: .45),
               ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(22, 22, 112, 20),
-                child: Column(
+            ),
+            child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${_volume(water.totalMl)} / ${_volume(water.goalMl)}',
-                      maxLines: 1,
-                      style: theme.textTheme.headlineMedium?.copyWith(
-                        color: fastingArtForeground(context),
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: -.8,
-                      ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            '${_volume(water.totalMl)} / ${_volume(water.goalMl)}',
+                            maxLines: 1,
+                            style: theme.textTheme.headlineMedium?.copyWith(
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: -.8,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 52,
+                          height: 52,
+                          decoration: BoxDecoration(
+                            color: AppColors.tertiary.withValues(alpha: .11),
+                            borderRadius: BorderRadius.circular(17),
+                          ),
+                          child: const Icon(
+                            Icons.local_drink_outlined,
+                            color: AppColors.tertiary,
+                            size: 28,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 5),
                     Text(
                       '${(progress * 100).round()}% ${l10n.stats_completion}',
                       style: theme.textTheme.titleSmall?.copyWith(
@@ -73,15 +73,13 @@ class WaterTrackerScreen extends ConsumerWidget {
                         fontWeight: FontWeight.w900,
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 16),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(99),
                       child: LinearProgressIndicator(
                         value: progress,
                         minHeight: 9,
-                        backgroundColor: fastingArtForeground(
-                          context,
-                        ).withValues(alpha: .12),
+                        backgroundColor: theme.colorScheme.outlineVariant.withValues(alpha: .42),
                         color: AppColors.tertiary,
                       ),
                     ),
@@ -91,14 +89,12 @@ class WaterTrackerScreen extends ConsumerWidget {
                           ? l10n.timer_completed
                           : '${l10n.timer_remaining}: ${_volume(remaining)}',
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        color: fastingArtMutedForeground(context),
+                        color: theme.colorScheme.onSurfaceVariant,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                   ],
-                ),
               ),
-            ),
           ),
           const SizedBox(height: 24),
           Row(
@@ -125,6 +121,7 @@ class WaterTrackerScreen extends ConsumerWidget {
                 Expanded(
                   child: _AmountButton(
                     amount: _amounts[index],
+                    icon: _amountIcon(_amounts[index]),
                     onPressed: () => _add(ref, _amounts[index]),
                   ),
                 ),
@@ -213,6 +210,12 @@ class WaterTrackerScreen extends ConsumerWidget {
     return '${liters.toStringAsFixed(digits).replaceFirst(RegExp(r'0+$'), '').replaceFirst(RegExp(r'\.$'), '')} L';
   }
 
+  static IconData _amountIcon(int amount) => switch (amount) {
+    <= 150 => Icons.local_cafe_outlined,
+    <= 350 => Icons.local_drink_outlined,
+    _ => Icons.water_bottle_outlined,
+  };
+
   Future<void> _add(WidgetRef ref, int amount) async {
     HapticFeedback.mediumImpact();
     await ref.read(waterProvider.notifier).addWater(amount);
@@ -275,9 +278,10 @@ class WaterTrackerScreen extends ConsumerWidget {
 }
 
 class _AmountButton extends StatelessWidget {
-  const _AmountButton({required this.amount, required this.onPressed});
+  const _AmountButton({required this.amount, required this.icon, required this.onPressed});
 
   final int amount;
+  final IconData icon;
   final VoidCallback onPressed;
 
   @override
@@ -290,9 +294,13 @@ class _AmountButton extends StatelessWidget {
         backgroundColor: AppColors.tertiary.withValues(alpha: .11),
         foregroundColor: AppColors.tertiary,
       ),
-      child: Text(
-        '$amount',
-        style: const TextStyle(fontWeight: FontWeight.w900),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, size: 17),
+          const SizedBox(height: 1),
+          Text('$amount', style: const TextStyle(fontWeight: FontWeight.w900)),
+        ],
       ),
     ),
   );
@@ -311,10 +319,10 @@ class _WaterEntryTile extends StatelessWidget {
       TimeOfDay.fromDateTime(entry.date),
     );
     return ListTile(
-      leading: const CircleAvatar(
+      leading: CircleAvatar(
         backgroundColor: Color(0x194A9DFF),
         foregroundColor: AppColors.tertiary,
-        child: Icon(Icons.water_drop_rounded, size: 19),
+        child: Icon(_entryIcon(entry.amountMl), size: 19),
       ),
       title: Text(
         '+${entry.amountMl} ml',
@@ -331,4 +339,10 @@ class _WaterEntryTile extends StatelessWidget {
       ),
     );
   }
+
+  IconData _entryIcon(int amount) => switch (amount) {
+    <= 150 => Icons.local_cafe_outlined,
+    <= 350 => Icons.local_drink_outlined,
+    _ => Icons.water_bottle_outlined,
+  };
 }

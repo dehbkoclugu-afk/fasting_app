@@ -34,16 +34,14 @@ class MealsScreen extends ConsumerWidget {
               InkWell(
                 onTap: () => context.push('/food-scan'),
                 borderRadius: BorderRadius.circular(24),
-                child: FastingArtSlot(
+                child: FastingSplitArtCard(
                   assetPath: 'assets/images/editorial/v2/meal-planner.webp',
-                  height: 196,
-                  variant: FastingArtVariant.hero,
+                  minHeight: 196,
+                  artWidth: 164,
                   alignment: Alignment.centerRight,
-                  artOffset: const Offset(-12, 0),
-                  artScale: 1.08,
                   semanticLabel: l10n.foodScan_scanCta,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 108, 20),
+                    padding: const EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -59,8 +57,6 @@ class MealsScreen extends ConsumerWidget {
                         const SizedBox(height: 5),
                         Text(
                           l10n.foodScan_scanCtaDesc,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.bodySmall?.copyWith(
                             color: fastingArtMutedForeground(context),
                             height: 1.25,
@@ -110,13 +106,13 @@ class MealsScreen extends ConsumerWidget {
               InkWell(
                 onTap: () => _showAddMealSheet(context),
                 borderRadius: BorderRadius.circular(20),
-                child: FastingArtSlot(
-                  assetPath: 'assets/images/editorial/v4/meal-manual-entry.webp',
+                child: Container(
                   height: 72,
-                  borderRadius: 20,
-                  variant: FastingArtVariant.row,
-                  alignment: Alignment.centerRight,
-                  semanticLabel: l10n.meals_manualEntry,
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surfaceContainerLow,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .42)),
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Row(
@@ -130,14 +126,13 @@ class MealsScreen extends ConsumerWidget {
                         Text(
                           l10n.meals_manualEntry,
                           style: theme.textTheme.titleSmall?.copyWith(
-                            color: fastingArtForeground(context),
                             fontWeight: FontWeight.w800,
                           ),
                         ),
                         const Spacer(),
                         Icon(
                           Icons.arrow_forward_rounded,
-                          color: fastingArtMutedForeground(context),
+                          color: theme.colorScheme.onSurfaceVariant,
                           size: 20,
                         ),
                       ],
@@ -166,7 +161,6 @@ class MealsScreen extends ConsumerWidget {
                         : mealState.totalCalories / mealState.calorieGoal,
                     color: AppColors.secondary,
                     icon: PhosphorIcons.fire(PhosphorIconsStyle.fill),
-                    artPath: 'assets/images/editorial/v4/macro-calories.webp',
                   ),
                   _buildNutrientCard(
                     context,
@@ -176,7 +170,6 @@ class MealsScreen extends ConsumerWidget {
                     progress: mealState.totalProtein / 120,
                     color: Colors.blue,
                     icon: PhosphorIcons.barbell(PhosphorIconsStyle.fill),
-                    artPath: 'assets/images/editorial/v4/macro-protein.webp',
                   ),
                   _buildNutrientCard(
                     context,
@@ -186,7 +179,6 @@ class MealsScreen extends ConsumerWidget {
                     progress: mealState.totalCarbs / 200,
                     color: Colors.orange,
                     icon: PhosphorIcons.bread(PhosphorIconsStyle.fill),
-                    artPath: 'assets/images/editorial/v4/macro-carbs.webp',
                   ),
                   _buildNutrientCard(
                     context,
@@ -196,7 +188,6 @@ class MealsScreen extends ConsumerWidget {
                     progress: mealState.totalFat / 65,
                     color: Colors.purple,
                     icon: PhosphorIcons.drop(PhosphorIconsStyle.fill),
-                    artPath: 'assets/images/editorial/v4/macro-fat.webp',
                   ),
                 ],
               ),
@@ -208,14 +199,14 @@ class MealsScreen extends ConsumerWidget {
                 InkWell(
                   onTap: () => context.push('/food-scan'),
                   borderRadius: BorderRadius.circular(22),
-                  child: FastingArtSlot(
+                  child: FastingSplitArtCard(
                     assetPath: 'assets/images/editorial/v2/meal-empty.webp',
-                    height: 132,
+                    minHeight: 132,
+                    artWidth: 140,
                     borderRadius: 22,
-                    variant: FastingArtVariant.row,
                     semanticLabel: l10n.meals_noMeals,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(18, 16, 104, 16),
+                      padding: const EdgeInsets.all(18),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -406,18 +397,18 @@ class MealsScreen extends ConsumerWidget {
     required double progress,
     required Color color,
     required IconData icon,
-    required String artPath,
   }) {
     final theme = Theme.of(context);
-    return FastingArtSlot(
-      assetPath: artPath,
+    return Container(
       height: 82,
-      borderRadius: 20,
-      variant: FastingArtVariant.card,
-      alignment: Alignment.centerRight,
-      semanticLabel: label,
+      padding: const EdgeInsets.fromLTRB(12, 8, 10, 8),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .4)),
+      ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(14, 8, 72, 8),
+        padding: EdgeInsets.zero,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -427,7 +418,7 @@ class MealsScreen extends ConsumerWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.labelSmall?.copyWith(
-                    color: fastingArtMutedForeground(context),
+                    color: theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
                 Text.rich(
@@ -531,24 +522,33 @@ class MealsScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     return SizedBox(
       width: 156,
-      child: FastingArtSlot(
-        assetPath: artPath,
-        height: 168,
-        borderRadius: 20,
-        variant: FastingArtVariant.card,
-        semanticLabel: title,
-        child: Padding(
-          padding: const EdgeInsets.all(13),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+      child: Container(
+        height: 184,
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerLow,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .42)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: Image.asset(
+                themedEditorialAssetPath(artPath, theme.brightness),
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(11, 8, 11, 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
               Text(
                 title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.labelLarge?.copyWith(
-                  color: fastingArtForeground(context),
                   fontWeight: FontWeight.w800,
                 ),
               ),
@@ -556,12 +556,14 @@ class MealsScreen extends ConsumerWidget {
               Text(
                 cal,
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: fastingArtMutedForeground(context),
+                  color: theme.colorScheme.onSurfaceVariant,
                 ),
               ),
-            ],
+                ],
+              ),
+            ),
+          ],
           ),
-        ),
       ),
     );
   }

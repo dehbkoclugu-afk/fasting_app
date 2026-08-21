@@ -205,6 +205,8 @@
   "completion_duration": "Duration",
   "completion_plan": "Plan",
   "completion_lastPhase": "Last Phase",
+  "completion_earlyTitle": "Fast ended",
+  "completion_earlyMessage": "Today's time was saved. Streak and achievement progress did not change because the target was not completed.",
   "timer_remainingTime": "Remaining Time",
   "timer_ready": "Ready to Start",
   "streak_status": "Status",

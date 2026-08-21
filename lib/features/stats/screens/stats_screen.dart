@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,7 +8,6 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/banner_ad_widget.dart';
 import '../../../shared/widgets/section_header.dart';
-import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
 import '../providers/stats_provider.dart';
 import '../widgets/monthly_heatmap.dart';
@@ -64,15 +65,26 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                 ),
               ),
               const SizedBox(height: 14),
-              EditorialScreenHero(
+              FastingSplitArtCard(
                 assetPath: 'assets/images/editorial/stats-progress.webp',
-                title: l10n.stats_storyTitle,
-                subtitle: story,
-                icon: Icons.insights_outlined,
-                height: 190,
+                minHeight: 190,
+                artWidth: 168,
                 alignment: Alignment.bottomRight,
-                textWidth: 168,
-                contentAlignment: Alignment.topLeft,
+                semanticLabel: l10n.stats_storyTitle,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(Icons.insights_outlined, color: theme.colorScheme.primary),
+                      const SizedBox(height: 8),
+                      Text(l10n.stats_storyTitle, style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900)),
+                      const SizedBox(height: 7),
+                      Text(story, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, height: 1.35)),
+                    ],
+                  ),
+                ),
               ),
               const SizedBox(height: 20),
 
@@ -113,8 +125,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               title: l10n.stats_totalFasts,
                               value: '${stats.totalSessions}',
                               subtitle: periods[_selectedPeriod].toLowerCase(),
-                              artPath:
-                                  'assets/images/editorial/v3/stats-total.webp',
+                              icon: Icons.timer_outlined,
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -123,10 +134,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               context,
                               title: l10n.stats_average,
                               value:
-                                  '${stats.averageDurationHours.toStringAsFixed(1)}s',
+                                  _formatHours(context, stats.averageDurationHours),
                               subtitle: l10n.stats_fastDuration,
-                              artPath:
-                                  'assets/images/editorial/v3/stats-average.webp',
+                              icon: Icons.schedule_outlined,
                             ),
                           ),
                         ],
@@ -140,8 +150,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               title: l10n.stats_streak,
                               value: '${stats.currentStreak}',
                               subtitle: l10n.stats_daysConsecutive,
-                              artPath:
-                                  'assets/images/editorial/v3/stats-streak.webp',
+                              icon: Icons.local_fire_department_outlined,
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -151,8 +160,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               title: l10n.stats_success,
                               value: '%${(stats.completionRate * 100).round()}',
                               subtitle: l10n.stats_completion,
-                              artPath:
-                                  'assets/images/editorial/v3/stats-success.webp',
+                              icon: Icons.check_circle_outline_rounded,
                             ),
                           ),
                         ],
@@ -171,6 +179,14 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                   final weekStatsAsync = ref.watch(statsProvider(7));
                   final weekStats =
                       weekStatsAsync.valueOrNull ?? const StatsData();
+                  final peak = weekStats.weeklyHours.fold<double>(
+                    0,
+                    math.max,
+                  );
+                  final chartMax = math
+                      .max(1.0, (peak * 1.2).ceilToDouble())
+                      .toDouble();
+                  final interval = chartMax <= 4 ? 1.0 : chartMax / 3;
                   return Container(
                     height: 236,
                     decoration: BoxDecoration(color: theme.colorScheme.surfaceContainerLow, borderRadius: BorderRadius.circular(24), border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .45))),
@@ -181,7 +197,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                       child: BarChart(
                         BarChartData(
                           alignment: BarChartAlignment.spaceAround,
-                          maxY: 24,
+                          maxY: chartMax,
                           barTouchData: BarTouchData(enabled: true),
                           titlesData: FlTitlesData(
                             show: true,
@@ -207,9 +223,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                                 showTitles: true,
                                 reservedSize: 30,
                                 getTitlesWidget: (value, meta) {
-                                  if (value % 8 != 0) return const SizedBox();
+                                  if (value > 0 && (value / interval - (value / interval).round()).abs() > .08) return const SizedBox();
                                   return Text(
-                                    '${value.toInt()}s',
+                                    value == 0 ? '0' : _formatHours(context, value),
                                     style: TextStyle(
                                       color: theme.colorScheme.onSurfaceVariant,
                                       fontSize: 10,
@@ -228,7 +244,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                           gridData: FlGridData(
                             show: true,
                             drawVerticalLine: false,
-                            horizontalInterval: 8,
+                            horizontalInterval: interval,
                             getDrawingHorizontalLine:
                                 (value) => FlLine(
                                   color: theme.colorScheme.outlineVariant,
@@ -377,57 +393,62 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     required String title,
     required String value,
     required String subtitle,
-    required String artPath,
+    required IconData icon,
   }) {
     final theme = Theme.of(context);
-    return FastingArtSlot(
-      assetPath: artPath,
+    return Container(
       height: 158,
-      borderRadius: 22,
-      variant: FastingArtVariant.card,
-      alignment: Alignment.bottomRight,
-      semanticLabel: title,
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Align(
-          alignment: Alignment.topLeft,
-          child: FractionallySizedBox(
-            widthFactor: .64,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .42)),
+      ),
+      child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Container(
+                  width: 36,
+                  height: 36,
+                  decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: .1), borderRadius: BorderRadius.circular(12)),
+                  child: Icon(icon, size: 20, color: AppColors.primary),
+                ),
+                const Spacer(),
                 Text(
                   value,
                   maxLines: 1,
                   style: theme.textTheme.headlineSmall?.copyWith(
-                    color: fastingArtForeground(context),
                     fontWeight: FontWeight.w800,
                   ),
                 ),
                 Text(
                   title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.labelMedium?.copyWith(
-                    color: fastingArtForeground(context),
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 Text(
                   subtitle,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.bodySmall?.copyWith(
-                    color: fastingArtMutedForeground(context),
+                    color: theme.colorScheme.onSurfaceVariant,
                     fontSize: 10,
                   ),
                 ),
               ],
             ),
-          ),
-        ),
-      ),
     );
+  }
+
+  String _formatHours(BuildContext context, double hours) {
+    final language = Localizations.localeOf(context).languageCode;
+    if (hours <= 0) return language == 'tr' ? '0 sa' : '0 hr';
+    if (hours < 1) {
+      final minutes = (hours * 60).round();
+      return language == 'tr' ? '$minutes dk' : '$minutes min';
+    }
+    final value = hours == hours.roundToDouble()
+        ? hours.round().toString()
+        : hours.toStringAsFixed(1);
+    return language == 'tr' ? '$value sa' : '$value hr';
   }
 }

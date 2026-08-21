@@ -50,6 +50,7 @@ class FastingRing extends StatelessWidget {
         dimension: size,
         child: Stack(
           alignment: Alignment.center,
+          clipBehavior: Clip.none,
           children: [
             Container(
               width: size * .78,
@@ -76,7 +77,7 @@ class FastingRing extends StatelessWidget {
                 curve: const Cubic(.23, 1, .32, 1),
                 builder:
                     (context, value, _) => CustomPaint(
-                      size: Size.square(size - 28),
+                      size: Size.square(size - 58),
                       painter: RingPainter(
                         progress: value,
                         gradientColors: colors,
@@ -136,7 +137,7 @@ class _PhaseMarker extends StatelessWidget {
     final angle = -math.pi / 2 + 2 * math.pi * fraction;
     // Keep phase controls on the outer edge of the clock instead of letting
     // them drift into the timer copy and hands.
-    final orbit = ringSize * .40;
+    final orbit = ringSize * .47;
     const markerSize = 44.0;
     final center = ringSize / 2;
     final color = phase.gradientColors.first;
@@ -243,15 +244,15 @@ class _PhaseMarker extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            FastingArtSlot(
+                            FastingSplitArtCard(
                               assetPath: _phaseArtwork(phase),
-                              height: 174,
+                              minHeight: 174,
+                              artWidth: 150,
                               borderRadius: 24,
-                              variant: FastingArtVariant.hero,
                               alignment: Alignment.centerRight,
                               semanticLabel: name,
                               child: Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 20, 112, 20),
+                                padding: const EdgeInsets.all(20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,

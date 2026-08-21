@@ -5,7 +5,6 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 
 import '../../../core/constants/metabolic_phases.dart';
 import '../../../core/utils/metabolic_phase_l10n.dart';
-import '../../../shared/widgets/fasting_art_slot.dart';
 
 class MetabolicJourney extends StatelessWidget {
   const MetabolicJourney({
@@ -53,8 +52,21 @@ class MetabolicJourney extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Container(
+                  width: 46,
+                  height: 46,
+                  decoration: BoxDecoration(
+                    color: current.gradientColors.first.withValues(alpha: .11),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Icon(
+                    Icons.change_circle_outlined,
+                    color: current.gradientColors.first,
+                    size: 25,
+                  ),
+                ),
+                const SizedBox(width: 12),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,27 +80,12 @@ class MetabolicJourney extends StatelessWidget {
                       const SizedBox(height: 4),
                       Text(
                         metabolicPhaseDescription(l10n, current),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                           height: 1.35,
                         ),
                       ),
                     ],
-                  ),
-                ),
-                const SizedBox(width: 12),
-                SizedBox(
-                  width: 112,
-                  child: FastingArtSlot(
-                    assetPath: _phaseArtwork(current),
-                    height: 82,
-                    borderRadius: 18,
-                    variant: FastingArtVariant.bare,
-                    alignment: Alignment.centerRight,
-                    semanticLabel: metabolicPhaseName(l10n, current),
-                    child: const SizedBox.shrink(),
                   ),
                 ),
               ],
@@ -152,8 +149,6 @@ class MetabolicJourney extends StatelessWidget {
                     _remaining(next.startHour),
                     metabolicPhaseName(l10n, next),
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.labelMedium?.copyWith(
                     color: theme.colorScheme.primary,
                     fontWeight: FontWeight.w800,
@@ -164,8 +159,6 @@ class MetabolicJourney extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               l10n.phase_estimateShort,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
               style: theme.textTheme.labelSmall?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
                 height: 1.25,
@@ -177,13 +170,14 @@ class MetabolicJourney extends StatelessWidget {
     );
   }
 
-  String _phaseArtwork(MetabolicPhase phase) => 'assets/images/editorial/v5/phase-${switch (phase.id) { 'fatBurning' => 'fat-burning', _ => phase.id }}.webp';
-
   String _remaining(int startHour) {
     final minutes = math.max(0, ((startHour - elapsedHours) * 60).round());
     final hours = minutes ~/ 60;
     final rest = minutes % 60;
-    return hours == 0 ? '${rest}m' : '${hours}h ${rest}m';
+    final tr = WidgetsBinding.instance.platformDispatcher.locale.languageCode == 'tr';
+    if (hours == 0) return tr ? '$rest dk' : '$rest min';
+    if (rest == 0) return tr ? '$hours sa' : '$hours hr';
+    return tr ? '$hours sa $rest dk' : '$hours hr $rest min';
   }
 
   String _clock(DateTime time) =>

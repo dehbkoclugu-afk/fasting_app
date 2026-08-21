@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'fasting_art_slot.dart';
 
-/// Consistent editorial header used by the app's secondary screens.
+/// Consistent secondary-screen header with separate copy and artwork zones.
 class EditorialScreenHero extends StatelessWidget {
   const EditorialScreenHero({
     super.key,
@@ -34,53 +34,51 @@ class EditorialScreenHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return FastingArtSlot(
-      assetPath: assetPath,
-      height: height,
-      variant: FastingArtVariant.hero,
-      alignment: alignment,
-      fit: fit,
-      artScale: artScale,
-      semanticLabel: semanticLabel ?? title,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Align(
-          alignment: contentAlignment,
-          child: SizedBox(
-            width: textWidth,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (icon != null) ...[
-                  Icon(icon, color: fastingArtForeground(context), size: 26),
-                  const SizedBox(height: 10),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final artWidth = (constraints.maxWidth * .40)
+            .clamp(122.0, 184.0)
+            .toDouble();
+        return FastingSplitArtCard(
+          assetPath: assetPath,
+          minHeight: height,
+          artWidth: artWidth,
+          alignment: alignment,
+          fit: fit,
+          semanticLabel: semanticLabel ?? title,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Align(
+              alignment: contentAlignment,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (icon != null) ...[
+                    Icon(icon, color: theme.colorScheme.primary, size: 25),
+                    const SizedBox(height: 9),
+                  ],
+                  Text(
+                    title,
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w900,
+                      height: 1.08,
+                    ),
+                  ),
+                  const SizedBox(height: 7),
+                  Text(
+                    subtitle,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                      height: 1.35,
+                    ),
+                  ),
                 ],
-                Text(
-                  title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    color: fastingArtForeground(context),
-                    fontWeight: FontWeight.w800,
-                    height: 1.05,
-                  ),
-                ),
-                const SizedBox(height: 7),
-                Text(
-                  subtitle,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: fastingArtMutedForeground(context),
-                    height: 1.3,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

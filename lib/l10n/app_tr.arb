@@ -205,6 +205,8 @@
   "completion_duration": "Süre",
   "completion_plan": "Plan",
   "completion_lastPhase": "Son Faz",
+  "completion_earlyTitle": "Oruç sona erdi",
+  "completion_earlyMessage": "Bugünkü süre kaydedildi. Hedef tamamlanmadığı için seri ve başarı ilerlemesi değişmedi.",
   "timer_remainingTime": "Kalan Süre",
   "timer_ready": "Başlamaya Hazır",
   "streak_status": "Durum",
