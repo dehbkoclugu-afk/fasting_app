@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../shared/widgets/fasting_art_slot.dart';
 
 class CompletionOverlay extends StatefulWidget {
   final int durationMinutes;
@@ -59,10 +58,10 @@ class _CompletionOverlayState extends State<CompletionOverlay>
 
   Future<void> _playCompletionHaptic() async {
     await HapticFeedback.lightImpact();
-    await Future<void>.delayed(const Duration(milliseconds: 90));
-    await HapticFeedback.mediumImpact();
-    await Future<void>.delayed(const Duration(milliseconds: 120));
-    await HapticFeedback.heavyImpact();
+    if (widget.durationMinutes >= widget.targetMinutes) {
+      await Future<void>.delayed(const Duration(milliseconds: 90));
+      await HapticFeedback.mediumImpact();
+    }
     final prefs = await SharedPreferences.getInstance();
     if (prefs.getBool('sound_enabled') ?? false) {
       await SystemSound.play(SystemSoundType.click);
@@ -85,6 +84,7 @@ class _CompletionOverlayState extends State<CompletionOverlay>
     final completion = widget.targetMinutes <= 0
         ? 0.0
         : (widget.durationMinutes / widget.targetMinutes).clamp(0.0, 1.0);
+    final successful = completion >= 1;
 
     final reduceMotion = MediaQuery.of(context).disableAnimations;
     return FadeTransition(
@@ -107,18 +107,27 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                         icon: const Icon(Icons.close_rounded),
                       ),
                     ),
-                    FastingArtSlot(
-                      assetPath: 'assets/images/editorial/fast-complete.webp',
-                      height: 210,
-                      borderRadius: 28,
-                      variant: FastingArtVariant.bare,
-                      semanticLabel: l10n.timer_completed,
-                      child: const SizedBox.shrink(),
+                    const SizedBox(height: 12),
+                    Center(
+                      child: Container(
+                        width: 72,
+                        height: 72,
+                        decoration: BoxDecoration(
+                          color: (successful ? AppColors.success : AppColors.primary)
+                              .withValues(alpha: .10),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          successful ? Icons.check_rounded : Icons.flag_outlined,
+                          size: 34,
+                          color: successful ? AppColors.success : AppColors.primary,
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 24),
-                    Text(l10n.timer_completed, textAlign: TextAlign.center, style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
+                    const SizedBox(height: 18),
+                    Text(successful ? l10n.timer_completed : l10n.completion_earlyTitle, textAlign: TextAlign.center, style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
                     const SizedBox(height: 8),
-                    Text(l10n.timer_completedMessage, textAlign: TextAlign.center, style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+                    Text(successful ? l10n.timer_completedMessage : l10n.completion_earlyMessage, textAlign: TextAlign.center, style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
                     const SizedBox(height: 22),
                     Container(
                       padding: const EdgeInsets.all(18),
@@ -129,7 +138,7 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                             Expanded(
                               child: _buildStat(
                                 context,
-                                '${hours}h ${minutes}m',
+                                _durationLabel(hours, minutes),
                                 l10n.completion_duration,
                               ),
                             ),
@@ -149,7 +158,22 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                             ),
                           ]),
                           const SizedBox(height: 18),
-                          ClipRRect(borderRadius: BorderRadius.circular(99), child: LinearProgressIndicator(value: completion, minHeight: 9)),
+                          LayoutBuilder(
+                            builder: (context, constraints) => Container(
+                              height: 9,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                color: theme.colorScheme.outlineVariant.withValues(alpha: .45),
+                                borderRadius: BorderRadius.circular(99),
+                              ),
+                              alignment: Alignment.centerLeft,
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 450),
+                                width: constraints.maxWidth * completion,
+                                color: successful ? AppColors.success : AppColors.primary,
+                              ),
+                            ),
+                          ),
                           const SizedBox(height: 7),
                           Align(alignment: Alignment.centerRight, child: Text('${(completion * 100).round()}%', style: theme.textTheme.labelLarge?.copyWith(color: AppColors.primary, fontWeight: FontWeight.w900))),
                         ],
@@ -158,7 +182,7 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                     const SizedBox(height: 24),
                     Row(
                       children: [
-                        Expanded(
+                        if (successful) Expanded(
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final summary = l10n.replay_text(widget.planName, hours, minutes, widget.phaseName);
@@ -173,7 +197,7 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                             label: Text(l10n.profile_share),
                           ),
                         ),
-                        const SizedBox(width: 10),
+                        if (successful) const SizedBox(width: 10),
                         Expanded(child: FilledButton(onPressed: widget.onDismiss, child: Text(l10n.common_ok))),
                       ],
                     ),
@@ -183,6 +207,18 @@ class _CompletionOverlayState extends State<CompletionOverlay>
         ),
       ),
     );
+  }
+
+  String _durationLabel(int hours, int minutes) {
+    final language = Localizations.localeOf(context).languageCode;
+    if (language == 'tr') {
+      if (hours == 0) return '$minutes dk';
+      if (minutes == 0) return '$hours sa';
+      return '$hours sa $minutes dk';
+    }
+    if (hours == 0) return '$minutes min';
+    if (minutes == 0) return '$hours hr';
+    return '$hours hr $minutes min';
   }
 
   Widget _buildStat(BuildContext context, String value, String label) {

@@ -96,26 +96,27 @@ final gamificationProvider = Provider<GamificationState>((ref) {
     completed.length ~/ 7,
   );
   final streak = math.max(rawStreak, recovery.$1);
-  final totalRewardedMinutes = finalized.fold<int>(
+  // Only target-complete fasts award XP, streak, season or badge progress.
+  // Early stops remain in history, but are deliberately neutral here.
+  final totalRewardedMinutes = completed.fold<int>(
     0,
     (sum, session) =>
         sum + math.min(session.actualMinutes ?? 0, session.targetMinutes),
   );
-  final best = finalized.fold<int>(
+  final best = completed.fold<int>(
     0,
     (value, session) => math.max(value, session.actualMinutes ?? 0),
   );
   final hydrationXp = (water.progress * 50).round().clamp(0, 50);
   final baseXp =
-      finalized.length * 40 +
-      completed.length * 60 +
+      completed.length * 100 +
       (totalRewardedMinutes ~/ 60) * 4 +
       math.min(streak, 7) * 15 +
       hydrationXp +
       math.min(supportCount, 5) * 20;
   final today = DateTime.now();
   final todaySessions =
-      finalized.where((session) {
+      completed.where((session) {
         final date = session.startTime;
         return date.year == today.year &&
             date.month == today.month &&
@@ -139,7 +140,7 @@ final gamificationProvider = Provider<GamificationState>((ref) {
   final level = xp ~/ GamificationState.levelSize + 1;
 
   final badges = [
-    GameBadge(id: 'first', icon: 'leaf', unlocked: finalized.isNotEmpty, progress: finalized.length),
+    GameBadge(id: 'first', icon: 'leaf', unlocked: completed.isNotEmpty, progress: completed.length),
     GameBadge(id: 'rhythm7', icon: 'fire', unlocked: streak >= 7, progress: streak, target: 7),
     GameBadge(id: 'rhythm3', icon: 'shield', unlocked: streak >= 3, progress: streak, target: 3),
     GameBadge(id: 'target1', icon: 'target', unlocked: completed.isNotEmpty, progress: completed.length),

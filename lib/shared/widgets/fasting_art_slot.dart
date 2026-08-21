@@ -27,6 +27,98 @@ Color fastingArtDivider(BuildContext context) =>
         ? Colors.white.withValues(alpha: .14)
         : const Color(0xFF514756).withValues(alpha: .20);
 
+/// Editorial card with physically separate copy and artwork zones.
+///
+/// Use this for every card that contains more than a short label. The image is
+/// never painted behind [child], so longer translations cannot collide with
+/// the subject in the bitmap.
+class FastingSplitArtCard extends StatelessWidget {
+  const FastingSplitArtCard({
+    super.key,
+    required this.assetPath,
+    required this.child,
+    this.minHeight = 144,
+    this.artWidth = 132,
+    this.borderRadius = 24,
+    this.fit = BoxFit.cover,
+    this.alignment = Alignment.center,
+    this.semanticLabel,
+    this.useThemedAsset = true,
+  });
+
+  final String assetPath;
+  final Widget child;
+  final double minHeight;
+  final double artWidth;
+  final double borderRadius;
+  final BoxFit fit;
+  final Alignment alignment;
+  final String? semanticLabel;
+  final bool useThemedAsset;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final resolvedAsset = useThemedAsset
+        ? themedEditorialAssetPath(assetPath, theme.brightness)
+        : assetPath;
+
+    return Semantics(
+      container: true,
+      image: true,
+      label: semanticLabel,
+      child: Container(
+        constraints: BoxConstraints(minHeight: minHeight),
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerLow,
+          borderRadius: BorderRadius.circular(borderRadius),
+          border: Border.all(
+            color: theme.colorScheme.outlineVariant.withValues(alpha: .42),
+          ),
+        ),
+        child: Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(right: artWidth),
+              child: child,
+            ),
+            Positioned(
+              top: 0,
+              right: 0,
+              bottom: 0,
+              width: artWidth,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surfaceContainer,
+                  border: Border(
+                    left: BorderSide(
+                      color: theme.colorScheme.outlineVariant.withValues(
+                        alpha: .28,
+                      ),
+                    ),
+                  ),
+                ),
+                child: Image.asset(
+                  resolvedAsset,
+                  fit: fit,
+                  alignment: alignment,
+                  filterQuality: FilterQuality.high,
+                  excludeFromSemantics: true,
+                  errorBuilder: (_, __, ___) => Icon(
+                    Icons.image_outlined,
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 /// A single, reusable connection point between paired editorial artwork and UI.
 ///
 /// Each card renders one physical artwork edge-to-edge. Text and progress stay

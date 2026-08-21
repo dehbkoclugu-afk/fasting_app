@@ -21,15 +21,15 @@ class WeightChart extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     if (weightData.isEmpty) {
-      return FastingArtSlot(
+      return FastingSplitArtCard(
         assetPath: 'assets/images/editorial/v4/report-weight.webp',
-        height: 176,
+        minHeight: 176,
+        artWidth: 150,
         borderRadius: 24,
-        variant: FastingArtVariant.row,
         alignment: Alignment.centerRight,
         semanticLabel: l10n.weight_noRecord,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 20, 112, 20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,12 +62,13 @@ class WeightChart extends StatelessWidget {
     final minWeight = weights.reduce((a, b) => a < b ? a : b) - 2;
     final maxWeight = weights.reduce((a, b) => a > b ? a : b) + 2;
 
-    return FastingArtSlot(
-      assetPath: 'assets/images/editorial/v4/report-weight.webp',
+    return Container(
       height: 236,
-      borderRadius: 24,
-      variant: FastingArtVariant.card,
-      alignment: Alignment.centerRight,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .45)),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(18),
         child: LineChart(

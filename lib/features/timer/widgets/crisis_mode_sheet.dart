@@ -42,12 +42,20 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
           )
         : guidance;
 
-    return Material(
-      color: theme.colorScheme.surface,
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
-      clipBehavior: Clip.antiAlias,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 18, 24, 28),
+    return SafeArea(
+      top: false,
+      minimum: const EdgeInsets.only(bottom: 12),
+      child: AnimatedPadding(
+        duration: const Duration(milliseconds: 180),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.viewInsetsOf(context).bottom,
+        ),
+        child: Material(
+          color: theme.colorScheme.surface,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
+          clipBehavior: Clip.antiAlias,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(24, 18, 24, 24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -150,6 +158,8 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
             ),
           ],
           ],
+        ),
+          ),
         ),
       ),
     );

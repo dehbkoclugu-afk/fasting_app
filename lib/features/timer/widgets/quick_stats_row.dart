@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../../shared/widgets/fasting_art_slot.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../../stats/providers/stats_provider.dart';
 
@@ -60,12 +59,11 @@ class QuickStatsRow extends ConsumerWidget {
         ),
         const SizedBox(height: 12),
         _SummarySurface(
-          artPath: 'assets/images/editorial/v3/quick-water.webp',
+          icon: Icons.local_drink_outlined,
+          accent: AppColors.tertiary,
           height: 158,
           onTap: () => context.push('/water-tracker'),
-          child: Padding(
-            padding: const EdgeInsets.only(right: 104),
-            child: Column(
+          child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -106,7 +104,6 @@ class QuickStatsRow extends ConsumerWidget {
                   ),
                 ),
               ],
-            ),
           ),
         ),
         const SizedBox(height: 12),
@@ -114,7 +111,8 @@ class QuickStatsRow extends ConsumerWidget {
           children: [
             Expanded(
               child: _SummarySurface(
-                artPath: 'assets/images/editorial/v3/quick-streak.webp',
+                icon: Icons.local_fire_department_outlined,
+                accent: AppColors.warning,
                 height: 118,
                 child: _Metric(
                   value: '$streak',
@@ -125,7 +123,8 @@ class QuickStatsRow extends ConsumerWidget {
             const SizedBox(width: 12),
             Expanded(
               child: _SummarySurface(
-                artPath: 'assets/images/editorial/v3/quick-weight.webp',
+                icon: Icons.monitor_weight_outlined,
+                accent: AppColors.success,
                 height: 118,
                 onTap: () => context.push('/weight-tracker'),
                 child: _Metric(
@@ -155,43 +154,56 @@ class QuickStatsRow extends ConsumerWidget {
 class _SummarySurface extends StatelessWidget {
   const _SummarySurface({
     required this.child,
-    required this.artPath,
+    required this.icon,
+    required this.accent,
     required this.height,
     this.onTap,
   });
 
   final Widget child;
-  final String artPath;
+  final IconData icon;
+  final Color accent;
   final double height;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return FastingArtSlot(
-      assetPath: artPath,
+    final theme = Theme.of(context);
+    return Container(
       height: height,
-      borderRadius: 22,
-      alignment: Alignment.centerRight,
-      variant: FastingArtVariant.card,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: Theme.of(context).brightness == Brightness.dark
-                ? const [Colors.transparent, Color(0xE60F1424)]
-                : [
-                    Colors.transparent,
-                    Theme.of(context).colorScheme.surface.withValues(alpha: .94),
-                  ],
-            stops: const [.2, 1],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withValues(alpha: .42),
         ),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: onTap,
-            child: Padding(padding: const EdgeInsets.all(16), child: child),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                Expanded(child: child),
+                const SizedBox(width: 10),
+                Container(
+                  width: height >= 150 ? 54 : 42,
+                  height: height >= 150 ? 54 : 42,
+                  decoration: BoxDecoration(
+                    color: accent.withValues(alpha: .11),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Icon(
+                    icon,
+                    color: accent,
+                    size: height >= 150 ? 27 : 22,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

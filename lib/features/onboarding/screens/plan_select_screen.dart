@@ -42,7 +42,7 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
               const SizedBox(height: 24),
 
               EditorialScreenHero(
-                assetPath: 'assets/images/editorial/v3/plan-clock-16-8.webp',
+                assetPath: 'assets/images/editorial/v6/plans-overview.webp',
                 title: l10n.onboarding_selectPlan,
                 subtitle: l10n.onboarding_selectPlanDesc,
                 icon: Icons.schedule_outlined,
@@ -83,89 +83,63 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                         ),
                         child: Opacity(
                           opacity: isLocked ? .58 : 1,
-                          child: FastingArtSlot(
-                            assetPath: _planArtwork(plan.id),
-                            height: 158,
-                            borderRadius: 17,
-                            variant: FastingArtVariant.bare,
-                            semanticLabel: plan.name,
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: theme.brightness == Brightness.dark
-                                      ? const [Colors.transparent, Color(0xF20F1424)]
-                                      : [
-                                          Colors.transparent,
-                                          theme.colorScheme.surface.withValues(alpha: .96),
-                                        ],
-                                  stops: const [.28, 1],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
+                          child: Container(
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              color: theme.colorScheme.surfaceContainerLow,
+                              borderRadius: BorderRadius.circular(17),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                FastingArtSlot(
+                                  assetPath: _planArtwork(plan.id),
+                                  height: 104,
+                                  borderRadius: 17,
+                                  variant: FastingArtVariant.bare,
+                                  fit: BoxFit.cover,
+                                  semanticLabel: plan.name,
+                                  child: const SizedBox.shrink(),
                                 ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(14),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          if (isLocked) ...[
-                                            _proBadge(),
-                                            const SizedBox(width: 7),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(14, 11, 14, 13),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${plan.shortName}  •  ${plan.name}',
+                                              style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w900),
+                                            ),
+                                            const SizedBox(height: 4),
+                                            Text(
+                                              plan.description(l10n),
+                                              style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, height: 1.25),
+                                            ),
                                           ],
-                                          Icon(
-                                            isLocked
-                                                ? Icons.lock_outline
-                                                : isSelected
-                                                    ? Icons.check_circle
-                                                    : Icons.circle_outlined,
-                                            color: isSelected && !isLocked
-                                                ? AppColors.primary
-                                                : fastingArtForeground(context),
-                                            size: 23,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Row(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                '${plan.shortName}  •  ${plan.name}',
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: theme.textTheme.titleMedium?.copyWith(
-                                                  color: fastingArtForeground(context),
-                                                  fontWeight: FontWeight.w900,
-                                                ),
-                                              ),
-                                              const SizedBox(height: 4),
-                                              Text(
-                                                plan.description(l10n),
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: theme.textTheme.bodySmall?.copyWith(
-                                                  color: fastingArtMutedForeground(context),
-                                                  height: 1.25,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
                                         ),
-                                      ],
-                                    ),
-                                  ],
+                                      ),
+                                      const SizedBox(width: 10),
+                                      if (isLocked) _proBadge(),
+                                      const SizedBox(width: 7),
+                                      Icon(
+                                        isLocked
+                                            ? Icons.lock_outline
+                                            : isSelected
+                                                ? Icons.check_circle
+                                                : Icons.circle_outlined,
+                                        color: isSelected && !isLocked
+                                            ? AppColors.primary
+                                            : theme.colorScheme.onSurfaceVariant,
+                                        size: 23,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
                         ),

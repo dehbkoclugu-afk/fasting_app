@@ -51,10 +51,10 @@ class AppColors {
   static const darkDivider = Color(0xFF2A2A3E);
 
   // Light Theme — warm paper surfaces avoid a clinical, overexposed canvas.
-  static const lightBg = Color(0xFFFAF6F2);
-  static const lightSurface = Color(0xFFFFFBF8);
-  static const lightCard = Color(0xFFFFFDFC);
-  static const lightSurfaceVariant = Color(0xFFF4ECE7);
+  static const lightBg = Color(0xFFF7F1EB);
+  static const lightSurface = Color(0xFFFCF8F4);
+  static const lightCard = Color(0xFFFFFCF9);
+  static const lightSurfaceVariant = Color(0xFFF0E7E1);
   static const lightTextPrimary = Color(0xFF1A1A2E);
   static const lightTextSecondary = Color(0xFF6B6B80);
   static const lightDivider = Color(0xFFE8DDD8);

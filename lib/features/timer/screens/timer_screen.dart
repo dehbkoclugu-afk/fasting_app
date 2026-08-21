@@ -18,7 +18,6 @@ import '../widgets/timer_controls.dart';
 import '../widgets/quick_stats_row.dart';
 import '../widgets/crisis_mode_sheet.dart';
 import '../widgets/metabolic_journey.dart';
-import '../widgets/metabolic_weather.dart';
 import '../../../services/admob_service.dart';
 import '../../paywall/providers/subscription_provider.dart';
 import '../../stats/providers/stats_provider.dart';
@@ -163,7 +162,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                 final horizontal = constraints.maxWidth >= 700;
                 final gutter = horizontal ? 40.0 : 12.0;
                 final ringSize = math.min(
-                  horizontal ? 340.0 : 318.0,
+                  horizontal ? 340.0 : 292.0,
                   constraints.maxWidth - gutter * 2 - (horizontal ? 64 : 16),
                 );
 
@@ -324,12 +323,6 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                           ),
                           const SizedBox(height: 22),
                           if (isActive) ...[
-                            MetabolicWeather(
-                              waterProgress: waterState.progress,
-                              streak: streak,
-                              elapsedHours: timerState.elapsedHours,
-                            ),
-                            const SizedBox(height: 12),
                             MetabolicJourney(
                               elapsedHours: timerState.elapsedHours,
                               targetHours: timerState.targetSeconds / 3600,
@@ -385,14 +378,13 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
       child: InkWell(
         onTap: () => context.push('/explore'),
         borderRadius: BorderRadius.circular(24),
-        child: FastingArtSlot(
+        child: FastingSplitArtCard(
           assetPath: 'assets/images/editorial/fasting-guide-hero.webp',
-          height: 146,
-          variant: FastingArtVariant.card,
-          splitLightArtwork: true,
+          minHeight: 146,
+          artWidth: 174,
           semanticLabel: l10n.explore_guide,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 18, 112, 18),
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -408,8 +400,6 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                 const SizedBox(height: 5),
                 Text(
                   l10n.explore_guideDesc,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: fastingArtMutedForeground(context),
                     height: 1.35,
@@ -430,14 +420,13 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
       child: InkWell(
         onTap: () => context.push('/meals'),
         borderRadius: BorderRadius.circular(24),
-        child: FastingArtSlot(
+        child: FastingSplitArtCard(
           assetPath: 'assets/images/editorial/tip-balanced-meal.webp',
-          height: 136,
-          variant: FastingArtVariant.row,
-          alignment: Alignment.centerRight,
+          minHeight: 136,
+          artWidth: 174,
           semanticLabel: l10n.meals_addMeal,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 18, 112, 18),
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -585,40 +574,50 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                               setSheetState(() => selectedId = plan.id);
                             }
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Row(children: [
-                              SizedBox(
-                                width: 54,
-                                height: 54,
-                                child: FastingArtSlot(
-                                  assetPath: 'assets/images/editorial/v3/plan-clock-${switch (plan.id) { 'eat_stop_eat' => 'ese', _ => plan.id.replaceAll('_', '-') }}.webp',
-                                  height: 54,
-                                  borderRadius: 15,
-                                  variant: FastingArtVariant.bare,
-                                  child: const SizedBox.shrink(),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              FastingArtSlot(
+                                assetPath: 'assets/images/editorial/v3/plan-clock-${switch (plan.id) { 'eat_stop_eat' => 'ese', _ => plan.id.replaceAll('_', '-') }}.webp',
+                                height: 108,
+                                borderRadius: 19,
+                                variant: FastingArtVariant.bare,
+                                fit: BoxFit.cover,
+                                semanticLabel: plan.name,
+                                child: const SizedBox.shrink(),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(15, 12, 15, 14),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Row(children: [
+                                            Flexible(child: Text(plan.name, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w900))),
+                                            if (locked) ...[
+                                              const SizedBox(width: 7),
+                                              Icon(Icons.lock_outline_rounded, size: 16, color: theme.colorScheme.primary),
+                                            ],
+                                          ]),
+                                          const SizedBox(height: 3),
+                                          Text(plan.description(l10n), style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, height: 1.25)),
+                                          const SizedBox(height: 9),
+                                          Row(children: [
+                                            Expanded(flex: plan.fastingHours, child: Container(height: 5, decoration: BoxDecoration(color: AppColors.primary, borderRadius: BorderRadius.circular(9)))),
+                                            if (plan.eatingHours > 0) Expanded(flex: plan.eatingHours, child: Container(height: 5, decoration: BoxDecoration(color: AppColors.success.withValues(alpha: .55), borderRadius: BorderRadius.circular(9)))),
+                                          ]),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    Icon(active ? Icons.check_circle_rounded : Icons.circle_outlined, color: active ? theme.colorScheme.primary : theme.colorScheme.outlineVariant),
+                                  ],
                                 ),
                               ),
-                              const SizedBox(width: 14),
-                              Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                Row(children: [
-                                  Text(plan.name, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w900)),
-                                  if (locked) ...[
-                                    const SizedBox(width: 8),
-                                    Icon(Icons.lock_outline_rounded, size: 16, color: theme.colorScheme.primary),
-                                  ],
-                                ]),
-                                const SizedBox(height: 3),
-                                Text(plan.description(l10n), maxLines: 2, overflow: TextOverflow.ellipsis, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, height: 1.25)),
-                                const SizedBox(height: 7),
-                                Row(children: [
-                                  Expanded(flex: plan.fastingHours, child: Container(height: 5, decoration: BoxDecoration(color: AppColors.primary, borderRadius: BorderRadius.circular(9)))),
-                                  if (plan.eatingHours > 0) Expanded(flex: plan.eatingHours, child: Container(height: 5, decoration: BoxDecoration(color: AppColors.success.withValues(alpha: .55), borderRadius: BorderRadius.circular(9)))),
-                                ]),
-                              ])),
-                              const SizedBox(width: 10),
-                              Icon(active ? Icons.check_circle_rounded : Icons.circle_outlined, color: active ? theme.colorScheme.primary : theme.colorScheme.outlineVariant),
-                            ]),
+                            ],
                           ),
                         ),
                       );

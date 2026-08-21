@@ -65,15 +65,14 @@ class GamificationDashboardScreen extends ConsumerWidget {
                     _BadgeToken(badge: visibleBadges[index], l10n: l10n),
           ),
           const SizedBox(height: 26),
-          FastingArtSlot(
+          FastingSplitArtCard(
             assetPath: 'assets/images/editorial/v4/rhythm-shield.webp',
-            height: 132,
+            minHeight: 132,
+            artWidth: 150,
             borderRadius: 22,
-            variant: FastingArtVariant.row,
-            alignment: Alignment.centerRight,
             semanticLabel: l10n.game_shields(game.shields),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(18, 18, 104, 18),
+              padding: const EdgeInsets.all(18),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -85,8 +84,6 @@ class GamificationDashboardScreen extends ConsumerWidget {
                   const SizedBox(height: 4),
                   Text(
                     l10n.game_shieldsDesc,
-                    maxLines: 4,
-                    overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall?.copyWith(color: fastingArtMutedForeground(context)),
                   ),
                 ],
@@ -95,15 +92,14 @@ class GamificationDashboardScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 14),
           if (!calm)
-            FastingArtSlot(
+            FastingSplitArtCard(
               assetPath: 'assets/images/editorial/v4/weekly-league.webp',
-              height: 148,
+              minHeight: 148,
+              artWidth: 150,
               borderRadius: 22,
-              variant: FastingArtVariant.row,
-              alignment: Alignment.centerRight,
               semanticLabel: l10n.game_league,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(18, 18, 104, 18),
+                padding: const EdgeInsets.all(18),
                 child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -111,8 +107,6 @@ class GamificationDashboardScreen extends ConsumerWidget {
                   const SizedBox(height: 6),
                   Text(
                     l10n.game_leagueDesc(game.leaguePercentile),
-                    maxLines: 4,
-                    overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodyMedium?.copyWith(color: fastingArtMutedForeground(context)),
                   ),
                 ],
@@ -135,15 +129,20 @@ class _LevelHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final tr = Localizations.localeOf(context).languageCode == 'tr';
     return Semantics(
       label: l10n.game_levelSemantics(game.level, game.xp),
-      child: FastingArtSlot(
-        assetPath: 'assets/images/editorial/v4/weekly-league.webp',
-        height: 174,
-        borderRadius: 26,
-        variant: FastingArtVariant.hero,
+      child: Container(
+        padding: const EdgeInsets.all(22),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerLow,
+          borderRadius: BorderRadius.circular(26),
+          border: Border.all(
+            color: theme.colorScheme.outlineVariant.withValues(alpha: .5),
+          ),
+        ),
         child: Padding(
-          padding: const EdgeInsets.all(22),
+          padding: EdgeInsets.zero,
           child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -156,13 +155,16 @@ class _LevelHero extends StatelessWidget {
                       Text(
                         l10n.game_explorer,
                         style: theme.textTheme.titleLarge?.copyWith(
-                          color: fastingArtForeground(context),
+                          color: theme.colorScheme.onSurface,
+                          fontWeight: FontWeight.w900,
                         ),
                       ),
                       Text(
-                        calm ? l10n.game_questsDesc : '${game.xp} XP',
+                        calm
+                            ? l10n.game_questsDesc
+                            : '${tr ? 'Seviye' : 'Level'} ${game.level} • ${game.xp} ${tr ? 'toplam XP' : 'total XP'}',
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: fastingArtMutedForeground(context),
+                          color: theme.colorScheme.onSurfaceVariant,
                         ),
                       ),
                     ],
@@ -172,8 +174,8 @@ class _LevelHero extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text('${game.levelXp} / ${GamificationState.levelSize} XP', style: TextStyle(color: fastingArtForeground(context), fontWeight: FontWeight.w800)),
-                      Text('${GamificationState.levelSize - game.levelXp} XP', style: theme.textTheme.labelSmall?.copyWith(color: fastingArtMutedForeground(context))),
+                      Text('${game.levelXp} / ${GamificationState.levelSize} XP', style: TextStyle(color: theme.colorScheme.onSurface, fontWeight: FontWeight.w800)),
+                      Text('${GamificationState.levelSize - game.levelXp} XP ${tr ? 'kaldı' : 'left'}', style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
                     ],
                   ),
               ],
@@ -184,8 +186,8 @@ class _LevelHero extends StatelessWidget {
                 value: game.levelProgress,
                 minHeight: 9,
                 borderRadius: BorderRadius.circular(10),
-                backgroundColor: fastingArtForeground(context).withValues(alpha: .12),
-                valueColor: AlwaysStoppedAnimation(fastingArtForeground(context)),
+                backgroundColor: theme.colorScheme.outlineVariant.withValues(alpha: .45),
+                valueColor: const AlwaysStoppedAnimation(AppColors.primary),
               ),
           ],
           ),
@@ -340,8 +342,10 @@ class _SeasonPath extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final nextReward = current >= 30 ? 30 : ((current ~/ 5) + 1) * 5;
+    final remaining = (nextReward - current).clamp(0, 30);
+    final isTurkish = Localizations.localeOf(context).languageCode == 'tr';
     return Container(
-      height: 136,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceContainerLow,
@@ -353,21 +357,72 @@ class _SeasonPath extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: [
-            Text('$current / 30', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900)),
-          ]),
-          const Spacer(),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(99),
-            child: LinearProgressIndicator(
-              value: current / 30,
-              minHeight: 9,
-              backgroundColor: theme.colorScheme.outlineVariant.withValues(alpha: .55),
-              color: AppColors.primary,
-            ),
+          Row(
+            children: [
+              Text('$current / 30', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900)),
+              const Spacer(),
+              Text(
+                current >= 30
+                    ? (isTurkish ? 'Sezon tamamlandı' : 'Season complete')
+                    : (isTurkish ? 'Mühre $remaining adım' : '$remaining steps to seal'),
+                style: theme.textTheme.labelMedium?.copyWith(
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 7),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [0, 5, 10, 15, 20, 25, 30].map((step) => Text('$step', style: theme.textTheme.labelSmall?.copyWith(color: step <= current ? AppColors.primary : theme.colorScheme.onSurfaceVariant, fontWeight: step <= current ? FontWeight.w900 : FontWeight.w500))).toList()),
+          const SizedBox(height: 16),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              const gap = 7.0;
+              final nodeSize = (constraints.maxWidth - gap * 9) / 10;
+              return Wrap(
+                spacing: gap,
+                runSpacing: 10,
+                children: List.generate(30, (index) {
+                  final step = index + 1;
+                  final complete = step <= current;
+                  final reward = step % 5 == 0;
+                  return SizedBox.square(
+                    dimension: nodeSize,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: complete
+                            ? AppColors.primary
+                            : theme.colorScheme.surfaceContainerHighest,
+                        border: Border.all(
+                          color: reward
+                              ? AppColors.primary
+                              : theme.colorScheme.outlineVariant,
+                          width: reward ? 2 : 1,
+                        ),
+                      ),
+                      child: Center(
+                        child: reward
+                            ? Icon(
+                                complete ? Icons.check_rounded : Icons.star_outline_rounded,
+                                size: nodeSize * .55,
+                                color: complete ? Colors.white : AppColors.primary,
+                              )
+                            : Text(
+                                '$step',
+                                style: TextStyle(
+                                  fontSize: nodeSize * .34,
+                                  fontWeight: FontWeight.w700,
+                                  color: complete
+                                      ? Colors.white
+                                      : theme.colorScheme.onSurfaceVariant,
+                                ),
+                              ),
+                      ),
+                    ),
+                  );
+                }),
+              );
+            },
+          ),
         ],
       ),
     );
@@ -392,65 +447,59 @@ class _BadgeToken extends StatelessWidget {
       child: LayoutBuilder(
       builder: (context, constraints) => Opacity(
         opacity: badge.unlocked ? 1 : .62,
-        child: FastingArtSlot(
-          assetPath: _badgeArtwork(badge.id),
-          height: constraints.maxHeight,
-          borderRadius: 18,
-          variant: FastingArtVariant.bare,
-          fit: BoxFit.contain,
-          semanticLabel: _badgeTitle(l10n, badge.id),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: isDark
-                    ? [
-                        Colors.transparent,
-                        const Color(0xFF0F1424).withValues(alpha: .18),
-                        const Color(0xFF0F1424).withValues(alpha: .96),
-                      ]
-                    : [
-                        Colors.transparent,
-                        theme.colorScheme.surface.withValues(alpha: .18),
-                        theme.colorScheme.surface.withValues(alpha: .96),
-                      ],
-                stops: const [0, .48, 1],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-              border: Border.all(
-                color: badge.unlocked
-                    ? AppColors.primary.withValues(alpha: .55)
-                    : theme.dividerColor,
-              ),
-              borderRadius: BorderRadius.circular(18),
+        child: Container(
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surfaceContainerLow,
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(
+              color: badge.unlocked
+                  ? AppColors.primary.withValues(alpha: .45)
+                  : theme.colorScheme.outlineVariant,
             ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(8, 8, 8, 10),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Icon(
-                      badge.unlocked ? Icons.check_circle : Icons.lock_outline,
-                      size: 16,
-                      color: labelColor.withValues(alpha: .9),
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            children: [
+              Expanded(
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(7),
+                      child: Image.asset(
+                        themedEditorialAssetPath(_badgeArtwork(badge.id), theme.brightness),
+                        fit: BoxFit.contain,
+                      ),
                     ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    _badgeTitle(l10n, badge.id),
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.labelMedium?.copyWith(
-                      color: labelColor,
-                      fontWeight: FontWeight.w800,
-                      height: 1.1,
+                    Positioned(
+                      top: 7,
+                      right: 7,
+                      child: Icon(
+                        badge.unlocked ? Icons.check_circle : Icons.lock_outline,
+                        size: 17,
+                        color: labelColor.withValues(alpha: .9),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+                color: theme.colorScheme.surfaceContainer,
+                child: Text(
+                  _badgeTitle(l10n, badge.id),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: labelColor,
+                    fontWeight: FontWeight.w800,
+                    height: 1.1,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -476,18 +525,21 @@ class _BadgeToken extends StatelessWidget {
               IconButton(onPressed: () => Navigator.pop(sheetContext), icon: const Icon(Icons.close_rounded)),
             ]),
             const SizedBox(height: 10),
-            DecoratedBox(
-              decoration: BoxDecoration(
-                color: theme.colorScheme.surfaceContainerLow,
-                borderRadius: BorderRadius.circular(22),
-              ),
-              child: FastingArtSlot(
-                assetPath: _badgeArtwork(badge.id),
-                height: 210,
-                borderRadius: 22,
-                variant: FastingArtVariant.bare,
-                fit: BoxFit.contain,
-                child: const SizedBox.shrink(),
+            Center(
+              child: Container(
+                width: 190,
+                height: 190,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surfaceContainerLow,
+                  shape: BoxShape.circle,
+                ),
+                child: ClipOval(
+                  child: Image.asset(
+                    themedEditorialAssetPath(_badgeArtwork(badge.id), theme.brightness),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 18),
@@ -495,7 +547,7 @@ class _BadgeToken extends StatelessWidget {
             const SizedBox(height: 14),
             LinearProgressIndicator(value: badge.ratio, minHeight: 9, borderRadius: BorderRadius.circular(99)),
             const SizedBox(height: 8),
-            Text(badge.unlocked ? l10n.timer_completed : '${badge.progress} / ${badge.target}', style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            Text(badge.unlocked ? l10n.timer_completed : _progressLabel(badge), style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
             const SizedBox(height: 20),
             SizedBox(width: double.infinity, child: FilledButton(onPressed: () => Navigator.pop(sheetContext), child: Text(l10n.common_ok))),
           ]),
@@ -503,6 +555,19 @@ class _BadgeToken extends StatelessWidget {
       );
     },
   );
+
+  String _progressLabel(GameBadge badge) {
+    if (badge.id.startsWith('hours')) {
+      final currentHours = badge.progress / 60;
+      final targetHours = badge.target / 60;
+      final current = currentHours == currentHours.roundToDouble()
+          ? currentHours.round().toString()
+          : currentHours.toStringAsFixed(1);
+      final unit = l10n.localeName == 'tr' ? 'saat' : 'hours';
+      return '$current / ${targetHours.round()} $unit';
+    }
+    return '${badge.progress} / ${badge.target}';
+  }
 
   String _badgeArtwork(String id) {
     return switch (id) {

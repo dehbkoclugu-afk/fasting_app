@@ -90,22 +90,20 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
               InkWell(
                 borderRadius: BorderRadius.circular(24),
                 onTap: _openPhotoScan,
-                child: FastingArtSlot(
+                child: FastingSplitArtCard(
                   assetPath: 'assets/images/editorial/v6/meal-analysis.webp',
-                  height: 164,
+                  minHeight: 174,
+                  artWidth: 122,
                   borderRadius: 24,
-                  variant: FastingArtVariant.hero,
                   semanticLabel: l10n.foodScan_scanCta,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(18, 16, 104, 14),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           l10n.foodScan_scanCta,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.titleLarge?.copyWith(
                             color: fastingArtForeground(context),
                             fontWeight: FontWeight.w800,
@@ -114,20 +112,19 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                         const SizedBox(height: 3),
                         Text(
                           l10n.foodScan_scanCtaDesc,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.bodySmall?.copyWith(
                             color: fastingArtMutedForeground(context),
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Row(
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 6,
                           children: [
                             _scanAction(
                               icon: PhosphorIcons.camera(PhosphorIconsStyle.fill),
                               label: l10n.foodScan_takePhoto,
                             ),
-                            const SizedBox(width: 8),
                             _scanAction(
                               icon: PhosphorIcons.images(PhosphorIconsStyle.fill),
                               label: l10n.foodScan_chooseFromGallery,
@@ -236,8 +233,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     ],
   );
 
-  Widget _scanAction({required IconData icon, required String label}) => Flexible(
-    child: Container(
+  Widget _scanAction({required IconData icon, required String label}) => Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
@@ -255,21 +251,16 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
         children: [
           Icon(icon, color: Colors.white, size: 15),
           const SizedBox(width: 5),
-          Flexible(
-            child: Text(
+          Text(
               label,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 10,
                 fontWeight: FontWeight.w700,
               ),
             ),
-          ),
         ],
       ),
-    ),
   );
 
   void _openPhotoScan() {
@@ -280,9 +271,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
 
   Widget _mealTypeCard(String value, String label, IconData icon, String artPath) {
     final selected = _mealType == value;
-    return Padding(
-      padding: const EdgeInsets.only(right: 9),
-      child: InkWell(
+    return InkWell(
         borderRadius: BorderRadius.circular(18),
         onTap: () {
           HapticFeedback.selectionClick();
@@ -298,14 +287,14 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
               width: selected ? 2 : 1,
             ),
           ),
-          child: FastingArtSlot(
+          child: FastingSplitArtCard(
             assetPath: artPath,
-            height: 76,
+            minHeight: 76,
+            artWidth: 56,
             borderRadius: 15,
-            variant: FastingArtVariant.row,
             semanticLabel: label,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 children: [
                   Icon(
@@ -319,8 +308,6 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                   Expanded(
                     child: Text(
                       label,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: fastingArtForeground(context),
                         fontSize: 12,
@@ -333,7 +320,6 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
             ),
           ),
         ),
-      ),
     );
   }
 
@@ -344,33 +330,35 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     return InkWell(
       borderRadius: BorderRadius.circular(18),
       onTap: () => _quickAdd(meal),
-      child: FastingArtSlot(
-        assetPath: meal['art']! as String,
-        height: 154,
-        borderRadius: 18,
-        variant: FastingArtVariant.bare,
-        semanticLabel: meal['name']! as String,
-        child: DecoratedBox(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.transparent, Color(0xF20D1120)],
-              stops: [.34, 1],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surfaceContainerLow,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: Image.asset(
+                themedEditorialAssetPath(
+                  meal['art']! as String,
+                  Theme.of(context).brightness,
+                ),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 8, 8, 9),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
                     meal['name']! as String,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      color: Colors.white,
                       fontWeight: FontWeight.w800,
                     ),
                   ),
@@ -380,7 +368,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                       Text(
                         '${meal['cal']} kcal',
                         style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: AppColors.primaryLight,
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -388,9 +376,10 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                       const Icon(Icons.add_circle, color: AppColors.primary, size: 22),
                     ],
                   ),
-              ],
+                ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

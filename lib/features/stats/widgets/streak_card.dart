@@ -19,18 +19,16 @@ class StreakCard extends StatelessWidget {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
 
-    return FastingArtSlot(
+    return FastingSplitArtCard(
       assetPath: 'assets/images/editorial/v4/report-streak.webp',
-      height: 184,
+      minHeight: 184,
+      artWidth: 164,
       borderRadius: 24,
-      variant: FastingArtVariant.card,
       alignment: Alignment.centerRight,
       semanticLabel: l10n.stats_streak,
       child: Padding(
         padding: const EdgeInsets.all(18),
-        child: Padding(
-          padding: const EdgeInsets.only(right: 104),
-          child: Column(
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -51,18 +49,16 @@ class StreakCard extends StatelessWidget {
                 )),
               ]),
               const SizedBox(height: 8),
-              Text(_getStreakMessage(context, currentStreak), maxLines: 2, style: theme.textTheme.titleSmall?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w700)),
+              Text(_getStreakMessage(context, currentStreak), style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.onSurface, fontWeight: FontWeight.w700)),
               const SizedBox(height: 10),
               Text(
                 '${l10n.streakCard_longestStreak}: $longestStreak ${l10n.common_days} · '
                 '${l10n.streakCard_totalSessions}: $totalSessions',
-                maxLines: 2,
                 style: theme.textTheme.labelSmall?.copyWith(
-                  color: fastingArtMutedForeground(context),
+                  color: theme.colorScheme.onSurfaceVariant,
                 ),
               ),
             ],
-          ),
         ),
       ),
     );

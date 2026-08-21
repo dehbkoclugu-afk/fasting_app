@@ -6,7 +6,6 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
-import '../../../shared/widgets/fasting_art_slot.dart';
 import '../widgets/onboarding_progress.dart';
 
 class GoalScreen extends StatefulWidget {
@@ -124,67 +123,48 @@ class _GoalScreenState extends State<GoalScreen> {
                                     : theme.dividerColor,
                                 borderRadius: AppSpacing.borderRadiusLg,
                               ),
-                              child: FastingArtSlot(
-                                assetPath: goal['art'] as String,
-                                height:
-                                    constraints.maxHeight -
-                                    (isSelected ? 4 : 2),
-                                borderRadius: 17,
-                                variant: FastingArtVariant.card,
-                                semanticLabel: goal['title'] as String,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12),
-                                  child: Stack(
-                                    children: [
-                                      if (isSelected)
-                                        Align(
-                                          alignment: Alignment.topRight,
-                                          child: Icon(
-                                            Icons.check_circle,
-                                            color: theme.colorScheme.primary,
-                                            size: 22,
+                              child: Container(
+                                padding: const EdgeInsets.all(13),
+                                decoration: BoxDecoration(
+                                  color: theme.colorScheme.surfaceContainerLow,
+                                  borderRadius: BorderRadius.circular(17),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 38,
+                                          height: 38,
+                                          decoration: BoxDecoration(
+                                            color: AppColors.primary.withValues(alpha: .1),
+                                            borderRadius: BorderRadius.circular(12),
                                           ),
+                                          child: Icon(goal['icon'] as IconData, color: AppColors.primary, size: 21),
                                         ),
-                                      Align(
-                                        alignment: Alignment.bottomLeft,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              goal['title'] as String,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: theme.textTheme.titleSmall
-                                                  ?.copyWith(
-                                                    color:
-                                                        fastingArtForeground(
-                                                          context,
-                                                        ),
-                                                    fontWeight: FontWeight.w800,
-                                                  ),
-                                            ),
-                                            const SizedBox(height: 3),
-                                            Text(
-                                              goal['desc'] as String,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: theme.textTheme.bodySmall
-                                                  ?.copyWith(
-                                                    color:
-                                                        fastingArtMutedForeground(
-                                                          context,
-                                                        ),
-                                                    fontSize: 10,
-                                                    height: 1.15,
-                                                  ),
-                                            ),
-                                          ],
-                                        ),
+                                        const Spacer(),
+                                        if (isSelected)
+                                          const Icon(Icons.check_circle, color: AppColors.primary, size: 22),
+                                      ],
+                                    ),
+                                    const Spacer(),
+                                    Text(
+                                      goal['title'] as String,
+                                      style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800),
+                                    ),
+                                    const SizedBox(height: 3),
+                                    Text(
+                                      goal['desc'] as String,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: theme.textTheme.bodySmall?.copyWith(
+                                        color: theme.colorScheme.onSurfaceVariant,
+                                        fontSize: 10,
+                                        height: 1.15,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

@@ -20,14 +20,14 @@ class ExploreScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FastingArtSlot(
+            FastingSplitArtCard(
               assetPath: 'assets/images/editorial/fasting-guide-hero.webp',
-              height: 196,
-              variant: FastingArtVariant.hero,
+              minHeight: 196,
+              artWidth: 164,
               alignment: Alignment.bottomRight,
               semanticLabel: l10n.explore_guide,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(22, 22, 112, 22),
+                padding: const EdgeInsets.all(22),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Column(
@@ -36,7 +36,6 @@ class ExploreScreen extends StatelessWidget {
                       children: [
                         Text(
                           l10n.explore_guide,
-                          maxLines: 2,
                           style: theme.textTheme.headlineSmall?.copyWith(
                             color: fastingArtForeground(context),
                             fontWeight: FontWeight.w800,
@@ -46,7 +45,6 @@ class ExploreScreen extends StatelessWidget {
                         const SizedBox(height: 3),
                         Text(
                           l10n.explore_guideDesc,
-                          maxLines: 4,
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: fastingArtMutedForeground(context),
                             height: 1.25,
@@ -263,14 +261,14 @@ class ExploreScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
-      child: FastingArtSlot(
+      child: FastingSplitArtCard(
         assetPath: tip.artPath,
-        height: 184,
-        variant: FastingArtVariant.row,
+        minHeight: 184,
+        artWidth: 164,
         alignment: Alignment.bottomRight,
         semanticLabel: tip.title,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 104, 16),
+          padding: const EdgeInsets.all(16),
           child: Align(
             alignment: Alignment.topLeft,
             child: Column(
@@ -287,8 +285,6 @@ class ExploreScreen extends StatelessWidget {
                   const SizedBox(height: 5),
                   Text(
                     tip.description,
-                    maxLines: 6,
-                    overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: fastingArtMutedForeground(context),
                       height: 1.32,

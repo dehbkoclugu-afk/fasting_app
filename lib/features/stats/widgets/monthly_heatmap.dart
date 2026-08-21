@@ -31,36 +31,31 @@ class MonthlyHeatmap extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Month header with nav
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
+        Text(
               '${_monthName(context, month.month)} ${month.year}',
               style: theme.textTheme.titleSmall?.copyWith(
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w800,
               ),
             ),
-            Row(
+        const SizedBox(height: 10),
+        Wrap(
+              spacing: 10,
+              runSpacing: 6,
               children: [
                 _buildLegendDot(context, l10n.heatmap_none, Colors.transparent),
-                const SizedBox(width: 8),
                 _buildLegendDot(
                   context,
                   l10n.heatmap_low,
                   AppColors.primary.withAlpha(60),
                 ),
-                const SizedBox(width: 8),
                 _buildLegendDot(
                   context,
                   l10n.heatmap_good,
                   AppColors.primary.withAlpha(140),
                 ),
-                const SizedBox(width: 8),
                 _buildLegendDot(context, l10n.heatmap_full, AppColors.primary),
               ],
             ),
-          ],
-        ),
         const SizedBox(height: 12),
 
         // Day labels row
@@ -110,7 +105,7 @@ class MonthlyHeatmap extends StatelessWidget {
                       decoration: BoxDecoration(
                         color:
                             isFuture
-                                ? Colors.transparent
+                                ? theme.colorScheme.surfaceContainerLowest
                                 : _getHeatColor(hours, theme),
                         borderRadius: BorderRadius.circular(4),
                         border: Border.all(
@@ -122,13 +117,13 @@ class MonthlyHeatmap extends StatelessWidget {
                         child: Text(
                           '$dayNumber',
                           style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 11,
                             fontWeight: FontWeight.w500,
                             color:
                                 hours >= 12
                                     ? Colors.white
                                     : theme.colorScheme.onSurface.withAlpha(
-                                      isFuture ? 50 : 150,
+                                      isFuture ? 80 : 190,
                                     ),
                           ),
                         ),
@@ -181,7 +176,7 @@ class MonthlyHeatmap extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 9,
-            color: theme.colorScheme.onSurface.withAlpha(100),
+            color: theme.colorScheme.onSurface.withAlpha(165),
           ),
         ),
       ],
