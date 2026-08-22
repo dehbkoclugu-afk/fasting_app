@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../../stats/providers/stats_provider.dart';
 
@@ -59,8 +60,7 @@ class QuickStatsRow extends ConsumerWidget {
         ),
         const SizedBox(height: 12),
         _SummarySurface(
-          icon: Icons.local_drink_outlined,
-          accent: AppColors.tertiary,
+          artPath: 'assets/images/editorial/v3/quick-water.webp',
           height: 158,
           onTap: () => context.push('/water-tracker'),
           child: Column(
@@ -111,8 +111,7 @@ class QuickStatsRow extends ConsumerWidget {
           children: [
             Expanded(
               child: _SummarySurface(
-                icon: Icons.local_fire_department_outlined,
-                accent: AppColors.warning,
+                artPath: 'assets/images/editorial/v3/quick-streak.webp',
                 height: 118,
                 child: _Metric(
                   value: '$streak',
@@ -123,8 +122,7 @@ class QuickStatsRow extends ConsumerWidget {
             const SizedBox(width: 12),
             Expanded(
               child: _SummarySurface(
-                icon: Icons.monitor_weight_outlined,
-                accent: AppColors.success,
+                artPath: 'assets/images/editorial/v3/quick-weight.webp',
                 height: 118,
                 onTap: () => context.push('/weight-tracker'),
                 child: _Metric(
@@ -154,55 +152,40 @@ class QuickStatsRow extends ConsumerWidget {
 class _SummarySurface extends StatelessWidget {
   const _SummarySurface({
     required this.child,
-    required this.icon,
-    required this.accent,
+    required this.artPath,
     required this.height,
     this.onTap,
   });
 
   final Widget child;
-  final IconData icon;
-  final Color accent;
+  final String artPath;
   final double height;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Container(
+    return FastingArtSlot(
+      assetPath: artPath,
       height: height,
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(
-          color: theme.colorScheme.outlineVariant.withValues(alpha: .42),
+      borderRadius: 22,
+      alignment: Alignment.centerRight,
+      variant: FastingArtVariant.card,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: Theme.of(context).brightness == Brightness.dark
+                ? const [Color(0xF20F1424), Color(0x8A0F1424), Colors.transparent]
+                : [Theme.of(context).colorScheme.surface.withValues(alpha: .98), Theme.of(context).colorScheme.surface.withValues(alpha: .82), Colors.transparent],
+            stops: const [0, .58, 1],
+          ),
         ),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                Expanded(child: child),
-                const SizedBox(width: 10),
-                Container(
-                  width: height >= 150 ? 54 : 42,
-                  height: height >= 150 ? 54 : 42,
-                  decoration: BoxDecoration(
-                    color: accent.withValues(alpha: .11),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Icon(
-                    icon,
-                    color: accent,
-                    size: height >= 150 ? 27 : 22,
-                  ),
-                ),
-              ],
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: onTap,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(16, 16, height >= 150 ? 112 : 58, 16),
+              child: child,
             ),
           ),
         ),

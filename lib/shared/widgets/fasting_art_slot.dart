@@ -27,11 +27,8 @@ Color fastingArtDivider(BuildContext context) =>
         ? Colors.white.withValues(alpha: .14)
         : const Color(0xFF514756).withValues(alpha: .20);
 
-/// Editorial card with physically separate copy and artwork zones.
-///
-/// Use this for every card that contains more than a short label. The image is
-/// never painted behind [child], so longer translations cannot collide with
-/// the subject in the bitmap.
+/// Editorial card with physically separate, full-width artwork and copy zones.
+/// The complete illustration remains visible and copy never sits on top of it.
 class FastingSplitArtCard extends StatelessWidget {
   const FastingSplitArtCard({
     super.key,
@@ -77,31 +74,16 @@ class FastingSplitArtCard extends StatelessWidget {
             color: theme.colorScheme.outlineVariant.withValues(alpha: .42),
           ),
         ),
-        child: Stack(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: EdgeInsets.only(right: artWidth),
-              child: child,
-            ),
-            Positioned(
-              top: 0,
-              right: 0,
-              bottom: 0,
-              width: artWidth,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceContainer,
-                  border: Border(
-                    left: BorderSide(
-                      color: theme.colorScheme.outlineVariant.withValues(
-                        alpha: .28,
-                      ),
-                    ),
-                  ),
-                ),
+            AspectRatio(
+              aspectRatio: 16 / 9,
+              child: ColoredBox(
+                color: theme.colorScheme.surfaceContainer,
                 child: Image.asset(
                   resolvedAsset,
-                  fit: fit,
+                  fit: BoxFit.contain,
                   alignment: alignment,
                   filterQuality: FilterQuality.high,
                   excludeFromSemantics: true,
@@ -112,6 +94,11 @@ class FastingSplitArtCard extends StatelessWidget {
                 ),
               ),
             ),
+            Divider(
+              height: 1,
+              color: theme.colorScheme.outlineVariant.withValues(alpha: .28),
+            ),
+            child,
           ],
         ),
       ),

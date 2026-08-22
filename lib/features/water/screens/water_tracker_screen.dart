@@ -5,6 +5,7 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../data/database/app_database.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../../timer/providers/water_provider.dart';
 
 class WaterTrackerScreen extends ConsumerWidget {
@@ -27,16 +28,14 @@ class WaterTrackerScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
         children: [
-          Container(
-            padding: const EdgeInsets.all(22),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceContainerLow,
-              borderRadius: BorderRadius.circular(28),
-              border: Border.all(
-                color: theme.colorScheme.outlineVariant.withValues(alpha: .45),
-              ),
-            ),
-            child: Column(
+          FastingSplitArtCard(
+            assetPath: 'assets/images/editorial/tip-hydration.webp',
+            minHeight: 218,
+            borderRadius: 28,
+            semanticLabel: l10n.water_title,
+            child: Padding(
+              padding: const EdgeInsets.all(22),
+              child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
@@ -95,6 +94,7 @@ class WaterTrackerScreen extends ConsumerWidget {
                     ),
                   ],
               ),
+            ),
           ),
           const SizedBox(height: 24),
           Row(
