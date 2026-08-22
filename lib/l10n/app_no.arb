@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "Fant ingen mat i dette bildet. Prøv et tydeligere bilde av tallerkenen.",
   "foodScan_errorUnreadable": "Dette bildet kunne ikke analyseres. Prøv et annet.",
   "paywall_aiFoodScan": "KI-matskanning",
-  "paywall_aiFoodScanDesc": "Ta bilde av et måltid og registrer kalorier og makronæringsstoffer på få sekunder"
+  "paywall_aiFoodScanDesc": "Ta bilde av et måltid og registrer kalorier og makronæringsstoffer på få sekunder",
+  "completion_earlyTitle": "Fasten er avsluttet",
+  "completion_earlyMessage": "Dagens tid ble lagret. Rekken og fremdriften for prestasjoner ble ikke endret fordi målet ikke ble nådd."
 }

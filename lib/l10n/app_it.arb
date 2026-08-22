@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "Nessun alimento trovato nella foto. Prova con un'immagine più nitida del piatto.",
   "foodScan_errorUnreadable": "Impossibile analizzare questa foto. Provane un'altra.",
   "paywall_aiFoodScan": "Scansione alimentare con IA",
-  "paywall_aiFoodScanDesc": "Fotografa un pasto e registra calorie e macronutrienti in pochi secondi"
+  "paywall_aiFoodScanDesc": "Fotografa un pasto e registra calorie e macronutrienti in pochi secondi",
+  "completion_earlyTitle": "Digiuno terminato",
+  "completion_earlyMessage": "La durata di oggi è stata salvata. La serie e i progressi degli obiettivi non sono cambiati perché il traguardo non è stato completato."
 }

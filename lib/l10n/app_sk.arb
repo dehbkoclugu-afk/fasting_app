@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "Na tejto fotografii sa nenašlo žiadne jedlo. Skúste jasnejší záber taniera.",
   "foodScan_errorUnreadable": "Túto fotografiu sa nepodarilo analyzovať. Skúste inú.",
   "paywall_aiFoodScan": "AI sken jedla",
-  "paywall_aiFoodScanDesc": "Odfoťte jedlo a za pár sekúnd zaznamenajte kalórie a makroživiny"
+  "paywall_aiFoodScanDesc": "Odfoťte jedlo a za pár sekúnd zaznamenajte kalórie a makroživiny",
+  "completion_earlyTitle": "Pôst ukončený",
+  "completion_earlyMessage": "Dnešný čas bol uložený. Séria ani postup v úspechoch sa nezmenili, pretože cieľ nebol splnený."
 }

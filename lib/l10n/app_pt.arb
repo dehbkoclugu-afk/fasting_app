@@ -741,5 +741,7 @@
   "foodScan_errorNoFood": "Nenhum alimento encontrado nesta foto. Tente uma imagem mais nítida do prato.",
   "foodScan_errorUnreadable": "Não foi possível analisar esta foto. Tente outra.",
   "paywall_aiFoodScan": "Escaneamento de comida com IA",
-  "paywall_aiFoodScanDesc": "Fotografe uma refeição e registre calorias e macros em segundos"
+  "paywall_aiFoodScanDesc": "Fotografe uma refeição e registre calorias e macros em segundos",
+  "completion_earlyTitle": "Jejum terminado",
+  "completion_earlyMessage": "O tempo de hoje foi guardado. A sequência e o progresso das conquistas não mudaram porque a meta não foi concluída."
 }

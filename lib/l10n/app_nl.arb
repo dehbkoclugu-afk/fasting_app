@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "Er is geen eten op deze foto gevonden. Maak een duidelijkere foto van het bord.",
   "foodScan_errorUnreadable": "Deze foto kon niet worden geanalyseerd. Probeer een andere foto.",
   "paywall_aiFoodScan": "AI-voedingsscan",
-  "paywall_aiFoodScanDesc": "Fotografeer een maaltijd en registreer binnen enkele seconden de calorieën en macro's"
+  "paywall_aiFoodScanDesc": "Fotografeer een maaltijd en registreer binnen enkele seconden de calorieën en macro's",
+  "completion_earlyTitle": "Vasten beëindigd",
+  "completion_earlyMessage": "De tijd van vandaag is opgeslagen. Je reeks en prestatievoortgang zijn niet gewijzigd omdat het doel niet is behaald."
 }

@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "照片中未发现食物，请更清晰地拍摄餐盘。",
   "foodScan_errorUnreadable": "无法分析这张照片，请尝试另一张。",
   "paywall_aiFoodScan": "AI食物扫描",
-  "paywall_aiFoodScanDesc": "拍摄膳食，数秒内记录卡路里和宏量营养素"
+  "paywall_aiFoodScanDesc": "拍摄膳食，数秒内记录卡路里和宏量营养素",
+  "completion_earlyTitle": "禁食已结束",
+  "completion_earlyMessage": "今天的时长已保存。由于未完成目标，连续记录和成就进度没有变化。"
 }

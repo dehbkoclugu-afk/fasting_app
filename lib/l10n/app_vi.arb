@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "Không tìm thấy thức ăn trong ảnh. Hãy thử chụp đĩa rõ hơn.",
   "foodScan_errorUnreadable": "Không thể phân tích ảnh này. Hãy thử ảnh khác.",
   "paywall_aiFoodScan": "Quét món ăn bằng AI",
-  "paywall_aiFoodScanDesc": "Chụp bữa ăn và ghi lại calo cùng chất dinh dưỡng đa lượng trong vài giây"
+  "paywall_aiFoodScanDesc": "Chụp bữa ăn và ghi lại calo cùng chất dinh dưỡng đa lượng trong vài giây",
+  "completion_earlyTitle": "Đã kết thúc nhịn ăn",
+  "completion_earlyMessage": "Thời gian hôm nay đã được lưu. Chuỗi ngày và tiến độ thành tích không thay đổi vì mục tiêu chưa hoàn thành."
 }

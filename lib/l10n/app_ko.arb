@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "사진에서 음식을 찾지 못했습니다. 접시를 더 선명하게 촬영하세요.",
   "foodScan_errorUnreadable": "이 사진을 분석할 수 없습니다. 다른 사진을 시도하세요.",
   "paywall_aiFoodScan": "AI 음식 스캔",
-  "paywall_aiFoodScanDesc": "식사를 촬영하고 몇 초 만에 칼로리와 주요 영양소를 기록하세요"
+  "paywall_aiFoodScanDesc": "식사를 촬영하고 몇 초 만에 칼로리와 주요 영양소를 기록하세요",
+  "completion_earlyTitle": "단식이 종료되었습니다",
+  "completion_earlyMessage": "오늘의 시간이 저장되었습니다. 목표를 완료하지 않아 연속 기록과 성과 진행도는 변경되지 않았습니다."
 }

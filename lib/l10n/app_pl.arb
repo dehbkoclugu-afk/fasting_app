@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "Na zdjęciu nie znaleziono jedzenia. Zrób wyraźniejsze zdjęcie talerza.",
   "foodScan_errorUnreadable": "Nie udało się przeanalizować tego zdjęcia. Spróbuj innego.",
   "paywall_aiFoodScan": "Skanowanie jedzenia przez AI",
-  "paywall_aiFoodScanDesc": "Zrób zdjęcie posiłku i zapisz kalorie oraz makroskładniki w kilka sekund"
+  "paywall_aiFoodScanDesc": "Zrób zdjęcie posiłku i zapisz kalorie oraz makroskładniki w kilka sekund",
+  "completion_earlyTitle": "Post zakończony",
+  "completion_earlyMessage": "Dzisiejszy czas został zapisany. Seria i postęp osiągnięć nie zmieniły się, ponieważ cel nie został ukończony."
 }

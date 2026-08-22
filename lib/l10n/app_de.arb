@@ -741,5 +741,7 @@
   "foodScan_errorNoFood": "Auf diesem Foto ist kein Essen zu erkennen. Versuche eine klarere Aufnahme.",
   "foodScan_errorUnreadable": "Dieses Foto konnte nicht analysiert werden. Versuche ein anderes.",
   "paywall_aiFoodScan": "KI-Foto-Analyse",
-  "paywall_aiFoodScanDesc": "Mahlzeit fotografieren und Kalorien und Makros in Sekunden erfassen"
+  "paywall_aiFoodScanDesc": "Mahlzeit fotografieren und Kalorien und Makros in Sekunden erfassen",
+  "completion_earlyTitle": "Fasten beendet",
+  "completion_earlyMessage": "Die heutige Zeit wurde gespeichert. Serie und Erfolgsfortschritt wurden nicht geändert, da das Ziel nicht erreicht wurde."
 }

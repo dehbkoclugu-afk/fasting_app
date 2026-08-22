@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "写真に食べ物が見つかりませんでした。皿をより鮮明に撮影してください。",
   "foodScan_errorUnreadable": "この写真を分析できませんでした。別の写真をお試しください。",
   "paywall_aiFoodScan": "AI食事スキャン",
-  "paywall_aiFoodScanDesc": "食事を撮影し、カロリーと主要栄養素を数秒で記録します"
+  "paywall_aiFoodScanDesc": "食事を撮影し、カロリーと主要栄養素を数秒で記録します",
+  "completion_earlyTitle": "断食を終了しました",
+  "completion_earlyMessage": "今日の時間を保存しました。目標を達成していないため、連続記録と実績の進行状況は変わりません。"
 }
