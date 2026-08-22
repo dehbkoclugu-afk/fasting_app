@@ -177,7 +177,9 @@ class MetabolicJourney extends StatelessWidget {
     String locale,
     int startHour,
   ) {
-    final minutes = math.max(0, ((startHour - elapsedHours) * 60).round());
+    final minutes = math
+        .max(0, ((startHour - elapsedHours) * 60).round())
+        .toInt();
     return Formatters.formatShortDuration(
       minutes,
       locale: locale,
