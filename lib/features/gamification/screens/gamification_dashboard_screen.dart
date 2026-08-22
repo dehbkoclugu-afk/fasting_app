@@ -134,58 +134,63 @@ class _LevelHero extends StatelessWidget {
       label: l10n.game_levelSemantics(game.level, game.xp),
       child: FastingSplitArtCard(
         assetPath: 'assets/images/editorial/v4/weekly-league.webp',
-        minHeight: 174,
+        minHeight: 190,
+        artWidth: 122,
         borderRadius: 26,
         semanticLabel: l10n.game_explorer,
         child: Padding(
           padding: const EdgeInsets.all(22),
           child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.game_explorer,
-                        style: theme.textTheme.titleLarge?.copyWith(
-                          color: theme.colorScheme.onSurface,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                      Text(
-                        calm
-                            ? l10n.game_questsDesc
-                            : '${tr ? 'Seviye' : 'Level'} ${game.level} • ${game.xp} ${tr ? 'toplam XP' : 'total XP'}',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ],
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                l10n.game_explorer,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.titleLarge?.copyWith(
+                  color: fastingArtForeground(context),
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                calm
+                    ? l10n.game_questsDesc
+                    : '${tr ? 'Seviye' : 'Level'} ${game.level} • ${game.xp} XP',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: fastingArtMutedForeground(context),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              if (!calm) ...[
+                const SizedBox(height: 16),
+                Text(
+                  '${game.levelXp} / ${GamificationState.levelSize} XP',
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: fastingArtForeground(context),
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
-                if (!calm)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text('${game.levelXp} / ${GamificationState.levelSize} XP', style: TextStyle(color: theme.colorScheme.onSurface, fontWeight: FontWeight.w800)),
-                      Text('${GamificationState.levelSize - game.levelXp} XP ${tr ? 'kaldı' : 'left'}', style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
-                    ],
+                const SizedBox(height: 7),
+                LinearProgressIndicator(
+                  value: game.levelProgress,
+                  minHeight: 8,
+                  borderRadius: BorderRadius.circular(10),
+                  backgroundColor: fastingArtDivider(context),
+                  valueColor: const AlwaysStoppedAnimation(AppColors.primary),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  '${GamificationState.levelSize - game.levelXp} XP ${tr ? 'kaldı' : 'left'}',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: fastingArtMutedForeground(context),
                   ),
+                ),
               ],
-            ),
-            const SizedBox(height: 18),
-            if (!calm)
-              LinearProgressIndicator(
-                value: game.levelProgress,
-                minHeight: 9,
-                borderRadius: BorderRadius.circular(10),
-                backgroundColor: theme.colorScheme.outlineVariant.withValues(alpha: .45),
-                valueColor: const AlwaysStoppedAnimation(AppColors.primary),
-              ),
-          ],
+            ],
           ),
         ),
       ),
