@@ -5,6 +5,7 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 
 import '../../../core/constants/metabolic_phases.dart';
 import '../../../core/utils/metabolic_phase_l10n.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 
 class MetabolicJourney extends StatelessWidget {
   const MetabolicJourney({
@@ -53,17 +54,16 @@ class MetabolicJourney extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
-                  width: 46,
-                  height: 46,
-                  decoration: BoxDecoration(
-                    color: current.gradientColors.first.withValues(alpha: .11),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Icon(
-                    Icons.change_circle_outlined,
-                    color: current.gradientColors.first,
-                    size: 25,
+                SizedBox(
+                  width: 96,
+                  child: FastingArtSlot(
+                    assetPath: _phaseArtwork(current),
+                    height: 82,
+                    borderRadius: 18,
+                    variant: FastingArtVariant.bare,
+                    fit: BoxFit.contain,
+                    semanticLabel: metabolicPhaseName(l10n, current),
+                    child: const SizedBox.shrink(),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -179,6 +179,9 @@ class MetabolicJourney extends StatelessWidget {
     if (rest == 0) return tr ? '$hours sa' : '$hours hr';
     return tr ? '$hours sa $rest dk' : '$hours hr $rest min';
   }
+
+  String _phaseArtwork(MetabolicPhase phase) =>
+      'assets/images/editorial/v5/phase-${switch (phase.id) { 'fatBurning' => 'fat-burning', _ => phase.id }}.webp';
 
   String _clock(DateTime time) =>
       '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';

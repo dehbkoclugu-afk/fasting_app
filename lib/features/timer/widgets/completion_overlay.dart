@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 
 class CompletionOverlay extends StatefulWidget {
   final int durationMinutes;
@@ -108,7 +109,18 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                       ),
                     ),
                     const SizedBox(height: 12),
-                    Center(
+                    if (successful) ...[
+                      FastingArtSlot(
+                        assetPath: 'assets/images/editorial/fast-complete.webp',
+                        height: 220,
+                        borderRadius: 28,
+                        variant: FastingArtVariant.bare,
+                        fit: BoxFit.contain,
+                        semanticLabel: l10n.timer_completed,
+                        child: const SizedBox.shrink(),
+                      ),
+                      const SizedBox(height: 18),
+                    ] else Center(
                       child: Container(
                         width: 72,
                         height: 72,
@@ -124,7 +136,7 @@ class _CompletionOverlayState extends State<CompletionOverlay>
                         ),
                       ),
                     ),
-                    const SizedBox(height: 18),
+                    if (!successful) const SizedBox(height: 18),
                     Text(successful ? l10n.timer_completed : l10n.completion_earlyTitle, textAlign: TextAlign.center, style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w900)),
                     const SizedBox(height: 8),
                     Text(successful ? l10n.timer_completedMessage : l10n.completion_earlyMessage, textAlign: TextAlign.center, style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant)),

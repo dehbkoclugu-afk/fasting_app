@@ -132,17 +132,13 @@ class _LevelHero extends StatelessWidget {
     final tr = Localizations.localeOf(context).languageCode == 'tr';
     return Semantics(
       label: l10n.game_levelSemantics(game.level, game.xp),
-      child: Container(
-        padding: const EdgeInsets.all(22),
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surfaceContainerLow,
-          borderRadius: BorderRadius.circular(26),
-          border: Border.all(
-            color: theme.colorScheme.outlineVariant.withValues(alpha: .5),
-          ),
-        ),
+      child: FastingSplitArtCard(
+        assetPath: 'assets/images/editorial/v4/weekly-league.webp',
+        minHeight: 174,
+        borderRadius: 26,
+        semanticLabel: l10n.game_explorer,
         child: Padding(
-          padding: EdgeInsets.zero,
+          padding: const EdgeInsets.all(22),
           child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -447,59 +443,45 @@ class _BadgeToken extends StatelessWidget {
       child: LayoutBuilder(
       builder: (context, constraints) => Opacity(
         opacity: badge.unlocked ? 1 : .62,
-        child: Container(
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceContainerLow,
-            borderRadius: BorderRadius.circular(18),
-            border: Border.all(
-              color: badge.unlocked
-                  ? AppColors.primary.withValues(alpha: .45)
-                  : theme.colorScheme.outlineVariant,
+        child: FastingArtSlot(
+          assetPath: _badgeArtwork(badge.id),
+          height: constraints.maxHeight,
+          borderRadius: 18,
+          variant: FastingArtVariant.bare,
+          fit: BoxFit.contain,
+          semanticLabel: _badgeTitle(l10n, badge.id),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: isDark
+                    ? [Colors.transparent, const Color(0xFF0F1424).withValues(alpha: .18), const Color(0xFF0F1424).withValues(alpha: .96)]
+                    : [Colors.transparent, theme.colorScheme.surface.withValues(alpha: .18), theme.colorScheme.surface.withValues(alpha: .96)],
+                stops: const [0, .48, 1],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+              border: Border.all(color: badge.unlocked ? AppColors.primary.withValues(alpha: .55) : theme.dividerColor),
+              borderRadius: BorderRadius.circular(18),
             ),
-          ),
-          clipBehavior: Clip.antiAlias,
-          child: Column(
-            children: [
-              Expanded(
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(7),
-                      child: Image.asset(
-                        themedEditorialAssetPath(_badgeArtwork(badge.id), theme.brightness),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                    Positioned(
-                      top: 7,
-                      right: 7,
-                      child: Icon(
-                        badge.unlocked ? Icons.check_circle : Icons.lock_outline,
-                        size: 17,
-                        color: labelColor.withValues(alpha: .9),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
-                color: theme.colorScheme.surfaceContainer,
-                child: Text(
-                  _badgeTitle(l10n, badge.id),
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.labelMedium?.copyWith(
-                    color: labelColor,
-                    fontWeight: FontWeight.w800,
-                    height: 1.1,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 8, 10),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Icon(badge.unlocked ? Icons.check_circle : Icons.lock_outline, size: 16, color: labelColor.withValues(alpha: .9)),
                   ),
-                ),
+                  const Spacer(),
+                  Text(
+                    _badgeTitle(l10n, badge.id),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.labelMedium?.copyWith(color: labelColor, fontWeight: FontWeight.w800, height: 1.1),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -525,21 +507,15 @@ class _BadgeToken extends StatelessWidget {
               IconButton(onPressed: () => Navigator.pop(sheetContext), icon: const Icon(Icons.close_rounded)),
             ]),
             const SizedBox(height: 10),
-            Center(
-              child: Container(
-                width: 190,
-                height: 190,
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceContainerLow,
-                  shape: BoxShape.circle,
-                ),
-                child: ClipOval(
-                  child: Image.asset(
-                    themedEditorialAssetPath(_badgeArtwork(badge.id), theme.brightness),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+            DecoratedBox(
+              decoration: BoxDecoration(color: theme.colorScheme.surfaceContainerLow, borderRadius: BorderRadius.circular(22)),
+              child: FastingArtSlot(
+                assetPath: _badgeArtwork(badge.id),
+                height: 210,
+                borderRadius: 22,
+                variant: FastingArtVariant.bare,
+                fit: BoxFit.contain,
+                child: const SizedBox.shrink(),
               ),
             ),
             const SizedBox(height: 18),

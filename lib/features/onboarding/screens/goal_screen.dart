@@ -6,6 +6,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../widgets/onboarding_progress.dart';
 
 class GoalScreen extends StatefulWidget {
@@ -95,7 +96,7 @@ class _GoalScreenState extends State<GoalScreen> {
                   crossAxisCount: 2,
                   mainAxisSpacing: 12,
                   crossAxisSpacing: 12,
-                  childAspectRatio: 1.18,
+                  childAspectRatio: .82,
                   children:
                       goals.map((goal) {
                         final isSelected = _selectedGoals.contains(
@@ -124,7 +125,7 @@ class _GoalScreenState extends State<GoalScreen> {
                                 borderRadius: AppSpacing.borderRadiusLg,
                               ),
                               child: Container(
-                                padding: const EdgeInsets.all(13),
+                                clipBehavior: Clip.antiAlias,
                                 decoration: BoxDecoration(
                                   color: theme.colorScheme.surfaceContainerLow,
                                   borderRadius: BorderRadius.circular(17),
@@ -132,36 +133,36 @@ class _GoalScreenState extends State<GoalScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 38,
-                                          height: 38,
-                                          decoration: BoxDecoration(
-                                            color: AppColors.primary.withValues(alpha: .1),
-                                            borderRadius: BorderRadius.circular(12),
+                                    Expanded(
+                                      child: Stack(
+                                        fit: StackFit.expand,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8),
+                                            child: Image.asset(
+                                              themedEditorialAssetPath(goal['art'] as String, theme.brightness),
+                                              fit: BoxFit.contain,
+                                            ),
                                           ),
-                                          child: Icon(goal['icon'] as IconData, color: AppColors.primary, size: 21),
-                                        ),
-                                        const Spacer(),
-                                        if (isSelected)
-                                          const Icon(Icons.check_circle, color: AppColors.primary, size: 22),
-                                      ],
+                                          if (isSelected)
+                                            const Positioned(top: 8, right: 8, child: Icon(Icons.check_circle, color: AppColors.primary, size: 24)),
+                                        ],
+                                      ),
                                     ),
-                                    const Spacer(),
-                                    Text(
-                                      goal['title'] as String,
-                                      style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800),
-                                    ),
-                                    const SizedBox(height: 3),
-                                    Text(
-                                      goal['desc'] as String,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: theme.textTheme.bodySmall?.copyWith(
-                                        color: theme.colorScheme.onSurfaceVariant,
-                                        fontSize: 10,
-                                        height: 1.15,
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(goal['title'] as String, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800)),
+                                          const SizedBox(height: 3),
+                                          Text(
+                                            goal['desc'] as String,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, fontSize: 10, height: 1.15),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],

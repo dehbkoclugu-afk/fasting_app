@@ -579,10 +579,10 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                             children: [
                               FastingArtSlot(
                                 assetPath: 'assets/images/editorial/v3/plan-clock-${switch (plan.id) { 'eat_stop_eat' => 'ese', _ => plan.id.replaceAll('_', '-') }}.webp',
-                                height: 108,
+                                height: 178,
                                 borderRadius: 19,
                                 variant: FastingArtVariant.bare,
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                                 semanticLabel: plan.name,
                                 child: const SizedBox.shrink(),
                               ),

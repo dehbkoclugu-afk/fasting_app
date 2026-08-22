@@ -94,10 +94,10 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                               children: [
                                 FastingArtSlot(
                                   assetPath: _planArtwork(plan.id),
-                                  height: 104,
+                                  height: 178,
                                   borderRadius: 17,
                                   variant: FastingArtVariant.bare,
-                                  fit: BoxFit.cover,
+                                  fit: BoxFit.contain,
                                   semanticLabel: plan.name,
                                   child: const SizedBox.shrink(),
                                 ),

@@ -107,7 +107,7 @@ class MealsScreen extends ConsumerWidget {
                 onTap: () => _showAddMealSheet(context),
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
-                  height: 72,
+                  height: 92,
                   decoration: BoxDecoration(
                     color: theme.colorScheme.surfaceContainerLow,
                     borderRadius: BorderRadius.circular(20),
@@ -117,10 +117,13 @@ class MealsScreen extends ConsumerWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Row(
                       children: [
-                        Icon(
-                          PhosphorIcons.pencilSimple(),
-                          size: 20,
-                          color: AppColors.primaryLight,
+                        SizedBox(
+                          width: 66,
+                          height: 66,
+                          child: Image.asset(
+                            themedEditorialAssetPath('assets/images/editorial/v4/meal-manual-entry.webp', theme.brightness),
+                            fit: BoxFit.contain,
+                          ),
                         ),
                         const SizedBox(width: 10),
                         Text(
