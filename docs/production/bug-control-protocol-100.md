@@ -16,7 +16,7 @@ Audit branch: `codex/production-bug-audit-100`
 ## Initial findings
 
 - **P0 risk closed on audit branch:** the app-level release manifest did not explicitly declare `INTERNET`. A dependency may have supplied it in the merged manifest, so this is not proof that production networking was absent; the permission is now explicit and regression-guarded.
-- **P1 fixed on audit branch:** Android 13+ notification permission was absent from the release manifest.
+- **P1 fixed on audit branch:** Android 13+ notification permission was absent from the release manifest, and onboarding kept notifications enabled after denial/skip. The manifest and saved setting now follow the real permission result.
 - **CI-control fixed on audit branch:** PR commits were eligible for both `push` and `pull_request` Android workflows, wasting quota.
 - Localization inventory: 32 locale files × 514 messages; no missing/extra keys, placeholder mismatches, or locale-metadata mismatches.
 - Artwork inventory: 87 Dart files scanned, 74 referenced assets found, zero missing; all five phase light/dark pairs and twelve quick-meal artworks exist.
@@ -155,7 +155,7 @@ Audit branch: `codex/production-bug-audit-100`
 | # | Check | Status | Evidence / next action |
 |---:|---|---|---|
 | 81 | Initialize notification plugin safely | **PENDING** | service/device test |
-| 82 | Request notification permission on Android 13+ | **FIXED** | manifest now enables runtime request |
+| 82 | Request notification permission on Android 13+ | **FIXED** | manifest enables runtime request; onboarding persists denial/skip as disabled |
 | 83 | Use selected locale in scheduled notifications | **PASS** | saved locale lookup |
 | 84 | Schedule halfway reminder only in future | **PASS** | service guard |
 | 85 | Schedule phase reminders inside fasting window | **PASS** | service guard |
