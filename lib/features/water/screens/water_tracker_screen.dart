@@ -213,7 +213,7 @@ class WaterTrackerScreen extends ConsumerWidget {
   static IconData _amountIcon(int amount) => switch (amount) {
     <= 150 => Icons.local_cafe_outlined,
     <= 350 => Icons.local_drink_outlined,
-    _ => Icons.water_bottle_outlined,
+    _ => Icons.local_drink_outlined,
   };
 
   Future<void> _add(WidgetRef ref, int amount) async {
@@ -343,6 +343,6 @@ class _WaterEntryTile extends StatelessWidget {
   IconData _entryIcon(int amount) => switch (amount) {
     <= 150 => Icons.local_cafe_outlined,
     <= 350 => Icons.local_drink_outlined,
-    _ => Icons.water_bottle_outlined,
+    _ => Icons.local_drink_outlined,
   };
 }
