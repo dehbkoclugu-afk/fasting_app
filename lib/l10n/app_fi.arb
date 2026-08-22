@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "Kuvasta ei löytynyt ruokaa. Ota selkeämpi kuva lautasesta.",
   "foodScan_errorUnreadable": "Tätä kuvaa ei voitu analysoida. Kokeile toista kuvaa.",
   "paywall_aiFoodScan": "Tekoälyruokaskannaus",
-  "paywall_aiFoodScanDesc": "Kuvaa ateria ja kirjaa sen kalorit ja makroravinteet sekunneissa"
+  "paywall_aiFoodScanDesc": "Kuvaa ateria ja kirjaa sen kalorit ja makroravinteet sekunneissa",
+  "completion_earlyTitle": "Paasto päättyi",
+  "completion_earlyMessage": "Tämän päivän aika tallennettiin. Putki ja saavutusten edistyminen eivät muuttuneet, koska tavoitetta ei saavutettu."
 }

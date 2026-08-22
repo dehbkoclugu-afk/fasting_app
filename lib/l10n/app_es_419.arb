@@ -741,5 +741,7 @@
   "foodScan_errorNoFood": "No se encontró comida en esta foto. Prueba con una toma más clara del plato.",
   "foodScan_errorUnreadable": "No se pudo analizar esta foto. Prueba con otra.",
   "paywall_aiFoodScan": "Escáner de comida con IA",
-  "paywall_aiFoodScanDesc": "Fotografía una comida y registra sus calorías y macros en segundos"
+  "paywall_aiFoodScanDesc": "Fotografía una comida y registra sus calorías y macros en segundos",
+  "completion_earlyTitle": "Ayuno finalizado",
+  "completion_earlyMessage": "Se guardó el tiempo de hoy. La racha y el progreso de logros no cambiaron porque no se completó el objetivo."
 }

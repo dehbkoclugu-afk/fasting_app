@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "A fényképen nem található étel. Készíts tisztább képet a tányérról.",
   "foodScan_errorUnreadable": "A fényképet nem sikerült elemezni. Próbálj másikat.",
   "paywall_aiFoodScan": "MI-ételszkenner",
-  "paywall_aiFoodScanDesc": "Fotózz le egy étkezést, és másodpercek alatt rögzítsd a kalóriákat és makrotápanyagokat"
+  "paywall_aiFoodScanDesc": "Fotózz le egy étkezést, és másodpercek alatt rögzítsd a kalóriákat és makrotápanyagokat",
+  "completion_earlyTitle": "A böjt véget ért",
+  "completion_earlyMessage": "A mai időt elmentettük. A sorozat és az eredmények előrehaladása nem változott, mert a cél nem teljesült."
 }

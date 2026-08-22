@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "Tidak ada makanan yang ditemukan dalam foto ini. Coba foto piring yang lebih jelas.",
   "foodScan_errorUnreadable": "Foto ini tidak dapat dianalisis. Coba foto lain.",
   "paywall_aiFoodScan": "Pemindaian Makanan AI",
-  "paywall_aiFoodScanDesc": "Foto makanan dan catat kalori serta makronya dalam hitungan detik"
+  "paywall_aiFoodScanDesc": "Foto makanan dan catat kalori serta makronya dalam hitungan detik",
+  "completion_earlyTitle": "Puasa berakhir",
+  "completion_earlyMessage": "Durasi hari ini telah disimpan. Rangkaian dan progres pencapaian tidak berubah karena target belum tercapai."
 }

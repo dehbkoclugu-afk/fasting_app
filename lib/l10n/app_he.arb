@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "לא נמצא מזון בתמונה. נסו צילום ברור יותר של הצלחת.",
   "foodScan_errorUnreadable": "לא ניתן לנתח את התמונה. נסו תמונה אחרת.",
   "paywall_aiFoodScan": "סריקת מזון ב-AI",
-  "paywall_aiFoodScanDesc": "צלמו ארוחה ורשמו קלוריות ומאקרו בתוך שניות"
+  "paywall_aiFoodScanDesc": "צלמו ארוחה ורשמו קלוריות ומאקרו בתוך שניות",
+  "completion_earlyTitle": "הצום הסתיים",
+  "completion_earlyMessage": "משך הזמן של היום נשמר. הרצף וההתקדמות בהישגים לא השתנו מכיוון שהיעד לא הושלם."
 }

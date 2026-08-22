@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "Ingen mat hittades i bilden. Ta en tydligare bild av tallriken.",
   "foodScan_errorUnreadable": "Bilden kunde inte analyseras. Prova en annan.",
   "paywall_aiFoodScan": "AI-matskanning",
-  "paywall_aiFoodScanDesc": "Fotografera en måltid och registrera kalorier och makronäringsämnen på några sekunder"
+  "paywall_aiFoodScanDesc": "Fotografera en måltid och registrera kalorier och makronäringsämnen på några sekunder",
+  "completion_earlyTitle": "Fastan är avslutad",
+  "completion_earlyMessage": "Dagens tid sparades. Din serie och dina framsteg ändrades inte eftersom målet inte slutfördes."
 }

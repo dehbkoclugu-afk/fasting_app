@@ -769,5 +769,7 @@
   "foodScan_errorNoFood": "Nu s-a găsit mâncare în această fotografie. Încearcă o imagine mai clară a farfuriei.",
   "foodScan_errorUnreadable": "Această fotografie nu a putut fi analizată. Încearcă alta.",
   "paywall_aiFoodScan": "Scanare alimentară cu IA",
-  "paywall_aiFoodScanDesc": "Fotografiază o masă și înregistrează caloriile și macronutrienții în câteva secunde"
+  "paywall_aiFoodScanDesc": "Fotografiază o masă și înregistrează caloriile și macronutrienții în câteva secunde",
+  "completion_earlyTitle": "Post încheiat",
+  "completion_earlyMessage": "Durata de astăzi a fost salvată. Seria și progresul realizărilor nu s-au schimbat deoarece obiectivul nu a fost atins."
 }

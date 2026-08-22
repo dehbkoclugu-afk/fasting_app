@@ -741,5 +741,7 @@
   "foodScan_errorNoFood": "Aucun aliment détecté sur cette photo. Essayez une prise plus nette de l'assiette.",
   "foodScan_errorUnreadable": "Cette photo n'a pas pu être analysée. Essayez-en une autre.",
   "paywall_aiFoodScan": "Scan de repas par IA",
-  "paywall_aiFoodScanDesc": "Photographiez un repas et enregistrez calories et macros en quelques secondes"
+  "paywall_aiFoodScanDesc": "Photographiez un repas et enregistrez calories et macros en quelques secondes",
+  "completion_earlyTitle": "Jeûne terminé",
+  "completion_earlyMessage": "La durée d’aujourd’hui a été enregistrée. La série et la progression des succès n’ont pas changé, car l’objectif n’a pas été atteint."
 }
