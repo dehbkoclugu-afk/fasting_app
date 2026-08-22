@@ -131,8 +131,7 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                             ),
                           ),
                         ),
-                      ),
-                    );
+                      );
                   },
                 ),
               ),
