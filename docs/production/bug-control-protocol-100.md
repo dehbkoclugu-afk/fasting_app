@@ -15,7 +15,7 @@ Audit branch: `codex/production-bug-audit-100`
 
 ## Initial findings
 
-- **P0 fixed on audit branch:** Android release manifest lacked `INTERNET`; debug/profile had it, release did not.
+- **P0 risk closed on audit branch:** the app-level release manifest did not explicitly declare `INTERNET`. A dependency may have supplied it in the merged manifest, so this is not proof that production networking was absent; the permission is now explicit and regression-guarded.
 - **P1 fixed on audit branch:** Android 13+ notification permission was absent from the release manifest.
 - **CI-control fixed on audit branch:** PR commits were eligible for both `push` and `pull_request` Android workflows, wasting quota.
 - Localization inventory: 32 locale files × 514 messages; no missing/extra keys, placeholder mismatches, or locale-metadata mismatches.
@@ -24,10 +24,10 @@ Audit branch: `codex/production-bug-audit-100`
 ## Current tally
 
 - PASS: 43
-- BLOCKED: 6
+- BLOCKED: 7
 - FIXED: 6
 - WARN: 1
-- PENDING: 34
+- PENDING: 33
 - MANUAL: 10
 
 ### Release identity
@@ -175,7 +175,7 @@ Audit branch: `codex/production-bug-audit-100`
 | 94 | Keep billable Gemini key out of source | **PASS** | no fallback constant |
 | 95 | Restrict Gemini key and quota in Google Cloud | **MANUAL** | cloud-console gate |
 | 96 | Use production AdMob application/unit IDs | **PASS** | Android production IDs present |
-| 97 | Verify privacy and terms URLs return 200 | **PENDING** | external endpoint check |
+| 97 | Verify privacy and terms URLs return 200 | **BLOCKED** | current audit environment cannot open the Vercel endpoints; verify from release/device network |
 | 98 | Verify store icon, feature graphic and screenshots | **MANUAL** | Play Console gate |
 | 99 | Run clean install and upgrade from production build | **MANUAL** | signed APK/internal track |
 | 100 | Sign off release only with zero P0/P1 failures | **PENDING** | final protocol gate |
