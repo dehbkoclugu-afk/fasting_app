@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 
 import '../../../core/constants/metabolic_phases.dart';
+import '../../../core/utils/formatters.dart';
 import '../../../core/utils/metabolic_phase_l10n.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
 
@@ -23,6 +24,7 @@ class MetabolicJourney extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    final locale = Localizations.localeOf(context).toString();
     final current = MetabolicPhases.getPhaseForHours(elapsedHours);
     MetabolicPhase? next;
     for (final phase in MetabolicPhases.all) {
@@ -55,13 +57,13 @@ class MetabolicJourney extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  width: 96,
+                  width: 120,
                   child: FastingArtSlot(
                     assetPath: _phaseArtwork(current),
-                    height: 82,
-                    borderRadius: 18,
+                    height: 68,
+                    borderRadius: 16,
                     variant: FastingArtVariant.bare,
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                     semanticLabel: metabolicPhaseName(l10n, current),
                     child: const SizedBox.shrink(),
                   ),
@@ -103,7 +105,7 @@ class MetabolicJourney extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '%${(progress * 100).round()}',
+                  Formatters.formatPercentage(progress, locale: locale),
                   style: theme.textTheme.labelLarge?.copyWith(
                     fontWeight: FontWeight.w900,
                   ),
@@ -146,7 +148,7 @@ class MetabolicJourney extends StatelessWidget {
                 ),
                 child: Text(
                   l10n.journey_next(
-                    _remaining(next.startHour),
+                    _remaining(l10n, locale, next.startHour),
                     metabolicPhaseName(l10n, next),
                   ),
                   style: theme.textTheme.labelMedium?.copyWith(
@@ -170,14 +172,18 @@ class MetabolicJourney extends StatelessWidget {
     );
   }
 
-  String _remaining(int startHour) {
+  String _remaining(
+    AppLocalizations l10n,
+    String locale,
+    int startHour,
+  ) {
     final minutes = math.max(0, ((startHour - elapsedHours) * 60).round());
-    final hours = minutes ~/ 60;
-    final rest = minutes % 60;
-    final tr = WidgetsBinding.instance.platformDispatcher.locale.languageCode == 'tr';
-    if (hours == 0) return tr ? '$rest dk' : '$rest min';
-    if (rest == 0) return tr ? '$hours sa' : '$hours hr';
-    return tr ? '$hours sa $rest dk' : '$hours hr $rest min';
+    return Formatters.formatShortDuration(
+      minutes,
+      locale: locale,
+      hoursLabel: l10n.common_hours,
+      minutesLabel: l10n.common_minutes,
+    );
   }
 
   String _phaseArtwork(MetabolicPhase phase) =>
