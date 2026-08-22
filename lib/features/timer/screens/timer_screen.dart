@@ -389,7 +389,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
             padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   l10n.explore_guide,
@@ -433,7 +433,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
             padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   l10n.meals_title,

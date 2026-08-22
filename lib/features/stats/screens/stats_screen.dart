@@ -404,12 +404,21 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       alignment: Alignment.bottomRight,
       fit: BoxFit.cover,
       semanticLabel: title,
-      child: Padding(
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: ColoredBox(
+              color: theme.colorScheme.surface.withValues(
+                alpha: theme.brightness == Brightness.dark ? .46 : .40,
+              ),
+            ),
+          ),
+          Padding(
           padding: const EdgeInsets.fromLTRB(15, 15, 62, 15),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Spacer(),
                 Text(
                   value,
                   maxLines: 1,
@@ -432,6 +441,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                 ),
               ],
             ),
+          ),
+        ],
       ),
     );
   }
