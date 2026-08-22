@@ -579,7 +579,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                             minHeight: 178,
                             artWidth: 148,
                             borderRadius: 19,
-                            fit: BoxFit.contain,
+                            fit: BoxFit.cover,
                             semanticLabel: plan.name,
                             child: Padding(
                                 padding: const EdgeInsets.fromLTRB(15, 15, 12, 15),

@@ -88,7 +88,7 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                             minHeight: 178,
                             artWidth: 142,
                             borderRadius: 17,
-                            fit: BoxFit.contain,
+                            fit: BoxFit.cover,
                             semanticLabel: plan.name,
                             child: Padding(
                                   padding: const EdgeInsets.fromLTRB(14, 14, 12, 14),
