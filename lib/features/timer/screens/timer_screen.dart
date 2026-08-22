@@ -380,8 +380,10 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
         borderRadius: BorderRadius.circular(24),
         child: FastingSplitArtCard(
           assetPath: 'assets/images/editorial/fasting-guide-hero.webp',
-          minHeight: 146,
+          minHeight: 190,
           artWidth: 174,
+          fit: BoxFit.cover,
+          alignment: Alignment.centerRight,
           semanticLabel: l10n.explore_guide,
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -422,8 +424,10 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
         borderRadius: BorderRadius.circular(24),
         child: FastingSplitArtCard(
           assetPath: 'assets/images/editorial/tip-balanced-meal.webp',
-          minHeight: 136,
+          minHeight: 190,
           artWidth: 174,
+          fit: BoxFit.cover,
+          alignment: Alignment.centerRight,
           semanticLabel: l10n.meals_addMeal,
           child: Padding(
             padding: const EdgeInsets.all(20),

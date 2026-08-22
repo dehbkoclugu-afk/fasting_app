@@ -170,16 +170,7 @@ class _SummarySurface extends StatelessWidget {
       borderRadius: 22,
       alignment: Alignment.centerRight,
       variant: FastingArtVariant.card,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: Theme.of(context).brightness == Brightness.dark
-                ? const [Color(0xF20F1424), Color(0x8A0F1424), Colors.transparent]
-                : [Theme.of(context).colorScheme.surface.withValues(alpha: .98), Theme.of(context).colorScheme.surface.withValues(alpha: .82), Colors.transparent],
-            stops: const [0, .58, 1],
-          ),
-        ),
-        child: Material(
+      child: Material(
           color: Colors.transparent,
           child: InkWell(
             onTap: onTap,
@@ -188,7 +179,6 @@ class _SummarySurface extends StatelessWidget {
               child: child,
             ),
           ),
-        ),
       ),
     );
   }

@@ -404,14 +404,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       alignment: Alignment.bottomRight,
       fit: BoxFit.cover,
       semanticLabel: title,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [theme.colorScheme.surface.withValues(alpha: .98), theme.colorScheme.surface.withValues(alpha: .78), Colors.transparent],
-            stops: const [0, .58, 1],
-          ),
-        ),
-        child: Padding(
+      child: Padding(
           padding: const EdgeInsets.fromLTRB(15, 15, 62, 15),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -439,7 +432,6 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                 ),
               ],
             ),
-        ),
       ),
     );
   }

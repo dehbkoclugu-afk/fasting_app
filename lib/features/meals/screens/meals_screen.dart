@@ -114,14 +114,7 @@ class MealsScreen extends ConsumerWidget {
                   fit: BoxFit.cover,
                   alignment: Alignment.centerRight,
                   semanticLabel: l10n.meals_manualEntry,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [theme.colorScheme.surface.withValues(alpha: .98), theme.colorScheme.surface.withValues(alpha: .82), Colors.transparent],
-                        stops: const [0, .64, 1],
-                      ),
-                    ),
-                    child: Padding(
+                  child: Padding(
                     padding: const EdgeInsets.fromLTRB(18, 0, 88, 0),
                     child: Row(
                       children: [
@@ -140,7 +133,6 @@ class MealsScreen extends ConsumerWidget {
                           size: 20,
                         ),
                       ],
-                    ),
                     ),
                   ),
                 ),
@@ -412,14 +404,7 @@ class MealsScreen extends ConsumerWidget {
       fit: BoxFit.cover,
       alignment: Alignment.centerRight,
       semanticLabel: label,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [theme.colorScheme.surface.withValues(alpha: .98), theme.colorScheme.surface.withValues(alpha: .86), Colors.transparent],
-            stops: const [0, .64, 1],
-          ),
-        ),
-        child: Padding(
+      child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 8, 48, 8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -459,10 +444,10 @@ class MealsScreen extends ConsumerWidget {
                   backgroundColor: color.withValues(alpha: .12),
                   valueColor: AlwaysStoppedAnimation(color),
                 ),
-          ],
-        )),
-      ),
-    );
+            ],
+          ),
+        ),
+      );
   }
 
   Widget _buildMealItem(
