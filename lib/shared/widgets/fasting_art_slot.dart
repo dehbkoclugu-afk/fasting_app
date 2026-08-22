@@ -89,23 +89,6 @@ class FastingSplitArtCard extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned.fill(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                      theme.colorScheme.surface.withValues(alpha: .98),
-                      theme.colorScheme.surface.withValues(alpha: .90),
-                      theme.colorScheme.surface.withValues(alpha: .18),
-                      Colors.transparent,
-                    ],
-                    stops: const [0, .48, .72, 1],
-                  ),
-                ),
-              ),
-            ),
             ConstrainedBox(
               constraints: BoxConstraints(minHeight: minHeight),
               child: Padding(
@@ -174,12 +157,6 @@ class FastingArtSlot extends StatelessWidget {
           child: Stack(
             children: [
               Positioned.fill(child: _artwork(isDark)),
-              if (isDark && variant != FastingArtVariant.bare)
-                Positioned.fill(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(gradient: _darkScrim),
-                  ),
-                ),
               Positioned.fill(child: child),
             ],
           ),
@@ -214,43 +191,11 @@ class FastingArtSlot extends StatelessWidget {
           alignment: alignment,
           filterQuality: FilterQuality.high,
           excludeFromSemantics: true,
-          errorBuilder: (context, error, stackTrace) => DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: isDark
-                    ? const [Color(0xFF11172A), Color(0xFF30203A)]
-                    : const [Color(0xFFFFF8EE), Color(0xFFF5ECE1)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
+          errorBuilder: (context, error, stackTrace) => ColoredBox(
+            color: isDark ? const Color(0xFF11172A) : const Color(0xFFFFF8EE),
           ),
         ),
       ),
     );
   }
-
-  LinearGradient get _darkScrim => switch (variant) {
-    FastingArtVariant.row => const LinearGradient(
-      colors: [Color(0xF20F1424), Color(0xB30F1424), Color(0x190F1424)],
-      stops: [0, .52, 1],
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-    ),
-    FastingArtVariant.card => const LinearGradient(
-      colors: [Color(0xD90F1424), Color(0x730F1424), Color(0x260F1424)],
-      stops: [0, .58, 1],
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-    ),
-    FastingArtVariant.hero => const LinearGradient(
-      colors: [Color(0xF20F1424), Color(0xAD0F1424), Color(0x330F1424)],
-      stops: [0, .56, 1],
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-    ),
-    FastingArtVariant.bare => const LinearGradient(
-      colors: [Colors.transparent, Colors.transparent],
-    ),
-  };
 }

@@ -131,14 +131,7 @@ class _GoalScreenState extends State<GoalScreen> {
                                 variant: FastingArtVariant.card,
                                 fit: BoxFit.cover,
                                 semanticLabel: goal['title'] as String,
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [theme.colorScheme.surface.withValues(alpha: .97), theme.colorScheme.surface.withValues(alpha: .74), Colors.transparent],
-                                      stops: const [0, .6, 1],
-                                    ),
-                                  ),
-                                  child: Padding(
+                                child: Padding(
                                     padding: const EdgeInsets.fromLTRB(12, 10, 54, 10),
                                     child: Stack(
                                   children: [
@@ -160,7 +153,6 @@ class _GoalScreenState extends State<GoalScreen> {
                                   ],
                                 ),
                                   ),
-                                ),
                               ),
                             ),
                           ),
