@@ -83,26 +83,15 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                         ),
                         child: Opacity(
                           opacity: isLocked ? .58 : 1,
-                          child: Container(
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.surfaceContainerLow,
-                              borderRadius: BorderRadius.circular(17),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                FastingArtSlot(
-                                  assetPath: _planArtwork(plan.id),
-                                  height: 178,
-                                  borderRadius: 17,
-                                  variant: FastingArtVariant.bare,
-                                  fit: BoxFit.contain,
-                                  semanticLabel: plan.name,
-                                  child: const SizedBox.shrink(),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(14, 11, 14, 13),
+                          child: FastingSplitArtCard(
+                            assetPath: _planArtwork(plan.id),
+                            minHeight: 178,
+                            artWidth: 142,
+                            borderRadius: 17,
+                            fit: BoxFit.contain,
+                            semanticLabel: plan.name,
+                            child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(14, 14, 12, 14),
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
@@ -139,7 +128,6 @@ class _PlanSelectScreenState extends ConsumerState<PlanSelectScreen> {
                                     ],
                                   ),
                                 ),
-                              ],
                             ),
                           ),
                         ),

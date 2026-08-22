@@ -574,20 +574,15 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                               setSheetState(() => selectedId = plan.id);
                             }
                           },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              FastingArtSlot(
-                                assetPath: 'assets/images/editorial/v3/plan-clock-${switch (plan.id) { 'eat_stop_eat' => 'ese', _ => plan.id.replaceAll('_', '-') }}.webp',
-                                height: 178,
-                                borderRadius: 19,
-                                variant: FastingArtVariant.bare,
-                                fit: BoxFit.contain,
-                                semanticLabel: plan.name,
-                                child: const SizedBox.shrink(),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(15, 12, 15, 14),
+                          child: FastingSplitArtCard(
+                            assetPath: 'assets/images/editorial/v3/plan-clock-${switch (plan.id) { 'eat_stop_eat' => 'ese', _ => plan.id.replaceAll('_', '-') }}.webp',
+                            minHeight: 178,
+                            artWidth: 148,
+                            borderRadius: 19,
+                            fit: BoxFit.contain,
+                            semanticLabel: plan.name,
+                            child: Padding(
+                                padding: const EdgeInsets.fromLTRB(15, 15, 12, 15),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -617,7 +612,6 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                                   ],
                                 ),
                               ),
-                            ],
                           ),
                         ),
                       );

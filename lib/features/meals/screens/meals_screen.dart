@@ -106,26 +106,27 @@ class MealsScreen extends ConsumerWidget {
               InkWell(
                 onTap: () => _showAddMealSheet(context),
                 borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  height: 92,
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceContainerLow,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .42)),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: FastingArtSlot(
+                  assetPath: 'assets/images/editorial/v4/meal-manual-entry.webp',
+                  height: 96,
+                  borderRadius: 20,
+                  variant: FastingArtVariant.row,
+                  fit: BoxFit.contain,
+                  alignment: Alignment.centerRight,
+                  semanticLabel: l10n.meals_manualEntry,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [theme.colorScheme.surface.withValues(alpha: .98), theme.colorScheme.surface.withValues(alpha: .82), Colors.transparent],
+                        stops: const [0, .64, 1],
+                      ),
+                    ),
+                    child: Padding(
+                    padding: const EdgeInsets.fromLTRB(18, 0, 88, 0),
                     child: Row(
                       children: [
-                        SizedBox(
-                          width: 66,
-                          height: 66,
-                          child: Image.asset(
-                            themedEditorialAssetPath('assets/images/editorial/v4/meal-manual-entry.webp', theme.brightness),
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
+                        Icon(PhosphorIcons.pencilSimple(), size: 20, color: AppColors.primaryLight),
+                        const SizedBox(width: 9),
                         Text(
                           l10n.meals_manualEntry,
                           style: theme.textTheme.titleSmall?.copyWith(
@@ -139,6 +140,7 @@ class MealsScreen extends ConsumerWidget {
                           size: 20,
                         ),
                       ],
+                    ),
                     ),
                   ),
                 ),
