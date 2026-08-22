@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Formatters {
   Formatters._();
 
@@ -33,6 +35,28 @@ class Formatters {
     return '$minutes dakika';
   }
 
+  /// Formats a compact duration with the active locale's digits and labels.
+  static String formatShortDuration(
+    int totalMinutes, {
+    required String locale,
+    required String hoursLabel,
+    required String minutesLabel,
+  }) {
+    final hours = totalMinutes ~/ 60;
+    final minutes = totalMinutes % 60;
+    final number = NumberFormat.decimalPattern(locale);
+    final parts = <String>[];
+
+    if (hours > 0) {
+      parts.add('${number.format(hours)} $hoursLabel');
+    }
+    if (minutes > 0 || hours == 0) {
+      parts.add('${number.format(minutes)} $minutesLabel');
+    }
+
+    return parts.join(' ');
+  }
+
   /// Formats water amount: "1.5L" or "750ml"
   static String formatWater(int ml) {
     if (ml >= 1000) {
@@ -52,9 +76,9 @@ class Formatters {
     return '$calories kcal';
   }
 
-  /// Formats percentage: "85%"
-  static String formatPercentage(double value) {
-    return '${(value * 100).round()}%';
+  /// Formats a percentage according to the active app locale.
+  static String formatPercentage(double value, {String? locale}) {
+    return NumberFormat.percentPattern(locale).format(value);
   }
 
   /// Formats weight: "72.5 kg"
