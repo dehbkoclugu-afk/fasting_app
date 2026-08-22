@@ -29,7 +29,7 @@ class ExploreScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(22),
                 child: Align(
-                  alignment: Alignment.topLeft,
+                  alignment: Alignment.centerLeft,
                   child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -270,7 +270,7 @@ class ExploreScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Align(
-            alignment: Alignment.topLeft,
+            alignment: Alignment.centerLeft,
             child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
