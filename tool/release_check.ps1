@@ -35,8 +35,15 @@ foreach ($entry in @(
 if (-not (Test-Path "android/key.properties")) {
   $errors += "Missing android/key.properties"
 }
-if ((Get-Content -Raw "android/app/src/main/AndroidManifest.xml") -match "3940256099942544") {
+$manifest = Get-Content -Raw "android/app/src/main/AndroidManifest.xml"
+if ($manifest -match "3940256099942544") {
   $errors += "Android still uses the AdMob test application ID"
+}
+if ($manifest -notmatch "android.permission.INTERNET") {
+  $errors += "Android release manifest is missing INTERNET permission"
+}
+if ($manifest -notmatch "android.permission.POST_NOTIFICATIONS") {
+  $errors += "Android release manifest is missing POST_NOTIFICATIONS permission"
 }
 if ((Get-Content -Raw "ios/Runner/Info.plist") -match "3940256099942544") {
   $errors += "iOS still uses the AdMob test application ID"
