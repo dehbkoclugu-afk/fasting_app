@@ -205,6 +205,8 @@
   "completion_duration": "المدة",
   "completion_plan": "الخطة",
   "completion_lastPhase": "المرحلة الأخيرة",
+  "completion_earlyTitle": "انتهى الصيام",
+  "completion_earlyMessage": "تم حفظ مدة اليوم. لم تتغير السلسلة أو الإنجازات لأن الهدف لم يكتمل.",
   "timer_remainingTime": "الوقت المتبقي",
   "timer_ready": "جاهز للبدء",
   "streak_status": "الحالة",

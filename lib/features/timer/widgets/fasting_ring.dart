@@ -77,7 +77,10 @@ class FastingRing extends StatelessWidget {
                 curve: const Cubic(.23, 1, .32, 1),
                 builder:
                     (context, value, _) => CustomPaint(
-                      size: Size.square(size - 58),
+                      // Leave enough room for the phase markers and their
+                      // labels without making their tap targets overflow the
+                      // ring widget's bounds.
+                      size: Size.square(size - 70),
                       painter: RingPainter(
                         progress: value,
                         gradientColors: colors,
@@ -137,8 +140,8 @@ class _PhaseMarker extends StatelessWidget {
     final angle = -math.pi / 2 + 2 * math.pi * fraction;
     // Keep phase controls on the outer edge of the clock instead of letting
     // them drift into the timer copy and hands.
-    final orbit = ringSize * .47;
     const markerSize = 44.0;
+    final orbit = (ringSize - markerSize) / 2;
     final center = ringSize / 2;
     final color = phase.gradientColors.first;
     final active = isCurrent || isCompleted;
