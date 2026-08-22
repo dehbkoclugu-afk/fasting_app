@@ -37,7 +37,7 @@ class FastingSplitArtCard extends StatelessWidget {
     this.minHeight = 144,
     this.artWidth = 132,
     this.borderRadius = 24,
-    this.fit = BoxFit.contain,
+    this.fit = BoxFit.cover,
     this.alignment = Alignment.center,
     this.semanticLabel,
     this.useThemedAsset = true,

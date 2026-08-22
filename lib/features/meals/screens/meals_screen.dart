@@ -111,7 +111,7 @@ class MealsScreen extends ConsumerWidget {
                   height: 96,
                   borderRadius: 20,
                   variant: FastingArtVariant.row,
-                  fit: BoxFit.contain,
+                  fit: BoxFit.cover,
                   alignment: Alignment.centerRight,
                   semanticLabel: l10n.meals_manualEntry,
                   child: DecoratedBox(
@@ -165,7 +165,7 @@ class MealsScreen extends ConsumerWidget {
                         ? 0
                         : mealState.totalCalories / mealState.calorieGoal,
                     color: AppColors.secondary,
-                    icon: PhosphorIcons.fire(PhosphorIconsStyle.fill),
+                    artPath: 'assets/images/editorial/v4/macro-calories.webp',
                   ),
                   _buildNutrientCard(
                     context,
@@ -174,7 +174,7 @@ class MealsScreen extends ConsumerWidget {
                     target: '120g',
                     progress: mealState.totalProtein / 120,
                     color: Colors.blue,
-                    icon: PhosphorIcons.barbell(PhosphorIconsStyle.fill),
+                    artPath: 'assets/images/editorial/v4/macro-protein.webp',
                   ),
                   _buildNutrientCard(
                     context,
@@ -183,7 +183,7 @@ class MealsScreen extends ConsumerWidget {
                     target: '200g',
                     progress: mealState.totalCarbs / 200,
                     color: Colors.orange,
-                    icon: PhosphorIcons.bread(PhosphorIconsStyle.fill),
+                    artPath: 'assets/images/editorial/v4/macro-carbs.webp',
                   ),
                   _buildNutrientCard(
                     context,
@@ -192,7 +192,7 @@ class MealsScreen extends ConsumerWidget {
                     target: '65g',
                     progress: mealState.totalFat / 65,
                     color: Colors.purple,
-                    icon: PhosphorIcons.drop(PhosphorIconsStyle.fill),
+                    artPath: 'assets/images/editorial/v4/macro-fat.webp',
                   ),
                 ],
               ),
@@ -401,19 +401,26 @@ class MealsScreen extends ConsumerWidget {
     required String target,
     required double progress,
     required Color color,
-    required IconData icon,
+    required String artPath,
   }) {
     final theme = Theme.of(context);
-    return Container(
+    return FastingArtSlot(
+      assetPath: artPath,
       height: 82,
-      padding: const EdgeInsets.fromLTRB(12, 8, 10, 8),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .4)),
-      ),
-      child: Padding(
-        padding: EdgeInsets.zero,
+      borderRadius: 20,
+      variant: FastingArtVariant.bare,
+      fit: BoxFit.cover,
+      alignment: Alignment.centerRight,
+      semanticLabel: label,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [theme.colorScheme.surface.withValues(alpha: .98), theme.colorScheme.surface.withValues(alpha: .86), Colors.transparent],
+            stops: const [0, .64, 1],
+          ),
+        ),
+        child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 8, 48, 8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -453,7 +460,7 @@ class MealsScreen extends ConsumerWidget {
                   valueColor: AlwaysStoppedAnimation(color),
                 ),
           ],
-        ),
+        )),
       ),
     );
   }

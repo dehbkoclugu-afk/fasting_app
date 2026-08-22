@@ -402,7 +402,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       borderRadius: 22,
       variant: FastingArtVariant.card,
       alignment: Alignment.bottomRight,
-      fit: BoxFit.contain,
+      fit: BoxFit.cover,
       semanticLabel: title,
       child: DecoratedBox(
         decoration: BoxDecoration(

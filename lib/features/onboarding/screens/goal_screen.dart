@@ -129,7 +129,7 @@ class _GoalScreenState extends State<GoalScreen> {
                                 height: constraints.maxHeight - 4,
                                 borderRadius: 17,
                                 variant: FastingArtVariant.card,
-                                fit: BoxFit.contain,
+                                fit: BoxFit.cover,
                                 semanticLabel: goal['title'] as String,
                                 child: DecoratedBox(
                                   decoration: BoxDecoration(
