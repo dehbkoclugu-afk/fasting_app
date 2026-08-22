@@ -60,27 +60,21 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
                   final granted =
                       await NotificationService().requestPermission();
                   setState(() => _notificationGranted = granted);
-                  if (granted) {
-                    ref.read(settingsProvider.notifier).setNotifications(true);
-                  }
+                  ref
+                      .read(settingsProvider.notifier)
+                      .setNotifications(granted);
                 },
               ),
               const Spacer(),
 
               GradientButton(
                 text: l10n.onboarding_start,
-                onPressed: () {
-                  ref.read(settingsProvider.notifier).completeOnboarding();
-                  context.go('/timer');
-                },
+                onPressed: _completeOnboarding,
               ),
               const SizedBox(height: 12),
               Center(
                 child: TextButton(
-                  onPressed: () {
-                    ref.read(settingsProvider.notifier).completeOnboarding();
-                    context.go('/timer');
-                  },
+                  onPressed: _completeOnboarding,
                   child: Text(
                     l10n.onboarding_skipForNow,
                     style: theme.textTheme.bodyMedium?.copyWith(
@@ -94,6 +88,14 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
         ),
       ),
     );
+  }
+
+  void _completeOnboarding() {
+    ref
+        .read(settingsProvider.notifier)
+        .setNotifications(_notificationGranted);
+    ref.read(settingsProvider.notifier).completeOnboarding();
+    context.go('/timer');
   }
 
   Widget _buildPermissionCard(
