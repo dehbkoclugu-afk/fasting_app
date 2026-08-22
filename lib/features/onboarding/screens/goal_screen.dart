@@ -96,7 +96,7 @@ class _GoalScreenState extends State<GoalScreen> {
                   crossAxisCount: 2,
                   mainAxisSpacing: 12,
                   crossAxisSpacing: 12,
-                  childAspectRatio: .82,
+                  childAspectRatio: 1.18,
                   children:
                       goals.map((goal) {
                         final isSelected = _selectedGoals.contains(
@@ -124,34 +124,26 @@ class _GoalScreenState extends State<GoalScreen> {
                                     : theme.dividerColor,
                                 borderRadius: AppSpacing.borderRadiusLg,
                               ),
-                              child: Container(
-                                clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
-                                  color: theme.colorScheme.surfaceContainerLow,
-                                  borderRadius: BorderRadius.circular(17),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: Stack(
-                                        fit: StackFit.expand,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8),
-                                            child: Image.asset(
-                                              themedEditorialAssetPath(goal['art'] as String, theme.brightness),
-                                              fit: BoxFit.contain,
-                                            ),
-                                          ),
-                                          if (isSelected)
-                                            const Positioned(top: 8, right: 8, child: Icon(Icons.check_circle, color: AppColors.primary, size: 24)),
-                                        ],
-                                      ),
+                              child: FastingArtSlot(
+                                assetPath: goal['art'] as String,
+                                height: constraints.maxHeight - 4,
+                                borderRadius: 17,
+                                variant: FastingArtVariant.card,
+                                fit: BoxFit.contain,
+                                semanticLabel: goal['title'] as String,
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [theme.colorScheme.surface.withValues(alpha: .97), theme.colorScheme.surface.withValues(alpha: .74), Colors.transparent],
+                                      stops: const [0, .6, 1],
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
-                                      child: Column(
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.fromLTRB(12, 10, 54, 10),
+                                    child: Stack(
+                                  children: [
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.end,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(goal['title'] as String, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800)),
@@ -164,8 +156,10 @@ class _GoalScreenState extends State<GoalScreen> {
                                           ),
                                         ],
                                       ),
-                                    ),
+                                      if (isSelected) const Positioned(top: 0, left: 0, child: Icon(Icons.check_circle, color: AppColors.primary, size: 22)),
                                   ],
+                                ),
+                                  ),
                                 ),
                               ),
                             ),

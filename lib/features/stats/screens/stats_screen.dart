@@ -125,7 +125,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               title: l10n.stats_totalFasts,
                               value: '${stats.totalSessions}',
                               subtitle: periods[_selectedPeriod].toLowerCase(),
-                              icon: Icons.timer_outlined,
+                              artPath: 'assets/images/editorial/v3/stats-total.webp',
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -136,7 +136,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               value:
                                   _formatHours(context, stats.averageDurationHours),
                               subtitle: l10n.stats_fastDuration,
-                              icon: Icons.schedule_outlined,
+                              artPath: 'assets/images/editorial/v3/stats-average.webp',
                             ),
                           ),
                         ],
@@ -150,7 +150,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               title: l10n.stats_streak,
                               value: '${stats.currentStreak}',
                               subtitle: l10n.stats_daysConsecutive,
-                              icon: Icons.local_fire_department_outlined,
+                              artPath: 'assets/images/editorial/v3/stats-streak.webp',
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -160,7 +160,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                               title: l10n.stats_success,
                               value: '%${(stats.completionRate * 100).round()}',
                               subtitle: l10n.stats_completion,
-                              icon: Icons.check_circle_outline_rounded,
+                              artPath: 'assets/images/editorial/v3/stats-success.webp',
                             ),
                           ),
                         ],
@@ -393,26 +393,29 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     required String title,
     required String value,
     required String subtitle,
-    required IconData icon,
+    required String artPath,
   }) {
     final theme = Theme.of(context);
-    return Container(
+    return FastingArtSlot(
+      assetPath: artPath,
       height: 158,
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .42)),
-      ),
-      child: Column(
+      borderRadius: 22,
+      variant: FastingArtVariant.card,
+      alignment: Alignment.bottomRight,
+      fit: BoxFit.contain,
+      semanticLabel: title,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [theme.colorScheme.surface.withValues(alpha: .98), theme.colorScheme.surface.withValues(alpha: .78), Colors.transparent],
+            stops: const [0, .58, 1],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(15, 15, 62, 15),
+          child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 36,
-                  height: 36,
-                  decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: .1), borderRadius: BorderRadius.circular(12)),
-                  child: Icon(icon, size: 20, color: AppColors.primary),
-                ),
                 const Spacer(),
                 Text(
                   value,
@@ -436,6 +439,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                 ),
               ],
             ),
+        ),
+      ),
     );
   }
 

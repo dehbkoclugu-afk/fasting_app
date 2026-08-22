@@ -27,8 +27,8 @@ Color fastingArtDivider(BuildContext context) =>
         ? Colors.white.withValues(alpha: .14)
         : const Color(0xFF514756).withValues(alpha: .20);
 
-/// Editorial card with physically separate, full-width artwork and copy zones.
-/// The complete illustration remains visible and copy never sits on top of it.
+/// Full-card editorial artwork with a reserved copy column.
+/// Copy wraps inside the safe column before reaching the artwork subject.
 class FastingSplitArtCard extends StatelessWidget {
   const FastingSplitArtCard({
     super.key,
@@ -37,7 +37,7 @@ class FastingSplitArtCard extends StatelessWidget {
     this.minHeight = 144,
     this.artWidth = 132,
     this.borderRadius = 24,
-    this.fit = BoxFit.cover,
+    this.fit = BoxFit.contain,
     this.alignment = Alignment.center,
     this.semanticLabel,
     this.useThemedAsset = true,
@@ -74,31 +74,45 @@ class FastingSplitArtCard extends StatelessWidget {
             color: theme.colorScheme.outlineVariant.withValues(alpha: .42),
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: Stack(
           children: [
-            AspectRatio(
-              aspectRatio: 16 / 9,
+            Positioned.fill(
               child: ColoredBox(
-                color: theme.colorScheme.surfaceContainer,
+                color: theme.colorScheme.surfaceContainerLow,
                 child: Image.asset(
                   resolvedAsset,
-                  fit: BoxFit.contain,
+                  fit: fit,
                   alignment: alignment,
                   filterQuality: FilterQuality.high,
                   excludeFromSemantics: true,
-                  errorBuilder: (_, __, ___) => Icon(
-                    Icons.image_outlined,
-                    color: theme.colorScheme.onSurfaceVariant,
+                  errorBuilder: (_, __, ___) => Icon(Icons.image_outlined, color: theme.colorScheme.onSurfaceVariant),
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      theme.colorScheme.surface.withValues(alpha: .98),
+                      theme.colorScheme.surface.withValues(alpha: .90),
+                      theme.colorScheme.surface.withValues(alpha: .18),
+                      Colors.transparent,
+                    ],
+                    stops: const [0, .48, .72, 1],
                   ),
                 ),
               ),
             ),
-            Divider(
-              height: 1,
-              color: theme.colorScheme.outlineVariant.withValues(alpha: .28),
+            ConstrainedBox(
+              constraints: BoxConstraints(minHeight: minHeight),
+              child: Padding(
+                padding: EdgeInsets.only(right: artWidth),
+                child: child,
+              ),
             ),
-            child,
           ],
         ),
       ),

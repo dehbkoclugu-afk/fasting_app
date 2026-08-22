@@ -13,7 +13,7 @@ class EditorialScreenHero extends StatelessWidget {
     this.height = 172,
     this.semanticLabel,
     this.alignment = Alignment.center,
-    this.fit = BoxFit.cover,
+    this.fit = BoxFit.contain,
     this.textWidth = 210,
     this.artScale = 1,
     this.contentAlignment = Alignment.centerLeft,
