@@ -12,6 +12,7 @@ class NotificationService {
 
   final _plugin = FlutterLocalNotificationsPlugin();
   bool _initialized = false;
+  Future<void>? _initializing;
   VoidCallback? _notificationTapHandler;
   bool _pendingNotificationTap = false;
   String _locale = 'tr';
@@ -41,37 +42,48 @@ class NotificationService {
   static const waterReminderId = 100; // 100-199 for water
   static const streakId = 200;
 
-  Future<void> initialize() async {
-    if (_initialized) return;
+  Future<void> initialize() {
+    if (_initialized) return Future.value();
+    return _initializing ??= _initialize();
+  }
 
-    tz_data.initializeTimeZones();
+  Future<void> _initialize() async {
+    try {
+      tz_data.initializeTimeZones();
 
-    const androidSettings = AndroidInitializationSettings(
-      '@drawable/notification_icon',
-    );
-    const iosSettings = DarwinInitializationSettings(
-      requestAlertPermission: false,
-      requestBadgePermission: false,
-      requestSoundPermission: false,
-    );
+      const androidSettings = AndroidInitializationSettings(
+        '@drawable/notification_icon',
+      );
+      const iosSettings = DarwinInitializationSettings(
+        requestAlertPermission: false,
+        requestBadgePermission: false,
+        requestSoundPermission: false,
+      );
+      const initSettings = InitializationSettings(
+        android: androidSettings,
+        iOS: iosSettings,
+      );
 
-    const initSettings = InitializationSettings(
-      android: androidSettings,
-      iOS: iosSettings,
-    );
+      await _plugin.initialize(
+        initSettings,
+        onDidReceiveNotificationResponse: _onNotificationTapped,
+      );
 
-    await _plugin.initialize(
-      initSettings,
-      onDidReceiveNotificationResponse: _onNotificationTapped,
-    );
-
-    final launchDetails = await _plugin.getNotificationAppLaunchDetails();
-    _pendingNotificationTap = launchDetails?.didNotificationLaunchApp ?? false;
-
-    _initialized = true;
+      final launchDetails =
+          await _plugin.getNotificationAppLaunchDetails();
+      _pendingNotificationTap =
+          launchDetails?.didNotificationLaunchApp ?? false;
+      _initialized = true;
+    } catch (error) {
+      debugPrint('Notification initialization failed: $error');
+    } finally {
+      _initializing = null;
+    }
   }
 
   Future<bool> requestPermission() async {
+    await initialize();
+    if (!_initialized) return false;
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       final result = await _plugin
           .resolvePlatformSpecificImplementation<
@@ -102,6 +114,9 @@ class NotificationService {
     bool phaseNotifications = true,
     bool waterReminders = true,
   }) async {
+    await initialize();
+    if (!_initialized) return;
+
     // Keep the persistent timer notification alive while preferences are
     // refreshed; replace only the scheduled fasting reminders.
     await _cancelScheduledFastingNotifications();
@@ -171,6 +186,8 @@ class NotificationService {
 
   // Yemek penceresi kapanma bildirimi
   Future<void> scheduleWindowClosing({required DateTime closingTime}) async {
+    await initialize();
+    if (!_initialized) return;
     final warningTime = closingTime.subtract(const Duration(minutes: 30));
     if (warningTime.isAfter(DateTime.now())) {
       await _scheduleNotification(
@@ -187,6 +204,8 @@ class NotificationService {
     required int streakDays,
     required DateTime morningTime,
   }) async {
+    await initialize();
+    if (!_initialized) return;
     if (morningTime.isAfter(DateTime.now())) {
       await _scheduleNotification(
         id: streakId,
@@ -202,6 +221,8 @@ class NotificationService {
     required String title,
     required String body,
   }) async {
+    await initialize();
+    if (!_initialized) return;
     final androidDetails = AndroidNotificationDetails(
       _channelId,
       _channelName,
@@ -247,10 +268,21 @@ class NotificationService {
   }
 
   Future<void> cancelOngoing() async {
+    await initialize();
+    if (!_initialized) return;
     await _plugin.cancel(fastingStartId);
   }
 
+  Future<void> cancelFastingNotifications() async {
+    await initialize();
+    if (!_initialized) return;
+    await _plugin.cancel(fastingStartId);
+    await _cancelScheduledFastingNotifications();
+  }
+
   Future<void> cancelAll() async {
+    await initialize();
+    if (!_initialized) return;
     await _plugin.cancelAll();
   }
 
