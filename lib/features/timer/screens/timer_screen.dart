@@ -167,7 +167,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                 );
 
                 return SingleChildScrollView(
-                  padding: EdgeInsets.fromLTRB(gutter, 12, gutter, 32),
+                  padding: EdgeInsets.fromLTRB(gutter, 12, gutter, 48),
                   child: Center(
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 760),

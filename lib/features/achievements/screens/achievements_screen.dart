@@ -219,7 +219,7 @@ class _Journey extends StatelessWidget {
             .length;
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
+      padding: const EdgeInsets.fromLTRB(20, 8, 20, 48),
       children: [
         _NextGoal(
           achievement: next,

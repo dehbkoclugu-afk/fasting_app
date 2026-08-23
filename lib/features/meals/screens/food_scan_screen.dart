@@ -155,42 +155,6 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
             icon: Icons.document_scanner_outlined,
           ),
           const SizedBox(height: 24),
-          Center(
-            child: Container(
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    AppColors.primary.withValues(alpha: .18),
-                    AppColors.secondary.withValues(alpha: .12),
-                  ],
-                ),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                PhosphorIcons.camera(PhosphorIconsStyle.fill),
-                size: 48,
-                color: AppColors.primary,
-              ),
-            ),
-          ),
-          const SizedBox(height: 24),
-          Text(
-            l10n.foodScan_introTitle,
-            textAlign: TextAlign.center,
-            style: theme.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            l10n.foodScan_introDesc,
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: .6),
-            ),
-          ),
-          const SizedBox(height: 24),
           GlassCard(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

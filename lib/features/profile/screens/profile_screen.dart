@@ -70,7 +70,7 @@ class ProfileScreen extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: AppSpacing.screenPadding,
+          padding: AppSpacing.screenPadding.copyWith(bottom: 48),
           child: Column(
             children: [
               const SizedBox(height: 8),

@@ -16,7 +16,7 @@ class ExploreScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.tab_explore)),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 48),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
