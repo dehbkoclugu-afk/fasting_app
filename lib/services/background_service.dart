@@ -125,7 +125,7 @@ class BackgroundService implements FastingTimerService {
     // Bildirimleri zamanla
     final notificationsEnabled = prefs.getBool('notificationsEnabled') ?? true;
     if (!notificationsEnabled) {
-      await NotificationService().cancelAll();
+      await NotificationService().cancelFastingNotifications();
       return;
     }
     final locale = _resolveLocale(prefs);
@@ -155,8 +155,7 @@ class BackgroundService implements FastingTimerService {
     await Workmanager().cancelByUniqueName(_uniqueName);
 
     final notifService = NotificationService();
-    await notifService.cancelOngoing();
-    await notifService.cancelAll();
+    await notifService.cancelFastingNotifications();
   }
 }
 

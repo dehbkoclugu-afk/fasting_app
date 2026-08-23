@@ -21,13 +21,13 @@ class StreakCard extends StatelessWidget {
 
     return FastingSplitArtCard(
       assetPath: 'assets/images/editorial/v4/report-streak.webp',
-      minHeight: 184,
+      minHeight: 156,
       artWidth: 164,
       borderRadius: 24,
       alignment: Alignment.centerRight,
       semanticLabel: l10n.stats_streak,
       child: Padding(
-        padding: const EdgeInsets.all(18),
+        padding: const EdgeInsets.all(16),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -48,9 +48,9 @@ class StreakCard extends StatelessWidget {
                   ),
                 )),
               ]),
-              const SizedBox(height: 8),
+              const SizedBox(height: 5),
               Text(_getStreakMessage(context, currentStreak), style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.onSurface, fontWeight: FontWeight.w700)),
-              const SizedBox(height: 10),
+              const SizedBox(height: 6),
               Text(
                 '${l10n.streakCard_longestStreak}: $longestStreak ${l10n.common_days} · '
                 '${l10n.streakCard_totalSessions}: $totalSessions',

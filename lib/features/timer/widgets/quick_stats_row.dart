@@ -135,7 +135,7 @@ class QuickStatsRow extends ConsumerWidget {
                           ? l10n.stats_weightChange
                           : l10n.home_weightGoal(
                             targetWeight.toStringAsFixed(1),
-                          ),
+                          ).replaceFirst(' ', '\n'),
                 ),
               ),
             ),
@@ -221,6 +221,7 @@ class _Metric extends StatelessWidget {
               style: theme.textTheme.labelLarge?.copyWith(
                 color: theme.colorScheme.onSurface.withValues(alpha: .72),
                 fontWeight: FontWeight.w700,
+                height: 1.12,
               ),
             ),
           ],

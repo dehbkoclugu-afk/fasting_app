@@ -29,7 +29,7 @@ class GamificationDashboardScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.game_title)),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 48),
         children: [
           _LevelHero(game: game, l10n: l10n, calm: calm),
           const SizedBox(height: 22),
@@ -67,49 +67,80 @@ class GamificationDashboardScreen extends ConsumerWidget {
           const SizedBox(height: 26),
           FastingSplitArtCard(
             assetPath: 'assets/images/editorial/v4/rhythm-shield.webp',
-            minHeight: 132,
-            artWidth: 150,
+            minHeight: 152,
+            artWidth: 136,
             borderRadius: 22,
             semanticLabel: l10n.game_shields(game.shields),
-            child: Padding(
-              padding: const EdgeInsets.all(18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    l10n.game_shields(game.shields),
-                    style: theme.textTheme.titleMedium?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w800),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    l10n.game_shieldsDesc,
-                    style: theme.textTheme.bodySmall?.copyWith(color: fastingArtMutedForeground(context)),
-                  ),
-                ],
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface.withValues(alpha: .90),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.game_shields(game.shields),
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.colorScheme.onSurface,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      l10n.game_shieldsDesc,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
                 ),
               ),
+            ),
           ),
           const SizedBox(height: 14),
           if (!calm)
             FastingSplitArtCard(
               assetPath: 'assets/images/editorial/v4/weekly-league.webp',
-              minHeight: 148,
-              artWidth: 150,
+              minHeight: 184,
+              artWidth: 132,
               borderRadius: 22,
               semanticLabel: l10n.game_league,
-              child: Padding(
-                padding: const EdgeInsets.all(18),
-                child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(l10n.game_league, style: theme.textTheme.titleMedium?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w800)),
-                  const SizedBox(height: 6),
-                  Text(
-                    l10n.game_leagueDesc(game.leaguePercentile),
-                    style: theme.textTheme.bodyMedium?.copyWith(color: fastingArtMutedForeground(context)),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surface.withValues(alpha: .90),
+                    borderRadius: BorderRadius.circular(14),
                   ),
-                ],
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.game_league,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: theme.colorScheme.onSurface,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        l10n.game_leagueDesc(game.leaguePercentile),
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                          height: 1.3,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -447,7 +478,7 @@ class _BadgeToken extends StatelessWidget {
       onTap: () => _showBadgeDetails(context),
       child: LayoutBuilder(
       builder: (context, constraints) => Opacity(
-        opacity: badge.unlocked ? 1 : .62,
+        opacity: badge.unlocked ? 1 : .82,
         child: FastingArtSlot(
           assetPath: _badgeArtwork(badge.id),
           height: constraints.maxHeight,
@@ -458,14 +489,20 @@ class _BadgeToken extends StatelessWidget {
           child: DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: isDark
-                    ? [Colors.transparent, const Color(0xFF0F1424).withValues(alpha: .18), const Color(0xFF0F1424).withValues(alpha: .96)]
-                    : [Colors.transparent, theme.colorScheme.surface.withValues(alpha: .18), theme.colorScheme.surface.withValues(alpha: .96)],
+                colors: [
+                  Colors.transparent,
+                  theme.colorScheme.surface.withValues(alpha: .10),
+                  theme.colorScheme.surface.withValues(alpha: .78),
+                ],
                 stops: const [0, .48, 1],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
-              border: Border.all(color: badge.unlocked ? AppColors.primary.withValues(alpha: .55) : theme.dividerColor),
+              border: Border.all(
+                color: badge.unlocked
+                    ? AppColors.primary.withValues(alpha: .55)
+                    : theme.colorScheme.outlineVariant,
+              ),
               borderRadius: BorderRadius.circular(18),
             ),
             child: Padding(

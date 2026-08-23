@@ -80,7 +80,7 @@ class FastingRing extends StatelessWidget {
                       // Leave enough room for the phase markers and their
                       // labels without making their tap targets overflow the
                       // ring widget's bounds.
-                      size: Size.square(size - 70),
+                      size: Size.square(size - 92),
                       painter: RingPainter(
                         progress: value,
                         gradientColors: colors,
@@ -105,7 +105,7 @@ class FastingRing extends StatelessWidget {
                 targetHours: targetHours,
                 ringSize: size,
               ),
-            SizedBox(width: size * .68, child: child),
+            SizedBox(width: size * .62, child: child),
           ],
         ),
       ),

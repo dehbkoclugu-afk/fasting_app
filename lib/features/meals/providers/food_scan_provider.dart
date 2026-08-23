@@ -122,12 +122,15 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
        _picker = picker ?? ImagePicker(),
        _dailyLimit = dailyLimit ?? BuildConfig.geminiDailyScanLimit,
        super(const FoodScanState()) {
-    _loadQuota();
+    _quotaLoad = _loadQuota();
   }
 
   final FoodVisionService _service;
   final ImagePicker _picker;
   final int _dailyLimit;
+  late final Future<void> _quotaLoad;
+  bool _pickerInFlight = false;
+  bool _analysisInFlight = false;
 
   static const _countKey = 'food_scan_count';
   static const _dayKey = 'food_scan_day';
@@ -139,11 +142,20 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
 
   Future<void> _loadQuota() async {
     if (_dailyLimit <= 0) return;
-    final used = await _usedToday();
-    if (mounted) {
-      state = state.copyWith(
-        scansLeftToday: (_dailyLimit - used).clamp(0, _dailyLimit),
-      );
+    try {
+      final used = await _usedToday();
+      if (mounted) {
+        state = state.copyWith(
+          scansLeftToday: (_dailyLimit - used).clamp(0, _dailyLimit),
+        );
+      }
+    } catch (error) {
+      debugPrint('Food scan quota could not be loaded: $error');
+      // Fail closed: a storage failure must not silently disable the
+      // production quota and expose the shared API key to unlimited calls.
+      if (mounted) {
+        state = state.copyWith(scansLeftToday: 0);
+      }
     }
   }
 
@@ -177,7 +189,12 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
 
   /// Picks a photo and analyses it. Does nothing if the user backs out of the
   /// picker — that is not an error worth showing.
-  Future<void> scan(PhotoSource source, {String languageCode = 'en'}) async {
+  Future<void> scan(
+    PhotoSource source, {
+    String languageCode = 'en',
+  }) async {
+    await _quotaLoad;
+    if (_pickerInFlight || state.isBusy) return;
     if (!state.hasQuotaLeft) {
       state = state.copyWith(
         status: FoodScanStatus.failed,
@@ -186,46 +203,52 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
       return;
     }
 
-    XFile? file;
+    _pickerInFlight = true;
     try {
-      file = await _picker.pickImage(
-        source:
-            source == PhotoSource.camera
-                ? ImageSource.camera
-                : ImageSource.gallery,
-        maxWidth: _maxImageDimension,
-        maxHeight: _maxImageDimension,
-        imageQuality: _jpegQuality,
-      );
-    } catch (e) {
-      // Thrown when the camera permission was denied at the OS level.
-      debugPrint('Image pick failed: $e');
-      state = state.copyWith(
-        status: FoodScanStatus.failed,
-        error: FoodVisionError.unreadable,
-      );
-      return;
-    }
-    if (file == null) return;
+      XFile? file;
+      try {
+        file = await _picker.pickImage(
+          source:
+              source == PhotoSource.camera
+                  ? ImageSource.camera
+                  : ImageSource.gallery,
+          maxWidth: _maxImageDimension,
+          maxHeight: _maxImageDimension,
+          imageQuality: _jpegQuality,
+        );
+      } catch (error) {
+        debugPrint('Image pick failed: $error');
+        if (mounted) {
+          state = state.copyWith(
+            status: FoodScanStatus.failed,
+            error: FoodVisionError.unreadable,
+          );
+        }
+        return;
+      }
+      if (file == null) return;
 
-    try {
-      final bytes = await file.readAsBytes();
-      await analyzeBytes(
-        bytes,
-        languageCode: languageCode,
-        mimeType: detectImageMimeType(
+      try {
+        final bytes = await file.readAsBytes();
+        await analyzeBytes(
           bytes,
-          reportedMimeType: file.mimeType,
-          path: file.path,
-        ),
-      );
-    } catch (e) {
-      debugPrint('Picked image could not be read: $e');
-      if (!mounted) return;
-      state = state.copyWith(
-        status: FoodScanStatus.failed,
-        error: FoodVisionError.unreadable,
-      );
+          languageCode: languageCode,
+          mimeType: detectImageMimeType(
+            bytes,
+            reportedMimeType: file.mimeType,
+            path: file.path,
+          ),
+        );
+      } catch (error) {
+        debugPrint('Picked image could not be read: $error');
+        if (!mounted) return;
+        state = state.copyWith(
+          status: FoodScanStatus.failed,
+          error: FoodVisionError.unreadable,
+        );
+      }
+    } finally {
+      _pickerInFlight = false;
     }
   }
 
@@ -236,14 +259,25 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
     String languageCode = 'en',
     String? mimeType,
   }) async {
-    final resolvedMimeType =
-        mimeType ?? detectImageMimeType(bytes);
+    await _quotaLoad;
+    if (_analysisInFlight) return;
+    if (!state.hasQuotaLeft) {
+      state = state.copyWith(
+        status: FoodScanStatus.failed,
+        error: FoodVisionError.rateLimited,
+      );
+      return;
+    }
+
+    _analysisInFlight = true;
+    final resolvedMimeType = mimeType ?? detectImageMimeType(bytes);
     state = FoodScanState(
       status: FoodScanStatus.analyzing,
       imageBytes: bytes,
       imageMimeType: resolvedMimeType,
       scansLeftToday: state.scansLeftToday,
     );
+
     try {
       final analysis = await _service.analyze(
         imageBytes: bytes,
@@ -257,17 +291,22 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
         analysis: analysis,
         clearError: true,
       );
-    } on FoodVisionException catch (e) {
-      debugPrint('Food scan failed: $e');
+    } on FoodVisionException catch (error) {
+      debugPrint('Food scan failed: $error');
       if (!mounted) return;
-      state = state.copyWith(status: FoodScanStatus.failed, error: e.error);
-    } catch (e) {
-      debugPrint('Food scan failed: $e');
+      state = state.copyWith(
+        status: FoodScanStatus.failed,
+        error: error.error,
+      );
+    } catch (error) {
+      debugPrint('Food scan failed: $error');
       if (!mounted) return;
       state = state.copyWith(
         status: FoodScanStatus.failed,
         error: FoodVisionError.unreadable,
       );
+    } finally {
+      _analysisInFlight = false;
     }
   }
 

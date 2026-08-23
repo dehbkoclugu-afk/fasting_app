@@ -26,7 +26,7 @@ class MealsScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(l10n.meals_title)),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: AppSpacing.screenPadding,
+          padding: AppSpacing.screenPadding.copyWith(bottom: 48),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -311,35 +311,10 @@ class MealsScreen extends ConsumerWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 128),
+              const SizedBox(height: 16),
             ],
           ),
         ),
-      ),
-      floatingActionButton: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          FloatingActionButton.extended(
-            heroTag: 'meals_scan_fab',
-            onPressed: () => context.push('/food-scan'),
-            backgroundColor: AppColors.primary,
-            foregroundColor: Colors.white,
-            icon: Icon(
-              isPremium
-                  ? PhosphorIcons.camera(PhosphorIconsStyle.fill)
-                  : PhosphorIcons.lockKey(PhosphorIconsStyle.fill),
-              size: 20,
-            ),
-            label: Text(l10n.foodScan_scanCta),
-          ),
-          const SizedBox(height: 12),
-          FloatingActionButton(
-            heroTag: 'meals_add_fab',
-            onPressed: () => _showAddMealSheet(context),
-            child: const Icon(Icons.add),
-          ),
-        ],
       ),
     );
   }
