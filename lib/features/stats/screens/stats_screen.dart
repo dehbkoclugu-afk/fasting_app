@@ -404,45 +404,34 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       alignment: Alignment.bottomRight,
       fit: BoxFit.cover,
       semanticLabel: title,
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: ColoredBox(
-              color: theme.colorScheme.surface.withValues(
-                alpha: theme.brightness == Brightness.dark ? .46 : .40,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(15, 15, 62, 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              value,
+              maxLines: 1,
+              style: theme.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.w800,
               ),
             ),
-          ),
-          Padding(
-          padding: const EdgeInsets.fromLTRB(15, 15, 62, 15),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  value,
-                  maxLines: 1,
-                  style: theme.textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-                Text(
-                  title,
-                  style: theme.textTheme.labelMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                Text(
-                  subtitle,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant,
-                    fontSize: 10,
-                  ),
-                ),
-              ],
+            Text(
+              title,
+              style: theme.textTheme.labelMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-        ],
+            Text(
+              subtitle,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+                fontSize: 10,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
