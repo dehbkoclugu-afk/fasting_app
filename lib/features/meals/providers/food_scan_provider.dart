@@ -142,11 +142,20 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
 
   Future<void> _loadQuota() async {
     if (_dailyLimit <= 0) return;
-    final used = await _usedToday();
-    if (mounted) {
-      state = state.copyWith(
-        scansLeftToday: (_dailyLimit - used).clamp(0, _dailyLimit),
-      );
+    try {
+      final used = await _usedToday();
+      if (mounted) {
+        state = state.copyWith(
+          scansLeftToday: (_dailyLimit - used).clamp(0, _dailyLimit),
+        );
+      }
+    } catch (error) {
+      debugPrint('Food scan quota could not be loaded: $error');
+      // Fail closed: a storage failure must not silently disable the
+      // production quota and expose the shared API key to unlimited calls.
+      if (mounted) {
+        state = state.copyWith(scansLeftToday: 0);
+      }
     }
   }
 
