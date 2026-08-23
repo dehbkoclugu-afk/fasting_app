@@ -37,6 +37,90 @@ class AdmobService {
 
   Future<void> initialize() async {
     if (_isInitialized) return;
+
+    final consentUpdated = Completer<void>();
+
+    void completeConsent() {
+      if (!consentUpdated.isCompleted) consentUpdated.complete();
+    }
+
+    try {
+      ConsentInformation.instance.requestConsentInfoUpdate(
+        ConsentRequestParameters(),
+        () async {
+          try {
+            await ConsentForm.loadAndShowConsentFormIfRequired((_) {});
+            _canRequestAds =
+                await ConsentInformation.instance.canRequestAds();
+          } catch (error) {
+            debugPrint('Ad consent form error: $error');
+            _canRequestAds = false;
+          } finally {
+            completeConsent();
+          }
+        },
+        (error) async {
+          debugPrint('Ad consent update error: $error');
+          try {
+            _canRequestAds =
+                await ConsentInformation.instance.canRequestAds();
+          } catch (_) {
+            _canRequestAds = false;
+          } finally {
+            completeConsent();
+          }
+        },
+      );
+    } catch (error) {
+      debugPrint('Ad consent initialization error: $error');
+      _canRequestAds = false;
+      completeConsent();
+    }
+
+    try {
+      await consentUpdated.future.timeout(const Duration(seconds: 8));
+    } on TimeoutException {
+      debugPrint('Ad consent initialization timed out.');
+      _canRequestAds = false;
+    }
+
+    if (!_canRequestAds) return;
+
+    try {
+      await MobileAds.instance.initialize();
+      _isInitialized = true;
+    } catch (error) {
+      debugPrint('Mobile ads initialization error: $error');
+    }
+  }
+
+  // Banner Ad Unit IDs
+  static String get bannerAdUnitId {
+    if (kDebugMode) {
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    }
+    return BuildConfig.admobBannerId;
+  }
+
+  // Interstitial Ad Unit IDs
+  static String get interstitialAdUnitId {
+    if (kDebugMode) {
+      return Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/1033173712'
+          : 'ca-app-pub-3940256099942544/4411468910';
+    }
+    return BuildConfig.admobInterstitialId;
+  }
+
+  BannerAd? _bannerAd;
+  InterstitialAd? _interstitialAd;
+  bool _isInitialized = false;
+  bool _canRequestAds = false;
+
+  Future<void> initialize() async {
+    if (_isInitialized) return;
     final consentUpdated = Completer<void>();
     ConsentInformation.instance.requestConsentInfoUpdate(
       ConsentRequestParameters(),
