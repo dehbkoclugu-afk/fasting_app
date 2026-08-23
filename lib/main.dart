@@ -45,11 +45,6 @@ void main() async {
     }
   }
 
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -62,12 +57,20 @@ void main() async {
   // SDKs are deliberately started only after the first frame: a broken ads,
   // notifications, billing or widget plugin must never strand the app on its
   // native splash screen.
-  final prefs = await SharedPreferences.getInstance();
+  SharedPreferences? prefs;
+  try {
+    prefs = await SharedPreferences.getInstance().timeout(
+      const Duration(seconds: 2),
+    );
+  } catch (error) {
+    debugPrint('Startup preferences unavailable: $error');
+  }
   NotificationService().setLocale(
-    prefs.getString('locale') ??
+    prefs?.getString('locale') ??
         WidgetsBinding.instance.platformDispatcher.locale.toLanguageTag(),
   );
-  final onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
+  final onboardingCompleted =
+      prefs?.getBool('onboardingCompleted') ?? false;
 
   runApp(
     ProviderScope(
@@ -83,6 +86,13 @@ void main() async {
 }
 
 Future<void> _initializeOptionalServices() async {
+  await _runOptional(
+    'orientation lock',
+    () => SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]),
+  );
   await _runOptional('notifications', NotificationService().initialize);
   await _runOptional('background timer', BackgroundService().initialize);
   await _runOptional('purchases', RevenueCatService().initialize);
