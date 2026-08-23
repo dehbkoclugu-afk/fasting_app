@@ -54,43 +54,32 @@ class MetabolicJourney extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: 120,
-                  child: FastingArtSlot(
-                    assetPath: _phaseArtwork(current),
-                    height: 68,
-                    borderRadius: 16,
-                    variant: FastingArtVariant.bare,
-                    fit: BoxFit.cover,
-                    semanticLabel: metabolicPhaseName(l10n, current),
-                    child: const SizedBox.shrink(),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        metabolicPhaseName(l10n, current),
-                        style: theme.textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        metabolicPhaseDescription(l10n, current),
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
-                          height: 1.35,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            SizedBox(
+              width: double.infinity,
+              child: FastingArtSlot(
+                assetPath: _phaseArtwork(current),
+                height: 150,
+                borderRadius: 18,
+                variant: FastingArtVariant.bare,
+                fit: BoxFit.cover,
+                semanticLabel: metabolicPhaseName(l10n, current),
+                child: const SizedBox.shrink(),
+              ),
+            ),
+            const SizedBox(height: 14),
+            Text(
+              metabolicPhaseName(l10n, current),
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              metabolicPhaseDescription(l10n, current),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+                height: 1.35,
+              ),
             ),
             const SizedBox(height: 18),
             Row(
