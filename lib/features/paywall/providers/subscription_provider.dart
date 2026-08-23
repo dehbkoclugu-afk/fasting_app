@@ -61,13 +61,16 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
   }
 
   final _service = RevenueCatService();
+  bool _premiumListenerAttached = false;
 
-  Future<void> _init() async {
-    // Picks up renewals, expiries and purchases made on another device.
+  Future<void> _init() => loadProducts();
+
+  void _ensurePremiumListener() {
+    if (_premiumListenerAttached || !_service.isConfigured) return;
     _service.addPremiumListener((isPremium) {
       if (mounted) state = state.copyWith(isPremium: isPremium);
     });
-    await loadProducts();
+    _premiumListenerAttached = true;
   }
 
   /// Loads entitlement status and the purchasable packages. Safe to call
@@ -78,6 +81,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
       // The SDK may not have configured yet on a cold start (or configure
       // failed); try once more before giving up on the store.
       if (!_service.isConfigured) await _service.initialize();
+      _ensurePremiumListener();
 
       final isPremium = await _service.isPremium();
       final packages = await _service.getPackages();
