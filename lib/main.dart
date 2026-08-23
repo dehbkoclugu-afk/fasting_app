@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -57,26 +58,15 @@ void main() async {
     ),
   );
 
-  // Servisleri başlat. Bildirim kanalı ilk oluşturulurken kullanıcının seçili
-  // dili hazır olsun; aksi halde kanal adı ilk kurulum dilinde kalabiliyor.
+  // Read the small amount of state required to choose the first route. Optional
+  // SDKs are deliberately started only after the first frame: a broken ads,
+  // notifications, billing or widget plugin must never strand the app on its
+  // native splash screen.
   final prefs = await SharedPreferences.getInstance();
   NotificationService().setLocale(
     prefs.getString('locale') ??
         WidgetsBinding.instance.platformDispatcher.locale.toLanguageTag(),
   );
-  await NotificationService().initialize();
-  await BackgroundService().initialize();
-  await RevenueCatService().initialize();
-  // iOS App Tracking Transparency: must prompt before using tracking data for ads.
-  // ponytail: 200ms delay lets the app become active so the system prompt shows.
-  if (Platform.isIOS) {
-    await Future.delayed(const Duration(milliseconds: 200));
-    await AppTrackingTransparency.requestTrackingAuthorization();
-  }
-  await AdmobService().initialize();
-  await WidgetService().initialize();
-
-  // Onboarding durumunu başlangıçta oku (router oluşmadan önce)
   final onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
 
   runApp(
@@ -88,4 +78,34 @@ void main() async {
       ),
     ),
   );
+
+  unawaited(_initializeOptionalServices());
+}
+
+Future<void> _initializeOptionalServices() async {
+  await _runOptional('notifications', NotificationService().initialize);
+  await _runOptional('background timer', BackgroundService().initialize);
+  await _runOptional('purchases', RevenueCatService().initialize);
+
+  if (Platform.isIOS) {
+    await Future.delayed(const Duration(milliseconds: 200));
+    await _runOptional(
+      'tracking authorization',
+      AppTrackingTransparency.requestTrackingAuthorization,
+    );
+  }
+
+  await _runOptional('ads', AdmobService().initialize);
+  await _runOptional('home widget', WidgetService().initialize);
+}
+
+Future<void> _runOptional(
+  String name,
+  Future<dynamic> Function() initialize,
+) async {
+  try {
+    await initialize().timeout(const Duration(seconds: 12));
+  } catch (error) {
+    debugPrint('Optional $name initialization failed: $error');
+  }
 }
