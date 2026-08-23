@@ -42,9 +42,21 @@ class NotificationService {
   static const waterReminderId = 100; // 100-199 for water
   static const streakId = 200;
 
-  Future<void> initialize() {
-    if (_initialized) return Future.value();
-    return _initializing ??= _initialize();
+  Future<void> initialize() async {
+    if (_initialized) return;
+    final pending = _initializing;
+    if (pending != null) {
+      await pending;
+      return;
+    }
+
+    final future = _initialize();
+    _initializing = future;
+    try {
+      await future;
+    } finally {
+      _initializing = null;
+    }
   }
 
   Future<void> _initialize() async {
@@ -76,8 +88,6 @@ class NotificationService {
       _initialized = true;
     } catch (error) {
       debugPrint('Notification initialization failed: $error');
-    } finally {
-      _initializing = null;
     }
   }
 
