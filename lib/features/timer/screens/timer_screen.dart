@@ -22,6 +22,7 @@ import '../../../services/admob_service.dart';
 import '../../paywall/providers/subscription_provider.dart';
 import '../../stats/providers/stats_provider.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
+import '../../../shared/widgets/premium_promo_card.dart';
 
 class TimerScreen extends ConsumerStatefulWidget {
   const TimerScreen({super.key});
@@ -209,6 +210,10 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                               ),
                             ],
                           ),
+                          if (!ref.watch(isPremiumProvider)) ...[
+                            const SizedBox(height: 14),
+                            const PremiumPromoCard(compact: true),
+                          ],
                           const SizedBox(height: 20),
                           Container(
                             padding: EdgeInsets.fromLTRB(
