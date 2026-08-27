@@ -23,6 +23,31 @@ what the app checks — and add them as packages to the **current** offering.
 A product that is published and entitled but missing from the offering never
 reaches the paywall. Prices and introductory offers are read from the stores.
 
+## Free trial configuration
+
+Start with a **7-day free trial on the yearly base plan only**. Keep monthly
+without a trial as the lower-commitment comparison option, and never attach a
+trial to the lifetime product.
+
+1. Google Play Console → Monetize → Products → Subscriptions →
+   `fasttrack_premium_monthly`.
+2. Open the `yearly` auto-renewing base plan and choose **Add offer**.
+3. Use Google-managed **new customer acquisition** eligibility (customers who
+   have never had a subscription in this app), add one 7-day free-trial pricing
+   phase, select the same regions as the base plan, then activate the offer.
+4. In RevenueCat, re-import/sync the Play product if necessary. Keep
+   `fasttrack_premium_monthly:yearly` in the annual package of the current
+   offering and attached to the `premium` entitlement.
+5. Test from a Play internal-testing build with a license-tester account that
+   has not used this app's trial before. Offer changes can take time to reach
+   devices.
+
+Do not unlock seven days locally in the app. The store owns trial eligibility,
+billing, cancellation and conversion to paid. RevenueCat automatically selects
+an eligible free-trial offer when the app purchases the package. FastTrack reads
+the zero-price introductory period returned by the store and only then displays
+free-trial copy; ineligible users see the normal premium offer.
+
 ## Required build values
 
 Pass production values with `--dart-define`:

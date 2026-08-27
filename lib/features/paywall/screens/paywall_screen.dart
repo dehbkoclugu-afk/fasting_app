@@ -169,23 +169,28 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: AppSpacing.screenPadding,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-            Align(
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-                onPressed: () => Navigator.pop(context),
-                icon: const Icon(Icons.close),
-              ),
-            ),
-            _header(context, l10n),
-            const SizedBox(height: 24),
-            _features(context, l10n),
-            const SizedBox(height: 20),
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: AppSpacing.screenPadding.copyWith(bottom: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        tooltip:
+                            MaterialLocalizations.of(context).closeButtonTooltip,
+                        onPressed: () => Navigator.pop(context),
+                        icon: const Icon(Icons.close),
+                      ),
+                    ),
+                    _header(context, l10n),
+                    const SizedBox(height: 18),
+                    // Put the offer before the feature list. Users can compare
+                    // plans immediately, while the purchase action remains
+                    // visible in the pinned footer on every screen size.
                     if (state.isLoadingProducts &&
                         state.availablePackages.isEmpty)
                       ...List.generate(
@@ -211,7 +216,9 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                           ),
                         ),
                       ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 12),
+                    _features(context, l10n),
+                    const SizedBox(height: 16),
                     Text(
                       selected?.packageType == PackageType.lifetime
                           ? l10n.paywall_once
@@ -227,12 +234,22 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                       ),
                     ),
                     const SizedBox(height: 12),
-            const SizedBox(height: 4),
-            _bottomBar(context, l10n, state, selected, trialDays),
-            const SizedBox(height: 12),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+              child: _bottomBar(
+                context,
+                l10n,
+                state,
+                selected,
+                trialDays,
+              ),
+            ),
           ],
         ),
-      ),
       ),
     );
   }
