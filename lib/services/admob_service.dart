@@ -94,52 +94,6 @@ class AdmobService {
     }
   }
 
-  // Banner Ad Unit IDs
-  static String get bannerAdUnitId {
-    if (kDebugMode) {
-      return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
-    }
-    return BuildConfig.admobBannerId;
-  }
-
-  // Interstitial Ad Unit IDs
-  static String get interstitialAdUnitId {
-    if (kDebugMode) {
-      return Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/1033173712'
-          : 'ca-app-pub-3940256099942544/4411468910';
-    }
-    return BuildConfig.admobInterstitialId;
-  }
-
-  BannerAd? _bannerAd;
-  InterstitialAd? _interstitialAd;
-  bool _isInitialized = false;
-  bool _canRequestAds = false;
-
-  Future<void> initialize() async {
-    if (_isInitialized) return;
-    final consentUpdated = Completer<void>();
-    ConsentInformation.instance.requestConsentInfoUpdate(
-      ConsentRequestParameters(),
-      () async {
-        await ConsentForm.loadAndShowConsentFormIfRequired((_) {});
-        _canRequestAds = await ConsentInformation.instance.canRequestAds();
-        consentUpdated.complete();
-      },
-      (_) async {
-        _canRequestAds = await ConsentInformation.instance.canRequestAds();
-        consentUpdated.complete();
-      },
-    );
-    await consentUpdated.future;
-    if (!_canRequestAds) return;
-    await MobileAds.instance.initialize();
-    _isInitialized = true;
-  }
-
   // Banner Ad
   BannerAd? get bannerAd => _bannerAd;
 
