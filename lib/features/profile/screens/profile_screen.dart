@@ -11,6 +11,7 @@ import '../../../core/constants/fasting_plans.dart';
 import '../../../core/utils/calculations.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
+import '../../../shared/widgets/premium_promo_card.dart';
 import '../../../services/admob_service.dart';
 import '../../../services/notification_service.dart';
 import '../../../core/config/build_config.dart';
@@ -98,67 +99,8 @@ class ProfileScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 16),
 
-              // Premium card
-              InkWell(
-                onTap: () => context.push('/paywall'),
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        AppColors.primary.withValues(alpha: 0.16),
-                        AppColors.secondary.withValues(alpha: 0.10),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColors.primary.withValues(alpha: .22)),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                          padding: const EdgeInsets.all(9),
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [AppColors.primary, AppColors.secondary],
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Icon(
-                          PhosphorIconsRegular.crown,
-                          color: Colors.white,
-                          size: 22,
-                        ),
-                      ),
-                      const SizedBox(width: 14),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              l10n.profile_upgradePremium,
-                              style: theme.textTheme.titleSmall?.copyWith(
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            Text(
-                              l10n.profile_premiumDesc,
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                color: theme.colorScheme.onSurface.withValues(
-                                  alpha: 0.5,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Icon(
-                        PhosphorIcons.caretRight(),
-                        color: AppColors.primary,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Premium offer: hidden automatically for active subscribers.
+              const PremiumPromoCard(),
               const SizedBox(height: 24),
 
               // Body metrics
@@ -360,7 +302,7 @@ class ProfileScreen extends ConsumerWidget {
                       context,
                       icon: PhosphorIcons.info(),
                       title: l10n.profile_version,
-                      subtitle: '1.2.6 (18)',
+                      subtitle: '1.2.7 (21)',
                     ),
                   ],
                 ),
