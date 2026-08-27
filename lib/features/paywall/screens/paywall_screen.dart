@@ -557,7 +557,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
             : selected == null
             ? l10n.paywall_continue
             : trialDays != null
-            ? l10n.paywall_freeTrialDays(trialDays)
+            ? '${l10n.paywall_startFreeTrial} · ${selected.storeProduct.priceString}'
             : '${_planTitle(l10n, selected)} · ${selected.storeProduct.priceString}';
 
     return Container(
