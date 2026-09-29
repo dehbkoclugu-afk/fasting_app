@@ -137,26 +137,29 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
   // --- Premium gate -------------------------------------------------------
 
   Widget _buildLocked(BuildContext context, AppLocalizations l10n) {
-    return Center(
-      child: Padding(
+    return LayoutBuilder(
+      builder: (context, constraints) => SingleChildScrollView(
         padding: AppSpacing.screenPadding,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            EditorialScreenHero(
-              assetPath: 'assets/images/editorial/v6/premium-orbit.webp',
-              title: l10n.foodScan_premiumTitle,
-              subtitle: l10n.foodScan_premiumDesc,
-              icon: Icons.lock_outline,
-              height: 164,
-            ),
-            const SizedBox(height: 20),
-            GradientButton(
-              text: l10n.foodScan_upgrade,
-              width: double.infinity,
-              onPressed: () => context.push('/paywall'),
-            ),
-          ],
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: constraints.maxHeight),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              EditorialScreenHero(
+                assetPath: 'assets/images/editorial/v6/premium-orbit.webp',
+                title: l10n.foodScan_premiumTitle,
+                subtitle: l10n.foodScan_premiumDesc,
+                icon: Icons.lock_outline,
+                height: 164,
+              ),
+              const SizedBox(height: 20),
+              GradientButton(
+                text: l10n.foodScan_upgrade,
+                width: double.infinity,
+                onPressed: () => context.push('/paywall'),
+              ),
+            ],
+          ),
         ),
       ),
     );
