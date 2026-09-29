@@ -288,12 +288,11 @@ class FoodVisionService {
         ((candidates.first as Map<String, dynamic>)['content']
                 as Map<String, dynamic>?)?['parts']
             as List?;
-    final text =
-        parts
-            ?.whereType<Map<String, dynamic>>()
-            .map((p) => p['text'])
-            .whereType<String>()
-            .join();
+    final text = parts
+        ?.whereType<Map<String, dynamic>>()
+        .map((p) => p['text'])
+        .whereType<String>()
+        .join();
     if (text == null || text.trim().isEmpty) {
       throw const FoodVisionException(FoodVisionError.unreadable, 'empty text');
     }
@@ -309,12 +308,11 @@ class FoodVisionService {
       throw const FoodVisionException(FoodVisionError.noFoodFound);
     }
 
-    final items =
-        (result['items'] as List? ?? const [])
-            .whereType<Map<String, dynamic>>()
-            .map(FoodItem.fromJson)
-            .whereType<FoodItem>()
-            .toList();
+    final items = (result['items'] as List? ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(FoodItem.fromJson)
+        .whereType<FoodItem>()
+        .toList();
 
     // An empty list with isFood true is the model hedging; treat it the same
     // as "no food" so the user gets the retry hint rather than an empty form.
@@ -324,15 +322,17 @@ class FoodVisionService {
 
     final dishName = (result['dishName'] as String?)?.trim();
     return FoodAnalysis(
-      dishName:
-          dishName == null || dishName.isEmpty ? items.first.name : dishName,
+      dishName: dishName == null || dishName.isEmpty
+          ? items.first.name
+          : dishName,
       items: items,
       confidence: _asDouble(result['confidence']).clamp(0.0, 1.0),
       note: (result['note'] as String?)?.trim() ?? '',
     );
   }
 
-  static String _prompt(String languageCode) => '''
+  static String _prompt(String languageCode) =>
+      '''
 You are a nutrition estimator. Look at the photo and identify every food and
 drink on it.
 
@@ -416,16 +416,14 @@ Rules:
       s.length <= 200 ? s : '${s.substring(0, 200)}…';
 }
 
-int _asInt(Object? value) => switch (value) {
-  int v => v < 0 ? 0 : v,
-  double v => v.isFinite && v > 0 ? v.round() : 0,
-  String v => int.tryParse(v) ?? double.tryParse(v)?.round() ?? 0,
-  _ => 0,
-};
+int _asInt(Object? value) => _asDouble(value).clamp(0, 100000).round();
 
-double _asDouble(Object? value) => switch (value) {
-  int v => v < 0 ? 0 : v.toDouble(),
-  double v => v.isFinite && v > 0 ? v : 0,
-  String v => double.tryParse(v) ?? 0,
-  _ => 0,
-};
+double _asDouble(Object? value) {
+  final parsed = switch (value) {
+    num v => v.toDouble(),
+    String v => double.tryParse(v.trim().replaceAll(',', '.')),
+    _ => null,
+  };
+  if (parsed == null || !parsed.isFinite || parsed < 0) return 0;
+  return parsed.clamp(0, 100000).toDouble();
+}

@@ -46,8 +46,9 @@ jobs:
       - run: flutter build appbundle --release
 
       - uses: actions/upload-artifact@v4
+        # Storage quota may be exhausted even when the release bundle builds.
+        continue-on-error: true
         with:
           name: app-release-unsigned-aab
           path: build/app/outputs/bundle/release/*.aab
           if-no-files-found: error
-

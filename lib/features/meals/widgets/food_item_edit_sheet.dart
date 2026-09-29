@@ -24,11 +24,11 @@ class _FoodItemEditSheetState extends State<FoodItemEditSheet> {
   late final _protein = TextEditingController(text: _g(widget.item.protein));
   late final _carbs = TextEditingController(text: _g(widget.item.carbs));
   late final _fat = TextEditingController(text: _g(widget.item.fat));
+  final _invalidFields = <TextEditingController>{};
 
-  static String _g(double value) =>
-      value == value.roundToDouble()
-          ? value.toStringAsFixed(0)
-          : value.toStringAsFixed(1);
+  static String _g(double value) => value == value.roundToDouble()
+      ? value.toStringAsFixed(0)
+      : value.toStringAsFixed(1);
 
   @override
   void dispose() {
@@ -127,33 +127,52 @@ class _FoodItemEditSheetState extends State<FoodItemEditSheet> {
   ]) {
     return TextField(
       controller: controller,
-      keyboardType:
-          type == TextInputType.number
-              ? const TextInputType.numberWithOptions(decimal: true)
-              : type,
+      keyboardType: type == TextInputType.number
+          ? const TextInputType.numberWithOptions(decimal: true)
+          : type,
       decoration: InputDecoration(
         labelText: label,
         suffixText: suffix,
+        errorText: _invalidFields.contains(controller) ? '0–100000' : null,
         isDense: true,
       ),
     );
   }
 
   void _submit() {
+    final calories = int.tryParse(_calories.text.trim());
+    final protein = _parse(_protein.text);
+    final carbs = _parse(_carbs.text);
+    final fat = _parse(_fat.text);
+    setState(() {
+      _invalidFields
+        ..clear()
+        ..addAll([
+          if (calories == null || calories < 0 || calories > 100000) _calories,
+          if (protein == null) _protein,
+          if (carbs == null) _carbs,
+          if (fat == null) _fat,
+        ]);
+    });
+    if (_invalidFields.isNotEmpty) return;
     final name = _name.text.trim();
     Navigator.of(context).pop(
       widget.item.copyWith(
         name: name.isEmpty ? widget.item.name : name,
         portion: _portion.text.trim(),
-        calories: int.tryParse(_calories.text.trim()) ?? widget.item.calories,
-        protein: _parse(_protein.text) ?? widget.item.protein,
-        carbs: _parse(_carbs.text) ?? widget.item.carbs,
-        fat: _parse(_fat.text) ?? widget.item.fat,
+        calories: calories!,
+        protein: protein!,
+        carbs: carbs!,
+        fat: fat!,
       ),
     );
   }
 
   /// Accepts both "12.5" and the "12,5" a Turkish or German keyboard produces.
-  static double? _parse(String raw) =>
-      double.tryParse(raw.trim().replaceAll(',', '.'));
+  static double? _parse(String raw) {
+    final value = double.tryParse(raw.trim().replaceAll(',', '.'));
+    return value != null && value.isFinite && value >= 0 && value <= 100000
+        ? value
+        : null;
+  }
 }

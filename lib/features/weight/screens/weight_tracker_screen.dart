@@ -23,7 +23,10 @@ class WeightTrackerScreen extends ConsumerStatefulWidget {
 class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
   final _weightController = TextEditingController();
   List<Map<String, dynamic>> _weightHistory = [];
+  double? _latestWeight;
   int _selectedPeriod = 0; // 0=Weekly, 1=Monthly, 2=Yearly
+  int _loadGeneration = 0;
+  bool _savingWeight = false;
 
   @override
   void initState() {
@@ -32,18 +35,25 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
   }
 
   Future<void> _loadWeightHistory() async {
+    final generation = ++_loadGeneration;
     final db = ref.read(databaseProvider);
-    final entries =
-        await (db.select(db.bodyMetrics)
-              ..orderBy([(t) => OrderingTerm.desc(t.date)])
-              ..limit(30))
-            .get();
+    final now = DateTime.now();
+    final start = DateTime(
+      now.year,
+      now.month,
+      now.day,
+    ).subtract(Duration(days: [7, 30, 365][_selectedPeriod] - 1));
+    final entries = await (db.select(
+      db.bodyMetrics,
+    )..orderBy([(t) => OrderingTerm.desc(t.date)])).get();
+    if (!mounted || generation != _loadGeneration) return;
+    final weighted = entries.where((e) => e.weight != null).toList();
     setState(() {
-      _weightHistory =
-          entries
-              .where((e) => e.weight != null)
-              .map((e) => {'date': e.date, 'weight': e.weight!})
-              .toList();
+      _latestWeight = weighted.isEmpty ? null : weighted.first.weight;
+      _weightHistory = weighted
+          .where((e) => !e.date.isBefore(start))
+          .map((e) => {'date': e.date, 'weight': e.weight!})
+          .toList();
     });
   }
 
@@ -60,11 +70,7 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
     final settings = ref.watch(settingsProvider);
 
     // bodyMetrics tablosundan en son kilo, yoksa settings'den
-    final dbWeight =
-        _weightHistory.isNotEmpty
-            ? (_weightHistory.first['weight'] as double?)
-            : null;
-    final currentWeight = dbWeight ?? settings.weight;
+    final currentWeight = _latestWeight ?? settings.weight;
     final heightCm = settings.height ?? 170;
     final targetWeight = settings.targetWeight ?? 70.0;
 
@@ -73,11 +79,10 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
       bmi = currentWeight / ((heightCm / 100) * (heightCm / 100));
     }
 
-    final weightChange =
-        _weightHistory.length >= 2
-            ? ((_weightHistory.first['weight'] as double) -
-                (_weightHistory.last['weight'] as double))
-            : null;
+    final weightChange = _weightHistory.length >= 2
+        ? ((_weightHistory.first['weight'] as double) -
+              (_weightHistory.last['weight'] as double))
+        : null;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.stats_weightChange)),
@@ -105,9 +110,10 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
                   ],
                   selected: {_selectedPeriod},
                   showSelectedIcon: false,
-                  onSelectionChanged:
-                      (selection) =>
-                          setState(() => _selectedPeriod = selection.first),
+                  onSelectionChanged: (selection) {
+                    setState(() => _selectedPeriod = selection.first);
+                    _loadWeightHistory();
+                  },
                 ),
               ),
 
@@ -120,10 +126,9 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
                     child: _buildSummaryCard(
                       context,
                       title: l10n.bodyMetrics_weight,
-                      value:
-                          currentWeight != null
-                              ? '${currentWeight.toStringAsFixed(1)} kg'
-                              : '--',
+                      value: currentWeight != null
+                          ? '${currentWeight.toStringAsFixed(1)} kg'
+                          : '--',
                       icon: PhosphorIcons.scales(PhosphorIconsStyle.fill),
                       color: AppColors.primary,
                     ),
@@ -161,20 +166,18 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
                         weightChange < 0
                             ? PhosphorIcons.trendDown()
                             : PhosphorIcons.trendUp(),
-                        color:
-                            weightChange < 0
-                                ? AppColors.success
-                                : AppColors.error,
+                        color: weightChange < 0
+                            ? AppColors.success
+                            : AppColors.error,
                       ),
                       const SizedBox(width: 8),
                       Text(
                         '${weightChange > 0 ? '+' : ''}${weightChange.toStringAsFixed(1)} kg',
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w700,
-                          color:
-                              weightChange < 0
-                                  ? AppColors.success
-                                  : AppColors.error,
+                          color: weightChange < 0
+                              ? AppColors.success
+                              : AppColors.error,
                         ),
                       ),
                     ],
@@ -374,52 +377,63 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
     final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
-      builder:
-          (ctx) => AlertDialog(
-            title: Text(l10n.bodyMetrics_addWeight),
-            content: TextField(
-              controller: _weightController,
-              keyboardType: const TextInputType.numberWithOptions(
-                decimal: true,
-              ),
-              decoration: InputDecoration(
-                hintText: l10n.bodyMetrics_hintWeight,
-                suffixText: 'kg',
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(ctx),
-                child: Text(l10n.common_cancel),
-              ),
-              FilledButton(
-                onPressed: () async {
-                  final weight = double.tryParse(_weightController.text);
-                  if (weight == null || weight <= 0) return;
-
-                  final db = ref.read(databaseProvider);
-                  await db
-                      .into(db.bodyMetrics)
-                      .insert(
-                        BodyMetricsCompanion.insert(
-                          date: DateTime.now(),
-                          weight: Value(weight),
-                        ),
-                      );
-                  // Update settings + invalidate DB provider for home screen
-                  ref
-                      .read(settingsProvider.notifier)
-                      .setBodyInfo(weight: weight);
-                  ref.invalidate(latestWeightProvider);
-                  ref.invalidate(weightHistoryProvider);
-                  _weightController.clear();
-                  if (ctx.mounted) Navigator.pop(ctx);
-                  _loadWeightHistory();
-                },
-                child: Text(l10n.bodyMetrics_save),
-              ),
-            ],
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.bodyMetrics_addWeight),
+        content: TextField(
+          controller: _weightController,
+          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+          decoration: InputDecoration(
+            hintText: l10n.bodyMetrics_hintWeight,
+            suffixText: 'kg',
           ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text(l10n.common_cancel),
+          ),
+          FilledButton(
+            onPressed: () async {
+              final weight = double.tryParse(
+                _weightController.text.trim().replaceAll(',', '.'),
+              );
+              if (weight == null ||
+                  !weight.isFinite ||
+                  weight <= 0 ||
+                  _savingWeight)
+                return;
+              _savingWeight = true;
+              try {
+                final db = ref.read(databaseProvider);
+                await db
+                    .into(db.bodyMetrics)
+                    .insert(
+                      BodyMetricsCompanion.insert(
+                        date: DateTime.now(),
+                        weight: Value(weight),
+                      ),
+                    );
+                if (!mounted) return;
+                ref.read(settingsProvider.notifier).setBodyInfo(weight: weight);
+                ref.invalidate(latestWeightProvider);
+                ref.invalidate(weightHistoryProvider);
+                _weightController.clear();
+                if (ctx.mounted) Navigator.pop(ctx);
+                await _loadWeightHistory();
+              } catch (error) {
+                if (mounted) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(l10n.common_retry)));
+                }
+              } finally {
+                _savingWeight = false;
+              }
+            },
+            child: Text(l10n.bodyMetrics_save),
+          ),
+        ],
+      ),
     );
   }
 }

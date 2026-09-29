@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/utils/fasting_streak.dart';
 import '../../../data/database/app_database.dart';
 import 'water_provider.dart';
 
@@ -27,61 +28,30 @@ class FastingSessionNotifier
   }
 
   int getStreak(List<FastingSession> sessions) {
-    if (sessions.isEmpty) return 0;
-    final completedDates =
-        sessions.where((s) => s.completed).map((s) => s.startTime).toList();
-    if (completedDates.isEmpty) return 0;
-
-    completedDates.sort((a, b) => b.compareTo(a));
-    final today = DateTime.now();
-    var checkDate = DateTime(today.year, today.month, today.day);
-    int streak = 0;
-
-    for (final date in completedDates) {
-      final dateOnly = DateTime(date.year, date.month, date.day);
-      if (dateOnly == checkDate) {
-        streak++;
-        checkDate = checkDate.subtract(const Duration(days: 1));
-      } else if (dateOnly.isBefore(checkDate)) {
-        break;
-      }
-    }
-    return streak;
+    return currentFastingStreak(
+      sessions.where((s) => s.completed).map((s) => s.startTime),
+      DateTime.now(),
+    );
   }
 }
 
-final fastingSessionProvider = StateNotifierProvider<
-  FastingSessionNotifier,
-  AsyncValue<List<FastingSession>>
->((ref) {
-  final db = ref.watch(databaseProvider);
-  return FastingSessionNotifier(db);
-});
+final fastingSessionProvider =
+    StateNotifierProvider<
+      FastingSessionNotifier,
+      AsyncValue<List<FastingSession>>
+    >((ref) {
+      final db = ref.watch(databaseProvider);
+      return FastingSessionNotifier(db);
+    });
 
 final streakProvider = Provider<int>((ref) {
   final sessionsAsync = ref.watch(fastingSessionProvider);
   return sessionsAsync.when(
     data: (sessions) {
-      if (sessions.isEmpty) return 0;
-      final completedDates =
-          sessions.where((s) => s.completed).map((s) => s.startTime).toList();
-      if (completedDates.isEmpty) return 0;
-
-      completedDates.sort((a, b) => b.compareTo(a));
-      final today = DateTime.now();
-      var checkDate = DateTime(today.year, today.month, today.day);
-      int streak = 0;
-
-      for (final date in completedDates) {
-        final dateOnly = DateTime(date.year, date.month, date.day);
-        if (dateOnly == checkDate) {
-          streak++;
-          checkDate = checkDate.subtract(const Duration(days: 1));
-        } else if (dateOnly.isBefore(checkDate)) {
-          break;
-        }
-      }
-      return streak;
+      return currentFastingStreak(
+        sessions.where((s) => s.completed).map((s) => s.startTime),
+        DateTime.now(),
+      );
     },
     loading: () => 0,
     error: (_, __) => 0,

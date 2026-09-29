@@ -9,6 +9,7 @@ import '../../../core/constants/metabolic_phases.dart';
 import '../../../data/database/app_database.dart';
 import '../../../services/background_service.dart';
 import '../../../services/widget_service.dart';
+import '../../profile/providers/settings_provider.dart';
 import 'water_provider.dart';
 
 enum TimerStatus { idle, running, completed }
@@ -82,6 +83,7 @@ class TimerNotifier extends StateNotifier<TimerState> {
     FastingWidgetService? widgetService,
     TickerFactory? tickerFactory,
     bool restoreOnCreate = true,
+    String initialPlanId = '16_8',
   }) : _clock = clock ?? DateTime.now,
        _backgroundService = backgroundService ?? BackgroundService(),
        _widgetService = widgetService ?? WidgetService(),
@@ -89,7 +91,13 @@ class TimerNotifier extends StateNotifier<TimerState> {
            tickerFactory ??
            ((callback) =>
                Timer.periodic(const Duration(seconds: 1), (_) => callback())),
-       super(TimerState()) {
+       super(
+         TimerState(
+           planId: FastingPlans.getById(initialPlanId).id,
+           targetSeconds:
+               FastingPlans.getById(initialPlanId).fastingMinutes * 60,
+         ),
+       ) {
     if (restoreOnCreate) restoreActiveSession();
   }
 
@@ -117,7 +125,7 @@ class TimerNotifier extends StateNotifier<TimerState> {
     } catch (error) {
       debugPrint('Active fasting session restore failed: $error');
       _activeSessionId = null;
-      state = TimerState(planId: state.planId);
+      state = _idleForPlan(state.planId);
     }
   }
 
@@ -152,33 +160,34 @@ class TimerNotifier extends StateNotifier<TimerState> {
         _startTicker();
       }
     } catch (error) {
-      state = TimerState(planId: state.planId, error: error);
+      state = _idleForPlan(state.planId).copyWith(error: error);
     }
   }
 
   Future<void> stopFasting() {
     if (state.isBusy) return Future.value();
-    final elapsed =
-        state.startTime == null
-            ? state.elapsedSeconds
-            : _elapsedSince(state.startTime!);
+    final elapsed = state.startTime == null
+        ? state.elapsedSeconds
+        : _elapsedSince(state.startTime!);
     return _finish(completed: elapsed >= state.targetSeconds);
   }
 
   Future<void> resetTimer() async {
     if (state.status == TimerStatus.running || state.isBusy) return;
     _timer?.cancel();
-    state = TimerState(planId: state.planId);
+    state = _idleForPlan(state.planId);
     await _stopOptionalServices();
   }
 
   void changePlan(String planId) {
     if (state.status == TimerStatus.running || state.isBusy) return;
     final plan = FastingPlans.getById(planId);
-    state = TimerState(
-      planId: plan.id,
-      targetSeconds: plan.fastingMinutes * 60,
-    );
+    state = _idleForPlan(plan.id);
+  }
+
+  TimerState _idleForPlan(String planId) {
+    final plan = FastingPlans.getById(planId);
+    return TimerState(planId: plan.id, targetSeconds: plan.fastingMinutes * 60);
   }
 
   void _setRunning(FastingSession session, {bool isBusy = false}) {
@@ -235,10 +244,9 @@ class TimerNotifier extends StateNotifier<TimerState> {
     _timer?.cancel();
     state = state.copyWith(isBusy: true, clearError: true);
     try {
-      final elapsed =
-          state.startTime == null
-              ? state.elapsedSeconds
-              : _elapsedSince(state.startTime!);
+      final elapsed = state.startTime == null
+          ? state.elapsedSeconds
+          : _elapsedSince(state.startTime!);
       await _db.finalizeActiveSession(
         id: _activeSessionId!,
         endTime: _clock(),
@@ -297,5 +305,13 @@ class TimerNotifier extends StateNotifier<TimerState> {
 }
 
 final timerProvider = StateNotifierProvider<TimerNotifier, TimerState>((ref) {
-  return TimerNotifier(ref.watch(databaseProvider));
+  ref.listen<AppSettings>(settingsProvider, (previous, next) {
+    if (previous?.selectedPlanId != next.selectedPlanId) {
+      ref.read(timerProvider.notifier).changePlan(next.selectedPlanId);
+    }
+  });
+  return TimerNotifier(
+    ref.watch(databaseProvider),
+    initialPlanId: ref.read(settingsProvider).selectedPlanId,
+  );
 });

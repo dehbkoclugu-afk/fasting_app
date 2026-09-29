@@ -137,8 +137,13 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
   }
 
   Future<void> refreshStatus() async {
-    final isPremium = await _service.isPremium();
-    if (mounted) state = state.copyWith(isPremium: isPremium);
+    try {
+      final isPremium = await _service.isPremium();
+      if (mounted) state = state.copyWith(isPremium: isPremium);
+    } catch (error) {
+      debugPrint('Subscription refresh failed: $error');
+      // Keep the last verified entitlement on transient store failures.
+    }
   }
 }
 

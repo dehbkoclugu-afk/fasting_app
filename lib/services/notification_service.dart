@@ -30,8 +30,7 @@ class NotificationService {
     }
   }
 
-  AppLocalizations get _l10n =>
-      lookupAppLocalizations(_localeFromTag(_locale));
+  AppLocalizations get _l10n => lookupAppLocalizations(_localeFromTag(_locale));
 
   // Notification IDs
   static const fastingStartId = 1;
@@ -81,8 +80,7 @@ class NotificationService {
         onDidReceiveNotificationResponse: _onNotificationTapped,
       );
 
-      final launchDetails =
-          await _plugin.getNotificationAppLaunchDetails();
+      final launchDetails = await _plugin.getNotificationAppLaunchDetails();
       _pendingNotificationTap =
           launchDetails?.didNotificationLaunchApp ?? false;
       _initialized = true;
@@ -104,12 +102,11 @@ class NotificationService {
     }
 
     if (defaultTargetPlatform == TargetPlatform.android) {
-      final result =
-          await _plugin
-              .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin
-              >()
-              ?.requestNotificationsPermission();
+      final result = await _plugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >()
+          ?.requestNotificationsPermission();
       return result ?? false;
     }
 
@@ -373,8 +370,17 @@ class NotificationService {
 
 Locale _localeFromTag(String tag) {
   final parts = tag.replaceAll('-', '_').split('_');
-  return Locale.fromSubtags(
-    languageCode: parts.first,
-    countryCode: parts.length > 1 ? parts[1] : null,
-  );
+  final language = parts.first.toLowerCase();
+  final country = parts.length > 1 ? parts[1].toUpperCase() : null;
+  for (final locale in AppLocalizations.supportedLocales) {
+    if (locale.languageCode == language && locale.countryCode == country) {
+      return locale;
+    }
+  }
+  for (final locale in AppLocalizations.supportedLocales) {
+    if (locale.languageCode == language && locale.countryCode == null) {
+      return locale;
+    }
+  }
+  return const Locale('en');
 }

@@ -24,20 +24,105 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
   final _carbsController = TextEditingController();
   final _fatController = TextEditingController();
   String _mealType = 'lunch';
+  bool _saving = false;
 
   final _quickMeals = const [
-    {'name': 'Meyveli Yulaf', 'cal': 320, 'p': 12.0, 'c': 48.0, 'f': 9.0, 'art': 'assets/images/editorial/v4/quick/oats.webp'},
-    {'name': 'Yaban Mersinli Yoğurt', 'cal': 240, 'p': 18.0, 'c': 26.0, 'f': 8.0, 'art': 'assets/images/editorial/v4/quick/yogurt.webp'},
-    {'name': 'Yumurtalı Avokado Tost', 'cal': 390, 'p': 22.0, 'c': 32.0, 'f': 19.0, 'art': 'assets/images/editorial/v4/quick/egg-toast.webp'},
-    {'name': 'Tavuklu Kinoa Kasesi', 'cal': 430, 'p': 42.0, 'c': 38.0, 'f': 11.0, 'art': 'assets/images/editorial/v4/quick/chicken-quinoa.webp'},
-    {'name': 'Mercimek Çorbası', 'cal': 310, 'p': 18.0, 'c': 48.0, 'f': 6.0, 'art': 'assets/images/editorial/v4/quick/lentil.webp'},
-    {'name': 'Somon ve Brokoli', 'cal': 520, 'p': 38.0, 'c': 42.0, 'f': 21.0, 'art': 'assets/images/editorial/v4/quick/salmon.webp'},
-    {'name': 'Sebzeli Hindi Wrap', 'cal': 360, 'p': 32.0, 'c': 40.0, 'f': 9.0, 'art': 'assets/images/editorial/v4/quick/turkey-wrap.webp'},
-    {'name': 'Nohutlu Tahin Kasesi', 'cal': 410, 'p': 19.0, 'c': 55.0, 'f': 14.0, 'art': 'assets/images/editorial/v4/quick/chickpea.webp'},
-    {'name': 'Ton Balıklı Fasulye Salatası', 'cal': 350, 'p': 35.0, 'c': 28.0, 'f': 10.0, 'art': 'assets/images/editorial/v4/quick/tuna.webp'},
-    {'name': 'Elmalı Lor Kasesi', 'cal': 230, 'p': 24.0, 'c': 25.0, 'f': 5.0, 'art': 'assets/images/editorial/v4/quick/cottage.webp'},
-    {'name': 'Humus ve Çıtır Sebze', 'cal': 280, 'p': 12.0, 'c': 34.0, 'f': 12.0, 'art': 'assets/images/editorial/v4/quick/hummus.webp'},
-    {'name': 'Kefirli Muz Kasesi', 'cal': 300, 'p': 15.0, 'c': 42.0, 'f': 9.0, 'art': 'assets/images/editorial/v4/quick/kefir.webp'},
+    {
+      'name': 'Meyveli Yulaf',
+      'cal': 320,
+      'p': 12.0,
+      'c': 48.0,
+      'f': 9.0,
+      'art': 'assets/images/editorial/v4/quick/oats.webp',
+    },
+    {
+      'name': 'Yaban Mersinli Yoğurt',
+      'cal': 240,
+      'p': 18.0,
+      'c': 26.0,
+      'f': 8.0,
+      'art': 'assets/images/editorial/v4/quick/yogurt.webp',
+    },
+    {
+      'name': 'Yumurtalı Avokado Tost',
+      'cal': 390,
+      'p': 22.0,
+      'c': 32.0,
+      'f': 19.0,
+      'art': 'assets/images/editorial/v4/quick/egg-toast.webp',
+    },
+    {
+      'name': 'Tavuklu Kinoa Kasesi',
+      'cal': 430,
+      'p': 42.0,
+      'c': 38.0,
+      'f': 11.0,
+      'art': 'assets/images/editorial/v4/quick/chicken-quinoa.webp',
+    },
+    {
+      'name': 'Mercimek Çorbası',
+      'cal': 310,
+      'p': 18.0,
+      'c': 48.0,
+      'f': 6.0,
+      'art': 'assets/images/editorial/v4/quick/lentil.webp',
+    },
+    {
+      'name': 'Somon ve Brokoli',
+      'cal': 520,
+      'p': 38.0,
+      'c': 42.0,
+      'f': 21.0,
+      'art': 'assets/images/editorial/v4/quick/salmon.webp',
+    },
+    {
+      'name': 'Sebzeli Hindi Wrap',
+      'cal': 360,
+      'p': 32.0,
+      'c': 40.0,
+      'f': 9.0,
+      'art': 'assets/images/editorial/v4/quick/turkey-wrap.webp',
+    },
+    {
+      'name': 'Nohutlu Tahin Kasesi',
+      'cal': 410,
+      'p': 19.0,
+      'c': 55.0,
+      'f': 14.0,
+      'art': 'assets/images/editorial/v4/quick/chickpea.webp',
+    },
+    {
+      'name': 'Ton Balıklı Fasulye Salatası',
+      'cal': 350,
+      'p': 35.0,
+      'c': 28.0,
+      'f': 10.0,
+      'art': 'assets/images/editorial/v4/quick/tuna.webp',
+    },
+    {
+      'name': 'Elmalı Lor Kasesi',
+      'cal': 230,
+      'p': 24.0,
+      'c': 25.0,
+      'f': 5.0,
+      'art': 'assets/images/editorial/v4/quick/cottage.webp',
+    },
+    {
+      'name': 'Humus ve Çıtır Sebze',
+      'cal': 280,
+      'p': 12.0,
+      'c': 34.0,
+      'f': 12.0,
+      'art': 'assets/images/editorial/v4/quick/hummus.webp',
+    },
+    {
+      'name': 'Kefirli Muz Kasesi',
+      'cal': 300,
+      'p': 15.0,
+      'c': 42.0,
+      'f': 9.0,
+      'art': 'assets/images/editorial/v4/quick/kefir.webp',
+    },
   ];
 
   @override
@@ -86,7 +171,9 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                     ),
                   ),
                   IconButton.filledTonal(
-                    onPressed: () => Navigator.of(context).pop(),
+                    onPressed: _saving
+                        ? null
+                        : () => Navigator.of(context).pop(),
                     icon: const Icon(Icons.close, size: 20),
                   ),
                 ],
@@ -127,11 +214,15 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                           runSpacing: 6,
                           children: [
                             _scanAction(
-                              icon: PhosphorIcons.camera(PhosphorIconsStyle.fill),
+                              icon: PhosphorIcons.camera(
+                                PhosphorIconsStyle.fill,
+                              ),
                               label: l10n.foodScan_takePhoto,
                             ),
                             _scanAction(
-                              icon: PhosphorIcons.images(PhosphorIconsStyle.fill),
+                              icon: PhosphorIcons.images(
+                                PhosphorIconsStyle.fill,
+                              ),
                               label: l10n.foodScan_chooseFromGallery,
                             ),
                           ],
@@ -142,7 +233,11 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                 ),
               ),
               const SizedBox(height: 24),
-              _sectionTitle(context, l10n.meals_mealType, Icons.schedule_outlined),
+              _sectionTitle(
+                context,
+                l10n.meals_mealType,
+                Icons.schedule_outlined,
+              ),
               const SizedBox(height: 10),
               GridView.count(
                 shrinkWrap: true,
@@ -152,10 +247,30 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                 crossAxisSpacing: 10,
                 childAspectRatio: 1.9,
                 children: [
-                  _mealTypeCard('breakfast', l10n.meals_breakfast, Icons.wb_sunny_outlined, 'assets/images/editorial/v4/quick/oats.webp'),
-                  _mealTypeCard('lunch', l10n.meals_lunch, Icons.light_mode_outlined, 'assets/images/editorial/v4/quick/chicken-quinoa.webp'),
-                  _mealTypeCard('dinner', l10n.meals_dinner, Icons.nightlight_outlined, 'assets/images/editorial/v4/quick/salmon.webp'),
-                  _mealTypeCard('snack', l10n.meals_snack, Icons.cookie_outlined, 'assets/images/editorial/v4/quick/yogurt.webp'),
+                  _mealTypeCard(
+                    'breakfast',
+                    l10n.meals_breakfast,
+                    Icons.wb_sunny_outlined,
+                    'assets/images/editorial/v4/quick/oats.webp',
+                  ),
+                  _mealTypeCard(
+                    'lunch',
+                    l10n.meals_lunch,
+                    Icons.light_mode_outlined,
+                    'assets/images/editorial/v4/quick/chicken-quinoa.webp',
+                  ),
+                  _mealTypeCard(
+                    'dinner',
+                    l10n.meals_dinner,
+                    Icons.nightlight_outlined,
+                    'assets/images/editorial/v4/quick/salmon.webp',
+                  ),
+                  _mealTypeCard(
+                    'snack',
+                    l10n.meals_snack,
+                    Icons.cookie_outlined,
+                    'assets/images/editorial/v4/quick/yogurt.webp',
+                  ),
                 ],
               ),
               const SizedBox(height: 24),
@@ -171,13 +286,15 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                   crossAxisSpacing: 10,
                   childAspectRatio: 1,
                 ),
-                itemBuilder: (context, index) => _quickMealCard(
-                  context,
-                  _quickMeals[index],
-                ),
+                itemBuilder: (context, index) =>
+                    _quickMealCard(context, _quickMeals[index]),
               ),
               const SizedBox(height: 24),
-              _sectionTitle(context, l10n.meals_manualEntry, PhosphorIcons.notepad()),
+              _sectionTitle(
+                context,
+                l10n.meals_manualEntry,
+                PhosphorIcons.notepad(),
+              ),
               const SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.fromLTRB(14, 16, 14, 14),
@@ -185,7 +302,9 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                   color: theme.colorScheme.surfaceContainer,
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(
-                    color: theme.colorScheme.outlineVariant.withValues(alpha: .45),
+                    color: theme.colorScheme.outlineVariant.withValues(
+                      alpha: .45,
+                    ),
                   ),
                 ),
                 child: Column(
@@ -200,21 +319,52 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Expanded(child: _field(l10n.meals_calories, _caloriesController, TextInputType.number, suffix: 'kcal')),
+                        Expanded(
+                          child: _field(
+                            l10n.meals_calories,
+                            _caloriesController,
+                            TextInputType.number,
+                            suffix: 'kcal',
+                          ),
+                        ),
                         const SizedBox(width: 10),
-                        Expanded(child: _field(l10n.meals_protein, _proteinController, TextInputType.number, suffix: 'g')),
+                        Expanded(
+                          child: _field(
+                            l10n.meals_protein,
+                            _proteinController,
+                            TextInputType.number,
+                            suffix: 'g',
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Expanded(child: _field(l10n.meals_carbohydrate, _carbsController, TextInputType.number, suffix: 'g')),
+                        Expanded(
+                          child: _field(
+                            l10n.meals_carbohydrate,
+                            _carbsController,
+                            TextInputType.number,
+                            suffix: 'g',
+                          ),
+                        ),
                         const SizedBox(width: 10),
-                        Expanded(child: _field(l10n.meals_fat, _fatController, TextInputType.number, suffix: 'g')),
+                        Expanded(
+                          child: _field(
+                            l10n.meals_fat,
+                            _fatController,
+                            TextInputType.number,
+                            suffix: 'g',
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 16),
-                    GradientButton(text: l10n.meals_add, onPressed: _saveMeal),
+                    GradientButton(
+                      text: l10n.meals_add,
+                      onPressed: _saving ? null : _saveMeal,
+                    ),
                   ],
                 ),
               ),
@@ -225,38 +375,40 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     );
   }
 
-  Widget _sectionTitle(BuildContext context, String title, IconData icon) => Row(
-    children: [
-      Icon(icon, size: 19, color: AppColors.primary),
-      const SizedBox(width: 8),
-      Text(
-        title,
-        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-          fontWeight: FontWeight.w800,
-        ),
-      ),
-    ],
-  );
-
-  Widget _scanAction({required IconData icon, required String label}) => Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-      decoration: BoxDecoration(
-        color: Theme.of(context).brightness == Brightness.dark
-            ? Colors.white.withValues(alpha: .14)
-            : const Color(0xE65A3E50),
-        borderRadius: BorderRadius.circular(999),
-        border: Border.all(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? Colors.white.withValues(alpha: .16)
-              : const Color(0xFF5A3E50),
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
+  Widget _sectionTitle(BuildContext context, String title, IconData icon) =>
+      Row(
         children: [
-          Icon(icon, color: Colors.white, size: 15),
-          const SizedBox(width: 5),
+          Icon(icon, size: 19, color: AppColors.primary),
+          const SizedBox(width: 8),
           Text(
+            title,
+            style: Theme.of(
+              context,
+            ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800),
+          ),
+        ],
+      );
+
+  Widget _scanAction({required IconData icon, required String label}) =>
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+        decoration: BoxDecoration(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.white.withValues(alpha: .14)
+              : const Color(0xE65A3E50),
+          borderRadius: BorderRadius.circular(999),
+          border: Border.all(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.white.withValues(alpha: .16)
+                : const Color(0xFF5A3E50),
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, color: Colors.white, size: 15),
+            const SizedBox(width: 5),
+            Text(
               label,
               style: const TextStyle(
                 color: Colors.white,
@@ -264,9 +416,9 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                 fontWeight: FontWeight.w700,
               ),
             ),
-        ],
-      ),
-  );
+          ],
+        ),
+      );
 
   void _openPhotoScan() {
     final router = GoRouter.of(context);
@@ -274,64 +426,68 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     router.push('/food-scan');
   }
 
-  Widget _mealTypeCard(String value, String label, IconData icon, String artPath) {
+  Widget _mealTypeCard(
+    String value,
+    String label,
+    IconData icon,
+    String artPath,
+  ) {
     final selected = _mealType == value;
     return InkWell(
-        borderRadius: BorderRadius.circular(18),
-        onTap: () {
-          HapticFeedback.selectionClick();
-          setState(() => _mealType = value);
-        },
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 180),
-          padding: EdgeInsets.all(selected ? 2 : 1),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
-            border: Border.all(
-              color: selected ? AppColors.primary : Theme.of(context).dividerColor,
-              width: selected ? 2 : 1,
-            ),
+      borderRadius: BorderRadius.circular(18),
+      onTap: () {
+        HapticFeedback.selectionClick();
+        setState(() => _mealType = value);
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        padding: EdgeInsets.all(selected ? 2 : 1),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(
+            color: selected
+                ? AppColors.primary
+                : Theme.of(context).dividerColor,
+            width: selected ? 2 : 1,
           ),
-          child: FastingSplitArtCard(
-            assetPath: artPath,
-            minHeight: 76,
-            artWidth: 56,
-            borderRadius: 15,
-            semanticLabel: label,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                children: [
-                  Icon(
-                    icon,
-                    size: 21,
-                    color: selected
-                        ? AppColors.primary
-                        : fastingArtForeground(context),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      label,
-                      style: TextStyle(
-                        color: fastingArtForeground(context),
-                        fontSize: 12,
-                        fontWeight: selected ? FontWeight.w800 : FontWeight.w700,
-                      ),
+        ),
+        child: FastingSplitArtCard(
+          assetPath: artPath,
+          minHeight: 76,
+          artWidth: 56,
+          borderRadius: 15,
+          semanticLabel: label,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              children: [
+                Icon(
+                  icon,
+                  size: 21,
+                  color: selected
+                      ? AppColors.primary
+                      : fastingArtForeground(context),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    label,
+                    style: TextStyle(
+                      color: fastingArtForeground(context),
+                      fontSize: 12,
+                      fontWeight: selected ? FontWeight.w800 : FontWeight.w700,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
+      ),
     );
   }
 
-  Widget _quickMealCard(
-    BuildContext context,
-    Map<String, Object> meal,
-  ) {
+  Widget _quickMealCard(BuildContext context, Map<String, Object> meal) {
     return InkWell(
       borderRadius: BorderRadius.circular(18),
       onTap: () => _quickAdd(meal),
@@ -340,7 +496,9 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surfaceContainerLow,
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.outlineVariant,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -378,7 +536,11 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                         ),
                       ),
                       const Spacer(),
-                      const Icon(Icons.add_circle, color: AppColors.primary, size: 22),
+                      const Icon(
+                        Icons.add_circle,
+                        color: AppColors.primary,
+                        size: 22,
+                      ),
                     ],
                   ),
                 ],
@@ -408,7 +570,9 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
         labelText: label,
         labelStyle: TextStyle(color: foreground.withValues(alpha: .68)),
         suffixText: suffix,
-        prefixIcon: icon == null ? null : Icon(icon, size: 18, color: foreground.withValues(alpha: .72)),
+        prefixIcon: icon == null
+            ? null
+            : Icon(icon, size: 18, color: foreground.withValues(alpha: .72)),
         filled: true,
         fillColor: Theme.of(context).colorScheme.surface,
         isDense: false,
@@ -416,48 +580,91 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
     );
   }
 
-  void _quickAdd(Map<String, Object> meal) {
-    ref.read(mealProvider.notifier).addMeal(
-      name: meal['name']! as String,
-      calories: meal['cal']! as int,
-      protein: meal['p']! as double,
-      carbs: meal['c']! as double,
-      fat: meal['f']! as double,
-      mealType: _mealType,
-    );
-    final l10n = AppLocalizations.of(context)!;
-    final messenger = ScaffoldMessenger.of(context);
-    final navigator = Navigator.of(context);
-    HapticFeedback.lightImpact();
-    navigator.pop();
-    messenger.showSnackBar(
-      SnackBar(content: Text(l10n.meals_added(meal['name']! as String))),
-    );
+  Future<void> _quickAdd(Map<String, Object> meal) async {
+    if (_saving) return;
+    setState(() => _saving = true);
+    try {
+      await ref
+          .read(mealProvider.notifier)
+          .addMeal(
+            name: meal['name']! as String,
+            calories: meal['cal']! as int,
+            protein: meal['p']! as double,
+            carbs: meal['c']! as double,
+            fat: meal['f']! as double,
+            mealType: _mealType,
+          );
+      if (!mounted) return;
+      final l10n = AppLocalizations.of(context)!;
+      final messenger = ScaffoldMessenger.of(context);
+      final navigator = Navigator.of(context);
+      HapticFeedback.lightImpact();
+      navigator.pop();
+      messenger.showSnackBar(
+        SnackBar(content: Text(l10n.meals_added(meal['name']! as String))),
+      );
+    } catch (error) {
+      if (mounted)
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(AppLocalizations.of(context)!.common_retry)),
+        );
+    } finally {
+      if (mounted) setState(() => _saving = false);
+    }
   }
 
-  void _saveMeal() {
+  Future<void> _saveMeal() async {
+    if (_saving) return;
     final l10n = AppLocalizations.of(context)!;
     final name = _nameController.text.trim();
     final calories = int.tryParse(_caloriesController.text) ?? 0;
-    if (name.isEmpty || calories <= 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(l10n.meals_nameCalorieRequired)),
-      );
+    final protein = _parseMacro(_proteinController.text);
+    final carbs = _parseMacro(_carbsController.text);
+    final fat = _parseMacro(_fatController.text);
+    if (name.isEmpty ||
+        calories <= 0 ||
+        protein == null ||
+        carbs == null ||
+        fat == null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.meals_nameCalorieRequired)));
       return;
     }
 
-    ref.read(mealProvider.notifier).addMeal(
-      name: name,
-      calories: calories,
-      protein: double.tryParse(_proteinController.text) ?? 0,
-      carbs: double.tryParse(_carbsController.text) ?? 0,
-      fat: double.tryParse(_fatController.text) ?? 0,
-      mealType: _mealType,
-    );
-    final messenger = ScaffoldMessenger.of(context);
-    final navigator = Navigator.of(context);
-    HapticFeedback.lightImpact();
-    navigator.pop();
-    messenger.showSnackBar(SnackBar(content: Text(l10n.meals_added(name))));
+    setState(() => _saving = true);
+    try {
+      await ref
+          .read(mealProvider.notifier)
+          .addMeal(
+            name: name,
+            calories: calories,
+            protein: protein,
+            carbs: carbs,
+            fat: fat,
+            mealType: _mealType,
+          );
+      if (!mounted) return;
+      final messenger = ScaffoldMessenger.of(context);
+      final navigator = Navigator.of(context);
+      HapticFeedback.lightImpact();
+      navigator.pop();
+      messenger.showSnackBar(SnackBar(content: Text(l10n.meals_added(name))));
+    } catch (error) {
+      if (mounted)
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.common_retry)));
+    } finally {
+      if (mounted) setState(() => _saving = false);
+    }
+  }
+
+  double? _parseMacro(String raw) {
+    if (raw.trim().isEmpty) return 0;
+    final value = double.tryParse(raw.trim().replaceAll(',', '.'));
+    return value != null && value.isFinite && value >= 0 && value <= 100000
+        ? value
+        : null;
   }
 }
