@@ -33,6 +33,12 @@ jobs:
         run: |
           cp build/app/outputs/flutter-apk/app-debug.apk /tmp/fasttrack-debug.apk
           rm -rf build
+          flutter_sdk_dir=$(dirname "$(dirname "$(readlink -f "$(command -v flutter)")")")
+          case "$flutter_sdk_dir" in
+            /opt/hostedtoolcache/flutter/*) sudo rm -rf "$flutter_sdk_dir" ;;
+            *) echo "Unexpected Flutter SDK path: $flutter_sdk_dir" >&2; exit 1 ;;
+          esac
+          rm -rf "$HOME/.gradle/caches" "$HOME/.pub-cache" android/.gradle
           df -h .
       - uses: reactivecircus/android-emulator-runner@v2
         with:
