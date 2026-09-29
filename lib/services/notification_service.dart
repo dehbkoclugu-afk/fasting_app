@@ -30,7 +30,8 @@ class NotificationService {
     }
   }
 
-  AppLocalizations get _l10n => lookupAppLocalizations(_localeFromTag(_locale));
+  AppLocalizations get _l10n =>
+      lookupAppLocalizations(resolveNotificationLocale(_locale));
 
   // Notification IDs
   static const fastingStartId = 1;
@@ -368,7 +369,7 @@ class NotificationService {
   }
 }
 
-Locale _localeFromTag(String tag) {
+Locale resolveNotificationLocale(String tag) {
   final parts = tag.replaceAll('-', '_').split('_');
   final language = parts.first.toLowerCase();
   final country = parts.length > 1 ? parts[1].toUpperCase() : null;

@@ -42,6 +42,8 @@ void main() {
     _Subscription subscription,
     _Vision service, {
     Uint8List? recovered,
+    TextScaler textScaler = TextScaler.noScaling,
+    Locale locale = const Locale('en'),
   }) async {
     final router = GoRouter(
       initialLocation: '/food-scan',
@@ -67,7 +69,11 @@ void main() {
         ],
         child: MaterialApp.router(
           routerConfig: router,
-          locale: const Locale('en'),
+          locale: locale,
+          builder: (context, child) => MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaler: textScaler),
+            child: child!,
+          ),
           supportedLocales: AppLocalizations.supportedLocales,
           localizationsDelegates: const [
             AppLocalizations.delegate,
@@ -112,5 +118,26 @@ void main() {
     await tester.tap(find.byIcon(Icons.close));
     await tester.pumpAndSettle();
     expect(find.text('Home'), findsOneWidget);
+  });
+
+  testWidgets('locked and premium screens fit a narrow large-text display', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(320 * 3, 568 * 3);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+    final subscription = _Subscription();
+    await openScanner(
+      tester,
+      subscription,
+      _Vision(),
+      textScaler: const TextScaler.linear(2),
+      locale: const Locale('ar'),
+    );
+    expect(tester.takeException(), isNull);
+    subscription.unlock();
+    await tester.pump();
+    expect(tester.takeException(), isNull);
+    expect(find.byType(Scrollable), findsWidgets);
   });
 }
