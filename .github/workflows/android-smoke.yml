@@ -13,6 +13,11 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+      - name: Free runner space before Android build
+        run: |
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          sudo rm -rf "$ANDROID_HOME/system-images"
+          df -h .
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
