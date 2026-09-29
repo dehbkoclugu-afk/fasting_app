@@ -23,10 +23,12 @@ class FoodScanScreen extends ConsumerStatefulWidget {
     super.key,
     this.initialImageBytes,
     this.initialImageMimeType,
+    this.onInitialImageConsumed,
   });
 
   final Uint8List? initialImageBytes;
   final String? initialImageMimeType;
+  final VoidCallback? onInitialImageConsumed;
 
   @override
   ConsumerState<FoodScanScreen> createState() => _FoodScanScreenState();
@@ -35,21 +37,43 @@ class FoodScanScreen extends ConsumerStatefulWidget {
 class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
   final _nameController = TextEditingController();
   String _mealType = 'lunch';
+  bool _saving = false;
+  Uint8List? _pendingRecoveredImage;
+  String? _pendingRecoveredMimeType;
 
   @override
   void initState() {
     super.initState();
-    final bytes = widget.initialImageBytes;
-    if (bytes == null) return;
+    _pendingRecoveredImage = widget.initialImageBytes;
+    _pendingRecoveredMimeType = widget.initialImageMimeType;
+    widget.onInitialImageConsumed?.call();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _resumeRecoveredPhoto(),
+    );
+  }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      ref.read(foodScanProvider.notifier).analyzeBytes(
-        bytes,
-        languageCode: _languageCode(context),
-        mimeType: widget.initialImageMimeType,
-      );
-    });
+  void _resumeRecoveredPhoto() {
+    if (!mounted || !ref.read(isPremiumProvider)) return;
+    final bytes = _pendingRecoveredImage;
+    if (bytes == null) return;
+    _pendingRecoveredImage = null;
+    ref
+        .read(foodScanProvider.notifier)
+        .analyzeBytes(
+          bytes,
+          languageCode: _languageCode(context),
+          mimeType: _pendingRecoveredMimeType,
+        );
+    _pendingRecoveredMimeType = null;
+  }
+
+  void _close() {
+    if (!mounted) return;
+    if (context.canPop()) {
+      context.pop();
+    } else {
+      context.go('/timer');
+    }
   }
 
   @override
@@ -63,6 +87,9 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
     final l10n = AppLocalizations.of(context)!;
     final isPremium = ref.watch(isPremiumProvider);
     final state = ref.watch(foodScanProvider);
+    ref.listen<bool>(isPremiumProvider, (_, premium) {
+      if (premium) _resumeRecoveredPhoto();
+    });
 
     // Seeding the field from a listener rather than inline in build: writing
     // to a TextEditingController during build marks the TextField dirty
@@ -75,19 +102,21 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
       }
     });
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.foodScan_title),
-        leading: IconButton(
-          icon: const Icon(Icons.close),
-          onPressed: () => Navigator.of(context).maybePop(),
+    return PopScope(
+      canPop: !_saving,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(l10n.foodScan_title),
+          leading: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: _saving ? null : _close,
+          ),
         ),
-      ),
-      body: SafeArea(
-        child:
-            isPremium
-                ? _buildBody(context, l10n, state)
-                : _buildLocked(context, l10n),
+        body: SafeArea(
+          child: isPremium
+              ? _buildBody(context, l10n, state)
+              : _buildLocked(context, l10n),
+        ),
       ),
     );
   }
@@ -168,9 +197,14 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
             ),
           ),
           const SizedBox(height: 24),
-          if (quotaReached)
-            _notice(context, l10n.foodScan_quotaReached, AppColors.secondary)
-          else ...[
+          if (quotaReached) ...[
+            _notice(context, l10n.foodScan_quotaReached, AppColors.secondary),
+            TextButton(
+              onPressed: () =>
+                  ref.read(foodScanProvider.notifier).refreshQuota(),
+              child: Text(l10n.common_retry),
+            ),
+          ] else ...[
             GradientButton(
               text: l10n.foodScan_takePhoto,
               width: double.infinity,
@@ -248,6 +282,11 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
                 borderRadius: AppSpacing.borderRadiusLg,
                 child: Image.memory(
                   state.imageBytes!,
+                  cacheWidth: 1024,
+                  errorBuilder: (_, __, ___) => const SizedBox(
+                    height: 180,
+                    child: Center(child: Icon(Icons.broken_image_outlined)),
+                  ),
                   height: 220,
                   fit: BoxFit.cover,
                 ),
@@ -304,10 +343,9 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
               GradientButton(
                 text: l10n.foodScan_retry,
                 width: double.infinity,
-                onPressed:
-                    () => ref
-                        .read(foodScanProvider.notifier)
-                        .retry(languageCode: _languageCode(context)),
+                onPressed: () => ref
+                    .read(foodScanProvider.notifier)
+                    .retry(languageCode: _languageCode(context)),
               ),
             const SizedBox(height: 12),
             TextButton(
@@ -356,6 +394,11 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
                     borderRadius: AppSpacing.borderRadiusLg,
                     child: Image.memory(
                       state.imageBytes!,
+                      cacheWidth: 1024,
+                      errorBuilder: (_, __, ___) => const SizedBox(
+                        height: 180,
+                        child: Center(child: Icon(Icons.broken_image_outlined)),
+                      ),
                       height: 180,
                       width: double.infinity,
                       fit: BoxFit.cover,
@@ -480,7 +523,9 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
             children: [
               Expanded(
                 child: OutlinedButton(
-                  onPressed: () => ref.read(foodScanProvider.notifier).reset(),
+                  onPressed: _saving
+                      ? null
+                      : () => ref.read(foodScanProvider.notifier).reset(),
                   style: OutlinedButton.styleFrom(
                     minimumSize: const Size.fromHeight(52),
                   ),
@@ -493,7 +538,7 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
                 child: GradientButton(
                   text: l10n.foodScan_save,
                   height: 52,
-                  onPressed: analysis.items.isEmpty ? null : _save,
+                  onPressed: _saving || analysis.items.isEmpty ? null : _save,
                 ),
               ),
             ],
@@ -651,39 +696,47 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
       showDragHandle: true,
       builder: (_) => FoodItemEditSheet(item: item),
     );
-    if (edited != null) {
+    if (mounted && edited != null) {
       ref.read(foodScanProvider.notifier).updateItem(index, edited);
     }
   }
 
   Future<void> _save() async {
+    if (_saving || !ref.read(isPremiumProvider)) return;
     final l10n = AppLocalizations.of(context)!;
     final analysis = ref.read(foodScanProvider).analysis;
-    if (analysis == null) return;
-
-    final name =
-        _nameController.text.trim().isEmpty
-            ? analysis.dishName
-            : _nameController.text.trim();
-
-    final messenger = ScaffoldMessenger.of(context);
-    final navigator = Navigator.of(context);
-
-    await ref
-        .read(mealProvider.notifier)
-        .addMeal(
-          name: name,
-          calories: analysis.totalCalories,
-          protein: analysis.totalProtein,
-          carbs: analysis.totalCarbs,
-          fat: analysis.totalFat,
-          mealType: _mealType,
-        );
-
-    HapticFeedback.mediumImpact();
-    if (navigator.canPop()) {
-      navigator.pop();
+    if (analysis == null || analysis.items.isEmpty) return;
+    final name = _nameController.text.trim().isEmpty
+        ? analysis.dishName
+        : _nameController.text.trim();
+    setState(() => _saving = true);
+    try {
+      await ref
+          .read(mealProvider.notifier)
+          .addMeal(
+            name: name,
+            calories: analysis.totalCalories,
+            protein: analysis.totalProtein,
+            carbs: analysis.totalCarbs,
+            fat: analysis.totalFat,
+            mealType: _mealType,
+          );
+      if (!mounted) return;
+      final messenger = ScaffoldMessenger.of(context);
+      HapticFeedback.mediumImpact();
+      // Keep the button locked until this route is removed.
+      if (context.canPop()) {
+        context.pop();
+      } else {
+        context.go('/timer');
+      }
+      messenger.showSnackBar(SnackBar(content: Text(l10n.meals_added(name))));
+    } catch (error) {
+      if (!mounted) return;
+      setState(() => _saving = false);
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.common_retry)));
     }
-    messenger.showSnackBar(SnackBar(content: Text(l10n.meals_added(name))));
   }
 }

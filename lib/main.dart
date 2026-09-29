@@ -27,10 +27,11 @@ void main() async {
     try {
       final lostData = await ImagePicker().retrieveLostData();
       final files = lostData.files;
-      final file = lostData.file ??
+      final file =
+          lostData.file ??
           (files != null && files.isNotEmpty ? files.first : null);
       if (file != null) {
-        final bytes = await file.readAsBytes();
+        final bytes = await readFoodPhoto(file);
         recoveredFoodImage = bytes;
         recoveredFoodImageMimeType = detectImageMimeType(
           bytes,
@@ -69,8 +70,7 @@ void main() async {
     prefs?.getString('locale') ??
         WidgetsBinding.instance.platformDispatcher.locale.toLanguageTag(),
   );
-  final onboardingCompleted =
-      prefs?.getBool('onboardingCompleted') ?? false;
+  final onboardingCompleted = prefs?.getBool('onboardingCompleted') ?? false;
 
   runApp(
     ProviderScope(

@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:fasting_app/features/meals/providers/food_scan_provider.dart';
 import 'package:fasting_app/services/food_vision_service.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Answers with a canned result (or throws) instead of calling Gemini.
@@ -30,6 +32,48 @@ class FakeFoodVisionService extends FoodVisionService {
   void dispose() {}
 }
 
+class DeferredFoodVisionService extends FakeFoodVisionService {
+  final pending = Completer<FoodAnalysis>();
+  @override
+  Future<FoodAnalysis> analyze({
+    required Uint8List imageBytes,
+    required String languageCode,
+    String mimeType = 'image/jpeg',
+  }) {
+    calls++;
+    return pending.future;
+  }
+}
+
+class OversizedPhoto extends XFile {
+  OversizedPhoto() : super('/oversized.jpg');
+  bool read = false;
+  @override
+  Future<int> length() async => FoodVisionService.maxImageBytes + 1;
+  @override
+  Future<Uint8List> readAsBytes() async {
+    read = true;
+    throw StateError('oversized file must not be read');
+  }
+}
+
+class DeferredPicker extends ImagePicker {
+  final pending = Completer<XFile?>();
+  final opened = Completer<void>();
+  @override
+  Future<XFile?> pickImage({
+    required ImageSource source,
+    double? maxWidth,
+    double? maxHeight,
+    int? imageQuality,
+    CameraDevice preferredCameraDevice = CameraDevice.rear,
+    bool requestFullMetadata = true,
+  }) {
+    opened.complete();
+    return pending.future;
+  }
+}
+
 FoodAnalysis analysisWith(int calories) => FoodAnalysis(
   dishName: 'Test plate',
   confidence: 0.9,
@@ -52,6 +96,96 @@ void main() {
 
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
+  test('oversized files are rejected before reading their bytes', () async {
+    final file = OversizedPhoto();
+    await expectLater(readFoodPhoto(file), throwsA(isA<FoodVisionException>()));
+    expect(file.read, isFalse);
+  });
+
+  test('oversized byte input never reaches preview state or the API', () async {
+    final service = FakeFoodVisionService(result: analysisWith(300));
+    final notifier = FoodScanNotifier(service: service, dailyLimit: 0);
+    addTearDown(notifier.dispose);
+    await notifier.analyzeBytes(Uint8List(FoodVisionService.maxImageBytes + 1));
+    expect(service.calls, 0);
+    expect(notifier.state.imageBytes, isNull);
+    expect(notifier.state.status, FoodScanStatus.failed);
+  });
+
+  test(
+    'disposing during initial quota await does not touch dead state',
+    () async {
+      final service = FakeFoodVisionService(result: analysisWith(300));
+      final notifier = FoodScanNotifier(service: service, dailyLimit: 0);
+      final operation = notifier.analyzeBytes(_bytes);
+      notifier.dispose();
+      await operation;
+      expect(service.calls, 0);
+    },
+  );
+
+  test(
+    'camera result after screen disposal is neither read nor analysed',
+    () async {
+      final picker = DeferredPicker();
+      final service = FakeFoodVisionService(result: analysisWith(300));
+      final notifier = FoodScanNotifier(
+        service: service,
+        picker: picker,
+        dailyLimit: 0,
+      );
+      final operation = notifier.scan(PhotoSource.camera);
+      await picker.opened.future;
+      notifier.dispose();
+      final photo = OversizedPhoto();
+      picker.pending.complete(photo);
+      await operation;
+      expect(photo.read, isFalse);
+      expect(service.calls, 0);
+    },
+  );
+
+  test('simultaneous analysis requests make only one API call', () async {
+    final service = DeferredFoodVisionService();
+    final notifier = FoodScanNotifier(service: service, dailyLimit: 0);
+    addTearDown(notifier.dispose);
+    final first = notifier.analyzeBytes(_bytes);
+    final second = notifier.analyzeBytes(_bytes);
+    await Future<void>.delayed(Duration.zero);
+    expect(service.calls, 1);
+    service.pending.complete(analysisWith(300));
+    await Future.wait([first, second]);
+    expect(notifier.state.status, FoodScanStatus.ready);
+  });
+
+  test('late analysis result after disposal is ignored', () async {
+    final service = DeferredFoodVisionService();
+    final notifier = FoodScanNotifier(service: service, dailyLimit: 0);
+    final operation = notifier.analyzeBytes(_bytes);
+    await Future<void>.delayed(Duration.zero);
+    notifier.dispose();
+    service.pending.complete(analysisWith(300));
+    await operation;
+    expect(service.calls, 1);
+  });
+
+  test('exhausted quota refreshes at midnight without reopening', () async {
+    var now = DateTime(2026, 9, 27, 23, 59);
+    final service = FakeFoodVisionService(result: analysisWith(300));
+    final notifier = FoodScanNotifier(
+      service: service,
+      dailyLimit: 1,
+      clock: () => now,
+    );
+    addTearDown(notifier.dispose);
+    await notifier.analyzeBytes(_bytes);
+    expect(notifier.state.scansLeftToday, 0);
+    now = DateTime(2026, 9, 28, 0, 1);
+    await notifier.analyzeBytes(_bytes);
+    expect(service.calls, 2);
+    expect(notifier.state.status, FoodScanStatus.ready);
+  });
+
   group('image MIME detection', () {
     test('recognizes JPEG, PNG and WebP signatures', () {
       expect(
@@ -59,16 +193,24 @@ void main() {
         'image/jpeg',
       );
       expect(
-        detectImageMimeType(
-          Uint8List.fromList([0x89, 0x50, 0x4E, 0x47, 0x00]),
-        ),
+        detectImageMimeType(Uint8List.fromList([0x89, 0x50, 0x4E, 0x47, 0x00])),
         'image/png',
       );
       expect(
         detectImageMimeType(
           Uint8List.fromList([
-            0x52, 0x49, 0x46, 0x46, 0, 0, 0, 0,
-            0x57, 0x45, 0x42, 0x50,
+            0x52,
+            0x49,
+            0x46,
+            0x46,
+            0,
+            0,
+            0,
+            0,
+            0x57,
+            0x45,
+            0x42,
+            0x50,
           ]),
         ),
         'image/webp',
@@ -79,8 +221,18 @@ void main() {
       expect(
         detectImageMimeType(
           Uint8List.fromList([
-            0, 0, 0, 0, 0x66, 0x74, 0x79, 0x70,
-            0x68, 0x65, 0x69, 0x63,
+            0,
+            0,
+            0,
+            0,
+            0x66,
+            0x74,
+            0x79,
+            0x70,
+            0x68,
+            0x65,
+            0x69,
+            0x63,
           ]),
         ),
         'image/heic',
