@@ -305,13 +305,14 @@ class TimerNotifier extends StateNotifier<TimerState> {
 }
 
 final timerProvider = StateNotifierProvider<TimerNotifier, TimerState>((ref) {
-  ref.listen<AppSettings>(settingsProvider, (previous, next) {
-    if (previous?.selectedPlanId != next.selectedPlanId) {
-      ref.read(timerProvider.notifier).changePlan(next.selectedPlanId);
-    }
-  });
-  return TimerNotifier(
+  final notifier = TimerNotifier(
     ref.watch(databaseProvider),
     initialPlanId: ref.read(settingsProvider).selectedPlanId,
   );
+  ref.listen<AppSettings>(settingsProvider, (previous, next) {
+    if (previous?.selectedPlanId != next.selectedPlanId) {
+      notifier.changePlan(next.selectedPlanId);
+    }
+  });
+  return notifier;
 });

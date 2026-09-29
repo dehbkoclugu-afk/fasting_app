@@ -102,6 +102,22 @@ void main() {
     expect(file.read, isFalse);
   });
 
+  test(
+    'no premium entitlement blocks analysis at the provider boundary',
+    () async {
+      final service = FakeFoodVisionService(result: analysisWith(300));
+      final notifier = FoodScanNotifier(
+        service: service,
+        dailyLimit: 0,
+        canAnalyze: () => false,
+      );
+      addTearDown(notifier.dispose);
+      await notifier.analyzeBytes(_bytes);
+      expect(service.calls, 0);
+      expect(notifier.state.imageBytes, isNull);
+    },
+  );
+
   test('oversized byte input never reaches preview state or the API', () async {
     final service = FakeFoodVisionService(result: analysisWith(300));
     final notifier = FoodScanNotifier(service: service, dailyLimit: 0);

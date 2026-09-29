@@ -5,6 +5,7 @@ import '../../../services/revenue_cat_service.dart';
 
 class SubscriptionState {
   final bool isPremium;
+  final bool entitlementVerified;
 
   /// A purchase or restore is running.
   final bool isLoading;
@@ -22,6 +23,7 @@ class SubscriptionState {
 
   const SubscriptionState({
     this.isPremium = false,
+    this.entitlementVerified = false,
     this.isLoading = false,
     this.isLoadingProducts = false,
     this.availablePackages = const [],
@@ -31,6 +33,7 @@ class SubscriptionState {
 
   SubscriptionState copyWith({
     bool? isPremium,
+    bool? entitlementVerified,
     bool? isLoading,
     bool? isLoadingProducts,
     List<Package>? availablePackages,
@@ -40,6 +43,7 @@ class SubscriptionState {
   }) {
     return SubscriptionState(
       isPremium: isPremium ?? this.isPremium,
+      entitlementVerified: entitlementVerified ?? this.entitlementVerified,
       isLoading: isLoading ?? this.isLoading,
       isLoadingProducts: isLoadingProducts ?? this.isLoadingProducts,
       availablePackages: availablePackages ?? this.availablePackages,
@@ -68,7 +72,8 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
   void _ensurePremiumListener() {
     if (_premiumListenerAttached || !_service.isConfigured) return;
     _service.addPremiumListener((isPremium) {
-      if (mounted) state = state.copyWith(isPremium: isPremium);
+      if (mounted)
+        state = state.copyWith(isPremium: isPremium, entitlementVerified: true);
     });
     _premiumListenerAttached = true;
   }
@@ -87,6 +92,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
       final packages = await _service.getPackages();
       state = state.copyWith(
         isPremium: isPremium,
+        entitlementVerified: true,
         availablePackages: packages,
         isStoreAvailable: _service.isConfigured,
         isLoadingProducts: false,
@@ -111,6 +117,9 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     };
     state = state.copyWith(
       isPremium: outcome == PurchaseOutcome.success ? true : state.isPremium,
+      entitlementVerified: outcome == PurchaseOutcome.success
+          ? true
+          : state.entitlementVerified,
       isLoading: false,
       errorMessage: error,
       clearError: error == null,
@@ -129,6 +138,9 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     };
     state = state.copyWith(
       isPremium: outcome == RestoreOutcome.success ? true : state.isPremium,
+      entitlementVerified: outcome == RestoreOutcome.success
+          ? true
+          : state.entitlementVerified,
       isLoading: false,
       errorMessage: error,
       clearError: error == null,
@@ -139,7 +151,8 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
   Future<void> refreshStatus() async {
     try {
       final isPremium = await _service.isPremium();
-      if (mounted) state = state.copyWith(isPremium: isPremium);
+      if (mounted)
+        state = state.copyWith(isPremium: isPremium, entitlementVerified: true);
     } catch (error) {
       debugPrint('Subscription refresh failed: $error');
       // Keep the last verified entitlement on transient store failures.

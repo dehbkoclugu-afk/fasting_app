@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -6,16 +8,66 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../features/timer/providers/timer_provider.dart';
+import '../../features/timer/providers/fasting_session_provider.dart';
+import '../../features/stats/providers/stats_provider.dart';
+import '../../features/meals/providers/meal_provider.dart';
+import '../../features/timer/providers/water_provider.dart';
 import '../../features/timer/widgets/completion_overlay.dart';
 import '../../features/paywall/providers/subscription_provider.dart';
 import '../../services/admob_service.dart';
 import '../constants/fasting_plans.dart';
 import '../utils/metabolic_phase_l10n.dart';
 
-class MainShell extends ConsumerWidget {
+class MainShell extends ConsumerStatefulWidget {
   final Widget child;
 
   const MainShell({super.key, required this.child});
+
+  @override
+  ConsumerState<MainShell> createState() => _MainShellState();
+}
+
+class _MainShellState extends ConsumerState<MainShell>
+    with WidgetsBindingObserver {
+  Timer? _dayTimer;
+  late DateTime _lastDay;
+
+  @override
+  void initState() {
+    super.initState();
+    _lastDay = _day(DateTime.now());
+    WidgetsBinding.instance.addObserver(this);
+    _dayTimer = Timer.periodic(
+      const Duration(minutes: 1),
+      (_) => _refreshDay(),
+    );
+  }
+
+  DateTime _day(DateTime date) => DateTime(date.year, date.month, date.day);
+
+  void _refreshDay() {
+    if (!mounted) return;
+    final current = _day(DateTime.now());
+    if (current == _lastDay) return;
+    _lastDay = current;
+    unawaited(ref.read(mealProvider.notifier).loadToday());
+    unawaited(ref.read(waterProvider.notifier).loadToday());
+    ref.invalidate(statsProvider);
+    ref.invalidate(heatmapProvider);
+    ref.read(fastingSessionProvider.notifier).loadSessions();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) _refreshDay();
+  }
+
+  @override
+  void dispose() {
+    _dayTimer?.cancel();
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   int _currentIndex(BuildContext context) {
     final location = GoRouterState.of(context).uri.path;
@@ -49,7 +101,17 @@ class MainShell extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
+    ref.listen<TimerState>(timerProvider, (previous, next) {
+      if (previous?.status == TimerStatus.running &&
+          next.status == TimerStatus.completed) {
+        ref.read(fastingSessionProvider.notifier).loadSessions();
+        for (final period in const [7, 30, 365]) {
+          ref.invalidate(statsProvider(period));
+        }
+        ref.invalidate(heatmapProvider);
+      }
+    });
     final currentIndex = _currentIndex(context);
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
@@ -88,7 +150,7 @@ class MainShell extends ConsumerWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned.fill(child: child),
+          Positioned.fill(child: widget.child),
           if (completionVisible)
             Positioned.fill(
               child: CompletionOverlay(
@@ -106,93 +168,87 @@ class MainShell extends ConsumerWidget {
             ),
         ],
       ),
-      bottomNavigationBar:
-          completionVisible
-              ? null
-              : SafeArea(
-                top: false,
-                minimum: const EdgeInsets.only(bottom: 6),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
-                    border: Border(
-                      top: BorderSide(
-                        color: theme.dividerColor.withValues(alpha: .45),
-                      ),
+      bottomNavigationBar: completionVisible
+          ? null
+          : SafeArea(
+              top: false,
+              minimum: const EdgeInsets.only(bottom: 6),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface,
+                  border: Border(
+                    top: BorderSide(
+                      color: theme.dividerColor.withValues(alpha: .45),
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(
-                          alpha:
-                              theme.brightness == Brightness.dark ? .24 : .06,
-                        ),
-                        blurRadius: 18,
-                        offset: const Offset(0, -4),
-                      ),
-                    ],
                   ),
-                  child: SizedBox(
-                    height: 70,
-                    child: Row(
-                      children: List.generate(destinations.length, (index) {
-                        final selected = index == currentIndex;
-                        final destination = destinations[index];
-                        final color =
-                            selected
-                                ? theme.colorScheme.primary
-                                : theme.colorScheme.onSurface.withValues(
-                                  alpha: .54,
-                                );
-                        return Expanded(
-                          child: Semantics(
-                            selected: selected,
-                            button: true,
-                            label: destination.$3,
-                            child: InkResponse(
-                              onTap: () => _onTap(context, index),
-                              radius: 34,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  AnimatedContainer(
-                                    duration: const Duration(milliseconds: 180),
-                                    width: selected ? 22 : 0,
-                                    height: 3,
-                                    margin: const EdgeInsets.only(bottom: 5),
-                                    decoration: BoxDecoration(
-                                      color: color,
-                                      borderRadius: BorderRadius.circular(99),
-                                    ),
-                                  ),
-                                  PhosphorIcon(
-                                    selected ? destination.$2 : destination.$1,
-                                    size: 22,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(
+                        alpha: theme.brightness == Brightness.dark ? .24 : .06,
+                      ),
+                      blurRadius: 18,
+                      offset: const Offset(0, -4),
+                    ),
+                  ],
+                ),
+                child: SizedBox(
+                  height: 70,
+                  child: Row(
+                    children: List.generate(destinations.length, (index) {
+                      final selected = index == currentIndex;
+                      final destination = destinations[index];
+                      final color = selected
+                          ? theme.colorScheme.primary
+                          : theme.colorScheme.onSurface.withValues(alpha: .54);
+                      return Expanded(
+                        child: Semantics(
+                          selected: selected,
+                          button: true,
+                          label: destination.$3,
+                          child: InkResponse(
+                            onTap: () => _onTap(context, index),
+                            radius: 34,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                AnimatedContainer(
+                                  duration: const Duration(milliseconds: 180),
+                                  width: selected ? 22 : 0,
+                                  height: 3,
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  decoration: BoxDecoration(
                                     color: color,
+                                    borderRadius: BorderRadius.circular(99),
                                   ),
-                                  const SizedBox(height: 3),
-                                  Text(
-                                    destination.$3,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: theme.textTheme.labelSmall?.copyWith(
-                                      color: color,
-                                      fontWeight:
-                                          selected
-                                              ? FontWeight.w800
-                                              : FontWeight.w600,
-                                      fontSize: 10.5,
-                                    ),
+                                ),
+                                PhosphorIcon(
+                                  selected ? destination.$2 : destination.$1,
+                                  size: 22,
+                                  color: color,
+                                ),
+                                const SizedBox(height: 3),
+                                Text(
+                                  destination.$3,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: theme.textTheme.labelSmall?.copyWith(
+                                    color: color,
+                                    fontWeight: selected
+                                        ? FontWeight.w800
+                                        : FontWeight.w600,
+                                    fontSize: 10.5,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                        );
-                      }),
-                    ),
+                        ),
+                      );
+                    }),
                   ),
                 ),
               ),
+            ),
     );
   }
 }

@@ -32,10 +32,10 @@ class WaterNotifier extends StateNotifier<WaterState> {
   final AppDatabase _db;
 
   WaterNotifier(this._db) : super(const WaterState()) {
-    _loadToday();
+    loadToday();
   }
 
-  Future<void> _loadToday() async {
+  Future<void> loadToday() async {
     final today = DateTime.now();
     final entries = await _db.getWaterForDate(today);
     final total = entries.fold<int>(0, (sum, e) => sum + e.amountMl);
@@ -46,12 +46,12 @@ class WaterNotifier extends StateNotifier<WaterState> {
     await _db.insertWater(
       WaterIntakeCompanion(amountMl: Value(ml), date: Value(DateTime.now())),
     );
-    await _loadToday();
+    await loadToday();
   }
 
   Future<void> deleteWater(int id) async {
     await _db.deleteWater(id);
-    await _loadToday();
+    await loadToday();
   }
 
   Future<void> setGoal(int ml) async {

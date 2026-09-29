@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../paywall/providers/subscription_provider.dart';
 
 import '../../../core/config/build_config.dart';
 import '../../../services/food_vision_service.dart';
@@ -134,10 +135,12 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
     ImagePicker? picker,
     int? dailyLimit,
     DateTime Function()? clock,
+    bool Function()? canAnalyze,
   }) : _service = service ?? FoodVisionService(),
        _picker = picker ?? ImagePicker(),
        _dailyLimit = dailyLimit ?? BuildConfig.geminiDailyScanLimit,
        _clock = clock ?? DateTime.now,
+       _canAnalyze = canAnalyze ?? (() => true),
        super(const FoodScanState()) {
     _quotaLoad = _loadQuota();
   }
@@ -146,6 +149,7 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   final ImagePicker _picker;
   final int _dailyLimit;
   final DateTime Function() _clock;
+  final bool Function() _canAnalyze;
   late final Future<void> _quotaLoad;
   bool _pickerInFlight = false;
   bool _analysisInFlight = false;
@@ -159,7 +163,8 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   static const _jpegQuality = 85;
 
   Future<void> refreshQuota() async {
-    if (!mounted || _pickerInFlight || _analysisInFlight) return;
+    if (!mounted || _pickerInFlight || _analysisInFlight || !_canAnalyze())
+      return;
     await _quotaLoad;
     if (mounted) await _loadQuota();
   }
@@ -213,11 +218,12 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   /// Picks a photo and analyses it. Does nothing if the user backs out of the
   /// picker — that is not an error worth showing.
   Future<void> scan(PhotoSource source, {String languageCode = 'en'}) async {
-    if (!mounted || _pickerInFlight || _analysisInFlight) return;
+    if (!mounted || _pickerInFlight || _analysisInFlight || !_canAnalyze())
+      return;
     _pickerInFlight = true;
     try {
       await _quotaLoad;
-      if (!mounted) return;
+      if (!mounted || !_canAnalyze()) return;
       await _loadQuota();
       if (!mounted) return;
       if (!state.hasQuotaLeft) {
@@ -247,7 +253,7 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
         }
         return;
       }
-      if (!mounted || file == null) return;
+      if (!mounted || file == null || !_canAnalyze()) return;
 
       try {
         final bytes = await readFoodPhoto(file);
@@ -281,11 +287,11 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
     String languageCode = 'en',
     String? mimeType,
   }) async {
-    if (!mounted || _analysisInFlight) return;
+    if (!mounted || _analysisInFlight || !_canAnalyze()) return;
     _analysisInFlight = true;
     try {
       await _quotaLoad;
-      if (!mounted) return;
+      if (!mounted || !_canAnalyze()) return;
       await _loadQuota();
       if (!mounted) return;
       if (!state.hasQuotaLeft) {
@@ -311,6 +317,10 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
         imageMimeType: resolvedMimeType,
         scansLeftToday: state.scansLeftToday,
       );
+      if (!_canAnalyze()) {
+        state = FoodScanState(scansLeftToday: state.scansLeftToday);
+        return;
+      }
       final analysis = await _service.analyze(
         imageBytes: bytes,
         languageCode: languageCode,
@@ -380,5 +390,5 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
 
 final foodScanProvider =
     StateNotifierProvider.autoDispose<FoodScanNotifier, FoodScanState>((ref) {
-      return FoodScanNotifier();
+      return FoodScanNotifier(canAnalyze: () => ref.read(isPremiumProvider));
     });
