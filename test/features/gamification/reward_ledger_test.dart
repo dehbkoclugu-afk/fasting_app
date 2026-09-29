@@ -24,6 +24,12 @@ void main() {
       earned.badges.firstWhere((badge) => badge.id == 'water').unlocked,
       isTrue,
     );
+    await Future<void>.delayed(const Duration(milliseconds: 40));
+    final prefs = await SharedPreferences.getInstance();
+    expect(
+      prefs.getInt('gamification_xp_floor'),
+      greaterThanOrEqualTo(earned.xp),
+    );
     first.dispose();
     await firstDb.close();
 
