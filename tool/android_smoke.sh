@@ -4,16 +4,22 @@ set -euo pipefail
 package_name=com.dehbkoclugu.fasttrack
 adb install -r /tmp/fasttrack-debug.apk
 
-package_dump=$(mktemp)
-adb shell dumpsys package "$package_name" > "$package_dump"
+adb shell pm path "$package_name" | grep -q "package:"
+aapt_binary=$(find "$ANDROID_HOME/build-tools" -maxdepth 2 -type f -name aapt | sort -V | tail -1)
+if [[ -z "$aapt_binary" ]]; then
+  echo 'Android aapt binary is unavailable' >&2
+  exit 1
+fi
+manifest_dump=$(mktemp)
+"$aapt_binary" dump xmltree /tmp/fasttrack-debug.apk AndroidManifest.xml > "$manifest_dump"
 for receiver in ScheduledNotificationReceiver ScheduledNotificationBootReceiver; do
-  if ! grep -q "com.dexterous.flutterlocalnotifications.$receiver" "$package_dump"; then
-    echo "Missing installed notification receiver: $receiver" >&2
+  if ! grep -Fq "com.dexterous.flutterlocalnotifications.$receiver" "$manifest_dump"; then
+    echo "Missing APK notification receiver: $receiver" >&2
     exit 1
   fi
 done
-if ! grep -q 'android.permission.RECEIVE_BOOT_COMPLETED' "$package_dump"; then
-  echo 'Missing installed boot permission' >&2
+if ! grep -Fq 'android.permission.RECEIVE_BOOT_COMPLETED' "$manifest_dump"; then
+  echo 'Missing APK boot permission' >&2
   exit 1
 fi
 
