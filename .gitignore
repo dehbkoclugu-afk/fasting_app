@@ -34,6 +34,7 @@ migrate_working_dir/
 /build/
 /release.json
 /.worktrees/
+*.egg-info/
 
 # Symbolication related
 app.*.symbols
