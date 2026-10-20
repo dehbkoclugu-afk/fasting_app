@@ -1,0 +1,247 @@
+{
+  "slug": "fasttrack-30-day-launch",
+  "title": "FastTrack — 30 Days of a Calmer Rhythm",
+  "timezone": "Europe/Istanbul",
+  "ideas": [
+    {
+      "day": 1, "funnel_stage": "awareness", "theme": "A gentle start", "purpose": "Invite newcomers without promising results",
+      "localized": [
+        {"day": 1, "locale": "tr", "hook": "İlk haftanı sakin başlat", "body": "Aralıklı oruç kusursuz bir takvim değil; öğün saatlerini fark etmekle başlayan bir rutin. Bugün sadece hangi saatlerde yemek yediğini gözlemle.", "cta": "Kendi ritmini kaydetmek için FastTrack'i keşfet.", "hashtags": ["#AralıklıOruç", "#SağlıklıRutin"], "safety_note": "Oruç herkes için uygun değildir; sağlık durumunda uzmana danış.", "preferred_format": "video"},
+        {"day": 1, "locale": "en", "hook": "Start with a calmer first week", "body": "Intermittent fasting does not need a perfect schedule. Begin by noticing when you normally eat, then choose a routine that fits your life.", "cta": "Explore your rhythm with FastTrack.", "hashtags": ["#IntermittentFasting", "#HealthyHabits"], "safety_note": "Fasting is not suitable for everyone; ask a clinician when relevant.", "preferred_format": "video"},
+        {"day": 1, "locale": "pt-BR", "hook": "Comece sua rotina com calma", "body": "Jejum intermitente não precisa virar cobrança. Observe seus horários de refeição hoje e descubra um ritmo que cabe na sua vida.", "cta": "Conheça o FastTrack e acompanhe seu ritmo.", "hashtags": ["#JejumIntermitente", "#RotinaSaudável"], "safety_note": "O jejum não serve para todos; consulte um profissional de saúde quando necessário.", "preferred_format": "video"}
+      ]
+    },
+    {
+      "day": 2, "funnel_stage": "awareness", "theme": "What is a fasting window?", "purpose": "Explain the core concept",
+      "localized": [
+        {"day": 2, "locale": "tr", "hook": "Oruç penceresi ne demek?", "body": "Günün bir bölümünde yemek, diğer bölümünde ara vermek: temel fikir bu kadar. Saatler bir yarış değil; ihtiyaçlarına göre değişebilir.", "cta": "Saatleri FastTrack zamanlayıcısında gör.", "hashtags": ["#AralıklıOruç", "#OruçPenceresi"], "preferred_format": "carousel"},
+        {"day": 2, "locale": "en", "hook": "What is a fasting window?", "body": "An eating window and a break from eating make up the basic schedule. There is no prize for choosing the longest window; fit it to your day.", "cta": "See your schedule in FastTrack.", "hashtags": ["#FastingBasics", "#IntermittentFasting"], "preferred_format": "carousel"},
+        {"day": 2, "locale": "pt-BR", "hook": "O que é uma janela de jejum?", "body": "É uma forma de organizar períodos de alimentação e pausa. O melhor horário é aquele que faz sentido para a sua rotina, sem competição.", "cta": "Visualize seus horários no FastTrack.", "hashtags": ["#JejumIntermitente", "#RotinaLeve"], "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 3, "funnel_stage": "awareness", "theme": "12:12 and 16:8", "purpose": "Compare familiar schedules without prescribing one",
+      "localized": [
+        {"day": 3, "locale": "tr", "hook": "12:12 mi, 16:8 mi?", "body": "Bu sayılar günün oruç ve yemek saatlerini anlatır. 12:12 daha kısa bir başlangıç olabilir; 16:8 herkes için doğru seçim değildir.", "cta": "Planları FastTrack içinde karşılaştır.", "hashtags": ["#1212", "#168", "#AralıklıOruç"], "preferred_format": "carousel"},
+        {"day": 3, "locale": "en", "hook": "12:12 or 16:8?", "body": "The numbers describe fasting and eating hours. A gentler 12:12 may suit a beginner; 16:8 is a choice, not a requirement.", "cta": "Compare plans in FastTrack.", "hashtags": ["#FastingPlans", "#FastingBasics"], "preferred_format": "carousel"},
+        {"day": 3, "locale": "pt-BR", "hook": "12:12 ou 16:8?", "body": "Os números mostram horas de pausa e de alimentação. Começar com 12:12 pode ser mais leve; 16:8 não é obrigação.", "cta": "Compare os planos no FastTrack.", "hashtags": ["#JejumIntermitente", "#PlanoDeJejum"], "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 4, "funnel_stage": "awareness", "theme": "Notice your last meal", "purpose": "Offer one low-friction action",
+      "localized": [
+        {"day": 4, "locale": "tr", "hook": "Son lokma saatini fark et", "body": "Başlangıç için bütün günü değiştirmek gerekmiyor. Akşam son öğününün saatini not etmek, mevcut düzenini görmene yardımcı olur.", "cta": "Bu saati FastTrack'e ekle.", "hashtags": ["#GünlükRutin", "#AralıklıOruç"], "preferred_format": "image"},
+        {"day": 4, "locale": "en", "hook": "Notice your last bite", "body": "You do not need to overhaul your day. Write down when your evening meal ends and learn what your current rhythm looks like.", "cta": "Log the time in FastTrack.", "hashtags": ["#HabitTracking", "#FastingRoutine"], "preferred_format": "image"},
+        {"day": 4, "locale": "pt-BR", "hook": "Perceba a hora da última refeição", "body": "Não precisa mudar tudo de uma vez. Anote quando termina a refeição da noite e observe como é seu ritmo atual.", "cta": "Registre esse horário no FastTrack.", "hashtags": ["#HábitosSaudáveis", "#JejumIntermitente"], "preferred_format": "image"}
+      ]
+    },
+    {
+      "day": 5, "funnel_stage": "awareness", "theme": "Hydration is a habit", "purpose": "Connect fasting with ordinary hydration tracking",
+      "localized": [
+        {"day": 5, "locale": "tr", "hook": "Su içmeyi unutuyor musun?", "body": "Yoğun bir günde suyu hatırlamak bile zor olabilir. Küçük kayıtlar gün içindeki alışkanlığını görünür kılar; ihtiyaç miktarı kişiden kişiye değişir.", "cta": "FastTrack su takibini dene.", "hashtags": ["#SuTakibi", "#GünlükRutin"], "preferred_format": "video"},
+        {"day": 5, "locale": "en", "hook": "Make water visible in your day", "body": "A busy schedule can make simple habits disappear. A quick water log helps you notice your pattern; individual needs vary.", "cta": "Try FastTrack water tracking.", "hashtags": ["#HydrationHabit", "#WellnessRoutine"], "preferred_format": "video"},
+        {"day": 5, "locale": "pt-BR", "hook": "Água também faz parte da rotina", "body": "No corre do dia, até beber água passa despercebido. Registrar cada copo ajuda a enxergar o hábito; as necessidades variam de pessoa para pessoa.", "cta": "Experimente o registro de água no FastTrack.", "hashtags": ["#Hidratação", "#RotinaSaudável"], "preferred_format": "video"}
+      ]
+    },
+    {
+      "day": 6, "funnel_stage": "awareness", "theme": "No perfect day", "purpose": "Reduce all-or-nothing thinking",
+      "localized": [
+        {"day": 6, "locale": "tr", "hook": "Bir gün plan değişirse?", "body": "Toplantı, aile yemeği, seyahat… Rutin hayatın içinde yaşar. Bir günü kaçırmak, öğrendiğin her şeyi sıfırlamaz.", "cta": "Takibini baskısız sürdür.", "hashtags": ["#SürdürülebilirAlışkanlık", "#AralıklıOruç"], "preferred_format": "image"},
+        {"day": 6, "locale": "en", "hook": "A changed plan is still progress", "body": "Work, travel, and shared meals happen. One different day does not erase what you have learned about your routine.", "cta": "Keep a flexible record with FastTrack.", "hashtags": ["#SustainableHabits", "#FastingRoutine"], "preferred_format": "image"},
+        {"day": 6, "locale": "pt-BR", "hook": "A rotina mudou? Tudo bem", "body": "Trabalho, família e viagens fazem parte da vida. Um dia diferente não apaga o que você aprendeu sobre seus horários.", "cta": "Acompanhe com leveza no FastTrack.", "hashtags": ["#SemCulpa", "#HábitosSaudáveis"], "preferred_format": "image"}
+      ]
+    },
+    {
+      "day": 7, "funnel_stage": "awareness", "theme": "Weekly reflection", "purpose": "Turn awareness into a first tracking habit",
+      "localized": [
+        {"day": 7, "locale": "tr", "hook": "Bu hafta ne fark ettin?", "body": "Saatlere, suya ve enerjine bak. Hedef kusursuz bir seri değil; sana uyan düzeni keşfetmek.", "cta": "Gelecek haftanın ritmini FastTrack'te planla.", "hashtags": ["#HaftalıkDeğerlendirme", "#İyiYaşam"], "preferred_format": "carousel"},
+        {"day": 7, "locale": "en", "hook": "What did this week teach you?", "body": "Look at your meal times, water, and how your days felt. The goal is to learn a pattern you can live with.", "cta": "Plan next week's rhythm in FastTrack.", "hashtags": ["#WeeklyReflection", "#HealthyHabits"], "preferred_format": "carousel"},
+        {"day": 7, "locale": "pt-BR", "hook": "O que você descobriu nesta semana?", "body": "Olhe seus horários, a água e como se sentiu. O objetivo é encontrar um ritmo possível, não bater uma meta perfeita.", "cta": "Planeje a próxima semana no FastTrack.", "hashtags": ["#ReflexãoDaSemana", "#RotinaSaudável"], "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 8, "funnel_stage": "activation", "theme": "One-tap timer", "purpose": "Demonstrate the core action",
+      "localized": [
+        {"day": 8, "locale": "tr", "hook": "Zamanlayıcıyı tek dokunuşla başlat", "body": "Planını seç, başladığın saati gör ve kalan süreyi tek ekranda takip et. Gerekirse rutinini sonraki gün yeniden düzenle.", "cta": "FastTrack zamanlayıcısını aç.", "hashtags": ["#OruçZamanlayıcı", "#FastTrack"], "preferred_format": "video"},
+        {"day": 8, "locale": "en", "hook": "One tap starts your timer", "body": "Choose a schedule and see elapsed and remaining time at a glance. Adjust your routine as life changes.", "cta": "Open the FastTrack timer.", "hashtags": ["#FastingTimer", "#FastTrack"], "preferred_format": "video"},
+        {"day": 8, "locale": "pt-BR", "hook": "Um toque para começar", "body": "Escolha um plano e acompanhe o tempo decorrido e o restante na mesma tela. Sua rotina pode mudar quando precisar.", "cta": "Abra o cronômetro do FastTrack.", "hashtags": ["#CronômetroDeJejum", "#FastTrack"], "preferred_format": "video"}
+      ]
+    },
+    {
+      "day": 9, "funnel_stage": "activation", "theme": "Choose a plan", "purpose": "Show flexible schedules",
+      "localized": [
+        {"day": 9, "locale": "tr", "hook": "Plan yaşamına uysun", "body": "12:12, 14:10 ve 16:8 gibi seçenekleri karşılaştır. Daha uzun süre her zaman daha iyi demek değildir.", "cta": "FastTrack'te planlara göz at.", "hashtags": ["#OruçPlanı", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 9, "locale": "en", "hook": "Pick a plan that fits your life", "body": "Compare 12:12, 14:10, and 16:8. Longer is not automatically better; choose with your own circumstances in mind.", "cta": "Browse plans in FastTrack.", "hashtags": ["#FastingPlans", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 9, "locale": "pt-BR", "hook": "Um plano que cabe no seu dia", "body": "Compare 12:12, 14:10 e 16:8. Mais horas não significam necessariamente uma escolha melhor para você.", "cta": "Veja os planos no FastTrack.", "hashtags": ["#PlanoDeJejum", "#FastTrack"], "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 10, "funnel_stage": "activation", "theme": "The progress ring", "purpose": "Make time visible",
+      "localized": [
+        {"day": 10, "locale": "tr", "hook": "Saat hesabını ekrana bırak", "body": "Geçen ve kalan süreyi zihinden hesaplamak zorunda değilsin. Görsel halka seçtiğin planın neresinde olduğunu gösterir.", "cta": "FastTrack'te halkayı gör.", "hashtags": ["#OruçTakibi", "#FastTrack"], "preferred_format": "video"},
+        {"day": 10, "locale": "en", "hook": "Let the timer do the math", "body": "No mental countdown needed. A clear progress ring shows where you are in the schedule you chose.", "cta": "See the ring in FastTrack.", "hashtags": ["#FastingTracker", "#FastTrack"], "preferred_format": "video"},
+        {"day": 10, "locale": "pt-BR", "hook": "Deixe o relógio fazer a conta", "body": "Você não precisa calcular as horas de cabeça. O círculo de progresso mostra em que ponto está do plano escolhido.", "cta": "Veja o progresso no FastTrack.", "hashtags": ["#AcompanharJejum", "#FastTrack"], "preferred_format": "video"}
+      ]
+    },
+    {
+      "day": 11, "funnel_stage": "activation", "theme": "Metabolic stages are estimates", "purpose": "Explain educational stages without medical claims",
+      "localized": [
+        {"day": 11, "locale": "tr", "hook": "Aşamalar bir rehberdir, ölçüm değil", "body": "FastTrack'teki metabolik aşamalar genel eğitim bilgisidir. Vücudunun durumunu ölçmez; zamanlar ve tepkiler kişiden kişiye değişir.", "cta": "Aşama açıklamalarını uygulamada oku.", "hashtags": ["#MetabolikYolculuk", "#FastTrack"], "safety_note": "Aşama saatleri tahmindir ve tıbbi ölçüm değildir.", "preferred_format": "carousel"},
+        {"day": 11, "locale": "en", "hook": "Stages are a guide, not a measurement", "body": "FastTrack's metabolic timeline is general education. It cannot measure your body's state; timing and response vary between people.", "cta": "Read the stage notes in the app.", "hashtags": ["#FastingEducation", "#FastTrack"], "safety_note": "Stage times are estimates, not medical measurements.", "preferred_format": "carousel"},
+        {"day": 11, "locale": "pt-BR", "hook": "Etapas são orientação, não exame", "body": "A linha do tempo metabólica do FastTrack é educativa. Ela não mede seu corpo; horários e respostas variam entre pessoas.", "cta": "Leia as explicações no aplicativo.", "hashtags": ["#EducaçãoEmJejum", "#FastTrack"], "safety_note": "Os horários das etapas são estimativas, não medições médicas.", "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 12, "funnel_stage": "activation", "theme": "Optional reminders", "purpose": "Show support without nagging",
+      "localized": [
+        {"day": 12, "locale": "tr", "hook": "Hatırlatıcılar senin kararın", "body": "Başlangıç, bitiş veya su bildirimi yararlı olabilir. İstemiyorsan kapat; takibi kendi hızında sürdür.", "cta": "FastTrack bildirim seçeneklerini incele.", "hashtags": ["#NazikHatırlatma", "#FastTrack"], "preferred_format": "image"},
+        {"day": 12, "locale": "en", "hook": "Reminders are your choice", "body": "A start, finish, or water reminder may help. Switch them off whenever they do not serve your routine.", "cta": "Explore FastTrack reminders.", "hashtags": ["#GentleReminder", "#FastTrack"], "preferred_format": "image"},
+        {"day": 12, "locale": "pt-BR", "hook": "Lembretes no seu ritmo", "body": "Um aviso para começar, terminar ou beber água pode ajudar. Se não fizer sentido, desligue sem culpa.", "cta": "Veja os lembretes no FastTrack.", "hashtags": ["#LembreteGentil", "#FastTrack"], "preferred_format": "image"}
+      ]
+    },
+    {
+      "day": 13, "funnel_stage": "activation", "theme": "Water log", "purpose": "Demonstrate a second daily action",
+      "localized": [
+        {"day": 13, "locale": "tr", "hook": "Bir bardak suyu kaydet", "body": "Su takibine başlamak için ayrıntılı bir tablo gerekmiyor. Bir kayıttan başlayıp gün içindeki düzenini görebilirsin.", "cta": "FastTrack'te ilk su kaydını ekle.", "hashtags": ["#SuTakibi", "#FastTrack"], "preferred_format": "video"},
+        {"day": 13, "locale": "en", "hook": "Log one glass of water", "body": "A hydration habit can begin with a single tap. Over time, your log helps you notice the pattern in your day.", "cta": "Add your first water entry in FastTrack.", "hashtags": ["#WaterTracker", "#FastTrack"], "preferred_format": "video"},
+        {"day": 13, "locale": "pt-BR", "hook": "Registre um copo de água", "body": "Não precisa de uma planilha para começar. Um toque por vez ajuda você a perceber como bebe água durante o dia.", "cta": "Faça seu primeiro registro no FastTrack.", "hashtags": ["#RegistroDeÁgua", "#FastTrack"], "preferred_format": "video"}
+      ]
+    },
+    {
+      "day": 14, "funnel_stage": "activation", "theme": "First-week review", "purpose": "Close activation week with reflection",
+      "localized": [
+        {"day": 14, "locale": "tr", "hook": "İlk haftaya birlikte bakalım", "body": "Hangi saatler kolay geldi? Hangi günler esneklik gerekti? Verilere not olarak bak, kendine not vermek için değil.", "cta": "FastTrack ilerleme ekranını aç.", "hashtags": ["#Haftalıkİlerleme", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 14, "locale": "en", "hook": "Review your first week", "body": "Which hours felt manageable? When did you need flexibility? Treat your history as information, not a grade.", "cta": "Open your FastTrack progress view.", "hashtags": ["#WeeklyProgress", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 14, "locale": "pt-BR", "hook": "Olhe sua primeira semana com carinho", "body": "Quais horários funcionaram? Quando precisou ajustar? Use os registros para aprender, não para se cobrar.", "cta": "Abra seu progresso no FastTrack.", "hashtags": ["#ProgressoSemPressa", "#FastTrack"], "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 15, "funnel_stage": "habit", "theme": "Consistency without streak pressure", "purpose": "Make sustainable consistency the goal",
+      "localized": [
+        {"day": 15, "locale": "tr", "hook": "Seri kırıldıysa hayat devam ediyor", "body": "Bir günün farklı geçmesi alışkanlığı bitirmez. Geri dönmek için en iyi an, hazır olduğun bir sonraki gündür.", "cta": "Ritmini FastTrack ile yeniden gör.", "hashtags": ["#BaskısızRutin", "#FastTrack"], "preferred_format": "image"},
+        {"day": 15, "locale": "en", "hook": "A broken streak is not a broken habit", "body": "One different day does not define your routine. Pick it up again when the next workable day arrives.", "cta": "Revisit your rhythm in FastTrack.", "hashtags": ["#NoPressureHabits", "#FastTrack"], "preferred_format": "image"},
+        {"day": 15, "locale": "pt-BR", "hook": "Perdeu a sequência? Respira", "body": "Um dia fora do planejado não acaba com seu hábito. Retome quando o próximo dia possível chegar.", "cta": "Reveja seu ritmo no FastTrack.", "hashtags": ["#SemCobrança", "#FastTrack"], "preferred_format": "image"}
+      ]
+    },
+    {
+      "day": 16, "funnel_stage": "habit", "theme": "Hunger and body cues", "purpose": "Prioritize wellbeing over a timer",
+      "localized": [
+        {"day": 16, "locale": "tr", "hook": "Zamanlayıcıyı değil, bedenini dinle", "body": "Kendini kötü hissediyorsan planı sürdürmek zorunda değilsin. Rahatsızlık, hastalık veya ilaç kullanımı varsa sağlık uzmanının görüşü önemlidir.", "cta": "Takvimi kendi ihtiyaçlarına göre düzenle.", "hashtags": ["#KendiniDinle", "#İyiYaşam"], "safety_note": "Belirti veya tıbbi durum varsa uzmana danış.", "preferred_format": "video"},
+        {"day": 16, "locale": "en", "hook": "Listen to your body before your timer", "body": "If you feel unwell, you do not need to finish a scheduled fast. A clinician can help when medication or health conditions are involved.", "cta": "Adapt the schedule to your needs.", "hashtags": ["#ListenToYourBody", "#Wellness"], "safety_note": "Seek clinical guidance for symptoms or medical conditions.", "preferred_format": "video"},
+        {"day": 16, "locale": "pt-BR", "hook": "Seu corpo vem antes do cronômetro", "body": "Se não estiver bem, você pode mudar o plano. Quem usa medicamentos ou tem alguma condição de saúde deve buscar orientação profissional.", "cta": "Ajuste os horários às suas necessidades.", "hashtags": ["#EscuteSeuCorpo", "#BemEstar"], "safety_note": "Procure orientação profissional para sintomas ou condições médicas.", "preferred_format": "video"}
+      ]
+    },
+    {
+      "day": 17, "funnel_stage": "habit", "theme": "Routine anchor", "purpose": "Connect tracking to an existing habit",
+      "localized": [
+        {"day": 17, "locale": "tr", "hook": "Rutini küçük bir işaretle bağla", "body": "Akşam mutfağı toplamak veya sabah takvime bakmak, saatlerini gözden geçirmek için doğal bir hatırlatıcı olabilir.", "cta": "FastTrack'i günlük işaretine ekle.", "hashtags": ["#Alışkanlıkİpucu", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 17, "locale": "en", "hook": "Tie tracking to something you already do", "body": "Closing the kitchen or checking your morning calendar can be a simple cue to look at your schedule.", "cta": "Make FastTrack part of that cue.", "hashtags": ["#HabitCue", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 17, "locale": "pt-BR", "hook": "Associe o hábito a um momento do dia", "body": "Arrumar a cozinha ou olhar a agenda pela manhã pode lembrar você de conferir seus horários.", "cta": "Inclua o FastTrack nesse momento.", "hashtags": ["#HábitoDiário", "#FastTrack"], "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 18, "funnel_stage": "habit", "theme": "Social meals", "purpose": "Normalize flexibility around people",
+      "localized": [
+        {"day": 18, "locale": "tr", "hook": "Arkadaş yemeği planını bozmak zorunda değil", "body": "Sosyal hayatın için zamanları kaydırabilirsin. Uygulama saatleri takip eder; kararları sen verirsin.", "cta": "Esnek planlarını FastTrack'te gör.", "hashtags": ["#EsnekRutin", "#SosyalYaşam"], "preferred_format": "image"},
+        {"day": 18, "locale": "en", "hook": "Your social plans count too", "body": "A shared meal may shift your timing. The app tracks hours; you decide what fits your life.", "cta": "Explore flexible plans in FastTrack.", "hashtags": ["#FlexibleRoutine", "#HealthyHabits"], "preferred_format": "image"},
+        {"day": 18, "locale": "pt-BR", "hook": "A refeição com amigos faz parte", "body": "Um encontro pode mudar seus horários. O aplicativo acompanha o tempo; a escolha continua sendo sua.", "cta": "Veja planos flexíveis no FastTrack.", "hashtags": ["#RotinaFlexível", "#VidaReal"], "preferred_format": "image"}
+      ]
+    },
+    {
+      "day": 19, "funnel_stage": "habit", "theme": "Sleep and daily routine", "purpose": "Promote observation, not claimed effects",
+      "localized": [
+        {"day": 19, "locale": "tr", "hook": "Uyku saatlerin de günün parçası", "body": "Akşam rutininin nasıl geçtiğine bak. Yemek saatlerini planlarken dinlenme ve günlük sorumlulukların için de yer bırak.", "cta": "Sana uyan saatleri FastTrack'te izle.", "hashtags": ["#UykuRutini", "#AralıklıOruç"], "preferred_format": "video"},
+        {"day": 19, "locale": "en", "hook": "Your evenings matter too", "body": "Notice how your evening routine feels. Leave room for sleep, work, and family when you choose meal times.", "cta": "Track a schedule that fits in FastTrack.", "hashtags": ["#EveningRoutine", "#FastingHabits"], "preferred_format": "video"},
+        {"day": 19, "locale": "pt-BR", "hook": "Sua noite também entra no planejamento", "body": "Observe como são suas noites. Ao escolher horários de refeição, considere sono, trabalho e família.", "cta": "Acompanhe seu ritmo no FastTrack.", "hashtags": ["#RotinaNoturna", "#JejumIntermitente"], "preferred_format": "video"}
+      ]
+    },
+    {
+      "day": 20, "funnel_stage": "habit", "theme": "Progress charts", "purpose": "Explain trends without judgment",
+      "localized": [
+        {"day": 20, "locale": "tr", "hook": "Tek güne değil, genel görünüme bak", "body": "İlerleme grafikleri zaman içindeki düzeni gösterir. Tek bir sayı veya tek bir gün seni tanımlamaz.", "cta": "FastTrack raporlarını incele.", "hashtags": ["#İlerlemeTakibi", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 20, "locale": "en", "hook": "Look at the pattern, not one day", "body": "Progress charts help you notice consistency over time. A single number or day is not the whole story.", "cta": "Explore FastTrack reports.", "hashtags": ["#ProgressTracking", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 20, "locale": "pt-BR", "hook": "Olhe a tendência, não um dia", "body": "Os gráficos ajudam a perceber o ritmo ao longo do tempo. Um número isolado não conta a história toda.", "cta": "Explore os relatórios do FastTrack.", "hashtags": ["#AcompanharProgresso", "#FastTrack"], "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 21, "funnel_stage": "habit", "theme": "Three-week reflection", "purpose": "Choose a maintainable next step",
+      "localized": [
+        {"day": 21, "locale": "tr", "hook": "Üç haftada hangi ritim kaldı?", "body": "Kolay gelen günleri, zorlandığın saatleri ve değişen planları gözden geçir. Sonraki adım daha uzun değil, daha sürdürülebilir olabilir.", "cta": "Gelecek haftanı FastTrack'te planla.", "hashtags": ["#SürdürülebilirRutin", "#FastTrack"], "preferred_format": "image"},
+        {"day": 21, "locale": "en", "hook": "Which rhythm lasted three weeks?", "body": "Review the easier days and the hours that felt hard. Your next step can be more sustainable instead of longer.", "cta": "Plan next week in FastTrack.", "hashtags": ["#SustainableRoutine", "#FastTrack"], "preferred_format": "image"},
+        {"day": 21, "locale": "pt-BR", "hook": "Que ritmo coube nessas três semanas?", "body": "Reveja os dias tranquilos e os horários difíceis. O próximo passo pode ser mais sustentável, não mais longo.", "cta": "Planeje a próxima semana no FastTrack.", "hashtags": ["#RotinaSustentável", "#FastTrack"], "preferred_format": "image"}
+      ]
+    },
+    {
+      "day": 22, "funnel_stage": "trust_conversion", "theme": "Privacy", "purpose": "Show local-first core data storage",
+      "localized": [
+        {"day": 22, "locale": "tr", "hook": "Temel kayıtların cihazında", "body": "FastTrack oruç, su, öğün ve kilo kayıtlarını cihazında tutar. Mahremiyet, rutinini takip ederken önemli bir tasarım tercihidir.", "cta": "FastTrack gizlilik yaklaşımını incele.", "hashtags": ["#DijitalMahremiyet", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 22, "locale": "en", "hook": "Core records stay on your device", "body": "FastTrack stores fasting, water, meal, and weight records locally. Privacy is part of a calmer way to track a routine.", "cta": "Explore FastTrack's privacy approach.", "hashtags": ["#PrivacyByDesign", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 22, "locale": "pt-BR", "hook": "Seus registros principais ficam no aparelho", "body": "O FastTrack guarda registros de jejum, água, refeições e peso no dispositivo. Privacidade também faz parte de uma rotina tranquila.", "cta": "Conheça a privacidade do FastTrack.", "hashtags": ["#PrivacidadeDigital", "#FastTrack"], "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 23, "funnel_stage": "trust_conversion", "theme": "A real day", "purpose": "Demonstrate ordinary use without fabricated testimonials",
+      "localized": [
+        {"day": 23, "locale": "tr", "hook": "Sıradan bir günde FastTrack", "body": "Sabah zamanlayıcıya bak, gün içinde suyu kaydet, akşam hafta görünümünü kontrol et. Üç küçük dokunuş, tek yerde.", "cta": "Uygulamayı mağazada keşfet.", "hashtags": ["#GünlükRutin", "#FastTrack"], "preferred_format": "video"},
+        {"day": 23, "locale": "en", "hook": "FastTrack on an ordinary day", "body": "Check the timer in the morning, log water during the day, and review the week at night. Three small actions in one place.", "cta": "Find FastTrack in the app store.", "hashtags": ["#DayInTheLife", "#FastTrack"], "preferred_format": "video"},
+        {"day": 23, "locale": "pt-BR", "hook": "FastTrack em um dia comum", "body": "Veja o cronômetro de manhã, registre água ao longo do dia e confira a semana à noite. Pequenos passos no mesmo lugar.", "cta": "Conheça o FastTrack na loja de aplicativos.", "hashtags": ["#RotinaReal", "#FastTrack"], "preferred_format": "video"}
+      ]
+    },
+    {
+      "day": 24, "funnel_stage": "trust_conversion", "theme": "Free features", "purpose": "Explain what users can try",
+      "localized": [
+        {"day": 24, "locale": "tr", "hook": "İlk adım için ne gerekiyor?", "body": "FastTrack'te zamanlayıcı, temel planlar ve ilerleme görünümüyle başlayabilirsin. Mağazadaki güncel özellikleri yüklemeden önce kontrol et.", "cta": "FastTrack mağaza sayfasına bak.", "hashtags": ["#OruçTakibi", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 24, "locale": "en", "hook": "What can you try first?", "body": "Start with the timer, introductory schedules, and a clear view of your progress. Check the current store listing for availability.", "cta": "Visit the FastTrack store page.", "hashtags": ["#FastingApp", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 24, "locale": "pt-BR", "hook": "Por onde começar no aplicativo?", "body": "Experimente o cronômetro, planos iniciais e uma visão clara do progresso. Confira os recursos atuais na loja.", "cta": "Visite a página do FastTrack na loja.", "hashtags": ["#AppDeJejum", "#FastTrack"], "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 25, "funnel_stage": "trust_conversion", "theme": "Common myth", "purpose": "Counter longer-is-better thinking",
+      "localized": [
+        {"day": 25, "locale": "tr", "hook": "Daha uzun her zaman daha iyi mi?", "body": "Hayır. Oruç süresi tek başına iyi yaşamın ölçüsü değil. Uygunluk kişisel koşullara bağlı; sağlık durumunda uzman görüşü al.", "cta": "FastTrack'te seçenekleri bilinçli karşılaştır.", "hashtags": ["#OruçEfsaneleri", "#İyiYaşam"], "safety_note": "Uzun oruç teşvik edilmez; kişisel sağlık durumu önemlidir.", "preferred_format": "image"},
+        {"day": 25, "locale": "en", "hook": "Is a longer fast always better?", "body": "No. Duration alone is not a measure of wellbeing. Suitability depends on your circumstances; seek clinical advice for health concerns.", "cta": "Compare options mindfully in FastTrack.", "hashtags": ["#FastingMyths", "#Wellness"], "safety_note": "Do not encourage prolonged fasting.", "preferred_format": "image"},
+        {"day": 25, "locale": "pt-BR", "hook": "Jejuar mais tempo é sempre melhor?", "body": "Não. A duração sozinha não mede bem-estar. A escolha depende da sua situação; procure orientação profissional se houver questões de saúde.", "cta": "Compare opções com calma no FastTrack.", "hashtags": ["#MitosDoJejum", "#BemEstar"], "safety_note": "Não incentivar jejuns prolongados.", "preferred_format": "image"}
+      ]
+    },
+    {
+      "day": 26, "funnel_stage": "trust_conversion", "theme": "Premium transparency", "purpose": "Explain optional premium without price promises",
+      "localized": [
+        {"day": 26, "locale": "tr", "hook": "Premium'de ne değişir?", "body": "Ek planlar ve reklamsız deneyim isteyenler için Premium seçeneği var. Güncel fiyat ve deneme koşullarını satın almadan önce mağazada gör.", "cta": "Seçenekleri FastTrack'te incele.", "hashtags": ["#FastTrackPremium", "#ŞeffafSeçim"], "preferred_format": "carousel"},
+        {"day": 26, "locale": "en", "hook": "What does Premium add?", "body": "Premium offers additional schedules and an ad-free experience. Review current prices and trial terms in your store before purchasing.", "cta": "Explore options in FastTrack.", "hashtags": ["#FastTrackPremium", "#ClearChoices"], "preferred_format": "carousel"},
+        {"day": 26, "locale": "pt-BR", "hook": "O que o Premium oferece?", "body": "O Premium traz planos adicionais e uso sem anúncios. Consulte preços e condições de teste na loja antes de comprar.", "cta": "Veja as opções no FastTrack.", "hashtags": ["#FastTrackPremium", "#EscolhaConsciente"], "preferred_format": "carousel"}
+      ]
+    },
+    {
+      "day": 27, "funnel_stage": "trust_conversion", "theme": "FAQ: missed start", "purpose": "Reduce first-use anxiety",
+      "localized": [
+        {"day": 27, "locale": "tr", "hook": "Başlatmayı unuttun mu?", "body": "Her zaman kusursuz kayıt bekleme. Saatleri gözden geçir, deneyiminden öğren ve bir sonraki gün için hatırlatıcıyı isteğe bağlı aç.", "cta": "FastTrack'i kendi düzenine göre ayarla.", "hashtags": ["#SıkSorulanSorular", "#FastTrack"], "preferred_format": "video"},
+        {"day": 27, "locale": "en", "hook": "Forgot to start the timer?", "body": "Tracking does not require perfection. Review your times, learn from the day, and turn on an optional reminder if it helps.", "cta": "Make FastTrack work for your routine.", "hashtags": ["#FastingFAQ", "#FastTrack"], "preferred_format": "video"},
+        {"day": 27, "locale": "pt-BR", "hook": "Esqueceu de iniciar o cronômetro?", "body": "Acompanhar a rotina não exige perfeição. Reveja os horários e ative um lembrete opcional se ele ajudar.", "cta": "Ajuste o FastTrack ao seu dia.", "hashtags": ["#DúvidasSobreJejum", "#FastTrack"], "preferred_format": "video"}
+      ]
+    },
+    {
+      "day": 28, "funnel_stage": "trust_conversion", "theme": "Who should seek advice", "purpose": "Make safety clear before conversion",
+      "localized": [
+        {"day": 28, "locale": "tr", "hook": "Başlamadan önce kendine bunu sor", "body": "Hamilelik, emzirme, ilaç kullanımı, kronik hastalık veya yeme bozukluğu öyküsünde oruç sana uygun olmayabilir. Önce sağlık uzmanına danış.", "cta": "Bilgiyi güvenle değerlendir.", "hashtags": ["#SağlıkÖnce", "#BilinçliRutin"], "safety_note": "Risk gruplarına açık uyarı.", "preferred_format": "image"},
+        {"day": 28, "locale": "en", "hook": "Pause and check before you begin", "body": "Pregnancy, breastfeeding, medication, chronic illness, or a history of disordered eating can make fasting unsuitable. Speak with a qualified clinician first.", "cta": "Choose a safe next step.", "hashtags": ["#HealthFirst", "#MindfulRoutine"], "safety_note": "Explicit guidance for higher-risk groups.", "preferred_format": "image"},
+        {"day": 28, "locale": "pt-BR", "hook": "Antes de começar, vale conferir", "body": "Gravidez, amamentação, medicamentos, doenças crônicas ou histórico de transtorno alimentar podem tornar o jejum inadequado. Converse com um profissional de saúde.", "cta": "Escolha o próximo passo com segurança.", "hashtags": ["#SaúdePrimeiro", "#RotinaConsciente"], "safety_note": "Aviso explícito para grupos de maior risco.", "preferred_format": "image"}
+      ]
+    },
+    {
+      "day": 29, "funnel_stage": "trust_conversion", "theme": "App feature tour", "purpose": "Connect features to ordinary benefits",
+      "localized": [
+        {"day": 29, "locale": "tr", "hook": "Tek ekranda daha net bir gün", "body": "Zamanlayıcı, su kayıtları ve haftalık ilerleme aynı yerde. Aradığın bilgiye dönüp bakmak kolaylaşır.", "cta": "FastTrack'i mağazada keşfet.", "hashtags": ["#FastTrack", "#GünlükTakip"], "preferred_format": "video"},
+        {"day": 29, "locale": "en", "hook": "A clearer view of your day", "body": "Timer, water log, and weekly progress live in one app. Check the information you need without extra noise.", "cta": "Explore FastTrack in the store.", "hashtags": ["#FastTrack", "#DailyTracking"], "preferred_format": "video"},
+        {"day": 29, "locale": "pt-BR", "hook": "Seu dia mais claro em um lugar", "body": "Cronômetro, registro de água e progresso semanal no mesmo aplicativo. Veja o que importa com menos distração.", "cta": "Conheça o FastTrack na loja.", "hashtags": ["#FastTrack", "#AcompanharRotina"], "preferred_format": "video"}
+      ]
+    },
+    {
+      "day": 30, "funnel_stage": "trust_conversion", "theme": "Thirty-day recap", "purpose": "Invite a sustainable next chapter",
+      "localized": [
+        {"day": 30, "locale": "tr", "hook": "30 günün sonunda hangi ritim senin?", "body": "Daha çok veri değil, daha iyi farkındalık: saatlerine, suya ve sürdürebildiğin alışkanlıklara bak. Sonraki ayı kendi koşullarına göre kur.", "cta": "FastTrack ile yeni ayına başla.", "hashtags": ["#30GünlükRutin", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 30, "locale": "en", "hook": "What rhythm fits after 30 days?", "body": "Look back at your timing, hydration, and habits you could actually keep. Build the next month around your real life.", "cta": "Start your next month with FastTrack.", "hashtags": ["#ThirtyDayReflection", "#FastTrack"], "preferred_format": "carousel"},
+        {"day": 30, "locale": "pt-BR", "hook": "Depois de 30 dias, qual ritmo é seu?", "body": "Reveja horários, água e hábitos que couberam na vida real. Monte o próximo mês com flexibilidade.", "cta": "Comece o próximo mês com FastTrack.", "hashtags": ["#RotinaDe30Dias", "#FastTrack"], "preferred_format": "carousel"}
+      ]
+    }
+  ]
+}
