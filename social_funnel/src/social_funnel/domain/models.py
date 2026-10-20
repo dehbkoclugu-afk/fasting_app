@@ -111,6 +111,7 @@ class MediaAsset(FrozenModel):
     checksum: str
     mime_type: str
     alt_text: str = ""
+    additional_paths: tuple[Path, ...] = ()
 
 
 class PublishResult(FrozenModel):
