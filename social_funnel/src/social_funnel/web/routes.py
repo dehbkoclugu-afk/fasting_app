@@ -5,7 +5,7 @@ from secrets import token_urlsafe
 from urllib.parse import parse_qs
 
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from social_funnel.domain.models import CampaignManifest, JobState
@@ -92,8 +92,11 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     @router.post("/days/{day}/export")
     async def export_day(request: Request, day: int):
         await check_csrf(request)
+        if not 1 <= day <= 30:
+            raise HTTPException(404)
         ids = tuple(row[0] for row in db.connection.execute("SELECT id FROM publication_job WHERE day=? AND state!='disabled'", (day,)))
-        export_manual_pack(ids, workspace / "exports" / f"day-{day:02d}.zip", jobs, manifest, workspace / "media")
-        return RedirectResponse(f"/days/{day}", status_code=303)
+        destination = export_manual_pack(ids, workspace / "exports" / f"day-{day:02d}.zip", jobs, manifest,
+                                         workspace / "media")
+        return FileResponse(destination, media_type="application/zip", filename=destination.name)
 
     return router

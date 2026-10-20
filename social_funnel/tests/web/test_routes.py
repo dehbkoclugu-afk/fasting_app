@@ -32,3 +32,23 @@ def test_mutations_require_csrf_and_pause_persists(tmp_path):
     assert "Paused" in client.get("/").text
     assert client.post("/resume", data={"csrf": csrf}, follow_redirects=False).status_code == 303
     assert "Running" in client.get("/").text
+
+
+def test_day_export_returns_download_after_csrf(tmp_path, monkeypatch):
+    from social_funnel.web import routes
+
+    def fast_export(job_ids, destination, jobs, manifest, media_root):
+        assert len(job_ids) == 12
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(b"test-zip")
+        return destination
+
+    monkeypatch.setattr(routes, "export_manual_pack", fast_export)
+    client = TestClient(create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20))))
+    import re
+    csrf = re.search(r'name="csrf" value="([^"]+)"', client.get("/days/1").text).group(1)
+    assert client.post("/days/1/export").status_code == 403
+    response = client.post("/days/1/export", data={"csrf": csrf})
+    assert response.status_code == 200
+    assert response.content == b"test-zip"
+    assert response.headers["content-disposition"] == 'attachment; filename="day-01.zip"'
