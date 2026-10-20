@@ -1,0 +1,1 @@
+"""Meta publisher tests."""
