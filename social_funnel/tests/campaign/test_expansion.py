@@ -1,0 +1,33 @@
+from datetime import date, datetime, timezone
+from pathlib import Path
+
+from social_funnel.content.loader import load_campaign
+from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
+from social_funnel.campaign.expansion import AccountConfig, expand_publication_jobs
+
+
+CATALOG = Path(__file__).parents[2] / "content" / "fasttrack-30-day-launch.json"
+
+
+def accounts():
+    return tuple(
+        AccountConfig(id=f"{locale.value}-{platform.value}", locale=locale, platform=platform,
+                      automation_mode=AutomationMode.AUTOMATIC if locale == LocaleCode.EN else AutomationMode.APPROVAL)
+        for locale in LocaleCode for platform in Platform
+    )
+
+
+def test_expands_twelve_destinations_to_360_stable_jobs():
+    manifest = load_campaign(CATALOG)
+    first = expand_publication_jobs(manifest, accounts(), date(2026, 10, 20))
+    second = expand_publication_jobs(manifest, accounts(), date(2026, 10, 20))
+    assert len(first) == 360
+    assert len({job.idempotency_key for job in first}) == 360
+    assert [job.idempotency_key for job in first] == [job.idempotency_key for job in second]
+    assert sum(job.automation_mode == AutomationMode.AUTOMATIC for job in first) == 120
+    assert first[0].scheduled_at == datetime(2026, 10, 20, 9, tzinfo=timezone.utc)
+
+
+def test_disabled_destination_does_not_expand():
+    jobs = expand_publication_jobs(load_campaign(CATALOG), accounts()[:-1], date(2026, 10, 20))
+    assert len(jobs) == 330

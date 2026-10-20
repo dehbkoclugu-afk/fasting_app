@@ -99,6 +99,9 @@ class PublicationJob(FrozenModel):
     scheduled_at: datetime
     idempotency_key: str = Field(min_length=1)
     content_revision: int = Field(ge=1)
+    next_attempt_at: datetime | None = None
+    remote_id: str | None = None
+    last_error: str | None = None
 
 
 class MediaAsset(FrozenModel):
