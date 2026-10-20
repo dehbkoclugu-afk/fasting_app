@@ -79,3 +79,14 @@ def test_retryable_failure_backoff_and_auth_error_no_retry(tmp_path):
     assert not engine.process(job.id)
     assert repository.get(job.id).state == JobState.FAILED
     db.close()
+
+
+def test_tiktok_review_upload_is_not_mistaken_for_public_post(tmp_path):
+    db, repository, manifest, job = setup(tmp_path, AutomationMode.AUTOMATIC)
+    publisher = FakePublisher(PublishResult(remote_id="publish-id", status="awaiting_creator_review"))
+    engine = PublishingOrchestrator(repository, manifest, {Platform.INSTAGRAM: publisher}, tmp_path / "media", campaign_locked=True)
+    engine.prepare(job.id)
+    assert engine.process(job.id)
+    assert repository.get(job.id).state == JobState.PROCESSING
+    assert repository.get(job.id).remote_id == "publish-id"
+    db.close()

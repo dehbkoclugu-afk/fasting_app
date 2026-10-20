@@ -102,18 +102,34 @@ class PublishingOrchestrator:
                 self.jobs.set_result(job_id, remote_id=existing.remote_id)
                 self.jobs.record_attempt(job_id, "reconciled", existing.remote_id, "existing remote post", 0)
                 return self.jobs.transition(job_id, JobState.UPLOADING, JobState.PUBLISHED)
+            if existing and existing.status in {"processing", "awaiting_creator_review"} and existing.remote_id:
+                self.jobs.set_result(job_id, remote_id=existing.remote_id)
+                return self.jobs.transition(job_id, JobState.UPLOADING, JobState.PROCESSING)
             content = self._content(job)
             asset = self._render(job, content)
             result = publisher.publish(job, asset.path if asset else None)
         except Exception as exc:
-            # Unknown network outcome: preserve key; next attempt checks remote state first.
-            return self._retry(job_id, "unknown_outcome", _redact(str(exc)))
+            # A lost publish response cannot be proved absent via a generic API lookup.
+            # Fail closed: a human reconciles this job instead of risking a duplicate.
+            diagnostic = "Unknown publish outcome; check the destination before retrying. " + _redact(str(exc))
+            self.jobs.record_attempt(job_id, "unknown_outcome", None, diagnostic, self.jobs.attempt_count(job_id) + 1)
+            self.jobs.set_result(job_id, error=diagnostic)
+            self.jobs.transition(job_id, JobState.UPLOADING, JobState.FAILED)
+            return False
         attempt = self.jobs.attempt_count(job_id) + 1
         diagnostic = _redact(result.message)
         self.jobs.record_attempt(job_id, result.status, result.remote_id, diagnostic, attempt)
         if result.status == "published" and result.remote_id:
             self.jobs.set_result(job_id, remote_id=result.remote_id)
             return self.jobs.transition(job_id, JobState.UPLOADING, JobState.PUBLISHED)
+        if result.status in {"processing", "awaiting_creator_review"} and result.remote_id:
+            self.jobs.set_result(job_id, remote_id=result.remote_id)
+            return self.jobs.transition(job_id, JobState.UPLOADING, JobState.PROCESSING)
+        if result.retryable and result.remote_id:
+            self.jobs.set_result(job_id, remote_id=result.remote_id,
+                                 error="Partial or pending remote publication; reconcile before retrying.")
+            self.jobs.transition(job_id, JobState.UPLOADING, JobState.FAILED)
+            return False
         if result.retryable:
             return self._retry(job_id, result.status, diagnostic, already_recorded=True)
         self.jobs.set_result(job_id, error=diagnostic or result.status)
@@ -147,5 +163,9 @@ class PublishingOrchestrator:
             if found and found.status == "published" and found.remote_id:
                 self.jobs.set_result(job.id, remote_id=found.remote_id)
                 self.jobs.transition(job.id, job.state, JobState.PUBLISHED)
+            elif found and found.status in {"processing", "awaiting_creator_review"}:
+                if job.state == JobState.UPLOADING:
+                    self.jobs.transition(job.id, JobState.UPLOADING, JobState.PROCESSING)
             elif found is None:
-                self.jobs.transition(job.id, job.state, JobState.SCHEDULED)
+                self.jobs.set_result(job.id, error="Interrupted publish; verify remote destination manually.")
+                self.jobs.transition(job.id, job.state, JobState.FAILED)
