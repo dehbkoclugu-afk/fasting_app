@@ -9,6 +9,18 @@ languages or platforms.
 | English (`en`) | `en-instagram` | `en-facebook` | `en-tiktok` | `en-threads` |
 | Brazilian Portuguese (`pt-BR`) | `pt-BR-instagram` | `pt-BR-facebook` | `pt-BR-tiktok` | `pt-BR-threads` |
 
+## Verified public identities (2026-10-20)
+
+| Locale | Instagram | Facebook Page | TikTok | Threads |
+|---|---|---|---|---|
+| Turkish (`tr`) | `@fasttrack.fasting.tr` | `FastTrack Aralıklı Oruç` | `@fasttrack.fasting.tr` | `@fasttrack.fasting.tr` |
+| English (`en`) | `@fasttrack.fasting.en` | `FastTrack Fasting` | `@fasttrack.fasting.en` | `@fasttrack.fasting.en` |
+| Brazilian Portuguese (`pt-BR`) | `@fasttrack.fasting.br` | `FastTrack Jejum` | `@fasttrack.fasting.br` | `@fasttrack.fasting.br` |
+
+These names were verified in the platform UIs. They are public identities, not
+Graph API or TikTok API account IDs. Persist the provider-returned immutable IDs
+only after OAuth connection and identity verification.
+
 For each row, record the visible handle/Page name as `public_identity`, verify
 that it matches the intended language, and keep the account disabled until its
 connection test succeeds. Store only an operating-system vault reference in the
