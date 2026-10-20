@@ -46,7 +46,7 @@ def validate_job(
         if job.platform in {Platform.INSTAGRAM, Platform.FACEBOOK, Platform.THREADS} and not asset.alt_text.strip():
             add("missing_alt_text", "Add accessible media alt text.", "alt_text")
         ratio = asset.width / asset.height
-        supported = (0.55 <= ratio <= 0.60) if job.platform == Platform.TIKTOK else (0.74 <= ratio <= 1.92)
+        supported = (0.55 <= ratio <= 0.60) if asset.mime_type == "video/mp4" or job.platform == Platform.TIKTOK else (0.74 <= ratio <= 1.92)
         if not supported:
             add("unsupported_ratio", "Media aspect ratio is not supported for this destination.", "media")
         if asset.checksum in (recently_published_hashes or set()):

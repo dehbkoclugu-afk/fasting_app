@@ -96,3 +96,9 @@ class JobRepository:
         return self.db.connection.execute(
             "SELECT COUNT(*) FROM publication_attempt WHERE job_id=?", (job_id,),
         ).fetchone()[0]
+
+    def list_inflight(self) -> tuple[PublicationJob, ...]:
+        rows = self.db.connection.execute(
+            "SELECT * FROM publication_job WHERE state IN ('uploading','processing')",
+        ).fetchall()
+        return tuple(PublicationJob.model_validate(dict(row)) for row in rows)
