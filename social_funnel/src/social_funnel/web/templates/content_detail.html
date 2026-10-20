@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Gün {{ idea.day }} | FastTrack Social{% endblock %}
+{% block content %}
+<div class="detail-header"><a href="/">← Kampanyaya dön</a><span>{{ idea.funnel_stage|replace('_',' ') }}</span></div>
+<section class="detail-hero"><p class="eyebrow">Gün {{ '%02d'|format(idea.day) }}</p><h1>{{ idea.theme }}</h1><p>{{ idea.purpose }}</p>
+<form method="post" action="/days/{{ idea.day }}/export"><input type="hidden" name="csrf" value="{{ csrf }}"><button type="submit">Günün ZIP paketini hazırla</button></form></section>
+<section class="locale-grid">
+{% for content in idea.localized %}
+  <article class="locale-card">
+    <span class="locale-label">{{ 'Türkçe' if content.locale.value == 'tr' else 'English' if content.locale.value == 'en' else 'Português (Brasil)' }}</span>
+    <h2>{{ content.hook }}</h2><p>{{ content.body }}</p><p class="cta">{{ content.cta }}</p><small>{{ content.hashtags|join(' ') }}</small>
+    {% if content.safety_note %}<p class="safety">{{ content.safety_note }}</p>{% endif %}
+    <div class="job-list">
+      {% for job in jobs if job.locale == content.locale.value %}
+      <div><span><strong>{{ job.platform|capitalize }}</strong><small>{{ job.state }}</small></span>
+      {% if job.state in ['draft','needs_review'] %}<form method="post" action="/jobs/{{ job.id }}/approve"><input type="hidden" name="csrf" value="{{ csrf }}"><button type="submit">Kontrol et ve onayla</button></form>{% endif %}
+      {% if job.state not in ['disabled','published'] %}<form method="post" action="/jobs/{{ job.id }}/disable"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="quiet" type="submit">Kapat</button></form>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </article>
+{% endfor %}
+</section>
+{% endblock %}

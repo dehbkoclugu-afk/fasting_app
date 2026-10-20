@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}FastTrack Social{% endblock %}</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="/" class="brand"><span class="brand-icon">◔</span> FastTrack <small>Social Studio</small></a>
+    <span class="local-badge">● Yerel çalışma alanı</span>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer>FastTrack · Sakin ritimler, güvenli paylaşımlar · Hesap bağlantısı olmadan canlı yayın yapılmaz.</footer>
+</body>
+</html>
