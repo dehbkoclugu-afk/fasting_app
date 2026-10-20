@@ -7,6 +7,7 @@ from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
+import json
 import os
 import socket
 import threading
@@ -101,9 +102,10 @@ def _message_box(message: str) -> None:
 
 
 def _default_config() -> LaunchConfig:
+    from social_funnel.setup.service import default_catalog
+
     workspace = Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "FastTrack Social Funnel"
-    catalog = Path(__file__).resolve().parents[3] / "content" / "fasttrack-30-day-launch.json"
-    return LaunchConfig(workspace, catalog, date.today())
+    return LaunchConfig(workspace, default_catalog(), date.today())
 
 
 def launch(
@@ -143,6 +145,72 @@ def launch(
     return 0
 
 
+def run_smoke_check(workspace: Path, report_path: Path) -> int:
+    """Exercise packaged assets and local state without contacting a publisher."""
+    from fastapi.testclient import TestClient
+
+    from social_funnel.rendering.images import RenderRequest, render_asset
+    from social_funnel.scheduling.service import SchedulerService
+    from social_funnel.setup.service import default_catalog, initialize_workspace
+    from social_funnel.storage.repositories import JobRepository
+
+    workspace = Path(workspace)
+    summary = initialize_workspace(workspace, start_date=date(2026, 10, 20))
+    app = create_app(WebSettings(workspace, default_catalog(), date(2026, 10, 20)))
+    database = app.state.database
+    try:
+        with TestClient(app) as client:
+            health = client.get("/health")
+            health.raise_for_status()
+            health_status = health.json()["status"]
+
+        first_content = app.state.manifest.ideas[0].localized[0]
+        asset = render_asset(RenderRequest(first_content, workspace / "smoke-media"))
+        scheduler = SchedulerService(database, JobRepository(database), None)
+        scheduler.pause()
+        if not scheduler.paused:
+            raise RuntimeError("pause check failed")
+        scheduler.resume()
+        paused = scheduler.paused
+
+        report = {
+            "account_count": summary.account_count,
+            "health": health_status,
+            "idea_count": summary.idea_count,
+            "job_count": summary.job_count,
+            "localized_count": summary.localized_count,
+            "paused": paused,
+            "rendered": asset.path.is_file(),
+            "shutdown": "clean",
+        }
+        report_path = Path(report_path)
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(
+            json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True),
+            encoding="utf-8",
+        )
+    finally:
+        database.close()
+    return 0
+
+
+def _entrypoint() -> int:
+    if os.environ.get("FASTTRACK_SMOKE_TEST") == "1":
+        workspace = Path(os.environ["FASTTRACK_SMOKE_WORKSPACE"])
+        report = Path(os.environ["FASTTRACK_SMOKE_REPORT"])
+        try:
+            return run_smoke_check(workspace, report)
+        except Exception:
+            import traceback
+            report.parent.mkdir(parents=True, exist_ok=True)
+            report.write_text(
+                json.dumps({"error": traceback.format_exc()}, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+            return 1
+    return launch()
+
+
 if __name__ == "__main__":
-    raise SystemExit(launch())
+    raise SystemExit(_entrypoint())
 

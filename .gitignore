@@ -36,6 +36,9 @@ migrate_working_dir/
 /.worktrees/
 *.egg-info/
 social_funnel/.scratch/
+social_funnel/packaging/.venv/
+social_funnel/build/
+social_funnel/dist/
 
 # Symbolication related
 app.*.symbols

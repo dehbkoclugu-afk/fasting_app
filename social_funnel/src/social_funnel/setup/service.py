@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 import json
+import sys
 
 from social_funnel.campaign.expansion import AccountConfig, expand_publication_jobs
 from social_funnel.content.loader import load_campaign, validate_campaign_counts
@@ -24,6 +25,8 @@ class SetupSummary:
 
 
 def default_catalog() -> Path:
+    if getattr(sys, "frozen", False):
+        return Path(sys._MEIPASS) / "content" / "fasttrack-30-day-launch.json"
     return Path(__file__).resolve().parents[3] / "content" / "fasttrack-30-day-launch.json"
 
 

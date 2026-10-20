@@ -1,9 +1,14 @@
 """Shared campaign palette and source artwork routing."""
 
 from pathlib import Path
+import sys
 
 
-ASSET_ROOT = Path(__file__).parents[3] / "assets"
+ASSET_ROOT = (
+    Path(sys._MEIPASS) / "assets"
+    if getattr(sys, "frozen", False)
+    else Path(__file__).parents[3] / "assets"
+)
 ARTWORK = ASSET_ROOT / "artwork"
 PALETTE = {"ink": "#20332B", "cream": "#F6F1E8", "sage": "#66806C", "coral": "#C98D78"}
 
