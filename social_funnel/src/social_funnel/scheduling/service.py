@@ -39,9 +39,10 @@ class SchedulerService:
             self.db.connection.execute("UPDATE application_state SET value='0' WHERE key='campaign_active'")
 
     def tick(self, now: datetime, limit: int = 12) -> int:
-        if not self.active:
+        if not self.active or self.paused:
             return 0
         orchestrator = self.orchestrator() if callable(self.orchestrator) else self.orchestrator
+        orchestrator.recover_inflight()
         completed = 0
         for job in self.jobs.get_due_jobs(now, limit):
             if self.paused:

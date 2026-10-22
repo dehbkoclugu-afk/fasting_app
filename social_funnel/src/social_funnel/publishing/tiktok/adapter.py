@@ -10,12 +10,32 @@ from social_funnel.publishing.tiktok.errors import TikTokApiError
 from social_funnel.publishing.tiktok.uploads import upload_video_file
 
 
+class _MemoryTikTokState:
+    def __init__(self):
+        self.consents = set()
+        self.submissions = {}
+
+    def record_consent(self, job_id, content_revision, at):
+        self.consents.add((job_id, content_revision))
+
+    def has_consent(self, job_id, content_revision):
+        return (job_id, content_revision) in self.consents
+
+    def record_submission(self, idempotency_key, publish_id, *, direct):
+        self.submissions.setdefault(
+            idempotency_key, {"publish_id": publish_id, "direct": int(direct)},
+        )
+
+    def get_submission(self, idempotency_key):
+        return self.submissions.get(idempotency_key)
+
+
 class TikTokPublisher:
     def __init__(self, client, *, content_lookup: Callable[[PublicationJob], LocalizedContent],
                  upload: Callable[[str, Path], None] | None = None,
                  media_url: Callable[[Path], str] | None = None,
                  verified_media_host: str | None = None, audited: bool = False,
-                 direct_post: bool = False, privacy_level: str = "SELF_ONLY"):
+                 direct_post: bool = False, privacy_level: str = "SELF_ONLY", state=None):
         self.client = client
         self.content_lookup = content_lookup
         self.upload = upload or (lambda url, path: upload_video_file(client.http, url, path))
@@ -24,14 +44,12 @@ class TikTokPublisher:
         self.audited = audited
         self.direct_post = direct_post
         self.privacy_level = privacy_level
-        self._consent: dict[tuple[str, int], datetime] = {}
-        self._sent: dict[str, str] = {}
-        self._modes: dict[str, bool] = {}
+        self.state = state or _MemoryTikTokState()
 
     def record_consent(self, job_id: str, content_revision: int, at: datetime) -> None:
         if at.tzinfo is None:
             raise ValueError("Consent timestamp must be timezone-aware")
-        self._consent[(job_id, content_revision)] = at
+        self.state.record_consent(job_id, content_revision, at)
 
     def capabilities(self, account_id: str) -> dict:
         return {"account_id": account_id, "review_upload": True,
@@ -39,9 +57,10 @@ class TikTokPublisher:
                 "verified_photo_host": bool(self.verified_media_host)}
 
     def lookup_by_idempotency_key(self, key: str) -> PublishResult | None:
-        publish_id = self._sent.get(key)
-        if not publish_id:
+        submission = self.state.get_submission(key)
+        if not submission:
             return None
+        publish_id = submission["publish_id"]
         try:
             status = self.client.fetch_status(publish_id)
         except TikTokApiError as exc:
@@ -56,7 +75,7 @@ class TikTokPublisher:
         return PublishResult(remote_id=publish_id, status="processing")
 
     def publish(self, job: PublicationJob, asset_path: Path | None) -> PublishResult:
-        if (job.id, job.content_revision) not in self._consent:
+        if not self.state.has_consent(job.id, job.content_revision):
             return PublishResult(status="consent_required", message="Approve this exact TikTok content revision before upload")
         if asset_path is None or not asset_path.is_file():
             return PublishResult(status="missing_media", message="TikTok upload needs rendered media")
@@ -88,8 +107,9 @@ class TikTokPublisher:
                 source = {"source": "FILE_UPLOAD", "video_size": size,
                           "chunk_size": chunk_size, "total_chunk_count": (size + chunk_size - 1) // chunk_size}
                 initialized = self.client.init_video(review=not direct, source_info=source, post_info=post_info)
-                self._sent[job.idempotency_key] = initialized["publish_id"]
-                self._modes[job.idempotency_key] = direct
+                self.state.record_submission(
+                    job.idempotency_key, initialized["publish_id"], direct=direct,
+                )
                 self.upload(initialized["upload_url"], asset_path)
             else:
                 if self.media_url is None or not self.verified_media_host:
@@ -99,8 +119,9 @@ class TikTokPublisher:
                 if parsed.scheme != "https" or parsed.hostname != self.verified_media_host:
                     return PublishResult(status="unverified_media_host", message="Photo URL is outside the verified domain")
                 initialized = self.client.init_photo(review=not direct, photo_urls=(url,), post_info=post_info)
-                self._sent[job.idempotency_key] = initialized["publish_id"]
-                self._modes[job.idempotency_key] = direct
+                self.state.record_submission(
+                    job.idempotency_key, initialized["publish_id"], direct=direct,
+                )
         except TikTokApiError as exc:
             return PublishResult(status=exc.category, retryable=exc.retryable, message=exc.category)
         return PublishResult(remote_id=initialized["publish_id"],

@@ -1,5 +1,6 @@
 """Review actions protected by a session CSRF token."""
 
+from datetime import datetime, timezone
 from pathlib import Path
 from secrets import token_urlsafe
 from hashlib import sha256
@@ -26,6 +27,7 @@ from social_funnel.scheduling.service import SchedulerService
 from social_funnel.storage.database import Database
 from social_funnel.storage.repositories import (
     AccountConnectionRepository, CampaignRevisionRepository, JobRepository, MediaImportRepository,
+    TikTokStateRepository,
 )
 
 
@@ -63,6 +65,7 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     revision_repository = CampaignRevisionRepository(db)
     campaign_refresh = CampaignRefreshService(db, workspace)
     account_repository = AccountConnectionRepository(db)
+    tiktok_state = TikTokStateRepository(db)
     campaign_accounts = tuple(
         AccountConfig(id=f"{locale.value}-{platform.value}", locale=locale, platform=platform,
                       automation_mode=AutomationMode.APPROVAL)
@@ -688,14 +691,20 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
 
     @router.post("/jobs/{job_id}/approve")
     async def approve(request: Request, job_id: str):
-        await check_csrf(request)
+        form = await check_csrf(request)
         job = jobs.get(job_id)
         if job.campaign_slug != current_manifest().slug:
             raise HTTPException(404)
+        if job.platform == Platform.TIKTOK and form.get("tiktok_consent") != "1":
+            raise HTTPException(400, "TikTok upload requires explicit consent")
         orchestrator = current_orchestrator()
         if job.state == JobState.DRAFT:
             orchestrator.prepare(job_id)
         if jobs.get(job_id).state == JobState.NEEDS_REVIEW:
+            if job.platform == Platform.TIKTOK:
+                tiktok_state.record_consent(
+                    job.id, job.content_revision, datetime.now(timezone.utc),
+                )
             orchestrator.approve(job_id)
         return RedirectResponse(f"/days/{job.day}", status_code=303)
 

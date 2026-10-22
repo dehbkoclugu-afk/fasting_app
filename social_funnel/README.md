@@ -12,6 +12,7 @@ Instagram, Facebook, TikTok, and Threads.
 - Monthly ZIP media import inside the EXE, content preflight, coverage view, immutable activation, and rollback
 - Deterministic image/carousel/video rendering with preflight validation
 - Meta and TikTok publishing adapters with retry and duplicate-send safeguards
+- Revision-specific TikTok approval consent, durable publish IDs, and automatic remote-status reconciliation
 - Secure TikTok Desktop OAuth with PKCE, exact-handle verification, and Windows Credential Manager storage
 - Secure Facebook/Instagram pair discovery and Threads OAuth with exact public-identity checks
 - Expiry-aware TikTok/Threads token rotation, exact-account publisher binding, and a

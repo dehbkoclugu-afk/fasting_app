@@ -11,7 +11,7 @@ from social_funnel.publishing.meta.threads import ThreadsPublisher
 from social_funnel.publishing.tiktok.adapter import TikTokPublisher
 from social_funnel.publishing.tiktok.client import TikTokClient
 from social_funnel.storage.database import Database
-from social_funnel.storage.repositories import AccountConnectionRepository
+from social_funnel.storage.repositories import AccountConnectionRepository, TikTokStateRepository
 
 
 class BoundPublisher:
@@ -72,7 +72,10 @@ def build_account_publishers(
             )
         elif platform == "tiktok":
             client = tiktok_client_factory(tiktok_tokens.access_token(account_id))
-            publisher = TikTokPublisher(client, content_lookup=content_lookup)
+            publisher = TikTokPublisher(
+                client, content_lookup=content_lookup,
+                state=TikTokStateRepository(database),
+            )
         else:
             continue
         publishers[account_id] = BoundPublisher(account["provider_identity"], publisher)

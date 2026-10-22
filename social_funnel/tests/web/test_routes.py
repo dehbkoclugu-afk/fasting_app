@@ -9,7 +9,7 @@ from fastapi.testclient import TestClient
 from PIL import Image
 
 from social_funnel.domain.models import JobState, PublishResult
-from social_funnel.storage.repositories import JobRepository
+from social_funnel.storage.repositories import JobRepository, TikTokStateRepository
 from social_funnel.web.app import WebSettings, create_app
 
 
@@ -318,6 +318,9 @@ def test_app_scheduler_publishes_due_job_through_live_account_runtime(tmp_path, 
 
     published = []
 
+    class Hosting:
+        def configured(self): return False
+
     class Publisher:
         def lookup_by_idempotency_key(self, key):
             return None
@@ -333,7 +336,7 @@ def test_app_scheduler_publishes_due_job_through_live_account_runtime(tmp_path, 
     monkeypatch.setattr(app_module, "build_account_publishers", publishers, raising=False)
     app = create_app(WebSettings(
         workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20),
-    ))
+    ), media_hosting=Hosting())
     jobs = JobRepository(app.state.database)
     row = app.state.database.connection.execute(
         "SELECT id FROM publication_job WHERE account_id='tr-threads' AND day=1"
@@ -347,3 +350,36 @@ def test_app_scheduler_publishes_due_job_through_live_account_runtime(tmp_path, 
     assert app.state.scheduler.tick(datetime(2026, 11, 30, tzinfo=timezone.utc)) == 1
     assert jobs.get(row["id"]).state == JobState.PUBLISHED
     assert published == [("tr-threads", None)]
+
+
+def test_tiktok_approval_requires_explicit_exact_revision_consent(tmp_path):
+    class Hosting:
+        def configured(self): return False
+
+    app = create_app(WebSettings(
+        workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20),
+    ), media_hosting=Hosting())
+    seed_video_batch(app, tmp_path)
+    client = TestClient(app)
+    page = client.get("/days/1")
+    assert "TikTok'a yüklenmesini açıkça onaylıyorum" in page.text
+    csrf = csrf_from(page.text)
+    row = app.state.database.connection.execute(
+        "SELECT id,content_revision FROM publication_job WHERE account_id='tr-tiktok' AND day=1"
+    ).fetchone()
+
+    missing = client.post(
+        f"/jobs/{row['id']}/approve", data={"csrf": csrf}, follow_redirects=False,
+    )
+    assert missing.status_code == 400
+    assert JobRepository(app.state.database).get(row["id"]).state == JobState.DRAFT
+
+    approved = client.post(
+        f"/jobs/{row['id']}/approve",
+        data={"csrf": csrf, "tiktok_consent": "1"}, follow_redirects=False,
+    )
+    assert approved.status_code == 303
+    assert JobRepository(app.state.database).get(row["id"]).state == JobState.SCHEDULED
+    assert TikTokStateRepository(app.state.database).has_consent(
+        row["id"], row["content_revision"],
+    )

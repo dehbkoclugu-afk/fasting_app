@@ -161,6 +161,10 @@ class PublishingOrchestrator:
             elif found and found.status in {"processing", "awaiting_creator_review"}:
                 if job.state == JobState.UPLOADING:
                     self.jobs.transition(job.id, JobState.UPLOADING, JobState.PROCESSING)
+            elif found and not found.retryable:
+                diagnostic = _redact(found.message or found.status)
+                self.jobs.set_result(job.id, remote_id=found.remote_id or job.remote_id, error=diagnostic)
+                self.jobs.transition(job.id, job.state, JobState.FAILED)
             elif found is None:
                 self.jobs.set_result(job.id, error="Interrupted publish; verify remote destination manually.")
                 self.jobs.transition(job.id, job.state, JobState.FAILED)

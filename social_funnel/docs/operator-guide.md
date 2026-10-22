@@ -55,6 +55,9 @@ Single-image and three-slide carousel assets are rendered automatically from the
    text, destination account, and scheduled local time.
 4. Approve only the jobs that are ready. Disable a destination instead of
    improvising a replacement account.
+   TikTok requires the separate **TikTok'a yüklenmesini açıkça onaylıyorum**
+   checkbox for that exact content revision. Creator-review uploads remain in
+   processing while the queue checks TikTok's status automatically.
 5. Keep the campaign in approval mode until every destination has passed its own
    live check and platform review is complete.
 

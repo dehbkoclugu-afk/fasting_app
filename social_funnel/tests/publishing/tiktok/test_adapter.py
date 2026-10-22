@@ -3,10 +3,14 @@ from pathlib import Path
 
 from social_funnel.domain.models import AutomationMode, JobState, LocaleCode, LocalizedContent, Platform, PublicationJob
 from social_funnel.publishing.tiktok.adapter import TikTokPublisher
+from social_funnel.storage.database import Database
+from social_funnel.storage.repositories import JobRepository, TikTokStateRepository
 
 
 class FakeClient:
-    def __init__(self): self.calls=[]; self.http=object(); self.privacy=["PUBLIC_TO_EVERYONE", "SELF_ONLY"]
+    def __init__(self):
+        self.calls=[]; self.http=object(); self.privacy=["PUBLIC_TO_EVERYONE", "SELF_ONLY"]
+        self.status = {"status": "SEND_TO_USER_INBOX"}
     def query_creator_info(self):
         self.calls.append("creator")
         return {"privacy_level_options": self.privacy, "comment_disabled": False,
@@ -17,7 +21,7 @@ class FakeClient:
     def init_photo(self, **kwargs):
         self.calls.append(("photo", kwargs))
         return {"publish_id": "pub-1"}
-    def fetch_status(self, publish_id): return {"status": "SEND_TO_USER_INBOX"}
+    def fetch_status(self, publish_id): return self.status
 
 
 def job(revision=1):
@@ -66,3 +70,31 @@ def test_photo_needs_verified_host(tmp_path):
     publisher.record_consent("j", 1, datetime.now(timezone.utc))
     assert publisher.publish(job(), image).status == "unverified_media_host"
     assert client.calls == []
+
+
+def test_rebuilt_publisher_recovers_submission_and_polls_remote_status(tmp_path):
+    video = tmp_path / "clip.mp4"; video.write_bytes(b"video")
+    database = Database.open(tmp_path / "state.db")
+    database.connection.execute(
+        "INSERT INTO campaign(slug,title,timezone,manifest_json,created_at) VALUES('c','c','UTC','{}',?)",
+        (datetime.now(timezone.utc).isoformat(),),
+    )
+    database.connection.commit()
+    JobRepository(database).import_jobs((job(),))
+    state = TikTokStateRepository(database)
+    client = FakeClient()
+    first = TikTokPublisher(
+        client, content_lookup=lambda _: content(), upload=lambda *_: None, state=state,
+    )
+    first.record_consent("j", 1, datetime.now(timezone.utc))
+    assert first.publish(job(), video).status == "awaiting_creator_review"
+
+    client.status = {"status": "PUBLISH_COMPLETE", "publicaly_available_post_id": [987]}
+    rebuilt = TikTokPublisher(
+        client, content_lookup=lambda _: content(), upload=lambda *_: None,
+        state=TikTokStateRepository(database),
+    )
+
+    result = rebuilt.lookup_by_idempotency_key("key")
+    assert result.status == "published" and result.remote_id == "987"
+    database.close()

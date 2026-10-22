@@ -84,6 +84,10 @@ an apparently valid token work only for app-role accounts.
    posting. For photo posting, verify the public HTTPS media domain first.
 
 Every TikTok upload requires consent for the exact job ID and content revision.
+The day-review screen stores that consent locally when the required checkbox is
+selected. The live queue then keeps TikTok's publish ID across restarts and
+polls the official status endpoint until the upload is published, awaiting
+creator review, or definitively failed.
 Direct posting also refreshes creator privacy options immediately before the
 send. An unaudited client must not be represented as capable of public direct
 posting.

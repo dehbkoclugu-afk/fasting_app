@@ -51,6 +51,18 @@ CREATE TABLE IF NOT EXISTS publication_attempt (
   diagnostic TEXT NOT NULL,
   retry_count INTEGER NOT NULL
 );
+CREATE TABLE IF NOT EXISTS tiktok_consent (
+  job_id TEXT NOT NULL REFERENCES publication_job(id) ON DELETE CASCADE,
+  content_revision INTEGER NOT NULL,
+  consented_at TEXT NOT NULL,
+  PRIMARY KEY(job_id, content_revision)
+);
+CREATE TABLE IF NOT EXISTS tiktok_submission (
+  idempotency_key TEXT PRIMARY KEY,
+  publish_id TEXT NOT NULL,
+  direct INTEGER NOT NULL CHECK(direct IN (0,1)),
+  created_at TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS application_state (
   key TEXT PRIMARY KEY,
   value TEXT NOT NULL

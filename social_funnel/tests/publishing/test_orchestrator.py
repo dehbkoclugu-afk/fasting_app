@@ -93,6 +93,24 @@ def test_tiktok_review_upload_is_not_mistaken_for_public_post(tmp_path):
     db.close()
 
 
+def test_recovery_marks_terminal_remote_failure_as_failed(tmp_path):
+    db, repository, manifest, job = setup(tmp_path, AutomationMode.AUTOMATIC)
+    publisher = FakePublisher(PublishResult(remote_id="publish-id", status="awaiting_creator_review"))
+    engine = PublishingOrchestrator(
+        repository, manifest, {Platform.INSTAGRAM: publisher}, tmp_path / "media", campaign_locked=True,
+    )
+    engine.prepare(job.id)
+    assert engine.process(job.id)
+    publisher.existing = PublishResult(remote_id="publish-id", status="failed", message="spam_risk")
+
+    engine.recover_inflight()
+
+    recovered = repository.get(job.id)
+    assert recovered.state == JobState.FAILED
+    assert recovered.last_error == "spam_risk"
+    db.close()
+
+
 def test_exact_account_publisher_wins_over_platform_fallback(tmp_path):
     db, repository, manifest, job = setup(tmp_path, AutomationMode.AUTOMATIC)
     exact = FakePublisher()

@@ -251,6 +251,40 @@ class JobRepository:
         return tuple(PublicationJob.model_validate(dict(row)) for row in rows)
 
 
+class TikTokStateRepository:
+    def __init__(self, database: Database):
+        self.db = database
+
+    def record_consent(self, job_id: str, content_revision: int, at: datetime) -> None:
+        if at.tzinfo is None:
+            raise ValueError("Consent timestamp must be timezone-aware")
+        with self.db.connection:
+            self.db.connection.execute(
+                """INSERT INTO tiktok_consent(job_id,content_revision,consented_at)
+                VALUES(?,?,?) ON CONFLICT(job_id,content_revision) DO NOTHING""",
+                (job_id, content_revision, at.isoformat()),
+            )
+
+    def has_consent(self, job_id: str, content_revision: int) -> bool:
+        return self.db.connection.execute(
+            "SELECT 1 FROM tiktok_consent WHERE job_id=? AND content_revision=?",
+            (job_id, content_revision),
+        ).fetchone() is not None
+
+    def record_submission(self, idempotency_key: str, publish_id: str, *, direct: bool) -> None:
+        with self.db.connection:
+            self.db.connection.execute(
+                """INSERT INTO tiktok_submission(idempotency_key,publish_id,direct,created_at)
+                VALUES(?,?,?,?) ON CONFLICT(idempotency_key) DO NOTHING""",
+                (idempotency_key, publish_id, int(direct), datetime.now(timezone.utc).isoformat()),
+            )
+
+    def get_submission(self, idempotency_key: str):
+        return self.db.connection.execute(
+            "SELECT * FROM tiktok_submission WHERE idempotency_key=?", (idempotency_key,),
+        ).fetchone()
+
+
 class MediaImportRepository:
     def __init__(self, database: Database):
         self.db = database

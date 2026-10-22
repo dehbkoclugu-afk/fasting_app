@@ -15,6 +15,10 @@ CATALOG = Path(__file__).parents[2] / "content" / "fasttrack-30-day-launch.json"
 class FakeEngine:
     def __init__(self):
         self.processed = []
+        self.recoveries = 0
+
+    def recover_inflight(self):
+        self.recoveries += 1
 
     def process(self, job_id):
         self.processed.append(job_id)
@@ -81,3 +85,14 @@ def test_campaign_activation_persists_and_pause_still_wins(tmp_path):
     assert scheduler.active and scheduler.paused
     scheduler.deactivate()
     assert not scheduler.active
+
+
+def test_active_tick_reconciles_remote_inflight_jobs(tmp_path):
+    db = Database.open(tmp_path / "queue.db")
+    engine = FakeEngine()
+    scheduler = SchedulerService(db, JobRepository(db), engine)
+    scheduler.activate()
+
+    assert scheduler.tick(datetime(2026, 10, 20, 9, tzinfo=timezone.utc)) == 0
+    assert engine.recoveries == 1
+    db.close()
