@@ -56,6 +56,21 @@ CREATE TABLE IF NOT EXISTS application_state (
 INSERT OR IGNORE INTO application_state(key, value) VALUES ('paused', '0');
 INSERT OR IGNORE INTO application_state(key, value) VALUES ('campaign_active', '0');
 
+CREATE TABLE IF NOT EXISTS campaign_revision (
+  id TEXT PRIMARY KEY,
+  target_month TEXT NOT NULL,
+  campaign_slug TEXT NOT NULL,
+  checksum TEXT NOT NULL UNIQUE,
+  manifest_json TEXT NOT NULL,
+  managed_path TEXT NOT NULL,
+  created_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS active_campaign_revision (
+  singleton INTEGER PRIMARY KEY CHECK(singleton = 1),
+  revision_id TEXT NOT NULL REFERENCES campaign_revision(id),
+  previous_revision_id TEXT REFERENCES campaign_revision(id)
+);
+
 CREATE TABLE IF NOT EXISTS media_import_batch (
   id TEXT PRIMARY KEY,
   campaign_slug TEXT NOT NULL REFERENCES campaign(slug),

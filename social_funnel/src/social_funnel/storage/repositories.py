@@ -25,6 +25,78 @@ class CampaignRepository:
         return CampaignManifest.model_validate_json(row[0])
 
 
+class CampaignRevisionRepository:
+    def __init__(self, database: Database):
+        self.db = database
+
+    def add(self, revision_id: str, month: str, campaign_slug: str, checksum: str,
+            manifest_json: str, managed_path: str) -> None:
+        with self.db.connection:
+            self.db.connection.execute(
+                """INSERT OR IGNORE INTO campaign_revision
+                (id,target_month,campaign_slug,checksum,manifest_json,managed_path,created_at)
+                VALUES(?,?,?,?,?,?,?)""",
+                (revision_id, month, campaign_slug, checksum, manifest_json, managed_path,
+                 datetime.now(timezone.utc).isoformat()),
+            )
+
+    def get(self, revision_id: str):
+        row = self.db.connection.execute(
+            "SELECT * FROM campaign_revision WHERE id=?", (revision_id,),
+        ).fetchone()
+        if row is None:
+            raise KeyError(revision_id)
+        return row
+
+    def find_by_checksum(self, checksum: str):
+        return self.db.connection.execute(
+            "SELECT * FROM campaign_revision WHERE checksum=?", (checksum,),
+        ).fetchone()
+
+    def list(self) -> tuple:
+        return tuple(self.db.connection.execute(
+            "SELECT * FROM campaign_revision ORDER BY created_at DESC",
+        ).fetchall())
+
+    def activate(self, revision_id: str) -> None:
+        self.get(revision_id)
+        current = self.db.connection.execute(
+            "SELECT revision_id FROM active_campaign_revision WHERE singleton=1"
+        ).fetchone()
+        previous = current[0] if current and current[0] != revision_id else None
+        with self.db.connection:
+            self.db.connection.execute(
+                """INSERT INTO active_campaign_revision(singleton,revision_id,previous_revision_id)
+                VALUES(1,?,?) ON CONFLICT(singleton) DO UPDATE SET
+                previous_revision_id=CASE
+                  WHEN active_campaign_revision.revision_id!=excluded.revision_id
+                  THEN active_campaign_revision.revision_id
+                  ELSE active_campaign_revision.previous_revision_id END,
+                revision_id=excluded.revision_id""",
+                (revision_id, previous),
+            )
+
+    def active(self):
+        return self.db.connection.execute(
+            """SELECT r.* FROM active_campaign_revision a
+            JOIN campaign_revision r ON r.id=a.revision_id WHERE a.singleton=1"""
+        ).fetchone()
+
+    def rollback(self) -> bool:
+        row = self.db.connection.execute(
+            "SELECT revision_id,previous_revision_id FROM active_campaign_revision WHERE singleton=1"
+        ).fetchone()
+        if row is None or row["previous_revision_id"] is None:
+            return False
+        with self.db.connection:
+            self.db.connection.execute(
+                """UPDATE active_campaign_revision SET revision_id=?,previous_revision_id=?
+                WHERE singleton=1""",
+                (row["previous_revision_id"], row["revision_id"]),
+            )
+        return True
+
+
 class JobRepository:
     def __init__(self, database: Database):
         self.db = database
