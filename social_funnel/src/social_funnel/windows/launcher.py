@@ -79,7 +79,7 @@ def find_local_port(ports: Iterable[int]) -> int:
 
 def _server_factory(app, host: str, port: int):
     import uvicorn
-    return uvicorn.Server(uvicorn.Config(app, host=host, port=port, log_level="info"))
+    return uvicorn.Server(uvicorn.Config(app, host=host, port=port, log_config=None))
 
 
 def _health_check(url: str, timeout: float) -> bool:

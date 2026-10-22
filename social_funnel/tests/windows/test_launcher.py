@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import socket
+import sys
 import threading
 import time
 from datetime import date
@@ -9,6 +10,7 @@ from pathlib import Path
 from social_funnel.windows.launcher import (
     GracefulShutdown,
     LaunchConfig,
+    _server_factory,
     find_local_port,
     launch,
 )
@@ -24,6 +26,16 @@ def test_find_local_port_skips_an_occupied_port():
         occupied.close()
 
     assert chosen == first + 1
+
+
+def test_server_factory_supports_windowed_executable_without_console(monkeypatch):
+    monkeypatch.setattr(sys, "stdout", None)
+    monkeypatch.setattr(sys, "stderr", None)
+
+    server = _server_factory(object(), "127.0.0.1", 8811)
+
+    assert server.config.host == "127.0.0.1"
+    assert server.config.port == 8811
 
 
 def test_launch_binds_localhost_and_opens_browser_after_health(tmp_path):
