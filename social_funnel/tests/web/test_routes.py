@@ -383,3 +383,26 @@ def test_tiktok_approval_requires_explicit_exact_revision_consent(tmp_path):
     assert TikTokStateRepository(app.state.database).has_consent(
         row["id"], row["content_revision"],
     )
+
+
+def test_review_pages_explain_processing_and_failed_publications(tmp_path):
+    app = create_app(WebSettings(
+        workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20),
+    ))
+    app.state.database.connection.execute(
+        """UPDATE publication_job SET state='processing',remote_id='publish-123'
+        WHERE campaign_slug='fasttrack-30-day-launch' AND account_id='tr-tiktok' AND day=1""",
+    )
+    app.state.database.connection.execute(
+        """UPDATE publication_job SET state='failed',last_error='spam_risk'
+        WHERE campaign_slug='fasttrack-30-day-launch' AND account_id='en-tiktok' AND day=1""",
+    )
+    app.state.database.connection.commit()
+    client = TestClient(app)
+
+    detail = client.get("/days/1")
+    assert "TikTok gönderimi işleniyor" in detail.text
+    assert "Creator inbox" in detail.text
+    assert "spam_risk" in detail.text
+    dashboard = client.get("/")
+    assert "İşleniyor</span><strong>1</strong>" in dashboard.text

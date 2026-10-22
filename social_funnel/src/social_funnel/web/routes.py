@@ -32,6 +32,17 @@ from social_funnel.storage.repositories import (
 
 
 TEMPLATES = Jinja2Templates(directory=Path(__file__).with_name("templates"))
+JOB_STATE_LABELS = {
+    "draft": "Taslak",
+    "needs_review": "İnceleme bekliyor",
+    "approved": "Onaylandı",
+    "scheduled": "Planlandı",
+    "uploading": "Yükleniyor",
+    "processing": "İşleniyor",
+    "published": "Yayınlandı",
+    "failed": "İşlem gerekli",
+    "disabled": "Kapalı",
+}
 
 
 def _checksum(path: Path) -> str:
@@ -670,11 +681,12 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         manifest = current_manifest()
         idea = manifest.ideas[day - 1]
         rows = db.connection.execute(
-            """SELECT id,locale,platform,state FROM publication_job
+            """SELECT id,locale,platform,state,remote_id,last_error FROM publication_job
             WHERE campaign_slug=? AND day=? ORDER BY locale,platform""", (manifest.slug, day),
         ).fetchall()
         return TEMPLATES.TemplateResponse(request, "content_detail.html", {
             "csrf": csrf(request), "idea": idea, "jobs": rows,
+            "state_labels": JOB_STATE_LABELS,
         })
 
     @router.post("/pause")

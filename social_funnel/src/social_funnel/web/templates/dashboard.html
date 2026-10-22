@@ -20,6 +20,7 @@
 <section class="stats" aria-label="Durum özeti">
   <article><span>İnceleme bekliyor</span><strong>{{ counts.get('needs_review',0) + counts.get('draft',0) }}</strong></article>
   <article><span>Planlandı</span><strong>{{ counts.get('scheduled',0) }}</strong></article>
+  <article><span>İşleniyor</span><strong>{{ counts.get('uploading',0) + counts.get('processing',0) }}</strong></article>
   <article><span>Yayınlandı</span><strong>{{ counts.get('published',0) }}</strong></article>
   <article><span>İşlem gerekli</span><strong>{{ counts.get('failed',0) }}</strong></article>
 </section>

@@ -41,7 +41,7 @@ main { max-width: 1550px; margin: auto; padding: 2rem min(5vw, 5rem) 5rem; }
 .status-panel p { font-size: .86rem; color: var(--muted); }
 .status { display: block; font-size: 1.7rem; margin-bottom: .4rem; color: var(--sage); }
 .status.paused { color: var(--coral); }
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-bottom: 3.5rem; }
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: .8rem; margin-bottom: 3.5rem; }
 .stats article { padding: 1.1rem 1.3rem; }
 .stats article span { color: var(--muted); font-size: .82rem; }
 .stats strong { display: block; font-size: 2rem; margin-top: .35rem; }
@@ -75,6 +75,11 @@ aside { padding: 1.4rem; align-self: start; }
 .locale-card > small { color: var(--sage); }
 .locale-card .safety { background: #edf2ee; border-radius: 7px; padding: .65rem; color: var(--muted); font-size: .75rem; }
 .job-list { margin-top: 1.4rem; }
+.job-list .job-row { align-items: flex-start; }
+.job-actions { display: grid; justify-items: end; gap: .45rem; max-width: 72%; }
+.job-status-note { margin: 0; padding: .5rem .65rem; border-radius: 7px; background: #edf2ee; color: var(--muted); font-size: .72rem; text-align: right; }
+.job-status-note.error { background: #f8ebe6; color: var(--coral); }
+.job-status-note small { display: block; margin-top: .25rem; }
 .job-list form { display: inline; }
 .job-list button { padding: .45rem .6rem; font-size: .72rem; }
 footer { padding: 1.2rem min(5vw, 5rem); border-top: 1px solid var(--line); color: var(--muted); font-size: .75rem; }
