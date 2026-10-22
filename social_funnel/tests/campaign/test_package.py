@@ -85,5 +85,3 @@ def test_rejects_unsafe_or_wrong_language_copy(
     package = load_campaign_package(write_package(tmp_path, data))
     with pytest.raises(ValueError, match=message):
         validate_campaign_package(package)
-
-

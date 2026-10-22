@@ -11,14 +11,17 @@ from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from social_funnel.domain.models import CampaignManifest, JobState
+from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
+from social_funnel.campaign.expansion import AccountConfig
 from social_funnel.campaign.registry import CampaignRegistry
+from social_funnel.campaign.service import CampaignRefreshService
 from social_funnel.exporting.manual_pack import export_manual_pack
 from social_funnel.media.service import MediaImportService
 from social_funnel.media.resolver import MediaResolver
 from social_funnel.publishing.orchestrator import PublishingOrchestrator
 from social_funnel.scheduling.service import SchedulerService
 from social_funnel.storage.database import Database
-from social_funnel.storage.repositories import JobRepository, MediaImportRepository
+from social_funnel.storage.repositories import CampaignRevisionRepository, JobRepository, MediaImportRepository
 
 
 TEMPLATES = Jinja2Templates(directory=Path(__file__).with_name("templates"))
@@ -47,6 +50,13 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     scheduler = scheduler or SchedulerService(db, jobs, None)
     registry = registry or CampaignRegistry(db, manifest)
     media_repository = MediaImportRepository(db)
+    revision_repository = CampaignRevisionRepository(db)
+    campaign_refresh = CampaignRefreshService(db, workspace)
+    campaign_accounts = tuple(
+        AccountConfig(id=f"{locale.value}-{platform.value}", locale=locale, platform=platform,
+                      automation_mode=AutomationMode.APPROVAL)
+        for locale in LocaleCode for platform in Platform
+    )
 
     def current_manifest() -> CampaignManifest:
         return registry.active_manifest()
@@ -60,6 +70,26 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         return PublishingOrchestrator(
             jobs, campaign, {}, workspace / "media", media_resolver=resolver,
         )
+
+    def campaign_context(request: Request, *, revision_id: str | None = None, issues=()):
+        active = revision_repository.active()
+        try:
+            selected = revision_repository.get(revision_id) if revision_id else active
+        except KeyError:
+            selected = None
+        selected_manifest = (
+            CampaignManifest.model_validate_json(selected["manifest_json"]) if selected else None
+        )
+        format_counts = {"video": 0, "image": 0, "carousel": 0}
+        if selected_manifest:
+            for idea in selected_manifest.ideas:
+                for item in idea.localized:
+                    format_counts[item.preferred_format] += 1
+        return {
+            "csrf": csrf(request), "active": active, "selected": selected,
+            "selected_manifest": selected_manifest, "revisions": revision_repository.list(),
+            "format_counts": format_counts, "issues": issues,
+        }
 
     def csrf(request: Request) -> str:
         if "csrf" not in request.session:
@@ -119,6 +149,65 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
             "SELECT COUNT(*) FROM publication_job WHERE campaign_slug=?", (manifest.slug,),
         ).fetchone()[0]
         return {"status": "ok", "jobs": count, "paused": scheduler.paused}
+
+    @router.get("/campaigns", response_class=HTMLResponse)
+    def campaign_workspace(request: Request, revision: str | None = None):
+        return TEMPLATES.TemplateResponse(
+            request, "campaign_import.html", campaign_context(request, revision_id=revision),
+        )
+
+    @router.post("/campaigns/preflight")
+    async def campaign_preflight(request: Request):
+        form = await check_csrf(request)
+        upload = form.get("package")
+        if upload is None or not getattr(upload, "filename", "").lower().endswith(".json"):
+            issue = SimpleNamespace(message="Lütfen bir JSON kampanya paketi seçin.")
+            return TEMPLATES.TemplateResponse(
+                request, "campaign_import.html", campaign_context(request, issues=(issue,)), status_code=400,
+            )
+        temporary_dir = workspace / "tmp"
+        temporary_dir.mkdir(parents=True, exist_ok=True)
+        handle = tempfile.NamedTemporaryFile(delete=False, suffix=".json", dir=temporary_dir)
+        path = Path(handle.name)
+        total = 0
+        try:
+            with handle:
+                while chunk := await upload.read(1024 * 1024):
+                    total += len(chunk)
+                    if total > 5 * 1024 * 1024:
+                        raise HTTPException(413, "Kampanya paketi çok büyük")
+                    handle.write(chunk)
+            try:
+                result = campaign_refresh.preflight(path)
+            except ValueError:
+                issue = SimpleNamespace(message="Kampanya paketi doğrulanamadı.")
+                return TEMPLATES.TemplateResponse(
+                    request, "campaign_import.html", campaign_context(request, issues=(issue,)), status_code=400,
+                )
+            return RedirectResponse(f"/campaigns?revision={result.revision_id}", status_code=303)
+        finally:
+            path.unlink(missing_ok=True)
+
+    @router.post("/campaigns/{revision_id}/activate")
+    async def activate_campaign_revision(request: Request, revision_id: str):
+        await check_csrf(request)
+        try:
+            campaign_refresh.activate(revision_id, campaign_accounts)
+        except KeyError:
+            raise HTTPException(404, "Campaign revision not found") from None
+        except ValueError:
+            issue = SimpleNamespace(message="Kampanya sürümü etkinleştirilemedi.")
+            return TEMPLATES.TemplateResponse(
+                request, "campaign_import.html",
+                campaign_context(request, revision_id=revision_id, issues=(issue,)), status_code=409,
+            )
+        return RedirectResponse("/campaigns", status_code=303)
+
+    @router.post("/campaigns/rollback")
+    async def rollback_campaign_revision(request: Request):
+        await check_csrf(request)
+        campaign_refresh.rollback()
+        return RedirectResponse("/campaigns", status_code=303)
 
     @router.get("/media", response_class=HTMLResponse)
     def media_workspace(request: Request, batch: str | None = None):

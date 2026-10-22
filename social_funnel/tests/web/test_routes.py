@@ -3,6 +3,7 @@ from hashlib import sha256
 from io import BytesIO
 from pathlib import Path
 from zipfile import ZipFile
+import json
 
 from fastapi.testclient import TestClient
 from PIL import Image
@@ -31,6 +32,13 @@ def png_bytes(color: str = "white") -> bytes:
     output = BytesIO()
     Image.new("RGB", (1080, 1350), color).save(output, "PNG")
     return output.getvalue()
+
+
+def campaign_package(month: str = "2026-11", suffix: str = "") -> bytes:
+    manifest = json.loads(CATALOG.read_text(encoding="utf-8"))
+    manifest["slug"] = f"fasttrack{suffix}-{month}"
+    manifest["title"] = f"FastTrack {month} Campaign"
+    return json.dumps({"month": month, "manifest": manifest}, ensure_ascii=False).encode()
 
 
 def test_dashboard_and_detail_show_twelve_destinations_and_locales(tmp_path):
@@ -192,3 +200,68 @@ def test_campaign_activation_rejects_a_tampered_video(tmp_path):
     assert response.status_code == 409
     assert "1 video eksik" in response.text
     assert not app.state.scheduler.active
+
+
+def test_monthly_campaign_upload_requires_csrf_and_rejects_invalid_json(tmp_path):
+    app = create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)))
+    client = TestClient(app)
+    assert "Aylık kampanya" in client.get("/campaigns").text
+    assert client.post(
+        "/campaigns/preflight", files={"package": ("bad.json", b"not-json", "application/json")},
+    ).status_code == 403
+    csrf = csrf_from(client.get("/campaigns").text)
+    invalid = client.post(
+        "/campaigns/preflight", data={"csrf": csrf},
+        files={"package": ("bad.json", b"not-json", "application/json")},
+    )
+    assert invalid.status_code == 400
+    assert "doğrulanamadı" in invalid.text
+
+
+def test_monthly_campaign_preflight_preview_and_explicit_activation(tmp_path):
+    app = create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)))
+    client = TestClient(app)
+    original_slug = app.state.registry.active_manifest().slug
+    csrf = csrf_from(client.get("/campaigns").text)
+    uploaded = client.post(
+        "/campaigns/preflight", data={"csrf": csrf},
+        files={"package": ("november.json", campaign_package(), "application/json")},
+        follow_redirects=False,
+    )
+    assert uploaded.status_code == 303
+    assert app.state.registry.active_manifest().slug == original_slug
+    revision_id = uploaded.headers["location"].split("revision=")[1]
+    preview = client.get(uploaded.headers["location"])
+    assert "30 gün" in preview.text and "90 içerik" in preview.text and "30 video" in preview.text
+    csrf = csrf_from(preview.text)
+    app.state.scheduler.activate()
+    activated = client.post(
+        f"/campaigns/{revision_id}/activate", data={"csrf": csrf}, follow_redirects=False,
+    )
+    assert activated.status_code == 303
+    assert app.state.registry.active_manifest().slug == "fasttrack-2026-11"
+    assert not app.state.scheduler.active
+    assert "FastTrack 2026-11 Campaign" in client.get("/").text
+
+
+def test_monthly_campaign_rollback_restores_previous_revision(tmp_path):
+    app = create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)))
+    client = TestClient(app)
+    csrf = csrf_from(client.get("/campaigns").text)
+    first_upload = client.post(
+        "/campaigns/preflight", data={"csrf": csrf},
+        files={"package": ("one.json", campaign_package("2026-11", "-one"), "application/json")},
+        follow_redirects=False,
+    )
+    first = first_upload.headers["location"].split("revision=")[1]
+    client.post(f"/campaigns/{first}/activate", data={"csrf": csrf})
+    second_upload = client.post(
+        "/campaigns/preflight", data={"csrf": csrf},
+        files={"package": ("two.json", campaign_package("2026-12", "-two"), "application/json")},
+        follow_redirects=False,
+    )
+    second = second_upload.headers["location"].split("revision=")[1]
+    client.post(f"/campaigns/{second}/activate", data={"csrf": csrf})
+    rolled_back = client.post("/campaigns/rollback", data={"csrf": csrf}, follow_redirects=False)
+    assert rolled_back.status_code == 303
+    assert app.state.registry.active_manifest().slug == "fasttrack-one-2026-11"

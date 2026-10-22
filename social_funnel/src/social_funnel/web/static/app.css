@@ -86,6 +86,11 @@ footer { padding: 1.2rem min(5vw, 5rem); border-top: 1px solid var(--line); colo
 .coverage-cell { display: flex; justify-content: space-between; gap: .5rem; border: 1px solid var(--line); border-radius: 8px; padding: .65rem; font-size: .78rem; background: var(--surface); }
 .coverage-cell.ready { border-color: var(--sage); background: #eaf3ec; }
 .coverage-cell.missing span { color: var(--coral); }
+.revision-list { display: grid; gap: .6rem; }
+.revision-list .day-card { display: flex; justify-content: space-between; align-items: center; text-decoration: none; }
+.revision-list span { display: flex; flex-direction: column; }
+.revision-list small { color: var(--muted); }
+.revision-list em { color: var(--sage); font-style: normal; }
 @media (max-width: 960px) { .hero, .columns { grid-template-columns: 1fr; } .locale-grid { grid-template-columns: 1fr; } }
 @media (max-width: 960px) { .media-layout { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .day-grid { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, 1fr); } .topbar { padding: 1rem; } .local-badge { display: none; } }

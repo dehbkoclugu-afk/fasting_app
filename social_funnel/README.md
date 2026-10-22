@@ -8,6 +8,7 @@ Instagram, Facebook, TikTok, and Threads.
 ## What is ready
 
 - Local dashboard, day-by-day review, approval, disable, pause, resume, and ZIP export
+- Immutable monthly campaign JSON import, validation, preview, activation, and rollback
 - Monthly ZIP media import inside the EXE, content preflight, coverage view, immutable activation, and rollback
 - Deterministic image/carousel/video rendering with preflight validation
 - Meta and TikTok publishing adapters with retry and duplicate-send safeguards
@@ -19,6 +20,8 @@ New workspaces start in **approval mode**. No publisher is connected merely by
 opening the app, and preparing a live check does not send content.
 
 FastTrack automatically renders reviewed single-image and carousel content. Reels/TikTok videos are produced externally, uploaded once through **Aylık medya yükle**, validated as 1080×1920 H.264 MP4 files, and then passed unchanged to the scheduler and official platform publishers. The campaign remains inactive until all 30 localized video slots are present and the operator explicitly activates it.
+
+Each month, import the reviewed campaign JSON through **Aylık kampanya** first. FastTrack validates all 30 days and 90 localized entries, stores an immutable revision, and switches months only after explicit activation. A campaign switch disables publishing; upload the new month's videos and complete review before enabling it again.
 
 ## Run the Windows package
 

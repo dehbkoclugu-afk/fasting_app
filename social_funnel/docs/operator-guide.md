@@ -1,5 +1,17 @@
 # Operator guide
 
+## Monthly campaign refresh
+
+1. Obtain the reviewed monthly campaign JSON package prepared for the target month. Content generation and health-copy review happen outside the EXE; the EXE never invents or silently rewrites campaign copy.
+2. Open **Aylık kampanya**, select the JSON file, and run the preflight check.
+3. Confirm the month, campaign name, 30-day/90-language totals, and single-image, carousel, and video distribution shown in the preview.
+4. Use **Bu sürümü etkinleştir** only for the reviewed revision. Activation creates the month's 360 destination jobs and automatically disables publishing.
+5. Open **Aylık medya yükle** and upload that campaign's 30 localized Reels files. FastTrack generates the reviewed single-image and carousel artwork itself.
+6. Review media and jobs, then explicitly enable the campaign. A JSON upload or revision switch never publishes by itself.
+7. If the wrong revision was selected, use **Önceki kampanyaya dön**. Historical jobs and media remain intact, and publishing stays disabled until reviewed again.
+
+Uploading identical JSON is idempotent. Invalid, unsafe, or incomplete packages do not alter the active campaign. Campaign and media revisions are scoped by campaign slug, so a prior month's uploads cannot leak into a newly activated month.
+
 ## Monthly media import
 
 1. Produce the 30 localized Reels files outside FastTrack: ten designated video days in Turkish, English, and Brazilian Portuguese.

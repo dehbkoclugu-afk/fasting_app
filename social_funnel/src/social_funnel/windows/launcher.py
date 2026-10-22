@@ -163,6 +163,9 @@ def run_smoke_check(workspace: Path, report_path: Path) -> int:
             health = client.get("/health")
             health.raise_for_status()
             health_status = health.json()["status"]
+            campaigns = client.get("/campaigns")
+            campaigns.raise_for_status()
+            campaigns_page = "Aylık kampanya" in campaigns.text
 
         first_content = app.state.manifest.ideas[0].localized[0]
         asset = render_asset(RenderRequest(first_content, workspace / "smoke-media"))
@@ -175,6 +178,7 @@ def run_smoke_check(workspace: Path, report_path: Path) -> int:
 
         report = {
             "account_count": summary.account_count,
+            "campaigns_page": campaigns_page,
             "health": health_status,
             "idea_count": summary.idea_count,
             "job_count": summary.job_count,

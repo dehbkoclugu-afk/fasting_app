@@ -48,6 +48,7 @@ def test_packaged_smoke_check_exercises_workspace_health_render_and_pause(tmp_pa
     report = json.loads(report_path.read_text(encoding="utf-8"))
     assert report == {
         "account_count": 12,
+        "campaigns_page": True,
         "health": "ok",
         "idea_count": 30,
         "job_count": 360,
