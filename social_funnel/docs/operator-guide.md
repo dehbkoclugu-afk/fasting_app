@@ -1,5 +1,21 @@
 # Operator guide
 
+## Account connections
+
+1. Open **Hesaplar**. The twelve known public destinations are prefilled but
+   start disabled.
+2. Save the TikTok Desktop app's Client key and Client secret once. These values
+   are stored only in Windows Credential Manager.
+3. Connect Turkish, English, and Brazilian Portuguese TikTok accounts one at a
+   time. The official callback verifies the immutable TikTok identity and exact
+   public handle before enabling a destination.
+4. Disconnecting any account immediately disables campaign publishing. Meta
+   destinations remain unavailable until the Meta OAuth flow is implemented and
+   reviewed.
+
+Never paste a social-account password into FastTrack. FastTrack accepts only
+official provider authorization and developer-app credentials.
+
 ## Monthly campaign refresh
 
 1. Obtain the reviewed monthly campaign JSON package prepared for the target month. Content generation and health-copy review happen outside the EXE; the EXE never invents or silently rewrites campaign copy.

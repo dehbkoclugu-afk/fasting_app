@@ -52,18 +52,28 @@ an apparently valid token work only for app-role accounts.
 ## TikTok surfaces
 
 1. Create or select one TikTok account per locale and confirm the visible handle.
-2. Configure Login Kit and the Content Posting API with the exact production
-   redirect URI and scopes.
-3. Start with creator-review upload. The creator finishes review in TikTok.
-4. Complete TikTok's client audit before enabling public direct post.
-5. For photo posting, verify the public HTTPS media domain first.
-6. Store credentials in Windows Credential Manager and record only the vault
-   reference and returned capabilities locally.
+2. In TikTok Developer Center, configure a Desktop app with Login Kit and the
+   Content Posting API. Allow the loopback callback
+   `http://127.0.0.1:*/oauth/tiktok/callback` used by the local EXE.
+3. Request `user.info.basic`, `user.info.profile`, and `video.upload`. The EXE
+   intentionally starts in creator-review upload mode and does not claim direct
+   public-post capability.
+4. Open **Hesaplar** in FastTrack. Enter the Client key and Client secret once;
+   both go directly to Windows Credential Manager and are never shown again.
+5. Select **TikTok'a bağlan** for each language. Approve the official TikTok
+   consent screen. FastTrack enables the row only when TikTok's returned handle
+   exactly matches the expected public identity.
+6. Complete TikTok's client audit before adding `video.publish` and direct public
+   posting. For photo posting, verify the public HTTPS media domain first.
 
 Every TikTok upload requires consent for the exact job ID and content revision.
 Direct posting also refreshes creator privacy options immediately before the
 send. An unaudited client must not be represented as capable of public direct
 posting.
+
+The current EXE implements the three-account TikTok connection flow. Meta OAuth
+for Instagram, Facebook, and Threads remains disabled until its provider flow is
+configured and reviewed; those nine rows fail closed.
 
 ## Connection acceptance check
 
