@@ -9,8 +9,7 @@ from social_funnel.domain.models import (
     AutomationMode, CampaignManifest, JobState, LocalizedContent, MediaAsset, Platform, PublicationJob,
 )
 from social_funnel.domain.publishing import Publisher
-from social_funnel.rendering.images import RenderRequest, render_asset
-from social_funnel.rendering.video import render_video
+from social_funnel.media.resolver import MediaResolver
 from social_funnel.storage.repositories import JobRepository
 from social_funnel.validation.service import validate_job
 
@@ -24,13 +23,14 @@ def _redact(message: str) -> str:
 class PublishingOrchestrator:
     def __init__(self, jobs: JobRepository, campaign: CampaignManifest,
                  publishers: Mapping[Platform, Publisher], media_root: Path, *, campaign_locked: bool = False,
-                 max_attempts: int = 4):
+                 max_attempts: int = 4, media_resolver: MediaResolver | None = None):
         self.jobs = jobs
         self.campaign = campaign
         self.publishers = publishers
         self.media_root = media_root
         self.campaign_locked = campaign_locked
         self.max_attempts = max_attempts
+        self.media_resolver = media_resolver or MediaResolver(None, campaign, media_root)
         self._asset_cache: dict[str, MediaAsset | None] = {}
 
     def _content(self, job: PublicationJob) -> LocalizedContent:
@@ -39,15 +39,7 @@ class PublishingOrchestrator:
     def _render(self, job: PublicationJob, content: LocalizedContent) -> MediaAsset | None:
         if job.id in self._asset_cache:
             return self._asset_cache[job.id]
-        if job.platform == Platform.THREADS:
-            return None
-        destination = self.media_root / f"day-{job.day:02d}" / job.locale.value / job.platform.value
-        if job.platform == Platform.TIKTOK or (content.preferred_format == "video" and job.platform == Platform.INSTAGRAM):
-            asset = render_video(RenderRequest(content, destination, size=(1080, 1920)))
-            self._asset_cache[job.id] = asset
-            return asset
-        kind = "carousel" if content.preferred_format == "carousel" else "image"
-        asset = render_asset(RenderRequest(content, destination, format=kind))
+        asset = self.media_resolver.resolve(job, content)
         self._asset_cache[job.id] = asset
         return asset
 

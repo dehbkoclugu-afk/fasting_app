@@ -4,30 +4,23 @@ import json
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
-from social_funnel.domain.models import CampaignManifest, Platform
-from social_funnel.rendering.images import RenderRequest, render_asset
-from social_funnel.rendering.video import render_video
-from social_funnel.storage.repositories import JobRepository
+from social_funnel.domain.models import CampaignManifest
+from social_funnel.media.resolver import MediaResolver
+from social_funnel.storage.repositories import JobRepository, MediaImportRepository
 from social_funnel.validation.service import validate_job
 
 
 def export_manual_pack(job_ids: tuple[str, ...], destination: Path, jobs: JobRepository,
-                       manifest: CampaignManifest, media_root: Path) -> Path:
+                       manifest: CampaignManifest, media_root: Path,
+                       media_resolver: MediaResolver | None = None) -> Path:
     if not job_ids:
         raise ValueError("Select at least one job")
     prepared = []
+    resolver = media_resolver or MediaResolver(MediaImportRepository(jobs.db), manifest, media_root)
     for job_id in job_ids:
         job = jobs.get(job_id)
         content = next(item for item in manifest.ideas[job.day - 1].localized if item.locale == job.locale)
-        folder = media_root / f"day-{job.day:02d}" / job.locale.value / job.platform.value
-        asset = None
-        if job.platform != Platform.THREADS:
-            request = RenderRequest(content, folder, size=(1080, 1920) if job.platform == Platform.TIKTOK else (1080, 1350))
-            if content.preferred_format == "video" or job.platform == Platform.TIKTOK:
-                asset = render_video(request)
-            else:
-                asset = render_asset(RenderRequest(content, folder,
-                                                  format="carousel" if content.preferred_format == "carousel" else "image"))
+        asset = resolver.resolve(job, content)
         issues = validate_job(job, content, asset)
         errors = [issue.code for issue in issues if issue.severity == "error"]
         if errors:

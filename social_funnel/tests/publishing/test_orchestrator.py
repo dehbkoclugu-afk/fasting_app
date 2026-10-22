@@ -32,7 +32,8 @@ def setup(tmp_path, mode=AutomationMode.APPROVAL):
     db = Database.open(tmp_path / "queue.db")
     manifest = load_campaign(CATALOG)
     CampaignRepository(db).import_manifest(manifest)
-    job = expand_publication_jobs(manifest, (AccountConfig("tr-instagram", LocaleCode.TR, Platform.INSTAGRAM, mode),), date(2026, 10, 20))[0]
+    expanded = expand_publication_jobs(manifest, (AccountConfig("tr-instagram", LocaleCode.TR, Platform.INSTAGRAM, mode),), date(2026, 10, 20))
+    job = next(item for item in expanded if item.day == 18)
     repository = JobRepository(db)
     repository.import_jobs((job,))
     return db, repository, manifest, job

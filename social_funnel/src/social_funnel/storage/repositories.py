@@ -169,6 +169,13 @@ class MediaImportRepository:
             WHERE a.campaign_slug=? ORDER BY f.day,f.locale,f.kind,f.position""", (campaign_slug,),
         ).fetchall())
 
+    def active_slot_files(self, campaign_slug: str, day: int, locale: str) -> tuple:
+        return tuple(self.db.connection.execute(
+            """SELECT f.* FROM active_media_batch a JOIN media_import_file f ON f.batch_id=a.batch_id
+            WHERE a.campaign_slug=? AND f.day=? AND f.locale=? ORDER BY f.position""",
+            (campaign_slug, day, locale),
+        ).fetchall())
+
     def batch_files(self, batch_id: str) -> tuple:
         return tuple(self.db.connection.execute(
             "SELECT * FROM media_import_file WHERE batch_id=? ORDER BY day,locale,kind,position", (batch_id,),
