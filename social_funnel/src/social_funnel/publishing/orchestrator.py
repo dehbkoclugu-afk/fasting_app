@@ -22,7 +22,7 @@ def _redact(message: str) -> str:
 
 class PublishingOrchestrator:
     def __init__(self, jobs: JobRepository, campaign: CampaignManifest,
-                 publishers: Mapping[Platform, Publisher], media_root: Path, *, campaign_locked: bool = False,
+                 publishers: Mapping[Platform | str, Publisher], media_root: Path, *, campaign_locked: bool = False,
                  max_attempts: int = 4, media_resolver: MediaResolver | None = None):
         self.jobs = jobs
         self.campaign = campaign
@@ -32,6 +32,9 @@ class PublishingOrchestrator:
         self.max_attempts = max_attempts
         self.media_resolver = media_resolver or MediaResolver(None, campaign, media_root)
         self._asset_cache: dict[str, MediaAsset | None] = {}
+
+    def _publisher(self, job: PublicationJob) -> Publisher | None:
+        return self.publishers.get(job.account_id) or self.publishers.get(job.platform)
 
     def _content(self, job: PublicationJob) -> LocalizedContent:
         return next(item for item in self.campaign.ideas[job.day - 1].localized if item.locale == job.locale)
@@ -83,7 +86,7 @@ class PublishingOrchestrator:
             return False
         if not self.jobs.transition(job_id, JobState.SCHEDULED, JobState.UPLOADING):
             return False
-        publisher = self.publishers.get(job.platform)
+        publisher = self._publisher(job)
         if publisher is None:
             self.jobs.set_result(job_id, error="Destination is not connected")
             self.jobs.transition(job_id, JobState.UPLOADING, JobState.FAILED)
@@ -145,7 +148,7 @@ class PublishingOrchestrator:
     def recover_inflight(self) -> None:
         """Reconcile interrupted sends before making them eligible for retry."""
         for job in self.jobs.list_inflight():
-            publisher = self.publishers.get(job.platform)
+            publisher = self._publisher(job)
             if publisher is None:
                 continue
             try:
