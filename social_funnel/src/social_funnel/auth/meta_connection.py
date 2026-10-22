@@ -5,6 +5,7 @@ import json
 from typing import Callable
 
 from social_funnel.auth.meta_oauth import MetaOAuthClient, MetaOAuthConfig
+from social_funnel.auth.token_store import AccountTokenStore
 from social_funnel.auth.vault import CredentialVault
 from social_funnel.storage.database import Database
 from social_funnel.storage.repositories import AccountConnectionRepository
@@ -30,6 +31,7 @@ class MetaConnectionService:
                  client_factory: Callable[[MetaOAuthConfig], MetaOAuthClient] = MetaOAuthClient):
         self.accounts = AccountConnectionRepository(database)
         self.vault = vault
+        self.tokens = AccountTokenStore(vault)
         self.client_factory = client_factory
 
     def save_developer_credentials(self, app_id: str, app_secret: str) -> None:
@@ -76,7 +78,7 @@ class MetaConnectionService:
             },
         }
         for account_id, credential in credentials.items():
-            self.vault.set(f"oauth:{account_id}", json.dumps(credential, separators=(",", ":")))
+            self.tokens.save(account_id, credential)
         try:
             self.accounts.mark_meta_pair(
                 locale,
@@ -90,6 +92,12 @@ class MetaConnectionService:
                 self.vault.delete(f"oauth:{account_id}")
             raise
         return ConnectedMetaPair(locale, account_ids)
+
+    def access_token(self, account_id: str) -> str:
+        account = self.accounts.get(account_id)
+        if account["platform"] not in {"facebook", "instagram"}:
+            raise ValueError("Selected account is not a Facebook or Instagram destination")
+        return self.tokens.access_token(account_id)
 
     def disconnect(self, locale: str) -> None:
         accounts = self._accounts_for(locale)

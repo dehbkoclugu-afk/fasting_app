@@ -78,6 +78,18 @@ class ThreadsOAuthClient:
         except (KeyError, TypeError, ValueError):
             raise ValueError("Threads returned an incomplete long-lived token") from None
 
+    def refresh_long_lived_token(self, access_token: str, *, user_id: str) -> ThreadsToken:
+        response = self.http.get(
+            f"{self.API_URL}/refresh_access_token",
+            params={"grant_type": "th_refresh_token"},
+            headers={"Authorization": f"Bearer {access_token}"},
+        )
+        payload = self._payload(response)
+        try:
+            return ThreadsToken(payload["access_token"], user_id, int(payload["expires_in"]))
+        except (KeyError, TypeError, ValueError):
+            raise ValueError("Threads returned an incomplete refreshed token") from None
+
     def fetch_identity(self, access_token: str) -> ThreadsIdentity:
         response = self.http.get(
             f"{self.API_URL}/me", params={"fields": "id,username"},

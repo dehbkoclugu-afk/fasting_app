@@ -44,16 +44,14 @@ class ThreadsPublisher:
                     payload = {"text": parts[index], "media_type": "TEXT"}
                     if published:
                         payload["reply_to_id"] = published[-1]
-                    if index == 0 and asset_path is not None:
-                        if self.media_url is None:
-                            return PublishResult(status="hosting_unavailable", message="Threads media needs public hosting")
+                    if index == 0 and asset_path is not None and self.media_url is not None:
                         media_type = "VIDEO" if asset_path.suffix.lower() == ".mp4" else "IMAGE"
                         payload["media_type"] = media_type
                         payload["video_url" if media_type == "VIDEO" else "image_url"] = self.media_url(asset_path)
                         payload["alt_text"] = content.hook
                     container = self.client.request("POST", f"{job.account_id}/threads", data=payload)["id"]
                     self._containers[key] = container
-                if index == 0 and asset_path is not None:
+                if index == 0 and asset_path is not None and self.media_url is not None:
                     self.client.poll_container(container)
                 remote = self.client.request("POST", f"{job.account_id}/threads_publish",
                                              data={"creation_id": container})["id"]

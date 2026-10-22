@@ -5,6 +5,7 @@ import json
 from typing import Callable
 
 from social_funnel.auth.tiktok_oauth import TikTokOAuthClient, TikTokOAuthConfig
+from social_funnel.auth.token_store import AccountTokenStore
 from social_funnel.auth.vault import CredentialVault
 from social_funnel.storage.database import Database
 from social_funnel.storage.repositories import AccountConnectionRepository
@@ -30,6 +31,7 @@ class TikTokConnectionService:
                  client_factory: Callable[[TikTokOAuthConfig], TikTokOAuthClient] = TikTokOAuthClient):
         self.accounts = AccountConnectionRepository(database)
         self.vault = vault
+        self.tokens = AccountTokenStore(vault)
         self.client_factory = client_factory
 
     def save_developer_credentials(self, client_key: str, client_secret: str) -> None:
@@ -72,8 +74,9 @@ class TikTokConnectionService:
             "granted_scopes": sorted(tokens.granted_scopes),
             "expires_in": tokens.expires_in,
             "refresh_expires_in": tokens.refresh_expires_in,
+            "redirect_uri": redirect_uri,
         }, separators=(",", ":"))
-        self.vault.set(vault_reference, credential)
+        self.tokens.save(account_id, json.loads(credential))
         try:
             self.accounts.mark_connected(
                 account_id,
@@ -91,6 +94,26 @@ class TikTokConnectionService:
             self.vault.delete(vault_reference)
             raise
         return ConnectedTikTokAccount(account_id, identity.open_id, f"@{identity.username}")
+
+    def access_token(self, account_id: str) -> str:
+        account = self._tiktok_account(account_id)
+
+        def refresh(old: dict) -> dict:
+            client = self.client_factory(self._config(old["redirect_uri"]))
+            refreshed = client.refresh_token(old["refresh_token"])
+            if refreshed.open_id != account["provider_identity"]:
+                raise ValueError("Refreshed TikTok identity does not match connected account")
+            return {
+                "access_token": refreshed.access_token,
+                "refresh_token": refreshed.refresh_token,
+                "open_id": refreshed.open_id,
+                "granted_scopes": sorted(refreshed.granted_scopes),
+                "expires_in": refreshed.expires_in,
+                "refresh_expires_in": refreshed.refresh_expires_in,
+                "redirect_uri": old["redirect_uri"],
+            }
+
+        return self.tokens.access_token(account_id, refresh=refresh)
 
     def disconnect(self, account_id: str) -> None:
         account = self._tiktok_account(account_id)

@@ -42,3 +42,16 @@ def test_sequence_publishes_ordered_replies_without_duplicate_first():
     assert client.calls[2][2]["data"]["reply_to_id"] == "remote-2"
     assert adapter.publish(job(), None).status == "published"
     assert len(client.calls) == 4
+
+
+def test_missing_media_host_falls_back_to_threads_text_only(tmp_path):
+    client = FakeClient()
+    asset = tmp_path / "post.png"
+    asset.write_bytes(b"image")
+    adapter = ThreadsPublisher(client, content_lookup=lambda _: content())
+
+    result = adapter.publish(job(), asset)
+
+    assert result.status == "published"
+    assert client.calls[0][2]["data"]["media_type"] == "TEXT"
+    assert "image_url" not in client.calls[0][2]["data"]

@@ -94,3 +94,25 @@ def test_code_exchange_rejects_missing_required_scope():
         assert "video.upload" in str(exc)
     else:
         raise AssertionError("missing upload scope was accepted")
+
+
+def test_refresh_rotates_tiktok_access_and_refresh_tokens():
+    captured = {}
+    def handler(request: httpx.Request):
+        captured.update({key: values[0] for key, values in parse_qs(request.content.decode()).items()})
+        return httpx.Response(200, json={
+            "access_token": "new-access", "refresh_token": "new-refresh",
+            "open_id": "open-123",
+            "scope": "user.info.basic,user.info.profile,video.upload",
+            "expires_in": 86400, "refresh_expires_in": 31536000,
+        })
+    client = TikTokOAuthClient(config(), transport=httpx.MockTransport(handler))
+
+    refreshed = client.refresh_token("old-refresh")
+
+    assert refreshed.access_token == "new-access"
+    assert refreshed.refresh_token == "new-refresh"
+    assert captured == {
+        "client_key": "client-key", "client_secret": "client-secret",
+        "grant_type": "refresh_token", "refresh_token": "old-refresh",
+    }

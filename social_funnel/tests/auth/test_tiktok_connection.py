@@ -37,6 +37,14 @@ class FakeOAuth:
             f"https://www.tiktok.com/@{self.username}", "https://example.test/avatar.jpg",
         )
 
+    def refresh_token(self, refresh_token):
+        assert refresh_token == "refresh-secret"
+        return TikTokTokens(
+            "access-refreshed", "refresh-refreshed", "open-123",
+            frozenset({"user.info.basic", "user.info.profile", "video.upload"}),
+            86400, 31536000,
+        )
+
 
 def setup_service(tmp_path, *, username="fasttrack.fasting.tr"):
     db = Database.open(tmp_path / "campaign.db")
@@ -88,4 +96,20 @@ def test_tiktok_connection_rejects_the_wrong_public_handle_without_saving_tokens
 
     assert vault.get("oauth:tr-tiktok") is None
     assert AccountConnectionRepository(db).get("tr-tiktok")["enabled"] == 0
+    db.close()
+
+
+def test_tiktok_connection_refreshes_an_expired_token_in_the_vault(tmp_path):
+    db, vault, service = setup_service(tmp_path)
+    service.save_developer_credentials("client-key", "client-secret")
+    service.complete(
+        "tr-tiktok", redirect_uri="http://127.0.0.1:8811/oauth/tiktok/callback",
+        code="code-123", verifier="v" * 64,
+    )
+    credential = json.loads(vault.get("oauth:tr-tiktok"))
+    credential["expires_at"] = 0
+    vault.set("oauth:tr-tiktok", json.dumps(credential))
+
+    assert service.access_token("tr-tiktok") == "access-refreshed"
+    assert json.loads(vault.get("oauth:tr-tiktok"))["refresh_token"] == "refresh-refreshed"
     db.close()

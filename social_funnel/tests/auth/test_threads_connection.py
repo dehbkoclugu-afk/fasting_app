@@ -41,6 +41,24 @@ def test_threads_oauth_uses_minimum_publish_scopes_and_verifies_profile():
     assert identity == ThreadsIdentity("user-1", "fasttrack.fasting.br")
 
 
+def test_threads_refresh_uses_current_long_lived_token():
+    def handler(request: httpx.Request):
+        assert request.url.path == "/refresh_access_token"
+        assert request.url.params["grant_type"] == "th_refresh_token"
+        assert request.headers["authorization"] == "Bearer old-token"
+        return httpx.Response(200, json={
+            "access_token": "new-token", "token_type": "bearer", "expires_in": 5184000,
+        })
+    client = ThreadsOAuthClient(ThreadsOAuthConfig(
+        app_id="threads-app", app_secret="secret",
+        redirect_uri="http://127.0.0.1:8811/oauth/threads/callback",
+    ), transport=httpx.MockTransport(handler))
+
+    refreshed = client.refresh_long_lived_token("old-token", user_id="user-1")
+
+    assert refreshed == ThreadsToken("new-token", "user-1", 5184000)
+
+
 class FakeThreadsOAuth:
     def __init__(self, config, username="fasttrack.fasting.br"):
         self.config = config
@@ -50,6 +68,9 @@ class FakeThreadsOAuth:
     def exchange_code(self, code): return ThreadsToken("short", "user-1", 0)
     def exchange_long_lived_token(self, token): return ThreadsToken("long-secret", "user-1", 5184000)
     def fetch_identity(self, token): return ThreadsIdentity("user-1", self.username)
+    def refresh_long_lived_token(self, token, *, user_id):
+        assert token == "long-secret" and user_id == "user-1"
+        return ThreadsToken("long-refreshed", user_id, 5184000)
 
 
 def setup_service(tmp_path, username="fasttrack.fasting.br"):
@@ -100,4 +121,19 @@ def test_threads_connection_rejects_wrong_handle_without_saving_token(tmp_path):
 
     assert vault.get("oauth:pt-BR-threads") is None
     assert AccountConnectionRepository(db).get("pt-BR-threads")["enabled"] == 0
+    db.close()
+
+
+def test_threads_connection_refreshes_an_expired_long_lived_token(tmp_path):
+    db, vault, service = setup_service(tmp_path)
+    service.save_developer_credentials("app-id", "app-secret")
+    service.complete(
+        "pt-BR-threads", redirect_uri="http://127.0.0.1:8811/oauth/threads/callback",
+        code="code",
+    )
+    credential = json.loads(vault.get("oauth:pt-BR-threads"))
+    credential["expires_at"] = 0
+    vault.set("oauth:pt-BR-threads", json.dumps(credential))
+
+    assert service.access_token("pt-BR-threads") == "long-refreshed"
     db.close()

@@ -5,6 +5,7 @@ import json
 from typing import Callable
 
 from social_funnel.auth.threads_oauth import ThreadsOAuthClient, ThreadsOAuthConfig
+from social_funnel.auth.token_store import AccountTokenStore
 from social_funnel.auth.vault import CredentialVault
 from social_funnel.storage.database import Database
 from social_funnel.storage.repositories import AccountConnectionRepository
@@ -30,6 +31,7 @@ class ThreadsConnectionService:
                  client_factory: Callable[[ThreadsOAuthConfig], ThreadsOAuthClient] = ThreadsOAuthClient):
         self.accounts = AccountConnectionRepository(database)
         self.vault = vault
+        self.tokens = AccountTokenStore(vault)
         self.client_factory = client_factory
 
     def save_developer_credentials(self, app_id: str, app_secret: str) -> None:
@@ -60,11 +62,12 @@ class ThreadsConnectionService:
         if not expected or actual != expected:
             raise ValueError("Connected Threads handle does not match the selected account")
         vault_reference = f"oauth:{account_id}"
-        self.vault.set(vault_reference, json.dumps({
+        self.tokens.save(account_id, {
             "access_token": long_lived.access_token,
             "user_id": identity.user_id,
             "expires_in": long_lived.expires_in,
-        }, separators=(",", ":")))
+            "redirect_uri": redirect_uri,
+        })
         try:
             self.accounts.mark_connected(
                 account_id, provider_identity=identity.user_id,
@@ -75,6 +78,25 @@ class ThreadsConnectionService:
             self.vault.delete(vault_reference)
             raise
         return ConnectedThreadsAccount(account_id, identity.user_id, f"@{identity.username}")
+
+    def access_token(self, account_id: str) -> str:
+        account = self._threads_account(account_id)
+
+        def refresh(old: dict) -> dict:
+            client = self.client_factory(self._config(old["redirect_uri"]))
+            refreshed = client.refresh_long_lived_token(
+                old["access_token"], user_id=old["user_id"],
+            )
+            if refreshed.user_id != account["provider_identity"]:
+                raise ValueError("Refreshed Threads identity does not match connected account")
+            return {
+                "access_token": refreshed.access_token,
+                "user_id": refreshed.user_id,
+                "expires_in": refreshed.expires_in,
+                "redirect_uri": old["redirect_uri"],
+            }
+
+        return self.tokens.access_token(account_id, refresh=refresh)
 
     def disconnect(self, account_id: str) -> None:
         account = self._threads_account(account_id)

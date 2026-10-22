@@ -76,7 +76,19 @@ class TikTokOAuthClient:
             "redirect_uri": self.config.redirect_uri,
             "code_verifier": code_verifier,
         })
-        payload = self._payload(response)
+        return self._tokens(self._payload(response))
+
+    def refresh_token(self, refresh_token: str) -> TikTokTokens:
+        response = self.http.post(self.TOKEN_URL, data={
+            "client_key": self.config.client_key,
+            "client_secret": self.config.client_secret,
+            "grant_type": "refresh_token",
+            "refresh_token": refresh_token,
+        })
+        return self._tokens(self._payload(response))
+
+    @staticmethod
+    def _tokens(payload: dict) -> TikTokTokens:
         scopes = frozenset(filter(None, payload.get("scope", "").split(",")))
         missing = REQUIRED_SCOPES - scopes
         if missing:
