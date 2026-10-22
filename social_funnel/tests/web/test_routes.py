@@ -26,6 +26,12 @@ def image_zip() -> bytes:
     return output.getvalue()
 
 
+def png_bytes(color: str = "white") -> bytes:
+    output = BytesIO()
+    Image.new("RGB", (1080, 1350), color).save(output, "PNG")
+    return output.getvalue()
+
+
 def test_dashboard_and_detail_show_twelve_destinations_and_locales(tmp_path):
     client = TestClient(create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20))))
     page = client.get("/")
@@ -91,11 +97,39 @@ def test_media_preflight_does_not_activate_until_explicit_action(tmp_path):
     assert app.state.media_imports.active_batch("fasttrack-30-day-launch") is None
     batch_id = response.headers["location"].split("batch=")[1]
     page = client.get(response.headers["location"])
-    assert "1 / 90 içerik yuvası hazır" in page.text
+    assert "60 / 90 içerik yuvası hazır" in page.text
     csrf = csrf_from(page.text)
+    app.state.scheduler.activate()
     activated = client.post(f"/media/{batch_id}/activate", data={"csrf": csrf}, follow_redirects=False)
     assert activated.status_code == 303
     assert app.state.media_imports.active_batch("fasttrack-30-day-launch")["id"] == batch_id
+    assert not app.state.scheduler.active
+
+
+def test_replace_media_slot_creates_preview_without_changing_active_batch(tmp_path):
+    app = create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)))
+    client = TestClient(app)
+    csrf = csrf_from(client.get("/media").text)
+    uploaded = client.post(
+        "/media/preflight", data={"csrf": csrf},
+        files={"archive": ("month.zip", image_zip(), "application/zip")}, follow_redirects=False,
+    )
+    first_batch = uploaded.headers["location"].split("batch=")[1]
+    csrf = csrf_from(client.get(uploaded.headers["location"]).text)
+    client.post(f"/media/{first_batch}/activate", data={"csrf": csrf})
+
+    csrf = csrf_from(client.get("/media").text)
+    replaced = client.post(
+        "/media/replace",
+        data={"csrf": csrf, "day": "4", "locale": "tr", "kind": "image", "position": "0"},
+        files={"file": ("post.png", png_bytes("coral"), "image/png")},
+        follow_redirects=False,
+    )
+    assert replaced.status_code == 303
+    new_batch = replaced.headers["location"].split("batch=")[1]
+    assert new_batch != first_batch
+    assert app.state.media_imports.active_batch("fasttrack-30-day-launch")["id"] == first_batch
+    assert Path(app.state.media_imports.batch_files(new_batch)[0]["managed_path"]).read_bytes() == png_bytes("coral")
 
 
 def test_media_rollback_restores_previous_active_batch(tmp_path):

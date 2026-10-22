@@ -44,8 +44,14 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         active = media_repository.active_batch(manifest.slug)
         selected = media_repository.get_batch(batch_id) if batch_id else active
         files = media_repository.batch_files(selected["id"]) if selected else ()
-        ready = len({(row["day"], row["locale"]) for row in files})
-        coverage = {(row["day"], row["locale"]): row["kind"] for row in files}
+        coverage = {
+            (idea.day, item.locale.value): "otomatik"
+            for idea in manifest.ideas for item in idea.localized
+            if item.preferred_format != "video"
+        }
+        for row in files:
+            coverage[(row["day"], row["locale"])] = row["kind"]
+        ready = len(coverage)
         return {
             "csrf": csrf(request), "active": active, "selected": selected, "batches": media_repository.list_batches(manifest.slug),
             "ready": ready, "coverage": coverage, "issues": issues, "ideas": manifest.ideas,
@@ -106,12 +112,53 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
             media_service.activate(batch_id)
         except KeyError:
             raise HTTPException(404, "Media batch not found") from None
+        scheduler.deactivate()
         return RedirectResponse("/media", status_code=303)
+
+    @router.post("/media/replace")
+    async def replace_media(request: Request):
+        form = await check_csrf(request)
+        upload = form.get("file")
+        try:
+            day = int(form.get("day", ""))
+            position = int(form.get("position", "0"))
+            locale = str(form.get("locale", ""))
+            kind = str(form.get("kind", ""))
+        except ValueError:
+            raise HTTPException(400, "Geçersiz içerik alanı") from None
+        if upload is None or not getattr(upload, "filename", ""):
+            raise HTTPException(400, "Dosya seçilmedi")
+        suffix = ".mp4" if kind == "video" else ".png"
+        temporary_dir = workspace / "tmp"
+        temporary_dir.mkdir(parents=True, exist_ok=True)
+        handle = tempfile.NamedTemporaryFile(delete=False, suffix=suffix, dir=temporary_dir)
+        path = Path(handle.name)
+        total = 0
+        try:
+            with handle:
+                while chunk := await upload.read(1024 * 1024):
+                    total += len(chunk)
+                    if total > 500 * 1024 * 1024:
+                        raise HTTPException(413, "Dosya çok büyük")
+                    handle.write(chunk)
+            try:
+                batch_id = media_service.replace_slot(
+                    path, day=day, locale=locale, kind=kind, position=position,
+                )
+            except (FileNotFoundError, ValueError) as exc:
+                issue = SimpleNamespace(code="invalid_media", message=str(exc))
+                return TEMPLATES.TemplateResponse(
+                    request, "media_import.html", media_context(request, issues=(issue,)), status_code=400,
+                )
+            return RedirectResponse(f"/media?batch={batch_id}", status_code=303)
+        finally:
+            path.unlink(missing_ok=True)
 
     @router.post("/media/rollback")
     async def rollback_media(request: Request):
         await check_csrf(request)
         media_service.rollback()
+        scheduler.deactivate()
         return RedirectResponse("/media", status_code=303)
 
     @router.post("/campaign/activate")

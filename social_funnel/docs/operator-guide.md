@@ -11,6 +11,8 @@
 7. Once activated, the scheduler supplies the exact checksum-verified uploaded files to the official platform adapters. The operator does not re-upload them separately on each platform.
 8. **Önceki pakete dön** restores the previously active media batch. Pause or deactivate the campaign before rollback during an incident.
 
+Use **Tek dosya değiştir** for a late correction. It clones the active package, replaces only the selected slot, and leaves the active package untouched until the new preview is explicitly activated. Activating or rolling back a media package automatically deactivates publishing, so the changed package must be reviewed before the campaign is enabled again.
+
 Single-image and three-slide carousel assets are rendered automatically from the reviewed localized campaign catalog. Imported replacements take priority. Video slots never fall back to generated three-second placeholder clips.
 
 ## Daily review
