@@ -30,6 +30,14 @@ def _checksum(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _verified_file(row) -> bool:
+    path = Path(row["managed_path"])
+    try:
+        return path.is_file() and _checksum(path) == row["checksum"]
+    except OSError:
+        return False
+
+
 def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, workspace: Path,
                 scheduler: SchedulerService | None = None) -> APIRouter:
     router = APIRouter()
@@ -199,7 +207,7 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         available = {
             (row["day"], row["locale"])
             for row in media_repository.active_files(manifest.slug)
-            if row["kind"] == "video" and Path(row["managed_path"]).is_file()
+            if row["kind"] == "video" and _verified_file(row)
         }
         missing = expected - available
         if missing:

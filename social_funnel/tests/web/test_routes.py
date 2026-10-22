@@ -1,4 +1,5 @@
 from datetime import date
+from hashlib import sha256
 from io import BytesIO
 from pathlib import Path
 from zipfile import ZipFile
@@ -159,4 +160,35 @@ def test_campaign_activation_is_blocked_until_all_videos_exist(tmp_path):
     response = client.post("/campaign/activate", data={"csrf": csrf})
     assert response.status_code == 409
     assert "30 video" in response.text
+    assert not app.state.scheduler.active
+
+
+def test_campaign_activation_rejects_a_tampered_video(tmp_path):
+    app = create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)))
+    client = TestClient(app)
+    repo = app.state.media_imports
+    repo.create_batch("videos", "fasttrack-30-day-launch", "video-sha")
+    video_rows = [
+        (idea.day, item.locale.value)
+        for idea in app.state.manifest.ideas for item in idea.localized
+        if item.preferred_format == "video"
+    ]
+    paths = []
+    for day, locale in video_rows:
+        path = tmp_path / "videos" / f"{day:02d}-{locale}.mp4"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(f"video-{day}-{locale}".encode())
+        paths.append(path)
+        repo.add_file(
+            "videos", day=day, locale=locale, kind="video", position=0,
+            managed_path=str(path), checksum=sha256(path.read_bytes()).hexdigest(),
+            width=1080, height=1920, duration_ms=30000, mime_type="video/mp4",
+        )
+    repo.activate("fasttrack-30-day-launch", "videos")
+    paths[0].write_bytes(b"tampered")
+
+    csrf = csrf_from(client.get("/").text)
+    response = client.post("/campaign/activate", data={"csrf": csrf})
+    assert response.status_code == 409
+    assert "1 video eksik" in response.text
     assert not app.state.scheduler.active

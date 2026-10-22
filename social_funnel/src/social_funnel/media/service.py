@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import Path
 import shutil
+from uuid import uuid4
 
 from social_funnel.domain.models import CampaignManifest, LocaleCode
 from social_funnel.media.importer import inspect_media_zip, stage_media_zip
@@ -34,15 +35,48 @@ class MediaImportService:
 
     def preflight(self, archive: Path, *, ffprobe=None) -> PreflightResult:
         archive = Path(archive)
-        checksum = _file_checksum(archive)
+        archive_checksum = _file_checksum(archive)
+        provisional_id = f"batch-{archive_checksum[:16]}"
+        existing = self.repository.find_by_checksum(self.manifest.slug, archive_checksum)
+        if existing is not None:
+            return PreflightResult(existing["id"], inspect_media_zip(archive, self.manifest))
+        imports_root = self.workspace / "media" / "imports"
+        staging = imports_root / f".incoming-{uuid4().hex}"
+        report = stage_media_zip(archive, self.manifest, staging, ffprobe=ffprobe)
+        if not report.valid:
+            return PreflightResult(provisional_id, report)
+        identity = "\n".join(
+            f"{item.slot.day}:{item.slot.locale.value}:{item.slot.kind}:{item.slot.position}:{item.checksum}"
+            for item in report.files
+        )
+        checksum = sha256(identity.encode("utf-8")).hexdigest()
         batch_id = f"batch-{checksum[:16]}"
         existing = self.repository.find_by_checksum(self.manifest.slug, checksum)
         if existing is not None:
-            return PreflightResult(existing["id"], inspect_media_zip(archive, self.manifest))
-        destination = self.workspace / "media" / "imports" / batch_id
-        report = stage_media_zip(archive, self.manifest, destination, ffprobe=ffprobe)
-        if not report.valid:
-            return PreflightResult(batch_id, report)
+            shutil.rmtree(staging, ignore_errors=True)
+            rows = {
+                (row["day"], row["locale"], row["kind"], row["position"]): row
+                for row in self.repository.batch_files(existing["id"])
+            }
+            first_row = next(iter(rows.values()), None)
+            report = report.model_copy(update={
+                "staging_directory": Path(first_row["managed_path"]).parents[2] if first_row else None,
+                "files": tuple(item.model_copy(update={
+                    "staged_path": Path(rows[(item.slot.day, item.slot.locale.value, item.slot.kind, item.slot.position)]["managed_path"]),
+                }) for item in report.files),
+            })
+            return PreflightResult(existing["id"], report)
+        destination = imports_root / batch_id
+        if destination.exists():
+            shutil.rmtree(staging, ignore_errors=True)
+            raise FileExistsError(destination)
+        staging.replace(destination)
+        report = report.model_copy(update={
+            "staging_directory": destination,
+            "files": tuple(item.model_copy(update={
+                "staged_path": destination / item.normalized_path,
+            }) for item in report.files),
+        })
         self.repository.create_batch(batch_id, self.manifest.slug, checksum)
         for item in report.files:
             self.repository.add_file(
