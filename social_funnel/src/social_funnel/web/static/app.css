@@ -85,7 +85,8 @@ footer { padding: 1.2rem min(5vw, 5rem); border-top: 1px solid var(--line); colo
 .notice.error { border-color: #bb765f; margin-bottom: 1rem; }
 .notice.success { border-color: var(--sage); background: #eaf3ec; margin-bottom: 1rem; }
 .compact-hero { grid-template-columns: 1fr; padding-bottom: 2rem; }
-.account-layout { display: grid; grid-template-columns: minmax(260px,.65fr) minmax(0,1.6fr); gap: 2rem; }
+.provider-config-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+.account-list-section { display: block; }
 .upload-card label { display: grid; gap: .35rem; color: var(--muted); font-size: .78rem; font-weight: 700; }
 .upload-card input:not([type=file]) { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: .7rem; font: inherit; }
 .connection-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .55rem; }
@@ -107,7 +108,7 @@ footer { padding: 1.2rem min(5vw, 5rem); border-top: 1px solid var(--line); colo
 .revision-list em { color: var(--sage); font-style: normal; }
 @media (max-width: 960px) { .hero, .columns { grid-template-columns: 1fr; } .locale-grid { grid-template-columns: 1fr; } }
 @media (max-width: 960px) { .media-layout { grid-template-columns: 1fr; } }
-@media (max-width: 960px) { .account-layout { grid-template-columns: 1fr; } }
+@media (max-width: 960px) { .provider-config-grid { grid-template-columns: 1fr; } }
 @media (max-width: 700px) { .connection-grid { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .day-grid { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, 1fr); } .topbar { padding: 1rem; } .local-badge { display: none; } }
 @media (prefers-reduced-motion: reduce) { button, .day-card { transition: none; } button:hover, .day-card:hover { transform: none; } }

@@ -11,6 +11,8 @@ from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from social_funnel.auth.tiktok_connection import TikTokConnectionService
+from social_funnel.auth.meta_connection import MetaConnectionService
+from social_funnel.auth.threads_connection import ThreadsConnectionService
 from social_funnel.domain.models import CampaignManifest, JobState
 from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
 from social_funnel.campaign.expansion import AccountConfig
@@ -49,7 +51,9 @@ def _verified_file(row) -> bool:
 def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, workspace: Path,
                 scheduler: SchedulerService | None = None,
                 registry: CampaignRegistry | None = None,
-                tiktok_connection: TikTokConnectionService | None = None) -> APIRouter:
+                tiktok_connection: TikTokConnectionService | None = None,
+                meta_connection: MetaConnectionService | None = None,
+                threads_connection: ThreadsConnectionService | None = None) -> APIRouter:
     router = APIRouter()
     scheduler = scheduler or SchedulerService(db, jobs, None)
     registry = registry or CampaignRegistry(db, manifest)
@@ -110,6 +114,12 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     def oauth_redirect_uri(request: Request) -> str:
         return str(request.url_for("tiktok_callback"))
 
+    def meta_redirect_uri(request: Request) -> str:
+        return str(request.url_for("meta_callback"))
+
+    def threads_redirect_uri(request: Request) -> str:
+        return str(request.url_for("threads_callback"))
+
     @router.get("/accounts", response_class=HTMLResponse)
     def account_connections(request: Request, notice: str | None = None,
                             error: str | None = None):
@@ -119,18 +129,42 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
                 configured = tiktok_connection.configured()
             except Exception:
                 configured = False
+        meta_configured = False
+        if meta_connection is not None:
+            try:
+                meta_configured = meta_connection.configured()
+            except Exception:
+                meta_configured = False
+        threads_configured = False
+        if threads_connection is not None:
+            try:
+                threads_configured = threads_connection.configured()
+            except Exception:
+                threads_configured = False
         messages = {
             "configured": "TikTok geliştirici bağlantısı güvenli kasaya kaydedildi.",
             "connected": "TikTok hesabı doğrulandı ve bağlandı.",
             "disconnected": "Hesap bağlantısı kaldırıldı; kampanya durduruldu.",
+            "meta-configured": "Meta geliştirici bağlantısı güvenli kasaya kaydedildi.",
+            "meta-connected": "Facebook Sayfası ve Instagram hesabı doğrulandı.",
+            "meta-disconnected": "Facebook ve Instagram bağlantısı kaldırıldı; kampanya durduruldu.",
+            "threads-configured": "Threads geliştirici bağlantısı güvenli kasaya kaydedildi.",
+            "threads-connected": "Threads hesabı doğrulandı ve bağlandı.",
+            "threads-disconnected": "Threads bağlantısı kaldırıldı; kampanya durduruldu.",
         }
         errors = {
             "oauth": "TikTok bağlantısı tamamlanamadı. Lütfen yeniden deneyin.",
             "config": "TikTok geliştirici bilgileri kaydedilemedi.",
+            "meta-oauth": "Meta bağlantısı tamamlanamadı. Hesap eşleşmesini ve izinleri kontrol edin.",
+            "meta-config": "Meta geliştirici bilgileri kaydedilemedi.",
+            "threads-oauth": "Threads bağlantısı tamamlanamadı. Lütfen yeniden deneyin.",
+            "threads-config": "Threads geliştirici bilgileri kaydedilemedi.",
         }
         return TEMPLATES.TemplateResponse(request, "account_connections.html", {
             "csrf": csrf(request), "accounts": account_repository.list(),
-            "tiktok_configured": configured, "notice": messages.get(notice),
+            "tiktok_configured": configured, "meta_configured": meta_configured,
+            "threads_configured": threads_configured,
+            "notice": messages.get(notice),
             "error": errors.get(error),
         })
 
@@ -146,6 +180,124 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         except (ValueError, OSError):
             return RedirectResponse("/accounts?error=config", status_code=303)
         return RedirectResponse("/accounts?notice=configured", status_code=303)
+
+    @router.post("/accounts/meta/configure")
+    async def configure_meta(request: Request):
+        form = await check_csrf(request)
+        if meta_connection is None:
+            return RedirectResponse("/accounts?error=meta-config", status_code=303)
+        try:
+            meta_connection.save_developer_credentials(
+                str(form.get("app_id", "")), str(form.get("app_secret", "")),
+            )
+        except (ValueError, OSError):
+            return RedirectResponse("/accounts?error=meta-config", status_code=303)
+        return RedirectResponse("/accounts?notice=meta-configured", status_code=303)
+
+    @router.post("/accounts/{locale}/meta/connect")
+    async def connect_meta(request: Request, locale: str):
+        await check_csrf(request)
+        if meta_connection is None:
+            return RedirectResponse("/accounts?error=meta-config", status_code=303)
+        state = token_urlsafe(32)
+        request.session["meta_oauth"] = {"locale": locale, "state": state}
+        try:
+            start = meta_connection.begin(
+                locale, redirect_uri=meta_redirect_uri(request), state=state,
+            )
+        except (KeyError, ValueError, OSError):
+            request.session.pop("meta_oauth", None)
+            return RedirectResponse("/accounts?error=meta-oauth", status_code=303)
+        return RedirectResponse(start.authorization_url, status_code=303)
+
+    @router.get("/oauth/meta/callback", name="meta_callback")
+    def meta_callback(request: Request, code: str | None = None,
+                      state: str | None = None, error: str | None = None):
+        pending = request.session.pop("meta_oauth", None)
+        if (
+            meta_connection is None or error or not code or not state or
+            not pending or state != pending.get("state")
+        ):
+            return RedirectResponse("/accounts?error=meta-oauth", status_code=303)
+        try:
+            meta_connection.complete(
+                pending["locale"], redirect_uri=meta_redirect_uri(request), code=code,
+            )
+        except (KeyError, ValueError, OSError):
+            return RedirectResponse("/accounts?error=meta-oauth", status_code=303)
+        scheduler.deactivate()
+        return RedirectResponse("/accounts?notice=meta-connected", status_code=303)
+
+    @router.post("/accounts/{locale}/meta/disconnect")
+    async def disconnect_meta(request: Request, locale: str):
+        await check_csrf(request)
+        try:
+            if meta_connection is None:
+                raise ValueError("Meta connection is unavailable")
+            meta_connection.disconnect(locale)
+        except (KeyError, ValueError, OSError):
+            return RedirectResponse("/accounts?error=meta-oauth", status_code=303)
+        scheduler.deactivate()
+        return RedirectResponse("/accounts?notice=meta-disconnected", status_code=303)
+
+    @router.post("/accounts/threads/configure")
+    async def configure_threads(request: Request):
+        form = await check_csrf(request)
+        if threads_connection is None:
+            return RedirectResponse("/accounts?error=threads-config", status_code=303)
+        try:
+            threads_connection.save_developer_credentials(
+                str(form.get("app_id", "")), str(form.get("app_secret", "")),
+            )
+        except (ValueError, OSError):
+            return RedirectResponse("/accounts?error=threads-config", status_code=303)
+        return RedirectResponse("/accounts?notice=threads-configured", status_code=303)
+
+    @router.post("/accounts/{account_id}/threads/connect")
+    async def connect_threads(request: Request, account_id: str):
+        await check_csrf(request)
+        if threads_connection is None:
+            return RedirectResponse("/accounts?error=threads-config", status_code=303)
+        state = token_urlsafe(32)
+        request.session["threads_oauth"] = {"account_id": account_id, "state": state}
+        try:
+            start = threads_connection.begin(
+                account_id, redirect_uri=threads_redirect_uri(request), state=state,
+            )
+        except (KeyError, ValueError, OSError):
+            request.session.pop("threads_oauth", None)
+            return RedirectResponse("/accounts?error=threads-oauth", status_code=303)
+        return RedirectResponse(start.authorization_url, status_code=303)
+
+    @router.get("/oauth/threads/callback", name="threads_callback")
+    def threads_callback(request: Request, code: str | None = None,
+                         state: str | None = None, error: str | None = None):
+        pending = request.session.pop("threads_oauth", None)
+        if (
+            threads_connection is None or error or not code or not state or
+            not pending or state != pending.get("state")
+        ):
+            return RedirectResponse("/accounts?error=threads-oauth", status_code=303)
+        try:
+            threads_connection.complete(
+                pending["account_id"], redirect_uri=threads_redirect_uri(request), code=code,
+            )
+        except (KeyError, ValueError, OSError):
+            return RedirectResponse("/accounts?error=threads-oauth", status_code=303)
+        scheduler.deactivate()
+        return RedirectResponse("/accounts?notice=threads-connected", status_code=303)
+
+    @router.post("/accounts/{account_id}/threads/disconnect")
+    async def disconnect_threads(request: Request, account_id: str):
+        await check_csrf(request)
+        try:
+            if threads_connection is None:
+                raise ValueError("Threads connection is unavailable")
+            threads_connection.disconnect(account_id)
+        except (KeyError, ValueError, OSError):
+            return RedirectResponse("/accounts?error=threads-oauth", status_code=303)
+        scheduler.deactivate()
+        return RedirectResponse("/accounts?notice=threads-disconnected", status_code=303)
 
     @router.post("/accounts/{account_id}/tiktok/connect")
     async def connect_tiktok(request: Request, account_id: str):

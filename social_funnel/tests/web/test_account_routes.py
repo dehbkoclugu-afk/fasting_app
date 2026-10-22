@@ -4,6 +4,8 @@ from pathlib import Path
 from fastapi.testclient import TestClient
 
 from social_funnel.auth.tiktok_connection import ConnectedTikTokAccount, TikTokOAuthStart
+from social_funnel.auth.meta_connection import ConnectedMetaPair, MetaOAuthStart
+from social_funnel.auth.threads_connection import ConnectedThreadsAccount, ThreadsOAuthStart
 from social_funnel.storage.repositories import AccountConnectionRepository
 from social_funnel.web.app import WebSettings, create_app
 
@@ -43,10 +45,59 @@ class FakeTikTokConnection:
         self.disconnected = account_id
 
 
-def make_app(tmp_path, service):
+class FakeMetaConnection:
+    def __init__(self):
+        self.is_configured = False
+        self.saved = None
+        self.started = None
+        self.completed = None
+        self.disconnected = None
+
+    def configured(self):
+        return self.is_configured
+
+    def save_developer_credentials(self, app_id, app_secret):
+        self.saved = (app_id, app_secret)
+        self.is_configured = True
+
+    def begin(self, locale, *, redirect_uri, state):
+        self.started = (locale, redirect_uri, state)
+        return MetaOAuthStart(locale, f"https://facebook.test/oauth?state={state}")
+
+    def complete(self, locale, *, redirect_uri, code):
+        self.completed = (locale, redirect_uri, code)
+        return ConnectedMetaPair(locale, (f"{locale}-facebook", f"{locale}-instagram"))
+
+    def disconnect(self, locale):
+        self.disconnected = locale
+
+
+class FakeThreadsConnection:
+    def __init__(self):
+        self.is_configured = False
+        self.saved = None
+        self.started = None
+        self.completed = None
+        self.disconnected = None
+
+    def configured(self): return self.is_configured
+    def save_developer_credentials(self, app_id, app_secret):
+        self.saved = (app_id, app_secret)
+        self.is_configured = True
+    def begin(self, account_id, *, redirect_uri, state):
+        self.started = (account_id, redirect_uri, state)
+        return ThreadsOAuthStart(account_id, f"https://threads.test/oauth?state={state}")
+    def complete(self, account_id, *, redirect_uri, code):
+        self.completed = (account_id, redirect_uri, code)
+        return ConnectedThreadsAccount(account_id, "user-1", "@fasttrack.fasting.tr")
+    def disconnect(self, account_id): self.disconnected = account_id
+
+
+def make_app(tmp_path, service, meta_service=None, threads_service=None):
     return create_app(
         WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)),
-        tiktok_connection=service,
+        tiktok_connection=service, meta_connection=meta_service or FakeMetaConnection(),
+        threads_connection=threads_service or FakeThreadsConnection(),
     )
 
 
@@ -135,5 +186,93 @@ def test_disconnect_requires_csrf_and_stops_active_campaign(tmp_path):
 
     assert response.status_code == 303
     assert service.disconnected == "tr-tiktok"
+    assert not app.state.scheduler.active
+
+
+def test_meta_config_connect_callback_and_pair_disconnect(tmp_path):
+    tiktok = FakeTikTokConnection()
+    meta = FakeMetaConnection()
+    app = make_app(tmp_path, tiktok, meta)
+    client = TestClient(app)
+    csrf = csrf_from(client.get("/accounts").text)
+
+    configured = client.post(
+        "/accounts/meta/configure",
+        data={"csrf": csrf, "app_id": " app-id ", "app_secret": " app-secret "},
+        follow_redirects=False,
+    )
+    assert configured.headers["location"] == "/accounts?notice=meta-configured"
+    assert meta.saved == (" app-id ", " app-secret ")
+
+    started = client.post(
+        "/accounts/en/meta/connect", data={"csrf": csrf}, follow_redirects=False,
+    )
+    assert started.status_code == 303
+    assert started.headers["location"].startswith("https://facebook.test/")
+    locale, redirect_uri, state = meta.started
+    assert locale == "en" and redirect_uri.endswith("/oauth/meta/callback")
+
+    connected = client.get(
+        f"/oauth/meta/callback?code=good&state={state}", follow_redirects=False,
+    )
+    assert connected.headers["location"] == "/accounts?notice=meta-connected"
+    assert meta.completed[0] == "en"
+
+    app.state.scheduler.activate()
+    disconnected = client.post(
+        "/accounts/en/meta/disconnect", data={"csrf": csrf}, follow_redirects=False,
+    )
+    assert disconnected.headers["location"] == "/accounts?notice=meta-disconnected"
+    assert meta.disconnected == "en"
+    assert not app.state.scheduler.active
+
+
+def test_meta_callback_rejects_wrong_state_without_completing(tmp_path):
+    meta = FakeMetaConnection()
+    meta.is_configured = True
+    client = TestClient(make_app(tmp_path, FakeTikTokConnection(), meta))
+    csrf = csrf_from(client.get("/accounts").text)
+    client.post("/accounts/tr/meta/connect", data={"csrf": csrf})
+
+    response = client.get(
+        "/oauth/meta/callback?code=good&state=wrong", follow_redirects=False,
+    )
+
+    assert response.headers["location"] == "/accounts?error=meta-oauth"
+    assert meta.completed is None
+
+
+def test_threads_config_connect_callback_and_disconnect(tmp_path):
+    threads = FakeThreadsConnection()
+    app = make_app(tmp_path, FakeTikTokConnection(), threads_service=threads)
+    client = TestClient(app)
+    csrf = csrf_from(client.get("/accounts").text)
+
+    configured = client.post(
+        "/accounts/threads/configure",
+        data={"csrf": csrf, "app_id": "threads-id", "app_secret": "threads-secret"},
+        follow_redirects=False,
+    )
+    assert configured.headers["location"] == "/accounts?notice=threads-configured"
+
+    started = client.post(
+        "/accounts/tr-threads/threads/connect", data={"csrf": csrf}, follow_redirects=False,
+    )
+    assert started.headers["location"].startswith("https://threads.test/")
+    account_id, redirect_uri, state = threads.started
+    assert account_id == "tr-threads" and redirect_uri.endswith("/oauth/threads/callback")
+
+    connected = client.get(
+        f"/oauth/threads/callback?code=good&state={state}", follow_redirects=False,
+    )
+    assert connected.headers["location"] == "/accounts?notice=threads-connected"
+    assert threads.completed[0] == "tr-threads"
+
+    app.state.scheduler.activate()
+    disconnected = client.post(
+        "/accounts/tr-threads/threads/disconnect", data={"csrf": csrf}, follow_redirects=False,
+    )
+    assert disconnected.headers["location"] == "/accounts?notice=threads-disconnected"
+    assert threads.disconnected == "tr-threads"
     assert not app.state.scheduler.active
 

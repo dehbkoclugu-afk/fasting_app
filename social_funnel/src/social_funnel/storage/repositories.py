@@ -57,6 +57,29 @@ class AccountConnectionRepository:
                 (account_id,),
             )
 
+    def mark_meta_pair(self, locale: str, *, page_identity: str, page_name: str,
+                       instagram_identity: str, instagram_handle: str) -> None:
+        facebook_id = f"{locale}-facebook"
+        instagram_id = f"{locale}-instagram"
+        self.get(facebook_id)
+        self.get(instagram_id)
+        verified_at = datetime.now(timezone.utc).isoformat()
+        with self.db.connection:
+            self.db.connection.execute(
+                """UPDATE account_connection SET provider_identity=?,public_identity=?,
+                vault_reference=?,capabilities_json=?,enabled=1,last_verified_at=? WHERE id=?""",
+                (page_identity, page_name, f"oauth:{facebook_id}",
+                 json.dumps({"publish": True}, sort_keys=True, separators=(",", ":")),
+                 verified_at, facebook_id),
+            )
+            self.db.connection.execute(
+                """UPDATE account_connection SET provider_identity=?,public_identity=?,
+                vault_reference=?,capabilities_json=?,enabled=1,last_verified_at=? WHERE id=?""",
+                (instagram_identity, instagram_handle, f"oauth:{instagram_id}",
+                 json.dumps({"publish": True}, sort_keys=True, separators=(",", ":")),
+                 verified_at, instagram_id),
+            )
+
 
 class CampaignRepository:
     def __init__(self, database: Database):
