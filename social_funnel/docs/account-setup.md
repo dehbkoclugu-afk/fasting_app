@@ -33,9 +33,12 @@ exports, or backups.
 1. Create or select one Facebook Page per locale.
 2. Connect each Instagram professional account to the matching Page and confirm
    the professional-account status.
-3. Create/select the matching Threads identity and verify its public handle.
-4. Configure a Meta app with the exact Page/Instagram/Threads permissions used
-   by the adapters, an explicit Graph API version, and production redirect URLs.
+3. Configure a Meta app with Facebook Login for Business and the Page/Instagram
+   permissions used by the adapters. Register the exact callback shown by the
+   running EXE: `/oauth/meta/callback` on its loopback address and port.
+4. Open **Hesaplar**, save the Meta App ID and secret, then connect each locale.
+   One consent flow must return the expected Facebook Page and its linked
+   Instagram professional account; both identities are enabled atomically.
 5. Complete Meta App Review and, where required, business verification before
    enabling accounts for people outside app roles.
 6. Store the resulting credential in Windows Credential Manager and save only
@@ -71,9 +74,20 @@ Direct posting also refreshes creator privacy options immediately before the
 send. An unaudited client must not be represented as capable of public direct
 posting.
 
-The current EXE implements the three-account TikTok connection flow. Meta OAuth
-for Instagram, Facebook, and Threads remains disabled until its provider flow is
-configured and reviewed; those nine rows fail closed.
+## Threads surfaces
+
+1. Add the Threads API use case to a Meta app and register the exact local
+   `/oauth/threads/callback` URI shown by the running EXE.
+2. Open **Hesaplar** and store the Threads App ID and secret in Windows
+   Credential Manager.
+3. Connect each language account separately. FastTrack requests only
+   `threads_basic` and `threads_content_publish`, exchanges the short-lived token
+   for a long-lived token, and verifies the returned username exactly.
+
+The current EXE implements connection flows for all twelve destinations: three
+TikTok accounts, three Facebook/Instagram pairs, and three Threads accounts.
+Provider review and real credentials are still required before connections can
+be completed outside developer roles.
 
 ## Connection acceptance check
 

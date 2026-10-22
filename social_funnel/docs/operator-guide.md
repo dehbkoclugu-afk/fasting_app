@@ -6,12 +6,14 @@
    start disabled.
 2. Save the TikTok Desktop app's Client key and Client secret once. These values
    are stored only in Windows Credential Manager.
-3. Connect Turkish, English, and Brazilian Portuguese TikTok accounts one at a
-   time. The official callback verifies the immutable TikTok identity and exact
-   public handle before enabling a destination.
-4. Disconnecting any account immediately disables campaign publishing. Meta
-   destinations remain unavailable until the Meta OAuth flow is implemented and
-   reviewed.
+3. Connect Turkish, English, and Brazilian Portuguese TikTok and Threads
+   accounts one at a time. The official callbacks verify immutable identities
+   and exact public handles.
+4. Save the Meta App credentials, then connect each locale's Facebook Page and
+   linked Instagram professional account as one verified pair.
+5. Disconnecting any account or Meta pair immediately disables campaign
+   publishing. Provider app review and required permissions must still be
+   completed before non-developer accounts can authorize.
 
 Never paste a social-account password into FastTrack. FastTrack accepts only
 official provider authorization and developer-app credentials.
