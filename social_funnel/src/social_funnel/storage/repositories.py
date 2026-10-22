@@ -126,6 +126,9 @@ class MediaImportRepository:
             "SELECT * FROM media_import_batch WHERE campaign_slug=? ORDER BY created_at DESC", (campaign_slug,),
         ).fetchall())
 
+    def get_batch(self, batch_id: str):
+        return self.db.connection.execute("SELECT * FROM media_import_batch WHERE id=?", (batch_id,)).fetchone()
+
     def add_file(self, batch_id: str, *, day: int, locale: str, kind: str, position: int,
                  managed_path: str, checksum: str, width: int, height: int,
                  duration_ms: int | None, mime_type: str) -> None:

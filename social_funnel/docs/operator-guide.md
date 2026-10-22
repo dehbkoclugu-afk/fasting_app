@@ -1,5 +1,18 @@
 # Operator guide
 
+## Monthly media import
+
+1. Produce the 30 localized Reels files outside FastTrack: ten designated video days in Turkish, English, and Brazilian Portuguese.
+2. Place them in a ZIP using `day-01/tr/video.mp4`, `day-01/en/video.mp4`, and `day-01/pt-BR/video.mp4` style paths. One shared outer folder is allowed.
+3. Open **Medya → Aylık medya yükle** in the EXE and choose the ZIP.
+4. Review the preflight result and the 30-day × 3-language coverage grid. The importer rejects unsafe paths, unknown slots, duplicate slots, invalid images, and videos outside the approved H.264 1080×1920 20–45 second contract.
+5. Activating a media batch only chooses which files the workspace uses; it does not start publishing.
+6. Review the campaign, then use **Kampanyayı etkinleştir**. This action remains blocked until all 30 required videos exist.
+7. Once activated, the scheduler supplies the exact checksum-verified uploaded files to the official platform adapters. The operator does not re-upload them separately on each platform.
+8. **Önceki pakete dön** restores the previously active media batch. Pause or deactivate the campaign before rollback during an incident.
+
+Single-image and three-slide carousel assets are rendered automatically from the reviewed localized campaign catalog. Imported replacements take priority. Video slots never fall back to generated three-second placeholder clips.
+
 ## Daily review
 
 1. Open the local dashboard and confirm the campaign is not unexpectedly paused.
@@ -64,6 +77,6 @@ If an API permission, app review, hosting, or platform outage blocks publishing:
 4. Copy its caption and alt text, then verify the live result on-platform.
 5. Record the remote post reference and outcome before any retry or resumption.
 
-Manual fallback is the supported path while Meta review, TikTok audit, or a
-public media host is unavailable; browser automation is not treated as a hidden
-replacement for an approved publishing API.
+Manual ZIP export is the backup/audit path while Meta review, TikTok audit, or a
+public media host is unavailable. Normal operation publishes the activated media
+through official APIs; browser automation is not treated as a hidden replacement.

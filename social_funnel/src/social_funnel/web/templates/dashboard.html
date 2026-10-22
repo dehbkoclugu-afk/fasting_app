@@ -7,12 +7,14 @@
     <h1>Her gün, daha sakin bir ritim.</h1>
     <p>Türkçe, English ve Português do Brasil içerikleri tek yerde; yayın öncesi kontrol sende.</p>
     <div class="hero-meta"><span>{{ total }} jobs</span><span>12 destinations</span><span>3 languages</span></div>
+    <p><a class="button-link" href="/media">Aylık medya yükle</a></p>
   </div>
   <div class="status-panel">
     <p class="eyebrow">Yayın kuyruğu</p>
-    <strong class="status {% if paused %}paused{% endif %}">{{ "Paused" if paused else "Running" }}</strong>
-    <p>{% if paused %}Yeni paylaşım başlamaz. Devam eden iş tamamlanabilir.{% else %}Bağlanan hesaplarda planlanan işler sırayla işlenir.{% endif %}</p>
+    <strong class="status {% if paused or not campaign_active %}paused{% endif %}">{{ "Paused" if paused else ("Running" if campaign_active else "Aktif değil") }}</strong>
+    <p>{% if paused %}Yeni paylaşım başlamaz. Devam eden iş tamamlanabilir.{% elif not campaign_active %}Medya ve hesaplar hazır olduğunda kampanyayı etkinleştir.{% else %}Bağlanan hesaplarda planlanan işler sırayla işlenir.{% endif %}</p>
     <form method="post" action="/{{ 'resume' if paused else 'pause' }}"><input type="hidden" name="csrf" value="{{ csrf }}"><button type="submit">{{ "Devam ettir" if paused else "Kuyruğu duraklat" }}</button></form>
+    {% if campaign_active %}<form method="post" action="/campaign/deactivate"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="quiet" type="submit">Kampanyayı kapat</button></form>{% else %}<form method="post" action="/campaign/activate"><input type="hidden" name="csrf" value="{{ csrf }}"><button type="submit">Kampanyayı etkinleştir</button></form>{% endif %}
   </div>
 </section>
 <section class="stats" aria-label="Durum özeti">

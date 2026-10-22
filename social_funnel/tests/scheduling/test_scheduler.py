@@ -42,6 +42,8 @@ def test_pause_prevents_next_job_without_interrupting_current(tmp_path):
     scheduler.pause()
     assert scheduler.tick(datetime(2026, 10, 20, 9, tzinfo=timezone.utc)) == 0
     scheduler.resume()
+    assert scheduler.tick(datetime(2026, 10, 20, 9, tzinfo=timezone.utc)) == 0
+    scheduler.activate()
     assert scheduler.tick(datetime(2026, 10, 20, 9, tzinfo=timezone.utc)) == 2
     assert len(engine.processed) == 2
     db.close()
@@ -62,7 +64,20 @@ def test_pause_during_first_job_stops_next_claim(tmp_path):
         repository.transition(job.id, JobState.APPROVED, JobState.SCHEDULED)
     engine = FakeEngine()
     scheduler = SchedulerService(db, repository, engine)
+    scheduler.activate()
     engine.on_process = scheduler.pause
     assert scheduler.tick(datetime(2026, 10, 20, 9, tzinfo=timezone.utc)) == 1
     assert len(engine.processed) == 1
     db.close()
+
+
+def test_campaign_activation_persists_and_pause_still_wins(tmp_path):
+    db = Database.open(tmp_path / "queue.db")
+    scheduler = SchedulerService(db, JobRepository(db), FakeEngine())
+    assert not scheduler.active
+    scheduler.activate()
+    assert SchedulerService(db, JobRepository(db), FakeEngine()).active
+    scheduler.pause()
+    assert scheduler.active and scheduler.paused
+    scheduler.deactivate()
+    assert not scheduler.active

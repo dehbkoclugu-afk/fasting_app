@@ -13,7 +13,8 @@ from social_funnel.campaign.expansion import AccountConfig, expand_publication_j
 from social_funnel.content.loader import load_campaign, validate_campaign_counts
 from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
 from social_funnel.storage.database import Database
-from social_funnel.storage.repositories import CampaignRepository, JobRepository
+from social_funnel.storage.repositories import CampaignRepository, JobRepository, MediaImportRepository
+from social_funnel.scheduling.service import SchedulerService
 from social_funnel.web.routes import make_router
 
 
@@ -39,6 +40,8 @@ def create_app(settings: WebSettings) -> FastAPI:
     app.state.database = db
     app.state.manifest = manifest
     app.state.settings = settings
-    app.include_router(make_router(db, jobs, manifest, settings.workspace))
+    app.state.media_imports = MediaImportRepository(db)
+    app.state.scheduler = SchedulerService(db, jobs, None)
+    app.include_router(make_router(db, jobs, manifest, settings.workspace, app.state.scheduler))
     app.mount("/static", StaticFiles(directory=Path(__file__).with_name("static")), name="static")
     return app

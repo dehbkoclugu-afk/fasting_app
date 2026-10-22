@@ -27,6 +27,7 @@ analysis = Analysis(
     hiddenimports=(
         collect_submodules("uvicorn")
         + collect_submodules("keyring.backends")
+        + collect_submodules("multipart")
         + ["jinja2.ext", "starlette.middleware.sessions"]
     ),
     hookspath=[],

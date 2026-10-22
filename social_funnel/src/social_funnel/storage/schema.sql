@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS application_state (
   value TEXT NOT NULL
 );
 INSERT OR IGNORE INTO application_state(key, value) VALUES ('paused', '0');
+INSERT OR IGNORE INTO application_state(key, value) VALUES ('campaign_active', '0');
 
 CREATE TABLE IF NOT EXISTS media_import_batch (
   id TEXT PRIMARY KEY,

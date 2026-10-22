@@ -15,6 +15,7 @@ def test_pyinstaller_manifest_declares_only_reviewed_application_assets() -> Non
     assert '"content/fasttrack-30-day-launch.json"' in spec
     assert '"assets/artwork"' in spec
     assert '"C:/Windows/Fonts/segoeui.ttf"' in spec
+    assert 'collect_submodules("multipart")' in spec
     assert "campaign.db" not in spec
     assert "credentials" not in spec.casefold()
     assert "user media" not in spec.casefold()

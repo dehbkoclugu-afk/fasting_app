@@ -22,6 +22,7 @@ button:hover { background: #3a5b47; transform: translateY(-1px); }
 button:active { transform: translateY(0); }
 button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 button.quiet { border-color: var(--line); background: #edf2ee; color: var(--ink); }
+.button-link { display: inline-block; border-radius: 8px; background: var(--ink); color: #fff; padding: .65rem 1rem; font-weight: 700; }
 .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem min(5vw, 5rem); border-bottom: 1px solid var(--line); background: var(--surface); }
 .brand { font-size: 1.15rem; font-weight: 700; letter-spacing: -.025em; }
 .brand small { font-size: .75rem; font-weight: 500; color: var(--muted); margin-left: .4rem; }
@@ -76,6 +77,16 @@ aside { padding: 1.4rem; align-self: start; }
 .job-list form { display: inline; }
 .job-list button { padding: .45rem .6rem; font-size: .72rem; }
 footer { padding: 1.2rem min(5vw, 5rem); border-top: 1px solid var(--line); color: var(--muted); font-size: .75rem; }
+.media-layout { display: grid; grid-template-columns: minmax(260px,.65fr) minmax(0,1.6fr); gap: 2rem; }
+.upload-card, .notice { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.4rem; align-self: start; }
+.upload-card form { display: grid; gap: .8rem; margin: 1rem 0; }
+.upload-card input[type=file] { border: 1px dashed var(--sage); border-radius: 8px; padding: 1rem; max-width: 100%; }
+.notice.error { border-color: #bb765f; margin-bottom: 1rem; }
+.coverage-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .45rem; }
+.coverage-cell { display: flex; justify-content: space-between; gap: .5rem; border: 1px solid var(--line); border-radius: 8px; padding: .65rem; font-size: .78rem; background: var(--surface); }
+.coverage-cell.ready { border-color: var(--sage); background: #eaf3ec; }
+.coverage-cell.missing span { color: var(--coral); }
 @media (max-width: 960px) { .hero, .columns { grid-template-columns: 1fr; } .locale-grid { grid-template-columns: 1fr; } }
+@media (max-width: 960px) { .media-layout { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .day-grid { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, 1fr); } .topbar { padding: 1rem; } .local-badge { display: none; } }
 @media (prefers-reduced-motion: reduce) { button, .day-card { transition: none; } button:hover, .day-card:hover { transform: none; } }
