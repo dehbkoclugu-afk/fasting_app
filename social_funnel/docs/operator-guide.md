@@ -43,9 +43,13 @@ Uploading identical JSON is idempotent. Invalid, unsafe, or incomplete packages 
 7. Once activated, the scheduler supplies the exact checksum-verified uploaded files to the official platform adapters. The operator does not re-upload them separately on each platform.
 8. **Önceki pakete dön** restores the previously active media batch. Pause or deactivate the campaign before rollback during an incident.
 
+Default market times are Turkey 20:30 (Europe/Istanbul), English 18:00
+(America/New_York), and Brazil 19:30 (America/Sao_Paulo). The daily review
+screen displays the exact local date, time, and zone for every job.
+
 Use **Tek dosya değiştir** for a late correction. It clones the active package, replaces only the selected slot, and leaves the active package untouched until the new preview is explicitly activated. Activating or rolling back a media package automatically deactivates publishing, so the changed package must be reviewed before the campaign is enabled again.
 
-Single-image and three-slide carousel assets are rendered automatically from the reviewed localized campaign catalog. Imported replacements take priority. Video slots never fall back to generated three-second placeholder clips.
+Single-image and three-slide carousel assets are rendered automatically from the reviewed localized campaign catalog. Imported replacements take priority. Instagram and Facebook receive the complete ordered carousel, not only its first slide. Video slots never fall back to generated three-second placeholder clips.
 
 ## Daily review
 

@@ -12,7 +12,7 @@
     {% if content.safety_note %}<p class="safety">{{ content.safety_note }}</p>{% endif %}
     <div class="job-list">
       {% for job in jobs if job.locale == content.locale.value %}
-      <div class="job-row"><span><strong>{{ 'TikTok' if job.platform == 'tiktok' else job.platform|capitalize }}</strong><small>{{ state_labels.get(job.state, job.state) }}</small></span>
+      <div class="job-row"><span><strong>{{ 'TikTok' if job.platform == 'tiktok' else job.platform|capitalize }}</strong><small>{{ state_labels.get(job.state, job.state) }}</small><small>{{ job.scheduled_label }}</small></span>
       <div class="job-actions">
         {% if job.state == 'processing' and job.platform == 'tiktok' %}<p class="job-status-note">TikTok gönderimi işleniyor. Creator-review kullandıysan Creator inbox'ı kontrol et; FastTrack durumu otomatik yeniler.{% if job.remote_id %}<small>İşlem kimliği: {{ job.remote_id }}</small>{% endif %}</p>{% endif %}
         {% if job.state == 'failed' %}<p class="job-status-note error">Yayın tamamlanamadı: {{ job.last_error or 'Platform ayrıntı vermedi.' }}</p>{% endif %}

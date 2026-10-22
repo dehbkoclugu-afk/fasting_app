@@ -25,7 +25,22 @@ def test_expands_twelve_destinations_to_360_stable_jobs():
     assert len({job.idempotency_key for job in first}) == 360
     assert [job.idempotency_key for job in first] == [job.idempotency_key for job in second]
     assert sum(job.automation_mode == AutomationMode.AUTOMATIC for job in first) == 120
-    assert first[0].scheduled_at == datetime(2026, 10, 20, 9, tzinfo=timezone.utc)
+    assert first[0].scheduled_at == datetime(2026, 10, 20, 17, 30, tzinfo=timezone.utc)
+    english_day_one = next(
+        job for job in first
+        if job.locale == LocaleCode.EN and job.platform == Platform.INSTAGRAM and job.day == 1
+    )
+    brazil_day_one = next(
+        job for job in first
+        if job.locale == LocaleCode.PT_BR and job.platform == Platform.INSTAGRAM and job.day == 1
+    )
+    english_after_dst = next(
+        job for job in first
+        if job.locale == LocaleCode.EN and job.platform == Platform.INSTAGRAM and job.day == 30
+    )
+    assert english_day_one.scheduled_at == datetime(2026, 10, 20, 22, tzinfo=timezone.utc)
+    assert brazil_day_one.scheduled_at == datetime(2026, 10, 20, 22, 30, tzinfo=timezone.utc)
+    assert english_after_dst.scheduled_at == datetime(2026, 11, 18, 23, tzinfo=timezone.utc)
     assert sum(job.state == JobState.DISABLED for job in first) == 60
     assert all(
         job.state == (

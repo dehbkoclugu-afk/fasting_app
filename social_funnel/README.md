@@ -12,6 +12,8 @@ Instagram, Facebook, TikTok, and Threads.
 - Monthly ZIP media import inside the EXE, content preflight, coverage view, immutable activation, and rollback
 - Deterministic image/carousel/video rendering with preflight validation
 - Meta and TikTok publishing adapters with retry and duplicate-send safeguards
+- Real Instagram and Facebook carousel publishing; Facebook uploads every slide
+  as unpublished media before creating the ordered multi-photo Page post
 - Revision-specific TikTok approval consent, durable publish IDs, and automatic remote-status reconciliation
 - One-click reviewed campaign scheduling for Instagram, Facebook, and Threads;
   TikTok video jobs remain individually consent-gated and non-video TikTok jobs stay disabled
@@ -35,6 +37,9 @@ Each month, import the reviewed campaign JSON through **Aylık kampanya** first.
 Activating the reviewed campaign schedules 270 supported Instagram, Facebook,
 and Threads jobs. The 30 TikTok video jobs require their own exact-revision
 checkboxes; the remaining 60 non-video TikTok audit rows are visibly disabled.
+Default local publishing times are 20:30 Istanbul, 18:00 New York, and 19:30
+São Paulo; UTC values are recalculated per date so daylight-saving changes are
+handled correctly.
 
 ## Run the Windows package
 

@@ -6,6 +6,7 @@ from secrets import token_urlsafe
 from hashlib import sha256
 import tempfile
 from types import SimpleNamespace
+from zoneinfo import ZoneInfo
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
@@ -16,7 +17,7 @@ from social_funnel.auth.meta_connection import MetaConnectionService
 from social_funnel.auth.threads_connection import ThreadsConnectionService
 from social_funnel.domain.models import CampaignManifest, JobState
 from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
-from social_funnel.campaign.expansion import AccountConfig
+from social_funnel.campaign.expansion import AccountConfig, MARKET_SCHEDULES
 from social_funnel.campaign.registry import CampaignRegistry
 from social_funnel.campaign.service import CampaignRefreshService
 from social_funnel.exporting.manual_pack import export_manual_pack
@@ -681,10 +682,17 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
             raise HTTPException(404)
         manifest = current_manifest()
         idea = manifest.ideas[day - 1]
-        rows = db.connection.execute(
-            """SELECT id,locale,platform,state,remote_id,last_error FROM publication_job
+        raw_rows = db.connection.execute(
+            """SELECT id,locale,platform,state,scheduled_at,remote_id,last_error FROM publication_job
             WHERE campaign_slug=? AND day=? ORDER BY locale,platform""", (manifest.slug, day),
         ).fetchall()
+        rows = []
+        for row in raw_rows:
+            item = dict(row)
+            zone_name = MARKET_SCHEDULES[LocaleCode(item["locale"])][0]
+            local_time = datetime.fromisoformat(item["scheduled_at"]).astimezone(ZoneInfo(zone_name))
+            item["scheduled_label"] = f"{local_time:%d.%m.%Y %H:%M} {zone_name}"
+            rows.append(item)
         return TEMPLATES.TemplateResponse(request, "content_detail.html", {
             "csrf": csrf(request), "idea": idea, "jobs": rows,
             "state_labels": JOB_STATE_LABELS,

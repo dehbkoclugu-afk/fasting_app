@@ -46,7 +46,7 @@ def test_transition_is_compare_and_swap_and_due_query(tmp_path):
     assert not repository.transition(job.id, JobState.DRAFT, JobState.APPROVED)
     assert repository.transition(job.id, JobState.NEEDS_REVIEW, JobState.APPROVED)
     assert repository.transition(job.id, JobState.APPROVED, JobState.SCHEDULED)
-    assert repository.get_due_jobs(datetime(2026, 10, 20, 9, tzinfo=timezone.utc), 5)[0].id == job.id
+    assert repository.get_due_jobs(datetime(2026, 10, 20, 17, 30, tzinfo=timezone.utc), 5)[0].id == job.id
     repository.record_attempt(job.id, "temporary_error", None, "network timeout", 1)
     assert repository.attempt_count(job.id) == 1
     db.close()
@@ -99,4 +99,30 @@ def test_campaign_activation_schedules_supported_jobs_but_not_tiktok_without_con
     assert sum(repository.get(job.id).state == JobState.SCHEDULED for job in jobs) == 90
     assert repository.get(next(job.id for job in jobs if job.platform == Platform.TIKTOK and job.day == 1)).state == JobState.DRAFT
     assert repository.get(next(job.id for job in jobs if job.platform == Platform.TIKTOK and job.day == 4)).state == JobState.DISABLED
+    db.close()
+
+
+def test_reimport_updates_pending_schedule_but_preserves_published_timestamp(tmp_path):
+    db = Database.open(tmp_path / "queue.db")
+    manifest = load_campaign(CATALOG)
+    CampaignRepository(db).import_manifest(manifest)
+    job = expand_publication_jobs(
+        manifest,
+        (AccountConfig("tr-instagram", LocaleCode.TR, Platform.INSTAGRAM),),
+        date(2026, 10, 20),
+    )[0]
+    old = job.model_copy(update={"scheduled_at": datetime(2026, 10, 20, 9, tzinfo=timezone.utc)})
+    repository = JobRepository(db)
+
+    repository.import_jobs((old,))
+    repository.import_jobs((job,))
+    assert repository.get(job.id).scheduled_at == datetime(2026, 10, 20, 17, 30, tzinfo=timezone.utc)
+
+    db.connection.execute(
+        "UPDATE publication_job SET state='published' WHERE id=?", (job.id,),
+    )
+    db.connection.commit()
+    later = job.model_copy(update={"scheduled_at": datetime(2026, 10, 20, 20, tzinfo=timezone.utc)})
+    repository.import_jobs((later,))
+    assert repository.get(job.id).scheduled_at == datetime(2026, 10, 20, 17, 30, tzinfo=timezone.utc)
     db.close()

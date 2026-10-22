@@ -1,6 +1,7 @@
 """Facebook Page photo/video posting with local scheduling upstream."""
 
 from collections.abc import Callable
+import json
 from pathlib import Path
 
 from social_funnel.domain.models import LocalizedContent, PublicationJob, PublishResult
@@ -12,6 +13,7 @@ class FacebookPagePublisher:
         self.client = client
         self.content_lookup = content_lookup
         self._published: dict[str, PublishResult] = {}
+        self._carousel_photos: dict[str, list[str]] = {}
 
     def lookup_by_idempotency_key(self, key: str) -> PublishResult | None:
         return self._published.get(key)
@@ -29,6 +31,28 @@ class FacebookPagePublisher:
         try:
             if asset_path is None:
                 payload = self.client.request("POST", f"{job.account_id}/feed", data={"message": caption})
+            elif content.preferred_format == "carousel":
+                slides = sorted(asset_path.parent.glob("slide-*.png"))
+                if not 2 <= len(slides) <= 10:
+                    return PublishResult(status="invalid_carousel", message="Carousel needs 2–10 slides")
+                photo_ids = self._carousel_photos.setdefault(job.idempotency_key, [])
+                for slide in slides[len(photo_ids):]:
+                    with slide.open("rb") as source:
+                        uploaded = self.client.request(
+                            "POST", f"{job.account_id}/photos",
+                            data={"published": "false"},
+                            files={"source": (slide.name, source)},
+                        )
+                    if not uploaded.get("id"):
+                        return PublishResult(status="invalid_response", message="Page returned no photo id")
+                    photo_ids.append(uploaded["id"])
+                payload = self.client.request("POST", f"{job.account_id}/feed", data={
+                    "message": caption,
+                    "attached_media": json.dumps(
+                        [{"media_fbid": photo_id} for photo_id in photo_ids],
+                        separators=(",", ":"),
+                    ),
+                })
             else:
                 edge = "videos" if asset_path.suffix.lower() == ".mp4" else "photos"
                 field = "source"

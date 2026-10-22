@@ -44,11 +44,11 @@ def test_pause_prevents_next_job_without_interrupting_current(tmp_path):
     engine = FakeEngine()
     scheduler = SchedulerService(db, repository, engine)
     scheduler.pause()
-    assert scheduler.tick(datetime(2026, 10, 20, 9, tzinfo=timezone.utc)) == 0
+    assert scheduler.tick(datetime(2026, 10, 20, 23, 59, tzinfo=timezone.utc)) == 0
     scheduler.resume()
-    assert scheduler.tick(datetime(2026, 10, 20, 9, tzinfo=timezone.utc)) == 0
+    assert scheduler.tick(datetime(2026, 10, 20, 23, 59, tzinfo=timezone.utc)) == 0
     scheduler.activate()
-    assert scheduler.tick(datetime(2026, 10, 20, 9, tzinfo=timezone.utc)) == 2
+    assert scheduler.tick(datetime(2026, 10, 20, 23, 59, tzinfo=timezone.utc)) == 2
     assert len(engine.processed) == 2
     db.close()
 
@@ -70,7 +70,7 @@ def test_pause_during_first_job_stops_next_claim(tmp_path):
     scheduler = SchedulerService(db, repository, engine)
     scheduler.activate()
     engine.on_process = scheduler.pause
-    assert scheduler.tick(datetime(2026, 10, 20, 9, tzinfo=timezone.utc)) == 1
+    assert scheduler.tick(datetime(2026, 10, 20, 23, 59, tzinfo=timezone.utc)) == 1
     assert len(engine.processed) == 1
     db.close()
 

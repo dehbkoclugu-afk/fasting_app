@@ -76,6 +76,9 @@ def test_dashboard_and_detail_show_twelve_destinations_and_locales(tmp_path):
     assert "İlk haftanı sakin başlat" in detail.text
     assert "Comece sua rotina com calma" in detail.text
     assert "English" in detail.text
+    assert "20.10.2026 20:30 Europe/Istanbul" in detail.text
+    assert "20.10.2026 18:00 America/New_York" in detail.text
+    assert "20.10.2026 19:30 America/Sao_Paulo" in detail.text
     non_video = client.get("/days/4")
     assert "TikTok için video olmayan işler kapalıdır" in non_video.text
 

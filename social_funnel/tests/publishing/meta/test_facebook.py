@@ -20,9 +20,9 @@ def job():
                           scheduled_at=datetime.now(timezone.utc), idempotency_key="key", content_revision=1)
 
 
-def content():
+def content(format="image"):
     return LocalizedContent(day=1, locale=LocaleCode.EN, hook="Begin gently", body="Track your fasting rhythm.",
-                            cta="Try FastTrack", hashtags=("#FastTrack",))
+                            cta="Try FastTrack", hashtags=("#FastTrack",), preferred_format=format)
 
 
 def test_page_photo_and_video_use_correct_endpoint(tmp_path):
@@ -43,3 +43,32 @@ def test_revoked_page_permission_never_retries(tmp_path):
     client = FakeClient(MetaApiError("reconnect", reconnect_required=True))
     result = FacebookPagePublisher(client, content_lookup=lambda _: content()).publish(job(), image)
     assert result.status == "reconnect" and not result.retryable
+
+
+def test_carousel_uploads_every_slide_unpublished_then_attaches_them_in_order(tmp_path):
+    for number in range(1, 4):
+        (tmp_path / f"slide-{number:02d}.png").write_bytes(f"slide-{number}".encode())
+
+    class CarouselClient:
+        def __init__(self):
+            self.calls = []
+
+        def request(self, method, path, **kwargs):
+            self.calls.append((method, path, kwargs))
+            if path.endswith("/photos"):
+                return {"id": f"photo-{len(self.calls)}"}
+            return {"id": "carousel-post"}
+
+    client = CarouselClient()
+    publisher = FacebookPagePublisher(client, content_lookup=lambda _: content("carousel"))
+
+    result = publisher.publish(job(), tmp_path / "slide-01.png")
+
+    assert result.remote_id == "carousel-post"
+    assert [call[1] for call in client.calls] == [
+        "page-1/photos", "page-1/photos", "page-1/photos", "page-1/feed",
+    ]
+    assert all(call[2]["data"]["published"] == "false" for call in client.calls[:3])
+    assert client.calls[3][2]["data"]["attached_media"] == (
+        '[{"media_fbid":"photo-1"},{"media_fbid":"photo-2"},{"media_fbid":"photo-3"}]'
+    )

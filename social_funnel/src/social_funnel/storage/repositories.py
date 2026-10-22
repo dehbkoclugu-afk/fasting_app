@@ -192,6 +192,11 @@ class JobRepository:
                      job.account_id, job.automation_mode.value, job.state.value,
                      job.scheduled_at.isoformat(), job.idempotency_key, job.content_revision),
                 )
+                self.db.connection.execute(
+                    """UPDATE publication_job SET scheduled_at=?
+                    WHERE id=? AND state NOT IN ('published','uploading','processing')""",
+                    (job.scheduled_at.isoformat(), job.id),
+                )
                 if job.state == JobState.DISABLED:
                     self.db.connection.execute(
                         """UPDATE publication_job SET state='disabled'
