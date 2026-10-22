@@ -23,7 +23,7 @@ Each package is UTF-8 JSON and contains the existing `CampaignManifest` plus:
 - The existing 7/7/7/9 funnel-stage sequence.
 - Exactly ten ideas where all three locales use `video`, therefore 30 required videos. A day's three locales must use the same preferred format.
 - The remaining slots use `image` or `carousel`; carousels always render three slides.
-- Localized hashtags, CTA, body, and hook are mandatory. `safety_note` remains structurally optional, but prohibited-claim and language validation runs against every localized unit and any supplied safety note is preserved exactly.
+- Localized hashtags, CTA, body, and hook are mandatory. `safety_note` remains structurally optional, prohibited-claim validation runs against every localized unit, and any supplied safety note is preserved exactly. Language identity is confirmed during human preview because the existing keyword heuristic rejects valid reviewed copy.
 
 The package must not contain credentials, media paths, remote URLs, HTML, or executable content.
 
