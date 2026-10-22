@@ -87,7 +87,9 @@ posting.
 The current EXE implements connection flows for all twelve destinations: three
 TikTok accounts, three Facebook/Instagram pairs, and three Threads accounts.
 Provider review and real credentials are still required before connections can
-be completed outside developer roles.
+be completed outside developer roles. TikTok and Threads tokens renew through
+their official refresh flows; an expired Meta Page token fails closed and asks
+the operator to reconnect the affected locale pair.
 
 ## Connection acceptance check
 

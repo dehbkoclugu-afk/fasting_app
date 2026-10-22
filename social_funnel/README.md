@@ -14,6 +14,7 @@ Instagram, Facebook, TikTok, and Threads.
 - Meta and TikTok publishing adapters with retry and duplicate-send safeguards
 - Secure TikTok Desktop OAuth with PKCE, exact-handle verification, and Windows Credential Manager storage
 - Secure Facebook/Instagram pair discovery and Threads OAuth with exact public-identity checks
+- Expiry-aware TikTok/Threads token rotation and exact-account runtime publisher binding
 - Windows onedir package, SHA-256 checksums, first-run workspace initialization,
   sanitized backups, and validated restore
 - A single-destination live-check summary that never publishes by itself
