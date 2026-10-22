@@ -329,6 +329,21 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         if missing:
             issue = SimpleNamespace(code="missing_videos", message=f"Kampanyayı etkinleştirmek için 30 video gerekli; {len(missing)} video eksik.")
             return TEMPLATES.TemplateResponse(request, "media_import.html", media_context(request, issues=(issue,)), status_code=409)
+        missing_accounts = db.connection.execute(
+            """SELECT COUNT(*) FROM account_connection
+            WHERE enabled=1 AND (
+              public_identity IS NULL OR trim(public_identity)='' OR
+              vault_reference IS NULL OR trim(vault_reference)=''
+            )"""
+        ).fetchone()[0]
+        if missing_accounts:
+            issue = SimpleNamespace(
+                code="missing_accounts",
+                message=f"Kampanyayı etkinleştirmek için {missing_accounts} hesap bağlantısı eksik.",
+            )
+            return TEMPLATES.TemplateResponse(
+                request, "media_import.html", media_context(request, issues=(issue,)), status_code=409,
+            )
         scheduler.activate()
         return RedirectResponse("/", status_code=303)
 

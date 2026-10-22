@@ -41,6 +41,27 @@ def campaign_package(month: str = "2026-11", suffix: str = "") -> bytes:
     return json.dumps({"month": month, "manifest": manifest}, ensure_ascii=False).encode()
 
 
+def seed_video_batch(app, tmp_path: Path) -> list[Path]:
+    repo = app.state.media_imports
+    repo.create_batch("videos", app.state.registry.active_manifest().slug, "video-sha")
+    paths = []
+    for idea in app.state.registry.active_manifest().ideas:
+        for item in idea.localized:
+            if item.preferred_format != "video":
+                continue
+            path = tmp_path / "videos" / f"{idea.day:02d}-{item.locale.value}.mp4"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(f"video-{idea.day}-{item.locale.value}".encode())
+            paths.append(path)
+            repo.add_file(
+                "videos", day=idea.day, locale=item.locale.value, kind="video", position=0,
+                managed_path=str(path), checksum=sha256(path.read_bytes()).hexdigest(),
+                width=1080, height=1920, duration_ms=30000, mime_type="video/mp4",
+            )
+    repo.activate(app.state.registry.active_manifest().slug, "videos")
+    return paths
+
+
 def test_dashboard_and_detail_show_twelve_destinations_and_locales(tmp_path):
     client = TestClient(create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20))))
     page = client.get("/")
@@ -174,25 +195,7 @@ def test_campaign_activation_is_blocked_until_all_videos_exist(tmp_path):
 def test_campaign_activation_rejects_a_tampered_video(tmp_path):
     app = create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)))
     client = TestClient(app)
-    repo = app.state.media_imports
-    repo.create_batch("videos", "fasttrack-30-day-launch", "video-sha")
-    video_rows = [
-        (idea.day, item.locale.value)
-        for idea in app.state.manifest.ideas for item in idea.localized
-        if item.preferred_format == "video"
-    ]
-    paths = []
-    for day, locale in video_rows:
-        path = tmp_path / "videos" / f"{day:02d}-{locale}.mp4"
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(f"video-{day}-{locale}".encode())
-        paths.append(path)
-        repo.add_file(
-            "videos", day=day, locale=locale, kind="video", position=0,
-            managed_path=str(path), checksum=sha256(path.read_bytes()).hexdigest(),
-            width=1080, height=1920, duration_ms=30000, mime_type="video/mp4",
-        )
-    repo.activate("fasttrack-30-day-launch", "videos")
+    paths = seed_video_batch(app, tmp_path)
     paths[0].write_bytes(b"tampered")
 
     csrf = csrf_from(client.get("/").text)
@@ -200,6 +203,29 @@ def test_campaign_activation_rejects_a_tampered_video(tmp_path):
     assert response.status_code == 409
     assert "1 video eksik" in response.text
     assert not app.state.scheduler.active
+
+
+def test_campaign_activation_is_blocked_until_all_accounts_are_connected(tmp_path):
+    app = create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)))
+    client = TestClient(app)
+    seed_video_batch(app, tmp_path)
+
+    csrf = csrf_from(client.get("/").text)
+    response = client.post("/campaign/activate", data={"csrf": csrf})
+
+    assert response.status_code == 409
+    assert "12 hesap bağlantısı eksik" in response.text
+    assert not app.state.scheduler.active
+
+    app.state.database.connection.execute(
+        "UPDATE account_connection SET public_identity=id, vault_reference='windows-vault'"
+    )
+    app.state.database.connection.commit()
+    activated = client.post(
+        "/campaign/activate", data={"csrf": csrf}, follow_redirects=False,
+    )
+    assert activated.status_code == 303
+    assert app.state.scheduler.active
 
 
 def test_monthly_campaign_upload_requires_csrf_and_rejects_invalid_json(tmp_path):
