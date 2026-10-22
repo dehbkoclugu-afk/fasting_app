@@ -1,5 +1,7 @@
 # FastTrack Reels Renderer Design
 
+> **SUPERSEDED — 2026-10-22:** The user decided that Reels/TikTok videos will be produced manually outside this application (currently with Claude Motion Designer) and uploaded as a monthly media package. Do not implement this renderer upgrade. Preserve this file only as decision history. The active direction is documented in `docs/HANDOFF-2026-10-22.md`.
+
 ## Goal
 
 Replace the current three-second static MP4 output with useful, deterministic vertical motion graphics for the ten video campaign days. Generate one localized video for Turkish, English, and Brazilian Portuguese: 30 videos total.
