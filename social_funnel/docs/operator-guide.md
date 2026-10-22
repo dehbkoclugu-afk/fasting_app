@@ -39,7 +39,7 @@ Uploading identical JSON is idempotent. Invalid, unsafe, or incomplete packages 
 3. Open **Medya → Aylık medya yükle** in the EXE and choose the ZIP.
 4. Review the preflight result and the 30-day × 3-language coverage grid. The importer rejects unsafe paths, unknown slots, duplicate slots, invalid images, and videos outside the approved H.264 1080×1920 20–45 second contract.
 5. Activating a media batch only chooses which files the workspace uses; it does not start publishing.
-6. Review the campaign, then use **Kampanyayı etkinleştir**. This action remains blocked until all 30 required videos, all 12 official account connections, and public media hosting exist; every account needs a verified public identity and a Windows Credential Manager reference.
+6. Review the campaign, then use **İnceledim ve kampanyayı etkinleştir**. This action remains blocked until all 30 required videos, all 12 official account connections, and public media hosting exist; every account needs a verified public identity and a Windows Credential Manager reference. Activation schedules all 270 Instagram, Facebook, and Threads jobs in one batch.
 7. Once activated, the scheduler supplies the exact checksum-verified uploaded files to the official platform adapters. The operator does not re-upload them separately on each platform.
 8. **Önceki pakete dön** restores the previously active media batch. Pause or deactivate the campaign before rollback during an incident.
 
@@ -63,8 +63,9 @@ Single-image and three-slide carousel assets are rendered automatically from the
 5. Keep the campaign in approval mode until every destination has passed its own
    live check and platform review is complete.
 
-Approval mode requires a person to approve each job. Automatic mode may advance
-validated content only after the campaign is locked; it does not bypass account
+Campaign activation is the batch approval for Instagram, Facebook, and Threads.
+The 30 TikTok video jobs still require their exact-revision checkbox; 60
+non-video TikTok audit rows remain disabled. No mode bypasses account
 capabilities, TikTok consent, platform review, or the one-destination live-send
 confirmation.
 

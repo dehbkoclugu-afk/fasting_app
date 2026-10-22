@@ -41,7 +41,7 @@ main { max-width: 1550px; margin: auto; padding: 2rem min(5vw, 5rem) 5rem; }
 .status-panel p { font-size: .86rem; color: var(--muted); }
 .status { display: block; font-size: 1.7rem; margin-bottom: .4rem; color: var(--sage); }
 .status.paused { color: var(--coral); }
-.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: .8rem; margin-bottom: 3.5rem; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .8rem; margin-bottom: 3.5rem; }
 .stats article { padding: 1.1rem 1.3rem; }
 .stats article span { color: var(--muted); font-size: .82rem; }
 .stats strong { display: block; font-size: 2rem; margin-top: .35rem; }

@@ -97,6 +97,8 @@ def create_app(settings: WebSettings, *, tiktok_connection=None, meta_connection
 
     app.state.orchestrator_factory = current_orchestrator
     app.state.scheduler = SchedulerService(db, jobs, current_orchestrator)
+    if app.state.scheduler.active:
+        jobs.schedule_reviewed_campaign(app.state.registry.active_manifest().slug)
     app.state.scheduler_runner = SchedulerRunner(app.state.scheduler)
     app.include_router(make_router(
         db, jobs, manifest, settings.workspace, app.state.scheduler, registry=app.state.registry,

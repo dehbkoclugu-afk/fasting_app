@@ -38,10 +38,15 @@ def expand_publication_jobs(
                 source = "|".join((manifest.slug, str(idea.day), content.locale.value,
                                    account.platform.value, account.id, str(content_revision)))
                 key = sha256(source.encode("utf-8")).hexdigest()
+                initial_state = (
+                    JobState.DISABLED
+                    if account.platform == Platform.TIKTOK and content.preferred_format != "video"
+                    else JobState.DRAFT
+                )
                 jobs.append(PublicationJob(
                     id=key[:32], campaign_slug=manifest.slug, day=idea.day,
                     locale=content.locale, platform=account.platform, account_id=account.id,
-                    automation_mode=account.automation_mode, state=JobState.DRAFT,
+                    automation_mode=account.automation_mode, state=initial_state,
                     scheduled_at=scheduled, idempotency_key=key,
                     content_revision=content_revision,
                 ))

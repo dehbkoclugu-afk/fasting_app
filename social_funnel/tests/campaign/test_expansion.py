@@ -2,7 +2,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 from social_funnel.content.loader import load_campaign
-from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
+from social_funnel.domain.models import AutomationMode, JobState, LocaleCode, Platform
 from social_funnel.campaign.expansion import AccountConfig, expand_publication_jobs
 
 
@@ -26,6 +26,15 @@ def test_expands_twelve_destinations_to_360_stable_jobs():
     assert [job.idempotency_key for job in first] == [job.idempotency_key for job in second]
     assert sum(job.automation_mode == AutomationMode.AUTOMATIC for job in first) == 120
     assert first[0].scheduled_at == datetime(2026, 10, 20, 9, tzinfo=timezone.utc)
+    assert sum(job.state == JobState.DISABLED for job in first) == 60
+    assert all(
+        job.state == (
+            JobState.DRAFT
+            if manifest.ideas[job.day - 1].localized[0].preferred_format == "video"
+            else JobState.DISABLED
+        )
+        for job in first if job.platform == Platform.TIKTOK and job.locale == LocaleCode.TR
+    )
 
 
 def test_disabled_destination_does_not_expand():

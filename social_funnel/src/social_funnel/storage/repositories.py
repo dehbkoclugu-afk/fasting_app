@@ -192,6 +192,13 @@ class JobRepository:
                      job.account_id, job.automation_mode.value, job.state.value,
                      job.scheduled_at.isoformat(), job.idempotency_key, job.content_revision),
                 )
+                if job.state == JobState.DISABLED:
+                    self.db.connection.execute(
+                        """UPDATE publication_job SET state='disabled'
+                        WHERE id=? AND state IN
+                        ('draft','needs_review','approved','scheduled','failed','rejected')""",
+                        (job.id,),
+                    )
 
     def count(self) -> int:
         return self.db.connection.execute("SELECT COUNT(*) FROM publication_job").fetchone()[0]
@@ -210,6 +217,18 @@ class JobRepository:
             (now.isoformat(), now.isoformat(), limit),
         ).fetchall()
         return tuple(PublicationJob.model_validate(dict(row)) for row in rows)
+
+    def schedule_reviewed_campaign(self, campaign_slug: str) -> int:
+        """Schedule the reviewed batch; TikTok remains individually consent-gated."""
+        with self.db.connection:
+            cursor = self.db.connection.execute(
+                """UPDATE publication_job
+                SET state='scheduled',next_attempt_at=NULL,last_error=NULL
+                WHERE campaign_slug=? AND platform!='tiktok'
+                AND state IN ('draft','needs_review','approved')""",
+                (campaign_slug,),
+            )
+        return cursor.rowcount
 
     def transition(self, job_id: str, expected_state: JobState, new_state: JobState) -> bool:
         if not can_transition(expected_state, new_state):

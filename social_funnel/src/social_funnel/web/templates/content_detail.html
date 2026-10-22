@@ -16,6 +16,7 @@
       <div class="job-actions">
         {% if job.state == 'processing' and job.platform == 'tiktok' %}<p class="job-status-note">TikTok gönderimi işleniyor. Creator-review kullandıysan Creator inbox'ı kontrol et; FastTrack durumu otomatik yeniler.{% if job.remote_id %}<small>İşlem kimliği: {{ job.remote_id }}</small>{% endif %}</p>{% endif %}
         {% if job.state == 'failed' %}<p class="job-status-note error">Yayın tamamlanamadı: {{ job.last_error or 'Platform ayrıntı vermedi.' }}</p>{% endif %}
+        {% if job.state == 'disabled' and job.platform == 'tiktok' %}<p class="job-status-note">TikTok için video olmayan işler kapalıdır. Bu görsel veya karusel Instagram ve Facebook için otomatik hazırlanır.</p>{% endif %}
         {% if job.state in ['draft','needs_review'] %}<form method="post" action="/jobs/{{ job.id }}/approve"><input type="hidden" name="csrf" value="{{ csrf }}">{% if job.platform == 'tiktok' %}<label class="consent"><input type="checkbox" name="tiktok_consent" value="1" required> TikTok'a yüklenmesini açıkça onaylıyorum</label>{% endif %}<button type="submit">{{ "TikTok yüklemesini onayla" if job.platform == 'tiktok' else "Kontrol et ve onayla" }}</button></form>{% endif %}
         {% if job.state not in ['disabled','published'] %}<form method="post" action="/jobs/{{ job.id }}/disable"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="quiet" type="submit">Kapat</button></form>{% endif %}
       </div>

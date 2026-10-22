@@ -665,6 +665,7 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
             return TEMPLATES.TemplateResponse(
                 request, "media_import.html", media_context(request, issues=(issue,)), status_code=409,
             )
+        jobs.schedule_reviewed_campaign(manifest.slug)
         scheduler.activate()
         return RedirectResponse("/", status_code=303)
 

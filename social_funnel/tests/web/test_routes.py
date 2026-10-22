@@ -71,10 +71,13 @@ def test_dashboard_and_detail_show_twelve_destinations_and_locales(tmp_path):
     assert "360 jobs" in page.text
     assert "12 destinations" in page.text
     assert "Instagram" in page.text and "TikTok" in page.text and "Threads" in page.text
+    assert "Kapalı</span><strong>60</strong>" in page.text
     detail = client.get("/days/1")
     assert "İlk haftanı sakin başlat" in detail.text
     assert "Comece sua rotina com calma" in detail.text
     assert "English" in detail.text
+    non_video = client.get("/days/4")
+    assert "TikTok için video olmayan işler kapalıdır" in non_video.text
 
 
 def test_mutations_require_csrf_and_pause_persists(tmp_path):
@@ -246,6 +249,26 @@ def test_campaign_activation_is_blocked_until_all_accounts_are_connected(tmp_pat
     activated = client.post("/campaign/activate", data={"csrf": csrf}, follow_redirects=False)
     assert activated.status_code == 303
     assert app.state.scheduler.active
+    states = dict(app.state.database.connection.execute(
+        "SELECT state,COUNT(*) FROM publication_job GROUP BY state"
+    ).fetchall())
+    assert states == {"disabled": 60, "draft": 30, "scheduled": 270}
+
+
+def test_restart_migrates_an_already_active_campaign_to_batch_scheduling(tmp_path):
+    settings = WebSettings(
+        workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20),
+    )
+    first = create_app(settings)
+    first.state.scheduler.activate()
+
+    restarted = create_app(settings)
+    states = dict(restarted.state.database.connection.execute(
+        "SELECT state,COUNT(*) FROM publication_job GROUP BY state"
+    ).fetchall())
+
+    assert restarted.state.scheduler.active
+    assert states == {"disabled": 60, "draft": 30, "scheduled": 270}
 
 
 def test_monthly_campaign_upload_requires_csrf_and_rejects_invalid_json(tmp_path):

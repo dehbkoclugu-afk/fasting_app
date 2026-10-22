@@ -13,6 +13,8 @@ Instagram, Facebook, TikTok, and Threads.
 - Deterministic image/carousel/video rendering with preflight validation
 - Meta and TikTok publishing adapters with retry and duplicate-send safeguards
 - Revision-specific TikTok approval consent, durable publish IDs, and automatic remote-status reconciliation
+- One-click reviewed campaign scheduling for Instagram, Facebook, and Threads;
+  TikTok video jobs remain individually consent-gated and non-video TikTok jobs stay disabled
 - Secure TikTok Desktop OAuth with PKCE, exact-handle verification, and Windows Credential Manager storage
 - Secure Facebook/Instagram pair discovery and Threads OAuth with exact public-identity checks
 - Expiry-aware TikTok/Threads token rotation, exact-account publisher binding, and a
@@ -29,6 +31,10 @@ opening the app, and preparing a live check does not send content.
 FastTrack automatically renders reviewed single-image and carousel content. Reels/TikTok videos are produced externally, uploaded once through **Aylık medya yükle**, validated as 1080×1920 H.264 MP4 files, and then passed unchanged to the scheduler and official platform publishers. The campaign remains inactive until all 30 localized video slots are present and the operator explicitly activates it.
 
 Each month, import the reviewed campaign JSON through **Aylık kampanya** first. FastTrack validates all 30 days and 90 localized entries, stores an immutable revision, and switches months only after explicit activation. A campaign switch disables publishing; upload the new month's videos and complete review before enabling it again.
+
+Activating the reviewed campaign schedules 270 supported Instagram, Facebook,
+and Threads jobs. The 30 TikTok video jobs require their own exact-revision
+checkboxes; the remaining 60 non-video TikTok audit rows are visibly disabled.
 
 ## Run the Windows package
 
