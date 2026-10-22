@@ -19,7 +19,7 @@ Uploading identical JSON is idempotent. Invalid, unsafe, or incomplete packages 
 3. Open **Medya → Aylık medya yükle** in the EXE and choose the ZIP.
 4. Review the preflight result and the 30-day × 3-language coverage grid. The importer rejects unsafe paths, unknown slots, duplicate slots, invalid images, and videos outside the approved H.264 1080×1920 20–45 second contract.
 5. Activating a media batch only chooses which files the workspace uses; it does not start publishing.
-6. Review the campaign, then use **Kampanyayı etkinleştir**. This action remains blocked until all 30 required videos exist.
+6. Review the campaign, then use **Kampanyayı etkinleştir**. This action remains blocked until all 30 required videos and all 12 official account connections exist; every account needs a verified public identity and a Windows Credential Manager reference.
 7. Once activated, the scheduler supplies the exact checksum-verified uploaded files to the official platform adapters. The operator does not re-upload them separately on each platform.
 8. **Önceki pakete dön** restores the previously active media batch. Pause or deactivate the campaign before rollback during an incident.
 
