@@ -1,5 +1,6 @@
 """FastAPI app factory for the Windows-local workspace."""
 
+from contextlib import asynccontextmanager
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -17,8 +18,12 @@ from social_funnel.campaign.expansion import AccountConfig, expand_publication_j
 from social_funnel.campaign.registry import CampaignRegistry
 from social_funnel.content.loader import load_campaign, validate_campaign_counts
 from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
+from social_funnel.media.resolver import MediaResolver
+from social_funnel.publishing.orchestrator import PublishingOrchestrator
+from social_funnel.publishing.runtime import build_account_publishers
 from social_funnel.setup.accounts import EXPECTED_PUBLIC_IDENTITIES
 from social_funnel.scheduling.service import SchedulerService
+from social_funnel.scheduling.runner import SchedulerRunner
 from social_funnel.storage.database import Database
 from social_funnel.storage.repositories import (
     AccountConnectionRepository, CampaignRepository, JobRepository, MediaImportRepository,
@@ -45,23 +50,50 @@ def create_app(settings: WebSettings, *, tiktok_connection=None, meta_connection
     jobs = JobRepository(db)
     jobs.import_jobs(expand_publication_jobs(manifest, accounts, settings.start_date))
     AccountConnectionRepository(db).seed_public_identities(EXPECTED_PUBLIC_IDENTITIES)
-    app = FastAPI(title="FastTrack Social Funnel")
+    @asynccontextmanager
+    async def lifespan(application):
+        application.state.scheduler_runner.start()
+        try:
+            yield
+        finally:
+            application.state.scheduler_runner.shutdown()
+
+    app = FastAPI(title="FastTrack Social Funnel", lifespan=lifespan)
     app.add_middleware(SessionMiddleware, secret_key=token_urlsafe(32), same_site="strict")
     app.state.database = db
     app.state.registry = CampaignRegistry(db, manifest)
     app.state.manifest = app.state.registry.active_manifest()
     app.state.settings = settings
     app.state.media_imports = MediaImportRepository(db)
-    app.state.scheduler = SchedulerService(db, jobs, None)
     vault = CredentialVault()
     app.state.tiktok_connection = tiktok_connection or TikTokConnectionService(db, vault)
     app.state.meta_connection = meta_connection or MetaConnectionService(db, vault)
     app.state.threads_connection = threads_connection or ThreadsConnectionService(db, vault)
+
+    def current_orchestrator() -> PublishingOrchestrator:
+        campaign = app.state.registry.active_manifest()
+        publishers = build_account_publishers(
+            db, campaign,
+            meta_tokens=app.state.meta_connection,
+            threads_tokens=app.state.threads_connection,
+            tiktok_tokens=app.state.tiktok_connection,
+        )
+        return PublishingOrchestrator(
+            jobs, campaign, publishers, settings.workspace / "media",
+            media_resolver=MediaResolver(
+                app.state.media_imports, campaign, settings.workspace / "media",
+            ),
+        )
+
+    app.state.orchestrator_factory = current_orchestrator
+    app.state.scheduler = SchedulerService(db, jobs, current_orchestrator)
+    app.state.scheduler_runner = SchedulerRunner(app.state.scheduler)
     app.include_router(make_router(
         db, jobs, manifest, settings.workspace, app.state.scheduler, registry=app.state.registry,
         tiktok_connection=app.state.tiktok_connection,
         meta_connection=app.state.meta_connection,
         threads_connection=app.state.threads_connection,
+        orchestrator_factory=current_orchestrator,
     ))
     app.mount("/static", StaticFiles(directory=Path(__file__).with_name("static")), name="static")
     return app

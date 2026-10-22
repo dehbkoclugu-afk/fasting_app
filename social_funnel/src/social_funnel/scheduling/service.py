@@ -41,10 +41,11 @@ class SchedulerService:
     def tick(self, now: datetime, limit: int = 12) -> int:
         if not self.active:
             return 0
+        orchestrator = self.orchestrator() if callable(self.orchestrator) else self.orchestrator
         completed = 0
         for job in self.jobs.get_due_jobs(now, limit):
             if self.paused:
                 break
-            self.orchestrator.process(job.id)
+            orchestrator.process(job.id)
             completed += 1
         return completed

@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime, timezone
 from hashlib import sha256
 from io import BytesIO
 from pathlib import Path
@@ -8,6 +8,8 @@ import json
 from fastapi.testclient import TestClient
 from PIL import Image
 
+from social_funnel.domain.models import JobState, PublishResult
+from social_funnel.storage.repositories import JobRepository
 from social_funnel.web.app import WebSettings, create_app
 
 
@@ -297,3 +299,39 @@ def test_monthly_campaign_rollback_restores_previous_revision(tmp_path):
     rolled_back = client.post("/campaigns/rollback", data={"csrf": csrf}, follow_redirects=False)
     assert rolled_back.status_code == 303
     assert app.state.registry.active_manifest().slug == "fasttrack-one-2026-11"
+
+
+def test_app_scheduler_publishes_due_job_through_live_account_runtime(tmp_path, monkeypatch):
+    from social_funnel.web import app as app_module
+
+    published = []
+
+    class Publisher:
+        def lookup_by_idempotency_key(self, key):
+            return None
+
+        def publish(self, job, asset_path):
+            published.append((job.account_id, asset_path))
+            return PublishResult(remote_id="remote-1", status="published")
+
+    def publishers(database, campaign, **dependencies):
+        assert campaign.slug == "fasttrack-30-day-launch"
+        return {"tr-threads": Publisher()}
+
+    monkeypatch.setattr(app_module, "build_account_publishers", publishers, raising=False)
+    app = create_app(WebSettings(
+        workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20),
+    ))
+    jobs = JobRepository(app.state.database)
+    row = app.state.database.connection.execute(
+        "SELECT id FROM publication_job WHERE account_id='tr-threads' AND day=1"
+    ).fetchone()
+    app.state.database.connection.execute(
+        "UPDATE publication_job SET state='scheduled' WHERE id=?", (row["id"],),
+    )
+    app.state.database.connection.commit()
+    app.state.scheduler.activate()
+
+    assert app.state.scheduler.tick(datetime(2026, 11, 30, tzinfo=timezone.utc)) == 1
+    assert jobs.get(row["id"]).state == JobState.PUBLISHED
+    assert published == [("tr-threads", None)]

@@ -53,7 +53,8 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
                 registry: CampaignRegistry | None = None,
                 tiktok_connection: TikTokConnectionService | None = None,
                 meta_connection: MetaConnectionService | None = None,
-                threads_connection: ThreadsConnectionService | None = None) -> APIRouter:
+                threads_connection: ThreadsConnectionService | None = None,
+                orchestrator_factory=None) -> APIRouter:
     router = APIRouter()
     scheduler = scheduler or SchedulerService(db, jobs, None)
     registry = registry or CampaignRegistry(db, manifest)
@@ -74,6 +75,8 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         return MediaImportService(media_repository, current_manifest(), workspace)
 
     def current_orchestrator() -> PublishingOrchestrator:
+        if orchestrator_factory is not None:
+            return orchestrator_factory()
         campaign = current_manifest()
         resolver = MediaResolver(media_repository, campaign, workspace / "media")
         return PublishingOrchestrator(
