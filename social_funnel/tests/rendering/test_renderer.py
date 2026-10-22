@@ -4,10 +4,10 @@ import subprocess
 from pathlib import Path
 
 import pytest
-from PIL import Image
+from PIL import Image, ImageDraw
 
 from social_funnel.domain.models import LocaleCode, LocalizedContent
-from social_funnel.rendering.images import RenderRequest, render_asset
+from social_funnel.rendering.images import RenderRequest, _fit_wrapped, render_asset
 from social_funnel.rendering.video import render_video
 
 
@@ -35,6 +35,19 @@ def test_pt_br_and_carousel_pages(tmp_path):
     assert len(asset.additional_paths) == 2
     assert all(path.is_file() for path in (asset.path, *asset.additional_paths))
     assert [p.name for p in (asset.path, *asset.additional_paths)] == ["slide-01.png", "slide-02.png", "slide-03.png"]
+
+
+def test_long_carousel_copy_is_fitted_without_dropping_words():
+    copy = (
+        "FastTrack'te zamanlayıcı, temel planlar ve ilerleme görünümüyle "
+        "başlayabilirsin. Mağazadaki güncel özellikleri yüklemeden önce kontrol et."
+    )
+    draw = ImageDraw.Draw(Image.new("RGB", (1080, 1350)))
+
+    _, lines = _fit_wrapped(draw, copy, None, max_width=870, max_lines=4, start_size=74)
+
+    assert len(lines) <= 4
+    assert " ".join(lines) == copy
 
 
 def test_missing_font_fails_actionably(tmp_path):

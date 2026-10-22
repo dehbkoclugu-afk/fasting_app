@@ -42,6 +42,25 @@ def _wrapped(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont,
     return lines
 
 
+def _fit_wrapped(
+    draw: ImageDraw.ImageDraw,
+    text: str,
+    font_path: Path | None,
+    *,
+    max_width: int,
+    max_lines: int,
+    start_size: int,
+    min_size: int = 38,
+) -> tuple[ImageFont.FreeTypeFont, list[str]]:
+    """Fit every word into a bounded text block instead of silently truncating copy."""
+    for size in range(start_size, min_size - 1, -2):
+        font = _font(font_path, size)
+        lines = _wrapped(draw, text, font, max_width)
+        if len(lines) <= max_lines:
+            return font, lines
+    raise ValueError("Copy exceeds card safe area; shorten hook or subtitle.")
+
+
 def _draw_card(request: RenderRequest, title: str, subtitle: str, filename: str) -> Path:
     width, height = request.size
     if (width, height) not in {(1080, 1350), (1080, 1080), (1080, 1920)}:
@@ -60,16 +79,24 @@ def _draw_card(request: RenderRequest, title: str, subtitle: str, filename: str)
     draw = ImageDraw.Draw(image)
     x, y = 105, 120
     draw.text((x, y), "FASTTRACK  /  DAILY RHYTHM", font=_font(request.font_path, 31), fill=PALETTE["sage"])
-    title_font = _font(request.font_path, 74 if height > 1100 else 62)
-    body_font = _font(request.font_path, 40)
+    title_font, title_lines = _fit_wrapped(
+        draw, title, request.font_path, max_width=width - 210, max_lines=4,
+        start_size=74 if height > 1100 else 62,
+    )
+    body_font, body_lines = _fit_wrapped(
+        draw, subtitle, request.font_path, max_width=width - 210, max_lines=3,
+        start_size=40, min_size=32,
+    )
     y += 85
-    for line in _wrapped(draw, title, title_font, width - 210)[:4]:
+    title_step = int(title_font.size * 1.23)
+    for line in title_lines:
         draw.text((x, y), line, font=title_font, fill=PALETTE["ink"])
-        y += 91
+        y += title_step
     y += 14
-    for line in _wrapped(draw, subtitle, body_font, width - 210)[:3]:
+    body_step = int(body_font.size * 1.38)
+    for line in body_lines:
         draw.text((x, y), line, font=body_font, fill=PALETTE["ink"])
-        y += 55
+        y += body_step
     if y > panel_height - 35:
         raise ValueError("Copy exceeds card safe area; shorten hook or subtitle.")
     request.destination.mkdir(parents=True, exist_ok=True)
