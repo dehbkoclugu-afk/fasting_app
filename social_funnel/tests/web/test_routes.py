@@ -208,7 +208,15 @@ def test_campaign_activation_rejects_a_tampered_video(tmp_path):
 
 
 def test_campaign_activation_is_blocked_until_all_accounts_are_connected(tmp_path):
-    app = create_app(WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)))
+    class Hosting:
+        enabled = False
+        def configured(self): return self.enabled
+
+    hosting = Hosting()
+    app = create_app(
+        WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)),
+        media_hosting=hosting,
+    )
     client = TestClient(app)
     seed_video_batch(app, tmp_path)
 
@@ -229,9 +237,13 @@ def test_campaign_activation_is_blocked_until_all_accounts_are_connected(tmp_pat
         """
     )
     app.state.database.connection.commit()
-    activated = client.post(
+    missing_host = client.post(
         "/campaign/activate", data={"csrf": csrf}, follow_redirects=False,
     )
+    assert missing_host.status_code == 409
+    assert "medya barındırma" in missing_host.text
+    hosting.enabled = True
+    activated = client.post("/campaign/activate", data={"csrf": csrf}, follow_redirects=False)
     assert activated.status_code == 303
     assert app.state.scheduler.active
 

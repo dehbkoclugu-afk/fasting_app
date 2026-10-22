@@ -33,7 +33,7 @@ analysis = Analysis(
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=["boto3", "botocore"],
+    excludes=[],
     noarchive=False,
 )
 pyz = PYZ(analysis.pure)

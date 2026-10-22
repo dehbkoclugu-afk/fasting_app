@@ -93,11 +93,25 @@ class FakeThreadsConnection:
     def disconnect(self, account_id): self.disconnected = account_id
 
 
-def make_app(tmp_path, service, meta_service=None, threads_service=None):
+class FakeHosting:
+    def __init__(self):
+        self.is_configured = False
+        self.saved = None
+
+    def configured(self): return self.is_configured
+    def configure(self, **values):
+        self.saved = values
+        self.is_configured = True
+    def disconnect(self): self.is_configured = False
+    def url_for(self, path): return f"https://media.test/{path.name}"
+
+
+def make_app(tmp_path, service, meta_service=None, threads_service=None, hosting_service=None):
     return create_app(
         WebSettings(workspace=tmp_path, catalog=CATALOG, start_date=date(2026, 10, 20)),
         tiktok_connection=service, meta_connection=meta_service or FakeMetaConnection(),
         threads_connection=threads_service or FakeThreadsConnection(),
+        media_hosting=hosting_service or FakeHosting(),
     )
 
 
@@ -275,4 +289,33 @@ def test_threads_config_connect_callback_and_disconnect(tmp_path):
     assert disconnected.headers["location"] == "/accounts?notice=threads-disconnected"
     assert threads.disconnected == "tr-threads"
     assert not app.state.scheduler.active
+
+
+def test_media_hosting_configuration_requires_csrf_and_stays_out_of_page(tmp_path):
+    hosting = FakeHosting()
+    app = make_app(tmp_path, FakeTikTokConnection(), hosting_service=hosting)
+    client = TestClient(app)
+    page = client.get("/accounts")
+    assert "Medya barındırma" in page.text
+    assert client.post("/accounts/hosting/configure", data={}).status_code == 403
+    csrf = csrf_from(page.text)
+
+    response = client.post(
+        "/accounts/hosting/configure",
+        data={
+            "csrf": csrf,
+            "endpoint_url": "https://account.r2.cloudflarestorage.com",
+            "bucket": "fasttrack-media",
+            "public_base_url": "https://media.fasttrack.test",
+            "access_key_id": "access-id",
+            "secret_access_key": "secret-key",
+            "region": "auto",
+        },
+        follow_redirects=False,
+    )
+
+    assert response.headers["location"] == "/accounts?notice=hosting-configured"
+    assert hosting.saved["bucket"] == "fasttrack-media"
+    rendered = client.get("/accounts").text
+    assert "secret-key" not in rendered and "access-id" not in rendered
 

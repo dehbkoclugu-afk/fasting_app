@@ -52,6 +52,20 @@ posts do not. Facebook Page publishing requires a Page role and the approved
 Page permissions. Meta development mode and missing review permissions can make
 an apparently valid token work only for app-role accounts.
 
+### Public media hosting
+
+1. Create a dedicated S3-compatible bucket (AWS S3, Cloudflare R2, or an
+   equivalent service) and expose it through a public HTTPS base URL.
+2. Add a bucket lifecycle rule that removes `campaign/` objects after at least
+   seven days. FastTrack uses checksum-stable opaque keys, so retries overwrite
+   the same object instead of creating duplicates.
+3. In **Hesaplar → Medya barındırma**, enter the HTTPS S3 endpoint, bucket,
+   public base URL, region, access key ID, and secret. Credentials go only to
+   Windows Credential Manager and are never redisplayed.
+4. Keep publishing disabled until one uploaded test object is reachable from the
+   public base URL without a browser login. FastTrack blocks campaign activation
+   while hosting is absent.
+
 ## TikTok surfaces
 
 1. Create or select one TikTok account per locale and confirm the visible handle.

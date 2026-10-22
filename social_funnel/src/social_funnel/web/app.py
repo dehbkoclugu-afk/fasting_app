@@ -18,6 +18,7 @@ from social_funnel.campaign.expansion import AccountConfig, expand_publication_j
 from social_funnel.campaign.registry import CampaignRegistry
 from social_funnel.content.loader import load_campaign, validate_campaign_counts
 from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
+from social_funnel.hosting.connection import MediaHostingService
 from social_funnel.media.resolver import MediaResolver
 from social_funnel.publishing.orchestrator import PublishingOrchestrator
 from social_funnel.publishing.runtime import build_account_publishers
@@ -39,7 +40,7 @@ class WebSettings:
 
 
 def create_app(settings: WebSettings, *, tiktok_connection=None, meta_connection=None,
-               threads_connection=None) -> FastAPI:
+               threads_connection=None, media_hosting=None) -> FastAPI:
     manifest = load_campaign(settings.catalog)
     validate_campaign_counts(manifest)
     db = Database.open(settings.workspace / "campaign.db")
@@ -69,14 +70,23 @@ def create_app(settings: WebSettings, *, tiktok_connection=None, meta_connection
     app.state.tiktok_connection = tiktok_connection or TikTokConnectionService(db, vault)
     app.state.meta_connection = meta_connection or MetaConnectionService(db, vault)
     app.state.threads_connection = threads_connection or ThreadsConnectionService(db, vault)
+    app.state.media_hosting = media_hosting or MediaHostingService(vault)
 
     def current_orchestrator() -> PublishingOrchestrator:
         campaign = app.state.registry.active_manifest()
+        try:
+            media_url = (
+                app.state.media_hosting.url_for
+                if app.state.media_hosting.configured() else None
+            )
+        except (ValueError, OSError):
+            media_url = None
         publishers = build_account_publishers(
             db, campaign,
             meta_tokens=app.state.meta_connection,
             threads_tokens=app.state.threads_connection,
             tiktok_tokens=app.state.tiktok_connection,
+            media_url=media_url,
         )
         return PublishingOrchestrator(
             jobs, campaign, publishers, settings.workspace / "media",
@@ -93,6 +103,7 @@ def create_app(settings: WebSettings, *, tiktok_connection=None, meta_connection
         tiktok_connection=app.state.tiktok_connection,
         meta_connection=app.state.meta_connection,
         threads_connection=app.state.threads_connection,
+        media_hosting=app.state.media_hosting,
         orchestrator_factory=current_orchestrator,
     ))
     app.mount("/static", StaticFiles(directory=Path(__file__).with_name("static")), name="static")

@@ -48,6 +48,28 @@
       <button type="submit">Güvenli kasaya kaydet</button>
     </form>
   </article>
+
+  <article class="upload-card">
+    <p class="eyebrow">INSTAGRAM / THREADS MEDYASI</p>
+    <h2>Medya barındırma · {{ "Yapılandırıldı" if hosting_configured else "Kurulum gerekli" }}</h2>
+    <p class="muted">Instagram'ın görsel ve videoları alabilmesi için S3 uyumlu özel alanını bağla. Erişim anahtarları yalnızca Windows güvenli kasasında tutulur.</p>
+    <form method="post" action="/accounts/hosting/configure">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <label>S3 uç noktası<input name="endpoint_url" type="url" required placeholder="https://...r2.cloudflarestorage.com"></label>
+      <label>Bucket<input name="bucket" required autocomplete="off"></label>
+      <label>Herkese açık HTTPS adresi<input name="public_base_url" type="url" required placeholder="https://media.example.com"></label>
+      <label>Access key ID<input name="access_key_id" required autocomplete="off"></label>
+      <label>Secret access key<input name="secret_access_key" type="password" required autocomplete="new-password"></label>
+      <label>Bölge<input name="region" value="auto" required autocomplete="off"></label>
+      <button type="submit">Güvenli kasaya kaydet</button>
+    </form>
+    {% if hosting_configured %}
+    <form method="post" action="/accounts/hosting/disconnect">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <button class="quiet" type="submit">Barındırmayı kaldır</button>
+    </form>
+    {% endif %}
+  </article>
 </section>
 
 <section class="account-list-section">

@@ -54,6 +54,7 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
                 tiktok_connection: TikTokConnectionService | None = None,
                 meta_connection: MetaConnectionService | None = None,
                 threads_connection: ThreadsConnectionService | None = None,
+                media_hosting=None,
                 orchestrator_factory=None) -> APIRouter:
     router = APIRouter()
     scheduler = scheduler or SchedulerService(db, jobs, None)
@@ -144,6 +145,12 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
                 threads_configured = threads_connection.configured()
             except Exception:
                 threads_configured = False
+        hosting_configured = False
+        if media_hosting is not None:
+            try:
+                hosting_configured = media_hosting.configured()
+            except Exception:
+                hosting_configured = False
         messages = {
             "configured": "TikTok geliştirici bağlantısı güvenli kasaya kaydedildi.",
             "connected": "TikTok hesabı doğrulandı ve bağlandı.",
@@ -154,6 +161,8 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
             "threads-configured": "Threads geliştirici bağlantısı güvenli kasaya kaydedildi.",
             "threads-connected": "Threads hesabı doğrulandı ve bağlandı.",
             "threads-disconnected": "Threads bağlantısı kaldırıldı; kampanya durduruldu.",
+            "hosting-configured": "Medya barındırma güvenli kasaya kaydedildi.",
+            "hosting-disconnected": "Medya barındırma kaldırıldı; kampanya durduruldu.",
         }
         errors = {
             "oauth": "TikTok bağlantısı tamamlanamadı. Lütfen yeniden deneyin.",
@@ -162,14 +171,47 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
             "meta-config": "Meta geliştirici bilgileri kaydedilemedi.",
             "threads-oauth": "Threads bağlantısı tamamlanamadı. Lütfen yeniden deneyin.",
             "threads-config": "Threads geliştirici bilgileri kaydedilemedi.",
+            "hosting-config": "Medya barındırma bilgileri kaydedilemedi.",
         }
         return TEMPLATES.TemplateResponse(request, "account_connections.html", {
             "csrf": csrf(request), "accounts": account_repository.list(),
             "tiktok_configured": configured, "meta_configured": meta_configured,
             "threads_configured": threads_configured,
+            "hosting_configured": hosting_configured,
             "notice": messages.get(notice),
             "error": errors.get(error),
         })
+
+    @router.post("/accounts/hosting/configure")
+    async def configure_hosting(request: Request):
+        form = await check_csrf(request)
+        if media_hosting is None:
+            return RedirectResponse("/accounts?error=hosting-config", status_code=303)
+        try:
+            media_hosting.configure(
+                endpoint_url=str(form.get("endpoint_url", "")),
+                bucket=str(form.get("bucket", "")),
+                public_base_url=str(form.get("public_base_url", "")),
+                access_key_id=str(form.get("access_key_id", "")),
+                secret_access_key=str(form.get("secret_access_key", "")),
+                region=str(form.get("region", "auto")),
+            )
+        except (ValueError, OSError):
+            return RedirectResponse("/accounts?error=hosting-config", status_code=303)
+        scheduler.deactivate()
+        return RedirectResponse("/accounts?notice=hosting-configured", status_code=303)
+
+    @router.post("/accounts/hosting/disconnect")
+    async def disconnect_hosting(request: Request):
+        await check_csrf(request)
+        if media_hosting is None:
+            return RedirectResponse("/accounts?error=hosting-config", status_code=303)
+        try:
+            media_hosting.disconnect()
+        except (ValueError, OSError):
+            return RedirectResponse("/accounts?error=hosting-config", status_code=303)
+        scheduler.deactivate()
+        return RedirectResponse("/accounts?notice=hosting-disconnected", status_code=303)
 
     @router.post("/accounts/tiktok/configure")
     async def configure_tiktok(request: Request):
@@ -593,6 +635,18 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
             issue = SimpleNamespace(
                 code="missing_accounts",
                 message=f"Kampanyayı etkinleştirmek için {missing_accounts} hesap bağlantısı eksik.",
+            )
+            return TEMPLATES.TemplateResponse(
+                request, "media_import.html", media_context(request, issues=(issue,)), status_code=409,
+            )
+        try:
+            hosting_ready = media_hosting is not None and media_hosting.configured()
+        except (ValueError, OSError):
+            hosting_ready = False
+        if not hosting_ready:
+            issue = SimpleNamespace(
+                code="missing_hosting",
+                message="Instagram yayını için Hesaplar bölümünde medya barındırma kurulmalı.",
             )
             return TEMPLATES.TemplateResponse(
                 request, "media_import.html", media_context(request, issues=(issue,)), status_code=409,

@@ -1,7 +1,6 @@
 """S3-compatible upload with opaque keys and explicit cleanup."""
 
 from datetime import datetime, timedelta, timezone
-from uuid import uuid4
 
 from social_funnel.domain.models import MediaAsset
 from social_funnel.hosting.base import HostedMedia, HostingDisabled
@@ -23,9 +22,16 @@ class S3MediaHost:
             raise ValueError("Media expiry must be at least one hour in the future")
         if not asset.path.is_file():
             raise FileNotFoundError(asset.path)
-        extension = ".mp4" if asset.mime_type == "video/mp4" else ".png"
-        key = f"campaign/{uuid4().hex}{extension}"
-        self.client.upload_file(str(asset.path), self.bucket, key, ExtraArgs={"ContentType": asset.mime_type})
+        extension = {
+            "image/jpeg": ".jpg", "image/png": ".png", "video/mp4": ".mp4",
+        }.get(asset.mime_type)
+        if extension is None:
+            raise ValueError("Unsupported hosted media type")
+        key = f"campaign/{asset.checksum}{extension}"
+        self.client.upload_file(
+            str(asset.path), self.bucket, key,
+            ExtraArgs={"ContentType": asset.mime_type, "Expires": expires_at},
+        )
         return HostedMedia(key, f"{self.base}/{key}", expires_at)
 
     def get_public_url(self, hosted: HostedMedia) -> str:

@@ -16,7 +16,7 @@ if (-not (Test-Path -LiteralPath $Python)) {
 
 & $Python -m pip install --disable-pip-version-check --upgrade pip
 if ($LASTEXITCODE -ne 0) { throw "pip upgrade failed." }
-& $Python -m pip install --disable-pip-version-check -e "${ProjectRoot}[dev,packaging,meta,tiktok]"
+& $Python -m pip install --disable-pip-version-check -e "${ProjectRoot}[dev,packaging,meta,tiktok,hosting]"
 if ($LASTEXITCODE -ne 0) { throw "Project installation failed." }
 & $Python -m pytest (Join-Path $ProjectRoot "tests") -q
 if ($LASTEXITCODE -ne 0) { throw "Test suite failed." }

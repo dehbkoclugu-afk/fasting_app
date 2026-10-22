@@ -16,6 +16,8 @@ Instagram, Facebook, TikTok, and Threads.
 - Secure Facebook/Instagram pair discovery and Threads OAuth with exact public-identity checks
 - Expiry-aware TikTok/Threads token rotation, exact-account publisher binding, and a
   live queue that checks due posts every 30 seconds while the EXE is open
+- Vault-backed S3-compatible media hosting for Instagram/Threads URL ingestion,
+  with HTTPS validation, checksum-stable object keys, and activation gating
 - Windows onedir package, SHA-256 checksums, first-run workspace initialization,
   sanitized backups, and validated restore
 - A single-destination live-check summary that never publishes by itself
