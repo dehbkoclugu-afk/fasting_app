@@ -1,0 +1,775 @@
+{
+  "@@locale": "no",
+  "appTitle": "FastTrack",
+  "greeting_morning": "God morgen",
+  "greeting_afternoon": "God ettermiddag",
+  "greeting_evening": "God kveld",
+  "tab_timer": "Hjem",
+  "tab_explore": "Utforsk",
+  "tab_stats": "Rapport",
+  "tab_meals": "Måltider",
+  "tab_achievements": "Utmerkelser",
+  "tab_profile": "Konto",
+  "timer_fasting": "Fastetid",
+  "timer_remaining": "Gjenstår",
+  "timer_elapsed": "Forløpt",
+  "timer_start": "Start",
+  "timer_stop": "Stopp",
+  "timer_completed": "Gratulerer!",
+  "timer_completedMessage": "Du fullførte fasten!",
+  "timer_selectPlan": "Velg fasteplan",
+  "timer_stopConfirm": "Er du sikker på at du vil avslutte fasten tidlig?",
+  "timer_stopTitle": "Avslutt faste",
+  "timer_cancel": "Avbryt",
+  "timer_confirmStop": "Ja, avslutt",
+  "phase_anabolic": "Anabolsk",
+  "phase_anabolicDesc": "Fordøyelsen pågår",
+  "phase_catabolic": "Katabolsk",
+  "phase_catabolicDesc": "Energiomstilling",
+  "phase_fatBurning": "Fettforbrenning",
+  "phase_fatBurningDesc": "Fettforbrenningen har startet",
+  "phase_ketosis": "Ketose",
+  "phase_ketosisDesc": "Ketonproduksjonen er aktiv",
+  "phase_autophagy": "Autofagi",
+  "phase_autophagyDesc": "Cellefornyelse",
+  "stats_title": "Statistikk",
+  "stats_week": "Uke",
+  "stats_month": "Måned",
+  "stats_year": "År",
+  "stats_totalFasts": "Faster totalt",
+  "stats_average": "Gjennomsnitt",
+  "stats_fastDuration": "fastens varighet",
+  "stats_streak": "Rekke",
+  "stats_daysConsecutive": "dager på rad",
+  "stats_success": "Suksess",
+  "stats_completion": "fullført",
+  "stats_weeklyFasting": "Ukentlig faste",
+  "stats_monthlyView": "Månedsvisning",
+  "stats_weightChange": "Vektendring",
+  "heatmap_none": "Ingen",
+  "heatmap_low": "Lav",
+  "heatmap_good": "God",
+  "heatmap_full": "Full",
+  "meals_title": "Måltidsplanlegger",
+  "meals_eatingWindow": "Spisevindu",
+  "meals_windowOpen": "Åpent",
+  "meals_windowFasting": "Faste",
+  "meals_calories": "Kalorier",
+  "meals_protein": "Protein",
+  "meals_carbs": "Karbohydrater",
+  "meals_fat": "Fett",
+  "meals_todayMeals": "Dagens måltider",
+  "meals_noMeals": "Ingen måltider er lagt til ennå",
+  "meals_breakfastSuggestions": "Forslag til å bryte fasten",
+  "meals_addMeal": "Legg til måltid",
+  "profile_title": "Profil",
+  "profile_user": "Bruker",
+  "profile_planActive": "Planen {plan} er aktiv",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Oppgrader til Premium",
+  "profile_premiumDesc": "Alle fasteplaner uten reklame",
+  "profile_bodyMetrics": "Kroppsmål",
+  "profile_height": "Høyde",
+  "profile_weight": "Vekt",
+  "profile_targetWeight": "Målvekt",
+  "profile_bmi": "BMI",
+  "profile_settings": "Innstillinger",
+  "profile_notifications": "Varsler",
+  "profile_darkTheme": "Mørkt tema",
+  "profile_waterReminder": "Vannpåminnelse",
+  "profile_phaseNotifications": "Fasevarsler",
+  "profile_language": "Språk",
+  "profile_about": "Om",
+  "profile_rateApp": "Vurder appen",
+  "profile_share": "Del",
+  "profile_privacyPolicy": "Personvernerklæring",
+  "profile_version": "Versjon",
+  "onboarding_welcome": "Velkommen",
+  "onboarding_welcomeDesc": "Ta kontroll over reisen din med\nperiodisk faste",
+  "onboarding_featureTimer": "Smart fastetidtaker",
+  "onboarding_featureStats": "Detaljert statistikk og diagrammer",
+  "onboarding_featureMeals": "Måltidsplanlegger og oppskriftsforslag",
+  "onboarding_getStarted": "Kom i gang",
+  "onboarding_selectGoal": "Hva er målet ditt?",
+  "onboarding_selectGoalDesc": "Du kan velge flere",
+  "onboarding_goalWeight": "Gå ned i vekt",
+  "onboarding_goalWeightDesc": "Sunn vektnedgang",
+  "onboarding_goalHealth": "Bedre helse",
+  "onboarding_goalHealthDesc": "Generell helse og immunforsvar",
+  "onboarding_goalEnergy": "Mer energi",
+  "onboarding_goalEnergyDesc": "Energi gjennom hele dagen",
+  "onboarding_goalMental": "Mental klarhet",
+  "onboarding_goalMentalDesc": "Fokus og klarhet",
+  "onboarding_goalLongevity": "Lang levetid",
+  "onboarding_goalLongevityDesc": "Cellefornyelse og sunn aldring",
+  "onboarding_goalDiscipline": "Disiplin",
+  "onboarding_goalDisciplineDesc": "Bygg selvdisiplin",
+  "onboarding_selectPlan": "Velg planen din",
+  "onboarding_selectPlanDesc": "Velg fasteplanen som passer best for deg",
+  "onboarding_bodyInfo": "Oppgi informasjonen din",
+  "onboarding_bodyInfoDesc": "For personlige anbefalinger",
+  "onboarding_gender": "Kjønn",
+  "onboarding_male": "Mann",
+  "onboarding_female": "Kvinne",
+  "onboarding_age": "Alder",
+  "onboarding_bodyInfoDisclaimer": "Denne informasjonen lagres bare på enheten din og brukes til kaloriberegninger.",
+  "onboarding_permissions": "Siste trinn",
+  "onboarding_permissionsDesc": "Aktiver tillatelser for den beste opplevelsen",
+  "onboarding_next": "Fortsett",
+  "onboarding_start": "Sett i gang!",
+  "onboarding_skipForNow": "Konfigurer senere",
+  "waterAdded": "250 ml vann lagt til",
+  "languageSelect": "Velg språk",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Oppgrader til Premium",
+  "paywall_subtitle": "Lås opp alle fasteplaner og fjern reklame",
+  "paywall_allPlans": "Alle fasteplaner",
+  "paywall_advancedStats": "Avansert statistikk",
+  "paywall_mealPlanner": "Måltidsplanlegger",
+  "paywall_themes": "Tilpass tema",
+  "paywall_noAds": "Ingen reklame",
+  "paywall_weekly": "Ukentlig",
+  "paywall_monthly": "Månedlig",
+  "paywall_yearly": "Årlig",
+  "paywall_bestValue": "Best verdi",
+  "paywall_freeTrial": "Gratis prøveperiode (3 dager)",
+  "paywall_restore": "Gjenopprett kjøp",
+  "paywall_premiumActive": "Premium er aktivt!",
+  "paywall_premiumActiveDesc": "Alle fasteplaner er låst opp, og reklame er slått av",
+  "water_title": "Vanninntak",
+  "water_addWater": "Legg til vann",
+  "water_goal": "Mål",
+  "water_ml": "ml",
+  "common_ok": "OK",
+  "common_cancel": "Avbryt",
+  "common_save": "Lagre",
+  "common_delete": "Slett",
+  "common_hours": "timer",
+  "common_minutes": "minutter",
+  "common_days": "dager",
+  "common_enable": "Aktiver",
+  "streakCard_currentStreak": "Nåværende rekke",
+  "streakCard_longestStreak": "Lengste rekke",
+  "streakCard_totalSessions": "Faster totalt",
+  "meals_mealType": "Måltidstype",
+  "meals_breakfast": "Frokost",
+  "meals_lunch": "Lunsj",
+  "meals_dinner": "Middag",
+  "meals_snack": "Mellommåltid",
+  "meals_carbohydrate": "Karbohydrat",
+  "meals_add": "Legg til",
+  "meals_mealName": "Navn på måltid",
+  "bodyMetrics_title": "Kroppsmål",
+  "bodyMetrics_weight": "Vekt",
+  "bodyMetrics_target": "Mål",
+  "bodyMetrics_save": "Lagre",
+  "bodyMetrics_history": "Historikk",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Ingen data ennå",
+  "meals_quickAdd": "Hurtigtillegg",
+  "meals_manualEntry": "Manuell registrering",
+  "meals_added": "{name} er lagt til",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Navn og kalorier er påkrevd",
+  "bodyMetrics_addWeight": "Legg til vekt",
+  "bodyMetrics_hintWeight": "f.eks. 74,5",
+  "bodyMetrics_invalidWeight": "Oppgi en gyldig vekt",
+  "bodyMetrics_weightSaved": "{value} kg lagret",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Varighet",
+  "completion_plan": "Plan",
+  "completion_lastPhase": "Siste fase",
+  "timer_remainingTime": "Gjenværende tid",
+  "timer_ready": "Klar til å starte",
+  "streak_status": "Status",
+  "streak_startToday": "Start i dag!",
+  "streak_goodStart": "God start!",
+  "streak_goingGreat": "Dette går flott!",
+  "streak_superb": "Suverent!",
+  "streak_legendary": "Legendarisk!",
+  "streak_incredible": "Utrolig!",
+  "weight_noRecord": "Ingen vektregistreringer ennå\nLegg dem til under Profil > Kroppsmål",
+  "day_mon": "Man",
+  "day_tue": "Tir",
+  "day_wed": "Ons",
+  "day_thu": "Tor",
+  "day_fri": "Fre",
+  "day_sat": "Lør",
+  "day_sun": "Søn",
+  "day_short_mon": "M",
+  "day_short_tue": "T",
+  "day_short_wed": "O",
+  "day_short_thu": "T",
+  "day_short_fri": "F",
+  "day_short_sat": "L",
+  "day_short_sun": "S",
+  "month_jan": "Januar",
+  "month_feb": "Februar",
+  "month_mar": "Mars",
+  "month_apr": "April",
+  "month_may": "Mai",
+  "month_jun": "Juni",
+  "month_jul": "Juli",
+  "month_aug": "August",
+  "month_sep": "September",
+  "month_oct": "Oktober",
+  "month_nov": "November",
+  "month_dec": "Desember",
+  "meals_fastingWindow": "Faste ({hours} t)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Spising ({hours} t)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Havresmoothie",
+  "recipe_avocadoToast": "Avokadotoast",
+  "recipe_yogurtBowl": "Yoghurtskål",
+  "elapsed_time": "Forløpt tid",
+  "fast_ends_on": "Fasten din avsluttes kl.",
+  "end_fasting": "Avslutt faste",
+  "start_fasting": "Start faste",
+  "water_tracker": "Vannmåler",
+  "weight_tracker": "Vektmåler",
+  "drink": "Drikk",
+  "log_weight": "Registrer vekt",
+  "bmi": "BMI",
+  "weight_lost": "Vekttap",
+  "current_weight": "Nåværende vekt",
+  "goal_weight": "Målvekt",
+  "daily_goal": "Daglig mål",
+  "completed_percent": "{percent}% fullført",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Utforsk",
+  "achievements": "Prestasjoner",
+  "profile_theme": "Utseende",
+  "theme_select": "Velg utseende",
+  "theme_system": "Systemstandard",
+  "theme_light": "Lyst",
+  "theme_dark": "Mørkt",
+  "language_system": "Systemspråk",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Fullføringslyd",
+  "profile_calmGamification": "Rolig spillifisering",
+  "profile_calmGamificationDesc": "Reduserer presset fra liga og sesong",
+  "profile_editName": "Rediger navnet ditt",
+  "profile_name": "Navn",
+  "circle_title": "Fastekrets",
+  "circle_you": "Deg",
+  "circle_tagline": "Sammen, uten press.",
+  "circle_privacy": "Vekt og private målinger forblir skjult. Bare fremgang og støtte er synlig.",
+  "circle_sendSupport": "Send støtte · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Invitasjonskode kopiert",
+  "circle_createInvite": "Opprett privat invitasjon",
+  "crisis_nameTitle": "Sett først ord på det som skjer",
+  "crisis_nameDesc": "Det kan være sult, vane eller følelser.",
+  "crisis_waterTitle": "Drikk et glass vann",
+  "crisis_waterDesc": "Ta deretter tre rolige pust.",
+  "crisis_delayTitle": "Utsett avgjørelsen i 10 minutter",
+  "crisis_delayDesc": "Hvis du føler deg uvel, er det ikke et nederlag å avslutte fasten.",
+  "crisis_hunger": "Sult",
+  "crisis_habit": "Vane",
+  "crisis_stress": "Stress",
+  "crisis_tenMore": "Gi det 10 minutter",
+  "stats_storyEmpty": "Din første faste blir starten på din personlige historie.",
+  "stats_story": "Du fastet {sessions} ganger i denne perioden, holdt rytmen i {hours} timer og nådde en fullføringsgrad på {rate}%.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "Historien om rytmen din",
+  "home_todayRhythm": "Dagens rytme",
+  "home_finalHourSupport": "Støtte i den siste timen",
+  "home_needSupport": "Jeg trenger litt støtte",
+  "home_todaySummary": "Dagen i korte trekk",
+  "home_dayStreak": "dager på rad",
+  "home_weightGoal": "mål {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Rytmen din er stabil",
+  "weather_gentle": "En rolig dag",
+  "weather_water": "Et glass vann kan hjelpe.",
+  "weather_listen": "Du har kommet langt; lytt til kroppen din.",
+  "weather_onPlan": "Dagens tempo passer til planen din.",
+  "weather_challenging": "Denne timen har vært krevende før; støttemodus er klar.",
+  "replay_copied": "Fasteoppsummering kopiert",
+  "replay_button": "Oppsummering",
+  "replay_text": "Jeg fullførte {plan}-fasten på {hours} t {minutes} min · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Metabolsk reise",
+  "journey_now": "Nå",
+  "journey_next": "{time} til {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "Tidspunktene for fasene er generelle anslag, ikke medisinske målinger.",
+  "phase_hours": "Time {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Dette tidspunktet er et generelt anslag. Metabolske reaksjoner kan variere fra person til person.",
+  "bmi_underweight": "Undervekt",
+  "bmi_normal": "Normalvekt",
+  "bmi_overweight": "Overvekt",
+  "bmi_obese": "Fedme",
+  "notification_halfwayTitle": "Halvveis! 💪",
+  "notification_halfwayBody": "Du har fullført halvparten av {plan}-fasten. Fortsett slik!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Katabolsk fase nådd 📉",
+  "notification_phaseFatBurning": "Fettforbrenningen har startet! 🔥",
+  "notification_phaseKetosis": "Du er i ketose ⚡",
+  "notification_phaseAutophagy": "Autofagi er aktiv! 🔄",
+  "notification_completedBody": "Du har fullført {plan}-fasten! Spisevinduet ditt er åpent.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Drikk vann 💧",
+  "notification_waterBody": "Husk å drikke nok vann under fasten!",
+  "notification_windowTitle": "Spisevinduet lukkes ⏰",
+  "notification_windowBody": "Spisevinduet ditt lukkes om 30 minutter.",
+  "notification_streakTitle": "{days} dager på rad! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Du gjør det kjempebra! Fortsett slik i dag.",
+  "notification_ongoingTitle": "Faste pågår – {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Gjenstår: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Faste startet – {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Mål: {hours} timer",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours} t {minutes} min",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Fasteguide",
+  "explore_guideDesc": "Alt du trenger å vite om periodisk faste",
+  "explore_circleDesc": "Del stille støtte med den private gruppen din.",
+  "explore_faq": "Ofte stilte spørsmål",
+  "explore_education": "Dette innholdet er kun til generell informasjon og er ikke en medisinsk diagnose eller behandlingsråd.",
+  "explore_safety": "Helse og sikkerhet",
+  "explore_safetyDesc": "Hvis du har en sykdom, tar faste medisiner, har bekymringsfulle symptomer, er gravid eller ammer, bør du rådføre deg med kvalifisert helsepersonell før du faster. Stopp hvis du føler deg uvel.",
+  "explore_sources": "Kilder",
+  "explore_sourcesDesc": "Innholdet er forenklet fra de offentlige helsekildene nedenfor.",
+  "explore_sourceError": "Kilden kunne ikke åpnes",
+  "explore_rules": "Viktige regler",
+  "explore_rule1": "Ikke innta kaloriholdig mat under fasten",
+  "explore_rule2": "Drikk rikelig med vann og væske",
+  "explore_rule3": "Spis balansert i spisevinduet",
+  "explore_rule4": "Stopp fasten hvis du føler deg uvel",
+  "explore_rule5": "Gravide eller ammende bør ikke faste",
+  "explore_rule6": "Rådfør deg med legen hvis du har kroniske sykdommer",
+  "tip_water": "Hold væskebalansen",
+  "tip_waterDesc": "Drikk vann når du er tørst, og få i deg væske til måltidene. Behovet kan variere med helse, vær og aktivitet.",
+  "tip_food": "Spis riktig",
+  "tip_foodDesc": "Velg proteinrike og fiberrike matvarer samt sunt fett i spisevinduene. Unngå bearbeidet mat.",
+  "tip_sleep": "Sov godt",
+  "tip_sleepDesc": "Regelmessig og tilstrekkelig søvn støtter generell velvære. Planlegg fasten slik at den ikke forstyrrer søvnen.",
+  "tip_exercise": "Lett trening",
+  "tip_exerciseDesc": "Du kan gå rolige turer eller gjøre yoga under fasten. Unngå hard trening, særlig de første ukene mens kroppen tilpasser seg.",
+  "tip_drinks": "Tillatte drikker",
+  "tip_drinksDesc": "Under fasten kan du drikke vann, ren te og svart kaffe uten sukker eller melk. Disse drikkene bryter ikke fasten.",
+  "faq_drinks": "Hva kan jeg drikke under fasten?",
+  "faq_drinksAnswer": "Du kan drikke vann, ren te og svart kaffe uten sukker eller melk. Kaloriholdige drikker bryter fasten.",
+  "faq_plan": "Hvilken fasteplan bør jeg velge?",
+  "faq_planAnswer": "Hvis du er ny, begynn med 12:12 eller 14:10. Har du erfaring, kan du prøve 16:8 eller 18:6. 20:4 og OMAD er for viderekomne.",
+  "faq_exercise": "Kan jeg trene under fasten?",
+  "faq_exerciseAnswer": "Ja, men unngå intensive økter. Lett kondisjonstrening, gåturer og yoga er ideelt. Legg styrketreningen nær spisevinduet.",
+  "faq_weight": "Hjelper faste med vektnedgang?",
+  "faq_weightAnswer": "For noen kan et begrenset spisevindu redusere det totale energiinntaket. Resultatene varierer, og langtidseffektene undersøkes fortsatt.",
+  "plan_12_desc": "Nybegynnernivå",
+  "plan_12_detail": "Ideell for nybegynnere. Fast i 12 timer, inkludert sovetiden.",
+  "plan_16_desc": "Mest populære plan",
+  "plan_16_detail": "Den vanligste planen for periodisk faste: 16 timers faste og et spisevindu på 8 timer, vanligvis fra lunsj til middag.",
+  "plan_18_desc": "Mellomnivå",
+  "plan_18_detail": "18 timers faste og et spisevindu på 6 timer. Lengre fettforbrenning.",
+  "plan_20_desc": "Avansert nivå",
+  "plan_20_detail": "20 timers faste og et spisevindu på 4 timer. Ideell for å nå ketose og autofagi.",
+  "plan_omad_desc": "Ett måltid om dagen",
+  "plan_omad_detail": "Ett måltid om dagen: 23 timers faste og et spisevindu på 1 time. Ekspertnivå.",
+  "plan_52_desc": "2 dager i uken",
+  "plan_52_detail": "Spis normalt i 5 dager, og begrens deg til rundt 500 kalorier i 2 dager. En alternativ tilnærming.",
+  "plan_ese_desc": "24 timers faste",
+  "plan_ese_detail": "Fast i 24 timer 1–2 ganger i uken. For viderekomne.",
+  "plan_warrior_desc": "Krigerdiett",
+  "plan_warrior_detail": "Spis lett på dagtid, og ta hovedmåltidet i et fire timers spisevindu om kvelden.",
+  "award_first_title": "Første steg",
+  "award_first_desc": "Fullfør din første faste",
+  "award_rhythm3_title": "Tredagersrytme",
+  "award_rhythm3_desc": "Hold rytmen i tre dager",
+  "award_hours24_title": "24 timer",
+  "award_hours24_desc": "Fast i totalt 24 timer",
+  "award_week_title": "En ukes rytme",
+  "award_week_desc": "Bygg en rekke på sju dager",
+  "award_fasts10_title": "10 faster",
+  "award_fasts10_desc": "Fullfør ti faster",
+  "award_hours100_title": "100 timer",
+  "award_hours100_desc": "Nå 100 timer totalt",
+  "award_rhythm30_title": "30-dagersrytme",
+  "award_rhythm30_desc": "Bygg en rekke på tretti dager",
+  "award_fasts50_title": "50 faster",
+  "award_fasts50_desc": "Fullfør femti faster",
+  "award_hours500_title": "500 timer",
+  "award_hours500_desc": "Nå 500 timer totalt",
+  "award_fasts100_title": "100 faster",
+  "award_fasts100_desc": "Fullfør hundre faster",
+  "award_rhythm90_title": "90-dagersrytme",
+  "award_rhythm90_desc": "Bygg en rekke på nitti dager",
+  "award_year_title": "Ett års reise",
+  "award_year_desc": "Nå en rytme på 365 dager",
+  "awards_loadError": "Fremdriften kunne ikke lastes inn",
+  "awards_journeyComplete": "Reisen er fullført",
+  "awards_nextGoal": "Neste mål",
+  "awards_allYours": "Alle prestasjonene er dine",
+  "awards_dayStreak": "dager på rad",
+  "awards_fasts": "faster",
+  "awards_total": "totalt",
+  "awards_stageStart": "Start",
+  "awards_stageRhythm": "Rytme",
+  "awards_stageEndurance": "Utholdenhet",
+  "awards_stageMastery": "Mestring",
+  "awards_completed": "Fullført",
+  "awards_fastsRemaining": "{count} faster igjen",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "{count} dager igjen",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "{count} timer igjen",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Prøv igjen",
+  "game_title": "Fremdriftssenter",
+  "game_quests": "Dagens oppdrag",
+  "game_questsDesc": "Små steg, en bærekraftig rytme.",
+  "game_season": "Sesong med 30 steg",
+  "game_seasonDesc": "Et samlemerke for hvert femte steg.",
+  "game_badges": "Merkesamling",
+  "game_shields": "{count} rytmeskjold",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Du får ett for hver sju fullføringer. En utelatt dag sletter aldri fremdriften.",
+  "game_league": "Privat ukesliga",
+  "game_leagueDesc": "Rytmepoengsummen din er i {percent}. persentil i en privat lokal modell. Vekt og ekstrem faste blir aldri rangert.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Nivå {level}, {xp} erfaringspoeng",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Rytmeutforsker",
+  "game_streak": "Rekke",
+  "game_targets": "Mål",
+  "game_best": "Beste",
+  "quest_rhythm": "Bygg dagens rytme",
+  "quest_hydrate": "Nå halvparten av vannmålet",
+  "quest_steady": "Beskytt rekken din",
+  "badge_first_title": "Første steg",
+  "badge_first_desc": "Registrer din første faste",
+  "badge_rhythm7_title": "Rytmeholder",
+  "badge_rhythm7_desc": "Nå en rekke på 7 dager",
+  "badge_rhythm3_title": "Tredagersrytme",
+  "badge_rhythm3_desc": "Nå en rekke på 3 dager",
+  "badge_target1_title": "Første mål",
+  "badge_target1_desc": "Fullfør din første målfaste",
+  "badge_target3_title": "Tre steg",
+  "badge_target3_desc": "Fullfør 3 mål",
+  "badge_water_title": "I balanse",
+  "badge_water_desc": "Nå dagens vannmål",
+  "badge_support_title": "Selvbevisst",
+  "badge_support_desc": "Bruk støttemodus",
+  "badge_hours10_title": "10 timer",
+  "badge_hours10_desc": "Registrer 10 timer totalt",
+  "badge_target10_title": "Ti sterke",
+  "badge_target10_desc": "Fullfør 10 mål",
+  "badge_target20_title": "Tjue mål",
+  "badge_target20_desc": "Fullfør 20 mål",
+  "badge_fast16_title": "16 timer",
+  "badge_fast16_desc": "Nå 16 timer i én faste",
+  "badge_hours50_title": "50 timer",
+  "badge_hours50_desc": "Registrer 50 timer totalt",
+  "badge_hours100_title": "Hundre timer",
+  "badge_hours100_desc": "Registrer 100 timer totalt",
+  "badge_target30_title": "Tretti mål",
+  "badge_target30_desc": "Fullfør 30 mål",
+  "badge_rhythm30_title": "30-dagersrytme",
+  "badge_rhythm30_desc": "Nå en rekke på 30 dager",
+  "paywall_restoreSuccess": "Kjøpene er gjenopprettet!",
+  "fasting_progressSemantics": "Fasten er {percent} prosent fullført",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour} t",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "Livstid",
+  "paywall_once": "engangsbeløp",
+  "paywall_processing": "Behandler…",
+  "paywall_continue": "Fortsett",
+  "paywall_productsUnavailable": "Kjøp er ikke tilgjengelige akkurat nå. Prøv igjen senere.",
+  "paywall_purchaseFailed": "Kjøpet kunne ikke fullføres.",
+  "paywall_nothingToRestore": "Fant ingen tidligere kjøp.",
+  "paywall_restoreFailed": "Kjøpene kunne ikke gjenopprettes.",
+  "paywall_terms": "Vilkår for bruk",
+  "permission_notificationDesc": "Fastepåminnelser, faseoppdateringer og fullføringsvarsler",
+  "profile_privacyChoices": "Personvernvalg",
+  "paywall_autoRenewInfo": "Abonnementer fornyes automatisk med mindre de sies opp minst 24 timer før perioden utløper. Administrer eller si opp når som helst i App Store-innstillingene.",
+  "paywall_perMonth": "{price} / måned",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Spar {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "{days} dagers gratis prøveperiode",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Start gratis prøveperiode",
+  "paywall_retry": "Prøv igjen",
+  "paywall_alreadyOwned": "Du har allerede dette abonnementet. Trykk på Gjenopprett kjøp.",
+  "paywall_storeUnavailable": "Kan ikke nå butikken akkurat nå. Kontroller tilkoblingen og prøv igjen.",
+  "paywall_secureNote": "Si opp når som helst. Betalingen belastes butikkontoen din.",
+  "paywall_autoRenewInfoPlay": "Abonnementer fornyes automatisk med mindre de sies opp minst 24 timer før perioden utløper. Administrer eller si opp under Google Play > Abonnementer.",
+  "paywall_allPlansDesc": "Låser opp 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat og Warrior",
+  "paywall_noAdsDesc": "Banner- og fullskjermreklame slås helt av",
+  "foodScan_title": "KI-matskanning",
+  "foodScan_scanCta": "Skann måltid",
+  "foodScan_scanCtaDesc": "Ta bilde av tallerkenen og få kalorier og makronæringsstoffer",
+  "foodScan_introTitle": "Ta bilde av tallerkenen",
+  "foodScan_introDesc": "KI leser bildet og anslår kalorier, protein, karbohydrater og fett.",
+  "foodScan_tipLight": "Godt og jevnt lys gir et bedre anslag",
+  "foodScan_tipFrame": "Pass på at hele tallerkenen er med i bildet",
+  "foodScan_tipScale": "Ta med bestikk eller en hånd, slik at porsjonsstørrelsen kan anslås",
+  "foodScan_takePhoto": "Ta bilde",
+  "foodScan_chooseFromGallery": "Velg fra galleri",
+  "foodScan_scansLeft": "{count} skanninger igjen i dag",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Du har brukt dagens skanninger. Prøv igjen i morgen.",
+  "foodScan_privacyNote": "Bildet sendes til Googles Gemini API for analyse og lagres ikke på serverne våre.",
+  "foodScan_analyzing": "Analyserer måltidet…",
+  "foodScan_analyzingHint": "Dette tar vanligvis noen sekunder",
+  "foodScan_detectedItems": "Gjenkjente matvarer",
+  "foodScan_disclaimer": "KI-anslag er omtrentlige. Trykk på en matvare for å rette den.",
+  "foodScan_lowConfidence": "Modellen er usikker på dette bildet. Kontroller tallene før du lagrer.",
+  "foodScan_save": "Legg til i måltider",
+  "foodScan_retake": "Nytt bilde",
+  "foodScan_retry": "Prøv igjen",
+  "foodScan_editItem": "Rediger matvare",
+  "foodScan_portion": "Porsjon",
+  "foodScan_saveEdit": "Lagre",
+  "foodScan_premiumTitle": "En Premium-funksjon",
+  "foodScan_premiumDesc": "Kalorianalyse fra bilder er inkludert i Premium.",
+  "foodScan_upgrade": "Se Premium",
+  "foodScan_errorNetwork": "Ingen forbindelse. Kontroller internett og prøv igjen.",
+  "foodScan_errorRateLimited": "Det er for mange skanninger akkurat nå. Prøv igjen om noen minutter.",
+  "foodScan_errorUnavailable": "Bildeanalyse er ikke tilgjengelig akkurat nå.",
+  "foodScan_errorServer": "Analysetjenesten har problemer. Prøv igjen snart.",
+  "foodScan_errorNoFood": "Fant ingen mat i dette bildet. Prøv et tydeligere bilde av tallerkenen.",
+  "foodScan_errorUnreadable": "Dette bildet kunne ikke analyseres. Prøv et annet.",
+  "paywall_aiFoodScan": "KI-matskanning",
+  "paywall_aiFoodScanDesc": "Ta bilde av et måltid og registrer kalorier og makronæringsstoffer på få sekunder",
+  "completion_earlyTitle": "Fasten er avsluttet",
+  "completion_earlyMessage": "Dagens tid ble lagret. Rekken og fremdriften for prestasjoner ble ikke endret fordi målet ikke ble nådd."
+}

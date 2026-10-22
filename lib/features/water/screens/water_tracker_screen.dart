@@ -2,195 +2,347 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:intl/intl.dart';
+
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../shared/widgets/glass_card.dart';
+import '../../../data/database/app_database.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../../timer/providers/water_provider.dart';
-import '../widgets/water_drop_painter.dart';
 
 class WaterTrackerScreen extends ConsumerWidget {
   const WaterTrackerScreen({super.key});
 
+  static const _amounts = [150, 250, 350, 500];
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final waterState = ref.watch(waterProvider);
+    final water = ref.watch(waterProvider);
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
-    final progress =
-        waterState.goalMl > 0
-            ? (waterState.totalMl / waterState.goalMl).clamp(0.0, 1.0)
-            : 0.0;
-
-    final now = DateTime.now();
-    final weekday = now.weekday; // 1=Mon
-    final weekStart = now.subtract(Duration(days: weekday - 1));
-    final locale = Localizations.localeOf(context).toLanguageTag();
+    final progress = water.progress;
+    final remaining = (water.goalMl - water.totalMl)
+        .clamp(0, water.goalMl)
+        .toInt();
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.water_title)),
-      body: SingleChildScrollView(
-        padding: AppSpacing.screenPadding,
-        child: Column(
-          children: [
-            // Hafta gün seçici
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: List.generate(7, (i) {
-                final dayNum = i + 1;
-                final isToday = dayNum == weekday;
-                final date = weekStart.add(Duration(days: i));
-                final dayLabel = DateFormat.E(locale).format(date);
-                return Container(
-                  width: 38,
-                  height: 38,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color:
-                        isToday
-                            ? AppColors.tertiary
-                            : AppColors.tertiary.withValues(alpha: 0.1),
-                  ),
-                  child: Center(
-                    child: Text(
-                      dayLabel.substring(0, 1).toUpperCase(),
-                      style: TextStyle(
-                        color: isToday ? Colors.white : AppColors.tertiary,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                );
-              }),
-            ),
-
-            const SizedBox(height: 32),
-
-            // Büyük damla görseli
-            SizedBox(
-              width: 180,
-              height: 240,
-              child: TweenAnimationBuilder<double>(
-                tween: Tween(end: progress),
-                duration:
-                    MediaQuery.of(context).disableAnimations
-                        ? Duration.zero
-                        : const Duration(milliseconds: 700),
-                curve: Curves.easeOutCubic,
-                builder:
-                    (context, value, _) => CustomPaint(
-                      painter: WaterDropPainter(
-                        fillPercent: value,
-                        waterColor: AppColors.tertiary,
-                      ),
-                    ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // mL gösterge
-            Text(
-              '${waterState.totalMl} ml',
-              style: theme.textTheme.headlineLarge?.copyWith(
-                fontWeight: FontWeight.w800,
-                color: AppColors.tertiary,
-              ),
-            ),
-            Text(
-              '${l10n.water_goal}: ${waterState.goalMl} ml',
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-              ),
-            ),
-
-            const SizedBox(height: 8),
-
-            // % completed
-            Text(
-              '${(progress * 100).toInt()}%',
-              style: theme.textTheme.titleLarge?.copyWith(
-                color: AppColors.tertiary,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-
-            const SizedBox(height: 32),
-
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton.icon(
-                onPressed: () {
-                  HapticFeedback.mediumImpact();
-                  ref.read(waterProvider.notifier).addWater(250);
-                },
-                style: FilledButton.styleFrom(
-                  backgroundColor: AppColors.tertiary,
-                ),
-                icon: Icon(
-                  PhosphorIcons.drop(PhosphorIconsStyle.fill),
-                  size: 20,
-                ),
-                label: const Text('+250 ml'),
-              ),
-            ),
-
-            const SizedBox(height: 32),
-
-            // Daily goal progress bar
-            GlassCard(
-              padding: const EdgeInsets.all(16),
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
+        children: [
+          FastingSplitArtCard(
+            assetPath: 'assets/images/editorial/tip-hydration.webp',
+            minHeight: 218,
+            borderRadius: 28,
+            semanticLabel: l10n.water_title,
+            child: Padding(
+              padding: const EdgeInsets.all(22),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    l10n.water_goal,
-                    style: theme.textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(6),
-                    child: LinearProgressIndicator(
-                      value: progress,
-                      minHeight: 10,
-                      backgroundColor: AppColors.tertiary.withValues(
-                        alpha: 0.1,
-                      ),
-                      valueColor: const AlwaysStoppedAnimation(
-                        AppColors.tertiary,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '${waterState.totalMl} ml',
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Text(
-                        '${waterState.goalMl} ml',
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurface.withValues(
-                            alpha: 0.4,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            '${_volume(water.totalMl)} / ${_volume(water.goalMl)}',
+                            maxLines: 1,
+                            style: theme.textTheme.headlineMedium?.copyWith(
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: -.8,
+                            ),
                           ),
                         ),
+                        Container(
+                          width: 52,
+                          height: 52,
+                          decoration: BoxDecoration(
+                            color: AppColors.tertiary.withValues(alpha: .11),
+                            borderRadius: BorderRadius.circular(17),
+                          ),
+                          child: const Icon(
+                            Icons.local_drink_outlined,
+                            color: AppColors.tertiary,
+                            size: 28,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      '${(progress * 100).round()}% ${l10n.stats_completion}',
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        color: AppColors.tertiary,
+                        fontWeight: FontWeight.w900,
                       ),
-                    ],
+                    ),
+                    const SizedBox(height: 16),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(99),
+                      child: LinearProgressIndicator(
+                        value: progress,
+                        minHeight: 9,
+                        backgroundColor: theme.colorScheme.outlineVariant.withValues(alpha: .42),
+                        color: AppColors.tertiary,
+                      ),
+                    ),
+                    const SizedBox(height: 9),
+                    Text(
+                      remaining == 0
+                          ? l10n.timer_completed
+                          : '${l10n.timer_remaining}: ${_volume(remaining)}',
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  l10n.water_addWater,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w900,
                   ),
+                ),
+              ),
+              TextButton.icon(
+                onPressed: () => _showCustomAmount(context, ref),
+                icon: const Icon(Icons.edit_outlined, size: 18),
+                label: Text(l10n.water_ml),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              for (var index = 0; index < _amounts.length; index++) ...[
+                Expanded(
+                  child: _AmountButton(
+                    amount: _amounts[index],
+                    icon: _amountIcon(_amounts[index]),
+                    onPressed: () => _add(ref, _amounts[index]),
+                  ),
+                ),
+                if (index != _amounts.length - 1) const SizedBox(width: 8),
+              ],
+            ],
+          ),
+          const SizedBox(height: 28),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  l10n.home_todaySummary,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
+              Text(
+                '${water.entries.length} • ${_volume(water.totalMl)}',
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: AppColors.tertiary,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          if (water.entries.isEmpty)
+            Container(
+              padding: const EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surfaceContainerLow,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                l10n.water_addWater,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
+            )
+          else
+            Container(
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surfaceContainerLow,
+                borderRadius: BorderRadius.circular(22),
+                border: Border.all(
+                  color: theme.colorScheme.outlineVariant.withValues(alpha: .45),
+                ),
+              ),
+              child: Column(
+                children: [
+                  for (
+                    var index = 0;
+                    index < water.entries.reversed.length;
+                    index++
+                  ) ...[
+                    _WaterEntryTile(
+                      entry: water.entries.reversed.elementAt(index),
+                      onDelete: () => _delete(
+                        context,
+                        ref,
+                        water.entries.reversed.elementAt(index),
+                      ),
+                    ),
+                    if (index != water.entries.length - 1)
+                      Divider(
+                        height: 1,
+                        indent: 54,
+                        color: theme.dividerColor.withValues(alpha: .55),
+                      ),
+                  ],
                 ],
               ),
             ),
-          ],
+        ],
+      ),
+    );
+  }
+
+  static String _volume(int ml) {
+    if (ml < 1000) return '$ml ml';
+    final liters = ml / 1000;
+    final digits = liters.truncateToDouble() == liters ? 0 : 2;
+    return '${liters.toStringAsFixed(digits).replaceFirst(RegExp(r'0+$'), '').replaceFirst(RegExp(r'\.$'), '')} L';
+  }
+
+  static IconData _amountIcon(int amount) => switch (amount) {
+    <= 150 => Icons.local_cafe_outlined,
+    <= 350 => Icons.local_drink_outlined,
+    _ => Icons.local_drink_outlined,
+  };
+
+  Future<void> _add(WidgetRef ref, int amount) async {
+    HapticFeedback.mediumImpact();
+    await ref.read(waterProvider.notifier).addWater(amount);
+  }
+
+  Future<void> _delete(
+    BuildContext context,
+    WidgetRef ref,
+    WaterIntakeData entry,
+  ) async {
+    await ref.read(waterProvider.notifier).deleteWater(entry.id);
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('-${entry.amountMl} ml'),
+        action: SnackBarAction(
+          label: AppLocalizations.of(context)!.common_cancel,
+          onPressed: () =>
+              ref.read(waterProvider.notifier).addWater(entry.amountMl),
         ),
       ),
     );
   }
+
+  Future<void> _showCustomAmount(BuildContext context, WidgetRef ref) async {
+    final controller = TextEditingController();
+    final amount = await showDialog<int>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(AppLocalizations.of(context)!.water_addWater),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+          decoration: InputDecoration(
+            suffixText: AppLocalizations.of(context)!.water_ml,
+          ),
+          onSubmitted: (_) =>
+              Navigator.pop(dialogContext, int.tryParse(controller.text)),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: Text(AppLocalizations.of(context)!.common_cancel),
+          ),
+          FilledButton(
+            onPressed: () =>
+                Navigator.pop(dialogContext, int.tryParse(controller.text)),
+            child: Text(AppLocalizations.of(context)!.common_save),
+          ),
+        ],
+      ),
+    );
+    controller.dispose();
+    if (amount != null && amount > 0 && amount <= 5000) {
+      await _add(ref, amount);
+    }
+  }
+}
+
+class _AmountButton extends StatelessWidget {
+  const _AmountButton({required this.amount, required this.icon, required this.onPressed});
+
+  final int amount;
+  final IconData icon;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    height: 46,
+    child: FilledButton.tonal(
+      onPressed: onPressed,
+      style: FilledButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 4),
+        backgroundColor: AppColors.tertiary.withValues(alpha: .11),
+        foregroundColor: AppColors.tertiary,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, size: 17),
+          const SizedBox(height: 1),
+          Text('$amount', style: const TextStyle(fontWeight: FontWeight.w900)),
+        ],
+      ),
+    ),
+  );
+}
+
+class _WaterEntryTile extends StatelessWidget {
+  const _WaterEntryTile({required this.entry, required this.onDelete});
+
+  final WaterIntakeData entry;
+  final VoidCallback onDelete;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final time = MaterialLocalizations.of(context).formatTimeOfDay(
+      TimeOfDay.fromDateTime(entry.date),
+    );
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundColor: Color(0x194A9DFF),
+        foregroundColor: AppColors.tertiary,
+        child: Icon(_entryIcon(entry.amountMl), size: 19),
+      ),
+      title: Text(
+        '+${entry.amountMl} ml',
+        style: const TextStyle(fontWeight: FontWeight.w800),
+      ),
+      subtitle: Text(time),
+      trailing: IconButton(
+        tooltip: AppLocalizations.of(context)!.common_delete,
+        onPressed: onDelete,
+        icon: Icon(
+          Icons.delete_outline_rounded,
+          color: theme.colorScheme.onSurfaceVariant,
+        ),
+      ),
+    );
+  }
+
+  IconData _entryIcon(int amount) => switch (amount) {
+    <= 150 => Icons.local_cafe_outlined,
+    <= 350 => Icons.local_drink_outlined,
+    _ => Icons.local_drink_outlined,
+  };
 }

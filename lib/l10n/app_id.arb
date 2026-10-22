@@ -1,0 +1,775 @@
+{
+  "@@locale": "id",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Selamat pagi",
+  "greeting_afternoon": "Selamat siang",
+  "greeting_evening": "Selamat malam",
+  "tab_timer": "Beranda",
+  "tab_explore": "Jelajahi",
+  "tab_stats": "Laporan",
+  "tab_meals": "Makanan",
+  "tab_achievements": "Penghargaan",
+  "tab_profile": "Akun",
+  "timer_fasting": "Waktu Puasa",
+  "timer_remaining": "Tersisa",
+  "timer_elapsed": "Berlalu",
+  "timer_start": "Mulai",
+  "timer_stop": "Berhenti",
+  "timer_completed": "Selamat!",
+  "timer_completedMessage": "Anda berhasil menyelesaikan puasa!",
+  "timer_selectPlan": "Pilih Program Puasa",
+  "timer_stopConfirm": "Yakin ingin mengakhiri puasa lebih awal?",
+  "timer_stopTitle": "Akhiri Puasa",
+  "timer_cancel": "Batal",
+  "timer_confirmStop": "Ya, Akhiri",
+  "phase_anabolic": "Anabolik",
+  "phase_anabolicDesc": "Pencernaan berlangsung",
+  "phase_catabolic": "Katabolik",
+  "phase_catabolicDesc": "Peralihan energi",
+  "phase_fatBurning": "Pembakaran Lemak",
+  "phase_fatBurningDesc": "Pembakaran lemak dimulai",
+  "phase_ketosis": "Ketosis",
+  "phase_ketosisDesc": "Produksi keton aktif",
+  "phase_autophagy": "Autofagi",
+  "phase_autophagyDesc": "Pembaruan sel",
+  "stats_title": "Statistik",
+  "stats_week": "Minggu",
+  "stats_month": "Bulan",
+  "stats_year": "Tahun",
+  "stats_totalFasts": "Total Puasa",
+  "stats_average": "Rata-rata",
+  "stats_fastDuration": "durasi puasa",
+  "stats_streak": "Rentetan",
+  "stats_daysConsecutive": "hari berturut-turut",
+  "stats_success": "Keberhasilan",
+  "stats_completion": "penyelesaian",
+  "stats_weeklyFasting": "Puasa Mingguan",
+  "stats_monthlyView": "Tampilan Bulanan",
+  "stats_weightChange": "Perubahan Berat Badan",
+  "heatmap_none": "Tidak Ada",
+  "heatmap_low": "Rendah",
+  "heatmap_good": "Baik",
+  "heatmap_full": "Penuh",
+  "meals_title": "Perencana Makanan",
+  "meals_eatingWindow": "Jendela Makan",
+  "meals_windowOpen": "Terbuka",
+  "meals_windowFasting": "Puasa",
+  "meals_calories": "Kalori",
+  "meals_protein": "Protein",
+  "meals_carbs": "Karbohidrat",
+  "meals_fat": "Lemak",
+  "meals_todayMeals": "Makanan Hari Ini",
+  "meals_noMeals": "Belum ada makanan yang ditambahkan",
+  "meals_breakfastSuggestions": "Saran Berbuka Puasa",
+  "meals_addMeal": "Tambah Makanan",
+  "profile_title": "Profil",
+  "profile_user": "Pengguna",
+  "profile_planActive": "Program {plan} aktif",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Tingkatkan ke Premium",
+  "profile_premiumDesc": "Semua program puasa, tanpa iklan",
+  "profile_bodyMetrics": "Ukuran Tubuh",
+  "profile_height": "Tinggi Badan",
+  "profile_weight": "Berat Badan",
+  "profile_targetWeight": "Target Berat Badan",
+  "profile_bmi": "IMT",
+  "profile_settings": "Pengaturan",
+  "profile_notifications": "Notifikasi",
+  "profile_darkTheme": "Tema Gelap",
+  "profile_waterReminder": "Pengingat Minum",
+  "profile_phaseNotifications": "Notifikasi Fase",
+  "profile_language": "Bahasa",
+  "profile_about": "Tentang",
+  "profile_rateApp": "Nilai Aplikasi",
+  "profile_share": "Bagikan",
+  "profile_privacyPolicy": "Kebijakan Privasi",
+  "profile_version": "Versi",
+  "onboarding_welcome": "Selamat Datang",
+  "onboarding_welcomeDesc": "Kendalikan perjalanan puasa\nintermiten Anda",
+  "onboarding_featureTimer": "Pengatur waktu puasa pintar",
+  "onboarding_featureStats": "Statistik dan grafik terperinci",
+  "onboarding_featureMeals": "Perencana makanan dan saran resep",
+  "onboarding_getStarted": "Mulai",
+  "onboarding_selectGoal": "Apa tujuan Anda?",
+  "onboarding_selectGoalDesc": "Anda dapat memilih beberapa",
+  "onboarding_goalWeight": "Turunkan Berat Badan",
+  "onboarding_goalWeightDesc": "Penurunan berat badan yang sehat",
+  "onboarding_goalHealth": "Tingkatkan Kesehatan",
+  "onboarding_goalHealthDesc": "Kesehatan umum dan kekebalan tubuh",
+  "onboarding_goalEnergy": "Lebih Berenergi",
+  "onboarding_goalEnergyDesc": "Energi sepanjang hari",
+  "onboarding_goalMental": "Kejernihan Mental",
+  "onboarding_goalMentalDesc": "Fokus dan kejernihan",
+  "onboarding_goalLongevity": "Umur Panjang",
+  "onboarding_goalLongevityDesc": "Pembaruan sel dan penuaan sehat",
+  "onboarding_goalDiscipline": "Disiplin",
+  "onboarding_goalDisciplineDesc": "Bangun disiplin diri",
+  "onboarding_selectPlan": "Pilih Program Anda",
+  "onboarding_selectPlanDesc": "Pilih program puasa terbaik untuk Anda",
+  "onboarding_bodyInfo": "Masukkan Data Anda",
+  "onboarding_bodyInfoDesc": "Untuk rekomendasi pribadi",
+  "onboarding_gender": "Jenis Kelamin",
+  "onboarding_male": "Pria",
+  "onboarding_female": "Wanita",
+  "onboarding_age": "Usia",
+  "onboarding_bodyInfoDisclaimer": "Informasi ini hanya disimpan di perangkat Anda dan digunakan untuk perhitungan kalori.",
+  "onboarding_permissions": "Langkah Terakhir",
+  "onboarding_permissionsDesc": "Aktifkan izin untuk pengalaman terbaik",
+  "onboarding_next": "Lanjutkan",
+  "onboarding_start": "Ayo Mulai!",
+  "onboarding_skipForNow": "Atur nanti",
+  "waterAdded": "250 ml air ditambahkan",
+  "languageSelect": "Pilih Bahasa",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Tingkatkan ke Premium",
+  "paywall_subtitle": "Buka semua program puasa dan hapus iklan",
+  "paywall_allPlans": "Semua program puasa",
+  "paywall_advancedStats": "Statistik lanjutan",
+  "paywall_mealPlanner": "Perencana makanan",
+  "paywall_themes": "Penyesuaian tema",
+  "paywall_noAds": "Tanpa iklan",
+  "paywall_weekly": "Mingguan",
+  "paywall_monthly": "Bulanan",
+  "paywall_yearly": "Tahunan",
+  "paywall_bestValue": "Terbaik",
+  "paywall_freeTrial": "Uji Coba Gratis (3 Hari)",
+  "paywall_restore": "Pulihkan pembelian",
+  "paywall_premiumActive": "Premium Aktif!",
+  "paywall_premiumActiveDesc": "Semua program puasa terbuka dan iklan dinonaktifkan",
+  "water_title": "Asupan Air",
+  "water_addWater": "Tambah Air",
+  "water_goal": "Target",
+  "water_ml": "ml",
+  "common_ok": "OK",
+  "common_cancel": "Batal",
+  "common_save": "Simpan",
+  "common_delete": "Hapus",
+  "common_hours": "jam",
+  "common_minutes": "menit",
+  "common_days": "hari",
+  "common_enable": "Aktifkan",
+  "streakCard_currentStreak": "Rentetan Saat Ini",
+  "streakCard_longestStreak": "Rentetan Terpanjang",
+  "streakCard_totalSessions": "Total Puasa",
+  "meals_mealType": "Jenis Makanan",
+  "meals_breakfast": "Sarapan",
+  "meals_lunch": "Makan Siang",
+  "meals_dinner": "Makan Malam",
+  "meals_snack": "Camilan",
+  "meals_carbohydrate": "Karbohidrat",
+  "meals_add": "Tambah",
+  "meals_mealName": "Nama makanan",
+  "bodyMetrics_title": "Ukuran Tubuh",
+  "bodyMetrics_weight": "Berat Badan",
+  "bodyMetrics_target": "Target",
+  "bodyMetrics_save": "Simpan",
+  "bodyMetrics_history": "Riwayat",
+  "bodyMetrics_bmiValue": "IMT: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Belum ada data",
+  "meals_quickAdd": "Tambah Cepat",
+  "meals_manualEntry": "Entri Manual",
+  "meals_added": "{name} ditambahkan",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Nama dan kalori wajib diisi",
+  "bodyMetrics_addWeight": "Tambah Berat Badan",
+  "bodyMetrics_hintWeight": "mis. 74,5",
+  "bodyMetrics_invalidWeight": "Masukkan berat badan yang valid",
+  "bodyMetrics_weightSaved": "{value} kg disimpan",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Durasi",
+  "completion_plan": "Program",
+  "completion_lastPhase": "Fase Terakhir",
+  "timer_remainingTime": "Waktu Tersisa",
+  "timer_ready": "Siap Dimulai",
+  "streak_status": "Status",
+  "streak_startToday": "Mulai hari ini!",
+  "streak_goodStart": "Awal yang baik!",
+  "streak_goingGreat": "Hebat!",
+  "streak_superb": "Luar biasa!",
+  "streak_legendary": "Legendaris!",
+  "streak_incredible": "Menakjubkan!",
+  "weight_noRecord": "Belum ada catatan berat badan\nTambahkan dari Profil > Ukuran Tubuh",
+  "day_mon": "Sen",
+  "day_tue": "Sel",
+  "day_wed": "Rab",
+  "day_thu": "Kam",
+  "day_fri": "Jum",
+  "day_sat": "Sab",
+  "day_sun": "Min",
+  "day_short_mon": "S",
+  "day_short_tue": "S",
+  "day_short_wed": "R",
+  "day_short_thu": "K",
+  "day_short_fri": "J",
+  "day_short_sat": "S",
+  "day_short_sun": "M",
+  "month_jan": "Januari",
+  "month_feb": "Februari",
+  "month_mar": "Maret",
+  "month_apr": "April",
+  "month_may": "Mei",
+  "month_jun": "Juni",
+  "month_jul": "Juli",
+  "month_aug": "Agustus",
+  "month_sep": "September",
+  "month_oct": "Oktober",
+  "month_nov": "November",
+  "month_dec": "Desember",
+  "meals_fastingWindow": "Puasa ({hours}j)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Makan ({hours}j)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Smoothie Oat",
+  "recipe_avocadoToast": "Roti Panggang Alpukat",
+  "recipe_yogurtBowl": "Mangkuk Yoghurt",
+  "elapsed_time": "Waktu Berlalu",
+  "fast_ends_on": "Puasa Anda berakhir pukul",
+  "end_fasting": "Akhiri Puasa",
+  "start_fasting": "Mulai Puasa",
+  "water_tracker": "Pelacak Air",
+  "weight_tracker": "Pelacak Berat Badan",
+  "drink": "Minum",
+  "log_weight": "Catat Berat Badan",
+  "bmi": "IMT",
+  "weight_lost": "Berat Turun",
+  "current_weight": "Berat Saat Ini",
+  "goal_weight": "Target Berat Badan",
+  "daily_goal": "Target Harian",
+  "completed_percent": "{percent}% Selesai",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Jelajahi",
+  "achievements": "Pencapaian",
+  "profile_theme": "Tampilan",
+  "theme_select": "Pilih tampilan",
+  "theme_system": "Bawaan sistem",
+  "theme_light": "Terang",
+  "theme_dark": "Gelap",
+  "language_system": "Bahasa sistem",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Suara penyelesaian",
+  "profile_calmGamification": "Gamifikasi tenang",
+  "profile_calmGamificationDesc": "Mengurangi tekanan liga dan musim",
+  "profile_editName": "Edit nama Anda",
+  "profile_name": "Nama",
+  "circle_title": "Lingkaran Puasa",
+  "circle_you": "Anda",
+  "circle_tagline": "Bersama, tanpa tekanan.",
+  "circle_privacy": "Berat badan dan ukuran pribadi tetap tersembunyi. Hanya kemajuan dan dukungan yang terlihat.",
+  "circle_sendSupport": "Kirim dukungan · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Kode undangan disalin",
+  "circle_createInvite": "Buat undangan pribadi",
+  "crisis_nameTitle": "Pertama, sebutkan apa yang terjadi",
+  "crisis_nameDesc": "Mungkin rasa lapar, kebiasaan, atau emosi.",
+  "crisis_waterTitle": "Minum segelas air",
+  "crisis_waterDesc": "Lalu tarik napas perlahan tiga kali.",
+  "crisis_delayTitle": "Tunda keputusan selama 10 menit",
+  "crisis_delayDesc": "Jika Anda merasa tidak sehat, mengakhiri puasa bukanlah kegagalan.",
+  "crisis_hunger": "Lapar",
+  "crisis_habit": "Kebiasaan",
+  "crisis_stress": "Stres",
+  "crisis_tenMore": "Beri waktu 10 menit",
+  "stats_storyEmpty": "Puasa pertama akan memulai kisah pribadi Anda.",
+  "stats_story": "Anda berpuasa {sessions} kali dalam periode ini, menjaga ritme selama {hours} jam, dan mencapai tingkat penyelesaian {rate}%.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "Kisah ritme Anda",
+  "home_todayRhythm": "Ritme hari ini",
+  "home_finalHourSupport": "Dukungan jam terakhir",
+  "home_needSupport": "Saya butuh sedikit dukungan",
+  "home_todaySummary": "Ringkasan hari ini",
+  "home_dayStreak": "hari berturut-turut",
+  "home_weightGoal": "target {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Ritme Anda stabil",
+  "weather_gentle": "Hari yang ringan",
+  "weather_water": "Segelas air mungkin membantu.",
+  "weather_listen": "Anda sudah melangkah jauh; dengarkan tubuh Anda.",
+  "weather_onPlan": "Laju hari ini sesuai program Anda.",
+  "weather_challenging": "Jam ini pernah terasa sulit; mode dukungan siap digunakan.",
+  "replay_copied": "Kilasan Puasa disalin",
+  "replay_button": "Kilasan",
+  "replay_text": "Saya menyelesaikan puasa {plan} dalam {hours}j {minutes}m · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Perjalanan metabolisme",
+  "journey_now": "Sekarang",
+  "journey_next": "{time} menuju {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "Waktu fase merupakan perkiraan umum, bukan pengukuran medis.",
+  "phase_hours": "Jam {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Waktu ini merupakan perkiraan umum. Respons metabolisme dapat berbeda pada setiap orang.",
+  "bmi_underweight": "Berat badan kurang",
+  "bmi_normal": "Normal",
+  "bmi_overweight": "Berat badan berlebih",
+  "bmi_obese": "Obesitas",
+  "notification_halfwayTitle": "Sudah Setengah Jalan! 💪",
+  "notification_halfwayBody": "Anda menyelesaikan separuh puasa {plan}. Teruskan!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Memasuki fase Katabolik 📉",
+  "notification_phaseFatBurning": "Pembakaran Lemak dimulai! 🔥",
+  "notification_phaseKetosis": "Anda dalam Ketosis ⚡",
+  "notification_phaseAutophagy": "Autofagi aktif! 🔄",
+  "notification_completedBody": "Anda menyelesaikan puasa {plan}! Jendela makan Anda terbuka.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Minum Air 💧",
+  "notification_waterBody": "Jangan lupa minum cukup air selama berpuasa!",
+  "notification_windowTitle": "Jendela Makan Akan Ditutup ⏰",
+  "notification_windowBody": "Jendela makan Anda akan ditutup dalam 30 menit.",
+  "notification_streakTitle": "Rentetan {days} Hari! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Anda hebat! Pertahankan hari ini.",
+  "notification_ongoingTitle": "Puasa Berlangsung – {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Tersisa: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Puasa Dimulai – {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Target: {hours} jam",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours}j {minutes}m",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Panduan Puasa",
+  "explore_guideDesc": "Semua yang perlu Anda ketahui tentang puasa intermiten",
+  "explore_circleDesc": "Bagikan dukungan tenang dengan grup pribadi Anda.",
+  "explore_faq": "Pertanyaan Umum",
+  "explore_education": "Konten ini hanya untuk edukasi umum dan bukan diagnosis medis atau saran pengobatan.",
+  "explore_safety": "Kesehatan dan keselamatan",
+  "explore_safetyDesc": "Jika Anda memiliki kondisi medis, rutin minum obat, mengalami gejala yang mengkhawatirkan, sedang hamil, atau menyusui, konsultasikan dengan tenaga kesehatan sebelum berpuasa. Berhentilah jika merasa tidak sehat.",
+  "explore_sources": "Sumber",
+  "explore_sourcesDesc": "Konten disederhanakan dari referensi kesehatan masyarakat di bawah ini.",
+  "explore_sourceError": "Sumber tidak dapat dibuka",
+  "explore_rules": "Aturan Penting",
+  "explore_rule1": "Jangan konsumsi makanan berkalori selama berpuasa",
+  "explore_rule2": "Minum banyak air dan cairan",
+  "explore_rule3": "Makan makanan seimbang selama jendela makan",
+  "explore_rule4": "Hentikan puasa jika merasa tidak sehat",
+  "explore_rule5": "Ibu hamil atau menyusui sebaiknya tidak berpuasa",
+  "explore_rule6": "Konsultasikan dengan dokter jika memiliki penyakit kronis",
+  "tip_water": "Tetap Terhidrasi",
+  "tip_waterDesc": "Minumlah saat haus dan sertakan cairan bersama makanan. Kebutuhan dapat berbeda menurut kesehatan, cuaca, dan aktivitas.",
+  "tip_food": "Makan dengan Baik",
+  "tip_foodDesc": "Selama jendela makan, pilih makanan kaya protein dan serat serta lemak sehat. Hindari makanan olahan.",
+  "tip_sleep": "Tidur Cukup",
+  "tip_sleepDesc": "Tidur teratur dan cukup mendukung kesehatan umum. Atur puasa agar tidak mengganggu tidur.",
+  "tip_exercise": "Olahraga Ringan",
+  "tip_exerciseDesc": "Anda dapat berjalan santai atau yoga saat berpuasa. Hindari olahraga berat, terutama selama minggu-minggu pertama hingga tubuh beradaptasi.",
+  "tip_drinks": "Minuman yang Diizinkan",
+  "tip_drinksDesc": "Saat berpuasa, Anda dapat minum air, teh tawar, dan kopi hitam tanpa gula atau susu. Minuman ini tidak membatalkan puasa.",
+  "faq_drinks": "Apa yang boleh saya minum saat berpuasa?",
+  "faq_drinksAnswer": "Anda dapat minum air, teh tawar, dan kopi hitam tanpa gula atau susu. Minuman berkalori membatalkan puasa.",
+  "faq_plan": "Program puasa mana yang harus saya pilih?",
+  "faq_planAnswer": "Jika baru mulai, pilih 12:12 atau 14:10. Jika berpengalaman, coba 16:8 atau 18:6. 20:4 dan OMAD untuk pelaku puasa tingkat lanjut.",
+  "faq_exercise": "Bolehkah saya berolahraga saat berpuasa?",
+  "faq_exerciseAnswer": "Ya, tetapi hindari latihan intensif. Kardio ringan, berjalan, dan yoga ideal. Jadwalkan latihan beban dekat jendela makan.",
+  "faq_weight": "Apakah puasa membantu menurunkan berat badan?",
+  "faq_weightAnswer": "Bagi sebagian orang, membatasi waktu makan dapat mengurangi total asupan energi. Hasilnya beragam dan dampak jangka panjang masih diteliti.",
+  "plan_12_desc": "Tingkat pemula",
+  "plan_12_detail": "Ideal untuk pemula. Berpuasalah 12 jam termasuk waktu tidur.",
+  "plan_16_desc": "Program terpopuler",
+  "plan_16_detail": "Program puasa intermiten yang paling umum: puasa 16 jam dan jendela makan 8 jam, biasanya dari makan siang hingga makan malam.",
+  "plan_18_desc": "Tingkat menengah",
+  "plan_18_detail": "Puasa 18 jam dan jendela makan 6 jam. Durasi pembakaran lemak lebih lama.",
+  "plan_20_desc": "Tingkat lanjut",
+  "plan_20_detail": "Puasa 20 jam dan jendela makan 4 jam. Ideal untuk mencapai ketosis dan autofagi.",
+  "plan_omad_desc": "Satu kali makan sehari",
+  "plan_omad_detail": "Satu kali makan sehari: puasa 23 jam dan jendela makan 1 jam. Tingkat ahli.",
+  "plan_52_desc": "2 hari per minggu",
+  "plan_52_detail": "Makan normal selama 5 hari dan batasi sekitar 500 kalori selama 2 hari. Pendekatan alternatif.",
+  "plan_ese_desc": "Puasa 24 jam",
+  "plan_ese_detail": "Berpuasalah 24 jam 1–2 kali per minggu. Untuk tingkat lanjut.",
+  "plan_warrior_desc": "Diet Prajurit",
+  "plan_warrior_detail": "Makan ringan pada siang hari, lalu makan utama dalam jendela empat jam pada malam hari.",
+  "award_first_title": "Langkah Pertama",
+  "award_first_desc": "Selesaikan puasa pertama Anda",
+  "award_rhythm3_title": "Ritme 3 Hari",
+  "award_rhythm3_desc": "Pertahankan ritme selama tiga hari",
+  "award_hours24_title": "24 Jam",
+  "award_hours24_desc": "Berpuasa total 24 jam",
+  "award_week_title": "Ritme Satu Minggu",
+  "award_week_desc": "Bangun rentetan tujuh hari",
+  "award_fasts10_title": "10 Puasa",
+  "award_fasts10_desc": "Selesaikan sepuluh puasa",
+  "award_hours100_title": "100 Jam",
+  "award_hours100_desc": "Capai total 100 jam",
+  "award_rhythm30_title": "Ritme 30 Hari",
+  "award_rhythm30_desc": "Bangun rentetan tiga puluh hari",
+  "award_fasts50_title": "50 Puasa",
+  "award_fasts50_desc": "Selesaikan lima puluh puasa",
+  "award_hours500_title": "500 Jam",
+  "award_hours500_desc": "Capai total 500 jam",
+  "award_fasts100_title": "100 Puasa",
+  "award_fasts100_desc": "Selesaikan seratus puasa",
+  "award_rhythm90_title": "Ritme 90 Hari",
+  "award_rhythm90_desc": "Bangun rentetan sembilan puluh hari",
+  "award_year_title": "Perjalanan Satu Tahun",
+  "award_year_desc": "Capai ritme 365 hari",
+  "awards_loadError": "Kemajuan tidak dapat dimuat",
+  "awards_journeyComplete": "Perjalanan selesai",
+  "awards_nextGoal": "Target berikutnya",
+  "awards_allYours": "Semua pencapaian milik Anda",
+  "awards_dayStreak": "hari berturut-turut",
+  "awards_fasts": "puasa",
+  "awards_total": "total",
+  "awards_stageStart": "Mulai",
+  "awards_stageRhythm": "Ritme",
+  "awards_stageEndurance": "Ketahanan",
+  "awards_stageMastery": "Penguasaan",
+  "awards_completed": "Selesai",
+  "awards_fastsRemaining": "{count} puasa lagi",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "{count} hari lagi",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "{count} jam lagi",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Coba lagi",
+  "game_title": "Pusat Kemajuan",
+  "game_quests": "Misi hari ini",
+  "game_questsDesc": "Langkah kecil, ritme berkelanjutan.",
+  "game_season": "Musim 30 langkah",
+  "game_seasonDesc": "Segel koleksi setiap langkah kelima.",
+  "game_badges": "Koleksi lencana",
+  "game_shields": "{count} perisai ritme",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Diperoleh setiap tujuh penyelesaian. Hari yang terlewat tidak pernah menghapus kemajuan Anda.",
+  "game_league": "Liga mingguan pribadi",
+  "game_leagueDesc": "Skor ritme Anda berada di persentil ke-{percent} dalam model lokal pribadi. Berat badan dan puasa ekstrem tidak pernah diperingkat.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Level {level}, {xp} poin pengalaman",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Penjelajah Ritme",
+  "game_streak": "Rentetan",
+  "game_targets": "Target",
+  "game_best": "Terbaik",
+  "quest_rhythm": "Bangun ritme hari ini",
+  "quest_hydrate": "Capai separuh target air",
+  "quest_steady": "Lindungi rentetan Anda",
+  "badge_first_title": "Langkah Pertama",
+  "badge_first_desc": "Catat puasa pertama Anda",
+  "badge_rhythm7_title": "Penjaga Ritme",
+  "badge_rhythm7_desc": "Capai rentetan 7 hari",
+  "badge_rhythm3_title": "Ritme Tiga Hari",
+  "badge_rhythm3_desc": "Capai rentetan 3 hari",
+  "badge_target1_title": "Target Pertama",
+  "badge_target1_desc": "Selesaikan target puasa pertama",
+  "badge_target3_title": "Tiga Langkah",
+  "badge_target3_desc": "Selesaikan 3 target",
+  "badge_water_title": "Seimbang",
+  "badge_water_desc": "Penuhi target air harian",
+  "badge_support_title": "Sadar Diri",
+  "badge_support_desc": "Gunakan mode dukungan",
+  "badge_hours10_title": "10 Jam",
+  "badge_hours10_desc": "Catat total 10 jam",
+  "badge_target10_title": "Sepuluh Kuat",
+  "badge_target10_desc": "Selesaikan 10 target",
+  "badge_target20_title": "Dua Puluh Target",
+  "badge_target20_desc": "Selesaikan 20 target",
+  "badge_fast16_title": "16 Jam",
+  "badge_fast16_desc": "Capai 16 jam dalam satu puasa",
+  "badge_hours50_title": "50 Jam",
+  "badge_hours50_desc": "Catat total 50 jam",
+  "badge_hours100_title": "Seratus Jam",
+  "badge_hours100_desc": "Catat total 100 jam",
+  "badge_target30_title": "Tiga Puluh Target",
+  "badge_target30_desc": "Selesaikan 30 target",
+  "badge_rhythm30_title": "Ritme 30 Hari",
+  "badge_rhythm30_desc": "Capai rentetan 30 hari",
+  "paywall_restoreSuccess": "Pembelian dipulihkan!",
+  "fasting_progressSemantics": "Kemajuan puasa {percent} persen",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}j",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "Seumur hidup",
+  "paywall_once": "sekali bayar",
+  "paywall_processing": "Memproses…",
+  "paywall_continue": "Lanjutkan",
+  "paywall_productsUnavailable": "Pembelian sedang tidak tersedia. Coba lagi nanti.",
+  "paywall_purchaseFailed": "Pembelian tidak dapat diselesaikan.",
+  "paywall_nothingToRestore": "Tidak ada pembelian sebelumnya yang ditemukan.",
+  "paywall_restoreFailed": "Pembelian tidak dapat dipulihkan.",
+  "paywall_terms": "Ketentuan Penggunaan",
+  "permission_notificationDesc": "Pengingat puasa, pembaruan fase, dan notifikasi penyelesaian",
+  "profile_privacyChoices": "Pilihan privasi",
+  "paywall_autoRenewInfo": "Langganan diperpanjang otomatis kecuali dibatalkan setidaknya 24 jam sebelum periode berakhir. Kelola atau batalkan kapan saja di pengaturan App Store.",
+  "paywall_perMonth": "{price} / bulan",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Hemat {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "Uji coba gratis {days} hari",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Mulai uji coba gratis",
+  "paywall_retry": "Coba lagi",
+  "paywall_alreadyOwned": "Anda sudah memiliki langganan ini. Ketuk Pulihkan pembelian.",
+  "paywall_storeUnavailable": "Toko tidak dapat diakses saat ini. Periksa koneksi dan coba lagi.",
+  "paywall_secureNote": "Batalkan kapan saja. Pembayaran dibebankan ke akun toko Anda.",
+  "paywall_autoRenewInfoPlay": "Langganan diperpanjang otomatis kecuali dibatalkan setidaknya 24 jam sebelum periode berakhir. Kelola atau batalkan di Google Play > Langganan.",
+  "paywall_allPlansDesc": "Membuka 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, dan Warrior",
+  "paywall_noAdsDesc": "Iklan spanduk dan layar penuh dinonaktifkan sepenuhnya",
+  "foodScan_title": "Pemindaian Makanan AI",
+  "foodScan_scanCta": "Pindai makanan",
+  "foodScan_scanCtaDesc": "Foto piring Anda untuk mendapatkan kalori dan makro",
+  "foodScan_introTitle": "Foto piring Anda",
+  "foodScan_introDesc": "AI membaca foto dan memperkirakan kalori, protein, karbohidrat, serta lemak.",
+  "foodScan_tipLight": "Cahaya yang baik dan merata memberikan perkiraan lebih baik",
+  "foodScan_tipFrame": "Pastikan seluruh piring masuk dalam bingkai",
+  "foodScan_tipScale": "Sertakan alat makan atau tangan agar porsi dapat diperkirakan",
+  "foodScan_takePhoto": "Ambil foto",
+  "foodScan_chooseFromGallery": "Pilih dari galeri",
+  "foodScan_scansLeft": "{count} pemindaian tersisa hari ini",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Pemindaian hari ini sudah digunakan. Coba lagi besok.",
+  "foodScan_privacyNote": "Foto dikirim ke Gemini API Google untuk dianalisis dan tidak disimpan di server kami.",
+  "foodScan_analyzing": "Menganalisis makanan Anda…",
+  "foodScan_analyzingHint": "Biasanya memerlukan beberapa detik",
+  "foodScan_detectedItems": "Item terdeteksi",
+  "foodScan_disclaimer": "Perkiraan AI bersifat mendekati. Ketuk item untuk memperbaikinya.",
+  "foodScan_lowConfidence": "Model kurang yakin dengan foto ini. Periksa angka sebelum menyimpan.",
+  "foodScan_save": "Tambahkan ke makanan",
+  "foodScan_retake": "Foto baru",
+  "foodScan_retry": "Coba lagi",
+  "foodScan_editItem": "Edit item",
+  "foodScan_portion": "Porsi",
+  "foodScan_saveEdit": "Simpan",
+  "foodScan_premiumTitle": "Fitur Premium",
+  "foodScan_premiumDesc": "Analisis kalori dari foto termasuk dalam Premium.",
+  "foodScan_upgrade": "Lihat Premium",
+  "foodScan_errorNetwork": "Tidak ada koneksi. Periksa internet dan coba lagi.",
+  "foodScan_errorRateLimited": "Terlalu banyak pemindaian saat ini. Coba lagi dalam beberapa menit.",
+  "foodScan_errorUnavailable": "Analisis foto sedang tidak tersedia.",
+  "foodScan_errorServer": "Layanan analisis mengalami gangguan. Coba lagi sebentar lagi.",
+  "foodScan_errorNoFood": "Tidak ada makanan yang ditemukan dalam foto ini. Coba foto piring yang lebih jelas.",
+  "foodScan_errorUnreadable": "Foto ini tidak dapat dianalisis. Coba foto lain.",
+  "paywall_aiFoodScan": "Pemindaian Makanan AI",
+  "paywall_aiFoodScanDesc": "Foto makanan dan catat kalori serta makronya dalam hitungan detik",
+  "completion_earlyTitle": "Puasa berakhir",
+  "completion_earlyMessage": "Durasi hari ini telah disimpan. Rangkaian dan progres pencapaian tidak berubah karena target belum tercapai."
+}

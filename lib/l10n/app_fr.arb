@@ -1,1 +1,747 @@
-{"@@locale":"fr","appTitle":"FastTrack","greeting_morning":"Bonjour","greeting_afternoon":"Bon après-midi","greeting_evening":"Bonne soirée","tab_timer":"Maison","tab_explore":"Explorer","tab_stats":"Rapport","tab_meals":"Repas","tab_achievements":"Récompenses","tab_profile":"Compte","timer_fasting":"Temps de jeûne","timer_remaining":"Restant","timer_elapsed":"Écoulé","timer_start":"Commencer","timer_stop":"Arrêt","timer_completed":"Félicitations!","timer_completedMessage":"Vous avez terminé votre jeûne avec succès !","timer_selectPlan":"Sélectionnez un plan de jeûne","timer_stopConfirm":"Etes-vous sûr de vouloir mettre fin au jeûne plus tôt ?","timer_stopTitle":"Terminer rapidement","timer_cancel":"Annuler","timer_confirmStop":"Oui, fin","phase_anabolic":"Anabolisant","phase_anabolicDesc":"Digestion en cours","phase_catabolic":"Catabolique","phase_catabolicDesc":"Transition énergétique","phase_fatBurning":"Brûler les graisses","phase_fatBurningDesc":"La combustion des graisses a commencé","phase_ketosis":"Cétose","phase_ketosisDesc":"Production de cétone active","phase_autophagy":"Autophagie","phase_autophagyDesc":"Renouvellement cellulaire","stats_title":"Statistiques","stats_week":"Semaine","stats_month":"Mois","stats_year":"Année","stats_totalFasts":"Jeûnes totaux","stats_average":"Moyenne","stats_fastDuration":"durée rapide","stats_streak":"Traînée","stats_daysConsecutive":"jours consécutifs","stats_success":"Succès","stats_completion":"achèvement","stats_weeklyFasting":"Jeûne hebdomadaire","stats_monthlyView":"Vue mensuelle","stats_weightChange":"Changement de poids","heatmap_none":"Aucun","heatmap_low":"Faible","heatmap_good":"Bien","heatmap_full":"Complet","meals_title":"Planificateur de repas","meals_eatingWindow":"Fenêtre de restauration","meals_windowOpen":"Ouvrir","meals_windowFasting":"Jeûne","meals_calories":"Calories","meals_protein":"Protéine","meals_carbs":"Crabes","meals_fat":"Graisse","meals_todayMeals":"Les repas d\u0027aujourd\u0027hui","meals_noMeals":"Aucun repas ajouté pour l\u0027instant","meals_breakfastSuggestions":"Suggestions de petit-déjeuner","meals_addMeal":"Ajouter un repas","profile_title":"Profil","profile_user":"Utilisateur","profile_planActive":"{plan} Forfait actif","@profile_planActive":{"placeholders":{"plan":{"type":"String"}}},"profile_upgradePremium":"Passer à Premium","profile_premiumDesc":"Tous les forfaits, statistiques avancées et plus encore","profile_bodyMetrics":"Mesures corporelles","profile_height":"Hauteur","profile_weight":"Poids","profile_targetWeight":"Poids cible","profile_bmi":"IMC","profile_settings":"Paramètres","profile_notifications":"Notifications","profile_darkTheme":"Thème sombre","profile_waterReminder":"Rappel d\u0027eau","profile_phaseNotifications":"Notifications de phases","profile_language":"Langue","profile_about":"À propos","profile_rateApp":"Évaluer l\u0027application","profile_share":"Partager","profile_privacyPolicy":"politique de confidentialité","profile_version":"Version","onboarding_welcome":"Accueillir","onboarding_welcomeDesc":"Prenez le contrôle de votre\nvoyage de jeûne intermittent","onboarding_featureTimer":"Minuterie de jeûne intelligente","onboarding_featureStats":"Statistiques et graphiques détaillés","onboarding_featureMeals":"Planificateur de repas et suggestions de recettes","onboarding_getStarted":"Commencer","onboarding_selectGoal":"Quel est votre objectif ?","onboarding_selectGoalDesc":"Vous pouvez sélectionner plusieurs","onboarding_goalWeight":"Perdre du poids","onboarding_goalWeightDesc":"Perte de poids saine","onboarding_goalHealth":"Améliorer la santé","onboarding_goalHealthDesc":"Santé générale et immunité","onboarding_goalEnergy":"Plus d\u0027énergie","onboarding_goalEnergyDesc":"De l\u0027énergie tout au long de la journée","onboarding_goalMental":"Clarté mentale","onboarding_goalMentalDesc":"Concentration et clarté","onboarding_goalLongevity":"Longévité","onboarding_goalLongevityDesc":"Renouvellement cellulaire et anti-âge","onboarding_goalDiscipline":"Discipline","onboarding_goalDisciplineDesc":"Développer l’autodiscipline","onboarding_selectPlan":"Choisissez votre forfait","onboarding_selectPlanDesc":"Sélectionnez le meilleur plan de jeûne pour vous","onboarding_bodyInfo":"Entrez vos informations","onboarding_bodyInfoDesc":"Pour des recommandations personnalisées","onboarding_gender":"Genre","onboarding_male":"Mâle","onboarding_female":"Femelle","onboarding_age":"Âge","onboarding_bodyInfoDisclaimer":"Ces informations sont stockées uniquement sur votre appareil et utilisées pour le calcul des calories.","onboarding_permissions":"Dernière étape","onboarding_permissionsDesc":"Activez les autorisations pour la meilleure expérience","onboarding_next":"Continuer","onboarding_start":"Allons-y!","onboarding_skipForNow":"Configurer plus tard","waterAdded":"+250 ml d\u0027eau ajoutée","languageSelect":"Sélectionnez la langue","languageTurkish":"Turc","languageEnglish":"Anglais","paywall_title":"Passer à Premium","paywall_subtitle":"Débloquez toutes les fonctionnalités","paywall_allPlans":"Tous les plans de jeûne","paywall_advancedStats":"Statistiques avancées","paywall_mealPlanner":"Planificateur de repas","paywall_healthKit":"Intégration de HealthKit","paywall_themes":"Personnalisation du thème","paywall_noAds":"Aucune publicité","paywall_weekly":"Hebdomadaire","paywall_monthly":"Mensuel","paywall_yearly":"Annuel","paywall_bestValue":"Meilleur","paywall_freeTrial":"Essai gratuit (3 jours)","paywall_restore":"Restaurer les achats","paywall_premiumActive":"Actif Premium !","paywall_premiumActiveDesc":"Vous avez débloqué toutes les fonctionnalités","water_title":"Prise d\u0027eau","water_addWater":"Ajouter de l\u0027eau","water_goal":"But","water_ml":"ml","common_ok":"D\u0027ACCORD","common_cancel":"Annuler","common_save":"Sauvegarder","common_delete":"Supprimer","common_hours":"heures","common_minutes":"minutes","common_days":"jours","common_enable":"Activer","streakCard_currentStreak":"Série actuelle","streakCard_longestStreak":"La plus longue séquence","streakCard_totalSessions":"Jeûnes totaux","meals_mealType":"Type de repas","meals_breakfast":"Petit-déjeuner","meals_lunch":"Déjeuner","meals_dinner":"Dîner","meals_snack":"Collation","meals_carbohydrate":"Glucides","meals_add":"Ajouter","meals_mealName":"Nom du repas","bodyMetrics_title":"Mesures corporelles","bodyMetrics_weight":"Poids","bodyMetrics_target":"Cible","bodyMetrics_save":"Sauvegarder","bodyMetrics_history":"Histoire","bodyMetrics_bmiValue":"IMC : {value}","@bodyMetrics_bmiValue":{"placeholders":{"value":{"type":"String"}}},"bodyMetrics_noData":"Aucune donnée pour l\u0027instant","meals_quickAdd":"Ajout rapide","meals_manualEntry":"Saisie manuelle","meals_added":"{name} ajouté","@meals_added":{"placeholders":{"name":{"type":"String"}}},"meals_nameCalorieRequired":"Le nom et les calories sont requis","bodyMetrics_addWeight":"Ajouter du poids","bodyMetrics_hintWeight":"par ex. 74,5","bodyMetrics_invalidWeight":"Entrez un poids valide","bodyMetrics_weightSaved":"{value} kg économisés","@bodyMetrics_weightSaved":{"placeholders":{"value":{"type":"String"}}},"completion_duration":"Durée","completion_plan":"Plan","completion_lastPhase":"Dernière phase","timer_remainingTime":"Temps restant","timer_ready":"Prêt à démarrer","streak_status":"Statut","streak_startToday":"Commencez dès aujourd\u0027hui !","streak_goodStart":"Bon début !","streak_goingGreat":"Ça va super !","streak_superb":"Superbe!","streak_legendary":"Légendaire!","streak_incredible":"Incroyable!","weight_noRecord":"Aucun enregistrement de poids pour l\u0027instant\nAjouter depuis Profil \u003e Mesures corporelles","day_mon":"Lun","day_tue":"Mar","day_wed":"Épouser","day_thu":"Jeu","day_fri":"Ven","day_sat":"Assis","day_sun":"Soleil","day_short_mon":"M","day_short_tue":"T","day_short_wed":"W","day_short_thu":"T","day_short_fri":"F","day_short_sat":"S","day_short_sun":"S","month_jan":"Janvier","month_feb":"Février","month_mar":"Mars","month_apr":"Avril","month_may":"Peut","month_jun":"Juin","month_jul":"Juillet","month_aug":"Août","month_sep":"Septembre","month_oct":"Octobre","month_nov":"Novembre","month_dec":"Décembre","meals_fastingWindow":"Jeûne ({hours}h)","@meals_fastingWindow":{"placeholders":{"hours":{"type":"String"}}},"meals_eatingWindowHours":"Manger ({hours}h)","@meals_eatingWindowHours":{"placeholders":{"hours":{"type":"String"}}},"recipe_oatSmoothie":"Smoothie à l\u0027avoine","recipe_avocadoToast":"Toast à l\u0027avocat","recipe_yogurtBowl":"Bol de yaourt","elapsed_time":"Temps écoulé","fast_ends_on":"Votre jeûne se termine à","end_fasting":"Mettre fin au jeûne","start_fasting":"Commencez à jeûner","water_tracker":"Traqueur d\u0027eau","weight_tracker":"Suivi du poids","drink":"Boire","log_weight":"Poids du journal","bmi":"IMC","weight_lost":"Poids perdu","current_weight":"Poids actuel","goal_weight":"Poids objectif","daily_goal":"Objectif quotidien","completed_percent":"{percent}% terminé","@completed_percent":{"placeholders":{"percent":{"type":"String"}}},"explore":"Explorer","achievements":"Réalisations","profile_theme":"Apparence","theme_select":"Choisissez l\u0027apparence","theme_system":"Valeur par défaut du système","theme_light":"Lumière","theme_dark":"Sombre","language_system":"Langue du système","languageSpanish":"espagnol","languagePortugueseBrazil":"Portugais (Brésil)","languageGerman":"Allemand","languageFrench":"Français","profile_completionSound":"Son d\u0027achèvement","profile_calmGamification":"Une gamification calme","profile_calmGamificationDesc":"Réduit la pression de la ligue et de la saison","profile_editName":"Modifiez votre nom","profile_name":"Nom","circle_title":"Cercle de jeûne","circle_you":"Toi","circle_tagline":"Ensemble, sans pression.","circle_privacy":"Le poids et les mesures privées restent masqués. Seuls les progrès et le soutien sont visibles.","circle_sendSupport":"Envoyer de l\u0027aide · {count}","@circle_sendSupport":{"placeholders":{"count":{"type":"int"}}},"circle_inviteCopied":"Code d\u0027invitation copié","circle_createInvite":"Créer une invitation privée","crisis_nameTitle":"Tout d’abord, nommez ce qui se passe","crisis_nameDesc":"Cela peut être la faim, l\u0027habitude ou l\u0027émotion.","crisis_waterTitle":"Boire un verre d\u0027eau","crisis_waterDesc":"Ensuite, prenez trois respirations lentes.","crisis_delayTitle":"Retarder la décision de 10 minutes","crisis_delayDesc":"Si vous ne vous sentez pas bien, mettre fin au jeûne n’est pas un échec.","crisis_hunger":"Faim","crisis_habit":"Habitude","crisis_stress":"Stresser","crisis_tenMore":"Donnez-lui 10 minutes","stats_storyEmpty":"Votre premier jeûne commencera votre histoire personnelle.","stats_story":"Vous avez jeûné {sessions} fois pendant cette période, gardé votre rythme pendant {hours} heures et atteint un taux d\u0027achèvement de {rate}%.","@stats_story":{"placeholders":{"sessions":{"type":"int"},"hours":{"type":"int"},"rate":{"type":"int"}}},"stats_storyTitle":"L\u0027histoire de ton rythme","home_todayRhythm":"Le rythme d\u0027aujourd\u0027hui","home_finalHourSupport":"Assistance de dernière heure","home_needSupport":"j\u0027ai besoin d\u0027un peu de soutien","home_todaySummary":"Aujourd\u0027hui en un coup d\u0027œil","home_dayStreak":"séquence d\u0027une journée","home_weightGoal":"objectif {weight} kg","@home_weightGoal":{"placeholders":{"weight":{"type":"String"}}},"weather_steady":"Ton rythme est stable","weather_gentle":"Une douce journée","weather_water":"Un verre d\u0027eau peut aider.","weather_listen":"Vous êtes venu loin ; écoutez votre corps.","weather_onPlan":"Le rythme d’aujourd’hui correspond à votre plan.","weather_challenging":"Cette heure était un défi auparavant ; le mode support est prêt.","replay_copied":"Jeûne Replay copié","replay_button":"Rejouer","replay_text":"J\u0027ai terminé mon {plan} rapidement en {hours}h {minutes}m · {phase}","@replay_text":{"placeholders":{"plan":{"type":"String"},"hours":{"type":"int"},"minutes":{"type":"int"},"phase":{"type":"String"}}},"journey_label":"Voyage métabolique","journey_now":"Maintenant","journey_next":"{time} jusqu\u0027à {phase}","@journey_next":{"placeholders":{"time":{"type":"String"},"phase":{"type":"String"}}},"phase_estimateShort":"La synchronisation des phases est une estimation générale et non une mesure médicale.","phase_hours":"Heures {start}–{end}","@phase_hours":{"placeholders":{"start":{"type":"int"},"end":{"type":"int"}}},"phase_estimateLong":"Ce timing est une estimation générale. Les réponses métaboliques peuvent varier d’une personne à l’autre.","bmi_underweight":"Insuffisance pondérale","bmi_normal":"Normale","bmi_overweight":"Embonpoint","bmi_obese":"Obèse","notification_halfwayTitle":"À mi-chemin ! 💪","notification_halfwayBody":"Vous avez terminé rapidement la moitié de votre {plan}. Continue!","@notification_halfwayBody":{"placeholders":{"plan":{"type":"String"}}},"notification_phaseCatabolic":"Entrée en phase catabolique 📉","notification_phaseFatBurning":"La combustion des graisses a commencé ! 🔥","notification_phaseKetosis":"Vous êtes en cétose ⚡","notification_phaseAutophagy":"Autophagie active ! 🔄","notification_completedBody":"Vous avez terminé votre {plan} rapidement ! Votre fenêtre de restauration est ouverte.","@notification_completedBody":{"placeholders":{"plan":{"type":"String"}}},"notification_waterTitle":"Boire de l\u0027eau 💧","notification_waterBody":"N’oubliez pas de boire beaucoup d’eau pendant le jeûne !","notification_windowTitle":"Fermeture de la fenêtre de restauration ⏰","notification_windowBody":"Votre fenêtre de restauration se fermera dans 30 minutes.","notification_streakTitle":"Série de jours {days} ! 🔥","@notification_streakTitle":{"placeholders":{"days":{"type":"int"}}},"notification_streakBody":"Vous allez très bien ! Continuez ainsi aujourd\u0027hui.","notification_ongoingTitle":"Jeûne en cours - {phase}","@notification_ongoingTitle":{"placeholders":{"phase":{"type":"String"}}},"notification_remaining":"Restant : {time}","@notification_remaining":{"placeholders":{"time":{"type":"String"}}},"notification_started":"Jeûne commencé - {plan}","@notification_started":{"placeholders":{"plan":{"type":"String"}}},"notification_target":"Cible : heures {hours}","@notification_target":{"placeholders":{"hours":{"type":"int"}}},"notification_time":"{hours}h {minutes}m","@notification_time":{"placeholders":{"hours":{"type":"int"},"minutes":{"type":"int"}}},"explore_guide":"Guide du jeûne","explore_guideDesc":"Tout ce qu’il faut savoir sur le jeûne intermittent","explore_circleDesc":"Partagez un soutien discret avec votre groupe privé.","explore_faq":"Foire aux questions","explore_education":"Ce contenu est destiné uniquement à l’éducation générale et ne constitue pas un diagnostic médical ni un conseil de traitement.","explore_safety":"Santé et sécurité","explore_safetyDesc":"Si vous souffrez d\u0027un problème de santé, prenez régulièrement des médicaments, présentez des symptômes inquiétants, êtes enceinte ou allaitez, consultez un professionnel de la santé qualifié avant de jeûner. Arrêtez-vous si vous ne vous sentez pas bien.","explore_sources":"Sources","explore_sourcesDesc":"Le contenu est simplifié à partir des références de santé publique ci-dessous.","explore_sourceError":"La source n\u0027a pas pu être ouverte","explore_rules":"Règles importantes","explore_rule1":"Ne consommez pas d’aliments caloriques pendant le jeûne","explore_rule2":"Boire beaucoup d\u0027eau et de liquides","explore_rule3":"Mangez équilibré pendant votre fenêtre de repas","explore_rule4":"Arrêtez de jeûner si vous ne vous sentez pas bien","explore_rule5":"Les femmes enceintes ou allaitantes ne devraient pas jeûner","explore_rule6":"Consultez votre médecin si vous souffrez de maladies chroniques","tip_water":"Restez hydraté","tip_waterDesc":"Buvez de l’eau lorsque vous avez soif et incluez des liquides aux repas. Les besoins peuvent varier en fonction de la santé, de la météo et de l\u0027activité.","tip_food":"Mangez bien","tip_foodDesc":"Pendant les périodes de repas, choisissez des aliments riches en protéines, en fibres et en graisses saines. Évitez les aliments transformés.","tip_sleep":"Dors bien","tip_sleepDesc":"Un sommeil régulier et suffisant favorise le bien-être général. Planifiez le jeûne afin qu\u0027il ne perturbe pas votre sommeil.","tip_exercise":"Exercice léger","tip_exerciseDesc":"Vous pouvez faire de la marche légère ou du yoga tout en jeûnant. Évitez les exercices intenses, surtout pendant les premières semaines jusqu\u0027à ce que votre corps s\u0027adapte.","tip_drinks":"Boissons autorisées","tip_drinksDesc":"Pendant le jeûne, vous pouvez consommer de l’eau, du thé nature et du café noir (sans sucre, sans lait). Ces boissons ne rompront pas votre jeûne.","faq_drinks":"Que puis-je boire pendant le jeûne ?","faq_drinksAnswer":"Vous pouvez boire de l\u0027eau, du thé nature et du café noir (sans sucre ni lait). Les boissons caloriques rompent le jeûne.","faq_plan":"Quel programme de jeûne dois-je choisir ?","faq_planAnswer":"Si vous êtes nouveau, commencez par 12h12 ou 14h10. Si vous êtes expérimenté, essayez le 16:8 ou le 18:6. 20:4 et OMAD sont destinés aux jeûneurs avancés.","faq_exercise":"Puis-je faire de l’exercice en jeûnant ?","faq_exerciseAnswer":"Oui, mais évitez les entraînements intenses. Le cardio léger, la marche et le yoga sont idéaux. Si vous soulevez des poids, programmez-le près de votre fenêtre de repas.","faq_weight":"Le jeûne aide-t-il à perdre du poids ?","faq_weightAnswer":"Pour certaines personnes, limiter le temps consacré aux repas peut réduire l’apport énergétique total. Les résultats varient et les effets à long terme sont encore à l’étude.","plan_12_desc":"Niveau débutant","plan_12_detail":"Idéal pour les débutants. Rapide 12 heures incluant votre temps de sommeil.","plan_16_desc":"Forfait le plus populaire","plan_16_detail":"Le plan IF le plus courant. 16 heures de jeûne, 8 heures de repas. Généralement du déjeuner au dîner.","plan_18_desc":"Niveau intermédiaire","plan_18_detail":"18 heures de jeûne, 6 heures de repas. Durée de combustion des graisses plus longue.","plan_20_desc":"Niveau avancé","plan_20_detail":"20 heures de jeûne, 4 heures de repas. Idéal pour atteindre la cétose et l\u0027autophagie.","plan_omad_desc":"Un repas par jour","plan_omad_detail":"Un repas par jour. 23 heures de jeûne, 1 heure de repas. Niveau expert.","plan_52_desc":"2 jours par semaine","plan_52_detail":"Mangez normalement 5 jours, seulement ~500 calories sur 2 jours. Une approche alternative.","plan_ese_desc":"24 heures rapide","plan_ese_detail":"Jeûner pendant 24 heures 1 à 2 fois par semaine. Pour les utilisateurs avancés.","plan_warrior_desc":"Régime guerrier","plan_warrior_detail":"Mangez léger pendant la journée (fruits, légumes), prenez votre repas principal dans une fenêtre de 4 heures en soirée.","award_first_title":"Premier pas","award_first_desc":"Terminez votre premier jeûne","award_rhythm3_title":"Rythme de 3 jours","award_rhythm3_desc":"Gardez votre rythme pendant trois jours","award_hours24_title":"24 heures","award_hours24_desc":"Rapide pendant 24 heures au total","award_week_title":"Rythme d\u0027une semaine","award_week_desc":"Construisez une séquence de sept jours","award_fasts10_title":"10 jeûnes","award_fasts10_desc":"Effectuer dix jeûnes","award_hours100_title":"100 heures","award_hours100_desc":"Atteindre 100 heures au total","award_rhythm30_title":"Rythme de 30 jours","award_rhythm30_desc":"Construisez une séquence de trente jours","award_fasts50_title":"50 jeûnes","award_fasts50_desc":"Effectuer cinquante jeûnes","award_hours500_title":"500 heures","award_hours500_desc":"Atteindre 500 heures au total","award_fasts100_title":"100 jeûnes","award_fasts100_desc":"Effectuer cent jeûnes","award_rhythm90_title":"Rythme de 90 jours","award_rhythm90_desc":"Construisez une séquence de quatre-vingt-dix jours","award_year_title":"Voyage d\u0027un an","award_year_desc":"Atteignez un rythme de 365 jours","awards_loadError":"La progression n\u0027a pas pu se charger","awards_journeyComplete":"Voyage terminé","awards_nextGoal":"Objectif suivant","awards_allYours":"Chaque réalisation est à vous","awards_dayStreak":"séquence d\u0027une journée","awards_fasts":"jeûnes","awards_total":"total","awards_stageStart":"Commencer","awards_stageRhythm":"Rythme","awards_stageEndurance":"Endurance","awards_stageMastery":"Maîtrise","awards_completed":"Complété","awards_fastsRemaining":"{count} jeûne à emporter","@awards_fastsRemaining":{"placeholders":{"count":{"type":"int"}}},"awards_daysRemaining":"{count} jours restants","@awards_daysRemaining":{"placeholders":{"count":{"type":"int"}}},"awards_hoursRemaining":"{count} heures restantes","@awards_hoursRemaining":{"placeholders":{"count":{"type":"int"}}},"common_retry":"Essayer à nouveau","game_title":"Centre de progrès","game_quests":"Les quêtes du jour","game_questsDesc":"Petits pas, rythme durable.","game_season":"Saison en 30 étapes","game_seasonDesc":"Un sceau de collection toutes les cinq étapes.","game_badges":"Collection de badges","game_shields":"Boucliers de rythme {count}","@game_shields":{"placeholders":{"count":{"type":"int"}}},"game_shieldsDesc":"Obtenu toutes les sept réussites. Une journée manquée n’efface jamais vos progrès.","game_league":"Ligue hebdomadaire privée","game_leagueDesc":"Votre score rythmique se situe dans le centile {percent} d’un modèle local privé. Le poids et le jeûne extrême ne sont jamais classés.","@game_leagueDesc":{"placeholders":{"percent":{"type":"int"}}},"game_levelSemantics":"Points d\u0027expérience de niveau {level}, {xp}","@game_levelSemantics":{"placeholders":{"level":{"type":"int"},"xp":{"type":"int"}}},"game_explorer":"Explorateur de rythme","game_streak":"Traînée","game_targets":"Cibles","game_best":"Meilleur","quest_rhythm":"Construisez le rythme d’aujourd’hui","quest_hydrate":"Atteignez la moitié de votre objectif en eau","quest_steady":"Protégez votre séquence","badge_first_title":"Premier pas","badge_first_desc":"Enregistrez votre premier jeûne","badge_rhythm7_title":"Gardien du rythme","badge_rhythm7_desc":"Atteignez une séquence de 7 jours","badge_rhythm3_title":"Rythme de trois jours","badge_rhythm3_desc":"Atteignez une séquence de 3 jours","badge_target1_title":"Première cible","badge_target1_desc":"Complétez rapidement votre premier objectif","badge_target3_title":"Trois étapes","badge_target3_desc":"Complétez 3 cibles","badge_water_title":"Équilibré","badge_water_desc":"Complétez l\u0027objectif quotidien en eau","badge_support_title":"Conscience de soi","badge_support_desc":"Utiliser le mode assistance","badge_hours10_title":"10 heures","badge_hours10_desc":"Enregistrez 10 heures au total","badge_target10_title":"Dix forts","badge_target10_desc":"Complétez 10 cibles","badge_target20_title":"Vingt cibles","badge_target20_desc":"Complétez 20 cibles","badge_fast16_title":"16 heures","badge_fast16_desc":"Atteignez 16 heures en un seul jeûne","badge_hours50_title":"50 heures","badge_hours50_desc":"Enregistrez 50 heures au total","badge_hours100_title":"Cent heures","badge_hours100_desc":"Enregistrez 100 heures au total","badge_target30_title":"Trente cibles","badge_target30_desc":"Complétez 30 cibles","badge_rhythm30_title":"Rythme de 30 jours","badge_rhythm30_desc":"Atteignez une séquence de 30 jours","paywall_restoreSuccess":"Achats restaurés !","fasting_progressSemantics":"Progrès à jeun {percent} pourcentage","@fasting_progressSemantics":{"placeholders":{"percent":{"type":"int"}}},"paywall_lifetime":"À vie","paywall_once":"paiement unique","paywall_processing":"Traitement…","paywall_continue":"Continuer","paywall_productsUnavailable":"Les achats sont indisponibles pour le moment. Réessayez plus tard.","paywall_purchaseFailed":"L’achat n’a pas pu être finalisé.","paywall_nothingToRestore":"Aucun achat antérieur n’a été trouvé.","paywall_restoreFailed":"Les achats n’ont pas pu être restaurés.","paywall_terms":"Conditions d’utilisation","permission_notificationDesc":"Rappels de jeûne, changements de phase et notifications de fin","permission_healthTitle":"Health Connect / HealthKit","permission_healthDesc":"Synchronisez les pas, calories actives et le poids avec votre autorisation","profile_privacyChoices":"Choix de confidentialité","phase_hourMarker":"{hour}h","@phase_hourMarker":{"placeholders":{"hour":{"type":"int"}}}}
+{
+  "@@locale": "fr",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Bonjour",
+  "greeting_afternoon": "Bon après-midi",
+  "greeting_evening": "Bonne soirée",
+  "tab_timer": "Maison",
+  "tab_explore": "Explorer",
+  "tab_stats": "Rapport",
+  "tab_meals": "Repas",
+  "tab_achievements": "Récompenses",
+  "tab_profile": "Compte",
+  "timer_fasting": "Temps de jeûne",
+  "timer_remaining": "Restant",
+  "timer_elapsed": "Écoulé",
+  "timer_start": "Commencer",
+  "timer_stop": "Arrêt",
+  "timer_completed": "Félicitations!",
+  "timer_completedMessage": "Vous avez terminé votre jeûne avec succès !",
+  "timer_selectPlan": "Sélectionnez un plan de jeûne",
+  "timer_stopConfirm": "Etes-vous sûr de vouloir mettre fin au jeûne plus tôt ?",
+  "timer_stopTitle": "Terminer rapidement",
+  "timer_cancel": "Annuler",
+  "timer_confirmStop": "Oui, fin",
+  "phase_anabolic": "Anabolisant",
+  "phase_anabolicDesc": "Digestion en cours",
+  "phase_catabolic": "Catabolique",
+  "phase_catabolicDesc": "Transition énergétique",
+  "phase_fatBurning": "Brûler les graisses",
+  "phase_fatBurningDesc": "La combustion des graisses a commencé",
+  "phase_ketosis": "Cétose",
+  "phase_ketosisDesc": "Production de cétone active",
+  "phase_autophagy": "Autophagie",
+  "phase_autophagyDesc": "Renouvellement cellulaire",
+  "stats_title": "Statistiques",
+  "stats_week": "Semaine",
+  "stats_month": "Mois",
+  "stats_year": "Année",
+  "stats_totalFasts": "Jeûnes totaux",
+  "stats_average": "Moyenne",
+  "stats_fastDuration": "durée rapide",
+  "stats_streak": "Traînée",
+  "stats_daysConsecutive": "jours consécutifs",
+  "stats_success": "Succès",
+  "stats_completion": "achèvement",
+  "stats_weeklyFasting": "Jeûne hebdomadaire",
+  "stats_monthlyView": "Vue mensuelle",
+  "stats_weightChange": "Changement de poids",
+  "heatmap_none": "Aucun",
+  "heatmap_low": "Faible",
+  "heatmap_good": "Bien",
+  "heatmap_full": "Complet",
+  "meals_title": "Planificateur de repas",
+  "meals_eatingWindow": "Fenêtre de restauration",
+  "meals_windowOpen": "Ouvrir",
+  "meals_windowFasting": "Jeûne",
+  "meals_calories": "Calories",
+  "meals_protein": "Protéine",
+  "meals_carbs": "Crabes",
+  "meals_fat": "Graisse",
+  "meals_todayMeals": "Les repas d'aujourd'hui",
+  "meals_noMeals": "Aucun repas ajouté pour l'instant",
+  "meals_breakfastSuggestions": "Suggestions de petit-déjeuner",
+  "meals_addMeal": "Ajouter un repas",
+  "profile_title": "Profil",
+  "profile_user": "Utilisateur",
+  "profile_planActive": "{plan} Forfait actif",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Passer à Premium",
+  "profile_premiumDesc": "Tous les plans de jeûne, sans publicité",
+  "profile_bodyMetrics": "Mesures corporelles",
+  "profile_height": "Hauteur",
+  "profile_weight": "Poids",
+  "profile_targetWeight": "Poids cible",
+  "profile_bmi": "IMC",
+  "profile_settings": "Paramètres",
+  "profile_notifications": "Notifications",
+  "profile_darkTheme": "Thème sombre",
+  "profile_waterReminder": "Rappel d'eau",
+  "profile_phaseNotifications": "Notifications de phases",
+  "profile_language": "Langue",
+  "profile_about": "À propos",
+  "profile_rateApp": "Évaluer l'application",
+  "profile_share": "Partager",
+  "profile_privacyPolicy": "politique de confidentialité",
+  "profile_version": "Version",
+  "onboarding_welcome": "Accueillir",
+  "onboarding_welcomeDesc": "Prenez le contrôle de votre\nvoyage de jeûne intermittent",
+  "onboarding_featureTimer": "Minuterie de jeûne intelligente",
+  "onboarding_featureStats": "Statistiques et graphiques détaillés",
+  "onboarding_featureMeals": "Planificateur de repas et suggestions de recettes",
+  "onboarding_getStarted": "Commencer",
+  "onboarding_selectGoal": "Quel est votre objectif ?",
+  "onboarding_selectGoalDesc": "Vous pouvez sélectionner plusieurs",
+  "onboarding_goalWeight": "Perdre du poids",
+  "onboarding_goalWeightDesc": "Perte de poids saine",
+  "onboarding_goalHealth": "Améliorer la santé",
+  "onboarding_goalHealthDesc": "Santé générale et immunité",
+  "onboarding_goalEnergy": "Plus d'énergie",
+  "onboarding_goalEnergyDesc": "De l'énergie tout au long de la journée",
+  "onboarding_goalMental": "Clarté mentale",
+  "onboarding_goalMentalDesc": "Concentration et clarté",
+  "onboarding_goalLongevity": "Longévité",
+  "onboarding_goalLongevityDesc": "Renouvellement cellulaire et anti-âge",
+  "onboarding_goalDiscipline": "Discipline",
+  "onboarding_goalDisciplineDesc": "Développer l’autodiscipline",
+  "onboarding_selectPlan": "Choisissez votre forfait",
+  "onboarding_selectPlanDesc": "Sélectionnez le meilleur plan de jeûne pour vous",
+  "onboarding_bodyInfo": "Entrez vos informations",
+  "onboarding_bodyInfoDesc": "Pour des recommandations personnalisées",
+  "onboarding_gender": "Genre",
+  "onboarding_male": "Mâle",
+  "onboarding_female": "Femelle",
+  "onboarding_age": "Âge",
+  "onboarding_bodyInfoDisclaimer": "Ces informations sont stockées uniquement sur votre appareil et utilisées pour le calcul des calories.",
+  "onboarding_permissions": "Dernière étape",
+  "onboarding_permissionsDesc": "Activez les autorisations pour la meilleure expérience",
+  "onboarding_next": "Continuer",
+  "onboarding_start": "Allons-y!",
+  "onboarding_skipForNow": "Configurer plus tard",
+  "waterAdded": "+250 ml d'eau ajoutée",
+  "languageSelect": "Sélectionnez la langue",
+  "languageTurkish": "Turc",
+  "languageEnglish": "Anglais",
+  "paywall_title": "Passer à Premium",
+  "paywall_subtitle": "Débloquez tous les plans de jeûne et supprimez les publicités",
+  "paywall_allPlans": "Tous les plans de jeûne",
+  "paywall_advancedStats": "Statistiques avancées",
+  "paywall_mealPlanner": "Planificateur de repas",
+  "paywall_themes": "Personnalisation du thème",
+  "paywall_noAds": "Aucune publicité",
+  "paywall_weekly": "Hebdomadaire",
+  "paywall_monthly": "Mensuel",
+  "paywall_yearly": "Annuel",
+  "paywall_bestValue": "Meilleur",
+  "paywall_freeTrial": "Essai gratuit (3 jours)",
+  "paywall_restore": "Restaurer les achats",
+  "paywall_premiumActive": "Actif Premium !",
+  "paywall_premiumActiveDesc": "Tous les plans de jeûne sont débloqués et les publicités désactivées",
+  "water_title": "Prise d'eau",
+  "water_addWater": "Ajouter de l'eau",
+  "water_goal": "But",
+  "water_ml": "ml",
+  "common_ok": "D'ACCORD",
+  "common_cancel": "Annuler",
+  "common_save": "Sauvegarder",
+  "common_delete": "Supprimer",
+  "common_hours": "heures",
+  "common_minutes": "minutes",
+  "common_days": "jours",
+  "common_enable": "Activer",
+  "streakCard_currentStreak": "Série actuelle",
+  "streakCard_longestStreak": "La plus longue séquence",
+  "streakCard_totalSessions": "Jeûnes totaux",
+  "meals_mealType": "Type de repas",
+  "meals_breakfast": "Petit-déjeuner",
+  "meals_lunch": "Déjeuner",
+  "meals_dinner": "Dîner",
+  "meals_snack": "Collation",
+  "meals_carbohydrate": "Glucides",
+  "meals_add": "Ajouter",
+  "meals_mealName": "Nom du repas",
+  "bodyMetrics_title": "Mesures corporelles",
+  "bodyMetrics_weight": "Poids",
+  "bodyMetrics_target": "Cible",
+  "bodyMetrics_save": "Sauvegarder",
+  "bodyMetrics_history": "Histoire",
+  "bodyMetrics_bmiValue": "IMC : {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Aucune donnée pour l'instant",
+  "meals_quickAdd": "Ajout rapide",
+  "meals_manualEntry": "Saisie manuelle",
+  "meals_added": "{name} ajouté",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Le nom et les calories sont requis",
+  "bodyMetrics_addWeight": "Ajouter du poids",
+  "bodyMetrics_hintWeight": "par ex. 74,5",
+  "bodyMetrics_invalidWeight": "Entrez un poids valide",
+  "bodyMetrics_weightSaved": "{value} kg économisés",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Durée",
+  "completion_plan": "Plan",
+  "completion_lastPhase": "Dernière phase",
+  "timer_remainingTime": "Temps restant",
+  "timer_ready": "Prêt à démarrer",
+  "streak_status": "Statut",
+  "streak_startToday": "Commencez dès aujourd'hui !",
+  "streak_goodStart": "Bon début !",
+  "streak_goingGreat": "Ça va super !",
+  "streak_superb": "Superbe!",
+  "streak_legendary": "Légendaire!",
+  "streak_incredible": "Incroyable!",
+  "weight_noRecord": "Aucun enregistrement de poids pour l'instant\nAjouter depuis Profil > Mesures corporelles",
+  "day_mon": "Lun",
+  "day_tue": "Mar",
+  "day_wed": "Épouser",
+  "day_thu": "Jeu",
+  "day_fri": "Ven",
+  "day_sat": "Assis",
+  "day_sun": "Soleil",
+  "day_short_mon": "M",
+  "day_short_tue": "T",
+  "day_short_wed": "W",
+  "day_short_thu": "T",
+  "day_short_fri": "F",
+  "day_short_sat": "S",
+  "day_short_sun": "S",
+  "month_jan": "Janvier",
+  "month_feb": "Février",
+  "month_mar": "Mars",
+  "month_apr": "Avril",
+  "month_may": "Peut",
+  "month_jun": "Juin",
+  "month_jul": "Juillet",
+  "month_aug": "Août",
+  "month_sep": "Septembre",
+  "month_oct": "Octobre",
+  "month_nov": "Novembre",
+  "month_dec": "Décembre",
+  "meals_fastingWindow": "Jeûne ({hours}h)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Manger ({hours}h)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Smoothie à l'avoine",
+  "recipe_avocadoToast": "Toast à l'avocat",
+  "recipe_yogurtBowl": "Bol de yaourt",
+  "elapsed_time": "Temps écoulé",
+  "fast_ends_on": "Votre jeûne se termine à",
+  "end_fasting": "Mettre fin au jeûne",
+  "start_fasting": "Commencez à jeûner",
+  "water_tracker": "Traqueur d'eau",
+  "weight_tracker": "Suivi du poids",
+  "drink": "Boire",
+  "log_weight": "Poids du journal",
+  "bmi": "IMC",
+  "weight_lost": "Poids perdu",
+  "current_weight": "Poids actuel",
+  "goal_weight": "Poids objectif",
+  "daily_goal": "Objectif quotidien",
+  "completed_percent": "{percent}% terminé",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Explorer",
+  "achievements": "Réalisations",
+  "profile_theme": "Apparence",
+  "theme_select": "Choisissez l'apparence",
+  "theme_system": "Valeur par défaut du système",
+  "theme_light": "Lumière",
+  "theme_dark": "Sombre",
+  "language_system": "Langue du système",
+  "languageSpanish": "espagnol",
+  "languagePortugueseBrazil": "Portugais (Brésil)",
+  "languageGerman": "Allemand",
+  "languageFrench": "Français",
+  "profile_completionSound": "Son d'achèvement",
+  "profile_calmGamification": "Une gamification calme",
+  "profile_calmGamificationDesc": "Réduit la pression de la ligue et de la saison",
+  "profile_editName": "Modifiez votre nom",
+  "profile_name": "Nom",
+  "circle_title": "Cercle de jeûne",
+  "circle_you": "Toi",
+  "circle_tagline": "Ensemble, sans pression.",
+  "circle_privacy": "Le poids et les mesures privées restent masqués. Seuls les progrès et le soutien sont visibles.",
+  "circle_sendSupport": "Envoyer de l'aide · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Code d'invitation copié",
+  "circle_createInvite": "Créer une invitation privée",
+  "crisis_nameTitle": "Tout d’abord, nommez ce qui se passe",
+  "crisis_nameDesc": "Cela peut être la faim, l'habitude ou l'émotion.",
+  "crisis_waterTitle": "Boire un verre d'eau",
+  "crisis_waterDesc": "Ensuite, prenez trois respirations lentes.",
+  "crisis_delayTitle": "Retarder la décision de 10 minutes",
+  "crisis_delayDesc": "Si vous ne vous sentez pas bien, mettre fin au jeûne n’est pas un échec.",
+  "crisis_hunger": "Faim",
+  "crisis_habit": "Habitude",
+  "crisis_stress": "Stresser",
+  "crisis_tenMore": "Donnez-lui 10 minutes",
+  "stats_storyEmpty": "Votre premier jeûne commencera votre histoire personnelle.",
+  "stats_story": "Vous avez jeûné {sessions} fois pendant cette période, gardé votre rythme pendant {hours} heures et atteint un taux d'achèvement de {rate}%.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "L'histoire de ton rythme",
+  "home_todayRhythm": "Le rythme d'aujourd'hui",
+  "home_finalHourSupport": "Assistance de dernière heure",
+  "home_needSupport": "j'ai besoin d'un peu de soutien",
+  "home_todaySummary": "Aujourd'hui en un coup d'œil",
+  "home_dayStreak": "séquence d'une journée",
+  "home_weightGoal": "objectif {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Ton rythme est stable",
+  "weather_gentle": "Une douce journée",
+  "weather_water": "Un verre d'eau peut aider.",
+  "weather_listen": "Vous êtes venu loin ; écoutez votre corps.",
+  "weather_onPlan": "Le rythme d’aujourd’hui correspond à votre plan.",
+  "weather_challenging": "Cette heure était un défi auparavant ; le mode support est prêt.",
+  "replay_copied": "Jeûne Replay copié",
+  "replay_button": "Rejouer",
+  "replay_text": "J'ai terminé mon {plan} rapidement en {hours}h {minutes}m · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Voyage métabolique",
+  "journey_now": "Maintenant",
+  "journey_next": "{time} jusqu'à {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "La synchronisation des phases est une estimation générale et non une mesure médicale.",
+  "phase_hours": "Heures {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Ce timing est une estimation générale. Les réponses métaboliques peuvent varier d’une personne à l’autre.",
+  "bmi_underweight": "Insuffisance pondérale",
+  "bmi_normal": "Normale",
+  "bmi_overweight": "Embonpoint",
+  "bmi_obese": "Obèse",
+  "notification_halfwayTitle": "À mi-chemin ! 💪",
+  "notification_halfwayBody": "Vous avez terminé rapidement la moitié de votre {plan}. Continue!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Entrée en phase catabolique 📉",
+  "notification_phaseFatBurning": "La combustion des graisses a commencé ! 🔥",
+  "notification_phaseKetosis": "Vous êtes en cétose ⚡",
+  "notification_phaseAutophagy": "Autophagie active ! 🔄",
+  "notification_completedBody": "Vous avez terminé votre {plan} rapidement ! Votre fenêtre de restauration est ouverte.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Boire de l'eau 💧",
+  "notification_waterBody": "N’oubliez pas de boire beaucoup d’eau pendant le jeûne !",
+  "notification_windowTitle": "Fermeture de la fenêtre de restauration ⏰",
+  "notification_windowBody": "Votre fenêtre de restauration se fermera dans 30 minutes.",
+  "notification_streakTitle": "Série de jours {days} ! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Vous allez très bien ! Continuez ainsi aujourd'hui.",
+  "notification_ongoingTitle": "Jeûne en cours - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Restant : {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Jeûne commencé - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Cible : heures {hours}",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours}h {minutes}m",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Guide du jeûne",
+  "explore_guideDesc": "Tout ce qu’il faut savoir sur le jeûne intermittent",
+  "explore_circleDesc": "Partagez un soutien discret avec votre groupe privé.",
+  "explore_faq": "Foire aux questions",
+  "explore_education": "Ce contenu est destiné uniquement à l’éducation générale et ne constitue pas un diagnostic médical ni un conseil de traitement.",
+  "explore_safety": "Santé et sécurité",
+  "explore_safetyDesc": "Si vous souffrez d'un problème de santé, prenez régulièrement des médicaments, présentez des symptômes inquiétants, êtes enceinte ou allaitez, consultez un professionnel de la santé qualifié avant de jeûner. Arrêtez-vous si vous ne vous sentez pas bien.",
+  "explore_sources": "Sources",
+  "explore_sourcesDesc": "Le contenu est simplifié à partir des références de santé publique ci-dessous.",
+  "explore_sourceError": "La source n'a pas pu être ouverte",
+  "explore_rules": "Règles importantes",
+  "explore_rule1": "Ne consommez pas d’aliments caloriques pendant le jeûne",
+  "explore_rule2": "Boire beaucoup d'eau et de liquides",
+  "explore_rule3": "Mangez équilibré pendant votre fenêtre de repas",
+  "explore_rule4": "Arrêtez de jeûner si vous ne vous sentez pas bien",
+  "explore_rule5": "Les femmes enceintes ou allaitantes ne devraient pas jeûner",
+  "explore_rule6": "Consultez votre médecin si vous souffrez de maladies chroniques",
+  "tip_water": "Restez hydraté",
+  "tip_waterDesc": "Buvez de l’eau lorsque vous avez soif et incluez des liquides aux repas. Les besoins peuvent varier en fonction de la santé, de la météo et de l'activité.",
+  "tip_food": "Mangez bien",
+  "tip_foodDesc": "Pendant les périodes de repas, choisissez des aliments riches en protéines, en fibres et en graisses saines. Évitez les aliments transformés.",
+  "tip_sleep": "Dors bien",
+  "tip_sleepDesc": "Un sommeil régulier et suffisant favorise le bien-être général. Planifiez le jeûne afin qu'il ne perturbe pas votre sommeil.",
+  "tip_exercise": "Exercice léger",
+  "tip_exerciseDesc": "Vous pouvez faire de la marche légère ou du yoga tout en jeûnant. Évitez les exercices intenses, surtout pendant les premières semaines jusqu'à ce que votre corps s'adapte.",
+  "tip_drinks": "Boissons autorisées",
+  "tip_drinksDesc": "Pendant le jeûne, vous pouvez consommer de l’eau, du thé nature et du café noir (sans sucre, sans lait). Ces boissons ne rompront pas votre jeûne.",
+  "faq_drinks": "Que puis-je boire pendant le jeûne ?",
+  "faq_drinksAnswer": "Vous pouvez boire de l'eau, du thé nature et du café noir (sans sucre ni lait). Les boissons caloriques rompent le jeûne.",
+  "faq_plan": "Quel programme de jeûne dois-je choisir ?",
+  "faq_planAnswer": "Si vous êtes nouveau, commencez par 12h12 ou 14h10. Si vous êtes expérimenté, essayez le 16:8 ou le 18:6. 20:4 et OMAD sont destinés aux jeûneurs avancés.",
+  "faq_exercise": "Puis-je faire de l’exercice en jeûnant ?",
+  "faq_exerciseAnswer": "Oui, mais évitez les entraînements intenses. Le cardio léger, la marche et le yoga sont idéaux. Si vous soulevez des poids, programmez-le près de votre fenêtre de repas.",
+  "faq_weight": "Le jeûne aide-t-il à perdre du poids ?",
+  "faq_weightAnswer": "Pour certaines personnes, limiter le temps consacré aux repas peut réduire l’apport énergétique total. Les résultats varient et les effets à long terme sont encore à l’étude.",
+  "plan_12_desc": "Niveau débutant",
+  "plan_12_detail": "Idéal pour les débutants. Rapide 12 heures incluant votre temps de sommeil.",
+  "plan_16_desc": "Forfait le plus populaire",
+  "plan_16_detail": "Le plan IF le plus courant. 16 heures de jeûne, 8 heures de repas. Généralement du déjeuner au dîner.",
+  "plan_18_desc": "Niveau intermédiaire",
+  "plan_18_detail": "18 heures de jeûne, 6 heures de repas. Durée de combustion des graisses plus longue.",
+  "plan_20_desc": "Niveau avancé",
+  "plan_20_detail": "20 heures de jeûne, 4 heures de repas. Idéal pour atteindre la cétose et l'autophagie.",
+  "plan_omad_desc": "Un repas par jour",
+  "plan_omad_detail": "Un repas par jour. 23 heures de jeûne, 1 heure de repas. Niveau expert.",
+  "plan_52_desc": "2 jours par semaine",
+  "plan_52_detail": "Mangez normalement 5 jours, seulement ~500 calories sur 2 jours. Une approche alternative.",
+  "plan_ese_desc": "24 heures rapide",
+  "plan_ese_detail": "Jeûner pendant 24 heures 1 à 2 fois par semaine. Pour les utilisateurs avancés.",
+  "plan_warrior_desc": "Régime guerrier",
+  "plan_warrior_detail": "Mangez léger pendant la journée (fruits, légumes), prenez votre repas principal dans une fenêtre de 4 heures en soirée.",
+  "award_first_title": "Premier pas",
+  "award_first_desc": "Terminez votre premier jeûne",
+  "award_rhythm3_title": "Rythme de 3 jours",
+  "award_rhythm3_desc": "Gardez votre rythme pendant trois jours",
+  "award_hours24_title": "24 heures",
+  "award_hours24_desc": "Rapide pendant 24 heures au total",
+  "award_week_title": "Rythme d'une semaine",
+  "award_week_desc": "Construisez une séquence de sept jours",
+  "award_fasts10_title": "10 jeûnes",
+  "award_fasts10_desc": "Effectuer dix jeûnes",
+  "award_hours100_title": "100 heures",
+  "award_hours100_desc": "Atteindre 100 heures au total",
+  "award_rhythm30_title": "Rythme de 30 jours",
+  "award_rhythm30_desc": "Construisez une séquence de trente jours",
+  "award_fasts50_title": "50 jeûnes",
+  "award_fasts50_desc": "Effectuer cinquante jeûnes",
+  "award_hours500_title": "500 heures",
+  "award_hours500_desc": "Atteindre 500 heures au total",
+  "award_fasts100_title": "100 jeûnes",
+  "award_fasts100_desc": "Effectuer cent jeûnes",
+  "award_rhythm90_title": "Rythme de 90 jours",
+  "award_rhythm90_desc": "Construisez une séquence de quatre-vingt-dix jours",
+  "award_year_title": "Voyage d'un an",
+  "award_year_desc": "Atteignez un rythme de 365 jours",
+  "awards_loadError": "La progression n'a pas pu se charger",
+  "awards_journeyComplete": "Voyage terminé",
+  "awards_nextGoal": "Objectif suivant",
+  "awards_allYours": "Chaque réalisation est à vous",
+  "awards_dayStreak": "séquence d'une journée",
+  "awards_fasts": "jeûnes",
+  "awards_total": "total",
+  "awards_stageStart": "Commencer",
+  "awards_stageRhythm": "Rythme",
+  "awards_stageEndurance": "Endurance",
+  "awards_stageMastery": "Maîtrise",
+  "awards_completed": "Complété",
+  "awards_fastsRemaining": "{count} jeûne à emporter",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "{count} jours restants",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "{count} heures restantes",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Essayer à nouveau",
+  "game_title": "Centre de progrès",
+  "game_quests": "Les quêtes du jour",
+  "game_questsDesc": "Petits pas, rythme durable.",
+  "game_season": "Saison en 30 étapes",
+  "game_seasonDesc": "Un sceau de collection toutes les cinq étapes.",
+  "game_badges": "Collection de badges",
+  "game_shields": "Boucliers de rythme {count}",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Obtenu toutes les sept réussites. Une journée manquée n’efface jamais vos progrès.",
+  "game_league": "Ligue hebdomadaire privée",
+  "game_leagueDesc": "Votre score rythmique se situe dans le centile {percent} d’un modèle local privé. Le poids et le jeûne extrême ne sont jamais classés.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Points d'expérience de niveau {level}, {xp}",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Explorateur de rythme",
+  "game_streak": "Traînée",
+  "game_targets": "Cibles",
+  "game_best": "Meilleur",
+  "quest_rhythm": "Construisez le rythme d’aujourd’hui",
+  "quest_hydrate": "Atteignez la moitié de votre objectif en eau",
+  "quest_steady": "Protégez votre séquence",
+  "badge_first_title": "Premier pas",
+  "badge_first_desc": "Enregistrez votre premier jeûne",
+  "badge_rhythm7_title": "Gardien du rythme",
+  "badge_rhythm7_desc": "Atteignez une séquence de 7 jours",
+  "badge_rhythm3_title": "Rythme de trois jours",
+  "badge_rhythm3_desc": "Atteignez une séquence de 3 jours",
+  "badge_target1_title": "Première cible",
+  "badge_target1_desc": "Complétez rapidement votre premier objectif",
+  "badge_target3_title": "Trois étapes",
+  "badge_target3_desc": "Complétez 3 cibles",
+  "badge_water_title": "Équilibré",
+  "badge_water_desc": "Complétez l'objectif quotidien en eau",
+  "badge_support_title": "Conscience de soi",
+  "badge_support_desc": "Utiliser le mode assistance",
+  "badge_hours10_title": "10 heures",
+  "badge_hours10_desc": "Enregistrez 10 heures au total",
+  "badge_target10_title": "Dix forts",
+  "badge_target10_desc": "Complétez 10 cibles",
+  "badge_target20_title": "Vingt cibles",
+  "badge_target20_desc": "Complétez 20 cibles",
+  "badge_fast16_title": "16 heures",
+  "badge_fast16_desc": "Atteignez 16 heures en un seul jeûne",
+  "badge_hours50_title": "50 heures",
+  "badge_hours50_desc": "Enregistrez 50 heures au total",
+  "badge_hours100_title": "Cent heures",
+  "badge_hours100_desc": "Enregistrez 100 heures au total",
+  "badge_target30_title": "Trente cibles",
+  "badge_target30_desc": "Complétez 30 cibles",
+  "badge_rhythm30_title": "Rythme de 30 jours",
+  "badge_rhythm30_desc": "Atteignez une séquence de 30 jours",
+  "paywall_restoreSuccess": "Achats restaurés !",
+  "fasting_progressSemantics": "Progrès à jeun {percent} pourcentage",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "À vie",
+  "paywall_once": "paiement unique",
+  "paywall_processing": "Traitement…",
+  "paywall_continue": "Continuer",
+  "paywall_productsUnavailable": "Les achats sont indisponibles pour le moment. Réessayez plus tard.",
+  "paywall_purchaseFailed": "L’achat n’a pas pu être finalisé.",
+  "paywall_nothingToRestore": "Aucun achat antérieur n’a été trouvé.",
+  "paywall_restoreFailed": "Les achats n’ont pas pu être restaurés.",
+  "paywall_terms": "Conditions d’utilisation",
+  "permission_notificationDesc": "Rappels de jeûne, changements de phase et notifications de fin",
+  "profile_privacyChoices": "Choix de confidentialité",
+  "phase_hourMarker": "{hour}h",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_autoRenewInfo": "Les abonnements se renouvellent automatiquement sauf résiliation au moins 24 heures avant la fin de la période. Gérez-les dans les réglages de l'App Store.",
+  "paywall_perMonth": "{price} / mois",
+  "paywall_savePercent": "Économisez {percent}%",
+  "paywall_freeTrialDays": "{days} jours d'essai gratuit",
+  "paywall_startFreeTrial": "Commencer l'essai gratuit",
+  "paywall_retry": "Réessayer",
+  "paywall_alreadyOwned": "Vous possédez déjà cet abonnement. Touchez « Restaurer les achats ».",
+  "paywall_storeUnavailable": "Impossible de joindre la boutique. Vérifiez votre connexion et réessayez.",
+  "paywall_secureNote": "Annulez à tout moment. Le paiement est débité de votre compte.",
+  "paywall_autoRenewInfoPlay": "Les abonnements sont renouvelés automatiquement sauf résiliation au moins 24 heures avant la fin de la période. Gérez ou résiliez à tout moment dans Google Play > Abonnements.",
+  "paywall_allPlansDesc": "Débloque 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat et Warrior",
+  "paywall_noAdsDesc": "Les bannières et les interstitiels sont entièrement désactivés",
+  "foodScan_title": "Analyse de repas par IA",
+  "foodScan_scanCta": "Scanner le repas",
+  "foodScan_scanCtaDesc": "Photographiez votre assiette, obtenez calories et macros",
+  "foodScan_introTitle": "Photographiez votre assiette",
+  "foodScan_introDesc": "L'IA analyse la photo et estime calories, protéines, glucides et lipides.",
+  "foodScan_tipLight": "Une lumière bonne et uniforme améliore l'estimation",
+  "foodScan_tipFrame": "Cadrez l'assiette entière",
+  "foodScan_tipScale": "Incluez des couverts ou une main pour estimer la portion",
+  "foodScan_takePhoto": "Prendre une photo",
+  "foodScan_chooseFromGallery": "Choisir dans la galerie",
+  "foodScan_scansLeft": "Il vous reste {count} scans aujourd'hui",
+  "foodScan_quotaReached": "Vous avez utilisé les scans du jour. Réessayez demain.",
+  "foodScan_privacyNote": "La photo est envoyée à l'API Gemini de Google pour analyse et n'est pas conservée sur nos serveurs.",
+  "foodScan_analyzing": "Analyse de votre repas…",
+  "foodScan_analyzingHint": "Cela prend généralement quelques secondes",
+  "foodScan_detectedItems": "Aliments détectés",
+  "foodScan_disclaimer": "Les estimations de l'IA sont approximatives. Touchez un élément pour le corriger.",
+  "foodScan_lowConfidence": "Le modèle est incertain sur cette photo. Vérifiez les valeurs avant d'enregistrer.",
+  "foodScan_save": "Ajouter aux repas",
+  "foodScan_retake": "Nouvelle photo",
+  "foodScan_retry": "Réessayer",
+  "foodScan_editItem": "Modifier l'élément",
+  "foodScan_portion": "Portion",
+  "foodScan_saveEdit": "Enregistrer",
+  "foodScan_premiumTitle": "Fonctionnalité Premium",
+  "foodScan_premiumDesc": "L'analyse des calories par photo est incluse dans Premium.",
+  "foodScan_upgrade": "Voir Premium",
+  "foodScan_errorNetwork": "Pas de connexion. Vérifiez votre réseau et réessayez.",
+  "foodScan_errorRateLimited": "Trop de scans en ce moment. Réessayez dans quelques minutes.",
+  "foodScan_errorUnavailable": "L'analyse photo est indisponible pour le moment.",
+  "foodScan_errorServer": "Le service d'analyse rencontre un problème. Réessayez sous peu.",
+  "foodScan_errorNoFood": "Aucun aliment détecté sur cette photo. Essayez une prise plus nette de l'assiette.",
+  "foodScan_errorUnreadable": "Cette photo n'a pas pu être analysée. Essayez-en une autre.",
+  "paywall_aiFoodScan": "Scan de repas par IA",
+  "paywall_aiFoodScanDesc": "Photographiez un repas et enregistrez calories et macros en quelques secondes",
+  "completion_earlyTitle": "Jeûne terminé",
+  "completion_earlyMessage": "La durée d’aujourd’hui a été enregistrée. La série et la progression des succès n’ont pas changé, car l’objectif n’a pas été atteint."
+}

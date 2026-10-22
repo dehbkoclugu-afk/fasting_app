@@ -1,0 +1,775 @@
+{
+  "@@locale": "zh",
+  "appTitle": "FastTrack",
+  "greeting_morning": "早上好",
+  "greeting_afternoon": "下午好",
+  "greeting_evening": "晚上好",
+  "tab_timer": "首页",
+  "tab_explore": "探索",
+  "tab_stats": "报告",
+  "tab_meals": "膳食",
+  "tab_achievements": "成就",
+  "tab_profile": "账户",
+  "timer_fasting": "禁食时间",
+  "timer_remaining": "剩余时间",
+  "timer_elapsed": "已用时间",
+  "timer_start": "开始",
+  "timer_stop": "停止",
+  "timer_completed": "恭喜！",
+  "timer_completedMessage": "您已成功完成禁食！",
+  "timer_selectPlan": "选择禁食计划",
+  "timer_stopConfirm": "确定要提前结束禁食吗？",
+  "timer_stopTitle": "结束禁食",
+  "timer_cancel": "取消",
+  "timer_confirmStop": "是，结束",
+  "phase_anabolic": "合成代谢期",
+  "phase_anabolicDesc": "正在消化",
+  "phase_catabolic": "分解代谢期",
+  "phase_catabolicDesc": "能量转换中",
+  "phase_fatBurning": "脂肪燃烧",
+  "phase_fatBurningDesc": "脂肪燃烧已开始",
+  "phase_ketosis": "酮症",
+  "phase_ketosisDesc": "酮体生成活跃",
+  "phase_autophagy": "自噬",
+  "phase_autophagyDesc": "细胞更新",
+  "stats_title": "统计",
+  "stats_week": "周",
+  "stats_month": "月",
+  "stats_year": "年",
+  "stats_totalFasts": "禁食总次数",
+  "stats_average": "平均",
+  "stats_fastDuration": "禁食时长",
+  "stats_streak": "连续记录",
+  "stats_daysConsecutive": "连续天数",
+  "stats_success": "成功",
+  "stats_completion": "完成率",
+  "stats_weeklyFasting": "每周禁食",
+  "stats_monthlyView": "月度视图",
+  "stats_weightChange": "体重变化",
+  "heatmap_none": "无",
+  "heatmap_low": "较少",
+  "heatmap_good": "良好",
+  "heatmap_full": "充足",
+  "meals_title": "膳食计划",
+  "meals_eatingWindow": "进食窗口",
+  "meals_windowOpen": "已开放",
+  "meals_windowFasting": "禁食中",
+  "meals_calories": "卡路里",
+  "meals_protein": "蛋白质",
+  "meals_carbs": "碳水化合物",
+  "meals_fat": "脂肪",
+  "meals_todayMeals": "今日膳食",
+  "meals_noMeals": "尚未添加膳食",
+  "meals_breakfastSuggestions": "开斋餐建议",
+  "meals_addMeal": "添加膳食",
+  "profile_title": "个人资料",
+  "profile_user": "用户",
+  "profile_planActive": "{plan}计划已启用",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "升级到高级版",
+  "profile_premiumDesc": "所有禁食计划，无广告",
+  "profile_bodyMetrics": "身体指标",
+  "profile_height": "身高",
+  "profile_weight": "体重",
+  "profile_targetWeight": "目标体重",
+  "profile_bmi": "BMI",
+  "profile_settings": "设置",
+  "profile_notifications": "通知",
+  "profile_darkTheme": "深色主题",
+  "profile_waterReminder": "饮水提醒",
+  "profile_phaseNotifications": "阶段通知",
+  "profile_language": "语言",
+  "profile_about": "关于",
+  "profile_rateApp": "评价应用",
+  "profile_share": "分享",
+  "profile_privacyPolicy": "隐私政策",
+  "profile_version": "版本",
+  "onboarding_welcome": "欢迎",
+  "onboarding_welcomeDesc": "掌控您的\n间歇性禁食之旅",
+  "onboarding_featureTimer": "智能禁食计时器",
+  "onboarding_featureStats": "详细统计和图表",
+  "onboarding_featureMeals": "膳食计划和食谱建议",
+  "onboarding_getStarted": "开始使用",
+  "onboarding_selectGoal": "您的目标是什么？",
+  "onboarding_selectGoalDesc": "可以多选",
+  "onboarding_goalWeight": "减重",
+  "onboarding_goalWeightDesc": "健康减重",
+  "onboarding_goalHealth": "改善健康",
+  "onboarding_goalHealthDesc": "整体健康和免疫力",
+  "onboarding_goalEnergy": "更有活力",
+  "onboarding_goalEnergyDesc": "全天保持精力",
+  "onboarding_goalMental": "思维清晰",
+  "onboarding_goalMentalDesc": "专注与清晰",
+  "onboarding_goalLongevity": "长寿",
+  "onboarding_goalLongevityDesc": "细胞更新与健康衰老",
+  "onboarding_goalDiscipline": "自律",
+  "onboarding_goalDisciplineDesc": "培养自律能力",
+  "onboarding_selectPlan": "选择您的计划",
+  "onboarding_selectPlanDesc": "选择最适合您的禁食计划",
+  "onboarding_bodyInfo": "输入您的信息",
+  "onboarding_bodyInfoDesc": "用于个性化建议",
+  "onboarding_gender": "性别",
+  "onboarding_male": "男",
+  "onboarding_female": "女",
+  "onboarding_age": "年龄",
+  "onboarding_bodyInfoDisclaimer": "此信息仅保存在您的设备上，并用于计算卡路里。",
+  "onboarding_permissions": "最后一步",
+  "onboarding_permissionsDesc": "启用权限以获得最佳体验",
+  "onboarding_next": "继续",
+  "onboarding_start": "开始吧！",
+  "onboarding_skipForNow": "稍后设置",
+  "waterAdded": "已添加250毫升水",
+  "languageSelect": "选择语言",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "升级到高级版",
+  "paywall_subtitle": "解锁所有禁食计划并移除广告",
+  "paywall_allPlans": "所有禁食计划",
+  "paywall_advancedStats": "高级统计",
+  "paywall_mealPlanner": "膳食计划",
+  "paywall_themes": "主题自定义",
+  "paywall_noAds": "无广告",
+  "paywall_weekly": "每周",
+  "paywall_monthly": "每月",
+  "paywall_yearly": "每年",
+  "paywall_bestValue": "最划算",
+  "paywall_freeTrial": "免费试用（3天）",
+  "paywall_restore": "恢复购买",
+  "paywall_premiumActive": "高级版已启用！",
+  "paywall_premiumActiveDesc": "所有禁食计划均已解锁，广告已关闭",
+  "water_title": "饮水量",
+  "water_addWater": "添加饮水",
+  "water_goal": "目标",
+  "water_ml": "毫升",
+  "common_ok": "确定",
+  "common_cancel": "取消",
+  "common_save": "保存",
+  "common_delete": "删除",
+  "common_hours": "小时",
+  "common_minutes": "分钟",
+  "common_days": "天",
+  "common_enable": "启用",
+  "streakCard_currentStreak": "当前连续记录",
+  "streakCard_longestStreak": "最长连续记录",
+  "streakCard_totalSessions": "禁食总次数",
+  "meals_mealType": "膳食类型",
+  "meals_breakfast": "早餐",
+  "meals_lunch": "午餐",
+  "meals_dinner": "晚餐",
+  "meals_snack": "加餐",
+  "meals_carbohydrate": "碳水化合物",
+  "meals_add": "添加",
+  "meals_mealName": "膳食名称",
+  "bodyMetrics_title": "身体指标",
+  "bodyMetrics_weight": "体重",
+  "bodyMetrics_target": "目标",
+  "bodyMetrics_save": "保存",
+  "bodyMetrics_history": "历史",
+  "bodyMetrics_bmiValue": "BMI：{value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "暂无数据",
+  "meals_quickAdd": "快速添加",
+  "meals_manualEntry": "手动输入",
+  "meals_added": "已添加{name}",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "名称和卡路里为必填项",
+  "bodyMetrics_addWeight": "添加体重",
+  "bodyMetrics_hintWeight": "例如74.5",
+  "bodyMetrics_invalidWeight": "请输入有效体重",
+  "bodyMetrics_weightSaved": "已保存{value}公斤",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "时长",
+  "completion_plan": "计划",
+  "completion_lastPhase": "最后阶段",
+  "timer_remainingTime": "剩余时间",
+  "timer_ready": "准备开始",
+  "streak_status": "状态",
+  "streak_startToday": "今天开始！",
+  "streak_goodStart": "开局不错！",
+  "streak_goingGreat": "进展顺利！",
+  "streak_superb": "太棒了！",
+  "streak_legendary": "传奇！",
+  "streak_incredible": "不可思议！",
+  "weight_noRecord": "尚无体重记录\n请从个人资料 > 身体指标添加",
+  "day_mon": "周一",
+  "day_tue": "周二",
+  "day_wed": "周三",
+  "day_thu": "周四",
+  "day_fri": "周五",
+  "day_sat": "周六",
+  "day_sun": "周日",
+  "day_short_mon": "一",
+  "day_short_tue": "二",
+  "day_short_wed": "三",
+  "day_short_thu": "四",
+  "day_short_fri": "五",
+  "day_short_sat": "六",
+  "day_short_sun": "日",
+  "month_jan": "一月",
+  "month_feb": "二月",
+  "month_mar": "三月",
+  "month_apr": "四月",
+  "month_may": "五月",
+  "month_jun": "六月",
+  "month_jul": "七月",
+  "month_aug": "八月",
+  "month_sep": "九月",
+  "month_oct": "十月",
+  "month_nov": "十一月",
+  "month_dec": "十二月",
+  "meals_fastingWindow": "禁食（{hours}小时）",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "进食（{hours}小时）",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "燕麦奶昔",
+  "recipe_avocadoToast": "牛油果吐司",
+  "recipe_yogurtBowl": "酸奶碗",
+  "elapsed_time": "已用时间",
+  "fast_ends_on": "您的禁食结束于",
+  "end_fasting": "结束禁食",
+  "start_fasting": "开始禁食",
+  "water_tracker": "饮水追踪",
+  "weight_tracker": "体重追踪",
+  "drink": "饮水",
+  "log_weight": "记录体重",
+  "bmi": "BMI",
+  "weight_lost": "已减体重",
+  "current_weight": "当前体重",
+  "goal_weight": "目标体重",
+  "daily_goal": "每日目标",
+  "completed_percent": "已完成{percent}%",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "探索",
+  "achievements": "成就",
+  "profile_theme": "外观",
+  "theme_select": "选择外观",
+  "theme_system": "跟随系统",
+  "theme_light": "浅色",
+  "theme_dark": "深色",
+  "language_system": "系统语言",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "完成提示音",
+  "profile_calmGamification": "轻松游戏化",
+  "profile_calmGamificationDesc": "减轻联赛和赛季压力",
+  "profile_editName": "编辑您的姓名",
+  "profile_name": "姓名",
+  "circle_title": "禁食圈",
+  "circle_you": "您",
+  "circle_tagline": "一起坚持，毫无压力。",
+  "circle_privacy": "体重和私人指标保持隐藏，仅显示进度和支持。",
+  "circle_sendSupport": "发送支持 · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "邀请码已复制",
+  "circle_createInvite": "创建私人邀请",
+  "crisis_nameTitle": "首先，说出正在发生什么",
+  "crisis_nameDesc": "这可能是饥饿、习惯或情绪。",
+  "crisis_waterTitle": "喝一杯水",
+  "crisis_waterDesc": "然后缓慢深呼吸三次。",
+  "crisis_delayTitle": "将决定推迟10分钟",
+  "crisis_delayDesc": "如果感觉不适，结束禁食并不意味着失败。",
+  "crisis_hunger": "饥饿",
+  "crisis_habit": "习惯",
+  "crisis_stress": "压力",
+  "crisis_tenMore": "再给自己10分钟",
+  "stats_storyEmpty": "第一次禁食将开启您的个人故事。",
+  "stats_story": "本阶段您禁食了{sessions}次，保持节奏{hours}小时，完成率达到{rate}%。",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "您的节奏故事",
+  "home_todayRhythm": "今日节奏",
+  "home_finalHourSupport": "最后一小时支持",
+  "home_needSupport": "我需要一点支持",
+  "home_todaySummary": "今日概览",
+  "home_dayStreak": "天连续",
+  "home_weightGoal": "目标{weight}公斤",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "您的节奏很稳定",
+  "weather_gentle": "轻松的一天",
+  "weather_water": "一杯水可能会有帮助。",
+  "weather_listen": "您已经走了很远，请倾听身体的声音。",
+  "weather_onPlan": "今天的节奏符合您的计划。",
+  "weather_challenging": "过去这个小时比较难熬，支持模式已准备好。",
+  "replay_copied": "禁食回顾已复制",
+  "replay_button": "回顾",
+  "replay_text": "我用{hours}小时{minutes}分钟完成了{plan}禁食 · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "代谢之旅",
+  "journey_now": "现在",
+  "journey_next": "距离{phase}还有{time}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "阶段时间仅为一般估计，并非医学测量。",
+  "phase_hours": "第{start}–{end}小时",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "此时间仅为一般估计，不同人的代谢反应可能有所不同。",
+  "bmi_underweight": "体重过轻",
+  "bmi_normal": "正常",
+  "bmi_overweight": "超重",
+  "bmi_obese": "肥胖",
+  "notification_halfwayTitle": "已完成一半！ 💪",
+  "notification_halfwayBody": "您已完成{plan}禁食的一半，继续加油！",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "已进入分解代谢期 📉",
+  "notification_phaseFatBurning": "脂肪燃烧已开始！ 🔥",
+  "notification_phaseKetosis": "您正处于酮症状态 ⚡",
+  "notification_phaseAutophagy": "自噬已激活！ 🔄",
+  "notification_completedBody": "您已完成{plan}禁食！进食窗口已开放。",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "喝水 💧",
+  "notification_waterBody": "禁食期间别忘了补充充足水分！",
+  "notification_windowTitle": "进食窗口即将关闭 ⏰",
+  "notification_windowBody": "您的进食窗口将在30分钟后关闭。",
+  "notification_streakTitle": "连续{days}天！ 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "您做得很棒！今天继续保持。",
+  "notification_ongoingTitle": "禁食进行中 - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "剩余：{time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "禁食已开始 - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "目标：{hours}小时",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours}小时{minutes}分钟",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "禁食指南",
+  "explore_guideDesc": "您需要了解的间歇性禁食知识",
+  "explore_circleDesc": "与您的私人小组安静地互相支持。",
+  "explore_faq": "常见问题",
+  "explore_education": "此内容仅用于一般教育，不构成医学诊断或治疗建议。",
+  "explore_safety": "健康与安全",
+  "explore_safetyDesc": "如果您有疾病、长期服药、出现令人担忧的症状、正在怀孕或哺乳，请在禁食前咨询合格的医疗专业人员。如感觉不适，请停止禁食。",
+  "explore_sources": "资料来源",
+  "explore_sourcesDesc": "内容根据下方公共卫生资料进行了简化。",
+  "explore_sourceError": "无法打开资料来源",
+  "explore_rules": "重要规则",
+  "explore_rule1": "禁食期间不要摄入含热量的食物",
+  "explore_rule2": "饮用充足的水和液体",
+  "explore_rule3": "在进食窗口内均衡饮食",
+  "explore_rule4": "如感觉不适，请停止禁食",
+  "explore_rule5": "孕妇或哺乳期女性不应禁食",
+  "explore_rule6": "如有慢性疾病，请咨询医生",
+  "tip_water": "保持水分充足",
+  "tip_waterDesc": "口渴时喝水，并随餐补充液体。需求会因健康状况、天气和活动量而异。",
+  "tip_food": "合理饮食",
+  "tip_foodDesc": "进食期间请选择富含蛋白质、纤维和健康脂肪的食物，避免加工食品。",
+  "tip_sleep": "保证睡眠",
+  "tip_sleepDesc": "规律且充足的睡眠有益于整体健康。请安排好禁食，避免影响睡眠。",
+  "tip_exercise": "轻度运动",
+  "tip_exerciseDesc": "禁食期间可以轻松散步或练习瑜伽。避免剧烈运动，尤其是在身体适应前的最初几周。",
+  "tip_drinks": "允许的饮品",
+  "tip_drinksDesc": "禁食期间可以饮用水、纯茶和黑咖啡（不加糖、不加奶），这些饮品不会中断禁食。",
+  "faq_drinks": "禁食期间可以喝什么？",
+  "faq_drinksAnswer": "可以饮用水、纯茶和黑咖啡（不加糖/奶）。含热量的饮品会中断禁食。",
+  "faq_plan": "我该选择哪种禁食计划？",
+  "faq_planAnswer": "新手可从12:12或14:10开始。有经验者可尝试16:8或18:6。20:4和OMAD适合高级禁食者。",
+  "faq_exercise": "禁食期间可以运动吗？",
+  "faq_exerciseAnswer": "可以，但请避免高强度训练。轻度有氧、散步和瑜伽较为理想。力量训练请安排在进食窗口附近。",
+  "faq_weight": "禁食有助于减重吗？",
+  "faq_weightAnswer": "对一些人来说，限制进食时间可能减少总能量摄入。效果因人而异，长期影响仍在研究中。",
+  "plan_12_desc": "初级",
+  "plan_12_detail": "适合新手。包括睡眠时间在内禁食12小时。",
+  "plan_16_desc": "最受欢迎的计划",
+  "plan_16_detail": "最常见的间歇性禁食计划。禁食16小时，进食8小时，通常从午餐到晚餐。",
+  "plan_18_desc": "中级",
+  "plan_18_detail": "禁食18小时，进食6小时，脂肪燃烧持续更久。",
+  "plan_20_desc": "高级",
+  "plan_20_detail": "禁食20小时，进食4小时，适合进入酮症和自噬。",
+  "plan_omad_desc": "一天一餐",
+  "plan_omad_detail": "一天一餐。禁食23小时，进食1小时，适合专业级用户。",
+  "plan_52_desc": "每周2天",
+  "plan_52_detail": "5天正常饮食，另外2天仅摄入约500卡路里，是一种替代方案。",
+  "plan_ese_desc": "24小时禁食",
+  "plan_ese_detail": "每周进行1–2次24小时禁食，适合高级用户。",
+  "plan_warrior_desc": "勇士饮食法",
+  "plan_warrior_detail": "白天少量进食（水果、蔬菜），在晚间4小时窗口内吃主餐。",
+  "award_first_title": "第一步",
+  "award_first_desc": "完成第一次禁食",
+  "award_rhythm3_title": "3天节奏",
+  "award_rhythm3_desc": "保持三天节奏",
+  "award_hours24_title": "24小时",
+  "award_hours24_desc": "累计禁食24小时",
+  "award_week_title": "一周节奏",
+  "award_week_desc": "建立连续七天记录",
+  "award_fasts10_title": "禁食10次",
+  "award_fasts10_desc": "完成十次禁食",
+  "award_hours100_title": "100小时",
+  "award_hours100_desc": "累计达到100小时",
+  "award_rhythm30_title": "30天节奏",
+  "award_rhythm30_desc": "建立连续三十天记录",
+  "award_fasts50_title": "禁食50次",
+  "award_fasts50_desc": "完成五十次禁食",
+  "award_hours500_title": "500小时",
+  "award_hours500_desc": "累计达到500小时",
+  "award_fasts100_title": "禁食100次",
+  "award_fasts100_desc": "完成一百次禁食",
+  "award_rhythm90_title": "90天节奏",
+  "award_rhythm90_desc": "建立连续九十天记录",
+  "award_year_title": "一年之旅",
+  "award_year_desc": "达到365天节奏",
+  "awards_loadError": "无法加载进度",
+  "awards_journeyComplete": "旅程完成",
+  "awards_nextGoal": "下一个目标",
+  "awards_allYours": "所有成就都属于您",
+  "awards_dayStreak": "天连续",
+  "awards_fasts": "次禁食",
+  "awards_total": "总计",
+  "awards_stageStart": "开始",
+  "awards_stageRhythm": "节奏",
+  "awards_stageEndurance": "耐力",
+  "awards_stageMastery": "精通",
+  "awards_completed": "已完成",
+  "awards_fastsRemaining": "还需{count}次禁食",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "还需{count}天",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "还需{count}小时",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "重试",
+  "game_title": "进度中心",
+  "game_quests": "今日任务",
+  "game_questsDesc": "小步前进，保持可持续节奏。",
+  "game_season": "30步赛季",
+  "game_seasonDesc": "每五步获得一枚收藏印章。",
+  "game_badges": "徽章收藏",
+  "game_shields": "{count}枚节奏护盾",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "每完成七次即可获得。错过一天也不会抹去您的进度。",
+  "game_league": "私人周联赛",
+  "game_leagueDesc": "您的节奏得分在私人本地模型中位于第{percent}百分位。体重和极端禁食永远不会参与排名。",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "等级{level}，{xp}经验值",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "节奏探索者",
+  "game_streak": "连续记录",
+  "game_targets": "目标",
+  "game_best": "最佳",
+  "quest_rhythm": "建立今日节奏",
+  "quest_hydrate": "达到饮水目标的一半",
+  "quest_steady": "守住您的连续记录",
+  "badge_first_title": "第一步",
+  "badge_first_desc": "记录第一次禁食",
+  "badge_rhythm7_title": "节奏守护者",
+  "badge_rhythm7_desc": "连续达到7天",
+  "badge_rhythm3_title": "三天节奏",
+  "badge_rhythm3_desc": "连续达到3天",
+  "badge_target1_title": "第一个目标",
+  "badge_target1_desc": "完成第一次目标禁食",
+  "badge_target3_title": "三步",
+  "badge_target3_desc": "完成3个目标",
+  "badge_water_title": "平衡",
+  "badge_water_desc": "完成每日饮水目标",
+  "badge_support_title": "自我觉察",
+  "badge_support_desc": "使用支持模式",
+  "badge_hours10_title": "10小时",
+  "badge_hours10_desc": "累计记录10小时",
+  "badge_target10_title": "坚实十次",
+  "badge_target10_desc": "完成10个目标",
+  "badge_target20_title": "二十个目标",
+  "badge_target20_desc": "完成20个目标",
+  "badge_fast16_title": "16小时",
+  "badge_fast16_desc": "单次禁食达到16小时",
+  "badge_hours50_title": "50小时",
+  "badge_hours50_desc": "累计记录50小时",
+  "badge_hours100_title": "一百小时",
+  "badge_hours100_desc": "累计记录100小时",
+  "badge_target30_title": "三十个目标",
+  "badge_target30_desc": "完成30个目标",
+  "badge_rhythm30_title": "30天节奏",
+  "badge_rhythm30_desc": "连续达到30天",
+  "paywall_restoreSuccess": "购买已恢复！",
+  "fasting_progressSemantics": "禁食进度{percent}%",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}小时",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "终身",
+  "paywall_once": "一次性",
+  "paywall_processing": "处理中…",
+  "paywall_continue": "继续",
+  "paywall_productsUnavailable": "目前无法购买，请稍后重试。",
+  "paywall_purchaseFailed": "无法完成购买。",
+  "paywall_nothingToRestore": "未找到之前的购买。",
+  "paywall_restoreFailed": "无法恢复购买。",
+  "paywall_terms": "使用条款",
+  "permission_notificationDesc": "禁食提醒、阶段更新和完成通知",
+  "profile_privacyChoices": "隐私选项",
+  "paywall_autoRenewInfo": "除非在周期结束前至少24小时取消，否则订阅会自动续订。您可以随时在App Store设置中管理或取消。",
+  "paywall_perMonth": "{price} / 月",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "节省{percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "{days}天免费试用",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "开始免费试用",
+  "paywall_retry": "重试",
+  "paywall_alreadyOwned": "您已拥有此订阅。请点按“恢复购买”。",
+  "paywall_storeUnavailable": "目前无法连接商店。请检查网络连接后重试。",
+  "paywall_secureNote": "可随时取消。费用将从您的商店账户扣除。",
+  "paywall_autoRenewInfoPlay": "除非在周期结束前至少24小时取消，否则订阅会自动续订。您可以随时在Google Play > 订阅中管理或取消。",
+  "paywall_allPlansDesc": "解锁18:6、20:4、OMAD、5:2、Eat-Stop-Eat和Warrior",
+  "paywall_noAdsDesc": "横幅广告和插页广告将完全关闭",
+  "foodScan_title": "AI食物扫描",
+  "foodScan_scanCta": "扫描膳食",
+  "foodScan_scanCtaDesc": "拍摄餐盘，获取卡路里和宏量营养素",
+  "foodScan_introTitle": "拍摄您的餐盘",
+  "foodScan_introDesc": "AI读取照片并估算卡路里、蛋白质、碳水化合物和脂肪。",
+  "foodScan_tipLight": "均匀充足的光线可提高估算准确度",
+  "foodScan_tipFrame": "将整个餐盘放入画面",
+  "foodScan_tipScale": "加入餐具或手，以便估算份量",
+  "foodScan_takePhoto": "拍照",
+  "foodScan_chooseFromGallery": "从相册选择",
+  "foodScan_scansLeft": "今天还剩{count}次扫描",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "您已用完今天的扫描次数，请明天再试。",
+  "foodScan_privacyNote": "照片会发送至Google的Gemini API进行分析，不会存储在我们的服务器上。",
+  "foodScan_analyzing": "正在分析您的膳食…",
+  "foodScan_analyzingHint": "通常只需几秒钟",
+  "foodScan_detectedItems": "检测到的食物",
+  "foodScan_disclaimer": "AI估算仅供参考。点按项目可进行修正。",
+  "foodScan_lowConfidence": "模型无法确定这张照片的内容。保存前请检查数值。",
+  "foodScan_save": "添加到膳食",
+  "foodScan_retake": "新照片",
+  "foodScan_retry": "重试",
+  "foodScan_editItem": "编辑项目",
+  "foodScan_portion": "份量",
+  "foodScan_saveEdit": "保存",
+  "foodScan_premiumTitle": "高级版功能",
+  "foodScan_premiumDesc": "高级版包含照片卡路里分析。",
+  "foodScan_upgrade": "查看高级版",
+  "foodScan_errorNetwork": "无网络连接。请检查网络后重试。",
+  "foodScan_errorRateLimited": "当前扫描请求过多，请几分钟后重试。",
+  "foodScan_errorUnavailable": "目前无法使用照片分析。",
+  "foodScan_errorServer": "分析服务遇到问题，请稍后重试。",
+  "foodScan_errorNoFood": "照片中未发现食物，请更清晰地拍摄餐盘。",
+  "foodScan_errorUnreadable": "无法分析这张照片，请尝试另一张。",
+  "paywall_aiFoodScan": "AI食物扫描",
+  "paywall_aiFoodScanDesc": "拍摄膳食，数秒内记录卡路里和宏量营养素",
+  "completion_earlyTitle": "禁食已结束",
+  "completion_earlyMessage": "今天的时长已保存。由于未完成目标，连续记录和成就进度没有变化。"
+}

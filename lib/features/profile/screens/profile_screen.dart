@@ -10,15 +10,15 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../core/constants/fasting_plans.dart';
 import '../../../core/utils/calculations.dart';
 import '../../../shared/widgets/glass_card.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
+import '../../../shared/widgets/premium_promo_card.dart';
 import '../../../services/admob_service.dart';
+import '../../../services/notification_service.dart';
+import '../../../core/config/build_config.dart';
 import '../providers/settings_provider.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
-
-  static const _privacyUrl = String.fromEnvironment('PRIVACY_POLICY_URL');
-  static const _androidStoreUrl = String.fromEnvironment('ANDROID_STORE_URL');
-  static const _iosStoreUrl = String.fromEnvironment('IOS_STORE_URL');
 
   Future<void> _openUrl(BuildContext context, String value) async {
     final uri = Uri.tryParse(value);
@@ -35,23 +35,16 @@ class ProfileScreen extends ConsumerWidget {
     }
   }
 
-  Future<void> _rate(BuildContext context) => _openUrl(
-    context,
-    Theme.of(context).platform == TargetPlatform.iOS
-        ? _iosStoreUrl
-        : _androidStoreUrl,
-  );
+  Future<void> _rate(BuildContext context) =>
+      _openUrl(context, BuildConfig.storeUrl);
 
   Future<void> _share(BuildContext context) async {
-    final url =
-        Theme.of(context).platform == TargetPlatform.iOS
-            ? _iosStoreUrl
-            : _androidStoreUrl;
+    final url = BuildConfig.storeUrl;
     if (url.isEmpty) return _openUrl(context, url);
     await Clipboard.setData(ClipboardData(text: url));
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context)!.replay_copied)),
+        SnackBar(content: Text(AppLocalizations.of(context)!.profile_share)),
       );
     }
   }
@@ -59,11 +52,7 @@ class ProfileScreen extends ConsumerWidget {
   Future<void> _privacyChoices(BuildContext context) async {
     final success = await AdmobService().showPrivacyOptions();
     if (!success && context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context)!.explore_sourceError),
-        ),
-      );
+      await _openUrl(context, BuildConfig.privacyPolicyUrl);
     }
   }
 
@@ -82,7 +71,7 @@ class ProfileScreen extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: AppSpacing.screenPadding,
+          padding: AppSpacing.screenPadding.copyWith(bottom: 48),
           child: Column(
             children: [
               const SizedBox(height: 8),
@@ -96,118 +85,22 @@ class ProfileScreen extends ConsumerWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
-
-              // Profile card
-              GlassCard(
+              const SizedBox(height: 14),
+              InkWell(
+                borderRadius: BorderRadius.circular(26),
                 onTap: () => _showNameDialog(context, ref, settings.userName),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: AppColors.primary.withValues(alpha: 0.1),
-                      child: const Icon(
-                        Icons.person,
-                        size: 32,
-                        color: AppColors.primary,
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            settings.userName.isNotEmpty
-                                ? settings.userName
-                                : l10n.profile_user,
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          Text(
-                            l10n.profile_planActive(plan.name),
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: theme.colorScheme.onSurface.withValues(
-                                alpha: 0.5,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Icon(
-                      PhosphorIcons.pencilSimple(),
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
-                    ),
-                  ],
+                child: EditorialScreenHero(
+                  assetPath: 'assets/images/editorial/profile-progress.webp',
+                  title: settings.userName.isNotEmpty ? settings.userName : l10n.profile_user,
+                  subtitle: l10n.profile_planActive(plan.name),
+                  height: 156,
+                  textWidth: 220,
                 ),
               ),
               const SizedBox(height: 16),
 
-              // Premium card
-              GlassCard(
-                onTap: () => context.push('/paywall'),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 4,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        AppColors.primary.withValues(alpha: 0.05),
-                        AppColors.secondary.withValues(alpha: 0.05),
-                      ],
-                    ),
-                    borderRadius: AppSpacing.borderRadiusLg,
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [AppColors.primary, AppColors.secondary],
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Icon(
-                          PhosphorIconsRegular.crown,
-                          color: Colors.white,
-                          size: 22,
-                        ),
-                      ),
-                      const SizedBox(width: 14),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              l10n.profile_upgradePremium,
-                              style: theme.textTheme.titleSmall?.copyWith(
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            Text(
-                              l10n.profile_premiumDesc,
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                color: theme.colorScheme.onSurface.withValues(
-                                  alpha: 0.5,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Icon(
-                        PhosphorIcons.caretRight(),
-                        color: AppColors.primary,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Premium offer: hidden automatically for active subscribers.
+              const PremiumPromoCard(),
               const SizedBox(height: 24),
 
               // Body metrics
@@ -269,7 +162,12 @@ class ProfileScreen extends ConsumerWidget {
                       title: l10n.profile_notifications,
                       trailing: Switch(
                         value: settings.notificationsEnabled,
-                        onChanged: (v) {
+                        onChanged: (v) async {
+                          if (v) {
+                            final granted = await NotificationService()
+                                .requestPermission();
+                            if (!granted) return;
+                          }
                           ref
                               .read(settingsProvider.notifier)
                               .setNotifications(v);
@@ -277,19 +175,18 @@ class ProfileScreen extends ConsumerWidget {
                       ),
                     ),
                     const Divider(height: 1),
-                    _buildSettingsTile(
-                      context,
-                      icon: PhosphorIcons.moon(),
-                      title: l10n.profile_theme,
-                      subtitle: _themeLabel(l10n, settings.themeMode),
-                      trailing: Icon(
-                        PhosphorIcons.caretRight(),
-                        size: 20,
-                        color: theme.colorScheme.onSurface.withValues(
-                          alpha: 0.3,
-                        ),
-                      ),
-                      onTap: () => _showThemeDialog(context, ref),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        Row(children: [Icon(PhosphorIcons.moon(), size: 20, color: AppColors.primary), const SizedBox(width: 12), Text(l10n.profile_theme, style: theme.textTheme.bodyMedium)]),
+                        const SizedBox(height: 10),
+                        SizedBox(width: double.infinity, child: SegmentedButton<ThemeMode>(
+                          showSelectedIcon: false,
+                          segments: ThemeMode.values.map((mode) => ButtonSegment(value: mode, label: Text(_themeLabel(l10n, mode)))).toList(),
+                          selected: {settings.themeMode},
+                          onSelectionChanged: (selection) => ref.read(settingsProvider.notifier).setThemeMode(selection.first),
+                        )),
+                      ]),
                     ),
                     const Divider(height: 1),
                     _buildSettingsTile(
@@ -298,11 +195,11 @@ class ProfileScreen extends ConsumerWidget {
                       title: l10n.profile_waterReminder,
                       trailing: Switch(
                         value: settings.waterReminders,
-                        onChanged: (v) {
+                        onChanged: settings.notificationsEnabled ? (v) {
                           ref
                               .read(settingsProvider.notifier)
                               .setWaterReminders(v);
-                        },
+                        } : null,
                       ),
                     ),
                     const Divider(height: 1),
@@ -312,11 +209,11 @@ class ProfileScreen extends ConsumerWidget {
                       title: l10n.profile_phaseNotifications,
                       trailing: Switch(
                         value: settings.phaseNotifications,
-                        onChanged: (v) {
+                        onChanged: settings.notificationsEnabled ? (v) {
                           ref
                               .read(settingsProvider.notifier)
                               .setPhaseNotifications(v);
-                        },
+                        } : null,
                       ),
                     ),
                     const Divider(height: 1),
@@ -327,7 +224,9 @@ class ProfileScreen extends ConsumerWidget {
                       trailing: Switch(
                         value: settings.soundEnabled,
                         onChanged:
-                            ref.read(settingsProvider.notifier).setSoundEnabled,
+                            ref
+                                .read(settingsProvider.notifier)
+                                .setSoundEnabled,
                       ),
                     ),
                     const Divider(height: 1),
@@ -357,7 +256,7 @@ class ProfileScreen extends ConsumerWidget {
                           alpha: 0.3,
                         ),
                       ),
-                      onTap: () => _showLanguageDialog(context, ref),
+                      onTap: () => _showLanguageScreen(context, ref),
                     ),
                   ],
                 ),
@@ -388,7 +287,8 @@ class ProfileScreen extends ConsumerWidget {
                       context,
                       icon: PhosphorIcons.shieldCheck(),
                       title: l10n.profile_privacyPolicy,
-                      onTap: () => _openUrl(context, _privacyUrl),
+                      onTap:
+                          () => _openUrl(context, BuildConfig.privacyPolicyUrl),
                     ),
                     const Divider(height: 1),
                     _buildSettingsTile(
@@ -402,7 +302,7 @@ class ProfileScreen extends ConsumerWidget {
                       context,
                       icon: PhosphorIcons.info(),
                       title: l10n.profile_version,
-                      subtitle: '1.0.0',
+                      subtitle: '1.2.7 (21)',
                     ),
                   ],
                 ),
@@ -495,63 +395,20 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 
-  void _showLanguageDialog(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
-    final settings = ref.read(settingsProvider);
+  static const _languageOptions = <(String, String)>[
+    ('en', 'English'), ('ar', 'العربية'), ('cs', 'Čeština'), ('da', 'Dansk'),
+    ('de', 'Deutsch'), ('es_ES', 'Español (España)'), ('es_419', 'Español (Latinoamérica)'),
+    ('fi', 'Suomi'), ('fr', 'Français'), ('hi', 'हिन्दी'), ('hu', 'Magyar'),
+    ('id', 'Bahasa Indonesia'), ('it', 'Italiano'), ('he', 'עברית'), ('ja', '日本語'),
+    ('ko', '한국어'), ('nl', 'Nederlands'), ('no', 'Norsk'), ('pl', 'Polski'),
+    ('pt_BR', 'Português (Brasil)'), ('ro', 'Română'), ('ru', 'Русский'),
+    ('sk', 'Slovenčina'), ('sv', 'Svenska'), ('th', 'ไทย'), ('tr', 'Türkçe'),
+    ('uk', 'Українська'), ('vi', 'Tiếng Việt'), ('zh_CN', '简体中文'),
+  ];
 
-    showDialog(
-      context: context,
-      builder:
-          (ctx) => SimpleDialog(
-            title: Text(l10n.languageSelect),
-            children:
-                <(String?, String)>[
-                  (null, l10n.language_system),
-                  ('en', l10n.languageEnglish),
-                  ('tr', l10n.languageTurkish),
-                  ('es', l10n.languageSpanish),
-                  ('pt', l10n.languagePortugueseBrazil),
-                  ('de', l10n.languageGerman),
-                  ('fr', l10n.languageFrench),
-                ].map((option) {
-                  return RadioListTile<String?>(
-                    title: Text(option.$2),
-                    value: option.$1,
-                    groupValue: settings.locale,
-                    onChanged: (value) {
-                      ref.read(settingsProvider.notifier).setLocale(value);
-                      Navigator.pop(ctx);
-                    },
-                  );
-                }).toList(),
-          ),
-    );
-  }
-
-  void _showThemeDialog(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
-    final settings = ref.read(settingsProvider);
-    showDialog<void>(
-      context: context,
-      builder:
-          (dialogContext) => SimpleDialog(
-            title: Text(l10n.theme_select),
-            children:
-                ThemeMode.values.map((mode) {
-                  return RadioListTile<ThemeMode>(
-                    title: Text(_themeLabel(l10n, mode)),
-                    value: mode,
-                    groupValue: settings.themeMode,
-                    onChanged: (value) {
-                      if (value == null) return;
-                      ref.read(settingsProvider.notifier).setThemeMode(value);
-                      Navigator.pop(dialogContext);
-                    },
-                  );
-                }).toList(),
-          ),
-    );
-  }
+  void _showLanguageScreen(BuildContext context, WidgetRef ref) => Navigator.of(context).push(
+    MaterialPageRoute<void>(builder: (_) => _LanguagePickerPage(current: ref.read(settingsProvider).locale, onSelected: ref.read(settingsProvider.notifier).setLocale)),
+  );
 
   String _themeLabel(AppLocalizations l10n, ThemeMode mode) => switch (mode) {
     ThemeMode.system => l10n.theme_system,
@@ -559,16 +416,14 @@ class ProfileScreen extends ConsumerWidget {
     ThemeMode.dark => l10n.theme_dark,
   };
 
-  String _localeLabel(AppLocalizations l10n, String? locale) =>
-      switch (locale) {
-        null => l10n.language_system,
-        'tr' => l10n.languageTurkish,
-        'es' => l10n.languageSpanish,
-        'pt' => l10n.languagePortugueseBrazil,
-        'de' => l10n.languageGerman,
-        'fr' => l10n.languageFrench,
-        _ => l10n.languageEnglish,
-      };
+  String _localeLabel(AppLocalizations l10n, String? locale) {
+    if (locale == null) return l10n.language_system;
+    return _languageOptions
+        .where((option) => option.$1 == locale)
+        .map((option) => option.$2)
+        .firstOrNull ??
+        l10n.languageEnglish;
+  }
 
   Future<void> _showNameDialog(
     BuildContext context,
@@ -581,44 +436,107 @@ class ProfileScreen extends ConsumerWidget {
       offset: controller.text.length,
     );
 
-    await showDialog<void>(
+    await showModalBottomSheet<void>(
       context: context,
+      useRootNavigator: true,
+      isScrollControlled: true,
+      showDragHandle: false,
       builder:
-          (dialogContext) => AlertDialog(
-            title: Text(l10n.profile_editName),
-            content: TextField(
-              controller: controller,
-              autofocus: true,
-              textCapitalization: TextCapitalization.words,
-              textInputAction: TextInputAction.done,
-              decoration: InputDecoration(
-                labelText: l10n.profile_name,
-                prefixIcon: const Icon(Icons.person_outline),
+          (sheetContext) => Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(sheetContext).bottom),
+            child: SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(children: [
+                      Expanded(child: Text(l10n.profile_editName, style: Theme.of(sheetContext).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900))),
+                      IconButton(onPressed: () => Navigator.pop(sheetContext), icon: const Icon(Icons.close_rounded)),
+                    ]),
+                    const SizedBox(height: 12),
+                    TextField(
+                      controller: controller,
+                      autofocus: true,
+                      maxLength: 32,
+                      textCapitalization: TextCapitalization.words,
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(labelText: l10n.profile_name, hintText: l10n.profile_user),
+                      onSubmitted: (value) {
+                        final name = value.trim();
+                        if (name.isEmpty) return;
+                        ref.read(settingsProvider.notifier).setUserName(name);
+                        Navigator.pop(sheetContext);
+                      },
+                    ),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton.icon(
+                        onPressed: () {
+                          final name = controller.text.trim();
+                          if (name.isEmpty) return;
+                          ref.read(settingsProvider.notifier).setUserName(name);
+                          Navigator.pop(sheetContext);
+                        },
+                        icon: const Icon(Icons.check_rounded),
+                        label: Text(l10n.common_save),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              onSubmitted: (value) {
-                final name = value.trim();
-                if (name.isEmpty) return;
-                ref.read(settingsProvider.notifier).setUserName(name);
-                Navigator.pop(dialogContext);
-              },
             ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(dialogContext),
-                child: Text(l10n.common_cancel),
-              ),
-              FilledButton(
-                onPressed: () {
-                  final name = controller.text.trim();
-                  if (name.isEmpty) return;
-                  ref.read(settingsProvider.notifier).setUserName(name);
-                  Navigator.pop(dialogContext);
-                },
-                child: Text(l10n.common_save),
-              ),
-            ],
           ),
     );
     controller.dispose();
+  }
+}
+
+class _LanguagePickerPage extends StatefulWidget {
+  const _LanguagePickerPage({required this.current, required this.onSelected});
+  final String? current;
+  final ValueChanged<String?> onSelected;
+
+  @override
+  State<_LanguagePickerPage> createState() => _LanguagePickerPageState();
+}
+
+class _LanguagePickerPageState extends State<_LanguagePickerPage> {
+  String _query = '';
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final options = <(String?, String)>[(null, l10n.language_system), ...ProfileScreen._languageOptions]
+        .where((item) => item.$2.toLowerCase().contains(_query.toLowerCase()))
+        .toList();
+    return Scaffold(
+      appBar: AppBar(title: Text(l10n.languageSelect)),
+      body: Column(children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
+          child: SearchBar(leading: const Icon(Icons.search), hintText: l10n.profile_language, onChanged: (value) => setState(() => _query = value)),
+        ),
+        Expanded(child: ListView.separated(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+          itemCount: options.length,
+          separatorBuilder: (_, __) => const Divider(height: 1),
+          itemBuilder: (context, index) {
+            final option = options[index];
+            final selected = widget.current == option.$1;
+            return ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+              title: Text(option.$2),
+              subtitle: option.$1 == null ? Text(l10n.language_system) : Text(option.$1!),
+              trailing: selected ? Icon(Icons.check_circle, color: Theme.of(context).colorScheme.primary) : null,
+              onTap: () { widget.onSelected(option.$1); Navigator.pop(context); },
+            );
+          },
+        )),
+      ]),
+    );
   }
 }

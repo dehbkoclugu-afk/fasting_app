@@ -1,0 +1,775 @@
+{
+  "@@locale": "uk",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Доброго ранку",
+  "greeting_afternoon": "Добрий день",
+  "greeting_evening": "Добрий вечір",
+  "tab_timer": "Головна",
+  "tab_explore": "Огляд",
+  "tab_stats": "Звіт",
+  "tab_meals": "Харчування",
+  "tab_achievements": "Нагороди",
+  "tab_profile": "Обліковий запис",
+  "timer_fasting": "Час голодування",
+  "timer_remaining": "Залишилося",
+  "timer_elapsed": "Минуло",
+  "timer_start": "Почати",
+  "timer_stop": "Зупинити",
+  "timer_completed": "Вітаємо!",
+  "timer_completedMessage": "Ви успішно завершили голодування!",
+  "timer_selectPlan": "Виберіть план голодування",
+  "timer_stopConfirm": "Ви впевнені, що хочете завершити голодування раніше?",
+  "timer_stopTitle": "Завершити голодування",
+  "timer_cancel": "Скасувати",
+  "timer_confirmStop": "Так, завершити",
+  "phase_anabolic": "Анаболічна",
+  "phase_anabolicDesc": "Триває травлення",
+  "phase_catabolic": "Катаболічна",
+  "phase_catabolicDesc": "Перехід джерела енергії",
+  "phase_fatBurning": "Спалювання жиру",
+  "phase_fatBurningDesc": "Спалювання жиру розпочалося",
+  "phase_ketosis": "Кетоз",
+  "phase_ketosisDesc": "Вироблення кетонів активне",
+  "phase_autophagy": "Аутофагія",
+  "phase_autophagyDesc": "Оновлення клітин",
+  "stats_title": "Статистика",
+  "stats_week": "Тиждень",
+  "stats_month": "Місяць",
+  "stats_year": "Рік",
+  "stats_totalFasts": "Усього голодувань",
+  "stats_average": "Середнє",
+  "stats_fastDuration": "тривалість голодування",
+  "stats_streak": "Серія",
+  "stats_daysConsecutive": "днів поспіль",
+  "stats_success": "Успіх",
+  "stats_completion": "завершено",
+  "stats_weeklyFasting": "Голодування за тиждень",
+  "stats_monthlyView": "Місячний огляд",
+  "stats_weightChange": "Зміна ваги",
+  "heatmap_none": "Немає",
+  "heatmap_low": "Низько",
+  "heatmap_good": "Добре",
+  "heatmap_full": "Повністю",
+  "meals_title": "Планувальник харчування",
+  "meals_eatingWindow": "Вікно харчування",
+  "meals_windowOpen": "Відкрите",
+  "meals_windowFasting": "Голодування",
+  "meals_calories": "Калорії",
+  "meals_protein": "Білки",
+  "meals_carbs": "Вуглеводи",
+  "meals_fat": "Жири",
+  "meals_todayMeals": "Сьогоднішні прийоми їжі",
+  "meals_noMeals": "Прийоми їжі ще не додано",
+  "meals_breakfastSuggestions": "Поради щодо виходу з голодування",
+  "meals_addMeal": "Додати прийом їжі",
+  "profile_title": "Профіль",
+  "profile_user": "Користувач",
+  "profile_planActive": "План {plan} активний",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Перейти на Premium",
+  "profile_premiumDesc": "Усі плани голодування без реклами",
+  "profile_bodyMetrics": "Параметри тіла",
+  "profile_height": "Зріст",
+  "profile_weight": "Вага",
+  "profile_targetWeight": "Цільова вага",
+  "profile_bmi": "ІМТ",
+  "profile_settings": "Налаштування",
+  "profile_notifications": "Сповіщення",
+  "profile_darkTheme": "Темна тема",
+  "profile_waterReminder": "Нагадування про воду",
+  "profile_phaseNotifications": "Сповіщення про фази",
+  "profile_language": "Мова",
+  "profile_about": "Про застосунок",
+  "profile_rateApp": "Оцінити застосунок",
+  "profile_share": "Поділитися",
+  "profile_privacyPolicy": "Політика конфіденційності",
+  "profile_version": "Версія",
+  "onboarding_welcome": "Ласкаво просимо",
+  "onboarding_welcomeDesc": "Керуйте своєю подорожжю\nз інтервальним голодуванням",
+  "onboarding_featureTimer": "Розумний таймер голодування",
+  "onboarding_featureStats": "Докладна статистика та графіки",
+  "onboarding_featureMeals": "Планувальник харчування та поради щодо рецептів",
+  "onboarding_getStarted": "Розпочати",
+  "onboarding_selectGoal": "Яка ваша мета?",
+  "onboarding_selectGoalDesc": "Можна вибрати кілька",
+  "onboarding_goalWeight": "Знизити вагу",
+  "onboarding_goalWeightDesc": "Здорове зниження ваги",
+  "onboarding_goalHealth": "Поліпшити здоров’я",
+  "onboarding_goalHealthDesc": "Загальне здоров’я та імунітет",
+  "onboarding_goalEnergy": "Більше енергії",
+  "onboarding_goalEnergyDesc": "Енергія протягом усього дня",
+  "onboarding_goalMental": "Ясність розуму",
+  "onboarding_goalMentalDesc": "Зосередженість і ясність",
+  "onboarding_goalLongevity": "Довголіття",
+  "onboarding_goalLongevityDesc": "Оновлення клітин і здорове старіння",
+  "onboarding_goalDiscipline": "Дисципліна",
+  "onboarding_goalDisciplineDesc": "Розвивайте самодисципліну",
+  "onboarding_selectPlan": "Виберіть свій план",
+  "onboarding_selectPlanDesc": "Виберіть найкращий для себе план голодування",
+  "onboarding_bodyInfo": "Введіть свої дані",
+  "onboarding_bodyInfoDesc": "Для персональних рекомендацій",
+  "onboarding_gender": "Стать",
+  "onboarding_male": "Чоловіча",
+  "onboarding_female": "Жіноча",
+  "onboarding_age": "Вік",
+  "onboarding_bodyInfoDisclaimer": "Ці дані зберігаються лише на вашому пристрої та використовуються для розрахунку калорій.",
+  "onboarding_permissions": "Останній крок",
+  "onboarding_permissionsDesc": "Увімкніть дозволи для найкращої роботи",
+  "onboarding_next": "Продовжити",
+  "onboarding_start": "Почнімо!",
+  "onboarding_skipForNow": "Налаштувати пізніше",
+  "waterAdded": "Додано 250 мл води",
+  "languageSelect": "Виберіть мову",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Перейти на Premium",
+  "paywall_subtitle": "Відкрийте всі плани голодування та приберіть рекламу",
+  "paywall_allPlans": "Усі плани голодування",
+  "paywall_advancedStats": "Розширена статистика",
+  "paywall_mealPlanner": "Планувальник харчування",
+  "paywall_themes": "Налаштування теми",
+  "paywall_noAds": "Без реклами",
+  "paywall_weekly": "Щотижня",
+  "paywall_monthly": "Щомісяця",
+  "paywall_yearly": "Щороку",
+  "paywall_bestValue": "Найкраща пропозиція",
+  "paywall_freeTrial": "Безкоштовний період (3 дні)",
+  "paywall_restore": "Відновити покупки",
+  "paywall_premiumActive": "Premium активний!",
+  "paywall_premiumActiveDesc": "Усі плани голодування відкрито, рекламу вимкнено",
+  "water_title": "Споживання води",
+  "water_addWater": "Додати воду",
+  "water_goal": "Мета",
+  "water_ml": "мл",
+  "common_ok": "ОК",
+  "common_cancel": "Скасувати",
+  "common_save": "Зберегти",
+  "common_delete": "Видалити",
+  "common_hours": "годин",
+  "common_minutes": "хвилин",
+  "common_days": "днів",
+  "common_enable": "Увімкнути",
+  "streakCard_currentStreak": "Поточна серія",
+  "streakCard_longestStreak": "Найдовша серія",
+  "streakCard_totalSessions": "Усього голодувань",
+  "meals_mealType": "Тип прийому їжі",
+  "meals_breakfast": "Сніданок",
+  "meals_lunch": "Обід",
+  "meals_dinner": "Вечеря",
+  "meals_snack": "Перекус",
+  "meals_carbohydrate": "Вуглеводи",
+  "meals_add": "Додати",
+  "meals_mealName": "Назва страви",
+  "bodyMetrics_title": "Параметри тіла",
+  "bodyMetrics_weight": "Вага",
+  "bodyMetrics_target": "Мета",
+  "bodyMetrics_save": "Зберегти",
+  "bodyMetrics_history": "Історія",
+  "bodyMetrics_bmiValue": "ІМТ: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Даних поки немає",
+  "meals_quickAdd": "Швидке додавання",
+  "meals_manualEntry": "Ручне введення",
+  "meals_added": "Додано: {name}",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Потрібно вказати назву та калорії",
+  "bodyMetrics_addWeight": "Додати вагу",
+  "bodyMetrics_hintWeight": "наприклад, 74,5",
+  "bodyMetrics_invalidWeight": "Введіть коректну вагу",
+  "bodyMetrics_weightSaved": "Збережено: {value} кг",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Тривалість",
+  "completion_plan": "План",
+  "completion_lastPhase": "Остання фаза",
+  "timer_remainingTime": "Час, що залишився",
+  "timer_ready": "Готово до початку",
+  "streak_status": "Статус",
+  "streak_startToday": "Почніть сьогодні!",
+  "streak_goodStart": "Гарний початок!",
+  "streak_goingGreat": "Чудово виходить!",
+  "streak_superb": "Неперевершено!",
+  "streak_legendary": "Легендарно!",
+  "streak_incredible": "Неймовірно!",
+  "weight_noRecord": "Записів ваги поки немає\nДодайте їх у Профіль > Параметри тіла",
+  "day_mon": "Пн",
+  "day_tue": "Вт",
+  "day_wed": "Ср",
+  "day_thu": "Чт",
+  "day_fri": "Пт",
+  "day_sat": "Сб",
+  "day_sun": "Нд",
+  "day_short_mon": "П",
+  "day_short_tue": "В",
+  "day_short_wed": "С",
+  "day_short_thu": "Ч",
+  "day_short_fri": "П",
+  "day_short_sat": "С",
+  "day_short_sun": "Н",
+  "month_jan": "Січень",
+  "month_feb": "Лютий",
+  "month_mar": "Березень",
+  "month_apr": "Квітень",
+  "month_may": "Травень",
+  "month_jun": "Червень",
+  "month_jul": "Липень",
+  "month_aug": "Серпень",
+  "month_sep": "Вересень",
+  "month_oct": "Жовтень",
+  "month_nov": "Листопад",
+  "month_dec": "Грудень",
+  "meals_fastingWindow": "Голодування ({hours} год)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Харчування ({hours} год)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Вівсяний смузі",
+  "recipe_avocadoToast": "Тост з авокадо",
+  "recipe_yogurtBowl": "Йогуртова миска",
+  "elapsed_time": "Минулий час",
+  "fast_ends_on": "Ваше голодування завершиться о",
+  "end_fasting": "Завершити голодування",
+  "start_fasting": "Почати голодування",
+  "water_tracker": "Облік води",
+  "weight_tracker": "Облік ваги",
+  "drink": "Випити",
+  "log_weight": "Записати вагу",
+  "bmi": "ІМТ",
+  "weight_lost": "Зниження ваги",
+  "current_weight": "Поточна вага",
+  "goal_weight": "Цільова вага",
+  "daily_goal": "Денна мета",
+  "completed_percent": "Виконано на {percent}%",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Огляд",
+  "achievements": "Досягнення",
+  "profile_theme": "Оформлення",
+  "theme_select": "Виберіть оформлення",
+  "theme_system": "Системна тема",
+  "theme_light": "Світла",
+  "theme_dark": "Темна",
+  "language_system": "Мова системи",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Звук завершення",
+  "profile_calmGamification": "Спокійна ігрова механіка",
+  "profile_calmGamificationDesc": "Зменшує тиск ліги та сезону",
+  "profile_editName": "Змінити ім’я",
+  "profile_name": "Ім’я",
+  "circle_title": "Коло голодування",
+  "circle_you": "Ви",
+  "circle_tagline": "Разом, без тиску.",
+  "circle_privacy": "Вага та приватні показники залишаються прихованими. Видно лише прогрес і підтримку.",
+  "circle_sendSupport": "Надіслати підтримку · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Код запрошення скопійовано",
+  "circle_createInvite": "Створити приватне запрошення",
+  "crisis_nameTitle": "Спочатку визначте, що відбувається",
+  "crisis_nameDesc": "Це може бути голод, звичка або емоція.",
+  "crisis_waterTitle": "Випийте склянку води",
+  "crisis_waterDesc": "Потім зробіть три повільні вдихи.",
+  "crisis_delayTitle": "Відкладіть рішення на 10 хвилин",
+  "crisis_delayDesc": "Якщо вам зле, завершити голодування — не поразка.",
+  "crisis_hunger": "Голод",
+  "crisis_habit": "Звичка",
+  "crisis_stress": "Стрес",
+  "crisis_tenMore": "Дайте собі 10 хвилин",
+  "stats_storyEmpty": "Перше голодування стане початком вашої особистої історії.",
+  "stats_story": "За цей період ви голодували {sessions} разів, зберігали ритм {hours} годин і досягли {rate}% завершення.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "Історія вашого ритму",
+  "home_todayRhythm": "Сьогоднішній ритм",
+  "home_finalHourSupport": "Підтримка в останню годину",
+  "home_needSupport": "Мені потрібна невелика підтримка",
+  "home_todaySummary": "Сьогодні одним поглядом",
+  "home_dayStreak": "днів поспіль",
+  "home_weightGoal": "мета: {weight} кг",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Ваш ритм стабільний",
+  "weather_gentle": "Спокійний день",
+  "weather_water": "Склянка води може допомогти.",
+  "weather_listen": "Ви пройшли довгий шлях; прислухайтеся до тіла.",
+  "weather_onPlan": "Сьогоднішній темп відповідає вашому плану.",
+  "weather_challenging": "Раніше ця година була складною; режим підтримки готовий.",
+  "replay_copied": "Підсумок голодування скопійовано",
+  "replay_button": "Підсумок",
+  "replay_text": "Я завершив(-ла) голодування {plan} за {hours} год {minutes} хв · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Метаболічний шлях",
+  "journey_now": "Зараз",
+  "journey_next": "{time} до фази {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "Час фаз — загальна оцінка, а не медичне вимірювання.",
+  "phase_hours": "Години {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Це загальна оцінка часу. Метаболічні реакції можуть відрізнятися в різних людей.",
+  "bmi_underweight": "Недостатня вага",
+  "bmi_normal": "Нормальна вага",
+  "bmi_overweight": "Надмірна вага",
+  "bmi_obese": "Ожиріння",
+  "notification_halfwayTitle": "Половина позаду! 💪",
+  "notification_halfwayBody": "Ви завершили половину голодування {plan}. Продовжуйте!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Почалася катаболічна фаза 📉",
+  "notification_phaseFatBurning": "Почалося спалювання жиру! 🔥",
+  "notification_phaseKetosis": "Ви в кетозі ⚡",
+  "notification_phaseAutophagy": "Аутофагія активна! 🔄",
+  "notification_completedBody": "Ви завершили голодування {plan}! Вікно харчування відкрите.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Випийте води 💧",
+  "notification_waterBody": "Не забувайте пити достатньо води під час голодування!",
+  "notification_windowTitle": "Вікно харчування зачиняється ⏰",
+  "notification_windowBody": "Вікно харчування зачиниться через 30 хвилин.",
+  "notification_streakTitle": "{days} днів поспіль! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Ви чудово справляєтеся! Продовжуйте сьогодні.",
+  "notification_ongoingTitle": "Голодування триває — {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Залишилося: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Голодування розпочато — {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Мета: {hours} годин",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours} год {minutes} хв",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Посібник із голодування",
+  "explore_guideDesc": "Усе, що потрібно знати про інтервальне голодування",
+  "explore_circleDesc": "Діліться спокійною підтримкою у своїй приватній групі.",
+  "explore_faq": "Поширені запитання",
+  "explore_education": "Цей матеріал призначений лише для загальної освіти й не є медичним діагнозом або порадою щодо лікування.",
+  "explore_safety": "Здоров’я та безпека",
+  "explore_safetyDesc": "Якщо у вас є захворювання, ви регулярно приймаєте ліки, маєте тривожні симптоми, вагітні або годуєте грудьми, проконсультуйтеся з кваліфікованим медичним працівником перед голодуванням. Припиніть, якщо вам зле.",
+  "explore_sources": "Джерела",
+  "explore_sourcesDesc": "Матеріал спрощено на основі наведених нижче загальнодоступних джерел про здоров’я.",
+  "explore_sourceError": "Не вдалося відкрити джерело",
+  "explore_rules": "Важливі правила",
+  "explore_rule1": "Не вживайте калорійну їжу під час голодування",
+  "explore_rule2": "Пийте достатньо води та інших рідин",
+  "explore_rule3": "Харчуйтеся збалансовано у вікно харчування",
+  "explore_rule4": "Припиніть голодування, якщо вам зле",
+  "explore_rule5": "Вагітним і жінкам, які годують грудьми, не слід голодувати",
+  "explore_rule6": "За хронічних захворювань проконсультуйтеся з лікарем",
+  "tip_water": "Підтримуйте водний баланс",
+  "tip_waterDesc": "Пийте воду, коли відчуваєте спрагу, та вживайте рідину під час їжі. Потреба залежить від здоров’я, погоди й активності.",
+  "tip_food": "Харчуйтеся правильно",
+  "tip_foodDesc": "У вікно харчування обирайте продукти, багаті на білок і клітковину, а також корисні жири. Уникайте оброблених продуктів.",
+  "tip_sleep": "Добре висипайтеся",
+  "tip_sleepDesc": "Регулярний і достатній сон підтримує загальне самопочуття. Плануйте голодування так, щоб воно не заважало сну.",
+  "tip_exercise": "Легка активність",
+  "tip_exerciseDesc": "Під час голодування можна спокійно ходити або займатися йогою. Уникайте важких тренувань, особливо в перші тижні, поки організм адаптується.",
+  "tip_drinks": "Дозволені напої",
+  "tip_drinksDesc": "Під час голодування можна пити воду, несолодкий чай і чорну каву без цукру та молока. Ці напої не переривають голодування.",
+  "faq_drinks": "Що можна пити під час голодування?",
+  "faq_drinksAnswer": "Можна пити воду, несолодкий чай і чорну каву без цукру та молока. Калорійні напої переривають голодування.",
+  "faq_plan": "Який план голодування вибрати?",
+  "faq_planAnswer": "Якщо ви новачок, почніть із 12:12 або 14:10. Якщо маєте досвід, спробуйте 16:8 або 18:6. 20:4 і OMAD призначені для досвідчених.",
+  "faq_exercise": "Чи можна тренуватися під час голодування?",
+  "faq_exerciseAnswer": "Так, але уникайте інтенсивних тренувань. Легке кардіо, ходьба та йога підійдуть найкраще. Силові тренування плануйте ближче до вікна харчування.",
+  "faq_weight": "Чи допомагає голодування знизити вагу?",
+  "faq_weightAnswer": "У деяких людей обмеження часу прийому їжі може зменшити загальне споживання енергії. Результати різняться, а довгострокові наслідки ще вивчаються.",
+  "plan_12_desc": "Для початківців",
+  "plan_12_detail": "Ідеально для початківців. Голодуйте 12 годин, включно з часом сну.",
+  "plan_16_desc": "Найпопулярніший план",
+  "plan_16_detail": "Найпоширеніший план інтервального голодування: 16 годин голодування та 8-годинне вікно харчування, зазвичай від обіду до вечері.",
+  "plan_18_desc": "Середній рівень",
+  "plan_18_detail": "18 годин голодування та 6-годинне вікно харчування. Триваліше спалювання жиру.",
+  "plan_20_desc": "Просунутий рівень",
+  "plan_20_detail": "20 годин голодування та 4-годинне вікно харчування. Підходить для досягнення кетозу й аутофагії.",
+  "plan_omad_desc": "Один прийом їжі на день",
+  "plan_omad_detail": "Один прийом їжі на день: 23 години голодування та 1-годинне вікно харчування. Експертний рівень.",
+  "plan_52_desc": "2 дні на тиждень",
+  "plan_52_detail": "Харчуйтеся звичайно 5 днів, а протягом 2 днів обмежте раціон приблизно 500 калоріями. Альтернативний підхід.",
+  "plan_ese_desc": "24-годинне голодування",
+  "plan_ese_detail": "Голодуйте 24 години 1–2 рази на тиждень. Для досвідчених.",
+  "plan_warrior_desc": "Дієта воїна",
+  "plan_warrior_detail": "Удень їжте легко, а основний прийом їжі влаштуйте в чотиригодинне вечірнє вікно.",
+  "award_first_title": "Перший крок",
+  "award_first_desc": "Завершіть перше голодування",
+  "award_rhythm3_title": "Триденний ритм",
+  "award_rhythm3_desc": "Зберігайте ритм три дні",
+  "award_hours24_title": "24 години",
+  "award_hours24_desc": "Голодуйте загалом 24 години",
+  "award_week_title": "Тижневий ритм",
+  "award_week_desc": "Створіть серію із семи днів",
+  "award_fasts10_title": "10 голодувань",
+  "award_fasts10_desc": "Завершіть десять голодувань",
+  "award_hours100_title": "100 годин",
+  "award_hours100_desc": "Досягніть 100 годин загалом",
+  "award_rhythm30_title": "30-денний ритм",
+  "award_rhythm30_desc": "Створіть серію з тридцяти днів",
+  "award_fasts50_title": "50 голодувань",
+  "award_fasts50_desc": "Завершіть п’ятдесят голодувань",
+  "award_hours500_title": "500 годин",
+  "award_hours500_desc": "Досягніть 500 годин загалом",
+  "award_fasts100_title": "100 голодувань",
+  "award_fasts100_desc": "Завершіть сто голодувань",
+  "award_rhythm90_title": "90-денний ритм",
+  "award_rhythm90_desc": "Створіть серію з дев’яноста днів",
+  "award_year_title": "Річний шлях",
+  "award_year_desc": "Досягніть ритму в 365 днів",
+  "awards_loadError": "Не вдалося завантажити прогрес",
+  "awards_journeyComplete": "Шлях завершено",
+  "awards_nextGoal": "Наступна мета",
+  "awards_allYours": "Усі досягнення ваші",
+  "awards_dayStreak": "днів поспіль",
+  "awards_fasts": "голодувань",
+  "awards_total": "усього",
+  "awards_stageStart": "Початок",
+  "awards_stageRhythm": "Ритм",
+  "awards_stageEndurance": "Витривалість",
+  "awards_stageMastery": "Майстерність",
+  "awards_completed": "Завершено",
+  "awards_fastsRemaining": "Залишилося голодувань: {count}",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "Залишилося днів: {count}",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "Залишилося годин: {count}",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Повторити",
+  "game_title": "Центр прогресу",
+  "game_quests": "Завдання на сьогодні",
+  "game_questsDesc": "Невеликі кроки, сталий ритм.",
+  "game_season": "Сезон із 30 кроків",
+  "game_seasonDesc": "Колекційна печатка за кожен п’ятий крок.",
+  "game_badges": "Колекція значків",
+  "game_shields": "Щити ритму: {count}",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Один щит за кожні сім завершень. Пропущений день ніколи не стирає прогрес.",
+  "game_league": "Приватна тижнева ліга",
+  "game_leagueDesc": "Ваш показник ритму перебуває в {percent}-му процентилі приватної локальної моделі. Вага та екстремальне голодування ніколи не ранжуються.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Рівень {level}, очки досвіду: {xp}",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Дослідник ритму",
+  "game_streak": "Серія",
+  "game_targets": "Цілі",
+  "game_best": "Найкраще",
+  "quest_rhythm": "Створіть сьогоднішній ритм",
+  "quest_hydrate": "Досягніть половини цілі щодо води",
+  "quest_steady": "Захистіть свою серію",
+  "badge_first_title": "Перший крок",
+  "badge_first_desc": "Запишіть перше голодування",
+  "badge_rhythm7_title": "Охоронець ритму",
+  "badge_rhythm7_desc": "Досягніть серії в 7 днів",
+  "badge_rhythm3_title": "Триденний ритм",
+  "badge_rhythm3_desc": "Досягніть серії в 3 дні",
+  "badge_target1_title": "Перша ціль",
+  "badge_target1_desc": "Завершіть перше цільове голодування",
+  "badge_target3_title": "Три кроки",
+  "badge_target3_desc": "Виконайте 3 цілі",
+  "badge_water_title": "Баланс",
+  "badge_water_desc": "Виконайте денну ціль щодо води",
+  "badge_support_title": "Самоусвідомлення",
+  "badge_support_desc": "Скористайтеся режимом підтримки",
+  "badge_hours10_title": "10 годин",
+  "badge_hours10_desc": "Запишіть загалом 10 годин",
+  "badge_target10_title": "Сильна десятка",
+  "badge_target10_desc": "Виконайте 10 цілей",
+  "badge_target20_title": "Двадцять цілей",
+  "badge_target20_desc": "Виконайте 20 цілей",
+  "badge_fast16_title": "16 годин",
+  "badge_fast16_desc": "Досягніть 16 годин за одне голодування",
+  "badge_hours50_title": "50 годин",
+  "badge_hours50_desc": "Запишіть загалом 50 годин",
+  "badge_hours100_title": "Сто годин",
+  "badge_hours100_desc": "Запишіть загалом 100 годин",
+  "badge_target30_title": "Тридцять цілей",
+  "badge_target30_desc": "Виконайте 30 цілей",
+  "badge_rhythm30_title": "30-денний ритм",
+  "badge_rhythm30_desc": "Досягніть серії в 30 днів",
+  "paywall_restoreSuccess": "Покупки відновлено!",
+  "fasting_progressSemantics": "Прогрес голодування: {percent} відсотків",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour} год",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "Назавжди",
+  "paywall_once": "одноразова оплата",
+  "paywall_processing": "Обробка…",
+  "paywall_continue": "Продовжити",
+  "paywall_productsUnavailable": "Покупки зараз недоступні. Повторіть спробу пізніше.",
+  "paywall_purchaseFailed": "Не вдалося завершити покупку.",
+  "paywall_nothingToRestore": "Попередніх покупок не знайдено.",
+  "paywall_restoreFailed": "Не вдалося відновити покупки.",
+  "paywall_terms": "Умови використання",
+  "permission_notificationDesc": "Нагадування про голодування, оновлення фаз і сповіщення про завершення",
+  "profile_privacyChoices": "Налаштування конфіденційності",
+  "paywall_autoRenewInfo": "Підписки поновлюються автоматично, якщо їх не скасувати щонайменше за 24 години до завершення періоду. Керувати ними або скасувати їх можна в налаштуваннях App Store.",
+  "paywall_perMonth": "{price} / місяць",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Економія {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "Безкоштовний період: {days} днів",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Почати безкоштовний період",
+  "paywall_retry": "Повторити",
+  "paywall_alreadyOwned": "У вас уже є ця підписка. Натисніть «Відновити покупки».",
+  "paywall_storeUnavailable": "Зараз не вдається підключитися до магазину. Перевірте з’єднання та повторіть спробу.",
+  "paywall_secureNote": "Скасування будь-коли. Плата стягується з облікового запису магазину.",
+  "paywall_autoRenewInfoPlay": "Підписки поновлюються автоматично, якщо їх не скасувати щонайменше за 24 години до завершення періоду. Керування та скасування: Google Play > Підписки.",
+  "paywall_allPlansDesc": "Відкриває 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat і Warrior",
+  "paywall_noAdsDesc": "Банерну та повноекранну рекламу повністю вимкнено",
+  "foodScan_title": "ШІ-сканування їжі",
+  "foodScan_scanCta": "Сканувати страву",
+  "foodScan_scanCtaDesc": "Сфотографуйте тарілку й дізнайтеся калорії та макронутрієнти",
+  "foodScan_introTitle": "Сфотографуйте тарілку",
+  "foodScan_introDesc": "ШІ аналізує фото й оцінює калорії, білки, вуглеводи та жири.",
+  "foodScan_tipLight": "Гарне рівномірне освітлення підвищує точність",
+  "foodScan_tipFrame": "Уся тарілка має бути в кадрі",
+  "foodScan_tipScale": "Додайте в кадр прибори або руку для оцінки розміру порції",
+  "foodScan_takePhoto": "Зробити фото",
+  "foodScan_chooseFromGallery": "Вибрати з галереї",
+  "foodScan_scansLeft": "Сьогодні залишилося сканувань: {count}",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Сьогоднішні сканування вичерпано. Спробуйте завтра.",
+  "foodScan_privacyNote": "Фото надсилається до Google Gemini API для аналізу й не зберігається на наших серверах.",
+  "foodScan_analyzing": "Аналізуємо вашу страву…",
+  "foodScan_analyzingHint": "Зазвичай це займає кілька секунд",
+  "foodScan_detectedItems": "Розпізнані продукти",
+  "foodScan_disclaimer": "Оцінки ШІ приблизні. Натисніть на продукт, щоб виправити його.",
+  "foodScan_lowConfidence": "Модель не впевнена в цьому фото. Перевірте значення перед збереженням.",
+  "foodScan_save": "Додати до харчування",
+  "foodScan_retake": "Нове фото",
+  "foodScan_retry": "Повторити",
+  "foodScan_editItem": "Змінити продукт",
+  "foodScan_portion": "Порція",
+  "foodScan_saveEdit": "Зберегти",
+  "foodScan_premiumTitle": "Функція Premium",
+  "foodScan_premiumDesc": "Аналіз калорій за фото входить до Premium.",
+  "foodScan_upgrade": "Переглянути Premium",
+  "foodScan_errorNetwork": "Немає з’єднання. Перевірте інтернет і повторіть спробу.",
+  "foodScan_errorRateLimited": "Зараз надто багато сканувань. Повторіть спробу через кілька хвилин.",
+  "foodScan_errorUnavailable": "Аналіз фото зараз недоступний.",
+  "foodScan_errorServer": "Виникла проблема зі службою аналізу. Повторіть спробу трохи пізніше.",
+  "foodScan_errorNoFood": "На фото не знайдено їжі. Зробіть чіткіший знімок тарілки.",
+  "foodScan_errorUnreadable": "Не вдалося проаналізувати це фото. Спробуйте інше.",
+  "paywall_aiFoodScan": "ШІ-сканування їжі",
+  "paywall_aiFoodScanDesc": "Сфотографуйте страву та запишіть калорії й макронутрієнти за кілька секунд",
+  "completion_earlyTitle": "Піст завершено",
+  "completion_earlyMessage": "Сьогоднішній час збережено. Серія та прогрес досягнень не змінилися, оскільки ціль не була виконана."
+}

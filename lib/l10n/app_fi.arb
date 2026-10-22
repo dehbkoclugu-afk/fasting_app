@@ -1,0 +1,775 @@
+{
+  "@@locale": "fi",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Hyvää huomenta",
+  "greeting_afternoon": "Hyvää iltapäivää",
+  "greeting_evening": "Hyvää iltaa",
+  "tab_timer": "Koti",
+  "tab_explore": "Tutustu",
+  "tab_stats": "Raportti",
+  "tab_meals": "Ateriat",
+  "tab_achievements": "Palkinnot",
+  "tab_profile": "Tili",
+  "timer_fasting": "Paastoaika",
+  "timer_remaining": "Jäljellä",
+  "timer_elapsed": "Kulunut",
+  "timer_start": "Aloita",
+  "timer_stop": "Lopeta",
+  "timer_completed": "Onneksi olkoon!",
+  "timer_completedMessage": "Suoritit paastosi onnistuneesti!",
+  "timer_selectPlan": "Valitse paasto-ohjelma",
+  "timer_stopConfirm": "Haluatko varmasti lopettaa paaston etuajassa?",
+  "timer_stopTitle": "Lopeta paasto",
+  "timer_cancel": "Peruuta",
+  "timer_confirmStop": "Kyllä, lopeta",
+  "phase_anabolic": "Anabolinen",
+  "phase_anabolicDesc": "Ruoansulatus käynnissä",
+  "phase_catabolic": "Katabolinen",
+  "phase_catabolicDesc": "Energialähde vaihtuu",
+  "phase_fatBurning": "Rasvanpoltto",
+  "phase_fatBurningDesc": "Rasvanpoltto on alkanut",
+  "phase_ketosis": "Ketoosi",
+  "phase_ketosisDesc": "Ketonien tuotanto on aktiivista",
+  "phase_autophagy": "Autofagia",
+  "phase_autophagyDesc": "Solujen uusiutuminen",
+  "stats_title": "Tilastot",
+  "stats_week": "Viikko",
+  "stats_month": "Kuukausi",
+  "stats_year": "Vuosi",
+  "stats_totalFasts": "Paastoja yhteensä",
+  "stats_average": "Keskiarvo",
+  "stats_fastDuration": "paaston kesto",
+  "stats_streak": "Putki",
+  "stats_daysConsecutive": "peräkkäistä päivää",
+  "stats_success": "Onnistuminen",
+  "stats_completion": "suoritettu",
+  "stats_weeklyFasting": "Viikoittainen paasto",
+  "stats_monthlyView": "Kuukausinäkymä",
+  "stats_weightChange": "Painonmuutos",
+  "heatmap_none": "Ei lainkaan",
+  "heatmap_low": "Vähän",
+  "heatmap_good": "Hyvä",
+  "heatmap_full": "Täysi",
+  "meals_title": "Ateriasuunnittelija",
+  "meals_eatingWindow": "Syömisikkuna",
+  "meals_windowOpen": "Avoinna",
+  "meals_windowFasting": "Paasto",
+  "meals_calories": "Kalorit",
+  "meals_protein": "Proteiini",
+  "meals_carbs": "Hiilihydraatit",
+  "meals_fat": "Rasva",
+  "meals_todayMeals": "Tämän päivän ateriat",
+  "meals_noMeals": "Aterioita ei ole vielä lisätty",
+  "meals_breakfastSuggestions": "Ehdotuksia paaston rikkomiseen",
+  "meals_addMeal": "Lisää ateria",
+  "profile_title": "Profiili",
+  "profile_user": "Käyttäjä",
+  "profile_planActive": "Ohjelma {plan} on aktiivinen",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Päivitä Premiumiin",
+  "profile_premiumDesc": "Kaikki paasto-ohjelmat ilman mainoksia",
+  "profile_bodyMetrics": "Kehon mitat",
+  "profile_height": "Pituus",
+  "profile_weight": "Paino",
+  "profile_targetWeight": "Tavoitepaino",
+  "profile_bmi": "BMI",
+  "profile_settings": "Asetukset",
+  "profile_notifications": "Ilmoitukset",
+  "profile_darkTheme": "Tumma teema",
+  "profile_waterReminder": "Vesimuistutus",
+  "profile_phaseNotifications": "Vaiheilmoitukset",
+  "profile_language": "Kieli",
+  "profile_about": "Tietoja",
+  "profile_rateApp": "Arvostele sovellus",
+  "profile_share": "Jaa",
+  "profile_privacyPolicy": "Tietosuojakäytäntö",
+  "profile_version": "Versio",
+  "onboarding_welcome": "Tervetuloa",
+  "onboarding_welcomeDesc": "Ota ajoittaisen paaston matkasi\nhaltuun",
+  "onboarding_featureTimer": "Älykäs paastoajastin",
+  "onboarding_featureStats": "Yksityiskohtaiset tilastot ja kaaviot",
+  "onboarding_featureMeals": "Ateriasuunnittelija ja reseptiehdotukset",
+  "onboarding_getStarted": "Aloita",
+  "onboarding_selectGoal": "Mikä on tavoitteesi?",
+  "onboarding_selectGoalDesc": "Voit valita useita",
+  "onboarding_goalWeight": "Pudota painoa",
+  "onboarding_goalWeightDesc": "Terveellinen painonpudotus",
+  "onboarding_goalHealth": "Paranna terveyttä",
+  "onboarding_goalHealthDesc": "Yleinen terveys ja vastustuskyky",
+  "onboarding_goalEnergy": "Lisää energiaa",
+  "onboarding_goalEnergyDesc": "Energiaa koko päiväksi",
+  "onboarding_goalMental": "Mielen selkeys",
+  "onboarding_goalMentalDesc": "Keskittyminen ja selkeys",
+  "onboarding_goalLongevity": "Pitkäikäisyys",
+  "onboarding_goalLongevityDesc": "Solujen uusiutuminen ja terve ikääntyminen",
+  "onboarding_goalDiscipline": "Itsekuri",
+  "onboarding_goalDisciplineDesc": "Kehitä itsekuria",
+  "onboarding_selectPlan": "Valitse ohjelmasi",
+  "onboarding_selectPlanDesc": "Valitse sinulle parhaiten sopiva paasto-ohjelma",
+  "onboarding_bodyInfo": "Anna tietosi",
+  "onboarding_bodyInfoDesc": "Henkilökohtaisia suosituksia varten",
+  "onboarding_gender": "Sukupuoli",
+  "onboarding_male": "Mies",
+  "onboarding_female": "Nainen",
+  "onboarding_age": "Ikä",
+  "onboarding_bodyInfoDisclaimer": "Nämä tiedot tallennetaan vain laitteellesi ja niitä käytetään kalorilaskelmiin.",
+  "onboarding_permissions": "Viimeinen vaihe",
+  "onboarding_permissionsDesc": "Ota käyttöoikeudet käyttöön parasta kokemusta varten",
+  "onboarding_next": "Jatka",
+  "onboarding_start": "Aloitetaan!",
+  "onboarding_skipForNow": "Määritä myöhemmin",
+  "waterAdded": "250 ml vettä lisätty",
+  "languageSelect": "Valitse kieli",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Päivitä Premiumiin",
+  "paywall_subtitle": "Avaa kaikki paasto-ohjelmat ja poista mainokset",
+  "paywall_allPlans": "Kaikki paasto-ohjelmat",
+  "paywall_advancedStats": "Edistyneet tilastot",
+  "paywall_mealPlanner": "Ateriasuunnittelija",
+  "paywall_themes": "Teeman mukautus",
+  "paywall_noAds": "Ei mainoksia",
+  "paywall_weekly": "Viikoittain",
+  "paywall_monthly": "Kuukausittain",
+  "paywall_yearly": "Vuosittain",
+  "paywall_bestValue": "Paras vastine",
+  "paywall_freeTrial": "Maksuton kokeilu (3 päivää)",
+  "paywall_restore": "Palauta ostokset",
+  "paywall_premiumActive": "Premium on aktiivinen!",
+  "paywall_premiumActiveDesc": "Kaikki paasto-ohjelmat on avattu ja mainokset poistettu",
+  "water_title": "Veden saanti",
+  "water_addWater": "Lisää vettä",
+  "water_goal": "Tavoite",
+  "water_ml": "ml",
+  "common_ok": "OK",
+  "common_cancel": "Peruuta",
+  "common_save": "Tallenna",
+  "common_delete": "Poista",
+  "common_hours": "tuntia",
+  "common_minutes": "minuuttia",
+  "common_days": "päivää",
+  "common_enable": "Ota käyttöön",
+  "streakCard_currentStreak": "Nykyinen putki",
+  "streakCard_longestStreak": "Pisin putki",
+  "streakCard_totalSessions": "Paastoja yhteensä",
+  "meals_mealType": "Ateriatyyppi",
+  "meals_breakfast": "Aamiainen",
+  "meals_lunch": "Lounas",
+  "meals_dinner": "Päivällinen",
+  "meals_snack": "Välipala",
+  "meals_carbohydrate": "Hiilihydraatti",
+  "meals_add": "Lisää",
+  "meals_mealName": "Aterian nimi",
+  "bodyMetrics_title": "Kehon mitat",
+  "bodyMetrics_weight": "Paino",
+  "bodyMetrics_target": "Tavoite",
+  "bodyMetrics_save": "Tallenna",
+  "bodyMetrics_history": "Historia",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Ei vielä tietoja",
+  "meals_quickAdd": "Pikalisäys",
+  "meals_manualEntry": "Manuaalinen syöttö",
+  "meals_added": "{name} lisätty",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Nimi ja kalorit ovat pakollisia",
+  "bodyMetrics_addWeight": "Lisää paino",
+  "bodyMetrics_hintWeight": "esim. 74,5",
+  "bodyMetrics_invalidWeight": "Anna kelvollinen paino",
+  "bodyMetrics_weightSaved": "{value} kg tallennettu",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Kesto",
+  "completion_plan": "Ohjelma",
+  "completion_lastPhase": "Viimeinen vaihe",
+  "timer_remainingTime": "Jäljellä oleva aika",
+  "timer_ready": "Valmis aloittamaan",
+  "streak_status": "Tila",
+  "streak_startToday": "Aloita tänään!",
+  "streak_goodStart": "Hyvä alku!",
+  "streak_goingGreat": "Hienosti menee!",
+  "streak_superb": "Loistavaa!",
+  "streak_legendary": "Legendaarista!",
+  "streak_incredible": "Uskomatonta!",
+  "weight_noRecord": "Painomerkintöjä ei vielä ole\nLisää niitä kohdassa Profiili > Kehon mitat",
+  "day_mon": "Ma",
+  "day_tue": "Ti",
+  "day_wed": "Ke",
+  "day_thu": "To",
+  "day_fri": "Pe",
+  "day_sat": "La",
+  "day_sun": "Su",
+  "day_short_mon": "M",
+  "day_short_tue": "T",
+  "day_short_wed": "K",
+  "day_short_thu": "T",
+  "day_short_fri": "P",
+  "day_short_sat": "L",
+  "day_short_sun": "S",
+  "month_jan": "Tammikuu",
+  "month_feb": "Helmikuu",
+  "month_mar": "Maaliskuu",
+  "month_apr": "Huhtikuu",
+  "month_may": "Toukokuu",
+  "month_jun": "Kesäkuu",
+  "month_jul": "Heinäkuu",
+  "month_aug": "Elokuu",
+  "month_sep": "Syyskuu",
+  "month_oct": "Lokakuu",
+  "month_nov": "Marraskuu",
+  "month_dec": "Joulukuu",
+  "meals_fastingWindow": "Paasto ({hours} t)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Syöminen ({hours} t)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Kaurasmoothie",
+  "recipe_avocadoToast": "Avokadoleipä",
+  "recipe_yogurtBowl": "Jogurttikulho",
+  "elapsed_time": "Kulunut aika",
+  "fast_ends_on": "Paastosi päättyy klo",
+  "end_fasting": "Lopeta paasto",
+  "start_fasting": "Aloita paasto",
+  "water_tracker": "Vesiseuranta",
+  "weight_tracker": "Painonseuranta",
+  "drink": "Juo",
+  "log_weight": "Kirjaa paino",
+  "bmi": "BMI",
+  "weight_lost": "Pudotettu paino",
+  "current_weight": "Nykyinen paino",
+  "goal_weight": "Tavoitepaino",
+  "daily_goal": "Päivätavoite",
+  "completed_percent": "{percent}% suoritettu",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Tutustu",
+  "achievements": "Saavutukset",
+  "profile_theme": "Ulkoasu",
+  "theme_select": "Valitse ulkoasu",
+  "theme_system": "Järjestelmän oletus",
+  "theme_light": "Vaalea",
+  "theme_dark": "Tumma",
+  "language_system": "Järjestelmän kieli",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Valmistumisääni",
+  "profile_calmGamification": "Rauhallinen pelillistäminen",
+  "profile_calmGamificationDesc": "Vähentää liigan ja kauden aiheuttamaa painetta",
+  "profile_editName": "Muokkaa nimeäsi",
+  "profile_name": "Nimi",
+  "circle_title": "Paastopiiri",
+  "circle_you": "Sinä",
+  "circle_tagline": "Yhdessä, ilman paineita.",
+  "circle_privacy": "Paino ja yksityiset mittarit pysyvät piilossa. Vain edistyminen ja tuki näkyvät.",
+  "circle_sendSupport": "Lähetä tukea · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Kutsukoodi kopioitu",
+  "circle_createInvite": "Luo yksityinen kutsu",
+  "crisis_nameTitle": "Nimeä ensin, mitä tapahtuu",
+  "crisis_nameDesc": "Kyse voi olla nälästä, tavasta tai tunteesta.",
+  "crisis_waterTitle": "Juo lasillinen vettä",
+  "crisis_waterDesc": "Hengitä sitten kolmesti hitaasti.",
+  "crisis_delayTitle": "Siirrä päätöstä 10 minuutilla",
+  "crisis_delayDesc": "Jos voit huonosti, paaston lopettaminen ei ole epäonnistuminen.",
+  "crisis_hunger": "Nälkä",
+  "crisis_habit": "Tapa",
+  "crisis_stress": "Stressi",
+  "crisis_tenMore": "Anna sille 10 minuuttia",
+  "stats_storyEmpty": "Ensimmäinen paastosi aloittaa henkilökohtaisen tarinasi.",
+  "stats_story": "Paastosit tällä ajanjaksolla {sessions} kertaa, säilytit rytmisi {hours} tunnin ajan ja saavutit {rate}%:n suoritusasteen.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "Rytmisi tarina",
+  "home_todayRhythm": "Tämän päivän rytmi",
+  "home_finalHourSupport": "Tukea viimeiselle tunnille",
+  "home_needSupport": "Tarvitsen hieman tukea",
+  "home_todaySummary": "Tämä päivä yhdellä silmäyksellä",
+  "home_dayStreak": "päivän putki",
+  "home_weightGoal": "tavoite {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Rytmisi on vakaa",
+  "weather_gentle": "Rauhallinen päivä",
+  "weather_water": "Lasillinen vettä voi auttaa.",
+  "weather_listen": "Olet päässyt pitkälle; kuuntele kehoasi.",
+  "weather_onPlan": "Tämän päivän tahti vastaa ohjelmaasi.",
+  "weather_challenging": "Tämä tunti on ollut aiemmin haastava; tukitila on valmiina.",
+  "replay_copied": "Paastokooste kopioitu",
+  "replay_button": "Kooste",
+  "replay_text": "Suoritin {plan}-paastoni ajassa {hours} t {minutes} min · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Aineenvaihdunnan matka",
+  "journey_now": "Nyt",
+  "journey_next": "{time} vaiheeseen {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "Vaiheiden ajoitus on yleinen arvio, ei lääketieteellinen mittaus.",
+  "phase_hours": "Tunnit {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Tämä ajoitus on yleinen arvio. Aineenvaihdunnan reaktiot voivat vaihdella ihmisestä toiseen.",
+  "bmi_underweight": "Alipaino",
+  "bmi_normal": "Normaalipaino",
+  "bmi_overweight": "Ylipaino",
+  "bmi_obese": "Lihavuus",
+  "notification_halfwayTitle": "Puolivälissä! 💪",
+  "notification_halfwayBody": "Olet suorittanut puolet {plan}-paastostasi. Jatka samaan malliin!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Katabolinen vaihe saavutettu 📉",
+  "notification_phaseFatBurning": "Rasvanpoltto alkoi! 🔥",
+  "notification_phaseKetosis": "Olet ketoosissa ⚡",
+  "notification_phaseAutophagy": "Autofagia on aktiivinen! 🔄",
+  "notification_completedBody": "Suoritit {plan}-paastosi! Syömisikkunasi on avoinna.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Juo vettä 💧",
+  "notification_waterBody": "Muista juoda runsaasti vettä paaston aikana!",
+  "notification_windowTitle": "Syömisikkuna sulkeutuu ⏰",
+  "notification_windowBody": "Syömisikkunasi sulkeutuu 30 minuutin kuluttua.",
+  "notification_streakTitle": "{days} päivän putki! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Sinulla menee hienosti! Jatka tänään samaan tapaan.",
+  "notification_ongoingTitle": "Paasto käynnissä – {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Jäljellä: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Paasto aloitettu – {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Tavoite: {hours} tuntia",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours} t {minutes} min",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Paasto-opas",
+  "explore_guideDesc": "Kaikki, mitä sinun tarvitsee tietää ajoittaisesta paastosta",
+  "explore_circleDesc": "Jaa rauhallista tukea yksityisen ryhmäsi kanssa.",
+  "explore_faq": "Usein kysytyt kysymykset",
+  "explore_education": "Tämä sisältö on tarkoitettu vain yleiseksi tiedoksi, eikä se ole lääketieteellinen diagnoosi tai hoito-ohje.",
+  "explore_safety": "Terveys ja turvallisuus",
+  "explore_safetyDesc": "Jos sinulla on sairaus, käytät säännöllisesti lääkkeitä, sinulla on huolestuttavia oireita, olet raskaana tai imetät, keskustele pätevän terveydenhuollon ammattilaisen kanssa ennen paastoa. Lopeta, jos voit huonosti.",
+  "explore_sources": "Lähteet",
+  "explore_sourcesDesc": "Sisältö on yksinkertaistettu alla mainituista julkisista terveyslähteistä.",
+  "explore_sourceError": "Lähdettä ei voitu avata",
+  "explore_rules": "Tärkeät säännöt",
+  "explore_rule1": "Älä nauti kaloripitoisia ruokia paaston aikana",
+  "explore_rule2": "Juo runsaasti vettä ja muita nesteitä",
+  "explore_rule3": "Syö tasapainoisesti syömisikkunan aikana",
+  "explore_rule4": "Lopeta paasto, jos voit huonosti",
+  "explore_rule5": "Raskaana olevien tai imettävien ei tule paastota",
+  "explore_rule6": "Keskustele lääkärin kanssa, jos sinulla on pitkäaikaissairaus",
+  "tip_water": "Huolehdi nesteytyksestä",
+  "tip_waterDesc": "Juo vettä, kun janottaa, ja nauti nesteitä aterioiden yhteydessä. Tarve voi vaihdella terveyden, sään ja aktiivisuuden mukaan.",
+  "tip_food": "Syö hyvin",
+  "tip_foodDesc": "Valitse syömisikkunoiden aikana proteiini- ja kuitupitoisia ruokia sekä pehmeitä rasvoja. Vältä pitkälle jalostettuja ruokia.",
+  "tip_sleep": "Nuku hyvin",
+  "tip_sleepDesc": "Säännöllinen ja riittävä uni tukee yleistä hyvinvointia. Ajoita paasto niin, ettei se häiritse untasi.",
+  "tip_exercise": "Kevyt liikunta",
+  "tip_exerciseDesc": "Voit kävellä kevyesti tai harrastaa joogaa paaston aikana. Vältä raskasta liikuntaa etenkin ensimmäisinä viikkoina, kun kehosi totuttelee.",
+  "tip_drinks": "Sallitut juomat",
+  "tip_drinksDesc": "Paaston aikana voit juoda vettä, maustamatonta teetä ja mustaa kahvia ilman sokeria tai maitoa. Nämä juomat eivät katkaise paastoa.",
+  "faq_drinks": "Mitä voin juoda paaston aikana?",
+  "faq_drinksAnswer": "Voit juoda vettä, maustamatonta teetä ja mustaa kahvia ilman sokeria tai maitoa. Kaloripitoiset juomat katkaisevat paaston.",
+  "faq_plan": "Mikä paasto-ohjelma minun kannattaa valita?",
+  "faq_planAnswer": "Jos olet aloittelija, aloita 12:12- tai 14:10-ohjelmalla. Jos sinulla on kokemusta, kokeile 16:8- tai 18:6-ohjelmaa. 20:4 ja OMAD sopivat edistyneille.",
+  "faq_exercise": "Voinko liikkua paaston aikana?",
+  "faq_exerciseAnswer": "Kyllä, mutta vältä raskaita harjoituksia. Kevyt aerobinen liikunta, kävely ja jooga ovat ihanteellisia. Ajoita voimaharjoittelu lähelle syömisikkunaasi.",
+  "faq_weight": "Auttaako paasto painonpudotuksessa?",
+  "faq_weightAnswer": "Joillakin ihmisillä syömisajan rajoittaminen voi vähentää energian kokonaissaantia. Tulokset vaihtelevat, ja pitkäaikaisvaikutuksia tutkitaan edelleen.",
+  "plan_12_desc": "Aloittelijataso",
+  "plan_12_detail": "Sopii aloittelijoille. Paastoa 12 tuntia, myös nukkumisaika mukaan lukien.",
+  "plan_16_desc": "Suosituin ohjelma",
+  "plan_16_detail": "Yleisin ajoittaisen paaston ohjelma: 16 tuntia paastoa ja 8 tunnin syömisikkuna, tavallisesti lounaasta päivälliseen.",
+  "plan_18_desc": "Keskitaso",
+  "plan_18_detail": "18 tuntia paastoa ja 6 tunnin syömisikkuna. Rasvanpoltto kestää pidempään.",
+  "plan_20_desc": "Edistynyt taso",
+  "plan_20_detail": "20 tuntia paastoa ja 4 tunnin syömisikkuna. Sopii ketoosin ja autofagian saavuttamiseen.",
+  "plan_omad_desc": "Yksi ateria päivässä",
+  "plan_omad_detail": "Yksi ateria päivässä: 23 tuntia paastoa ja 1 tunnin syömisikkuna. Asiantuntijataso.",
+  "plan_52_desc": "2 päivää viikossa",
+  "plan_52_detail": "Syö normaalisti 5 päivänä ja rajoita energiansaanti noin 500 kaloriin 2 päivänä. Vaihtoehtoinen lähestymistapa.",
+  "plan_ese_desc": "24 tunnin paasto",
+  "plan_ese_detail": "Paastoa 24 tuntia 1–2 kertaa viikossa. Edistyneille.",
+  "plan_warrior_desc": "Soturidieetti",
+  "plan_warrior_detail": "Syö päivällä kevyesti ja pääateria neljän tunnin iltaikkunan aikana.",
+  "award_first_title": "Ensimmäinen askel",
+  "award_first_desc": "Suorita ensimmäinen paastosi",
+  "award_rhythm3_title": "Kolmen päivän rytmi",
+  "award_rhythm3_desc": "Säilytä rytmisi kolmen päivän ajan",
+  "award_hours24_title": "24 tuntia",
+  "award_hours24_desc": "Paastoa yhteensä 24 tuntia",
+  "award_week_title": "Viikon rytmi",
+  "award_week_desc": "Luo seitsemän päivän putki",
+  "award_fasts10_title": "10 paastoa",
+  "award_fasts10_desc": "Suorita kymmenen paastoa",
+  "award_hours100_title": "100 tuntia",
+  "award_hours100_desc": "Saavuta yhteensä 100 tuntia",
+  "award_rhythm30_title": "30 päivän rytmi",
+  "award_rhythm30_desc": "Luo kolmenkymmenen päivän putki",
+  "award_fasts50_title": "50 paastoa",
+  "award_fasts50_desc": "Suorita viisikymmentä paastoa",
+  "award_hours500_title": "500 tuntia",
+  "award_hours500_desc": "Saavuta yhteensä 500 tuntia",
+  "award_fasts100_title": "100 paastoa",
+  "award_fasts100_desc": "Suorita sata paastoa",
+  "award_rhythm90_title": "90 päivän rytmi",
+  "award_rhythm90_desc": "Luo yhdeksänkymmenen päivän putki",
+  "award_year_title": "Vuoden matka",
+  "award_year_desc": "Saavuta 365 päivän rytmi",
+  "awards_loadError": "Edistymistä ei voitu ladata",
+  "awards_journeyComplete": "Matka suoritettu",
+  "awards_nextGoal": "Seuraava tavoite",
+  "awards_allYours": "Kaikki saavutukset ovat sinun",
+  "awards_dayStreak": "päivän putki",
+  "awards_fasts": "paastoa",
+  "awards_total": "yhteensä",
+  "awards_stageStart": "Aloitus",
+  "awards_stageRhythm": "Rytmi",
+  "awards_stageEndurance": "Kestävyys",
+  "awards_stageMastery": "Mestaruus",
+  "awards_completed": "Suoritettu",
+  "awards_fastsRemaining": "{count} paastoa jäljellä",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "{count} päivää jäljellä",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "{count} tuntia jäljellä",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Yritä uudelleen",
+  "game_title": "Edistymiskeskus",
+  "game_quests": "Tämän päivän tehtävät",
+  "game_questsDesc": "Pieniä askelia, kestävä rytmi.",
+  "game_season": "30 askeleen kausi",
+  "game_seasonDesc": "Keräilysinetti joka viidennestä askeleesta.",
+  "game_badges": "Merkkikokoelma",
+  "game_shields": "{count} rytmikilpeä",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Saat yhden joka seitsemännestä suorituksesta. Väliin jäänyt päivä ei koskaan pyyhi edistymistäsi.",
+  "game_league": "Yksityinen viikkoliiga",
+  "game_leagueDesc": "Rytmipisteesi on yksityisen paikallisen mallin {percent}. prosenttipisteessä. Painoa ja äärimmäistä paastoa ei koskaan aseteta paremmuusjärjestykseen.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Taso {level}, {xp} kokemuspistettä",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Rytmin tutkija",
+  "game_streak": "Putki",
+  "game_targets": "Tavoitteet",
+  "game_best": "Paras",
+  "quest_rhythm": "Rakenna tämän päivän rytmi",
+  "quest_hydrate": "Saavuta puolet vesitavoitteestasi",
+  "quest_steady": "Suojaa putkeasi",
+  "badge_first_title": "Ensimmäinen askel",
+  "badge_first_desc": "Kirjaa ensimmäinen paastosi",
+  "badge_rhythm7_title": "Rytmin ylläpitäjä",
+  "badge_rhythm7_desc": "Saavuta 7 päivän putki",
+  "badge_rhythm3_title": "Kolmen päivän rytmi",
+  "badge_rhythm3_desc": "Saavuta 3 päivän putki",
+  "badge_target1_title": "Ensimmäinen tavoite",
+  "badge_target1_desc": "Suorita ensimmäinen tavoitepaastosi",
+  "badge_target3_title": "Kolme askelta",
+  "badge_target3_desc": "Suorita 3 tavoitetta",
+  "badge_water_title": "Tasapainossa",
+  "badge_water_desc": "Saavuta päivän vesitavoite",
+  "badge_support_title": "Itsetietoinen",
+  "badge_support_desc": "Käytä tukitilaa",
+  "badge_hours10_title": "10 tuntia",
+  "badge_hours10_desc": "Kirjaa yhteensä 10 tuntia",
+  "badge_target10_title": "Vahva kymmenikkö",
+  "badge_target10_desc": "Suorita 10 tavoitetta",
+  "badge_target20_title": "Kaksikymmentä tavoitetta",
+  "badge_target20_desc": "Suorita 20 tavoitetta",
+  "badge_fast16_title": "16 tuntia",
+  "badge_fast16_desc": "Saavuta 16 tuntia yhdessä paastossa",
+  "badge_hours50_title": "50 tuntia",
+  "badge_hours50_desc": "Kirjaa yhteensä 50 tuntia",
+  "badge_hours100_title": "Sata tuntia",
+  "badge_hours100_desc": "Kirjaa yhteensä 100 tuntia",
+  "badge_target30_title": "Kolmekymmentä tavoitetta",
+  "badge_target30_desc": "Suorita 30 tavoitetta",
+  "badge_rhythm30_title": "30 päivän rytmi",
+  "badge_rhythm30_desc": "Saavuta 30 päivän putki",
+  "paywall_restoreSuccess": "Ostokset palautettu!",
+  "fasting_progressSemantics": "Paasto on edennyt {percent} prosenttia",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour} t",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "Elinikäinen",
+  "paywall_once": "kertamaksu",
+  "paywall_processing": "Käsitellään…",
+  "paywall_continue": "Jatka",
+  "paywall_productsUnavailable": "Ostokset eivät ole juuri nyt saatavilla. Yritä myöhemmin uudelleen.",
+  "paywall_purchaseFailed": "Ostosta ei voitu suorittaa.",
+  "paywall_nothingToRestore": "Aiemmin tehtyä ostosta ei löytynyt.",
+  "paywall_restoreFailed": "Ostoksia ei voitu palauttaa.",
+  "paywall_terms": "Käyttöehdot",
+  "permission_notificationDesc": "Paastomuistutukset, vaiheen päivitykset ja valmistumisilmoitukset",
+  "profile_privacyChoices": "Tietosuojavalinnat",
+  "paywall_autoRenewInfo": "Tilaukset uusiutuvat automaattisesti, ellei niitä peruta vähintään 24 tuntia ennen jakson päättymistä. Hallitse tai peruuta milloin tahansa App Storen asetuksissa.",
+  "paywall_perMonth": "{price} / kuukausi",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Säästä {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "{days} päivän maksuton kokeilu",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Aloita maksuton kokeilu",
+  "paywall_retry": "Yritä uudelleen",
+  "paywall_alreadyOwned": "Omistat jo tämän tilauksen. Napauta Palauta ostokset.",
+  "paywall_storeUnavailable": "Kauppaan ei saada juuri nyt yhteyttä. Tarkista yhteys ja yritä uudelleen.",
+  "paywall_secureNote": "Peruuta milloin tahansa. Maksu veloitetaan kauppatililtäsi.",
+  "paywall_autoRenewInfoPlay": "Tilaukset uusiutuvat automaattisesti, ellei niitä peruta vähintään 24 tuntia ennen jakson päättymistä. Hallitse tai peruuta kohdassa Google Play > Tilaukset.",
+  "paywall_allPlansDesc": "Avaa ohjelmat 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ja Warrior",
+  "paywall_noAdsDesc": "Banneri- ja koko näytön mainokset poistetaan kokonaan",
+  "foodScan_title": "Tekoälyruokaskannaus",
+  "foodScan_scanCta": "Skannaa ateria",
+  "foodScan_scanCtaDesc": "Kuvaa lautasesi ja saat arvion kaloreista ja makroravinteista",
+  "foodScan_introTitle": "Kuvaa lautasesi",
+  "foodScan_introDesc": "Tekoäly lukee kuvan ja arvioi kalorit, proteiinin, hiilihydraatit ja rasvan.",
+  "foodScan_tipLight": "Hyvä ja tasainen valaistus parantaa arviota",
+  "foodScan_tipFrame": "Sovita koko lautanen kuvaan",
+  "foodScan_tipScale": "Ota kuvaan aterimet tai käsi, jotta annoskoko voidaan arvioida",
+  "foodScan_takePhoto": "Ota kuva",
+  "foodScan_chooseFromGallery": "Valitse galleriasta",
+  "foodScan_scansLeft": "{count} skannausta jäljellä tänään",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Olet käyttänyt tämän päivän skannaukset. Yritä huomenna uudelleen.",
+  "foodScan_privacyNote": "Kuva lähetetään analysoitavaksi Googlen Gemini APIin, eikä sitä tallenneta palvelimillemme.",
+  "foodScan_analyzing": "Ateriaasi analysoidaan…",
+  "foodScan_analyzingHint": "Tämä kestää yleensä muutaman sekunnin",
+  "foodScan_detectedItems": "Tunnistetut tuotteet",
+  "foodScan_disclaimer": "Tekoälyn arviot ovat suuntaa antavia. Korjaa tuotetta napauttamalla sitä.",
+  "foodScan_lowConfidence": "Malli ei ole varma tästä kuvasta. Tarkista luvut ennen tallentamista.",
+  "foodScan_save": "Lisää aterioihin",
+  "foodScan_retake": "Uusi kuva",
+  "foodScan_retry": "Yritä uudelleen",
+  "foodScan_editItem": "Muokkaa tuotetta",
+  "foodScan_portion": "Annos",
+  "foodScan_saveEdit": "Tallenna",
+  "foodScan_premiumTitle": "Premium-ominaisuus",
+  "foodScan_premiumDesc": "Kuvan kalorianalyysi sisältyy Premiumiin.",
+  "foodScan_upgrade": "Tutustu Premiumiin",
+  "foodScan_errorNetwork": "Ei yhteyttä. Tarkista internetyhteys ja yritä uudelleen.",
+  "foodScan_errorRateLimited": "Skannauksia tehdään juuri nyt liikaa. Yritä uudelleen muutaman minuutin kuluttua.",
+  "foodScan_errorUnavailable": "Kuva-analyysi ei ole juuri nyt käytettävissä.",
+  "foodScan_errorServer": "Analyysipalvelussa on ongelmia. Yritä pian uudelleen.",
+  "foodScan_errorNoFood": "Kuvasta ei löytynyt ruokaa. Ota selkeämpi kuva lautasesta.",
+  "foodScan_errorUnreadable": "Tätä kuvaa ei voitu analysoida. Kokeile toista kuvaa.",
+  "paywall_aiFoodScan": "Tekoälyruokaskannaus",
+  "paywall_aiFoodScanDesc": "Kuvaa ateria ja kirjaa sen kalorit ja makroravinteet sekunneissa",
+  "completion_earlyTitle": "Paasto päättyi",
+  "completion_earlyMessage": "Tämän päivän aika tallennettiin. Putki ja saavutusten edistyminen eivät muuttuneet, koska tavoitetta ei saavutettu."
+}

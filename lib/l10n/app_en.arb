@@ -1,19 +1,15 @@
 {
   "@@locale": "en",
-
   "appTitle": "FastTrack",
-
   "greeting_morning": "Good morning",
   "greeting_afternoon": "Good afternoon",
   "greeting_evening": "Good evening",
-
   "tab_timer": "Home",
   "tab_explore": "Explore",
   "tab_stats": "Report",
   "tab_meals": "Meals",
   "tab_achievements": "Awards",
   "tab_profile": "Account",
-
   "timer_fasting": "Fasting Time",
   "timer_remaining": "Remaining",
   "timer_elapsed": "Elapsed",
@@ -26,7 +22,6 @@
   "timer_stopTitle": "End Fast",
   "timer_cancel": "Cancel",
   "timer_confirmStop": "Yes, End",
-
   "phase_anabolic": "Anabolic",
   "phase_anabolicDesc": "Digestion in progress",
   "phase_catabolic": "Catabolic",
@@ -37,7 +32,6 @@
   "phase_ketosisDesc": "Ketone production active",
   "phase_autophagy": "Autophagy",
   "phase_autophagyDesc": "Cell renewal",
-
   "stats_title": "Statistics",
   "stats_week": "Week",
   "stats_month": "Month",
@@ -52,12 +46,10 @@
   "stats_weeklyFasting": "Weekly Fasting",
   "stats_monthlyView": "Monthly View",
   "stats_weightChange": "Weight Change",
-
   "heatmap_none": "None",
   "heatmap_low": "Low",
   "heatmap_good": "Good",
   "heatmap_full": "Full",
-
   "meals_title": "Meal Planner",
   "meals_eatingWindow": "Eating Window",
   "meals_windowOpen": "Open",
@@ -70,17 +62,18 @@
   "meals_noMeals": "No meals added yet",
   "meals_breakfastSuggestions": "Break-Fast Suggestions",
   "meals_addMeal": "Add Meal",
-
   "profile_title": "Profile",
   "profile_user": "User",
   "profile_planActive": "{plan} Plan active",
   "@profile_planActive": {
     "placeholders": {
-      "plan": {"type": "String"}
+      "plan": {
+        "type": "String"
+      }
     }
   },
   "profile_upgradePremium": "Upgrade to Premium",
-  "profile_premiumDesc": "All plans, advanced stats, and more",
+  "profile_premiumDesc": "Every fasting plan, with no ads",
   "profile_bodyMetrics": "Body Metrics",
   "profile_height": "Height",
   "profile_weight": "Weight",
@@ -97,7 +90,6 @@
   "profile_share": "Share",
   "profile_privacyPolicy": "Privacy Policy",
   "profile_version": "Version",
-
   "onboarding_welcome": "Welcome",
   "onboarding_welcomeDesc": "Take control of your\nintermittent fasting journey",
   "onboarding_featureTimer": "Smart fasting timer",
@@ -132,19 +124,15 @@
   "onboarding_next": "Continue",
   "onboarding_start": "Let's Go!",
   "onboarding_skipForNow": "Set up later",
-
   "waterAdded": "+250ml water added",
-
   "languageSelect": "Select Language",
   "languageTurkish": "Türkçe",
   "languageEnglish": "English",
-
   "paywall_title": "Upgrade to Premium",
-  "paywall_subtitle": "Unlock all features",
+  "paywall_subtitle": "Unlock every fasting plan and remove ads",
   "paywall_allPlans": "All fasting plans",
   "paywall_advancedStats": "Advanced statistics",
   "paywall_mealPlanner": "Meal planner",
-  "paywall_healthKit": "HealthKit integration",
   "paywall_themes": "Theme customization",
   "paywall_noAds": "No ads",
   "paywall_weekly": "Weekly",
@@ -154,13 +142,11 @@
   "paywall_freeTrial": "Free Trial (3 Days)",
   "paywall_restore": "Restore purchases",
   "paywall_premiumActive": "Premium Active!",
-  "paywall_premiumActiveDesc": "You unlocked all features",
-
+  "paywall_premiumActiveDesc": "Every fasting plan is unlocked and ads are off",
   "water_title": "Water Intake",
   "water_addWater": "Add Water",
   "water_goal": "Goal",
   "water_ml": "ml",
-
   "common_ok": "OK",
   "common_cancel": "Cancel",
   "common_save": "Save",
@@ -169,11 +155,9 @@
   "common_minutes": "minutes",
   "common_days": "days",
   "common_enable": "Enable",
-
   "streakCard_currentStreak": "Current Streak",
   "streakCard_longestStreak": "Longest Streak",
   "streakCard_totalSessions": "Total Fasts",
-
   "meals_mealType": "Meal Type",
   "meals_breakfast": "Breakfast",
   "meals_lunch": "Lunch",
@@ -182,7 +166,6 @@
   "meals_carbohydrate": "Carbohydrate",
   "meals_add": "Add",
   "meals_mealName": "Meal name",
-
   "bodyMetrics_title": "Body Metrics",
   "bodyMetrics_weight": "Weight",
   "bodyMetrics_target": "Target",
@@ -191,38 +174,41 @@
   "bodyMetrics_bmiValue": "BMI: {value}",
   "@bodyMetrics_bmiValue": {
     "placeholders": {
-      "value": {"type": "String"}
+      "value": {
+        "type": "String"
+      }
     }
   },
   "bodyMetrics_noData": "No data yet",
-
   "meals_quickAdd": "Quick Add",
   "meals_manualEntry": "Manual Entry",
   "meals_added": "{name} added",
   "@meals_added": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "meals_nameCalorieRequired": "Name and calories are required",
-
   "bodyMetrics_addWeight": "Add Weight",
   "bodyMetrics_hintWeight": "e.g. 74.5",
   "bodyMetrics_invalidWeight": "Enter a valid weight",
   "bodyMetrics_weightSaved": "{value} kg saved",
   "@bodyMetrics_weightSaved": {
     "placeholders": {
-      "value": {"type": "String"}
+      "value": {
+        "type": "String"
+      }
     }
   },
-
   "completion_duration": "Duration",
   "completion_plan": "Plan",
   "completion_lastPhase": "Last Phase",
-
+  "completion_earlyTitle": "Fast ended",
+  "completion_earlyMessage": "Today's time was saved. Streak and achievement progress did not change because the target was not completed.",
   "timer_remainingTime": "Remaining Time",
   "timer_ready": "Ready to Start",
-
   "streak_status": "Status",
   "streak_startToday": "Start today!",
   "streak_goodStart": "Good start!",
@@ -230,9 +216,7 @@
   "streak_superb": "Superb!",
   "streak_legendary": "Legendary!",
   "streak_incredible": "Incredible!",
-
   "weight_noRecord": "No weight records yet\nAdd from Profile > Body Metrics",
-
   "day_mon": "Mon",
   "day_tue": "Tue",
   "day_wed": "Wed",
@@ -240,7 +224,6 @@
   "day_fri": "Fri",
   "day_sat": "Sat",
   "day_sun": "Sun",
-
   "day_short_mon": "M",
   "day_short_tue": "T",
   "day_short_wed": "W",
@@ -248,7 +231,6 @@
   "day_short_fri": "F",
   "day_short_sat": "S",
   "day_short_sun": "S",
-
   "month_jan": "January",
   "month_feb": "February",
   "month_mar": "March",
@@ -261,24 +243,25 @@
   "month_oct": "October",
   "month_nov": "November",
   "month_dec": "December",
-
   "meals_fastingWindow": "Fasting ({hours}h)",
   "@meals_fastingWindow": {
     "placeholders": {
-      "hours": {"type": "String"}
+      "hours": {
+        "type": "String"
+      }
     }
   },
   "meals_eatingWindowHours": "Eating ({hours}h)",
   "@meals_eatingWindowHours": {
     "placeholders": {
-      "hours": {"type": "String"}
+      "hours": {
+        "type": "String"
+      }
     }
   },
-
   "recipe_oatSmoothie": "Oat Smoothie",
   "recipe_avocadoToast": "Avocado Toast",
   "recipe_yogurtBowl": "Yogurt Bowl",
-
   "elapsed_time": "Elapsed Time",
   "fast_ends_on": "Your fast ends at",
   "end_fasting": "End Fasting",
@@ -295,7 +278,9 @@
   "completed_percent": "{percent}% Completed",
   "@completed_percent": {
     "placeholders": {
-      "percent": {"type": "String"}
+      "percent": {
+        "type": "String"
+      }
     }
   },
   "explore": "Explore",
@@ -320,7 +305,13 @@
   "circle_tagline": "Together, without pressure.",
   "circle_privacy": "Weight and private metrics stay hidden. Only progress and support are visible.",
   "circle_sendSupport": "Send support · {count}",
-  "@circle_sendSupport": {"placeholders":{"count":{"type":"int"}}},
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "circle_inviteCopied": "Invite code copied",
   "circle_createInvite": "Create private invite",
   "crisis_nameTitle": "First, name what is happening",
@@ -335,7 +326,19 @@
   "crisis_tenMore": "Give it 10 minutes",
   "stats_storyEmpty": "Your first fast will begin your personal story.",
   "stats_story": "You fasted {sessions} times this period, kept your rhythm for {hours} hours, and reached a {rate}% completion rate.",
-  "@stats_story": {"placeholders":{"sessions":{"type":"int"},"hours":{"type":"int"},"rate":{"type":"int"}}},
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
   "stats_storyTitle": "The story of your rhythm",
   "home_todayRhythm": "Today’s rhythm",
   "home_finalHourSupport": "Final-hour support",
@@ -343,7 +346,13 @@
   "home_todaySummary": "Today at a glance",
   "home_dayStreak": "day streak",
   "home_weightGoal": "goal {weight} kg",
-  "@home_weightGoal": {"placeholders":{"weight":{"type":"String"}}},
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
   "weather_steady": "Your rhythm is steady",
   "weather_gentle": "A gentle day",
   "weather_water": "A glass of water may help.",
@@ -353,14 +362,47 @@
   "replay_copied": "Fasting Replay copied",
   "replay_button": "Replay",
   "replay_text": "I completed my {plan} fast in {hours}h {minutes}m · {phase}",
-  "@replay_text": {"placeholders":{"plan":{"type":"String"},"hours":{"type":"int"},"minutes":{"type":"int"},"phase":{"type":"String"}}},
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
   "journey_label": "Metabolic journey",
   "journey_now": "Now",
   "journey_next": "{time} until {phase}",
-  "@journey_next": {"placeholders":{"time":{"type":"String"},"phase":{"type":"String"}}},
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
   "phase_estimateShort": "Phase timing is a general estimate, not a medical measurement.",
   "phase_hours": "Hours {start}–{end}",
-  "@phase_hours": {"placeholders":{"start":{"type":"int"},"end":{"type":"int"}}},
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
   "phase_estimateLong": "This timing is a general estimate. Metabolic responses can vary between people.",
   "bmi_underweight": "Underweight",
   "bmi_normal": "Normal",
@@ -368,30 +410,81 @@
   "bmi_obese": "Obese",
   "notification_halfwayTitle": "Halfway There! 💪",
   "notification_halfwayBody": "You completed half of your {plan} fast. Keep going!",
-  "@notification_halfwayBody": {"placeholders":{"plan":{"type":"String"}}},
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
   "notification_phaseCatabolic": "Entered Catabolic phase 📉",
   "notification_phaseFatBurning": "Fat Burning started! 🔥",
   "notification_phaseKetosis": "You’re in Ketosis ⚡",
   "notification_phaseAutophagy": "Autophagy active! 🔄",
   "notification_completedBody": "You completed your {plan} fast! Your eating window is open.",
-  "@notification_completedBody": {"placeholders":{"plan":{"type":"String"}}},
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
   "notification_waterTitle": "Drink Water 💧",
   "notification_waterBody": "Don’t forget to drink plenty of water while fasting!",
   "notification_windowTitle": "Eating Window Closing ⏰",
   "notification_windowBody": "Your eating window will close in 30 minutes.",
   "notification_streakTitle": "{days} Day Streak! 🔥",
-  "@notification_streakTitle": {"placeholders":{"days":{"type":"int"}}},
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "notification_streakBody": "You’re doing great! Keep it up today.",
   "notification_ongoingTitle": "Fasting In Progress - {phase}",
-  "@notification_ongoingTitle": {"placeholders":{"phase":{"type":"String"}}},
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
   "notification_remaining": "Remaining: {time}",
-  "@notification_remaining": {"placeholders":{"time":{"type":"String"}}},
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "notification_started": "Fasting Started - {plan}",
-  "@notification_started": {"placeholders":{"plan":{"type":"String"}}},
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
   "notification_target": "Target: {hours} hours",
-  "@notification_target": {"placeholders":{"hours":{"type":"int"}}},
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
   "notification_time": "{hours}h {minutes}m",
-  "@notification_time": {"placeholders":{"hours":{"type":"int"},"minutes":{"type":"int"}}},
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "explore_guide": "Fasting Guide",
   "explore_guideDesc": "Everything you need to know about intermittent fasting",
   "explore_circleDesc": "Share quiet support with your private group.",
@@ -443,18 +536,30 @@
   "plan_ese_detail": "Fast for 24 hours 1–2 times per week. For advanced users.",
   "plan_warrior_desc": "Warrior diet",
   "plan_warrior_detail": "Eat light during the day (fruits, veggies), have your main meal in a 4-hour evening window.",
-  "award_first_title": "First Step", "award_first_desc": "Complete your first fast",
-  "award_rhythm3_title": "3-Day Rhythm", "award_rhythm3_desc": "Keep your rhythm for three days",
-  "award_hours24_title": "24 Hours", "award_hours24_desc": "Fast for 24 hours in total",
-  "award_week_title": "One-Week Rhythm", "award_week_desc": "Build a seven-day streak",
-  "award_fasts10_title": "10 Fasts", "award_fasts10_desc": "Complete ten fasts",
-  "award_hours100_title": "100 Hours", "award_hours100_desc": "Reach 100 total hours",
-  "award_rhythm30_title": "30-Day Rhythm", "award_rhythm30_desc": "Build a thirty-day streak",
-  "award_fasts50_title": "50 Fasts", "award_fasts50_desc": "Complete fifty fasts",
-  "award_hours500_title": "500 Hours", "award_hours500_desc": "Reach 500 total hours",
-  "award_fasts100_title": "100 Fasts", "award_fasts100_desc": "Complete one hundred fasts",
-  "award_rhythm90_title": "90-Day Rhythm", "award_rhythm90_desc": "Build a ninety-day streak",
-  "award_year_title": "One-Year Journey", "award_year_desc": "Reach a 365-day rhythm",
+  "award_first_title": "First Step",
+  "award_first_desc": "Complete your first fast",
+  "award_rhythm3_title": "3-Day Rhythm",
+  "award_rhythm3_desc": "Keep your rhythm for three days",
+  "award_hours24_title": "24 Hours",
+  "award_hours24_desc": "Fast for 24 hours in total",
+  "award_week_title": "One-Week Rhythm",
+  "award_week_desc": "Build a seven-day streak",
+  "award_fasts10_title": "10 Fasts",
+  "award_fasts10_desc": "Complete ten fasts",
+  "award_hours100_title": "100 Hours",
+  "award_hours100_desc": "Reach 100 total hours",
+  "award_rhythm30_title": "30-Day Rhythm",
+  "award_rhythm30_desc": "Build a thirty-day streak",
+  "award_fasts50_title": "50 Fasts",
+  "award_fasts50_desc": "Complete fifty fasts",
+  "award_hours500_title": "500 Hours",
+  "award_hours500_desc": "Reach 500 total hours",
+  "award_fasts100_title": "100 Fasts",
+  "award_fasts100_desc": "Complete one hundred fasts",
+  "award_rhythm90_title": "90-Day Rhythm",
+  "award_rhythm90_desc": "Build a ninety-day streak",
+  "award_year_title": "One-Year Journey",
+  "award_year_desc": "Reach a 365-day rhythm",
   "awards_loadError": "Progress could not load",
   "awards_journeyComplete": "Journey complete",
   "awards_nextGoal": "Next goal",
@@ -468,11 +573,29 @@
   "awards_stageMastery": "Mastery",
   "awards_completed": "Completed",
   "awards_fastsRemaining": "{count} fasts to go",
-  "@awards_fastsRemaining": {"placeholders":{"count":{"type":"int"}}},
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "awards_daysRemaining": "{count} days to go",
-  "@awards_daysRemaining": {"placeholders":{"count":{"type":"int"}}},
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "awards_hoursRemaining": "{count} hours to go",
-  "@awards_hoursRemaining": {"placeholders":{"count":{"type":"int"}}},
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "common_retry": "Try again",
   "game_title": "Progress Hub",
   "game_quests": "Today’s quests",
@@ -481,38 +604,88 @@
   "game_seasonDesc": "A collectible seal every fifth step.",
   "game_badges": "Badge collection",
   "game_shields": "{count} rhythm shields",
-  "@game_shields": {"placeholders":{"count":{"type":"int"}}},
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "game_shieldsDesc": "Earned every seven completions. A missed day never erases your progress.",
   "game_league": "Private weekly league",
   "game_leagueDesc": "Your rhythm score is in the {percent}th percentile of a private local model. Weight and extreme fasting are never ranked.",
-  "@game_leagueDesc": {"placeholders":{"percent":{"type":"int"}}},
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
   "game_levelSemantics": "Level {level}, {xp} experience points",
-  "@game_levelSemantics": {"placeholders":{"level":{"type":"int"},"xp":{"type":"int"}}},
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
   "game_explorer": "Rhythm Explorer",
-  "game_streak": "Streak", "game_targets": "Targets", "game_best": "Best",
+  "game_streak": "Streak",
+  "game_targets": "Targets",
+  "game_best": "Best",
   "quest_rhythm": "Build today’s rhythm",
   "quest_hydrate": "Reach half your water goal",
   "quest_steady": "Protect your streak",
-  "badge_first_title":"First Step","badge_first_desc":"Log your first fast",
-  "badge_rhythm7_title":"Rhythm Keeper","badge_rhythm7_desc":"Reach a 7-day streak",
-  "badge_rhythm3_title":"Three-Day Rhythm","badge_rhythm3_desc":"Reach a 3-day streak",
-  "badge_target1_title":"First Target","badge_target1_desc":"Complete your first target fast",
-  "badge_target3_title":"Three Steps","badge_target3_desc":"Complete 3 targets",
-  "badge_water_title":"Balanced","badge_water_desc":"Complete the daily water goal",
-  "badge_support_title":"Self Aware","badge_support_desc":"Use support mode",
-  "badge_hours10_title":"10 Hours","badge_hours10_desc":"Log 10 total hours",
-  "badge_target10_title":"Ten Strong","badge_target10_desc":"Complete 10 targets",
-  "badge_target20_title":"Twenty Targets","badge_target20_desc":"Complete 20 targets",
-  "badge_fast16_title":"16 Hours","badge_fast16_desc":"Reach 16 hours in one fast",
-  "badge_hours50_title":"50 Hours","badge_hours50_desc":"Log 50 total hours",
-  "badge_hours100_title":"Hundred Hours","badge_hours100_desc":"Log 100 total hours",
-  "badge_target30_title":"Thirty Targets","badge_target30_desc":"Complete 30 targets",
-  "badge_rhythm30_title":"30-Day Rhythm","badge_rhythm30_desc":"Reach a 30-day streak",
-  "paywall_restoreSuccess":"Purchases restored!",
-  "fasting_progressSemantics":"Fasting progress {percent} percent",
-  "@fasting_progressSemantics":{"placeholders":{"percent":{"type":"int"}}},
-  "phase_hourMarker":"{hour}h",
-  "@phase_hourMarker":{"placeholders":{"hour":{"type":"int"}}},
+  "badge_first_title": "First Step",
+  "badge_first_desc": "Log your first fast",
+  "badge_rhythm7_title": "Rhythm Keeper",
+  "badge_rhythm7_desc": "Reach a 7-day streak",
+  "badge_rhythm3_title": "Three-Day Rhythm",
+  "badge_rhythm3_desc": "Reach a 3-day streak",
+  "badge_target1_title": "First Target",
+  "badge_target1_desc": "Complete your first target fast",
+  "badge_target3_title": "Three Steps",
+  "badge_target3_desc": "Complete 3 targets",
+  "badge_water_title": "Balanced",
+  "badge_water_desc": "Complete the daily water goal",
+  "badge_support_title": "Self Aware",
+  "badge_support_desc": "Use support mode",
+  "badge_hours10_title": "10 Hours",
+  "badge_hours10_desc": "Log 10 total hours",
+  "badge_target10_title": "Ten Strong",
+  "badge_target10_desc": "Complete 10 targets",
+  "badge_target20_title": "Twenty Targets",
+  "badge_target20_desc": "Complete 20 targets",
+  "badge_fast16_title": "16 Hours",
+  "badge_fast16_desc": "Reach 16 hours in one fast",
+  "badge_hours50_title": "50 Hours",
+  "badge_hours50_desc": "Log 50 total hours",
+  "badge_hours100_title": "Hundred Hours",
+  "badge_hours100_desc": "Log 100 total hours",
+  "badge_target30_title": "Thirty Targets",
+  "badge_target30_desc": "Complete 30 targets",
+  "badge_rhythm30_title": "30-Day Rhythm",
+  "badge_rhythm30_desc": "Reach a 30-day streak",
+  "paywall_restoreSuccess": "Purchases restored!",
+  "fasting_progressSemantics": "Fasting progress {percent} percent",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}h",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
   "paywall_lifetime": "Lifetime",
   "paywall_once": "one-time",
   "paywall_processing": "Processing…",
@@ -523,7 +696,80 @@
   "paywall_restoreFailed": "Purchases could not be restored.",
   "paywall_terms": "Terms of Use",
   "permission_notificationDesc": "Fasting reminders, phase updates and completion notifications",
-  "permission_healthTitle": "Health Connect / HealthKit",
-  "permission_healthDesc": "Sync steps, active calories and weight with your permission",
-  "profile_privacyChoices": "Privacy choices"
+  "profile_privacyChoices": "Privacy choices",
+  "paywall_autoRenewInfo": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in your App Store settings.",
+  "paywall_perMonth": "{price} / month",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Save {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "{days}-day free trial",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Start free trial",
+  "paywall_retry": "Try again",
+  "paywall_alreadyOwned": "You already own this subscription. Tap “Restore purchases”.",
+  "paywall_storeUnavailable": "Can't reach the store right now. Check your connection and try again.",
+  "paywall_secureNote": "Cancel anytime. Payment is charged to your store account.",
+  "paywall_autoRenewInfoPlay": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.",
+  "paywall_allPlansDesc": "Unlocks 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat and Warrior",
+  "paywall_noAdsDesc": "Banner and interstitial ads are turned off completely",
+  "foodScan_title": "AI Food Scan",
+  "foodScan_scanCta": "Scan meal",
+  "foodScan_scanCtaDesc": "Photograph your plate, get calories and macros",
+  "foodScan_introTitle": "Photograph your plate",
+  "foodScan_introDesc": "AI reads the photo and estimates calories, protein, carbs and fat.",
+  "foodScan_tipLight": "Good, even light gives a better estimate",
+  "foodScan_tipFrame": "Fit the whole plate into the frame",
+  "foodScan_tipScale": "Include cutlery or a hand so portions can be scaled",
+  "foodScan_takePhoto": "Take photo",
+  "foodScan_chooseFromGallery": "Choose from gallery",
+  "foodScan_scansLeft": "{count} scans left today",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "You've used today's scans. Try again tomorrow.",
+  "foodScan_privacyNote": "The photo is sent to Google's Gemini API for analysis and is not stored on our servers.",
+  "foodScan_analyzing": "Analysing your meal…",
+  "foodScan_analyzingHint": "This usually takes a few seconds",
+  "foodScan_detectedItems": "Detected items",
+  "foodScan_disclaimer": "AI estimates are approximate. Tap an item to correct it.",
+  "foodScan_lowConfidence": "The model is unsure about this photo. Check the numbers before saving.",
+  "foodScan_save": "Add to meals",
+  "foodScan_retake": "New photo",
+  "foodScan_retry": "Try again",
+  "foodScan_editItem": "Edit item",
+  "foodScan_portion": "Portion",
+  "foodScan_saveEdit": "Save",
+  "foodScan_premiumTitle": "A Premium feature",
+  "foodScan_premiumDesc": "Photo calorie analysis is included in Premium.",
+  "foodScan_upgrade": "See Premium",
+  "foodScan_errorNetwork": "No connection. Check your internet and try again.",
+  "foodScan_errorRateLimited": "Too many scans right now. Try again in a few minutes.",
+  "foodScan_errorUnavailable": "Photo analysis is unavailable right now.",
+  "foodScan_errorServer": "The analysis service is having trouble. Try again shortly.",
+  "foodScan_errorNoFood": "No food found in this photo. Try a clearer shot of the plate.",
+  "foodScan_errorUnreadable": "This photo couldn't be analysed. Try another one.",
+  "paywall_aiFoodScan": "AI food scan",
+  "paywall_aiFoodScanDesc": "Photograph a meal and log its calories and macros in seconds"
 }

@@ -16,13 +16,13 @@ import '../widgets/fasting_ring.dart';
 import '../widgets/timer_display.dart';
 import '../widgets/timer_controls.dart';
 import '../widgets/quick_stats_row.dart';
-import '../widgets/completion_overlay.dart';
 import '../widgets/crisis_mode_sheet.dart';
 import '../widgets/metabolic_journey.dart';
-import '../widgets/metabolic_weather.dart';
 import '../../../services/admob_service.dart';
 import '../../paywall/providers/subscription_provider.dart';
 import '../../stats/providers/stats_provider.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
+import '../../../shared/widgets/premium_promo_card.dart';
 
 class TimerScreen extends ConsumerStatefulWidget {
   const TimerScreen({super.key});
@@ -95,8 +95,6 @@ class _PlanButton extends StatelessWidget {
 }
 
 class _TimerScreenState extends ConsumerState<TimerScreen> {
-  bool _showCompletion = false;
-
   @override
   void initState() {
     super.initState();
@@ -130,7 +128,6 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
           next.progress >= 1.0) {
         ref.read(fastingSessionProvider.notifier).loadSessions();
         _invalidateStatsProviders(ref);
-        setState(() => _showCompletion = true);
       }
     });
 
@@ -166,12 +163,12 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                 final horizontal = constraints.maxWidth >= 700;
                 final gutter = horizontal ? 40.0 : 12.0;
                 final ringSize = math.min(
-                  horizontal ? 340.0 : 318.0,
+                  horizontal ? 340.0 : 292.0,
                   constraints.maxWidth - gutter * 2 - (horizontal ? 64 : 16),
                 );
 
                 return SingleChildScrollView(
-                  padding: EdgeInsets.fromLTRB(gutter, 12, gutter, 32),
+                  padding: EdgeInsets.fromLTRB(gutter, 12, gutter, 48),
                   child: Center(
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 760),
@@ -213,6 +210,10 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                               ),
                             ],
                           ),
+                          if (!ref.watch(isPremiumProvider)) ...[
+                            const SizedBox(height: 14),
+                            const PremiumPromoCard(compact: true),
+                          ],
                           const SizedBox(height: 20),
                           Container(
                             padding: EdgeInsets.fromLTRB(
@@ -327,12 +328,6 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                           ),
                           const SizedBox(height: 22),
                           if (isActive) ...[
-                            MetabolicWeather(
-                              waterProgress: waterState.progress,
-                              streak: streak,
-                              elapsedHours: timerState.elapsedHours,
-                            ),
-                            const SizedBox(height: 12),
                             MetabolicJourney(
                               elapsedHours: timerState.elapsedHours,
                               targetHours: timerState.targetSeconds / 3600,
@@ -357,6 +352,10 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                               waterGoalMl: waterState.goalMl,
                               onAddWater: () => _addWater(context, ref),
                             ),
+                          const SizedBox(height: 14),
+                          _buildMealsCard(context, l10n),
+                          const SizedBox(height: 14),
+                          _buildGuideCard(context, l10n),
                         ],
                       ),
                     ),
@@ -365,21 +364,6 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
               },
             ),
           ),
-          // Completion overlay
-          if (_showCompletion)
-            CompletionOverlay(
-              durationMinutes: timerState.elapsedSeconds ~/ 60,
-              planName: plan.name,
-              phaseName: _phaseName(l10n, timerState.currentPhase),
-              targetMinutes: timerState.targetSeconds ~/ 60,
-              onDismiss: () {
-                ref.read(timerProvider.notifier).resetTimer();
-                setState(() => _showCompletion = false);
-                if (!ref.read(isPremiumProvider)) {
-                  AdmobService().showInterstitialAd();
-                }
-              },
-            ),
         ],
       ),
     );
@@ -390,6 +374,110 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
     if (hour < 12) return l10n.greeting_morning;
     if (hour < 18) return l10n.greeting_afternoon;
     return l10n.greeting_evening;
+  }
+
+  Widget _buildGuideCard(BuildContext context, AppLocalizations l10n) {
+    final theme = Theme.of(context);
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => context.push('/explore'),
+        borderRadius: BorderRadius.circular(24),
+        child: FastingSplitArtCard(
+          assetPath: 'assets/images/editorial/fasting-guide-hero.webp',
+          minHeight: 190,
+          artWidth: 174,
+          fit: BoxFit.cover,
+          alignment: Alignment.centerRight,
+          semanticLabel: l10n.explore_guide,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  l10n.explore_guide,
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    color: fastingArtForeground(context),
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: -.35,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  l10n.explore_guideDesc,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: fastingArtMutedForeground(context),
+                    height: 1.35,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMealsCard(BuildContext context, AppLocalizations l10n) {
+    final theme = Theme.of(context);
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => context.push('/meals'),
+        borderRadius: BorderRadius.circular(24),
+        child: FastingSplitArtCard(
+          assetPath: 'assets/images/editorial/tip-balanced-meal.webp',
+          minHeight: 190,
+          artWidth: 174,
+          fit: BoxFit.cover,
+          alignment: Alignment.centerRight,
+          semanticLabel: l10n.meals_addMeal,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  l10n.meals_title,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    color: fastingArtForeground(context),
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 13,
+                    vertical: 7,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.add, color: Colors.white, size: 17),
+                      const SizedBox(width: 5),
+                      Text(
+                        l10n.meals_addMeal,
+                        style: theme.textTheme.labelMedium?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   String _phaseName(AppLocalizations l10n, MetabolicPhase phase) {
@@ -445,91 +533,118 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
   void _showPlanSelector(BuildContext context, WidgetRef ref) {
     final isActive = ref.read(timerProvider).status == TimerStatus.running;
     if (isActive) return;
-
-    showModalBottomSheet(
+    final router = GoRouter.of(context);
+    var selectedId = ref.read(timerProvider).planId;
+    showModalBottomSheet<void>(
       context: context,
-      builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                AppLocalizations.of(context)!.timer_selectPlan,
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const SizedBox(height: 16),
-              ...FastingPlans.all.map((plan) {
-                final isPremium = ref.read(isPremiumProvider);
-                final isLocked = plan.isPremium && !isPremium;
-                return ListTile(
-                  leading: Icon(
-                    plan.icon,
-                    color:
-                        isLocked
-                            ? Theme.of(
-                              context,
-                            ).colorScheme.onSurface.withValues(alpha: 0.3)
-                            : null,
-                  ),
-                  title: Text(
-                    plan.name,
-                    style:
-                        isLocked
-                            ? TextStyle(
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.4),
-                            )
-                            : null,
-                  ),
-                  subtitle: Text(
-                    plan.description(AppLocalizations.of(context)!),
-                  ),
-                  trailing:
-                      isLocked
-                          ? Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 2,
-                            ),
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [
-                                  AppColors.primary,
-                                  AppColors.secondary,
-                                ],
+      useRootNavigator: true,
+      isScrollControlled: true,
+      builder: (sheetContext) => StatefulBuilder(builder: (context, setSheetState) {
+        final theme = Theme.of(context);
+        final l10n = AppLocalizations.of(context)!;
+        final isPremium = ref.read(isPremiumProvider);
+        final selected = FastingPlans.getById(selectedId);
+        return SafeArea(
+          top: false,
+          child: FractionallySizedBox(
+            heightFactor: .82,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 8, 16, 12),
+                  child: Row(children: [
+                    Expanded(child: Text(l10n.timer_selectPlan, style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900))),
+                    IconButton(onPressed: () => Navigator.pop(sheetContext), icon: const Icon(Icons.close_rounded)),
+                  ]),
+                ),
+                Expanded(
+                  child: ListView.separated(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    itemCount: FastingPlans.all.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 10),
+                    itemBuilder: (context, index) {
+                      final plan = FastingPlans.all[index];
+                      final locked = plan.isPremium && !isPremium;
+                      final active = plan.id == selectedId;
+                      return Material(
+                        color: active ? theme.colorScheme.primaryContainer.withValues(alpha: .42) : theme.colorScheme.surfaceContainerLow,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          side: BorderSide(color: active ? theme.colorScheme.primary : theme.dividerColor.withValues(alpha: .45), width: active ? 1.6 : 1),
+                        ),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(20),
+                          onTap: () {
+                            HapticFeedback.selectionClick();
+                            if (locked) {
+                              Navigator.pop(sheetContext);
+                              router.push('/paywall');
+                            } else {
+                              setSheetState(() => selectedId = plan.id);
+                            }
+                          },
+                          child: FastingSplitArtCard(
+                            assetPath: 'assets/images/editorial/v3/plan-clock-${switch (plan.id) { 'eat_stop_eat' => 'ese', _ => plan.id.replaceAll('_', '-') }}.webp',
+                            minHeight: 178,
+                            artWidth: 148,
+                            borderRadius: 19,
+                            fit: BoxFit.cover,
+                            semanticLabel: plan.name,
+                            child: Padding(
+                                padding: const EdgeInsets.fromLTRB(15, 15, 12, 15),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Row(children: [
+                                            Flexible(child: Text(plan.name, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w900))),
+                                            if (locked) ...[
+                                              const SizedBox(width: 7),
+                                              Icon(Icons.lock_outline_rounded, size: 16, color: theme.colorScheme.primary),
+                                            ],
+                                          ]),
+                                          const SizedBox(height: 3),
+                                          Text(plan.description(l10n), style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, height: 1.25)),
+                                          const SizedBox(height: 9),
+                                          Row(children: [
+                                            Expanded(flex: plan.fastingHours, child: Container(height: 5, decoration: BoxDecoration(color: AppColors.primary, borderRadius: BorderRadius.circular(9)))),
+                                            if (plan.eatingHours > 0) Expanded(flex: plan.eatingHours, child: Container(height: 5, decoration: BoxDecoration(color: AppColors.success.withValues(alpha: .55), borderRadius: BorderRadius.circular(9)))),
+                                          ]),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    Icon(active ? Icons.check_circle_rounded : Icons.circle_outlined, color: active ? theme.colorScheme.primary : theme.colorScheme.outlineVariant),
+                                  ],
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: const Text(
-                              'PRO',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          )
-                          : null,
-                  onTap: () {
-                    if (isLocked) {
-                      Navigator.pop(context);
-                      context.push('/paywall');
-                      return;
-                    }
-                    HapticFeedback.selectionClick();
-                    ref.read(timerProvider.notifier).changePlan(plan.id);
-                    Navigator.pop(context);
-                  },
-                );
-              }),
-              const SizedBox(height: 16),
-            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 14, 20, 18),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: FilledButton(
+                      onPressed: () {
+                        ref.read(timerProvider.notifier).changePlan(selected.id);
+                        Navigator.pop(sheetContext);
+                      },
+                      child: Text('${l10n.common_save} · ${selected.name}'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
-      },
+      }),
     );
   }
 

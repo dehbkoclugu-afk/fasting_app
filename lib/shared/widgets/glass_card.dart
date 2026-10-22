@@ -24,7 +24,7 @@ class GlassCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final cardColor = color ?? theme.colorScheme.surface;
+    final cardColor = color ?? theme.colorScheme.surfaceContainerLow;
     final shadow = boxShadow ?? const <BoxShadow>[];
 
     final shape = RoundedRectangleBorder(

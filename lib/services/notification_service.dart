@@ -12,13 +12,14 @@ class NotificationService {
 
   final _plugin = FlutterLocalNotificationsPlugin();
   bool _initialized = false;
+  Future<void>? _initializing;
   VoidCallback? _notificationTapHandler;
   bool _pendingNotificationTap = false;
   String _locale = 'tr';
 
   static const _channelId = 'fasting_channel';
-  static const _channelName = 'Fasting Notifications';
-  static const _channelDesc = 'Fasting timer notifications';
+  String get _channelName => _l10n.profile_notifications;
+  String get _channelDesc => _l10n.profile_phaseNotifications;
 
   void setLocale(String locale) => _locale = locale;
   set notificationTapHandler(VoidCallback? handler) {
@@ -30,12 +31,12 @@ class NotificationService {
   }
 
   AppLocalizations get _l10n =>
-      lookupAppLocalizations(Locale(_supportedLocale(_locale)));
+      lookupAppLocalizations(_localeFromTag(_locale));
 
   // Notification IDs
   static const fastingStartId = 1;
   static const fastingEndId = 2;
-  static const phaseChangeId = 3;
+  static const phaseChangeId = 10; // 10-13 reserved for metabolic phases
   static const halfwayId = 4;
   static const windowClosingId = 5;
   static const waterReminderId = 100; // 100-199 for water
@@ -43,35 +44,56 @@ class NotificationService {
 
   Future<void> initialize() async {
     if (_initialized) return;
+    final pending = _initializing;
+    if (pending != null) {
+      await pending;
+      return;
+    }
 
-    tz_data.initializeTimeZones();
+    final future = _initialize();
+    _initializing = future;
+    try {
+      await future;
+    } finally {
+      _initializing = null;
+    }
+  }
 
-    const androidSettings = AndroidInitializationSettings(
-      '@mipmap/ic_launcher',
-    );
-    const iosSettings = DarwinInitializationSettings(
-      requestAlertPermission: false,
-      requestBadgePermission: false,
-      requestSoundPermission: false,
-    );
+  Future<void> _initialize() async {
+    try {
+      tz_data.initializeTimeZones();
 
-    const initSettings = InitializationSettings(
-      android: androidSettings,
-      iOS: iosSettings,
-    );
+      const androidSettings = AndroidInitializationSettings(
+        '@drawable/notification_icon',
+      );
+      const iosSettings = DarwinInitializationSettings(
+        requestAlertPermission: false,
+        requestBadgePermission: false,
+        requestSoundPermission: false,
+      );
+      const initSettings = InitializationSettings(
+        android: androidSettings,
+        iOS: iosSettings,
+      );
 
-    await _plugin.initialize(
-      initSettings,
-      onDidReceiveNotificationResponse: _onNotificationTapped,
-    );
+      await _plugin.initialize(
+        initSettings,
+        onDidReceiveNotificationResponse: _onNotificationTapped,
+      );
 
-    final launchDetails = await _plugin.getNotificationAppLaunchDetails();
-    _pendingNotificationTap = launchDetails?.didNotificationLaunchApp ?? false;
-
-    _initialized = true;
+      final launchDetails =
+          await _plugin.getNotificationAppLaunchDetails();
+      _pendingNotificationTap =
+          launchDetails?.didNotificationLaunchApp ?? false;
+      _initialized = true;
+    } catch (error) {
+      debugPrint('Notification initialization failed: $error');
+    }
   }
 
   Future<bool> requestPermission() async {
+    await initialize();
+    if (!_initialized) return false;
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       final result = await _plugin
           .resolvePlatformSpecificImplementation<
@@ -99,9 +121,15 @@ class NotificationService {
     required DateTime startTime,
     required int targetMinutes,
     required String planName,
+    bool phaseNotifications = true,
+    bool waterReminders = true,
   }) async {
-    // Tüm mevcut bildirimleri iptal et
-    await cancelAll();
+    await initialize();
+    if (!_initialized) return;
+
+    // Keep the persistent timer notification alive while preferences are
+    // refreshed; replace only the scheduled fasting reminders.
+    await _cancelScheduledFastingNotifications();
 
     final targetDuration = Duration(minutes: targetMinutes);
     final endTime = startTime.add(targetDuration);
@@ -120,21 +148,23 @@ class NotificationService {
 
     // Faz geçiş bildirimleri
     final phaseHours = [4, 8, 12, 18];
-    for (int i = 0; i < phaseHours.length; i++) {
-      final phaseTime = startTime.add(Duration(hours: phaseHours[i]));
-      if (phaseTime.isAfter(now) && phaseTime.isBefore(endTime)) {
-        final phaseNames = [
-          _l10n.notification_phaseCatabolic,
-          _l10n.notification_phaseFatBurning,
-          _l10n.notification_phaseKetosis,
-          _l10n.notification_phaseAutophagy,
-        ];
-        await _scheduleNotification(
-          id: phaseChangeId + i,
-          title: phaseNames[i],
-          body: _getPhaseDescription(i),
-          scheduledTime: phaseTime,
-        );
+    if (phaseNotifications) {
+      for (int i = 0; i < phaseHours.length; i++) {
+        final phaseTime = startTime.add(Duration(hours: phaseHours[i]));
+        if (phaseTime.isAfter(now) && phaseTime.isBefore(endTime)) {
+          final phaseNames = [
+            _l10n.notification_phaseCatabolic,
+            _l10n.notification_phaseFatBurning,
+            _l10n.notification_phaseKetosis,
+            _l10n.notification_phaseAutophagy,
+          ];
+          await _scheduleNotification(
+            id: phaseChangeId + i,
+            title: phaseNames[i],
+            body: _getPhaseDescription(i),
+            scheduledTime: phaseTime,
+          );
+        }
       }
     }
 
@@ -149,21 +179,25 @@ class NotificationService {
     }
 
     // Su hatırlatmaları (her 2 saatte)
-    for (int i = 1; i <= 12; i++) {
-      final waterTime = startTime.add(Duration(hours: i * 2));
-      if (waterTime.isAfter(now) && waterTime.isBefore(endTime)) {
-        await _scheduleNotification(
-          id: waterReminderId + i,
-          title: _l10n.notification_waterTitle,
-          body: _l10n.notification_waterBody,
-          scheduledTime: waterTime,
-        );
+    if (waterReminders) {
+      for (int i = 1; i <= 12; i++) {
+        final waterTime = startTime.add(Duration(hours: i * 2));
+        if (waterTime.isAfter(now) && waterTime.isBefore(endTime)) {
+          await _scheduleNotification(
+            id: waterReminderId + i,
+            title: _l10n.notification_waterTitle,
+            body: _l10n.notification_waterBody,
+            scheduledTime: waterTime,
+          );
+        }
       }
     }
   }
 
   // Yemek penceresi kapanma bildirimi
   Future<void> scheduleWindowClosing({required DateTime closingTime}) async {
+    await initialize();
+    if (!_initialized) return;
     final warningTime = closingTime.subtract(const Duration(minutes: 30));
     if (warningTime.isAfter(DateTime.now())) {
       await _scheduleNotification(
@@ -180,6 +214,8 @@ class NotificationService {
     required int streakDays,
     required DateTime morningTime,
   }) async {
+    await initialize();
+    if (!_initialized) return;
     if (morningTime.isAfter(DateTime.now())) {
       await _scheduleNotification(
         id: streakId,
@@ -195,7 +231,9 @@ class NotificationService {
     required String title,
     required String body,
   }) async {
-    const androidDetails = AndroidNotificationDetails(
+    await initialize();
+    if (!_initialized) return;
+    final androidDetails = AndroidNotificationDetails(
       _channelId,
       _channelName,
       channelDescription: _channelDesc,
@@ -207,7 +245,7 @@ class NotificationService {
       category: AndroidNotificationCategory.progress,
     );
 
-    const details = NotificationDetails(
+    final details = NotificationDetails(
       android: androidDetails,
       iOS: DarwinNotificationDetails(
         presentAlert: false,
@@ -229,12 +267,50 @@ class NotificationService {
     );
   }
 
+  Future<void> showActiveFastingNotification({
+    required String planName,
+    required int targetMinutes,
+  }) async {
+    await showOngoingNotification(
+      title: _l10n.notification_started(planName),
+      body: _l10n.notification_target(targetMinutes ~/ 60),
+    );
+  }
+
   Future<void> cancelOngoing() async {
+    await initialize();
+    if (!_initialized) return;
     await _plugin.cancel(fastingStartId);
   }
 
+  Future<void> cancelFastingNotifications() async {
+    await initialize();
+    if (!_initialized) return;
+    await _plugin.cancel(fastingStartId);
+    await _cancelScheduledFastingNotifications();
+  }
+
   Future<void> cancelAll() async {
+    await initialize();
+    if (!_initialized) return;
     await _plugin.cancelAll();
+  }
+
+  Future<void> _cancelScheduledFastingNotifications() async {
+    await _plugin.cancel(fastingEndId);
+    await _plugin.cancel(halfwayId);
+    await _plugin.cancel(windowClosingId);
+    // Also clear the legacy 3-6 range used before phase IDs were separated
+    // from the eating-window notification.
+    for (var id = 3; id <= 6; id++) {
+      await _plugin.cancel(id);
+    }
+    for (var id = phaseChangeId; id < phaseChangeId + 4; id++) {
+      await _plugin.cancel(id);
+    }
+    for (var id = waterReminderId + 1; id <= waterReminderId + 12; id++) {
+      await _plugin.cancel(id);
+    }
   }
 
   Future<void> _scheduleNotification({
@@ -243,7 +319,7 @@ class NotificationService {
     required String body,
     required DateTime scheduledTime,
   }) async {
-    const androidDetails = AndroidNotificationDetails(
+    final androidDetails = AndroidNotificationDetails(
       _channelId,
       _channelName,
       channelDescription: _channelDesc,
@@ -258,7 +334,7 @@ class NotificationService {
       presentSound: true,
     );
 
-    const details = NotificationDetails(
+    final details = NotificationDetails(
       android: androidDetails,
       iOS: iosDetails,
     );
@@ -295,5 +371,10 @@ class NotificationService {
   }
 }
 
-String _supportedLocale(String locale) =>
-    const {'tr', 'en', 'es', 'pt', 'de', 'fr'}.contains(locale) ? locale : 'en';
+Locale _localeFromTag(String tag) {
+  final parts = tag.replaceAll('-', '_').split('_');
+  return Locale.fromSubtags(
+    languageCode: parts.first,
+    countryCode: parts.length > 1 ? parts[1] : null,
+  );
+}

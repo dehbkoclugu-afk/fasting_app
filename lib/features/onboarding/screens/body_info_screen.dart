@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../shared/widgets/gradient_button.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../widgets/onboarding_progress.dart';
 
@@ -36,28 +37,27 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
 
     return Scaffold(
       body: SafeArea(
-        child: Padding(
+        minimum: const EdgeInsets.only(bottom: 16),
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const OnboardingProgress(currentStep: 3),
+              OnboardingProgress(
+                currentStep: 3,
+                onBack: () => context.go('/onboarding/plan'),
+              ),
               const SizedBox(height: 24),
 
-              Text(
-                l10n.onboarding_bodyInfo,
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+              EditorialScreenHero(
+                assetPath: 'assets/images/editorial/profile-progress.webp',
+                title: l10n.onboarding_bodyInfo,
+                subtitle: l10n.onboarding_bodyInfoDesc,
+                icon: Icons.person_outline,
+                height: 148,
+                alignment: Alignment.centerRight,
               ),
-              const SizedBox(height: 8),
-              Text(
-                l10n.onboarding_bodyInfoDesc,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                ),
-              ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 18),
 
               // Gender
               Text(l10n.onboarding_gender, style: theme.textTheme.titleSmall),
@@ -124,7 +124,7 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
                 icon: Icons.cake_outlined,
               ),
 
-              const Spacer(),
+              const SizedBox(height: 24),
 
               Text(
                 l10n.onboarding_bodyInfoDisclaimer,
@@ -152,6 +152,7 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
                   context.go('/onboarding/permissions');
                 },
               ),
+              const SizedBox(height: 8),
             ],
           ),
         ),

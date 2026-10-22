@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,6 +11,7 @@ import '../../features/onboarding/screens/permissions_screen.dart';
 import '../../features/timer/screens/timer_screen.dart';
 import '../../features/stats/screens/stats_screen.dart';
 import '../../features/meals/screens/meals_screen.dart';
+import '../../features/meals/screens/food_scan_screen.dart';
 import '../../features/profile/screens/profile_screen.dart';
 import '../../features/paywall/screens/paywall_screen.dart';
 import '../../features/profile/screens/body_metrics_screen.dart';
@@ -24,10 +27,17 @@ class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
-  static GoRouter router({required bool showOnboarding}) {
+  static GoRouter router({
+    required bool showOnboarding,
+    Uint8List? recoveredFoodImage,
+    String? recoveredFoodImageMimeType,
+  }) {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: showOnboarding ? '/onboarding' : '/timer',
+      initialLocation:
+          recoveredFoodImage != null
+              ? '/food-scan'
+              : (showOnboarding ? '/onboarding' : '/timer'),
       routes: [
         // Onboarding
         GoRoute(
@@ -109,6 +119,17 @@ class AppRouter {
           path: '/meals',
           parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => const MealsScreen(),
+        ),
+
+        // AI food photo analysis (premium)
+        GoRoute(
+          path: '/food-scan',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder:
+              (context, state) => FoodScanScreen(
+                initialImageBytes: recoveredFoodImage,
+                initialImageMimeType: recoveredFoodImageMimeType,
+              ),
         ),
 
         // Water Tracker

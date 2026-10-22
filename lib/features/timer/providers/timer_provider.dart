@@ -115,7 +115,9 @@ class TimerNotifier extends StateNotifier<TimerState> {
         _startTicker();
       }
     } catch (error) {
-      state = TimerState(error: error);
+      debugPrint('Active fasting session restore failed: $error');
+      _activeSessionId = null;
+      state = TimerState(planId: state.planId);
     }
   }
 

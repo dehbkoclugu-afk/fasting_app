@@ -1,0 +1,775 @@
+{
+  "@@locale": "pl",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Dzień dobry",
+  "greeting_afternoon": "Dzień dobry",
+  "greeting_evening": "Dobry wieczór",
+  "tab_timer": "Start",
+  "tab_explore": "Odkrywaj",
+  "tab_stats": "Raport",
+  "tab_meals": "Posiłki",
+  "tab_achievements": "Nagrody",
+  "tab_profile": "Konto",
+  "timer_fasting": "Czas postu",
+  "timer_remaining": "Pozostało",
+  "timer_elapsed": "Minęło",
+  "timer_start": "Rozpocznij",
+  "timer_stop": "Zatrzymaj",
+  "timer_completed": "Gratulacje!",
+  "timer_completedMessage": "Udało Ci się ukończyć post!",
+  "timer_selectPlan": "Wybierz plan postu",
+  "timer_stopConfirm": "Czy na pewno chcesz zakończyć post wcześniej?",
+  "timer_stopTitle": "Zakończ post",
+  "timer_cancel": "Anuluj",
+  "timer_confirmStop": "Tak, zakończ",
+  "phase_anabolic": "Anaboliczna",
+  "phase_anabolicDesc": "Trwa trawienie",
+  "phase_catabolic": "Kataboliczna",
+  "phase_catabolicDesc": "Zmiana źródła energii",
+  "phase_fatBurning": "Spalanie tłuszczu",
+  "phase_fatBurningDesc": "Rozpoczęło się spalanie tłuszczu",
+  "phase_ketosis": "Ketoza",
+  "phase_ketosisDesc": "Produkcja ketonów jest aktywna",
+  "phase_autophagy": "Autofagia",
+  "phase_autophagyDesc": "Odnowa komórkowa",
+  "stats_title": "Statystyki",
+  "stats_week": "Tydzień",
+  "stats_month": "Miesiąc",
+  "stats_year": "Rok",
+  "stats_totalFasts": "Łączna liczba postów",
+  "stats_average": "Średnia",
+  "stats_fastDuration": "czas trwania postu",
+  "stats_streak": "Seria",
+  "stats_daysConsecutive": "dni z rzędu",
+  "stats_success": "Sukces",
+  "stats_completion": "ukończenie",
+  "stats_weeklyFasting": "Post tygodniowy",
+  "stats_monthlyView": "Widok miesiąca",
+  "stats_weightChange": "Zmiana masy ciała",
+  "heatmap_none": "Brak",
+  "heatmap_low": "Niska",
+  "heatmap_good": "Dobra",
+  "heatmap_full": "Pełna",
+  "meals_title": "Planer posiłków",
+  "meals_eatingWindow": "Okno żywieniowe",
+  "meals_windowOpen": "Otwarte",
+  "meals_windowFasting": "Post",
+  "meals_calories": "Kalorie",
+  "meals_protein": "Białko",
+  "meals_carbs": "Węglowodany",
+  "meals_fat": "Tłuszcz",
+  "meals_todayMeals": "Dzisiejsze posiłki",
+  "meals_noMeals": "Nie dodano jeszcze posiłków",
+  "meals_breakfastSuggestions": "Propozycje przerwania postu",
+  "meals_addMeal": "Dodaj posiłek",
+  "profile_title": "Profil",
+  "profile_user": "Użytkownik",
+  "profile_planActive": "Plan {plan} jest aktywny",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Przejdź na Premium",
+  "profile_premiumDesc": "Wszystkie plany postu bez reklam",
+  "profile_bodyMetrics": "Pomiary ciała",
+  "profile_height": "Wzrost",
+  "profile_weight": "Masa ciała",
+  "profile_targetWeight": "Docelowa masa ciała",
+  "profile_bmi": "BMI",
+  "profile_settings": "Ustawienia",
+  "profile_notifications": "Powiadomienia",
+  "profile_darkTheme": "Ciemny motyw",
+  "profile_waterReminder": "Przypomnienie o wodzie",
+  "profile_phaseNotifications": "Powiadomienia o fazach",
+  "profile_language": "Język",
+  "profile_about": "Informacje",
+  "profile_rateApp": "Oceń aplikację",
+  "profile_share": "Udostępnij",
+  "profile_privacyPolicy": "Polityka prywatności",
+  "profile_version": "Wersja",
+  "onboarding_welcome": "Witaj",
+  "onboarding_welcomeDesc": "Przejmij kontrolę nad swoją drogą\nz postem przerywanym",
+  "onboarding_featureTimer": "Inteligentny minutnik postu",
+  "onboarding_featureStats": "Szczegółowe statystyki i wykresy",
+  "onboarding_featureMeals": "Planer posiłków i propozycje przepisów",
+  "onboarding_getStarted": "Zaczynamy",
+  "onboarding_selectGoal": "Jaki jest Twój cel?",
+  "onboarding_selectGoalDesc": "Możesz wybrać kilka",
+  "onboarding_goalWeight": "Schudnij",
+  "onboarding_goalWeightDesc": "Zdrowa utrata masy ciała",
+  "onboarding_goalHealth": "Popraw zdrowie",
+  "onboarding_goalHealthDesc": "Ogólne zdrowie i odporność",
+  "onboarding_goalEnergy": "Więcej energii",
+  "onboarding_goalEnergyDesc": "Energia przez cały dzień",
+  "onboarding_goalMental": "Jasność umysłu",
+  "onboarding_goalMentalDesc": "Skupienie i jasność",
+  "onboarding_goalLongevity": "Długowieczność",
+  "onboarding_goalLongevityDesc": "Odnowa komórkowa i zdrowe starzenie",
+  "onboarding_goalDiscipline": "Dyscyplina",
+  "onboarding_goalDisciplineDesc": "Buduj samodyscyplinę",
+  "onboarding_selectPlan": "Wybierz swój plan",
+  "onboarding_selectPlanDesc": "Wybierz najlepszy dla siebie plan postu",
+  "onboarding_bodyInfo": "Wprowadź swoje dane",
+  "onboarding_bodyInfoDesc": "Aby otrzymywać spersonalizowane zalecenia",
+  "onboarding_gender": "Płeć",
+  "onboarding_male": "Mężczyzna",
+  "onboarding_female": "Kobieta",
+  "onboarding_age": "Wiek",
+  "onboarding_bodyInfoDisclaimer": "Te informacje są przechowywane wyłącznie na Twoim urządzeniu i służą do obliczeń kalorii.",
+  "onboarding_permissions": "Ostatni krok",
+  "onboarding_permissionsDesc": "Włącz uprawnienia, aby uzyskać najlepsze wrażenia",
+  "onboarding_next": "Kontynuuj",
+  "onboarding_start": "Zaczynamy!",
+  "onboarding_skipForNow": "Skonfiguruj później",
+  "waterAdded": "Dodano 250 ml wody",
+  "languageSelect": "Wybierz język",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Przejdź na Premium",
+  "paywall_subtitle": "Odblokuj wszystkie plany postu i usuń reklamy",
+  "paywall_allPlans": "Wszystkie plany postu",
+  "paywall_advancedStats": "Zaawansowane statystyki",
+  "paywall_mealPlanner": "Planer posiłków",
+  "paywall_themes": "Dostosowanie motywu",
+  "paywall_noAds": "Bez reklam",
+  "paywall_weekly": "Tygodniowo",
+  "paywall_monthly": "Miesięcznie",
+  "paywall_yearly": "Rocznie",
+  "paywall_bestValue": "Najlepsza oferta",
+  "paywall_freeTrial": "Bezpłatny okres próbny (3 dni)",
+  "paywall_restore": "Przywróć zakupy",
+  "paywall_premiumActive": "Premium jest aktywne!",
+  "paywall_premiumActiveDesc": "Wszystkie plany postu są odblokowane, a reklamy wyłączone",
+  "water_title": "Spożycie wody",
+  "water_addWater": "Dodaj wodę",
+  "water_goal": "Cel",
+  "water_ml": "ml",
+  "common_ok": "OK",
+  "common_cancel": "Anuluj",
+  "common_save": "Zapisz",
+  "common_delete": "Usuń",
+  "common_hours": "godzin",
+  "common_minutes": "minut",
+  "common_days": "dni",
+  "common_enable": "Włącz",
+  "streakCard_currentStreak": "Obecna seria",
+  "streakCard_longestStreak": "Najdłuższa seria",
+  "streakCard_totalSessions": "Łączna liczba postów",
+  "meals_mealType": "Rodzaj posiłku",
+  "meals_breakfast": "Śniadanie",
+  "meals_lunch": "Obiad",
+  "meals_dinner": "Kolacja",
+  "meals_snack": "Przekąska",
+  "meals_carbohydrate": "Węglowodany",
+  "meals_add": "Dodaj",
+  "meals_mealName": "Nazwa posiłku",
+  "bodyMetrics_title": "Pomiary ciała",
+  "bodyMetrics_weight": "Masa ciała",
+  "bodyMetrics_target": "Cel",
+  "bodyMetrics_save": "Zapisz",
+  "bodyMetrics_history": "Historia",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Brak danych",
+  "meals_quickAdd": "Szybkie dodawanie",
+  "meals_manualEntry": "Wprowadzanie ręczne",
+  "meals_added": "Dodano: {name}",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Nazwa i liczba kalorii są wymagane",
+  "bodyMetrics_addWeight": "Dodaj masę ciała",
+  "bodyMetrics_hintWeight": "np. 74,5",
+  "bodyMetrics_invalidWeight": "Wprowadź prawidłową masę ciała",
+  "bodyMetrics_weightSaved": "Zapisano {value} kg",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Czas trwania",
+  "completion_plan": "Plan",
+  "completion_lastPhase": "Ostatnia faza",
+  "timer_remainingTime": "Pozostały czas",
+  "timer_ready": "Gotowe do rozpoczęcia",
+  "streak_status": "Stan",
+  "streak_startToday": "Zacznij dziś!",
+  "streak_goodStart": "Dobry początek!",
+  "streak_goingGreat": "Świetnie Ci idzie!",
+  "streak_superb": "Wspaniale!",
+  "streak_legendary": "Legendarnie!",
+  "streak_incredible": "Niesamowicie!",
+  "weight_noRecord": "Brak zapisów masy ciała\nDodaj je w Profil > Pomiary ciała",
+  "day_mon": "Pon",
+  "day_tue": "Wt",
+  "day_wed": "Śr",
+  "day_thu": "Czw",
+  "day_fri": "Pt",
+  "day_sat": "Sob",
+  "day_sun": "Niedz",
+  "day_short_mon": "P",
+  "day_short_tue": "W",
+  "day_short_wed": "Ś",
+  "day_short_thu": "C",
+  "day_short_fri": "P",
+  "day_short_sat": "S",
+  "day_short_sun": "N",
+  "month_jan": "Styczeń",
+  "month_feb": "Luty",
+  "month_mar": "Marzec",
+  "month_apr": "Kwiecień",
+  "month_may": "Maj",
+  "month_jun": "Czerwiec",
+  "month_jul": "Lipiec",
+  "month_aug": "Sierpień",
+  "month_sep": "Wrzesień",
+  "month_oct": "Październik",
+  "month_nov": "Listopad",
+  "month_dec": "Grudzień",
+  "meals_fastingWindow": "Post ({hours} godz.)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Jedzenie ({hours} godz.)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Koktajl owsiany",
+  "recipe_avocadoToast": "Tost z awokado",
+  "recipe_yogurtBowl": "Miska jogurtu",
+  "elapsed_time": "Czas, który upłynął",
+  "fast_ends_on": "Twój post kończy się o",
+  "end_fasting": "Zakończ post",
+  "start_fasting": "Rozpocznij post",
+  "water_tracker": "Monitor wody",
+  "weight_tracker": "Monitor masy ciała",
+  "drink": "Pij",
+  "log_weight": "Zapisz masę ciała",
+  "bmi": "BMI",
+  "weight_lost": "Utrata masy ciała",
+  "current_weight": "Obecna masa ciała",
+  "goal_weight": "Docelowa masa ciała",
+  "daily_goal": "Cel dzienny",
+  "completed_percent": "Ukończono {percent}%",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Odkrywaj",
+  "achievements": "Osiągnięcia",
+  "profile_theme": "Wygląd",
+  "theme_select": "Wybierz wygląd",
+  "theme_system": "Ustawienie systemowe",
+  "theme_light": "Jasny",
+  "theme_dark": "Ciemny",
+  "language_system": "Język systemu",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Dźwięk ukończenia",
+  "profile_calmGamification": "Spokojna grywalizacja",
+  "profile_calmGamificationDesc": "Zmniejsza presję ligi i sezonu",
+  "profile_editName": "Edytuj swoje imię",
+  "profile_name": "Imię",
+  "circle_title": "Krąg postu",
+  "circle_you": "Ty",
+  "circle_tagline": "Razem, bez presji.",
+  "circle_privacy": "Masa ciała i prywatne pomiary pozostają ukryte. Widoczne są tylko postępy i wsparcie.",
+  "circle_sendSupport": "Wyślij wsparcie · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Kod zaproszenia skopiowany",
+  "circle_createInvite": "Utwórz prywatne zaproszenie",
+  "crisis_nameTitle": "Najpierw nazwij to, co się dzieje",
+  "crisis_nameDesc": "To może być głód, nawyk lub emocja.",
+  "crisis_waterTitle": "Wypij szklankę wody",
+  "crisis_waterDesc": "Następnie weź trzy powolne oddechy.",
+  "crisis_delayTitle": "Odłóż decyzję o 10 minut",
+  "crisis_delayDesc": "Jeśli źle się czujesz, zakończenie postu nie jest porażką.",
+  "crisis_hunger": "Głód",
+  "crisis_habit": "Nawyk",
+  "crisis_stress": "Stres",
+  "crisis_tenMore": "Daj sobie 10 minut",
+  "stats_storyEmpty": "Twój pierwszy post rozpocznie Twoją osobistą historię.",
+  "stats_story": "W tym okresie pościłeś(-aś) {sessions} razy, utrzymałeś(-aś) rytm przez {hours} godzin i osiągnąłeś(-aś) {rate}% ukończenia.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "Historia Twojego rytmu",
+  "home_todayRhythm": "Dzisiejszy rytm",
+  "home_finalHourSupport": "Wsparcie w ostatniej godzinie",
+  "home_needSupport": "Potrzebuję trochę wsparcia",
+  "home_todaySummary": "Dzisiejszy dzień w skrócie",
+  "home_dayStreak": "dni z rzędu",
+  "home_weightGoal": "cel {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Twój rytm jest stabilny",
+  "weather_gentle": "Spokojny dzień",
+  "weather_water": "Szklanka wody może pomóc.",
+  "weather_listen": "Daleko zaszedłeś(-aś); słuchaj swojego ciała.",
+  "weather_onPlan": "Dzisiejsze tempo odpowiada Twojemu planowi.",
+  "weather_challenging": "Ta godzina była wcześniej trudna; tryb wsparcia jest gotowy.",
+  "replay_copied": "Podsumowanie postu skopiowane",
+  "replay_button": "Podsumowanie",
+  "replay_text": "Ukończyłem(-am) post {plan} w {hours} godz. {minutes} min · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Podróż metaboliczna",
+  "journey_now": "Teraz",
+  "journey_next": "{time} do fazy {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "Czasy faz są ogólnymi szacunkami, a nie pomiarami medycznymi.",
+  "phase_hours": "Godziny {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Ten czas jest ogólnym szacunkiem. Reakcje metaboliczne mogą się różnić między osobami.",
+  "bmi_underweight": "Niedowaga",
+  "bmi_normal": "Prawidłowa masa ciała",
+  "bmi_overweight": "Nadwaga",
+  "bmi_obese": "Otyłość",
+  "notification_halfwayTitle": "Połowa za Tobą! 💪",
+  "notification_halfwayBody": "Ukończyłeś(-aś) połowę postu {plan}. Tak trzymaj!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Rozpoczęła się faza kataboliczna 📉",
+  "notification_phaseFatBurning": "Rozpoczęło się spalanie tłuszczu! 🔥",
+  "notification_phaseKetosis": "Jesteś w ketozie ⚡",
+  "notification_phaseAutophagy": "Autofagia jest aktywna! 🔄",
+  "notification_completedBody": "Ukończyłeś(-aś) post {plan}! Twoje okno żywieniowe jest otwarte.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Napij się wody 💧",
+  "notification_waterBody": "Pamiętaj o piciu wystarczającej ilości wody podczas postu!",
+  "notification_windowTitle": "Okno żywieniowe się zamyka ⏰",
+  "notification_windowBody": "Twoje okno żywieniowe zamknie się za 30 minut.",
+  "notification_streakTitle": "{days} dni z rzędu! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Świetnie Ci idzie! Kontynuuj dzisiaj.",
+  "notification_ongoingTitle": "Post trwa – {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Pozostało: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Post rozpoczęty – {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Cel: {hours} godzin",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours} godz. {minutes} min",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Przewodnik po poście",
+  "explore_guideDesc": "Wszystko, co musisz wiedzieć o poście przerywanym",
+  "explore_circleDesc": "Dziel się spokojnym wsparciem ze swoją prywatną grupą.",
+  "explore_faq": "Często zadawane pytania",
+  "explore_education": "Te treści służą wyłącznie ogólnej edukacji i nie stanowią diagnozy medycznej ani porady dotyczącej leczenia.",
+  "explore_safety": "Zdrowie i bezpieczeństwo",
+  "explore_safetyDesc": "Jeśli masz chorobę, regularnie przyjmujesz leki, masz niepokojące objawy, jesteś w ciąży lub karmisz piersią, skonsultuj się z wykwalifikowanym pracownikiem ochrony zdrowia przed rozpoczęciem postu. Przerwij, jeśli źle się czujesz.",
+  "explore_sources": "Źródła",
+  "explore_sourcesDesc": "Treść została uproszczona na podstawie poniższych publicznych źródeł zdrowotnych.",
+  "explore_sourceError": "Nie udało się otworzyć źródła",
+  "explore_rules": "Ważne zasady",
+  "explore_rule1": "Nie spożywaj kalorycznych produktów podczas postu",
+  "explore_rule2": "Pij dużo wody i płynów",
+  "explore_rule3": "Jedz zbilansowane posiłki w oknie żywieniowym",
+  "explore_rule4": "Przerwij post, jeśli źle się czujesz",
+  "explore_rule5": "Kobiety w ciąży lub karmiące piersią nie powinny pościć",
+  "explore_rule6": "Skonsultuj się z lekarzem, jeśli masz chorobę przewlekłą",
+  "tip_water": "Dbaj o nawodnienie",
+  "tip_waterDesc": "Pij wodę, gdy odczuwasz pragnienie, i przyjmuj płyny z posiłkami. Zapotrzebowanie może zależeć od zdrowia, pogody i aktywności.",
+  "tip_food": "Odżywiaj się zdrowo",
+  "tip_foodDesc": "W oknie żywieniowym wybieraj produkty bogate w białko i błonnik oraz zdrowe tłuszcze. Unikaj żywności przetworzonej.",
+  "tip_sleep": "Wysypiaj się",
+  "tip_sleepDesc": "Regularny i wystarczający sen wspiera ogólne samopoczucie. Zaplanuj post tak, aby nie zakłócał snu.",
+  "tip_exercise": "Lekka aktywność",
+  "tip_exerciseDesc": "Podczas postu możesz spacerować lub ćwiczyć jogę. Unikaj ciężkich treningów, zwłaszcza w pierwszych tygodniach, zanim organizm się przystosuje.",
+  "tip_drinks": "Dozwolone napoje",
+  "tip_drinksDesc": "Podczas postu możesz pić wodę, czystą herbatę i czarną kawę bez cukru i mleka. Te napoje nie przerywają postu.",
+  "faq_drinks": "Co mogę pić podczas postu?",
+  "faq_drinksAnswer": "Możesz pić wodę, czystą herbatę i czarną kawę bez cukru i mleka. Kaloryczne napoje przerywają post.",
+  "faq_plan": "Który plan postu wybrać?",
+  "faq_planAnswer": "Jeśli zaczynasz, wybierz 12:12 lub 14:10. Jeśli masz doświadczenie, spróbuj 16:8 lub 18:6. 20:4 i OMAD są dla zaawansowanych.",
+  "faq_exercise": "Czy mogę ćwiczyć podczas postu?",
+  "faq_exerciseAnswer": "Tak, ale unikaj intensywnych treningów. Lekkie kardio, spacery i joga są idealne. Trening siłowy zaplanuj blisko okna żywieniowego.",
+  "faq_weight": "Czy post pomaga schudnąć?",
+  "faq_weightAnswer": "U niektórych osób ograniczenie czasu jedzenia może zmniejszyć całkowite spożycie energii. Wyniki są różne, a długofalowe skutki nadal są badane.",
+  "plan_12_desc": "Poziom początkujący",
+  "plan_12_detail": "Idealny dla początkujących. Pość przez 12 godzin, wliczając sen.",
+  "plan_16_desc": "Najpopularniejszy plan",
+  "plan_16_detail": "Najczęstszy plan postu przerywanego: 16 godzin postu i 8-godzinne okno żywieniowe, zwykle od obiadu do kolacji.",
+  "plan_18_desc": "Poziom średniozaawansowany",
+  "plan_18_detail": "18 godzin postu i 6-godzinne okno żywieniowe. Dłuższe spalanie tłuszczu.",
+  "plan_20_desc": "Poziom zaawansowany",
+  "plan_20_detail": "20 godzin postu i 4-godzinne okno żywieniowe. Idealny do osiągnięcia ketozy i autofagii.",
+  "plan_omad_desc": "Jeden posiłek dziennie",
+  "plan_omad_detail": "Jeden posiłek dziennie: 23 godziny postu i 1-godzinne okno żywieniowe. Poziom ekspercki.",
+  "plan_52_desc": "2 dni w tygodniu",
+  "plan_52_detail": "Jedz normalnie przez 5 dni, a przez 2 dni ogranicz się do około 500 kalorii. Alternatywne podejście.",
+  "plan_ese_desc": "24-godzinny post",
+  "plan_ese_detail": "Pość przez 24 godziny 1–2 razy w tygodniu. Dla zaawansowanych.",
+  "plan_warrior_desc": "Dieta wojownika",
+  "plan_warrior_detail": "W ciągu dnia jedz lekko, a główny posiłek zjedz w czterogodzinnym oknie wieczorem.",
+  "award_first_title": "Pierwszy krok",
+  "award_first_desc": "Ukończ swój pierwszy post",
+  "award_rhythm3_title": "Trzydniowy rytm",
+  "award_rhythm3_desc": "Utrzymaj rytm przez trzy dni",
+  "award_hours24_title": "24 godziny",
+  "award_hours24_desc": "Pość łącznie przez 24 godziny",
+  "award_week_title": "Tygodniowy rytm",
+  "award_week_desc": "Zbuduj serię siedmiu dni",
+  "award_fasts10_title": "10 postów",
+  "award_fasts10_desc": "Ukończ dziesięć postów",
+  "award_hours100_title": "100 godzin",
+  "award_hours100_desc": "Osiągnij łącznie 100 godzin",
+  "award_rhythm30_title": "30-dniowy rytm",
+  "award_rhythm30_desc": "Zbuduj serię trzydziestu dni",
+  "award_fasts50_title": "50 postów",
+  "award_fasts50_desc": "Ukończ pięćdziesiąt postów",
+  "award_hours500_title": "500 godzin",
+  "award_hours500_desc": "Osiągnij łącznie 500 godzin",
+  "award_fasts100_title": "100 postów",
+  "award_fasts100_desc": "Ukończ sto postów",
+  "award_rhythm90_title": "90-dniowy rytm",
+  "award_rhythm90_desc": "Zbuduj serię dziewięćdziesięciu dni",
+  "award_year_title": "Roczna podróż",
+  "award_year_desc": "Osiągnij rytm 365 dni",
+  "awards_loadError": "Nie udało się wczytać postępów",
+  "awards_journeyComplete": "Podróż ukończona",
+  "awards_nextGoal": "Następny cel",
+  "awards_allYours": "Wszystkie osiągnięcia należą do Ciebie",
+  "awards_dayStreak": "dni z rzędu",
+  "awards_fasts": "postów",
+  "awards_total": "łącznie",
+  "awards_stageStart": "Początek",
+  "awards_stageRhythm": "Rytm",
+  "awards_stageEndurance": "Wytrzymałość",
+  "awards_stageMastery": "Mistrzostwo",
+  "awards_completed": "Ukończono",
+  "awards_fastsRemaining": "Pozostało {count} postów",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "Pozostało {count} dni",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "Pozostało {count} godzin",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Spróbuj ponownie",
+  "game_title": "Centrum postępów",
+  "game_quests": "Dzisiejsze zadania",
+  "game_questsDesc": "Małe kroki, trwały rytm.",
+  "game_season": "Sezon 30 kroków",
+  "game_seasonDesc": "Odznaka kolekcjonerska za każdy piąty krok.",
+  "game_badges": "Kolekcja odznak",
+  "game_shields": "{count} tarcz rytmu",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Otrzymujesz jedną za każde siedem ukończeń. Pominięty dzień nigdy nie usuwa postępów.",
+  "game_league": "Prywatna liga tygodniowa",
+  "game_leagueDesc": "Twój wynik rytmu znajduje się w {percent}. percentylu prywatnego modelu lokalnego. Masa ciała i skrajny post nigdy nie są klasyfikowane.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Poziom {level}, {xp} punktów doświadczenia",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Odkrywca rytmu",
+  "game_streak": "Seria",
+  "game_targets": "Cele",
+  "game_best": "Najlepszy wynik",
+  "quest_rhythm": "Buduj dzisiejszy rytm",
+  "quest_hydrate": "Osiągnij połowę celu nawodnienia",
+  "quest_steady": "Chroń swoją serię",
+  "badge_first_title": "Pierwszy krok",
+  "badge_first_desc": "Zapisz swój pierwszy post",
+  "badge_rhythm7_title": "Strażnik rytmu",
+  "badge_rhythm7_desc": "Osiągnij serię 7 dni",
+  "badge_rhythm3_title": "Trzydniowy rytm",
+  "badge_rhythm3_desc": "Osiągnij serię 3 dni",
+  "badge_target1_title": "Pierwszy cel",
+  "badge_target1_desc": "Ukończ pierwszy post docelowy",
+  "badge_target3_title": "Trzy kroki",
+  "badge_target3_desc": "Ukończ 3 cele",
+  "badge_water_title": "Równowaga",
+  "badge_water_desc": "Osiągnij dzienny cel nawodnienia",
+  "badge_support_title": "Samoświadomość",
+  "badge_support_desc": "Użyj trybu wsparcia",
+  "badge_hours10_title": "10 godzin",
+  "badge_hours10_desc": "Zapisz łącznie 10 godzin",
+  "badge_target10_title": "Mocna dziesiątka",
+  "badge_target10_desc": "Ukończ 10 celów",
+  "badge_target20_title": "Dwadzieścia celów",
+  "badge_target20_desc": "Ukończ 20 celów",
+  "badge_fast16_title": "16 godzin",
+  "badge_fast16_desc": "Osiągnij 16 godzin w jednym poście",
+  "badge_hours50_title": "50 godzin",
+  "badge_hours50_desc": "Zapisz łącznie 50 godzin",
+  "badge_hours100_title": "Sto godzin",
+  "badge_hours100_desc": "Zapisz łącznie 100 godzin",
+  "badge_target30_title": "Trzydzieści celów",
+  "badge_target30_desc": "Ukończ 30 celów",
+  "badge_rhythm30_title": "30-dniowy rytm",
+  "badge_rhythm30_desc": "Osiągnij serię 30 dni",
+  "paywall_restoreSuccess": "Zakupy zostały przywrócone!",
+  "fasting_progressSemantics": "Post ukończony w {percent} procentach",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour} godz.",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "Dożywotnio",
+  "paywall_once": "jednorazowo",
+  "paywall_processing": "Przetwarzanie…",
+  "paywall_continue": "Kontynuuj",
+  "paywall_productsUnavailable": "Zakupy są obecnie niedostępne. Spróbuj ponownie później.",
+  "paywall_purchaseFailed": "Nie udało się zrealizować zakupu.",
+  "paywall_nothingToRestore": "Nie znaleziono wcześniejszego zakupu.",
+  "paywall_restoreFailed": "Nie udało się przywrócić zakupów.",
+  "paywall_terms": "Warunki użytkowania",
+  "permission_notificationDesc": "Przypomnienia o poście, aktualizacje faz i powiadomienia o ukończeniu",
+  "profile_privacyChoices": "Opcje prywatności",
+  "paywall_autoRenewInfo": "Subskrypcje odnawiają się automatycznie, chyba że anulujesz je co najmniej 24 godziny przed końcem okresu. Możesz nimi zarządzać lub anulować je w ustawieniach App Store.",
+  "paywall_perMonth": "{price} / miesiąc",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Oszczędź {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "{days}-dniowy bezpłatny okres próbny",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Rozpocznij bezpłatny okres próbny",
+  "paywall_retry": "Spróbuj ponownie",
+  "paywall_alreadyOwned": "Masz już tę subskrypcję. Dotknij Przywróć zakupy.",
+  "paywall_storeUnavailable": "Nie można teraz połączyć się ze sklepem. Sprawdź połączenie i spróbuj ponownie.",
+  "paywall_secureNote": "Anuluj w dowolnym momencie. Płatność zostanie pobrana z konta sklepu.",
+  "paywall_autoRenewInfoPlay": "Subskrypcje odnawiają się automatycznie, chyba że anulujesz je co najmniej 24 godziny przed końcem okresu. Zarządzaj lub anuluj w Google Play > Subskrypcje.",
+  "paywall_allPlansDesc": "Odblokowuje 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat i Warrior",
+  "paywall_noAdsDesc": "Reklamy banerowe i pełnoekranowe są całkowicie wyłączone",
+  "foodScan_title": "Skanowanie jedzenia przez AI",
+  "foodScan_scanCta": "Zeskanuj posiłek",
+  "foodScan_scanCtaDesc": "Zrób zdjęcie talerza i poznaj kalorie oraz makroskładniki",
+  "foodScan_introTitle": "Zrób zdjęcie talerza",
+  "foodScan_introDesc": "AI analizuje zdjęcie i szacuje kalorie, białko, węglowodany i tłuszcz.",
+  "foodScan_tipLight": "Dobre, równomierne światło daje dokładniejsze oszacowanie",
+  "foodScan_tipFrame": "Umieść cały talerz w kadrze",
+  "foodScan_tipScale": "Umieść w kadrze sztućce lub dłoń, aby można było oszacować porcję",
+  "foodScan_takePhoto": "Zrób zdjęcie",
+  "foodScan_chooseFromGallery": "Wybierz z galerii",
+  "foodScan_scansLeft": "Pozostało dziś {count} skanów",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Wykorzystano dzisiejsze skany. Spróbuj ponownie jutro.",
+  "foodScan_privacyNote": "Zdjęcie jest wysyłane do interfejsu Gemini API firmy Google w celu analizy i nie jest przechowywane na naszych serwerach.",
+  "foodScan_analyzing": "Analizujemy Twój posiłek…",
+  "foodScan_analyzingHint": "Zwykle zajmuje to kilka sekund",
+  "foodScan_detectedItems": "Wykryte produkty",
+  "foodScan_disclaimer": "Szacunki AI są przybliżone. Dotknij produktu, aby go poprawić.",
+  "foodScan_lowConfidence": "Model nie jest pewien tego zdjęcia. Sprawdź wartości przed zapisaniem.",
+  "foodScan_save": "Dodaj do posiłków",
+  "foodScan_retake": "Nowe zdjęcie",
+  "foodScan_retry": "Spróbuj ponownie",
+  "foodScan_editItem": "Edytuj produkt",
+  "foodScan_portion": "Porcja",
+  "foodScan_saveEdit": "Zapisz",
+  "foodScan_premiumTitle": "Funkcja Premium",
+  "foodScan_premiumDesc": "Analiza kalorii ze zdjęcia jest dostępna w Premium.",
+  "foodScan_upgrade": "Zobacz Premium",
+  "foodScan_errorNetwork": "Brak połączenia. Sprawdź internet i spróbuj ponownie.",
+  "foodScan_errorRateLimited": "Trwa teraz zbyt wiele skanowań. Spróbuj ponownie za kilka minut.",
+  "foodScan_errorUnavailable": "Analiza zdjęć jest obecnie niedostępna.",
+  "foodScan_errorServer": "Usługa analizy ma problemy. Spróbuj ponownie za chwilę.",
+  "foodScan_errorNoFood": "Na zdjęciu nie znaleziono jedzenia. Zrób wyraźniejsze zdjęcie talerza.",
+  "foodScan_errorUnreadable": "Nie udało się przeanalizować tego zdjęcia. Spróbuj innego.",
+  "paywall_aiFoodScan": "Skanowanie jedzenia przez AI",
+  "paywall_aiFoodScanDesc": "Zrób zdjęcie posiłku i zapisz kalorie oraz makroskładniki w kilka sekund",
+  "completion_earlyTitle": "Post zakończony",
+  "completion_earlyMessage": "Dzisiejszy czas został zapisany. Seria i postęp osiągnięć nie zmieniły się, ponieważ cel nie został ukończony."
+}

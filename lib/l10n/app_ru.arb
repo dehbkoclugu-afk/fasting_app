@@ -1,0 +1,775 @@
+{
+  "@@locale": "ru",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Доброе утро",
+  "greeting_afternoon": "Добрый день",
+  "greeting_evening": "Добрый вечер",
+  "tab_timer": "Главная",
+  "tab_explore": "Обзор",
+  "tab_stats": "Отчёт",
+  "tab_meals": "Питание",
+  "tab_achievements": "Награды",
+  "tab_profile": "Аккаунт",
+  "timer_fasting": "Время голодания",
+  "timer_remaining": "Осталось",
+  "timer_elapsed": "Прошло",
+  "timer_start": "Начать",
+  "timer_stop": "Остановить",
+  "timer_completed": "Поздравляем!",
+  "timer_completedMessage": "Вы успешно завершили голодание!",
+  "timer_selectPlan": "Выберите план голодания",
+  "timer_stopConfirm": "Вы уверены, что хотите завершить голодание раньше?",
+  "timer_stopTitle": "Завершить голодание",
+  "timer_cancel": "Отмена",
+  "timer_confirmStop": "Да, завершить",
+  "phase_anabolic": "Анаболическая",
+  "phase_anabolicDesc": "Идёт пищеварение",
+  "phase_catabolic": "Катаболическая",
+  "phase_catabolicDesc": "Переход источника энергии",
+  "phase_fatBurning": "Сжигание жира",
+  "phase_fatBurningDesc": "Началось сжигание жира",
+  "phase_ketosis": "Кетоз",
+  "phase_ketosisDesc": "Выработка кетонов активна",
+  "phase_autophagy": "Аутофагия",
+  "phase_autophagyDesc": "Обновление клеток",
+  "stats_title": "Статистика",
+  "stats_week": "Неделя",
+  "stats_month": "Месяц",
+  "stats_year": "Год",
+  "stats_totalFasts": "Всего голоданий",
+  "stats_average": "Среднее",
+  "stats_fastDuration": "длительность голодания",
+  "stats_streak": "Серия",
+  "stats_daysConsecutive": "дней подряд",
+  "stats_success": "Успех",
+  "stats_completion": "завершено",
+  "stats_weeklyFasting": "Голодание за неделю",
+  "stats_monthlyView": "Месячный обзор",
+  "stats_weightChange": "Изменение веса",
+  "heatmap_none": "Нет",
+  "heatmap_low": "Низко",
+  "heatmap_good": "Хорошо",
+  "heatmap_full": "Полностью",
+  "meals_title": "Планировщик питания",
+  "meals_eatingWindow": "Окно питания",
+  "meals_windowOpen": "Открыто",
+  "meals_windowFasting": "Голодание",
+  "meals_calories": "Калории",
+  "meals_protein": "Белки",
+  "meals_carbs": "Углеводы",
+  "meals_fat": "Жиры",
+  "meals_todayMeals": "Сегодняшние приёмы пищи",
+  "meals_noMeals": "Приёмы пищи ещё не добавлены",
+  "meals_breakfastSuggestions": "Советы по выходу из голодания",
+  "meals_addMeal": "Добавить приём пищи",
+  "profile_title": "Профиль",
+  "profile_user": "Пользователь",
+  "profile_planActive": "План {plan} активен",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Перейти на Premium",
+  "profile_premiumDesc": "Все планы голодания без рекламы",
+  "profile_bodyMetrics": "Параметры тела",
+  "profile_height": "Рост",
+  "profile_weight": "Вес",
+  "profile_targetWeight": "Целевой вес",
+  "profile_bmi": "ИМТ",
+  "profile_settings": "Настройки",
+  "profile_notifications": "Уведомления",
+  "profile_darkTheme": "Тёмная тема",
+  "profile_waterReminder": "Напоминание о воде",
+  "profile_phaseNotifications": "Уведомления о фазах",
+  "profile_language": "Язык",
+  "profile_about": "О приложении",
+  "profile_rateApp": "Оценить приложение",
+  "profile_share": "Поделиться",
+  "profile_privacyPolicy": "Политика конфиденциальности",
+  "profile_version": "Версия",
+  "onboarding_welcome": "Добро пожаловать",
+  "onboarding_welcomeDesc": "Управляйте своим путём\nинтервального голодания",
+  "onboarding_featureTimer": "Умный таймер голодания",
+  "onboarding_featureStats": "Подробная статистика и графики",
+  "onboarding_featureMeals": "Планировщик питания и рекомендации рецептов",
+  "onboarding_getStarted": "Начать",
+  "onboarding_selectGoal": "Какова ваша цель?",
+  "onboarding_selectGoalDesc": "Можно выбрать несколько",
+  "onboarding_goalWeight": "Снизить вес",
+  "onboarding_goalWeightDesc": "Здоровое снижение веса",
+  "onboarding_goalHealth": "Улучшить здоровье",
+  "onboarding_goalHealthDesc": "Общее здоровье и иммунитет",
+  "onboarding_goalEnergy": "Больше энергии",
+  "onboarding_goalEnergyDesc": "Энергия на весь день",
+  "onboarding_goalMental": "Ясность ума",
+  "onboarding_goalMentalDesc": "Сосредоточенность и ясность",
+  "onboarding_goalLongevity": "Долголетие",
+  "onboarding_goalLongevityDesc": "Обновление клеток и здоровое старение",
+  "onboarding_goalDiscipline": "Дисциплина",
+  "onboarding_goalDisciplineDesc": "Развивайте самодисциплину",
+  "onboarding_selectPlan": "Выберите свой план",
+  "onboarding_selectPlanDesc": "Выберите наиболее подходящий план голодания",
+  "onboarding_bodyInfo": "Введите свои данные",
+  "onboarding_bodyInfoDesc": "Для персональных рекомендаций",
+  "onboarding_gender": "Пол",
+  "onboarding_male": "Мужской",
+  "onboarding_female": "Женский",
+  "onboarding_age": "Возраст",
+  "onboarding_bodyInfoDisclaimer": "Эти данные хранятся только на вашем устройстве и используются для расчёта калорий.",
+  "onboarding_permissions": "Последний шаг",
+  "onboarding_permissionsDesc": "Включите разрешения для максимально удобной работы",
+  "onboarding_next": "Продолжить",
+  "onboarding_start": "Начнём!",
+  "onboarding_skipForNow": "Настроить позже",
+  "waterAdded": "Добавлено 250 мл воды",
+  "languageSelect": "Выберите язык",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Перейти на Premium",
+  "paywall_subtitle": "Откройте все планы голодания и уберите рекламу",
+  "paywall_allPlans": "Все планы голодания",
+  "paywall_advancedStats": "Расширенная статистика",
+  "paywall_mealPlanner": "Планировщик питания",
+  "paywall_themes": "Настройка темы",
+  "paywall_noAds": "Без рекламы",
+  "paywall_weekly": "Еженедельно",
+  "paywall_monthly": "Ежемесячно",
+  "paywall_yearly": "Ежегодно",
+  "paywall_bestValue": "Лучшее предложение",
+  "paywall_freeTrial": "Бесплатный период (3 дня)",
+  "paywall_restore": "Восстановить покупки",
+  "paywall_premiumActive": "Premium активен!",
+  "paywall_premiumActiveDesc": "Все планы голодания открыты, реклама отключена",
+  "water_title": "Потребление воды",
+  "water_addWater": "Добавить воду",
+  "water_goal": "Цель",
+  "water_ml": "мл",
+  "common_ok": "ОК",
+  "common_cancel": "Отмена",
+  "common_save": "Сохранить",
+  "common_delete": "Удалить",
+  "common_hours": "часов",
+  "common_minutes": "минут",
+  "common_days": "дней",
+  "common_enable": "Включить",
+  "streakCard_currentStreak": "Текущая серия",
+  "streakCard_longestStreak": "Самая длинная серия",
+  "streakCard_totalSessions": "Всего голоданий",
+  "meals_mealType": "Тип приёма пищи",
+  "meals_breakfast": "Завтрак",
+  "meals_lunch": "Обед",
+  "meals_dinner": "Ужин",
+  "meals_snack": "Перекус",
+  "meals_carbohydrate": "Углеводы",
+  "meals_add": "Добавить",
+  "meals_mealName": "Название блюда",
+  "bodyMetrics_title": "Параметры тела",
+  "bodyMetrics_weight": "Вес",
+  "bodyMetrics_target": "Цель",
+  "bodyMetrics_save": "Сохранить",
+  "bodyMetrics_history": "История",
+  "bodyMetrics_bmiValue": "ИМТ: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Данных пока нет",
+  "meals_quickAdd": "Быстрое добавление",
+  "meals_manualEntry": "Ручной ввод",
+  "meals_added": "Добавлено: {name}",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Необходимо указать название и калории",
+  "bodyMetrics_addWeight": "Добавить вес",
+  "bodyMetrics_hintWeight": "например, 74,5",
+  "bodyMetrics_invalidWeight": "Введите допустимый вес",
+  "bodyMetrics_weightSaved": "Сохранено: {value} кг",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Длительность",
+  "completion_plan": "План",
+  "completion_lastPhase": "Последняя фаза",
+  "timer_remainingTime": "Оставшееся время",
+  "timer_ready": "Готово к началу",
+  "streak_status": "Статус",
+  "streak_startToday": "Начните сегодня!",
+  "streak_goodStart": "Хорошее начало!",
+  "streak_goingGreat": "Отлично идёт!",
+  "streak_superb": "Превосходно!",
+  "streak_legendary": "Легендарно!",
+  "streak_incredible": "Невероятно!",
+  "weight_noRecord": "Записей веса пока нет\nДобавьте их в Профиль > Параметры тела",
+  "day_mon": "Пн",
+  "day_tue": "Вт",
+  "day_wed": "Ср",
+  "day_thu": "Чт",
+  "day_fri": "Пт",
+  "day_sat": "Сб",
+  "day_sun": "Вс",
+  "day_short_mon": "П",
+  "day_short_tue": "В",
+  "day_short_wed": "С",
+  "day_short_thu": "Ч",
+  "day_short_fri": "П",
+  "day_short_sat": "С",
+  "day_short_sun": "В",
+  "month_jan": "Январь",
+  "month_feb": "Февраль",
+  "month_mar": "Март",
+  "month_apr": "Апрель",
+  "month_may": "Май",
+  "month_jun": "Июнь",
+  "month_jul": "Июль",
+  "month_aug": "Август",
+  "month_sep": "Сентябрь",
+  "month_oct": "Октябрь",
+  "month_nov": "Ноябрь",
+  "month_dec": "Декабрь",
+  "meals_fastingWindow": "Голодание ({hours} ч)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Питание ({hours} ч)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Овсяный смузи",
+  "recipe_avocadoToast": "Тост с авокадо",
+  "recipe_yogurtBowl": "Йогурт в миске",
+  "elapsed_time": "Прошедшее время",
+  "fast_ends_on": "Ваше голодание завершится в",
+  "end_fasting": "Завершить голодание",
+  "start_fasting": "Начать голодание",
+  "water_tracker": "Учёт воды",
+  "weight_tracker": "Учёт веса",
+  "drink": "Выпить",
+  "log_weight": "Записать вес",
+  "bmi": "ИМТ",
+  "weight_lost": "Снижение веса",
+  "current_weight": "Текущий вес",
+  "goal_weight": "Целевой вес",
+  "daily_goal": "Дневная цель",
+  "completed_percent": "Выполнено на {percent}%",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Обзор",
+  "achievements": "Достижения",
+  "profile_theme": "Оформление",
+  "theme_select": "Выберите оформление",
+  "theme_system": "Системная тема",
+  "theme_light": "Светлая",
+  "theme_dark": "Тёмная",
+  "language_system": "Язык системы",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Звук завершения",
+  "profile_calmGamification": "Спокойная игровая механика",
+  "profile_calmGamificationDesc": "Снижает давление лиги и сезона",
+  "profile_editName": "Изменить имя",
+  "profile_name": "Имя",
+  "circle_title": "Круг голодания",
+  "circle_you": "Вы",
+  "circle_tagline": "Вместе, без давления.",
+  "circle_privacy": "Вес и личные показатели остаются скрытыми. Видны только прогресс и поддержка.",
+  "circle_sendSupport": "Отправить поддержку · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Код приглашения скопирован",
+  "circle_createInvite": "Создать личное приглашение",
+  "crisis_nameTitle": "Сначала определите, что происходит",
+  "crisis_nameDesc": "Это может быть голод, привычка или эмоция.",
+  "crisis_waterTitle": "Выпейте стакан воды",
+  "crisis_waterDesc": "Затем сделайте три медленных вдоха.",
+  "crisis_delayTitle": "Отложите решение на 10 минут",
+  "crisis_delayDesc": "Если вы плохо себя чувствуете, завершить голодание — не поражение.",
+  "crisis_hunger": "Голод",
+  "crisis_habit": "Привычка",
+  "crisis_stress": "Стресс",
+  "crisis_tenMore": "Дайте себе 10 минут",
+  "stats_storyEmpty": "Первое голодание станет началом вашей личной истории.",
+  "stats_story": "За этот период вы голодали {sessions} раз, сохраняли ритм {hours} часов и достигли {rate}% завершения.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "История вашего ритма",
+  "home_todayRhythm": "Сегодняшний ритм",
+  "home_finalHourSupport": "Поддержка в последний час",
+  "home_needSupport": "Мне нужна небольшая поддержка",
+  "home_todaySummary": "Сегодня одним взглядом",
+  "home_dayStreak": "дней подряд",
+  "home_weightGoal": "цель: {weight} кг",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Ваш ритм стабилен",
+  "weather_gentle": "Спокойный день",
+  "weather_water": "Стакан воды может помочь.",
+  "weather_listen": "Вы прошли большой путь; прислушайтесь к телу.",
+  "weather_onPlan": "Сегодняшний темп соответствует вашему плану.",
+  "weather_challenging": "Раньше этот час был сложным; режим поддержки готов.",
+  "replay_copied": "Сводка голодания скопирована",
+  "replay_button": "Сводка",
+  "replay_text": "Я завершил(а) голодание {plan} за {hours} ч {minutes} мин · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Метаболический путь",
+  "journey_now": "Сейчас",
+  "journey_next": "{time} до фазы {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "Время фаз — общая оценка, а не медицинское измерение.",
+  "phase_hours": "Часы {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Это общая оценка времени. Метаболические реакции могут различаться у разных людей.",
+  "bmi_underweight": "Недостаточный вес",
+  "bmi_normal": "Нормальный вес",
+  "bmi_overweight": "Избыточный вес",
+  "bmi_obese": "Ожирение",
+  "notification_halfwayTitle": "Половина позади! 💪",
+  "notification_halfwayBody": "Вы завершили половину голодания {plan}. Продолжайте!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Началась катаболическая фаза 📉",
+  "notification_phaseFatBurning": "Началось сжигание жира! 🔥",
+  "notification_phaseKetosis": "Вы в кетозе ⚡",
+  "notification_phaseAutophagy": "Аутофагия активна! 🔄",
+  "notification_completedBody": "Вы завершили голодание {plan}! Окно питания открыто.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Выпейте воды 💧",
+  "notification_waterBody": "Не забывайте пить достаточно воды во время голодания!",
+  "notification_windowTitle": "Окно питания закрывается ⏰",
+  "notification_windowBody": "Окно питания закроется через 30 минут.",
+  "notification_streakTitle": "{days} дней подряд! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Вы отлично справляетесь! Продолжайте сегодня.",
+  "notification_ongoingTitle": "Голодание идёт — {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Осталось: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Голодание начато — {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Цель: {hours} часов",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours} ч {minutes} мин",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Руководство по голоданию",
+  "explore_guideDesc": "Всё, что нужно знать об интервальном голодании",
+  "explore_circleDesc": "Делитесь спокойной поддержкой в своей закрытой группе.",
+  "explore_faq": "Частые вопросы",
+  "explore_education": "Этот материал предназначен только для общего ознакомления и не является медицинским диагнозом или советом по лечению.",
+  "explore_safety": "Здоровье и безопасность",
+  "explore_safetyDesc": "Если у вас есть заболевание, вы регулярно принимаете лекарства, испытываете тревожные симптомы, беременны или кормите грудью, проконсультируйтесь с квалифицированным медицинским специалистом перед голоданием. Прекратите голодание при плохом самочувствии.",
+  "explore_sources": "Источники",
+  "explore_sourcesDesc": "Материал упрощён на основе приведённых ниже общедоступных источников о здоровье.",
+  "explore_sourceError": "Не удалось открыть источник",
+  "explore_rules": "Важные правила",
+  "explore_rule1": "Не употребляйте калорийную пищу во время голодания",
+  "explore_rule2": "Пейте достаточно воды и других жидкостей",
+  "explore_rule3": "Питайтесь сбалансированно в окно питания",
+  "explore_rule4": "Прекратите голодание при плохом самочувствии",
+  "explore_rule5": "Беременным и кормящим женщинам не следует голодать",
+  "explore_rule6": "При хронических заболеваниях проконсультируйтесь с врачом",
+  "tip_water": "Поддерживайте водный баланс",
+  "tip_waterDesc": "Пейте воду при жажде и употребляйте жидкости во время еды. Потребность зависит от здоровья, погоды и активности.",
+  "tip_food": "Питайтесь правильно",
+  "tip_foodDesc": "В окно питания выбирайте продукты, богатые белком и клетчаткой, а также полезные жиры. Избегайте переработанных продуктов.",
+  "tip_sleep": "Хорошо высыпайтесь",
+  "tip_sleepDesc": "Регулярный и достаточный сон поддерживает общее самочувствие. Планируйте голодание так, чтобы оно не мешало сну.",
+  "tip_exercise": "Лёгкая активность",
+  "tip_exerciseDesc": "Во время голодания можно спокойно ходить или заниматься йогой. Избегайте тяжёлых тренировок, особенно в первые недели, пока организм адаптируется.",
+  "tip_drinks": "Разрешённые напитки",
+  "tip_drinksDesc": "Во время голодания можно пить воду, несладкий чай и чёрный кофе без сахара и молока. Эти напитки не прерывают голодание.",
+  "faq_drinks": "Что можно пить во время голодания?",
+  "faq_drinksAnswer": "Можно пить воду, несладкий чай и чёрный кофе без сахара и молока. Калорийные напитки прерывают голодание.",
+  "faq_plan": "Какой план голодания выбрать?",
+  "faq_planAnswer": "Если вы новичок, начните с 12:12 или 14:10. Если есть опыт, попробуйте 16:8 или 18:6. 20:4 и OMAD предназначены для опытных.",
+  "faq_exercise": "Можно ли тренироваться во время голодания?",
+  "faq_exerciseAnswer": "Да, но избегайте интенсивных тренировок. Лёгкое кардио, ходьба и йога подойдут лучше всего. Силовые тренировки планируйте ближе к окну питания.",
+  "faq_weight": "Помогает ли голодание снизить вес?",
+  "faq_weightAnswer": "У некоторых людей ограничение времени приёма пищи может снизить общее потребление энергии. Результаты различаются, а долгосрочные эффекты всё ещё изучаются.",
+  "plan_12_desc": "Для начинающих",
+  "plan_12_detail": "Идеально для начинающих. Голодайте 12 часов, включая время сна.",
+  "plan_16_desc": "Самый популярный план",
+  "plan_16_detail": "Самый распространённый план интервального голодания: 16 часов голодания и 8-часовое окно питания, обычно от обеда до ужина.",
+  "plan_18_desc": "Средний уровень",
+  "plan_18_detail": "18 часов голодания и 6-часовое окно питания. Более длительное сжигание жира.",
+  "plan_20_desc": "Продвинутый уровень",
+  "plan_20_detail": "20 часов голодания и 4-часовое окно питания. Подходит для достижения кетоза и аутофагии.",
+  "plan_omad_desc": "Один приём пищи в день",
+  "plan_omad_detail": "Один приём пищи в день: 23 часа голодания и 1-часовое окно питания. Экспертный уровень.",
+  "plan_52_desc": "2 дня в неделю",
+  "plan_52_detail": "Питайтесь обычно 5 дней, а в течение 2 дней ограничьте рацион примерно 500 калориями. Альтернативный подход.",
+  "plan_ese_desc": "24-часовое голодание",
+  "plan_ese_detail": "Голодайте 24 часа 1–2 раза в неделю. Для опытных.",
+  "plan_warrior_desc": "Диета воина",
+  "plan_warrior_detail": "Днём ешьте легко, а основной приём пищи устройте в четырёхчасовое вечернее окно.",
+  "award_first_title": "Первый шаг",
+  "award_first_desc": "Завершите первое голодание",
+  "award_rhythm3_title": "Трёхдневный ритм",
+  "award_rhythm3_desc": "Сохраняйте ритм три дня",
+  "award_hours24_title": "24 часа",
+  "award_hours24_desc": "Голодайте в общей сложности 24 часа",
+  "award_week_title": "Недельный ритм",
+  "award_week_desc": "Создайте серию из семи дней",
+  "award_fasts10_title": "10 голоданий",
+  "award_fasts10_desc": "Завершите десять голоданий",
+  "award_hours100_title": "100 часов",
+  "award_hours100_desc": "Достигните 100 часов в сумме",
+  "award_rhythm30_title": "30-дневный ритм",
+  "award_rhythm30_desc": "Создайте серию из тридцати дней",
+  "award_fasts50_title": "50 голоданий",
+  "award_fasts50_desc": "Завершите пятьдесят голоданий",
+  "award_hours500_title": "500 часов",
+  "award_hours500_desc": "Достигните 500 часов в сумме",
+  "award_fasts100_title": "100 голоданий",
+  "award_fasts100_desc": "Завершите сто голоданий",
+  "award_rhythm90_title": "90-дневный ритм",
+  "award_rhythm90_desc": "Создайте серию из девяноста дней",
+  "award_year_title": "Годовой путь",
+  "award_year_desc": "Достигните ритма в 365 дней",
+  "awards_loadError": "Не удалось загрузить прогресс",
+  "awards_journeyComplete": "Путь завершён",
+  "awards_nextGoal": "Следующая цель",
+  "awards_allYours": "Все достижения ваши",
+  "awards_dayStreak": "дней подряд",
+  "awards_fasts": "голоданий",
+  "awards_total": "всего",
+  "awards_stageStart": "Начало",
+  "awards_stageRhythm": "Ритм",
+  "awards_stageEndurance": "Выносливость",
+  "awards_stageMastery": "Мастерство",
+  "awards_completed": "Завершено",
+  "awards_fastsRemaining": "Осталось голоданий: {count}",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "Осталось дней: {count}",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "Осталось часов: {count}",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Повторить",
+  "game_title": "Центр прогресса",
+  "game_quests": "Задания на сегодня",
+  "game_questsDesc": "Небольшие шаги, устойчивый ритм.",
+  "game_season": "Сезон из 30 шагов",
+  "game_seasonDesc": "Коллекционная печать за каждый пятый шаг.",
+  "game_badges": "Коллекция значков",
+  "game_shields": "Щиты ритма: {count}",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Один щит за каждые семь завершений. Пропущенный день никогда не стирает прогресс.",
+  "game_league": "Закрытая недельная лига",
+  "game_leagueDesc": "Ваш показатель ритма находится в {percent}-м процентиле частной локальной модели. Вес и экстремальное голодание никогда не ранжируются.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Уровень {level}, очки опыта: {xp}",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Исследователь ритма",
+  "game_streak": "Серия",
+  "game_targets": "Цели",
+  "game_best": "Лучшее",
+  "quest_rhythm": "Создайте сегодняшний ритм",
+  "quest_hydrate": "Достигните половины цели по воде",
+  "quest_steady": "Защитите свою серию",
+  "badge_first_title": "Первый шаг",
+  "badge_first_desc": "Запишите первое голодание",
+  "badge_rhythm7_title": "Хранитель ритма",
+  "badge_rhythm7_desc": "Достигните серии в 7 дней",
+  "badge_rhythm3_title": "Трёхдневный ритм",
+  "badge_rhythm3_desc": "Достигните серии в 3 дня",
+  "badge_target1_title": "Первая цель",
+  "badge_target1_desc": "Завершите первое целевое голодание",
+  "badge_target3_title": "Три шага",
+  "badge_target3_desc": "Выполните 3 цели",
+  "badge_water_title": "Баланс",
+  "badge_water_desc": "Выполните дневную цель по воде",
+  "badge_support_title": "Самоосознанность",
+  "badge_support_desc": "Используйте режим поддержки",
+  "badge_hours10_title": "10 часов",
+  "badge_hours10_desc": "Запишите в сумме 10 часов",
+  "badge_target10_title": "Сильная десятка",
+  "badge_target10_desc": "Выполните 10 целей",
+  "badge_target20_title": "Двадцать целей",
+  "badge_target20_desc": "Выполните 20 целей",
+  "badge_fast16_title": "16 часов",
+  "badge_fast16_desc": "Достигните 16 часов за одно голодание",
+  "badge_hours50_title": "50 часов",
+  "badge_hours50_desc": "Запишите в сумме 50 часов",
+  "badge_hours100_title": "Сто часов",
+  "badge_hours100_desc": "Запишите в сумме 100 часов",
+  "badge_target30_title": "Тридцать целей",
+  "badge_target30_desc": "Выполните 30 целей",
+  "badge_rhythm30_title": "30-дневный ритм",
+  "badge_rhythm30_desc": "Достигните серии в 30 дней",
+  "paywall_restoreSuccess": "Покупки восстановлены!",
+  "fasting_progressSemantics": "Прогресс голодания: {percent} процентов",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour} ч",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "Навсегда",
+  "paywall_once": "разовый платёж",
+  "paywall_processing": "Обработка…",
+  "paywall_continue": "Продолжить",
+  "paywall_productsUnavailable": "Покупки сейчас недоступны. Повторите попытку позже.",
+  "paywall_purchaseFailed": "Не удалось завершить покупку.",
+  "paywall_nothingToRestore": "Предыдущие покупки не найдены.",
+  "paywall_restoreFailed": "Не удалось восстановить покупки.",
+  "paywall_terms": "Условия использования",
+  "permission_notificationDesc": "Напоминания о голодании, обновления фаз и уведомления о завершении",
+  "profile_privacyChoices": "Настройки конфиденциальности",
+  "paywall_autoRenewInfo": "Подписки продлеваются автоматически, если не отменить их минимум за 24 часа до конца периода. Управлять ими или отменить их можно в настройках App Store.",
+  "paywall_perMonth": "{price} / месяц",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Экономия {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "Бесплатный период: {days} дней",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Начать бесплатный период",
+  "paywall_retry": "Повторить",
+  "paywall_alreadyOwned": "У вас уже есть эта подписка. Нажмите «Восстановить покупки».",
+  "paywall_storeUnavailable": "Сейчас не удаётся подключиться к магазину. Проверьте соединение и повторите попытку.",
+  "paywall_secureNote": "Отмена в любое время. Плата списывается с аккаунта магазина.",
+  "paywall_autoRenewInfoPlay": "Подписки продлеваются автоматически, если не отменить их минимум за 24 часа до конца периода. Управление и отмена: Google Play > Подписки.",
+  "paywall_allPlansDesc": "Открывает 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat и Warrior",
+  "paywall_noAdsDesc": "Баннерная и полноэкранная реклама полностью отключаются",
+  "foodScan_title": "ИИ-сканирование еды",
+  "foodScan_scanCta": "Сканировать блюдо",
+  "foodScan_scanCtaDesc": "Сфотографируйте тарелку и узнайте калории и макронутриенты",
+  "foodScan_introTitle": "Сфотографируйте тарелку",
+  "foodScan_introDesc": "ИИ анализирует фото и оценивает калории, белки, углеводы и жиры.",
+  "foodScan_tipLight": "Хорошее равномерное освещение повышает точность",
+  "foodScan_tipFrame": "Вся тарелка должна быть в кадре",
+  "foodScan_tipScale": "Добавьте в кадр приборы или руку для оценки размера порции",
+  "foodScan_takePhoto": "Сделать фото",
+  "foodScan_chooseFromGallery": "Выбрать из галереи",
+  "foodScan_scansLeft": "Сегодня осталось сканирований: {count}",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Сегодняшние сканирования израсходованы. Попробуйте завтра.",
+  "foodScan_privacyNote": "Фото отправляется в Google Gemini API для анализа и не хранится на наших серверах.",
+  "foodScan_analyzing": "Анализируем ваше блюдо…",
+  "foodScan_analyzingHint": "Обычно это занимает несколько секунд",
+  "foodScan_detectedItems": "Распознанные продукты",
+  "foodScan_disclaimer": "Оценки ИИ приблизительны. Нажмите на продукт, чтобы исправить его.",
+  "foodScan_lowConfidence": "Модель не уверена в этом фото. Проверьте значения перед сохранением.",
+  "foodScan_save": "Добавить к питанию",
+  "foodScan_retake": "Новое фото",
+  "foodScan_retry": "Повторить",
+  "foodScan_editItem": "Изменить продукт",
+  "foodScan_portion": "Порция",
+  "foodScan_saveEdit": "Сохранить",
+  "foodScan_premiumTitle": "Функция Premium",
+  "foodScan_premiumDesc": "Анализ калорий по фото входит в Premium.",
+  "foodScan_upgrade": "Посмотреть Premium",
+  "foodScan_errorNetwork": "Нет соединения. Проверьте интернет и повторите попытку.",
+  "foodScan_errorRateLimited": "Сейчас слишком много сканирований. Повторите попытку через несколько минут.",
+  "foodScan_errorUnavailable": "Анализ фото сейчас недоступен.",
+  "foodScan_errorServer": "Возникла проблема со службой анализа. Повторите попытку чуть позже.",
+  "foodScan_errorNoFood": "На фото не найдена еда. Сделайте более чёткий снимок тарелки.",
+  "foodScan_errorUnreadable": "Не удалось проанализировать это фото. Попробуйте другое.",
+  "paywall_aiFoodScan": "ИИ-сканирование еды",
+  "paywall_aiFoodScanDesc": "Сфотографируйте блюдо и запишите калории и макронутриенты за несколько секунд",
+  "completion_earlyTitle": "Пост завершён",
+  "completion_earlyMessage": "Сегодняшнее время сохранено. Серия и прогресс достижений не изменились, потому что цель не была выполнена."
+}

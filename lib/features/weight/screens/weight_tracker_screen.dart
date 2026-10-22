@@ -10,6 +10,7 @@ import '../widgets/bmi_gauge_painter.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../../timer/providers/water_provider.dart';
 import '../../stats/providers/stats_provider.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 
 class WeightTrackerScreen extends ConsumerStatefulWidget {
   const WeightTrackerScreen({super.key});
@@ -86,6 +87,13 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
           padding: AppSpacing.screenPadding.copyWith(bottom: AppSpacing.lg),
           child: Column(
             children: [
+              EditorialScreenHero(
+                assetPath: 'assets/images/editorial/profile-progress.webp',
+                title: l10n.stats_weightChange,
+                subtitle: l10n.bodyMetrics_target,
+                icon: Icons.monitor_weight_outlined,
+              ),
+              const SizedBox(height: 20),
               // Period toggle
               SizedBox(
                 width: double.infinity,

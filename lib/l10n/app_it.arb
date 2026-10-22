@@ -1,0 +1,775 @@
+{
+  "@@locale": "it",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Buongiorno",
+  "greeting_afternoon": "Buon pomeriggio",
+  "greeting_evening": "Buonasera",
+  "tab_timer": "Home",
+  "tab_explore": "Esplora",
+  "tab_stats": "Report",
+  "tab_meals": "Pasti",
+  "tab_achievements": "Premi",
+  "tab_profile": "Account",
+  "timer_fasting": "Tempo di digiuno",
+  "timer_remaining": "Rimanente",
+  "timer_elapsed": "Trascorso",
+  "timer_start": "Inizia",
+  "timer_stop": "Termina",
+  "timer_completed": "Congratulazioni!",
+  "timer_completedMessage": "Hai completato il digiuno con successo!",
+  "timer_selectPlan": "Seleziona il piano di digiuno",
+  "timer_stopConfirm": "Vuoi davvero terminare il digiuno in anticipo?",
+  "timer_stopTitle": "Termina il digiuno",
+  "timer_cancel": "Annulla",
+  "timer_confirmStop": "Sì, termina",
+  "phase_anabolic": "Anabolica",
+  "phase_anabolicDesc": "Digestione in corso",
+  "phase_catabolic": "Catabolica",
+  "phase_catabolicDesc": "Transizione energetica",
+  "phase_fatBurning": "Combustione dei grassi",
+  "phase_fatBurningDesc": "La combustione dei grassi è iniziata",
+  "phase_ketosis": "Chetosi",
+  "phase_ketosisDesc": "Produzione di chetoni attiva",
+  "phase_autophagy": "Autofagia",
+  "phase_autophagyDesc": "Rinnovamento cellulare",
+  "stats_title": "Statistiche",
+  "stats_week": "Settimana",
+  "stats_month": "Mese",
+  "stats_year": "Anno",
+  "stats_totalFasts": "Digiuni totali",
+  "stats_average": "Media",
+  "stats_fastDuration": "durata del digiuno",
+  "stats_streak": "Serie",
+  "stats_daysConsecutive": "giorni consecutivi",
+  "stats_success": "Successo",
+  "stats_completion": "completamento",
+  "stats_weeklyFasting": "Digiuno settimanale",
+  "stats_monthlyView": "Vista mensile",
+  "stats_weightChange": "Variazione di peso",
+  "heatmap_none": "Nessuno",
+  "heatmap_low": "Basso",
+  "heatmap_good": "Buono",
+  "heatmap_full": "Completo",
+  "meals_title": "Pianificatore dei pasti",
+  "meals_eatingWindow": "Finestra alimentare",
+  "meals_windowOpen": "Aperta",
+  "meals_windowFasting": "Digiuno",
+  "meals_calories": "Calorie",
+  "meals_protein": "Proteine",
+  "meals_carbs": "Carboidrati",
+  "meals_fat": "Grassi",
+  "meals_todayMeals": "Pasti di oggi",
+  "meals_noMeals": "Non hai ancora aggiunto pasti",
+  "meals_breakfastSuggestions": "Suggerimenti per interrompere il digiuno",
+  "meals_addMeal": "Aggiungi pasto",
+  "profile_title": "Profilo",
+  "profile_user": "Utente",
+  "profile_planActive": "Piano {plan} attivo",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Passa a Premium",
+  "profile_premiumDesc": "Tutti i piani di digiuno, senza pubblicità",
+  "profile_bodyMetrics": "Misure corporee",
+  "profile_height": "Altezza",
+  "profile_weight": "Peso",
+  "profile_targetWeight": "Peso obiettivo",
+  "profile_bmi": "IMC",
+  "profile_settings": "Impostazioni",
+  "profile_notifications": "Notifiche",
+  "profile_darkTheme": "Tema scuro",
+  "profile_waterReminder": "Promemoria acqua",
+  "profile_phaseNotifications": "Notifiche delle fasi",
+  "profile_language": "Lingua",
+  "profile_about": "Informazioni",
+  "profile_rateApp": "Valuta l'app",
+  "profile_share": "Condividi",
+  "profile_privacyPolicy": "Informativa sulla privacy",
+  "profile_version": "Versione",
+  "onboarding_welcome": "Benvenuto",
+  "onboarding_welcomeDesc": "Prendi il controllo del tuo\npercorso di digiuno intermittente",
+  "onboarding_featureTimer": "Timer di digiuno intelligente",
+  "onboarding_featureStats": "Statistiche e grafici dettagliati",
+  "onboarding_featureMeals": "Pianificatore dei pasti e suggerimenti di ricette",
+  "onboarding_getStarted": "Inizia",
+  "onboarding_selectGoal": "Qual è il tuo obiettivo?",
+  "onboarding_selectGoalDesc": "Puoi selezionarne più di uno",
+  "onboarding_goalWeight": "Perdere peso",
+  "onboarding_goalWeightDesc": "Perdita di peso sana",
+  "onboarding_goalHealth": "Migliorare la salute",
+  "onboarding_goalHealthDesc": "Salute generale e difese immunitarie",
+  "onboarding_goalEnergy": "Più energia",
+  "onboarding_goalEnergyDesc": "Energia per tutta la giornata",
+  "onboarding_goalMental": "Chiarezza mentale",
+  "onboarding_goalMentalDesc": "Concentrazione e lucidità",
+  "onboarding_goalLongevity": "Longevità",
+  "onboarding_goalLongevityDesc": "Rinnovamento cellulare e azione antietà",
+  "onboarding_goalDiscipline": "Disciplina",
+  "onboarding_goalDisciplineDesc": "Sviluppa l'autodisciplina",
+  "onboarding_selectPlan": "Scegli il tuo piano",
+  "onboarding_selectPlanDesc": "Seleziona il piano di digiuno più adatto a te",
+  "onboarding_bodyInfo": "Inserisci i tuoi dati",
+  "onboarding_bodyInfoDesc": "Per consigli personalizzati",
+  "onboarding_gender": "Genere",
+  "onboarding_male": "Uomo",
+  "onboarding_female": "Donna",
+  "onboarding_age": "Età",
+  "onboarding_bodyInfoDisclaimer": "Queste informazioni vengono salvate solo sul tuo dispositivo e utilizzate per il calcolo delle calorie.",
+  "onboarding_permissions": "Ultimo passaggio",
+  "onboarding_permissionsDesc": "Abilita le autorizzazioni per un'esperienza ottimale",
+  "onboarding_next": "Continua",
+  "onboarding_start": "Cominciamo!",
+  "onboarding_skipForNow": "Configura più tardi",
+  "waterAdded": "+250 ml di acqua aggiunti",
+  "languageSelect": "Seleziona la lingua",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Passa a Premium",
+  "paywall_subtitle": "Sblocca tutti i piani di digiuno e rimuovi la pubblicità",
+  "paywall_allPlans": "Tutti i piani di digiuno",
+  "paywall_advancedStats": "Statistiche avanzate",
+  "paywall_mealPlanner": "Pianificatore dei pasti",
+  "paywall_themes": "Personalizzazione del tema",
+  "paywall_noAds": "Nessuna pubblicità",
+  "paywall_weekly": "Settimanale",
+  "paywall_monthly": "Mensile",
+  "paywall_yearly": "Annuale",
+  "paywall_bestValue": "Migliore",
+  "paywall_freeTrial": "Prova gratuita (3 giorni)",
+  "paywall_restore": "Ripristina acquisti",
+  "paywall_premiumActive": "Premium attivo!",
+  "paywall_premiumActiveDesc": "Tutti i piani di digiuno sono sbloccati e la pubblicità è disattivata",
+  "water_title": "Assunzione di acqua",
+  "water_addWater": "Aggiungi acqua",
+  "water_goal": "Obiettivo",
+  "water_ml": "ml",
+  "common_ok": "OK",
+  "common_cancel": "Annulla",
+  "common_save": "Salva",
+  "common_delete": "Elimina",
+  "common_hours": "ore",
+  "common_minutes": "minuti",
+  "common_days": "giorni",
+  "common_enable": "Abilita",
+  "streakCard_currentStreak": "Serie attuale",
+  "streakCard_longestStreak": "Serie più lunga",
+  "streakCard_totalSessions": "Digiuni totali",
+  "meals_mealType": "Tipo di pasto",
+  "meals_breakfast": "Colazione",
+  "meals_lunch": "Pranzo",
+  "meals_dinner": "Cena",
+  "meals_snack": "Spuntino",
+  "meals_carbohydrate": "Carboidrati",
+  "meals_add": "Aggiungi",
+  "meals_mealName": "Nome del pasto",
+  "bodyMetrics_title": "Misure corporee",
+  "bodyMetrics_weight": "Peso",
+  "bodyMetrics_target": "Obiettivo",
+  "bodyMetrics_save": "Salva",
+  "bodyMetrics_history": "Cronologia",
+  "bodyMetrics_bmiValue": "IMC: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Nessun dato",
+  "meals_quickAdd": "Aggiunta rapida",
+  "meals_manualEntry": "Inserimento manuale",
+  "meals_added": "{name} aggiunto",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Nome e calorie sono obbligatori",
+  "bodyMetrics_addWeight": "Aggiungi peso",
+  "bodyMetrics_hintWeight": "es. 74,5",
+  "bodyMetrics_invalidWeight": "Inserisci un peso valido",
+  "bodyMetrics_weightSaved": "{value} kg salvati",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Durata",
+  "completion_plan": "Piano",
+  "completion_lastPhase": "Ultima fase",
+  "timer_remainingTime": "Tempo rimanente",
+  "timer_ready": "Pronto per iniziare",
+  "streak_status": "Stato",
+  "streak_startToday": "Inizia oggi!",
+  "streak_goodStart": "Ottimo inizio!",
+  "streak_goingGreat": "Stai andando alla grande!",
+  "streak_superb": "Superbo!",
+  "streak_legendary": "Leggendario!",
+  "streak_incredible": "Incredibile!",
+  "weight_noRecord": "Nessuna registrazione del peso\nAggiungila da Profilo > Misure corporee",
+  "day_mon": "Lun",
+  "day_tue": "Mar",
+  "day_wed": "Mer",
+  "day_thu": "Gio",
+  "day_fri": "Ven",
+  "day_sat": "Sab",
+  "day_sun": "Dom",
+  "day_short_mon": "L",
+  "day_short_tue": "M",
+  "day_short_wed": "M",
+  "day_short_thu": "G",
+  "day_short_fri": "V",
+  "day_short_sat": "S",
+  "day_short_sun": "D",
+  "month_jan": "Gennaio",
+  "month_feb": "Febbraio",
+  "month_mar": "Marzo",
+  "month_apr": "Aprile",
+  "month_may": "Maggio",
+  "month_jun": "Giugno",
+  "month_jul": "Luglio",
+  "month_aug": "Agosto",
+  "month_sep": "Settembre",
+  "month_oct": "Ottobre",
+  "month_nov": "Novembre",
+  "month_dec": "Dicembre",
+  "meals_fastingWindow": "Digiuno ({hours} h)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Alimentazione ({hours} h)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Frullato d'avena",
+  "recipe_avocadoToast": "Toast all'avocado",
+  "recipe_yogurtBowl": "Ciotola di yogurt",
+  "elapsed_time": "Tempo trascorso",
+  "fast_ends_on": "Il digiuno termina alle",
+  "end_fasting": "Termina il digiuno",
+  "start_fasting": "Inizia il digiuno",
+  "water_tracker": "Monitoraggio dell'acqua",
+  "weight_tracker": "Monitoraggio del peso",
+  "drink": "Bevi",
+  "log_weight": "Registra il peso",
+  "bmi": "IMC",
+  "weight_lost": "Peso perso",
+  "current_weight": "Peso attuale",
+  "goal_weight": "Peso obiettivo",
+  "daily_goal": "Obiettivo giornaliero",
+  "completed_percent": "{percent}% completato",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Esplora",
+  "achievements": "Traguardi",
+  "profile_theme": "Aspetto",
+  "theme_select": "Scegli l'aspetto",
+  "theme_system": "Predefinito di sistema",
+  "theme_light": "Chiaro",
+  "theme_dark": "Scuro",
+  "language_system": "Lingua di sistema",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Suono di completamento",
+  "profile_calmGamification": "Gamification tranquilla",
+  "profile_calmGamificationDesc": "Riduce la pressione di leghe e stagioni",
+  "profile_editName": "Modifica il tuo nome",
+  "profile_name": "Nome",
+  "circle_title": "Cerchia del digiuno",
+  "circle_you": "Tu",
+  "circle_tagline": "Insieme, senza pressioni.",
+  "circle_privacy": "Il peso e le misure private restano nascosti. Sono visibili solo i progressi e il sostegno.",
+  "circle_sendSupport": "Invia sostegno · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Codice di invito copiato",
+  "circle_createInvite": "Crea un invito privato",
+  "crisis_nameTitle": "Prima, dai un nome a ciò che sta accadendo",
+  "crisis_nameDesc": "Potrebbe essere fame, abitudine o emozione.",
+  "crisis_waterTitle": "Bevi un bicchiere d'acqua",
+  "crisis_waterDesc": "Poi fai tre respiri lenti.",
+  "crisis_delayTitle": "Rimanda la decisione di 10 minuti",
+  "crisis_delayDesc": "Se non ti senti bene, interrompere il digiuno non è un fallimento.",
+  "crisis_hunger": "Fame",
+  "crisis_habit": "Abitudine",
+  "crisis_stress": "Stress",
+  "crisis_tenMore": "Aspetta 10 minuti",
+  "stats_storyEmpty": "Il tuo primo digiuno darà inizio alla tua storia personale.",
+  "stats_story": "In questo periodo hai digiunato {sessions} volte, hai mantenuto il ritmo per {hours} ore e hai raggiunto un tasso di completamento del {rate}%.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "La storia del tuo ritmo",
+  "home_todayRhythm": "Il ritmo di oggi",
+  "home_finalHourSupport": "Supporto per l'ultima ora",
+  "home_needSupport": "Ho bisogno di un po' di sostegno",
+  "home_todaySummary": "Oggi in breve",
+  "home_dayStreak": "giorni consecutivi",
+  "home_weightGoal": "obiettivo {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Il tuo ritmo è stabile",
+  "weather_gentle": "Una giornata tranquilla",
+  "weather_water": "Un bicchiere d'acqua potrebbe aiutare.",
+  "weather_listen": "Hai fatto molta strada; ascolta il tuo corpo.",
+  "weather_onPlan": "Il ritmo di oggi è in linea con il tuo piano.",
+  "weather_challenging": "Quest'ora è già stata difficile in passato; la modalità supporto è pronta.",
+  "replay_copied": "Riepilogo del digiuno copiato",
+  "replay_button": "Riepilogo",
+  "replay_text": "Ho completato il digiuno {plan} in {hours} h {minutes} min · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Percorso metabolico",
+  "journey_now": "Ora",
+  "journey_next": "{time} alla fase {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "Le tempistiche delle fasi sono stime generali, non misurazioni mediche.",
+  "phase_hours": "Ore {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Queste tempistiche sono stime generali. Le risposte metaboliche possono variare da persona a persona.",
+  "bmi_underweight": "Sottopeso",
+  "bmi_normal": "Normopeso",
+  "bmi_overweight": "Sovrappeso",
+  "bmi_obese": "Obesità",
+  "notification_halfwayTitle": "Sei a metà! 💪",
+  "notification_halfwayBody": "Hai completato metà del digiuno {plan}. Continua così!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Sei entrato nella fase catabolica 📉",
+  "notification_phaseFatBurning": "La combustione dei grassi è iniziata! 🔥",
+  "notification_phaseKetosis": "Sei in chetosi ⚡",
+  "notification_phaseAutophagy": "Autofagia attiva! 🔄",
+  "notification_completedBody": "Hai completato il digiuno {plan}! La finestra alimentare è aperta.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Bevi acqua 💧",
+  "notification_waterBody": "Non dimenticare di bere molta acqua durante il digiuno!",
+  "notification_windowTitle": "La finestra alimentare sta per chiudersi ⏰",
+  "notification_windowBody": "La finestra alimentare si chiuderà tra 30 minuti.",
+  "notification_streakTitle": "Serie di {days} giorni! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Stai andando alla grande! Continua così oggi.",
+  "notification_ongoingTitle": "Digiuno in corso - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Rimanente: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Digiuno iniziato - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Obiettivo: {hours} ore",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours} h {minutes} min",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Guida al digiuno",
+  "explore_guideDesc": "Tutto ciò che devi sapere sul digiuno intermittente",
+  "explore_circleDesc": "Condividi un sostegno discreto con il tuo gruppo privato.",
+  "explore_faq": "Domande frequenti",
+  "explore_education": "Questo contenuto ha esclusivamente finalità educative generali e non costituisce diagnosi medica né consiglio terapeutico.",
+  "explore_safety": "Salute e sicurezza",
+  "explore_safetyDesc": "Se hai una patologia, assumi farmaci regolarmente, presenti sintomi preoccupanti, sei in gravidanza o stai allattando, consulta un professionista sanitario qualificato prima di digiunare. Interrompi il digiuno se non ti senti bene.",
+  "explore_sources": "Fonti",
+  "explore_sourcesDesc": "I contenuti sono semplificati a partire dalle fonti di sanità pubblica riportate di seguito.",
+  "explore_sourceError": "Impossibile aprire la fonte",
+  "explore_rules": "Regole importanti",
+  "explore_rule1": "Non consumare alimenti calorici durante il digiuno",
+  "explore_rule2": "Bevi molta acqua e altri liquidi",
+  "explore_rule3": "Segui un'alimentazione equilibrata durante la finestra alimentare",
+  "explore_rule4": "Interrompi il digiuno se non ti senti bene",
+  "explore_rule5": "Le donne in gravidanza o che allattano non dovrebbero digiunare",
+  "explore_rule6": "Consulta il medico se hai patologie croniche",
+  "tip_water": "Mantieniti idratato",
+  "tip_waterDesc": "Bevi quando hai sete e assumi liquidi durante i pasti. Il fabbisogno può variare in base a salute, clima e attività.",
+  "tip_food": "Mangia bene",
+  "tip_foodDesc": "Durante le finestre alimentari, scegli alimenti ricchi di proteine, fibre e grassi sani. Evita gli alimenti trasformati.",
+  "tip_sleep": "Dormi bene",
+  "tip_sleepDesc": "Un sonno regolare e sufficiente favorisce il benessere generale. Organizza il digiuno in modo che non disturbi il sonno.",
+  "tip_exercise": "Attività fisica leggera",
+  "tip_exerciseDesc": "Durante il digiuno puoi camminare o fare yoga leggero. Evita l'attività intensa, soprattutto nelle prime settimane, finché il corpo non si adatta.",
+  "tip_drinks": "Bevande consentite",
+  "tip_drinksDesc": "Durante il digiuno puoi bere acqua, tè non zuccherato e caffè nero (senza zucchero né latte). Queste bevande non interrompono il digiuno.",
+  "faq_drinks": "Cosa posso bere durante il digiuno?",
+  "faq_drinksAnswer": "Puoi bere acqua, tè non zuccherato e caffè nero (senza zucchero né latte). Le bevande caloriche interrompono il digiuno.",
+  "faq_plan": "Quale piano di digiuno dovrei scegliere?",
+  "faq_planAnswer": "Se sei alle prime armi, inizia con 12:12 o 14:10. Se hai esperienza, prova 16:8 o 18:6. I piani 20:4 e OMAD sono indicati per chi è più esperto.",
+  "faq_exercise": "Posso allenarmi durante il digiuno?",
+  "faq_exerciseAnswer": "Sì, ma evita gli allenamenti intensi. Cardio leggero, camminata e yoga sono ideali. Se sollevi pesi, allenati vicino alla finestra alimentare.",
+  "faq_weight": "Il digiuno aiuta a perdere peso?",
+  "faq_weightAnswer": "Per alcune persone, limitare l'orario dei pasti può ridurre l'apporto energetico totale. I risultati variano e gli effetti a lungo termine sono ancora oggetto di studio.",
+  "plan_12_desc": "Livello principiante",
+  "plan_12_detail": "Ideale per chi inizia. Digiuna per 12 ore, includendo le ore di sonno.",
+  "plan_16_desc": "Piano più popolare",
+  "plan_16_detail": "Il piano di digiuno intermittente più comune: 16 ore di digiuno e 8 ore di finestra alimentare, di solito dal pranzo alla cena.",
+  "plan_18_desc": "Livello intermedio",
+  "plan_18_detail": "18 ore di digiuno e 6 ore di finestra alimentare. La fase di combustione dei grassi dura più a lungo.",
+  "plan_20_desc": "Livello avanzato",
+  "plan_20_detail": "20 ore di digiuno e 4 ore di finestra alimentare. Ideale per raggiungere la chetosi e l'autofagia.",
+  "plan_omad_desc": "Un pasto al giorno",
+  "plan_omad_detail": "Un solo pasto al giorno: 23 ore di digiuno e 1 ora di finestra alimentare. Livello esperto.",
+  "plan_52_desc": "2 giorni a settimana",
+  "plan_52_detail": "Mangia normalmente per 5 giorni e limita l'apporto a circa 500 calorie negli altri 2. Un approccio alternativo.",
+  "plan_ese_desc": "Digiuno di 24 ore",
+  "plan_ese_detail": "Digiuna per 24 ore 1–2 volte a settimana. Per utenti avanzati.",
+  "plan_warrior_desc": "Dieta del guerriero",
+  "plan_warrior_detail": "Mangia leggero durante il giorno (frutta e verdura) e consuma il pasto principale in una finestra serale di 4 ore.",
+  "award_first_title": "Primo passo",
+  "award_first_desc": "Completa il tuo primo digiuno",
+  "award_rhythm3_title": "Ritmo di 3 giorni",
+  "award_rhythm3_desc": "Mantieni il ritmo per tre giorni",
+  "award_hours24_title": "24 ore",
+  "award_hours24_desc": "Raggiungi 24 ore totali di digiuno",
+  "award_week_title": "Ritmo di una settimana",
+  "award_week_desc": "Costruisci una serie di sette giorni",
+  "award_fasts10_title": "10 digiuni",
+  "award_fasts10_desc": "Completa dieci digiuni",
+  "award_hours100_title": "100 ore",
+  "award_hours100_desc": "Raggiungi 100 ore totali",
+  "award_rhythm30_title": "Ritmo di 30 giorni",
+  "award_rhythm30_desc": "Costruisci una serie di trenta giorni",
+  "award_fasts50_title": "50 digiuni",
+  "award_fasts50_desc": "Completa cinquanta digiuni",
+  "award_hours500_title": "500 ore",
+  "award_hours500_desc": "Raggiungi 500 ore totali",
+  "award_fasts100_title": "100 digiuni",
+  "award_fasts100_desc": "Completa cento digiuni",
+  "award_rhythm90_title": "Ritmo di 90 giorni",
+  "award_rhythm90_desc": "Costruisci una serie di novanta giorni",
+  "award_year_title": "Percorso di un anno",
+  "award_year_desc": "Raggiungi un ritmo di 365 giorni",
+  "awards_loadError": "Impossibile caricare i progressi",
+  "awards_journeyComplete": "Percorso completato",
+  "awards_nextGoal": "Prossimo obiettivo",
+  "awards_allYours": "Hai conquistato ogni traguardo",
+  "awards_dayStreak": "giorni consecutivi",
+  "awards_fasts": "digiuni",
+  "awards_total": "totale",
+  "awards_stageStart": "Inizio",
+  "awards_stageRhythm": "Ritmo",
+  "awards_stageEndurance": "Resistenza",
+  "awards_stageMastery": "Maestria",
+  "awards_completed": "Completato",
+  "awards_fastsRemaining": "Mancano {count} digiuni",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "Mancano {count} giorni",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "Mancano {count} ore",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Riprova",
+  "game_title": "Centro progressi",
+  "game_quests": "Missioni di oggi",
+  "game_questsDesc": "Piccoli passi, un ritmo sostenibile.",
+  "game_season": "Stagione di 30 tappe",
+  "game_seasonDesc": "Un sigillo da collezionare ogni cinque tappe.",
+  "game_badges": "Collezione di badge",
+  "game_shields": "{count} scudi del ritmo",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Ne ottieni uno ogni sette completamenti. Un giorno saltato non cancella mai i tuoi progressi.",
+  "game_league": "Lega settimanale privata",
+  "game_leagueDesc": "Il tuo punteggio di ritmo si trova nel {percent}° percentile di un modello locale privato. Il peso e i digiuni estremi non entrano mai in classifica.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Livello {level}, {xp} punti esperienza",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Esploratore del ritmo",
+  "game_streak": "Serie",
+  "game_targets": "Obiettivi",
+  "game_best": "Migliore",
+  "quest_rhythm": "Costruisci il ritmo di oggi",
+  "quest_hydrate": "Raggiungi metà dell'obiettivo di idratazione",
+  "quest_steady": "Proteggi la tua serie",
+  "badge_first_title": "Primo passo",
+  "badge_first_desc": "Registra il tuo primo digiuno",
+  "badge_rhythm7_title": "Custode del ritmo",
+  "badge_rhythm7_desc": "Raggiungi una serie di 7 giorni",
+  "badge_rhythm3_title": "Ritmo di tre giorni",
+  "badge_rhythm3_desc": "Raggiungi una serie di 3 giorni",
+  "badge_target1_title": "Primo obiettivo",
+  "badge_target1_desc": "Completa il tuo primo digiuno obiettivo",
+  "badge_target3_title": "Tre passi",
+  "badge_target3_desc": "Completa 3 obiettivi",
+  "badge_water_title": "In equilibrio",
+  "badge_water_desc": "Completa l'obiettivo giornaliero di idratazione",
+  "badge_support_title": "Consapevole",
+  "badge_support_desc": "Usa la modalità supporto",
+  "badge_hours10_title": "10 ore",
+  "badge_hours10_desc": "Registra 10 ore totali",
+  "badge_target10_title": "Dieci traguardi",
+  "badge_target10_desc": "Completa 10 obiettivi",
+  "badge_target20_title": "Venti obiettivi",
+  "badge_target20_desc": "Completa 20 obiettivi",
+  "badge_fast16_title": "16 ore",
+  "badge_fast16_desc": "Raggiungi 16 ore in un singolo digiuno",
+  "badge_hours50_title": "50 ore",
+  "badge_hours50_desc": "Registra 50 ore totali",
+  "badge_hours100_title": "Cento ore",
+  "badge_hours100_desc": "Registra 100 ore totali",
+  "badge_target30_title": "Trenta obiettivi",
+  "badge_target30_desc": "Completa 30 obiettivi",
+  "badge_rhythm30_title": "Ritmo di 30 giorni",
+  "badge_rhythm30_desc": "Raggiungi una serie di 30 giorni",
+  "paywall_restoreSuccess": "Acquisti ripristinati!",
+  "fasting_progressSemantics": "Avanzamento del digiuno: {percent} percento",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour} h",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "A vita",
+  "paywall_once": "una tantum",
+  "paywall_processing": "Elaborazione…",
+  "paywall_continue": "Continua",
+  "paywall_productsUnavailable": "Gli acquisti non sono disponibili al momento. Riprova più tardi.",
+  "paywall_purchaseFailed": "Impossibile completare l'acquisto.",
+  "paywall_nothingToRestore": "Non è stato trovato alcun acquisto precedente.",
+  "paywall_restoreFailed": "Impossibile ripristinare gli acquisti.",
+  "paywall_terms": "Termini di utilizzo",
+  "permission_notificationDesc": "Promemoria di digiuno, aggiornamenti delle fasi e notifiche di completamento",
+  "profile_privacyChoices": "Scelte sulla privacy",
+  "paywall_autoRenewInfo": "Gli abbonamenti si rinnovano automaticamente se non vengono annullati almeno 24 ore prima della fine del periodo. Puoi gestirli o annullarli in qualsiasi momento nelle impostazioni dell'App Store.",
+  "paywall_perMonth": "{price} / mese",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Risparmia il {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "Prova gratuita di {days} giorni",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Inizia la prova gratuita",
+  "paywall_retry": "Riprova",
+  "paywall_alreadyOwned": "Possiedi già questo abbonamento. Tocca “Ripristina acquisti”.",
+  "paywall_storeUnavailable": "Impossibile raggiungere lo store. Controlla la connessione e riprova.",
+  "paywall_secureNote": "Puoi annullare in qualsiasi momento. Il pagamento viene addebitato sul tuo account dello store.",
+  "paywall_autoRenewInfoPlay": "Gli abbonamenti si rinnovano automaticamente se non vengono annullati almeno 24 ore prima della fine del periodo. Puoi gestirli o annullarli in qualsiasi momento in Google Play > Abbonamenti.",
+  "paywall_allPlansDesc": "Sblocca 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat e Warrior",
+  "paywall_noAdsDesc": "I banner e gli annunci interstitial vengono disattivati completamente",
+  "foodScan_title": "Scansione alimentare con IA",
+  "foodScan_scanCta": "Scansiona il pasto",
+  "foodScan_scanCtaDesc": "Fotografa il piatto e ottieni calorie e macronutrienti",
+  "foodScan_introTitle": "Fotografa il tuo piatto",
+  "foodScan_introDesc": "L'IA legge la foto e stima calorie, proteine, carboidrati e grassi.",
+  "foodScan_tipLight": "Una luce buona e uniforme consente una stima migliore",
+  "foodScan_tipFrame": "Inquadra l'intero piatto",
+  "foodScan_tipScale": "Includi posate o una mano per aiutare a stimare le porzioni",
+  "foodScan_takePhoto": "Scatta una foto",
+  "foodScan_chooseFromGallery": "Scegli dalla galleria",
+  "foodScan_scansLeft": "{count} scansioni rimaste oggi",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Hai esaurito le scansioni di oggi. Riprova domani.",
+  "foodScan_privacyNote": "La foto viene inviata all'API Gemini di Google per l'analisi e non viene archiviata sui nostri server.",
+  "foodScan_analyzing": "Analisi del pasto…",
+  "foodScan_analyzingHint": "Di solito bastano pochi secondi",
+  "foodScan_detectedItems": "Alimenti rilevati",
+  "foodScan_disclaimer": "Le stime dell'IA sono approssimative. Tocca un alimento per correggerlo.",
+  "foodScan_lowConfidence": "Il modello non è sicuro di questa foto. Controlla i valori prima di salvare.",
+  "foodScan_save": "Aggiungi ai pasti",
+  "foodScan_retake": "Nuova foto",
+  "foodScan_retry": "Riprova",
+  "foodScan_editItem": "Modifica alimento",
+  "foodScan_portion": "Porzione",
+  "foodScan_saveEdit": "Salva",
+  "foodScan_premiumTitle": "Una funzione Premium",
+  "foodScan_premiumDesc": "L'analisi delle calorie da foto è inclusa in Premium.",
+  "foodScan_upgrade": "Scopri Premium",
+  "foodScan_errorNetwork": "Nessuna connessione. Controlla Internet e riprova.",
+  "foodScan_errorRateLimited": "Troppe scansioni in questo momento. Riprova tra qualche minuto.",
+  "foodScan_errorUnavailable": "L'analisi delle foto non è disponibile al momento.",
+  "foodScan_errorServer": "Il servizio di analisi sta riscontrando problemi. Riprova tra poco.",
+  "foodScan_errorNoFood": "Nessun alimento trovato nella foto. Prova con un'immagine più nitida del piatto.",
+  "foodScan_errorUnreadable": "Impossibile analizzare questa foto. Provane un'altra.",
+  "paywall_aiFoodScan": "Scansione alimentare con IA",
+  "paywall_aiFoodScanDesc": "Fotografa un pasto e registra calorie e macronutrienti in pochi secondi",
+  "completion_earlyTitle": "Digiuno terminato",
+  "completion_earlyMessage": "La durata di oggi è stata salvata. La serie e i progressi degli obiettivi non sono cambiati perché il traguardo non è stato completato."
+}

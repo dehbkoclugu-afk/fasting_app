@@ -66,7 +66,8 @@ import 'app_localizations_tr.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -74,7 +75,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -86,12 +88,13 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -100,7 +103,7 @@ abstract class AppLocalizations {
     Locale('es'),
     Locale('fr'),
     Locale('pt'),
-    Locale('tr')
+    Locale('tr'),
   ];
 
   /// No description provided for @appTitle.
@@ -502,7 +505,7 @@ abstract class AppLocalizations {
   /// No description provided for @profile_premiumDesc.
   ///
   /// In en, this message translates to:
-  /// **'All plans, advanced stats, and more'**
+  /// **'Every fasting plan, with no ads'**
   String get profile_premiumDesc;
 
   /// No description provided for @profile_bodyMetrics.
@@ -838,7 +841,7 @@ abstract class AppLocalizations {
   /// No description provided for @paywall_subtitle.
   ///
   /// In en, this message translates to:
-  /// **'Unlock all features'**
+  /// **'Unlock every fasting plan and remove ads'**
   String get paywall_subtitle;
 
   /// No description provided for @paywall_allPlans.
@@ -858,12 +861,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Meal planner'**
   String get paywall_mealPlanner;
-
-  /// No description provided for @paywall_healthKit.
-  ///
-  /// In en, this message translates to:
-  /// **'HealthKit integration'**
-  String get paywall_healthKit;
 
   /// No description provided for @paywall_themes.
   ///
@@ -922,7 +919,7 @@ abstract class AppLocalizations {
   /// No description provided for @paywall_premiumActiveDesc.
   ///
   /// In en, this message translates to:
-  /// **'You unlocked all features'**
+  /// **'Every fasting plan is unlocked and ads are off'**
   String get paywall_premiumActiveDesc;
 
   /// No description provided for @water_title.
@@ -2893,26 +2890,297 @@ abstract class AppLocalizations {
   /// **'Fasting reminders, phase updates and completion notifications'**
   String get permission_notificationDesc;
 
-  /// No description provided for @permission_healthTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Health Connect / HealthKit'**
-  String get permission_healthTitle;
-
-  /// No description provided for @permission_healthDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Sync steps, active calories and weight with your permission'**
-  String get permission_healthDesc;
-
   /// No description provided for @profile_privacyChoices.
   ///
   /// In en, this message translates to:
   /// **'Privacy choices'**
   String get profile_privacyChoices;
+
+  /// No description provided for @paywall_autoRenewInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in your App Store settings.'**
+  String get paywall_autoRenewInfo;
+
+  /// No description provided for @paywall_perMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} / month'**
+  String paywall_perMonth(String price);
+
+  /// No description provided for @paywall_savePercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Save {percent}%'**
+  String paywall_savePercent(int percent);
+
+  /// No description provided for @paywall_freeTrialDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{days}-day free trial'**
+  String paywall_freeTrialDays(int days);
+
+  /// No description provided for @paywall_startFreeTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'Start free trial'**
+  String get paywall_startFreeTrial;
+
+  /// No description provided for @paywall_retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get paywall_retry;
+
+  /// No description provided for @paywall_alreadyOwned.
+  ///
+  /// In en, this message translates to:
+  /// **'You already own this subscription. Tap “Restore purchases”.'**
+  String get paywall_alreadyOwned;
+
+  /// No description provided for @paywall_storeUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Can\'t reach the store right now. Check your connection and try again.'**
+  String get paywall_storeUnavailable;
+
+  /// No description provided for @paywall_secureNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel anytime. Payment is charged to your store account.'**
+  String get paywall_secureNote;
+
+  /// No description provided for @paywall_autoRenewInfoPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.'**
+  String get paywall_autoRenewInfoPlay;
+
+  /// No description provided for @paywall_allPlansDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocks 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat and Warrior'**
+  String get paywall_allPlansDesc;
+
+  /// No description provided for @paywall_noAdsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Banner and interstitial ads are turned off completely'**
+  String get paywall_noAdsDesc;
+
+  /// No description provided for @foodScan_title.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Food Scan'**
+  String get foodScan_title;
+
+  /// No description provided for @foodScan_scanCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan meal'**
+  String get foodScan_scanCta;
+
+  /// No description provided for @foodScan_scanCtaDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Photograph your plate, get calories and macros'**
+  String get foodScan_scanCtaDesc;
+
+  /// No description provided for @foodScan_introTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Photograph your plate'**
+  String get foodScan_introTitle;
+
+  /// No description provided for @foodScan_introDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'AI reads the photo and estimates calories, protein, carbs and fat.'**
+  String get foodScan_introDesc;
+
+  /// No description provided for @foodScan_tipLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Good, even light gives a better estimate'**
+  String get foodScan_tipLight;
+
+  /// No description provided for @foodScan_tipFrame.
+  ///
+  /// In en, this message translates to:
+  /// **'Fit the whole plate into the frame'**
+  String get foodScan_tipFrame;
+
+  /// No description provided for @foodScan_tipScale.
+  ///
+  /// In en, this message translates to:
+  /// **'Include cutlery or a hand so portions can be scaled'**
+  String get foodScan_tipScale;
+
+  /// No description provided for @foodScan_takePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take photo'**
+  String get foodScan_takePhoto;
+
+  /// No description provided for @foodScan_chooseFromGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from gallery'**
+  String get foodScan_chooseFromGallery;
+
+  /// No description provided for @foodScan_scansLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} scans left today'**
+  String foodScan_scansLeft(int count);
+
+  /// No description provided for @foodScan_quotaReached.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve used today\'s scans. Try again tomorrow.'**
+  String get foodScan_quotaReached;
+
+  /// No description provided for @foodScan_privacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The photo is sent to Google\'s Gemini API for analysis and is not stored on our servers.'**
+  String get foodScan_privacyNote;
+
+  /// No description provided for @foodScan_analyzing.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysing your meal…'**
+  String get foodScan_analyzing;
+
+  /// No description provided for @foodScan_analyzingHint.
+  ///
+  /// In en, this message translates to:
+  /// **'This usually takes a few seconds'**
+  String get foodScan_analyzingHint;
+
+  /// No description provided for @foodScan_detectedItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Detected items'**
+  String get foodScan_detectedItems;
+
+  /// No description provided for @foodScan_disclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'AI estimates are approximate. Tap an item to correct it.'**
+  String get foodScan_disclaimer;
+
+  /// No description provided for @foodScan_lowConfidence.
+  ///
+  /// In en, this message translates to:
+  /// **'The model is unsure about this photo. Check the numbers before saving.'**
+  String get foodScan_lowConfidence;
+
+  /// No description provided for @foodScan_save.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to meals'**
+  String get foodScan_save;
+
+  /// No description provided for @foodScan_retake.
+  ///
+  /// In en, this message translates to:
+  /// **'New photo'**
+  String get foodScan_retake;
+
+  /// No description provided for @foodScan_retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get foodScan_retry;
+
+  /// No description provided for @foodScan_editItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit item'**
+  String get foodScan_editItem;
+
+  /// No description provided for @foodScan_portion.
+  ///
+  /// In en, this message translates to:
+  /// **'Portion'**
+  String get foodScan_portion;
+
+  /// No description provided for @foodScan_saveEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get foodScan_saveEdit;
+
+  /// No description provided for @foodScan_premiumTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A Premium feature'**
+  String get foodScan_premiumTitle;
+
+  /// No description provided for @foodScan_premiumDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo calorie analysis is included in Premium.'**
+  String get foodScan_premiumDesc;
+
+  /// No description provided for @foodScan_upgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'See Premium'**
+  String get foodScan_upgrade;
+
+  /// No description provided for @foodScan_errorNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'No connection. Check your internet and try again.'**
+  String get foodScan_errorNetwork;
+
+  /// No description provided for @foodScan_errorRateLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many scans right now. Try again in a few minutes.'**
+  String get foodScan_errorRateLimited;
+
+  /// No description provided for @foodScan_errorUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo analysis is unavailable right now.'**
+  String get foodScan_errorUnavailable;
+
+  /// No description provided for @foodScan_errorServer.
+  ///
+  /// In en, this message translates to:
+  /// **'The analysis service is having trouble. Try again shortly.'**
+  String get foodScan_errorServer;
+
+  /// No description provided for @foodScan_errorNoFood.
+  ///
+  /// In en, this message translates to:
+  /// **'No food found in this photo. Try a clearer shot of the plate.'**
+  String get foodScan_errorNoFood;
+
+  /// No description provided for @foodScan_errorUnreadable.
+  ///
+  /// In en, this message translates to:
+  /// **'This photo couldn\'t be analysed. Try another one.'**
+  String get foodScan_errorUnreadable;
+
+  /// No description provided for @paywall_aiFoodScan.
+  ///
+  /// In en, this message translates to:
+  /// **'AI food scan'**
+  String get paywall_aiFoodScan;
+
+  /// No description provided for @paywall_aiFoodScanDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Photograph a meal and log its calories and macros in seconds'**
+  String get paywall_aiFoodScanDesc;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -2921,29 +3189,40 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['de', 'en', 'es', 'fr', 'pt', 'tr'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>[
+    'de',
+    'en',
+    'es',
+    'fr',
+    'pt',
+    'tr',
+  ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'de': return AppLocalizationsDe();
-    case 'en': return AppLocalizationsEn();
-    case 'es': return AppLocalizationsEs();
-    case 'fr': return AppLocalizationsFr();
-    case 'pt': return AppLocalizationsPt();
-    case 'tr': return AppLocalizationsTr();
+    case 'de':
+      return AppLocalizationsDe();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'es':
+      return AppLocalizationsEs();
+    case 'fr':
+      return AppLocalizationsFr();
+    case 'pt':
+      return AppLocalizationsPt();
+    case 'tr':
+      return AppLocalizationsTr();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../providers/gamification_provider.dart';
 
@@ -16,21 +16,25 @@ class GamificationDashboardScreen extends ConsumerWidget {
     final calm = ref.watch(settingsProvider).calmGamification;
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    final visibleBadges = (calm
+            ? game.badges.where((badge) => badge.unlocked)
+            : game.badges)
+        .toList()
+      ..sort((a, b) {
+        if (a.unlocked != b.unlocked) return a.unlocked ? -1 : 1;
+        if (!a.unlocked) return b.ratio.compareTo(a.ratio);
+        return game.badges.indexOf(a).compareTo(game.badges.indexOf(b));
+      });
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.game_title)),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 48),
         children: [
-          _LevelHero(game: game, l10n: l10n),
-          const SizedBox(height: 24),
-          _SectionTitle(
-            title: l10n.game_quests,
-            subtitle: l10n.game_questsDesc,
-          ),
-          const SizedBox(height: 12),
-          for (final quest in game.quests) _QuestRow(quest: quest, l10n: l10n),
-          const SizedBox(height: 26),
+          _LevelHero(game: game, l10n: l10n, calm: calm),
+          const SizedBox(height: 22),
+          _QuestPanel(game: game, l10n: l10n, calm: calm),
+          const SizedBox(height: 28),
           if (!calm) ...[
             _SectionTitle(
               title: l10n.game_season,
@@ -40,8 +44,6 @@ class GamificationDashboardScreen extends ConsumerWidget {
             _SeasonPath(current: game.seasonStep),
             const SizedBox(height: 26),
           ],
-          _RecordsStrip(game: game, l10n: l10n),
-          const SizedBox(height: 26),
           _SectionTitle(
             title: l10n.game_badges,
             subtitle:
@@ -57,63 +59,89 @@ class GamificationDashboardScreen extends ConsumerWidget {
               mainAxisSpacing: 10,
               childAspectRatio: .9,
             ),
-            itemCount: game.badges.length,
+            itemCount: visibleBadges.length,
             itemBuilder:
                 (context, index) =>
-                    _BadgeToken(badge: game.badges[index], l10n: l10n),
+                    _BadgeToken(badge: visibleBadges[index], l10n: l10n),
           ),
           const SizedBox(height: 26),
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surface,
-              borderRadius: BorderRadius.circular(22),
-              border: Border.all(color: theme.dividerColor),
-            ),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.shield_outlined,
-                  color: AppColors.tertiary,
-                  size: 34,
+          FastingSplitArtCard(
+            assetPath: 'assets/images/editorial/v4/rhythm-shield.webp',
+            minHeight: 152,
+            artWidth: 136,
+            borderRadius: 22,
+            semanticLabel: l10n.game_shields(game.shields),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface.withValues(alpha: .90),
+                  borderRadius: BorderRadius.circular(14),
                 ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.game_shields(game.shields),
-                        style: theme.textTheme.titleMedium,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.game_shields(game.shields),
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.colorScheme.onSurface,
+                        fontWeight: FontWeight.w800,
                       ),
-                      Text(
-                        l10n.game_shieldsDesc,
-                        style: theme.textTheme.bodySmall,
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      l10n.game_shieldsDesc,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
           const SizedBox(height: 14),
           if (!calm)
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: .08),
-                borderRadius: BorderRadius.circular(22),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(l10n.game_league, style: theme.textTheme.titleMedium),
-                  const SizedBox(height: 6),
-                  Text(
-                    l10n.game_leagueDesc(game.leaguePercentile),
-                    style: theme.textTheme.bodyMedium,
+            FastingSplitArtCard(
+              assetPath: 'assets/images/editorial/v4/weekly-league.webp',
+              minHeight: 184,
+              artWidth: 132,
+              borderRadius: 22,
+              semanticLabel: l10n.game_league,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surface.withValues(alpha: .90),
+                    borderRadius: BorderRadius.circular(14),
                   ),
-                ],
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.game_league,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: theme.colorScheme.onSurface,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        l10n.game_leagueDesc(game.leaguePercentile),
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                          height: 1.3,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
         ],
@@ -123,80 +151,78 @@ class GamificationDashboardScreen extends ConsumerWidget {
 }
 
 class _LevelHero extends StatelessWidget {
-  const _LevelHero({required this.game, required this.l10n});
+  const _LevelHero({required this.game, required this.l10n, required this.calm});
 
   final GamificationState game;
   final AppLocalizations l10n;
+  final bool calm;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final tr = Localizations.localeOf(context).languageCode == 'tr';
     return Semantics(
       label: l10n.game_levelSemantics(game.level, game.xp),
-      child: Container(
-        padding: const EdgeInsets.all(22),
-        decoration: BoxDecoration(
-          color: AppColors.primary,
-          borderRadius: BorderRadius.circular(26),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Container(
-                  width: 58,
-                  height: 58,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: .16),
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Colors.white.withValues(alpha: .55),
-                    ),
-                  ),
-                  child: Text(
-                    '${game.level}',
-                    style: theme.textTheme.headlineSmall?.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
+      child: FastingSplitArtCard(
+        assetPath: 'assets/images/editorial/v4/weekly-league.webp',
+        minHeight: 190,
+        artWidth: 122,
+        borderRadius: 26,
+        semanticLabel: l10n.game_explorer,
+        child: Padding(
+          padding: const EdgeInsets.all(22),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                l10n.game_explorer,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.titleLarge?.copyWith(
+                  color: fastingArtForeground(context),
+                  fontWeight: FontWeight.w900,
                 ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.game_explorer,
-                        style: theme.textTheme.titleLarge?.copyWith(
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        '${game.xp} XP',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: Colors.white.withValues(alpha: .8),
-                        ),
-                      ),
-                    ],
-                  ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                calm
+                    ? l10n.game_questsDesc
+                    : '${tr ? 'Seviye' : 'Level'} ${game.level} • ${game.xp} XP',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: fastingArtMutedForeground(context),
+                  fontWeight: FontWeight.w600,
                 ),
+              ),
+              if (!calm) ...[
+                const SizedBox(height: 16),
                 Text(
-                  '${GamificationState.levelSize - game.levelXp} XP',
-                  style: const TextStyle(color: Colors.white),
+                  '${game.levelXp} / ${GamificationState.levelSize} XP',
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: fastingArtForeground(context),
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                const SizedBox(height: 7),
+                LinearProgressIndicator(
+                  value: game.levelProgress,
+                  minHeight: 8,
+                  borderRadius: BorderRadius.circular(10),
+                  backgroundColor: fastingArtDivider(context),
+                  valueColor: const AlwaysStoppedAnimation(AppColors.primary),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  '${GamificationState.levelSize - game.levelXp} XP ${tr ? 'kaldı' : 'left'}',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: fastingArtMutedForeground(context),
+                  ),
                 ),
               ],
-            ),
-            const SizedBox(height: 18),
-            LinearProgressIndicator(
-              value: game.levelProgress,
-              minHeight: 9,
-              borderRadius: BorderRadius.circular(10),
-              backgroundColor: Colors.white.withValues(alpha: .2),
-              valueColor: const AlwaysStoppedAnimation(Colors.white),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -219,10 +245,76 @@ class _SectionTitle extends StatelessWidget {
   );
 }
 
+class _QuestPanel extends StatelessWidget {
+  const _QuestPanel({required this.game, required this.l10n, required this.calm});
+
+  final GamificationState game;
+  final AppLocalizations l10n;
+  final bool calm;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final completed = game.quests.where((quest) => quest.completed).length;
+    return Container(
+      padding: const EdgeInsets.fromLTRB(18, 16, 18, 8),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withValues(alpha: .5),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.game_quests,
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(l10n.game_questsDesc, style: theme.textTheme.bodySmall),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                decoration: BoxDecoration(
+                  color: AppColors.primary.withValues(alpha: .1),
+                  borderRadius: BorderRadius.circular(99),
+                ),
+                child: Text(
+                  '$completed/${game.quests.length}',
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: AppColors.primary,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+          for (final quest in game.quests)
+            _QuestRow(quest: quest, l10n: l10n, calm: calm),
+        ],
+      ),
+    );
+  }
+}
+
 class _QuestRow extends StatelessWidget {
-  const _QuestRow({required this.quest, required this.l10n});
+  const _QuestRow({required this.quest, required this.l10n, required this.calm});
   final GameQuest quest;
   final AppLocalizations l10n;
+  final bool calm;
 
   @override
   Widget build(BuildContext context) {
@@ -249,20 +341,23 @@ class _QuestRow extends StatelessWidget {
                         _ => l10n.quest_steady,
                       }, style: theme.textTheme.titleSmall),
                     ),
-                    Text(
-                      '+${quest.xp} XP',
-                      style: theme.textTheme.labelSmall?.copyWith(
-                        color: AppColors.primary,
+                    if (!calm)
+                      Text(
+                        '+${quest.xp} XP',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: AppColors.primary,
+                        ),
                       ),
-                    ),
                   ],
                 ),
-                const SizedBox(height: 6),
-                LinearProgressIndicator(
-                  value: quest.ratio,
-                  minHeight: 5,
-                  borderRadius: BorderRadius.circular(5),
-                ),
+                if (!calm) ...[
+                  const SizedBox(height: 6),
+                  LinearProgressIndicator(
+                    value: quest.ratio,
+                    minHeight: 5,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ],
               ],
             ),
           ),
@@ -277,84 +372,93 @@ class _SeasonPath extends StatelessWidget {
   final int current;
 
   @override
-  Widget build(BuildContext context) => SizedBox(
-    height: 74,
-    child: ListView.separated(
-      scrollDirection: Axis.horizontal,
-      itemCount: 30,
-      separatorBuilder:
-          (_, __) => Container(
-            width: 18,
-            height: 2,
-            color: Theme.of(context).dividerColor,
-          ),
-      itemBuilder: (context, index) {
-        final step = index + 1;
-        final reached = step <= current;
-        final milestone = step % 5 == 0;
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AnimatedContainer(
-              duration:
-                  MediaQuery.of(context).disableAnimations
-                      ? Duration.zero
-                      : const Duration(milliseconds: 220),
-              width: milestone ? 44 : 34,
-              height: milestone ? 44 : 34,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color:
-                    reached
-                        ? AppColors.primary
-                        : Theme.of(context).dividerColor,
-              ),
-              child: Text(
-                milestone ? '✦' : '$step',
-                style: TextStyle(color: reached ? Colors.white : null),
-              ),
-            ),
-          ],
-        );
-      },
-    ),
-  );
-}
-
-class _RecordsStrip extends StatelessWidget {
-  const _RecordsStrip({required this.game, required this.l10n});
-  final GamificationState game;
-  final AppLocalizations l10n;
-
-  @override
-  Widget build(BuildContext context) => Row(
-    children: [
-      _Record(value: '${game.streak}', label: l10n.game_streak),
-      _Record(value: '${game.completedFasts}', label: l10n.game_targets),
-      _Record(value: '${game.totalHours}h', label: l10n.awards_total),
-      _Record(
-        value: '${game.personalBestMinutes ~/ 60}h',
-        label: l10n.game_best,
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final nextReward = current >= 30 ? 30 : ((current ~/ 5) + 1) * 5;
+    final remaining = (nextReward - current).clamp(0, 30);
+    final isTurkish = Localizations.localeOf(context).languageCode == 'tr';
+    return Container(
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withValues(alpha: .5),
+        ),
       ),
-    ],
-  );
-}
-
-class _Record extends StatelessWidget {
-  const _Record({required this.value, required this.label});
-  final String value;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) => Expanded(
-    child: Column(
-      children: [
-        Text(value, style: Theme.of(context).textTheme.titleLarge),
-        Text(label, style: Theme.of(context).textTheme.labelSmall),
-      ],
-    ),
-  );
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Text('$current / 30', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900)),
+              const Spacer(),
+              Text(
+                current >= 30
+                    ? (isTurkish ? 'Sezon tamamlandı' : 'Season complete')
+                    : (isTurkish ? 'Mühre $remaining adım' : '$remaining steps to seal'),
+                style: theme.textTheme.labelMedium?.copyWith(
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              const gap = 7.0;
+              final nodeSize = (constraints.maxWidth - gap * 9) / 10;
+              return Wrap(
+                spacing: gap,
+                runSpacing: 10,
+                children: List.generate(30, (index) {
+                  final step = index + 1;
+                  final complete = step <= current;
+                  final reward = step % 5 == 0;
+                  return SizedBox.square(
+                    dimension: nodeSize,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: complete
+                            ? AppColors.primary
+                            : theme.colorScheme.surfaceContainerHighest,
+                        border: Border.all(
+                          color: reward
+                              ? AppColors.primary
+                              : theme.colorScheme.outlineVariant,
+                          width: reward ? 2 : 1,
+                        ),
+                      ),
+                      child: Center(
+                        child: reward
+                            ? Icon(
+                                complete ? Icons.check_rounded : Icons.star_outline_rounded,
+                                size: nodeSize * .55,
+                                color: complete ? Colors.white : AppColors.primary,
+                              )
+                            : Text(
+                                '$step',
+                                style: TextStyle(
+                                  fontSize: nodeSize * .34,
+                                  fontWeight: FontWeight.w700,
+                                  color: complete
+                                      ? Colors.white
+                                      : theme.colorScheme.onSurfaceVariant,
+                                ),
+                              ),
+                      ),
+                    ),
+                  );
+                }),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class _BadgeToken extends StatelessWidget {
@@ -363,53 +467,145 @@ class _BadgeToken extends StatelessWidget {
   final AppLocalizations l10n;
 
   @override
-  Widget build(BuildContext context) => Tooltip(
-    message: _badgeDescription(l10n, badge.id),
-    child: Opacity(
-      opacity: badge.unlocked ? 1 : .35,
-      child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
-        decoration: BoxDecoration(
-          color:
-              badge.unlocked
-                  ? AppColors.primary.withValues(alpha: .09)
-                  : Theme.of(context).colorScheme.surface,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: Theme.of(context).dividerColor),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(_badgeIcon(badge.icon), size: 28, color: AppColors.primary),
-            const SizedBox(height: 6),
-            Text(
-              _badgeTitle(l10n, badge.id),
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.labelMedium,
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final labelColor = isDark ? Colors.white : theme.colorScheme.onSurface;
+    return Tooltip(
+      message: _badgeDescription(l10n, badge.id),
+      child: InkWell(
+      borderRadius: BorderRadius.circular(18),
+      onTap: () => _showBadgeDetails(context),
+      child: LayoutBuilder(
+      builder: (context, constraints) => Opacity(
+        opacity: badge.unlocked ? 1 : .82,
+        child: FastingArtSlot(
+          assetPath: _badgeArtwork(badge.id),
+          height: constraints.maxHeight,
+          borderRadius: 18,
+          variant: FastingArtVariant.bare,
+          fit: BoxFit.contain,
+          semanticLabel: _badgeTitle(l10n, badge.id),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.transparent,
+                  theme.colorScheme.surface.withValues(alpha: .10),
+                  theme.colorScheme.surface.withValues(alpha: .78),
+                ],
+                stops: const [0, .48, 1],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+              border: Border.all(
+                color: badge.unlocked
+                    ? AppColors.primary.withValues(alpha: .55)
+                    : theme.colorScheme.outlineVariant,
+              ),
+              borderRadius: BorderRadius.circular(18),
             ),
-          ],
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 8, 10),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Icon(badge.unlocked ? Icons.check_circle : Icons.lock_outline, size: 16, color: labelColor.withValues(alpha: .9)),
+                  ),
+                  const Spacer(),
+                  Text(
+                    _badgeTitle(l10n, badge.id),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.labelMedium?.copyWith(color: labelColor, fontWeight: FontWeight.w800, height: 1.1),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
-    ),
+      )),
+    );
+  }
+
+  Future<void> _showBadgeDetails(BuildContext context) => showModalBottomSheet<void>(
+    context: context,
+    useRootNavigator: true,
+    isScrollControlled: true,
+    builder: (sheetContext) {
+      final theme = Theme.of(sheetContext);
+      final title = _badgeTitle(l10n, badge.id);
+      final description = _badgeDescription(l10n, badge.id);
+      return SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
+          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Row(children: [
+              Expanded(child: Text(title, style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900))),
+              IconButton(onPressed: () => Navigator.pop(sheetContext), icon: const Icon(Icons.close_rounded)),
+            ]),
+            const SizedBox(height: 10),
+            DecoratedBox(
+              decoration: BoxDecoration(color: theme.colorScheme.surfaceContainerLow, borderRadius: BorderRadius.circular(22)),
+              child: FastingArtSlot(
+                assetPath: _badgeArtwork(badge.id),
+                height: 210,
+                borderRadius: 22,
+                variant: FastingArtVariant.bare,
+                fit: BoxFit.contain,
+                child: const SizedBox.shrink(),
+              ),
+            ),
+            const SizedBox(height: 18),
+            Text(description, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700)),
+            const SizedBox(height: 14),
+            LinearProgressIndicator(value: badge.ratio, minHeight: 9, borderRadius: BorderRadius.circular(99)),
+            const SizedBox(height: 8),
+            Text(badge.unlocked ? l10n.timer_completed : _progressLabel(badge), style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            const SizedBox(height: 20),
+            SizedBox(width: double.infinity, child: FilledButton(onPressed: () => Navigator.pop(sheetContext), child: Text(l10n.common_ok))),
+          ]),
+        ),
+      );
+    },
   );
 
-  IconData _badgeIcon(String key) => switch (key) {
-    'leaf' => PhosphorIcons.leaf(),
-    'fire' => PhosphorIcons.fire(PhosphorIconsStyle.fill),
-    'water' => PhosphorIcons.drop(PhosphorIconsStyle.fill),
-    'compass' => PhosphorIcons.compass(),
-    'medal' => PhosphorIcons.medal(PhosphorIconsStyle.fill),
-    'target' => PhosphorIcons.target(),
-    'clock' => PhosphorIcons.clock(),
-    'shield' => PhosphorIcons.shieldCheck(),
-    'crown' => PhosphorIcons.crown(PhosphorIconsStyle.fill),
-    _ => PhosphorIcons.sparkle(PhosphorIconsStyle.fill),
-  };
+  String _progressLabel(GameBadge badge) {
+    if (badge.id.startsWith('hours')) {
+      final currentHours = badge.progress / 60;
+      final targetHours = badge.target / 60;
+      final current = currentHours == currentHours.roundToDouble()
+          ? currentHours.round().toString()
+          : currentHours.toStringAsFixed(1);
+      final unit = l10n.localeName == 'tr' ? 'saat' : 'hours';
+      return '$current / ${targetHours.round()} $unit';
+    }
+    return '${badge.progress} / ${badge.target}';
+  }
+
+  String _badgeArtwork(String id) {
+    return switch (id) {
+      'first' => 'assets/images/editorial/v3/badge-first.webp',
+      'rhythm3' => 'assets/images/editorial/v3/badge-rhythm3.webp',
+      'rhythm7' => 'assets/images/editorial/v3/badge-rhythm7.webp',
+      'target1' => 'assets/images/editorial/v3/badge-target1.webp',
+      'target3' => 'assets/images/editorial/v3/badge-target3.webp',
+      'water' => 'assets/images/editorial/v3/badge-water.webp',
+      'support' => 'assets/images/editorial/v3/badge-support.webp',
+      'hours10' => 'assets/images/editorial/v3/badge-hours10.webp',
+      'target10' => 'assets/images/editorial/v3/badge-target10.webp',
+      'target20' => 'assets/images/editorial/v3/badge-target20.webp',
+      'fast16' => 'assets/images/editorial/v3/badge-fast16.webp',
+      'hours50' => 'assets/images/editorial/v3/badge-hours50.webp',
+      'hours100' => 'assets/images/editorial/v3/badge-hours100.webp',
+      'target30' => 'assets/images/editorial/v3/badge-target30.webp',
+      _ => 'assets/images/editorial/v3/badge-rhythm30.webp',
+    };
+  }
 
   String _badgeTitle(AppLocalizations l10n, String id) => switch (id) {
     'first' => l10n.badge_first_title,

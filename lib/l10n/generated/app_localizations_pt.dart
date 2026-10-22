@@ -63,7 +63,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get timer_selectPlan => 'Selecione o plano de jejum';
 
   @override
-  String get timer_stopConfirm => 'Tem certeza de que deseja encerrar o jejum mais cedo?';
+  String get timer_stopConfirm =>
+      'Tem certeza de que deseja encerrar o jejum mais cedo?';
 
   @override
   String get timer_stopTitle => 'Fim rápido';
@@ -209,7 +210,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get profile_upgradePremium => 'Atualizar para Premium';
 
   @override
-  String get profile_premiumDesc => 'Todos os planos, estatísticas avançadas e muito mais';
+  String get profile_premiumDesc => 'Todos os planos de jejum, sem anúncios';
 
   @override
   String get profile_bodyMetrics => 'Métricas Corporais';
@@ -263,7 +264,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get onboarding_welcome => 'Bem-vindo';
 
   @override
-  String get onboarding_welcomeDesc => 'Assuma o controle do seu\njornada de jejum intermitente';
+  String get onboarding_welcomeDesc =>
+      'Assuma o controle do seu\njornada de jejum intermitente';
 
   @override
   String get onboarding_featureTimer => 'Temporizador de jejum inteligente';
@@ -272,7 +274,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get onboarding_featureStats => 'Estatísticas e gráficos detalhados';
 
   @override
-  String get onboarding_featureMeals => 'Planejador de refeições e sugestões de receitas';
+  String get onboarding_featureMeals =>
+      'Planejador de refeições e sugestões de receitas';
 
   @override
   String get onboarding_getStarted => 'Comece';
@@ -311,7 +314,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get onboarding_goalLongevity => 'Longevidade';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Renovação celular e antienvelhecimento';
+  String get onboarding_goalLongevityDesc =>
+      'Renovação celular e antienvelhecimento';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplina';
@@ -323,7 +327,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get onboarding_selectPlan => 'Escolha o seu plano';
 
   @override
-  String get onboarding_selectPlanDesc => 'Selecione o melhor plano de jejum para você';
+  String get onboarding_selectPlanDesc =>
+      'Selecione o melhor plano de jejum para você';
 
   @override
   String get onboarding_bodyInfo => 'Insira suas informações';
@@ -344,13 +349,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get onboarding_age => 'Idade';
 
   @override
-  String get onboarding_bodyInfoDisclaimer => 'Essas informações são armazenadas apenas no seu dispositivo e usadas para cálculos de calorias.';
+  String get onboarding_bodyInfoDisclaimer =>
+      'Essas informações são armazenadas apenas no seu dispositivo e usadas para cálculos de calorias.';
 
   @override
   String get onboarding_permissions => 'Etapa final';
 
   @override
-  String get onboarding_permissionsDesc => 'Habilite permissões para a melhor experiência';
+  String get onboarding_permissionsDesc =>
+      'Habilite permissões para a melhor experiência';
 
   @override
   String get onboarding_next => 'Continuar';
@@ -377,7 +384,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get paywall_title => 'Atualizar para Premium';
 
   @override
-  String get paywall_subtitle => 'Desbloqueie todos os recursos';
+  String get paywall_subtitle =>
+      'Desbloqueia todos os planos de jejum e remove os anúncios';
 
   @override
   String get paywall_allPlans => 'Todos os planos de jejum';
@@ -387,9 +395,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get paywall_mealPlanner => 'Planejador de refeições';
-
-  @override
-  String get paywall_healthKit => 'Integração do HealthKit';
 
   @override
   String get paywall_themes => 'Personalização do tema';
@@ -419,7 +424,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get paywall_premiumActive => 'Ativo Premium!';
 
   @override
-  String get paywall_premiumActiveDesc => 'Você desbloqueou todos os recursos';
+  String get paywall_premiumActiveDesc =>
+      'Todos os planos de jejum estão desbloqueados e os anúncios desativados';
 
   @override
   String get water_title => 'Ingestão de água';
@@ -578,7 +584,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get streak_incredible => 'Incrível!';
 
   @override
-  String get weight_noRecord => 'Ainda não há registros de peso\nAdicionar em Perfil> Métricas Corporais';
+  String get weight_noRecord =>
+      'Ainda não há registros de peso\nAdicionar em Perfil> Métricas Corporais';
 
   @override
   String get day_mon => 'seg';
@@ -764,7 +771,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get profile_calmGamification => 'Gamificação calma';
 
   @override
-  String get profile_calmGamificationDesc => 'Reduz a pressão da liga e da temporada';
+  String get profile_calmGamificationDesc =>
+      'Reduz a pressão da liga e da temporada';
 
   @override
   String get profile_editName => 'Edite seu nome';
@@ -782,7 +790,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get circle_tagline => 'Juntos, sem pressão.';
 
   @override
-  String get circle_privacy => 'O peso e as métricas privadas permanecem ocultas. Apenas o progresso e o apoio são visíveis.';
+  String get circle_privacy =>
+      'O peso e as métricas privadas permanecem ocultas. Apenas o progresso e o apoio são visíveis.';
 
   @override
   String circle_sendSupport(int count) {
@@ -811,7 +820,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get crisis_delayTitle => 'Adie a decisão por 10 minutos';
 
   @override
-  String get crisis_delayDesc => 'Se você não se sentir bem, terminar o jejum não é um fracasso.';
+  String get crisis_delayDesc =>
+      'Se você não se sentir bem, terminar o jejum não é um fracasso.';
 
   @override
   String get crisis_hunger => 'Fome';
@@ -826,7 +836,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get crisis_tenMore => 'Dê 10 minutos';
 
   @override
-  String get stats_storyEmpty => 'Seu primeiro jejum dará início à sua história pessoal.';
+  String get stats_storyEmpty =>
+      'Seu primeiro jejum dará início à sua história pessoal.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -872,7 +883,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get weather_onPlan => 'O ritmo de hoje corresponde ao seu plano.';
 
   @override
-  String get weather_challenging => 'Esta hora foi desafiadora antes; o modo de suporte está pronto.';
+  String get weather_challenging =>
+      'Esta hora foi desafiadora antes; o modo de suporte está pronto.';
 
   @override
   String get replay_copied => 'Repetição de jejum copiada';
@@ -897,7 +909,8 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort => 'O tempo da fase é uma estimativa geral, não uma medida médica.';
+  String get phase_estimateShort =>
+      'O tempo da fase é uma estimativa geral, não uma medida médica.';
 
   @override
   String phase_hours(int start, int end) {
@@ -905,7 +918,8 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong => 'Este momento é uma estimativa geral. As respostas metabólicas podem variar entre as pessoas.';
+  String get phase_estimateLong =>
+      'Este momento é uma estimativa geral. As respostas metabólicas podem variar entre as pessoas.';
 
   @override
   String get bmi_underweight => 'Abaixo do peso';
@@ -948,13 +962,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get notification_waterTitle => 'Beba Água 💧';
 
   @override
-  String get notification_waterBody => 'Não se esqueça de beber bastante água durante o jejum!';
+  String get notification_waterBody =>
+      'Não se esqueça de beber bastante água durante o jejum!';
 
   @override
   String get notification_windowTitle => 'Comendo Janela Fechando ⏰';
 
   @override
-  String get notification_windowBody => 'Sua janela de alimentação fechará em 30 minutos.';
+  String get notification_windowBody =>
+      'Sua janela de alimentação fechará em 30 minutos.';
 
   @override
   String notification_streakTitle(int days) {
@@ -962,7 +978,8 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody => 'Você está indo muito bem! Continue assim hoje.';
+  String get notification_streakBody =>
+      'Você está indo muito bem! Continue assim hoje.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -993,28 +1010,33 @@ class AppLocalizationsPt extends AppLocalizations {
   String get explore_guide => 'Guia de jejum';
 
   @override
-  String get explore_guideDesc => 'Tudo o que você precisa saber sobre jejum intermitente';
+  String get explore_guideDesc =>
+      'Tudo o que você precisa saber sobre jejum intermitente';
 
   @override
-  String get explore_circleDesc => 'Compartilhe suporte silencioso com seu grupo privado.';
+  String get explore_circleDesc =>
+      'Compartilhe suporte silencioso com seu grupo privado.';
 
   @override
   String get explore_faq => 'Perguntas frequentes';
 
   @override
-  String get explore_education => 'Este conteúdo é apenas para educação geral e não constitui diagnóstico médico ou conselho de tratamento.';
+  String get explore_education =>
+      'Este conteúdo é apenas para educação geral e não constitui diagnóstico médico ou conselho de tratamento.';
 
   @override
   String get explore_safety => 'Saúde e segurança';
 
   @override
-  String get explore_safetyDesc => 'Se você tem algum problema de saúde, toma medicamentos regularmente, apresenta sintomas preocupantes, está grávida ou amamentando, consulte um profissional de saúde qualificado antes de jejuar. Pare se você não se sentir bem.';
+  String get explore_safetyDesc =>
+      'Se você tem algum problema de saúde, toma medicamentos regularmente, apresenta sintomas preocupantes, está grávida ou amamentando, consulte um profissional de saúde qualificado antes de jejuar. Pare se você não se sentir bem.';
 
   @override
   String get explore_sources => 'Fontes';
 
   @override
-  String get explore_sourcesDesc => 'O conteúdo é simplificado a partir das referências de saúde pública abaixo.';
+  String get explore_sourcesDesc =>
+      'O conteúdo é simplificado a partir das referências de saúde pública abaixo.';
 
   @override
   String get explore_sourceError => 'A fonte não pôde ser aberta';
@@ -1029,118 +1051,138 @@ class AppLocalizationsPt extends AppLocalizations {
   String get explore_rule2 => 'Beba bastante água e líquidos';
 
   @override
-  String get explore_rule3 => 'Coma de forma equilibrada durante sua janela de alimentação';
+  String get explore_rule3 =>
+      'Coma de forma equilibrada durante sua janela de alimentação';
 
   @override
   String get explore_rule4 => 'Pare de jejuar se não se sentir bem';
 
   @override
-  String get explore_rule5 => 'Mulheres grávidas ou amamentando não devem jejuar';
+  String get explore_rule5 =>
+      'Mulheres grávidas ou amamentando não devem jejuar';
 
   @override
-  String get explore_rule6 => 'Consulte seu médico se você tiver doenças crônicas';
+  String get explore_rule6 =>
+      'Consulte seu médico se você tiver doenças crônicas';
 
   @override
   String get tip_water => 'Mantenha-se hidratado';
 
   @override
-  String get tip_waterDesc => 'Beba água quando estiver com sede e inclua líquidos nas refeições. As necessidades podem variar de acordo com a saúde, o clima e a atividade.';
+  String get tip_waterDesc =>
+      'Beba água quando estiver com sede e inclua líquidos nas refeições. As necessidades podem variar de acordo com a saúde, o clima e a atividade.';
 
   @override
   String get tip_food => 'Coma bem';
 
   @override
-  String get tip_foodDesc => 'Durante as janelas de alimentação, escolha alimentos ricos em proteínas, com fibras e gorduras saudáveis. Evite alimentos processados.';
+  String get tip_foodDesc =>
+      'Durante as janelas de alimentação, escolha alimentos ricos em proteínas, com fibras e gorduras saudáveis. Evite alimentos processados.';
 
   @override
   String get tip_sleep => 'Durma bem';
 
   @override
-  String get tip_sleepDesc => 'O sono regular e suficiente apoia o bem-estar geral. Programe o jejum para não atrapalhar seu sono.';
+  String get tip_sleepDesc =>
+      'O sono regular e suficiente apoia o bem-estar geral. Programe o jejum para não atrapalhar seu sono.';
 
   @override
   String get tip_exercise => 'Exercício leve';
 
   @override
-  String get tip_exerciseDesc => 'Você pode fazer caminhadas leves ou ioga em jejum. Evite exercícios pesados, especialmente durante as primeiras semanas, até que seu corpo se adapte.';
+  String get tip_exerciseDesc =>
+      'Você pode fazer caminhadas leves ou ioga em jejum. Evite exercícios pesados, especialmente durante as primeiras semanas, até que seu corpo se adapte.';
 
   @override
   String get tip_drinks => 'Bebidas permitidas';
 
   @override
-  String get tip_drinksDesc => 'Durante o jejum, você pode consumir água, chá puro e café preto (sem açúcar, sem leite). Essas bebidas não vão quebrar o seu jejum.';
+  String get tip_drinksDesc =>
+      'Durante o jejum, você pode consumir água, chá puro e café preto (sem açúcar, sem leite). Essas bebidas não vão quebrar o seu jejum.';
 
   @override
   String get faq_drinks => 'O que posso beber durante o jejum?';
 
   @override
-  String get faq_drinksAnswer => 'Você pode beber água, chá puro e café preto (sem açúcar/leite). Bebidas calóricas quebram o jejum.';
+  String get faq_drinksAnswer =>
+      'Você pode beber água, chá puro e café preto (sem açúcar/leite). Bebidas calóricas quebram o jejum.';
 
   @override
   String get faq_plan => 'Qual plano de jejum devo escolher?';
 
   @override
-  String get faq_planAnswer => 'Se você é novo, comece com 12h12 ou 14h10. Se tiver experiência, tente 16:8 ou 18:6. 20:4 e OMAD são para jejuadores avançados.';
+  String get faq_planAnswer =>
+      'Se você é novo, comece com 12h12 ou 14h10. Se tiver experiência, tente 16:8 ou 18:6. 20:4 e OMAD são para jejuadores avançados.';
 
   @override
   String get faq_exercise => 'Posso fazer exercícios em jejum?';
 
   @override
-  String get faq_exerciseAnswer => 'Sim, mas evite treinos intensos. Cardio leve, caminhada e ioga são ideais. Se estiver levantando pesos, agende próximo à janela de alimentação.';
+  String get faq_exerciseAnswer =>
+      'Sim, mas evite treinos intensos. Cardio leve, caminhada e ioga são ideais. Se estiver levantando pesos, agende próximo à janela de alimentação.';
 
   @override
   String get faq_weight => 'O jejum ajuda na perda de peso?';
 
   @override
-  String get faq_weightAnswer => 'Para algumas pessoas, limitar o tempo de alimentação pode reduzir a ingestão total de energia. Os resultados variam e os efeitos a longo prazo ainda estão sendo estudados.';
+  String get faq_weightAnswer =>
+      'Para algumas pessoas, limitar o tempo de alimentação pode reduzir a ingestão total de energia. Os resultados variam e os efeitos a longo prazo ainda estão sendo estudados.';
 
   @override
   String get plan_12_desc => 'Nível iniciante';
 
   @override
-  String get plan_12_detail => 'Ideal para iniciantes. Jejue 12 horas incluindo o tempo de sono.';
+  String get plan_12_detail =>
+      'Ideal para iniciantes. Jejue 12 horas incluindo o tempo de sono.';
 
   @override
   String get plan_16_desc => 'Plano mais popular';
 
   @override
-  String get plan_16_detail => 'O plano IF mais comum. 16 horas de jejum, 8 horas de janela para comer. Geralmente do almoço ao jantar.';
+  String get plan_16_detail =>
+      'O plano IF mais comum. 16 horas de jejum, 8 horas de janela para comer. Geralmente do almoço ao jantar.';
 
   @override
   String get plan_18_desc => 'Nível intermediário';
 
   @override
-  String get plan_18_detail => '18 horas de jejum, 6 horas de janela para comer. Maior duração da queima de gordura.';
+  String get plan_18_detail =>
+      '18 horas de jejum, 6 horas de janela para comer. Maior duração da queima de gordura.';
 
   @override
   String get plan_20_desc => 'Nível avançado';
 
   @override
-  String get plan_20_detail => '20 horas de jejum, 4 horas de janela para comer. Ideal para atingir cetose e autofagia.';
+  String get plan_20_detail =>
+      '20 horas de jejum, 4 horas de janela para comer. Ideal para atingir cetose e autofagia.';
 
   @override
   String get plan_omad_desc => 'Uma refeição por dia';
 
   @override
-  String get plan_omad_detail => 'Uma refeição por dia. 23 horas de jejum, 1 hora de janela para comer. Nível de especialista.';
+  String get plan_omad_detail =>
+      'Uma refeição por dia. 23 horas de jejum, 1 hora de janela para comer. Nível de especialista.';
 
   @override
   String get plan_52_desc => '2 dias por semana';
 
   @override
-  String get plan_52_detail => 'Coma normalmente 5 dias, apenas cerca de 500 calorias em 2 dias. Uma abordagem alternativa.';
+  String get plan_52_detail =>
+      'Coma normalmente 5 dias, apenas cerca de 500 calorias em 2 dias. Uma abordagem alternativa.';
 
   @override
   String get plan_ese_desc => '24 horas rápido';
 
   @override
-  String get plan_ese_detail => 'Jejue por 24 horas, 1–2 vezes por semana. Para usuários avançados.';
+  String get plan_ese_detail =>
+      'Jejue por 24 horas, 1–2 vezes por semana. Para usuários avançados.';
 
   @override
   String get plan_warrior_desc => 'Dieta do guerreiro';
 
   @override
-  String get plan_warrior_detail => 'Coma alimentos leves durante o dia (frutas, vegetais), faça sua refeição principal em uma janela noturna de 4 horas.';
+  String get plan_warrior_detail =>
+      'Coma alimentos leves durante o dia (frutas, vegetais), faça sua refeição principal em uma janela noturna de 4 horas.';
 
   @override
   String get award_first_title => 'Primeiro passo';
@@ -1292,7 +1334,8 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc => 'Ganhou a cada sete conclusões. Um dia perdido nunca apaga seu progresso.';
+  String get game_shieldsDesc =>
+      'Ganhou a cada sete conclusões. Um dia perdido nunca apaga seu progresso.';
 
   @override
   String get game_league => 'Liga semanal privada';
@@ -1323,7 +1366,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get quest_rhythm => 'Construa o ritmo de hoje';
 
   @override
-  String get quest_hydrate => 'Alcance metade do seu objetivo de consumo de água';
+  String get quest_hydrate =>
+      'Alcance metade do seu objetivo de consumo de água';
 
   @override
   String get quest_steady => 'Proteja sua sequência';
@@ -1444,13 +1488,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get paywall_continue => 'Continuar';
 
   @override
-  String get paywall_productsUnavailable => 'As compras não estão disponíveis agora. Tente novamente mais tarde.';
+  String get paywall_productsUnavailable =>
+      'As compras não estão disponíveis agora. Tente novamente mais tarde.';
 
   @override
   String get paywall_purchaseFailed => 'Não foi possível concluir a compra.';
 
   @override
-  String get paywall_nothingToRestore => 'Nenhuma compra anterior foi encontrada.';
+  String get paywall_nothingToRestore =>
+      'Nenhuma compra anterior foi encontrada.';
 
   @override
   String get paywall_restoreFailed => 'Não foi possível restaurar as compras.';
@@ -1459,14 +1505,180 @@ class AppLocalizationsPt extends AppLocalizations {
   String get paywall_terms => 'Termos de uso';
 
   @override
-  String get permission_notificationDesc => 'Lembretes de jejum, mudanças de fase e avisos de conclusão';
-
-  @override
-  String get permission_healthTitle => 'Health Connect / HealthKit';
-
-  @override
-  String get permission_healthDesc => 'Sincronize passos, calorias ativas e peso com sua permissão';
+  String get permission_notificationDesc =>
+      'Lembretes de jejum, mudanças de fase e avisos de conclusão';
 
   @override
   String get profile_privacyChoices => 'Opções de privacidade';
+
+  @override
+  String get paywall_autoRenewInfo =>
+      'As assinaturas renovam automaticamente, a menos que sejam canceladas pelo menos 24 horas antes do fim do período. Gerencie nas configurações da App Store.';
+
+  @override
+  String paywall_perMonth(String price) {
+    return '$price / mês';
+  }
+
+  @override
+  String paywall_savePercent(int percent) {
+    return 'Poupe $percent%';
+  }
+
+  @override
+  String paywall_freeTrialDays(int days) {
+    return '$days dias de teste grátis';
+  }
+
+  @override
+  String get paywall_startFreeTrial => 'Iniciar teste grátis';
+
+  @override
+  String get paywall_retry => 'Tentar novamente';
+
+  @override
+  String get paywall_alreadyOwned =>
+      'Já tens esta subscrição. Toca em “Restaurar compras”.';
+
+  @override
+  String get paywall_storeUnavailable =>
+      'Não é possível contactar a loja. Verifica a ligação e tenta de novo.';
+
+  @override
+  String get paywall_secureNote =>
+      'Cancela quando quiseres. O pagamento é cobrado na tua conta da loja.';
+
+  @override
+  String get paywall_autoRenewInfoPlay =>
+      'As subscrições renovam-se automaticamente, exceto se forem canceladas pelo menos 24 horas antes do fim do período. Gere ou cancela quando quiseres em Google Play > Subscrições.';
+
+  @override
+  String get paywall_allPlansDesc =>
+      'Desbloqueia 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat e Warrior';
+
+  @override
+  String get paywall_noAdsDesc =>
+      'Os anúncios de banner e intersticiais são totalmente desativados';
+
+  @override
+  String get foodScan_title => 'Análise de refeição por IA';
+
+  @override
+  String get foodScan_scanCta => 'Escanear refeição';
+
+  @override
+  String get foodScan_scanCtaDesc =>
+      'Fotografe seu prato e receba calorias e macros';
+
+  @override
+  String get foodScan_introTitle => 'Fotografe o seu prato';
+
+  @override
+  String get foodScan_introDesc =>
+      'A IA lê a foto e estima calorias, proteínas, carboidratos e gorduras.';
+
+  @override
+  String get foodScan_tipLight => 'Luz boa e uniforme melhora a estimativa';
+
+  @override
+  String get foodScan_tipFrame => 'Enquadre o prato inteiro';
+
+  @override
+  String get foodScan_tipScale =>
+      'Inclua talheres ou uma mão para dimensionar a porção';
+
+  @override
+  String get foodScan_takePhoto => 'Tirar foto';
+
+  @override
+  String get foodScan_chooseFromGallery => 'Escolher da galeria';
+
+  @override
+  String foodScan_scansLeft(int count) {
+    return 'Restam $count escaneamentos hoje';
+  }
+
+  @override
+  String get foodScan_quotaReached =>
+      'Você usou os escaneamentos de hoje. Tente amanhã.';
+
+  @override
+  String get foodScan_privacyNote =>
+      'A foto é enviada à API Gemini do Google para análise e não é armazenada nos nossos servidores.';
+
+  @override
+  String get foodScan_analyzing => 'Analisando sua refeição…';
+
+  @override
+  String get foodScan_analyzingHint => 'Isso costuma levar alguns segundos';
+
+  @override
+  String get foodScan_detectedItems => 'Itens detectados';
+
+  @override
+  String get foodScan_disclaimer =>
+      'As estimativas da IA são aproximadas. Toque em um item para corrigir.';
+
+  @override
+  String get foodScan_lowConfidence =>
+      'O modelo não está certo sobre esta foto. Confira os valores antes de salvar.';
+
+  @override
+  String get foodScan_save => 'Adicionar às refeições';
+
+  @override
+  String get foodScan_retake => 'Nova foto';
+
+  @override
+  String get foodScan_retry => 'Tentar novamente';
+
+  @override
+  String get foodScan_editItem => 'Editar item';
+
+  @override
+  String get foodScan_portion => 'Porção';
+
+  @override
+  String get foodScan_saveEdit => 'Salvar';
+
+  @override
+  String get foodScan_premiumTitle => 'Recurso Premium';
+
+  @override
+  String get foodScan_premiumDesc =>
+      'A análise de calorias por foto está incluída no Premium.';
+
+  @override
+  String get foodScan_upgrade => 'Ver Premium';
+
+  @override
+  String get foodScan_errorNetwork =>
+      'Sem conexão. Verifique sua internet e tente novamente.';
+
+  @override
+  String get foodScan_errorRateLimited =>
+      'Muitos escaneamentos agora. Tente de novo em alguns minutos.';
+
+  @override
+  String get foodScan_errorUnavailable =>
+      'A análise de fotos está indisponível no momento.';
+
+  @override
+  String get foodScan_errorServer =>
+      'O serviço de análise está com problemas. Tente novamente em breve.';
+
+  @override
+  String get foodScan_errorNoFood =>
+      'Nenhum alimento encontrado nesta foto. Tente uma imagem mais nítida do prato.';
+
+  @override
+  String get foodScan_errorUnreadable =>
+      'Não foi possível analisar esta foto. Tente outra.';
+
+  @override
+  String get paywall_aiFoodScan => 'Escaneamento de comida com IA';
+
+  @override
+  String get paywall_aiFoodScanDesc =>
+      'Fotografe uma refeição e registre calorias e macros em segundos';
 }

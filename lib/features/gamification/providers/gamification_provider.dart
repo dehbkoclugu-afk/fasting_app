@@ -20,7 +20,8 @@ class GameQuest {
   final int xp;
 
   bool get completed => progress >= target;
-  double get ratio => target == 0 ? 0 : (progress / target).clamp(0, 1);
+  double get ratio =>
+      target == 0 ? 0 : (progress / target).clamp(0.0, 1.0);
 }
 
 class GameBadge {
@@ -28,11 +29,19 @@ class GameBadge {
     required this.id,
     required this.icon,
     required this.unlocked,
+    this.progress = 0,
+    this.target = 1,
   });
 
   final String id;
   final String icon;
   final bool unlocked;
+  final int progress;
+  final int target;
+
+  double get ratio =>
+      target <= 0 ? 0 : (progress / target).clamp(0.0, 1.0);
+  int get remaining => math.max(0, target - progress);
 }
 
 class GamificationState {
@@ -62,7 +71,10 @@ class GamificationState {
 
   static const levelSize = 500;
   double get levelProgress => levelXp / levelSize;
-  int get seasonStep => math.min(30, xp ~/ 250 + 1);
+  /// Completed steps in the current 30-step season.
+  /// A new account starts at 0/30; progress is never presented as earned
+  /// before the user has accumulated the first 250 XP.
+  int get seasonStep => math.min(30, xp ~/ 250);
   int get leaguePercentile => math.min(95, 35 + level * 4 + streak * 2);
 }
 
@@ -84,26 +96,27 @@ final gamificationProvider = Provider<GamificationState>((ref) {
     completed.length ~/ 7,
   );
   final streak = math.max(rawStreak, recovery.$1);
-  final totalRewardedMinutes = finalized.fold<int>(
+  // Only target-complete fasts award XP, streak, season or badge progress.
+  // Early stops remain in history, but are deliberately neutral here.
+  final totalRewardedMinutes = completed.fold<int>(
     0,
     (sum, session) =>
         sum + math.min(session.actualMinutes ?? 0, session.targetMinutes),
   );
-  final best = finalized.fold<int>(
+  final best = completed.fold<int>(
     0,
     (value, session) => math.max(value, session.actualMinutes ?? 0),
   );
   final hydrationXp = (water.progress * 50).round().clamp(0, 50);
   final baseXp =
-      finalized.length * 40 +
-      completed.length * 60 +
+      completed.length * 100 +
       (totalRewardedMinutes ~/ 60) * 4 +
       math.min(streak, 7) * 15 +
       hydrationXp +
       math.min(supportCount, 5) * 20;
   final today = DateTime.now();
   final todaySessions =
-      finalized.where((session) {
+      completed.where((session) {
         final date = session.startTime;
         return date.year == today.year &&
             date.month == today.month &&
@@ -127,33 +140,39 @@ final gamificationProvider = Provider<GamificationState>((ref) {
   final level = xp ~/ GamificationState.levelSize + 1;
 
   final badges = [
-    GameBadge(id: 'first', icon: 'leaf', unlocked: finalized.isNotEmpty),
-    GameBadge(id: 'rhythm7', icon: 'fire', unlocked: streak >= 7),
-    GameBadge(id: 'rhythm3', icon: 'shield', unlocked: streak >= 3),
-    GameBadge(id: 'target1', icon: 'target', unlocked: completed.isNotEmpty),
-    GameBadge(id: 'target3', icon: 'leaf', unlocked: completed.length >= 3),
-    GameBadge(id: 'water', icon: 'water', unlocked: water.progress >= 1),
-    GameBadge(id: 'support', icon: 'compass', unlocked: supportCount > 0),
+    GameBadge(id: 'first', icon: 'leaf', unlocked: completed.isNotEmpty, progress: completed.length),
+    GameBadge(id: 'rhythm7', icon: 'fire', unlocked: streak >= 7, progress: streak, target: 7),
+    GameBadge(id: 'rhythm3', icon: 'shield', unlocked: streak >= 3, progress: streak, target: 3),
+    GameBadge(id: 'target1', icon: 'target', unlocked: completed.isNotEmpty, progress: completed.length),
+    GameBadge(id: 'target3', icon: 'leaf', unlocked: completed.length >= 3, progress: completed.length, target: 3),
+    GameBadge(id: 'water', icon: 'water', unlocked: water.progress >= 1, progress: water.totalMl, target: water.goalMl),
+    GameBadge(id: 'support', icon: 'compass', unlocked: supportCount > 0, progress: supportCount),
     GameBadge(
       id: 'hours10',
       icon: 'clock',
       unlocked: totalRewardedMinutes >= 600,
+      progress: totalRewardedMinutes,
+      target: 600,
     ),
-    GameBadge(id: 'target10', icon: 'medal', unlocked: completed.length >= 10),
-    GameBadge(id: 'target20', icon: 'target', unlocked: completed.length >= 20),
-    GameBadge(id: 'fast16', icon: 'shield', unlocked: best >= 960),
+    GameBadge(id: 'target10', icon: 'medal', unlocked: completed.length >= 10, progress: completed.length, target: 10),
+    GameBadge(id: 'target20', icon: 'target', unlocked: completed.length >= 20, progress: completed.length, target: 20),
+    GameBadge(id: 'fast16', icon: 'shield', unlocked: best >= 960, progress: best, target: 960),
     GameBadge(
       id: 'hours50',
       icon: 'clock',
       unlocked: totalRewardedMinutes >= 3000,
+      progress: totalRewardedMinutes,
+      target: 3000,
     ),
     GameBadge(
       id: 'hours100',
       icon: 'sparkle',
       unlocked: totalRewardedMinutes >= 6000,
+      progress: totalRewardedMinutes,
+      target: 6000,
     ),
-    GameBadge(id: 'target30', icon: 'medal', unlocked: completed.length >= 30),
-    GameBadge(id: 'rhythm30', icon: 'crown', unlocked: streak >= 30),
+    GameBadge(id: 'target30', icon: 'medal', unlocked: completed.length >= 30, progress: completed.length, target: 30),
+    GameBadge(id: 'rhythm30', icon: 'crown', unlocked: streak >= 30, progress: streak, target: 30),
   ];
 
   return GamificationState(

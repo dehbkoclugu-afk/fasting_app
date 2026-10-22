@@ -49,6 +49,11 @@ class WaterNotifier extends StateNotifier<WaterState> {
     await _loadToday();
   }
 
+  Future<void> deleteWater(int id) async {
+    await _db.deleteWater(id);
+    await _loadToday();
+  }
+
   Future<void> setGoal(int ml) async {
     state = state.copyWith(goalMl: ml);
   }

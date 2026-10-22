@@ -3,6 +3,7 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
@@ -15,29 +16,48 @@ class ExploreScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.tab_explore)),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 48),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Başlık
-            Text(
-              l10n.explore_guide,
-              style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              l10n.explore_guideDesc,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+            FastingSplitArtCard(
+              assetPath: 'assets/images/editorial/fasting-guide-hero.webp',
+              minHeight: 196,
+              artWidth: 164,
+              alignment: Alignment.bottomRight,
+              semanticLabel: l10n.explore_guide,
+              child: Padding(
+                padding: const EdgeInsets.all(22),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          l10n.explore_guide,
+                          style: theme.textTheme.headlineSmall?.copyWith(
+                            color: fastingArtForeground(context),
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -.5,
+                          ),
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          l10n.explore_guideDesc,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: fastingArtMutedForeground(context),
+                            height: 1.25,
+                          ),
+                        ),
+                      ],
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 20),
 
             // Tip kartları
-            _buildEducationNotice(context),
-            const SizedBox(height: 20),
             ..._tips(l10n).map((tip) => _buildTipCard(context, tip)),
 
             const SizedBox(height: 20),
@@ -64,6 +84,9 @@ class ExploreScreen extends StatelessWidget {
             const SizedBox(height: 20),
             _buildSources(context),
 
+            const SizedBox(height: 20),
+            _buildEducationNotice(context),
+
             const SizedBox(height: 24),
           ],
         ),
@@ -73,34 +96,29 @@ class ExploreScreen extends StatelessWidget {
 
   List<_Tip> _tips(AppLocalizations l10n) => [
     _Tip(
-      icon: PhosphorIcons.drop(PhosphorIconsStyle.fill),
       title: l10n.tip_water,
       description: l10n.tip_waterDesc,
-      color: AppColors.tertiary,
+      artPath: 'assets/images/editorial/tip-hydration.webp',
     ),
     _Tip(
-      icon: PhosphorIcons.bowlFood(),
       title: l10n.tip_food,
       description: l10n.tip_foodDesc,
-      color: AppColors.success,
+      artPath: 'assets/images/editorial/tip-balanced-meal.webp',
     ),
     _Tip(
-      icon: PhosphorIcons.moonStars(),
       title: l10n.tip_sleep,
       description: l10n.tip_sleepDesc,
-      color: AppColors.primary,
+      artPath: 'assets/images/editorial/tip-sleep.webp',
     ),
     _Tip(
-      icon: PhosphorIcons.personSimpleRun(),
       title: l10n.tip_exercise,
       description: l10n.tip_exerciseDesc,
-      color: AppColors.warning,
+      artPath: 'assets/images/editorial/tip-light-movement.webp',
     ),
     _Tip(
-      icon: PhosphorIcons.coffee(),
       title: l10n.tip_drinks,
       description: l10n.tip_drinksDesc,
-      color: const Color(0xFF8B6914),
+      artPath: 'assets/images/editorial/tip-zero-calorie-drinks.webp',
     ),
   ];
 
@@ -179,9 +197,14 @@ class ExploreScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final sources = [
       const _Source(
-        title: 'National Institute on Aging — Fasting diets',
+        title: 'NIH / National Institute on Aging — Fasting diets',
         url:
             'https://www.nia.nih.gov/news/calorie-restriction-and-fasting-diets-what-do-we-know',
+      ),
+      const _Source(
+        title: 'NIH / NIA — Intermittent fasting research review',
+        url:
+            'https://www.nia.nih.gov/news/research-intermittent-fasting-shows-health-benefits',
       ),
       const _Source(
         title: 'NIDDK — Eating and physical activity',
@@ -191,6 +214,11 @@ class ExploreScreen extends StatelessWidget {
       const _Source(
         title: 'MedlinePlus — Water in diet',
         url: 'https://medlineplus.gov/ency/article/002471.htm',
+      ),
+      const _Source(
+        title: 'CDC — Physical activity guidance for adults',
+        url:
+            'https://www.cdc.gov/physical-activity-basics/guidelines/adults.html',
       ),
     ];
     return Column(
@@ -231,51 +259,41 @@ class ExploreScreen extends StatelessWidget {
 
   Widget _buildTipCard(BuildContext context, _Tip tip) {
     final theme = Theme.of(context);
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(
-          color: theme.colorScheme.onSurface.withValues(alpha: .065),
-        ),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: tip.color.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(tip.icon, color: tip.color, size: 22),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: FastingSplitArtCard(
+        assetPath: tip.artPath,
+        minHeight: 184,
+        artWidth: 164,
+        alignment: Alignment.bottomRight,
+        semanticLabel: tip.title,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Align(
+            alignment: Alignment.centerLeft,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  tip.title,
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w700,
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    tip.title,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: fastingArtForeground(context),
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  tip.description,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                    height: 1.4,
+                  const SizedBox(height: 5),
+                  Text(
+                    tip.description,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: fastingArtMutedForeground(context),
+                      height: 1.32,
+                    ),
                   ),
-                ),
-              ],
+                ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -392,16 +410,14 @@ class ExploreScreen extends StatelessWidget {
 }
 
 class _Tip {
-  final IconData icon;
   final String title;
   final String description;
-  final Color color;
+  final String artPath;
 
   const _Tip({
-    required this.icon,
     required this.title,
     required this.description,
-    required this.color,
+    required this.artPath,
   });
 }
 

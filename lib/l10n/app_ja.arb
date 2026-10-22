@@ -1,0 +1,775 @@
+{
+  "@@locale": "ja",
+  "appTitle": "FastTrack",
+  "greeting_morning": "おはようございます",
+  "greeting_afternoon": "こんにちは",
+  "greeting_evening": "こんばんは",
+  "tab_timer": "ホーム",
+  "tab_explore": "見つける",
+  "tab_stats": "レポート",
+  "tab_meals": "食事",
+  "tab_achievements": "実績",
+  "tab_profile": "アカウント",
+  "timer_fasting": "断食時間",
+  "timer_remaining": "残り時間",
+  "timer_elapsed": "経過時間",
+  "timer_start": "開始",
+  "timer_stop": "停止",
+  "timer_completed": "おめでとうございます！",
+  "timer_completedMessage": "断食を無事に完了しました！",
+  "timer_selectPlan": "断食プランを選択",
+  "timer_stopConfirm": "断食を早めに終了してもよろしいですか？",
+  "timer_stopTitle": "断食を終了",
+  "timer_cancel": "キャンセル",
+  "timer_confirmStop": "はい、終了します",
+  "phase_anabolic": "同化期",
+  "phase_anabolicDesc": "消化が進行中",
+  "phase_catabolic": "異化期",
+  "phase_catabolicDesc": "エネルギー移行中",
+  "phase_fatBurning": "脂肪燃焼",
+  "phase_fatBurningDesc": "脂肪燃焼が始まりました",
+  "phase_ketosis": "ケトーシス",
+  "phase_ketosisDesc": "ケトン体の生成が活発です",
+  "phase_autophagy": "オートファジー",
+  "phase_autophagyDesc": "細胞の更新",
+  "stats_title": "統計",
+  "stats_week": "週",
+  "stats_month": "月",
+  "stats_year": "年",
+  "stats_totalFasts": "断食の合計",
+  "stats_average": "平均",
+  "stats_fastDuration": "断食時間",
+  "stats_streak": "連続記録",
+  "stats_daysConsecutive": "連続日数",
+  "stats_success": "成功",
+  "stats_completion": "完了率",
+  "stats_weeklyFasting": "週間断食",
+  "stats_monthlyView": "月間表示",
+  "stats_weightChange": "体重の変化",
+  "heatmap_none": "なし",
+  "heatmap_low": "少ない",
+  "heatmap_good": "良好",
+  "heatmap_full": "十分",
+  "meals_title": "食事プランナー",
+  "meals_eatingWindow": "食事時間",
+  "meals_windowOpen": "食事可能",
+  "meals_windowFasting": "断食中",
+  "meals_calories": "カロリー",
+  "meals_protein": "たんぱく質",
+  "meals_carbs": "炭水化物",
+  "meals_fat": "脂質",
+  "meals_todayMeals": "今日の食事",
+  "meals_noMeals": "まだ食事が追加されていません",
+  "meals_breakfastSuggestions": "断食明けの食事候補",
+  "meals_addMeal": "食事を追加",
+  "profile_title": "プロフィール",
+  "profile_user": "ユーザー",
+  "profile_planActive": "{plan}プランが有効です",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Premiumにアップグレード",
+  "profile_premiumDesc": "すべての断食プランを広告なしで利用",
+  "profile_bodyMetrics": "身体測定値",
+  "profile_height": "身長",
+  "profile_weight": "体重",
+  "profile_targetWeight": "目標体重",
+  "profile_bmi": "BMI",
+  "profile_settings": "設定",
+  "profile_notifications": "通知",
+  "profile_darkTheme": "ダークテーマ",
+  "profile_waterReminder": "水分補給リマインダー",
+  "profile_phaseNotifications": "フェーズ通知",
+  "profile_language": "言語",
+  "profile_about": "アプリについて",
+  "profile_rateApp": "アプリを評価",
+  "profile_share": "共有",
+  "profile_privacyPolicy": "プライバシーポリシー",
+  "profile_version": "バージョン",
+  "onboarding_welcome": "ようこそ",
+  "onboarding_welcomeDesc": "間欠的断食の旅を\n自分の手で管理しましょう",
+  "onboarding_featureTimer": "スマート断食タイマー",
+  "onboarding_featureStats": "詳細な統計とグラフ",
+  "onboarding_featureMeals": "食事プランナーとレシピ提案",
+  "onboarding_getStarted": "始める",
+  "onboarding_selectGoal": "目標は何ですか？",
+  "onboarding_selectGoalDesc": "複数選択できます",
+  "onboarding_goalWeight": "減量",
+  "onboarding_goalWeightDesc": "健康的に体重を減らす",
+  "onboarding_goalHealth": "健康改善",
+  "onboarding_goalHealthDesc": "全身の健康と免疫",
+  "onboarding_goalEnergy": "活力を高める",
+  "onboarding_goalEnergyDesc": "一日を通して元気に",
+  "onboarding_goalMental": "頭をすっきりさせる",
+  "onboarding_goalMentalDesc": "集中力と思考の明瞭さ",
+  "onboarding_goalLongevity": "長寿",
+  "onboarding_goalLongevityDesc": "細胞の更新と健やかな老化",
+  "onboarding_goalDiscipline": "自律",
+  "onboarding_goalDisciplineDesc": "自己管理力を養う",
+  "onboarding_selectPlan": "プランを選択",
+  "onboarding_selectPlanDesc": "あなたに最適な断食プランを選びましょう",
+  "onboarding_bodyInfo": "情報を入力",
+  "onboarding_bodyInfoDesc": "個別のおすすめを提供するために使用します",
+  "onboarding_gender": "性別",
+  "onboarding_male": "男性",
+  "onboarding_female": "女性",
+  "onboarding_age": "年齢",
+  "onboarding_bodyInfoDisclaimer": "この情報は端末内にのみ保存され、カロリー計算に使用されます。",
+  "onboarding_permissions": "最後のステップ",
+  "onboarding_permissionsDesc": "快適に利用するために権限を有効にしてください",
+  "onboarding_next": "続ける",
+  "onboarding_start": "始めましょう！",
+  "onboarding_skipForNow": "あとで設定",
+  "waterAdded": "水を250ml追加しました",
+  "languageSelect": "言語を選択",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Premiumにアップグレード",
+  "paywall_subtitle": "すべての断食プランを利用し、広告を非表示にします",
+  "paywall_allPlans": "すべての断食プラン",
+  "paywall_advancedStats": "高度な統計",
+  "paywall_mealPlanner": "食事プランナー",
+  "paywall_themes": "テーマのカスタマイズ",
+  "paywall_noAds": "広告なし",
+  "paywall_weekly": "週間",
+  "paywall_monthly": "月間",
+  "paywall_yearly": "年間",
+  "paywall_bestValue": "おすすめ",
+  "paywall_freeTrial": "無料トライアル（3日間）",
+  "paywall_restore": "購入を復元",
+  "paywall_premiumActive": "Premiumが有効です！",
+  "paywall_premiumActiveDesc": "すべての断食プランが利用でき、広告は表示されません",
+  "water_title": "水分摂取量",
+  "water_addWater": "水を追加",
+  "water_goal": "目標",
+  "water_ml": "ml",
+  "common_ok": "OK",
+  "common_cancel": "キャンセル",
+  "common_save": "保存",
+  "common_delete": "削除",
+  "common_hours": "時間",
+  "common_minutes": "分",
+  "common_days": "日",
+  "common_enable": "有効にする",
+  "streakCard_currentStreak": "現在の連続記録",
+  "streakCard_longestStreak": "最長連続記録",
+  "streakCard_totalSessions": "断食の合計",
+  "meals_mealType": "食事の種類",
+  "meals_breakfast": "朝食",
+  "meals_lunch": "昼食",
+  "meals_dinner": "夕食",
+  "meals_snack": "間食",
+  "meals_carbohydrate": "炭水化物",
+  "meals_add": "追加",
+  "meals_mealName": "食事名",
+  "bodyMetrics_title": "身体測定値",
+  "bodyMetrics_weight": "体重",
+  "bodyMetrics_target": "目標",
+  "bodyMetrics_save": "保存",
+  "bodyMetrics_history": "履歴",
+  "bodyMetrics_bmiValue": "BMI：{value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "まだデータがありません",
+  "meals_quickAdd": "クイック追加",
+  "meals_manualEntry": "手動入力",
+  "meals_added": "{name}を追加しました",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "名前とカロリーを入力してください",
+  "bodyMetrics_addWeight": "体重を追加",
+  "bodyMetrics_hintWeight": "例：74.5",
+  "bodyMetrics_invalidWeight": "有効な体重を入力してください",
+  "bodyMetrics_weightSaved": "{value} kgを保存しました",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "時間",
+  "completion_plan": "プラン",
+  "completion_lastPhase": "最終フェーズ",
+  "timer_remainingTime": "残り時間",
+  "timer_ready": "開始できます",
+  "streak_status": "ステータス",
+  "streak_startToday": "今日から始めましょう！",
+  "streak_goodStart": "良いスタート！",
+  "streak_goingGreat": "順調です！",
+  "streak_superb": "すばらしい！",
+  "streak_legendary": "伝説的！",
+  "streak_incredible": "驚異的！",
+  "weight_noRecord": "体重記録がまだありません\nプロフィール > 身体測定値から追加してください",
+  "day_mon": "月",
+  "day_tue": "火",
+  "day_wed": "水",
+  "day_thu": "木",
+  "day_fri": "金",
+  "day_sat": "土",
+  "day_sun": "日",
+  "day_short_mon": "月",
+  "day_short_tue": "火",
+  "day_short_wed": "水",
+  "day_short_thu": "木",
+  "day_short_fri": "金",
+  "day_short_sat": "土",
+  "day_short_sun": "日",
+  "month_jan": "1月",
+  "month_feb": "2月",
+  "month_mar": "3月",
+  "month_apr": "4月",
+  "month_may": "5月",
+  "month_jun": "6月",
+  "month_jul": "7月",
+  "month_aug": "8月",
+  "month_sep": "9月",
+  "month_oct": "10月",
+  "month_nov": "11月",
+  "month_dec": "12月",
+  "meals_fastingWindow": "断食（{hours}時間）",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "食事（{hours}時間）",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "オートミールスムージー",
+  "recipe_avocadoToast": "アボカドトースト",
+  "recipe_yogurtBowl": "ヨーグルトボウル",
+  "elapsed_time": "経過時間",
+  "fast_ends_on": "断食終了時刻",
+  "end_fasting": "断食を終了",
+  "start_fasting": "断食を開始",
+  "water_tracker": "水分トラッカー",
+  "weight_tracker": "体重トラッカー",
+  "drink": "飲む",
+  "log_weight": "体重を記録",
+  "bmi": "BMI",
+  "weight_lost": "減量した体重",
+  "current_weight": "現在の体重",
+  "goal_weight": "目標体重",
+  "daily_goal": "1日の目標",
+  "completed_percent": "{percent}%完了",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "見つける",
+  "achievements": "実績",
+  "profile_theme": "外観",
+  "theme_select": "外観を選択",
+  "theme_system": "システム設定",
+  "theme_light": "ライト",
+  "theme_dark": "ダーク",
+  "language_system": "システム言語",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "完了音",
+  "profile_calmGamification": "穏やかなゲーム要素",
+  "profile_calmGamificationDesc": "リーグやシーズンのプレッシャーを軽減します",
+  "profile_editName": "名前を編集",
+  "profile_name": "名前",
+  "circle_title": "断食サークル",
+  "circle_you": "あなた",
+  "circle_tagline": "プレッシャーなく、一緒に。",
+  "circle_privacy": "体重と個人指標は非公開です。進捗と応援だけが表示されます。",
+  "circle_sendSupport": "応援を送る · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "招待コードをコピーしました",
+  "circle_createInvite": "非公開の招待を作成",
+  "crisis_nameTitle": "まず、今起きていることを言葉にしましょう",
+  "crisis_nameDesc": "空腹、習慣、または感情かもしれません。",
+  "crisis_waterTitle": "コップ一杯の水を飲む",
+  "crisis_waterDesc": "そのあと、ゆっくり3回呼吸しましょう。",
+  "crisis_delayTitle": "決断を10分先延ばしにする",
+  "crisis_delayDesc": "気分が悪いときに断食を終えることは失敗ではありません。",
+  "crisis_hunger": "空腹",
+  "crisis_habit": "習慣",
+  "crisis_stress": "ストレス",
+  "crisis_tenMore": "あと10分待つ",
+  "stats_storyEmpty": "最初の断食から、あなた自身の物語が始まります。",
+  "stats_story": "この期間に{sessions}回断食し、{hours}時間リズムを保ち、完了率{rate}%を達成しました。",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "あなたのリズムの物語",
+  "home_todayRhythm": "今日のリズム",
+  "home_finalHourSupport": "最後の1時間のサポート",
+  "home_needSupport": "少し応援がほしい",
+  "home_todaySummary": "今日の概要",
+  "home_dayStreak": "日連続",
+  "home_weightGoal": "目標 {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "リズムは安定しています",
+  "weather_gentle": "穏やかな一日",
+  "weather_water": "コップ一杯の水が助けになるかもしれません。",
+  "weather_listen": "ここまでよく進みました。身体の声に耳を傾けましょう。",
+  "weather_onPlan": "今日のペースはプランどおりです。",
+  "weather_challenging": "以前はこの時間が難所でした。サポートモードを利用できます。",
+  "replay_copied": "断食リプレイをコピーしました",
+  "replay_button": "リプレイ",
+  "replay_text": "{plan}断食を{hours}時間{minutes}分で完了しました · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "代謝の旅",
+  "journey_now": "現在",
+  "journey_next": "{phase}まで{time}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "フェーズの時間は一般的な目安であり、医学的な測定値ではありません。",
+  "phase_hours": "{start}～{end}時間",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "この時間は一般的な目安です。代謝反応には個人差があります。",
+  "bmi_underweight": "低体重",
+  "bmi_normal": "標準",
+  "bmi_overweight": "過体重",
+  "bmi_obese": "肥満",
+  "notification_halfwayTitle": "半分まで来ました！ 💪",
+  "notification_halfwayBody": "{plan}断食の半分を完了しました。その調子です！",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "異化期に入りました 📉",
+  "notification_phaseFatBurning": "脂肪燃焼が始まりました！ 🔥",
+  "notification_phaseKetosis": "ケトーシス状態です ⚡",
+  "notification_phaseAutophagy": "オートファジーが活発です！ 🔄",
+  "notification_completedBody": "{plan}断食を完了しました！食事時間が始まりました。",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "水を飲みましょう 💧",
+  "notification_waterBody": "断食中は十分な水分補給を忘れずに！",
+  "notification_windowTitle": "食事時間がまもなく終了します ⏰",
+  "notification_windowBody": "食事時間は30分後に終了します。",
+  "notification_streakTitle": "{days}日連続！ 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "順調です！今日も続けましょう。",
+  "notification_ongoingTitle": "断食中 - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "残り：{time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "断食開始 - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "目標：{hours}時間",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours}時間{minutes}分",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "断食ガイド",
+  "explore_guideDesc": "間欠的断食について知っておきたいすべてのこと",
+  "explore_circleDesc": "非公開グループで穏やかに応援し合いましょう。",
+  "explore_faq": "よくある質問",
+  "explore_education": "この内容は一般的な教育のみを目的としており、医学的診断や治療の助言ではありません。",
+  "explore_safety": "健康と安全",
+  "explore_safetyDesc": "持病がある、常用薬を服用している、気になる症状がある、妊娠中または授乳中の場合は、断食を始める前に資格を持つ医療専門家に相談してください。気分が悪くなったら中止してください。",
+  "explore_sources": "出典",
+  "explore_sourcesDesc": "内容は以下の公衆衛生資料をもとに簡略化しています。",
+  "explore_sourceError": "出典を開けませんでした",
+  "explore_rules": "重要なルール",
+  "explore_rule1": "断食中はカロリーのある食品を摂らない",
+  "explore_rule2": "水や水分を十分に摂る",
+  "explore_rule3": "食事時間にはバランスよく食べる",
+  "explore_rule4": "気分が悪くなったら断食を中止する",
+  "explore_rule5": "妊娠中または授乳中の方は断食しない",
+  "explore_rule6": "慢性疾患がある場合は医師に相談する",
+  "tip_water": "水分を保つ",
+  "tip_waterDesc": "喉が渇いたら水を飲み、食事にも水分を取り入れましょう。必要量は健康状態、天候、活動量によって異なります。",
+  "tip_food": "正しく食べる",
+  "tip_foodDesc": "食事時間には、食物繊維と良質な脂質を含む高たんぱく食品を選び、加工食品を避けましょう。",
+  "tip_sleep": "よく眠る",
+  "tip_sleepDesc": "規則正しく十分な睡眠は健康全般を支えます。睡眠を妨げないよう断食時間を調整してください。",
+  "tip_exercise": "軽い運動",
+  "tip_exerciseDesc": "断食中も軽い散歩やヨガはできます。特に身体が慣れるまでの最初の数週間は激しい運動を避けてください。",
+  "tip_drinks": "飲めるもの",
+  "tip_drinksDesc": "断食中は水、無糖のお茶、ブラックコーヒー（砂糖・ミルクなし）を飲めます。これらは断食を中断しません。",
+  "faq_drinks": "断食中に何を飲めますか？",
+  "faq_drinksAnswer": "水、無糖のお茶、ブラックコーヒー（砂糖・ミルクなし）を飲めます。カロリーのある飲み物は断食を中断します。",
+  "faq_plan": "どの断食プランを選べばよいですか？",
+  "faq_planAnswer": "初心者は12:12または14:10から始めましょう。経験者は16:8または18:6を試せます。20:4とOMADは上級者向けです。",
+  "faq_exercise": "断食中に運動できますか？",
+  "faq_exerciseAnswer": "はい。ただし激しい運動は避けてください。軽い有酸素運動、散歩、ヨガが適しています。筋力トレーニングは食事時間の近くに行いましょう。",
+  "faq_weight": "断食は減量に役立ちますか？",
+  "faq_weightAnswer": "食事時間を制限すると総摂取エネルギーが減る人もいます。結果には個人差があり、長期的な影響は現在も研究中です。",
+  "plan_12_desc": "初心者向け",
+  "plan_12_detail": "初心者に最適。睡眠時間を含めて12時間断食します。",
+  "plan_16_desc": "最も人気のプラン",
+  "plan_16_detail": "最も一般的な間欠的断食。16時間断食し、8時間食事します。通常は昼食から夕食までです。",
+  "plan_18_desc": "中級者向け",
+  "plan_18_detail": "18時間断食し、6時間食事します。脂肪燃焼時間が長くなります。",
+  "plan_20_desc": "上級者向け",
+  "plan_20_detail": "20時間断食し、4時間食事します。ケトーシスとオートファジーを目指す上級プランです。",
+  "plan_omad_desc": "1日1食",
+  "plan_omad_detail": "1日1食。23時間断食し、1時間食事します。熟練者向けです。",
+  "plan_52_desc": "週2日",
+  "plan_52_detail": "5日は通常どおり食べ、2日は約500カロリーだけ摂ります。別の選択肢となる方法です。",
+  "plan_ese_desc": "24時間断食",
+  "plan_ese_detail": "週に1～2回、24時間断食します。上級者向けです。",
+  "plan_warrior_desc": "ウォリアーダイエット",
+  "plan_warrior_detail": "日中は果物や野菜などを軽く食べ、夜の4時間枠で主な食事を摂ります。",
+  "award_first_title": "最初の一歩",
+  "award_first_desc": "最初の断食を完了する",
+  "award_rhythm3_title": "3日間のリズム",
+  "award_rhythm3_desc": "3日間リズムを保つ",
+  "award_hours24_title": "24時間",
+  "award_hours24_desc": "合計24時間断食する",
+  "award_week_title": "1週間のリズム",
+  "award_week_desc": "7日間の連続記録を作る",
+  "award_fasts10_title": "断食10回",
+  "award_fasts10_desc": "断食を10回完了する",
+  "award_hours100_title": "100時間",
+  "award_hours100_desc": "合計100時間に達する",
+  "award_rhythm30_title": "30日間のリズム",
+  "award_rhythm30_desc": "30日間の連続記録を作る",
+  "award_fasts50_title": "断食50回",
+  "award_fasts50_desc": "断食を50回完了する",
+  "award_hours500_title": "500時間",
+  "award_hours500_desc": "合計500時間に達する",
+  "award_fasts100_title": "断食100回",
+  "award_fasts100_desc": "断食を100回完了する",
+  "award_rhythm90_title": "90日間のリズム",
+  "award_rhythm90_desc": "90日間の連続記録を作る",
+  "award_year_title": "1年間の旅",
+  "award_year_desc": "365日間のリズムに達する",
+  "awards_loadError": "進捗を読み込めませんでした",
+  "awards_journeyComplete": "旅を完了",
+  "awards_nextGoal": "次の目標",
+  "awards_allYours": "すべての実績を獲得しました",
+  "awards_dayStreak": "日連続",
+  "awards_fasts": "回の断食",
+  "awards_total": "合計",
+  "awards_stageStart": "開始",
+  "awards_stageRhythm": "リズム",
+  "awards_stageEndurance": "持久力",
+  "awards_stageMastery": "熟練",
+  "awards_completed": "完了",
+  "awards_fastsRemaining": "あと{count}回の断食",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "あと{count}日",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "あと{count}時間",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "再試行",
+  "game_title": "進捗ハブ",
+  "game_quests": "今日のクエスト",
+  "game_questsDesc": "小さな一歩で、持続できるリズムを。",
+  "game_season": "30ステップシーズン",
+  "game_seasonDesc": "5ステップごとにコレクション用のシールを獲得。",
+  "game_badges": "バッジコレクション",
+  "game_shields": "リズムシールド {count}個",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "7回完了するごとに獲得できます。1日休んでも進捗が消えることはありません。",
+  "game_league": "非公開の週間リーグ",
+  "game_leagueDesc": "あなたのリズムスコアは非公開のローカルモデルで{percent}パーセンタイルです。体重や極端な断食を順位付けすることはありません。",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "レベル{level}、経験値{xp}",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "リズム探検家",
+  "game_streak": "連続記録",
+  "game_targets": "目標",
+  "game_best": "ベスト",
+  "quest_rhythm": "今日のリズムを作る",
+  "quest_hydrate": "水分目標の半分に達する",
+  "quest_steady": "連続記録を守る",
+  "badge_first_title": "最初の一歩",
+  "badge_first_desc": "最初の断食を記録する",
+  "badge_rhythm7_title": "リズムキーパー",
+  "badge_rhythm7_desc": "7日連続を達成する",
+  "badge_rhythm3_title": "3日間のリズム",
+  "badge_rhythm3_desc": "3日連続を達成する",
+  "badge_target1_title": "最初の目標",
+  "badge_target1_desc": "最初の目標断食を完了する",
+  "badge_target3_title": "3つのステップ",
+  "badge_target3_desc": "目標を3つ完了する",
+  "badge_water_title": "バランス",
+  "badge_water_desc": "1日の水分目標を達成する",
+  "badge_support_title": "自己理解",
+  "badge_support_desc": "サポートモードを使う",
+  "badge_hours10_title": "10時間",
+  "badge_hours10_desc": "合計10時間を記録する",
+  "badge_target10_title": "力強い10回",
+  "badge_target10_desc": "目標を10回完了する",
+  "badge_target20_title": "20の目標",
+  "badge_target20_desc": "目標を20回完了する",
+  "badge_fast16_title": "16時間",
+  "badge_fast16_desc": "1回の断食で16時間に達する",
+  "badge_hours50_title": "50時間",
+  "badge_hours50_desc": "合計50時間を記録する",
+  "badge_hours100_title": "100時間",
+  "badge_hours100_desc": "合計100時間を記録する",
+  "badge_target30_title": "30の目標",
+  "badge_target30_desc": "目標を30回完了する",
+  "badge_rhythm30_title": "30日間のリズム",
+  "badge_rhythm30_desc": "30日連続を達成する",
+  "paywall_restoreSuccess": "購入を復元しました！",
+  "fasting_progressSemantics": "断食の進捗{percent}パーセント",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}時間",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "買い切り",
+  "paywall_once": "1回限り",
+  "paywall_processing": "処理中…",
+  "paywall_continue": "続ける",
+  "paywall_productsUnavailable": "現在購入できません。しばらくしてからもう一度お試しください。",
+  "paywall_purchaseFailed": "購入を完了できませんでした。",
+  "paywall_nothingToRestore": "以前の購入が見つかりませんでした。",
+  "paywall_restoreFailed": "購入を復元できませんでした。",
+  "paywall_terms": "利用規約",
+  "permission_notificationDesc": "断食リマインダー、フェーズ更新、完了通知",
+  "profile_privacyChoices": "プライバシーの選択",
+  "paywall_autoRenewInfo": "期間終了の24時間以上前に解約しない限り、サブスクリプションは自動更新されます。App Storeの設定からいつでも管理または解約できます。",
+  "paywall_perMonth": "月額 {price}",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "{percent}%お得",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "{days}日間無料トライアル",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "無料トライアルを開始",
+  "paywall_retry": "再試行",
+  "paywall_alreadyOwned": "このサブスクリプションはすでに購入済みです。「購入を復元」をタップしてください。",
+  "paywall_storeUnavailable": "現在ストアに接続できません。接続を確認して再試行してください。",
+  "paywall_secureNote": "いつでも解約できます。料金はストアアカウントに請求されます。",
+  "paywall_autoRenewInfoPlay": "期間終了の24時間以上前に解約しない限り、サブスクリプションは自動更新されます。Google Play > 定期購入からいつでも管理または解約できます。",
+  "paywall_allPlansDesc": "18:6、20:4、OMAD、5:2、Eat-Stop-Eat、Warriorを利用可能",
+  "paywall_noAdsDesc": "バナー広告と全画面広告を完全に非表示にします",
+  "foodScan_title": "AI食事スキャン",
+  "foodScan_scanCta": "食事をスキャン",
+  "foodScan_scanCtaDesc": "料理を撮影してカロリーと主要栄養素を確認",
+  "foodScan_introTitle": "料理を撮影",
+  "foodScan_introDesc": "AIが写真を読み取り、カロリー、たんぱく質、炭水化物、脂質を推定します。",
+  "foodScan_tipLight": "均一で明るい照明ほど推定精度が上がります",
+  "foodScan_tipFrame": "皿全体をフレームに収めてください",
+  "foodScan_tipScale": "量を推定できるよう、カトラリーや手も写してください",
+  "foodScan_takePhoto": "写真を撮る",
+  "foodScan_chooseFromGallery": "ギャラリーから選択",
+  "foodScan_scansLeft": "今日の残りスキャン回数：{count}",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "今日のスキャン回数を使い切りました。明日もう一度お試しください。",
+  "foodScan_privacyNote": "写真は分析のためGoogleのGemini APIに送信され、当社のサーバーには保存されません。",
+  "foodScan_analyzing": "食事を分析中…",
+  "foodScan_analyzingHint": "通常は数秒で完了します",
+  "foodScan_detectedItems": "検出された食品",
+  "foodScan_disclaimer": "AIの推定値は概算です。項目をタップして修正できます。",
+  "foodScan_lowConfidence": "この写真についてモデルの確信度が低いです。保存前に数値を確認してください。",
+  "foodScan_save": "食事に追加",
+  "foodScan_retake": "新しい写真",
+  "foodScan_retry": "再試行",
+  "foodScan_editItem": "項目を編集",
+  "foodScan_portion": "分量",
+  "foodScan_saveEdit": "保存",
+  "foodScan_premiumTitle": "Premium機能",
+  "foodScan_premiumDesc": "写真によるカロリー分析はPremiumに含まれます。",
+  "foodScan_upgrade": "Premiumを見る",
+  "foodScan_errorNetwork": "接続がありません。インターネット接続を確認して再試行してください。",
+  "foodScan_errorRateLimited": "現在スキャンが集中しています。数分後にもう一度お試しください。",
+  "foodScan_errorUnavailable": "現在、写真分析を利用できません。",
+  "foodScan_errorServer": "分析サービスに問題が発生しています。しばらくしてから再試行してください。",
+  "foodScan_errorNoFood": "写真に食べ物が見つかりませんでした。皿をより鮮明に撮影してください。",
+  "foodScan_errorUnreadable": "この写真を分析できませんでした。別の写真をお試しください。",
+  "paywall_aiFoodScan": "AI食事スキャン",
+  "paywall_aiFoodScanDesc": "食事を撮影し、カロリーと主要栄養素を数秒で記録します",
+  "completion_earlyTitle": "断食を終了しました",
+  "completion_earlyMessage": "今日の時間を保存しました。目標を達成していないため、連続記録と実績の進行状況は変わりません。"
+}

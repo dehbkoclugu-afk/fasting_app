@@ -113,7 +113,11 @@ class AppDatabase extends _$AppDatabase {
     final start = DateTime(date.year, date.month, date.day);
     final end = start.add(const Duration(days: 1));
     return (select(meals)
-          ..where((m) => m.dateTime_.isBetweenValues(start, end))
+          ..where(
+            (m) =>
+                m.dateTime_.isBiggerOrEqualValue(start) &
+                m.dateTime_.isSmallerThanValue(end),
+          )
           ..orderBy([(m) => OrderingTerm.asc(m.dateTime_)]))
         .get();
   }
@@ -132,11 +136,19 @@ class AppDatabase extends _$AppDatabase {
     final start = DateTime(date.year, date.month, date.day);
     final end = start.add(const Duration(days: 1));
     return (select(waterIntake)
-      ..where((w) => w.date.isBetweenValues(start, end))).get();
+      ..where(
+        (w) =>
+            w.date.isBiggerOrEqualValue(start) &
+            w.date.isSmallerThanValue(end),
+      )).get();
   }
 
   Future<int> insertWater(WaterIntakeCompanion entry) {
     return into(waterIntake).insert(entry);
+  }
+
+  Future<int> deleteWater(int id) {
+    return (delete(waterIntake)..where((entry) => entry.id.equals(id))).go();
   }
 
   Stream<int> watchTotalWaterForDate(DateTime date) {
@@ -144,7 +156,10 @@ class AppDatabase extends _$AppDatabase {
     final end = start.add(const Duration(days: 1));
     return (selectOnly(waterIntake)
           ..addColumns([waterIntake.amountMl.sum()])
-          ..where(waterIntake.date.isBetweenValues(start, end)))
+          ..where(
+            waterIntake.date.isBiggerOrEqualValue(start) &
+                waterIntake.date.isSmallerThanValue(end),
+          ))
         .map((row) => row.read(waterIntake.amountMl.sum()) ?? 0)
         .watchSingle();
   }

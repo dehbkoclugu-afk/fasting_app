@@ -63,7 +63,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get timer_selectPlan => 'Select Fasting Plan';
 
   @override
-  String get timer_stopConfirm => 'Are you sure you want to end the fast early?';
+  String get timer_stopConfirm =>
+      'Are you sure you want to end the fast early?';
 
   @override
   String get timer_stopTitle => 'End Fast';
@@ -209,7 +210,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile_upgradePremium => 'Upgrade to Premium';
 
   @override
-  String get profile_premiumDesc => 'All plans, advanced stats, and more';
+  String get profile_premiumDesc => 'Every fasting plan, with no ads';
 
   @override
   String get profile_bodyMetrics => 'Body Metrics';
@@ -263,7 +264,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboarding_welcome => 'Welcome';
 
   @override
-  String get onboarding_welcomeDesc => 'Take control of your\nintermittent fasting journey';
+  String get onboarding_welcomeDesc =>
+      'Take control of your\nintermittent fasting journey';
 
   @override
   String get onboarding_featureTimer => 'Smart fasting timer';
@@ -323,7 +325,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboarding_selectPlan => 'Choose Your Plan';
 
   @override
-  String get onboarding_selectPlanDesc => 'Select the best fasting plan for you';
+  String get onboarding_selectPlanDesc =>
+      'Select the best fasting plan for you';
 
   @override
   String get onboarding_bodyInfo => 'Enter Your Info';
@@ -344,13 +347,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboarding_age => 'Age';
 
   @override
-  String get onboarding_bodyInfoDisclaimer => 'This information is stored only on your device and used for calorie calculations.';
+  String get onboarding_bodyInfoDisclaimer =>
+      'This information is stored only on your device and used for calorie calculations.';
 
   @override
   String get onboarding_permissions => 'Final Step';
 
   @override
-  String get onboarding_permissionsDesc => 'Enable permissions for the best experience';
+  String get onboarding_permissionsDesc =>
+      'Enable permissions for the best experience';
 
   @override
   String get onboarding_next => 'Continue';
@@ -377,7 +382,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paywall_title => 'Upgrade to Premium';
 
   @override
-  String get paywall_subtitle => 'Unlock all features';
+  String get paywall_subtitle => 'Unlock every fasting plan and remove ads';
 
   @override
   String get paywall_allPlans => 'All fasting plans';
@@ -387,9 +392,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get paywall_mealPlanner => 'Meal planner';
-
-  @override
-  String get paywall_healthKit => 'HealthKit integration';
 
   @override
   String get paywall_themes => 'Theme customization';
@@ -419,7 +421,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paywall_premiumActive => 'Premium Active!';
 
   @override
-  String get paywall_premiumActiveDesc => 'You unlocked all features';
+  String get paywall_premiumActiveDesc =>
+      'Every fasting plan is unlocked and ads are off';
 
   @override
   String get water_title => 'Water Intake';
@@ -578,7 +581,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get streak_incredible => 'Incredible!';
 
   @override
-  String get weight_noRecord => 'No weight records yet\nAdd from Profile > Body Metrics';
+  String get weight_noRecord =>
+      'No weight records yet\nAdd from Profile > Body Metrics';
 
   @override
   String get day_mon => 'Mon';
@@ -764,7 +768,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile_calmGamification => 'Calm gamification';
 
   @override
-  String get profile_calmGamificationDesc => 'Reduces league and season pressure';
+  String get profile_calmGamificationDesc =>
+      'Reduces league and season pressure';
 
   @override
   String get profile_editName => 'Edit your name';
@@ -782,7 +787,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get circle_tagline => 'Together, without pressure.';
 
   @override
-  String get circle_privacy => 'Weight and private metrics stay hidden. Only progress and support are visible.';
+  String get circle_privacy =>
+      'Weight and private metrics stay hidden. Only progress and support are visible.';
 
   @override
   String circle_sendSupport(int count) {
@@ -811,7 +817,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get crisis_delayTitle => 'Delay the decision for 10 minutes';
 
   @override
-  String get crisis_delayDesc => 'If you feel unwell, ending the fast is not failure.';
+  String get crisis_delayDesc =>
+      'If you feel unwell, ending the fast is not failure.';
 
   @override
   String get crisis_hunger => 'Hunger';
@@ -826,7 +833,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get crisis_tenMore => 'Give it 10 minutes';
 
   @override
-  String get stats_storyEmpty => 'Your first fast will begin your personal story.';
+  String get stats_storyEmpty =>
+      'Your first fast will begin your personal story.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -872,7 +880,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get weather_onPlan => 'Today’s pace matches your plan.';
 
   @override
-  String get weather_challenging => 'This hour was challenging before; support mode is ready.';
+  String get weather_challenging =>
+      'This hour was challenging before; support mode is ready.';
 
   @override
   String get replay_copied => 'Fasting Replay copied';
@@ -897,7 +906,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort => 'Phase timing is a general estimate, not a medical measurement.';
+  String get phase_estimateShort =>
+      'Phase timing is a general estimate, not a medical measurement.';
 
   @override
   String phase_hours(int start, int end) {
@@ -905,7 +915,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong => 'This timing is a general estimate. Metabolic responses can vary between people.';
+  String get phase_estimateLong =>
+      'This timing is a general estimate. Metabolic responses can vary between people.';
 
   @override
   String get bmi_underweight => 'Underweight';
@@ -948,13 +959,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notification_waterTitle => 'Drink Water 💧';
 
   @override
-  String get notification_waterBody => 'Don’t forget to drink plenty of water while fasting!';
+  String get notification_waterBody =>
+      'Don’t forget to drink plenty of water while fasting!';
 
   @override
   String get notification_windowTitle => 'Eating Window Closing ⏰';
 
   @override
-  String get notification_windowBody => 'Your eating window will close in 30 minutes.';
+  String get notification_windowBody =>
+      'Your eating window will close in 30 minutes.';
 
   @override
   String notification_streakTitle(int days) {
@@ -993,28 +1006,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get explore_guide => 'Fasting Guide';
 
   @override
-  String get explore_guideDesc => 'Everything you need to know about intermittent fasting';
+  String get explore_guideDesc =>
+      'Everything you need to know about intermittent fasting';
 
   @override
-  String get explore_circleDesc => 'Share quiet support with your private group.';
+  String get explore_circleDesc =>
+      'Share quiet support with your private group.';
 
   @override
   String get explore_faq => 'Frequently Asked Questions';
 
   @override
-  String get explore_education => 'This content is for general education only and is not medical diagnosis or treatment advice.';
+  String get explore_education =>
+      'This content is for general education only and is not medical diagnosis or treatment advice.';
 
   @override
   String get explore_safety => 'Health and safety';
 
   @override
-  String get explore_safetyDesc => 'If you have a medical condition, take regular medication, have concerning symptoms, are pregnant, or are breastfeeding, consult a qualified health professional before fasting. Stop if you feel unwell.';
+  String get explore_safetyDesc =>
+      'If you have a medical condition, take regular medication, have concerning symptoms, are pregnant, or are breastfeeding, consult a qualified health professional before fasting. Stop if you feel unwell.';
 
   @override
   String get explore_sources => 'Sources';
 
   @override
-  String get explore_sourcesDesc => 'Content is simplified from the public-health references below.';
+  String get explore_sourcesDesc =>
+      'Content is simplified from the public-health references below.';
 
   @override
   String get explore_sourceError => 'The source could not be opened';
@@ -1038,109 +1056,127 @@ class AppLocalizationsEn extends AppLocalizations {
   String get explore_rule5 => 'Pregnant or breastfeeding women should not fast';
 
   @override
-  String get explore_rule6 => 'Consult your doctor if you have chronic conditions';
+  String get explore_rule6 =>
+      'Consult your doctor if you have chronic conditions';
 
   @override
   String get tip_water => 'Stay Hydrated';
 
   @override
-  String get tip_waterDesc => 'Drink water when thirsty and include fluids with meals. Needs can vary with health, weather, and activity.';
+  String get tip_waterDesc =>
+      'Drink water when thirsty and include fluids with meals. Needs can vary with health, weather, and activity.';
 
   @override
   String get tip_food => 'Eat Right';
 
   @override
-  String get tip_foodDesc => 'During eating windows, choose protein-rich foods with fiber and healthy fats. Avoid processed foods.';
+  String get tip_foodDesc =>
+      'During eating windows, choose protein-rich foods with fiber and healthy fats. Avoid processed foods.';
 
   @override
   String get tip_sleep => 'Sleep Well';
 
   @override
-  String get tip_sleepDesc => 'Regular, sufficient sleep supports general wellbeing. Schedule fasting so it does not disrupt your sleep.';
+  String get tip_sleepDesc =>
+      'Regular, sufficient sleep supports general wellbeing. Schedule fasting so it does not disrupt your sleep.';
 
   @override
   String get tip_exercise => 'Light Exercise';
 
   @override
-  String get tip_exerciseDesc => 'You can do light walking or yoga while fasting. Avoid heavy exercise, especially during the first weeks until your body adapts.';
+  String get tip_exerciseDesc =>
+      'You can do light walking or yoga while fasting. Avoid heavy exercise, especially during the first weeks until your body adapts.';
 
   @override
   String get tip_drinks => 'Allowed Drinks';
 
   @override
-  String get tip_drinksDesc => 'During fasting, you can consume water, plain tea, and black coffee (no sugar, no milk). These drinks won’t break your fast.';
+  String get tip_drinksDesc =>
+      'During fasting, you can consume water, plain tea, and black coffee (no sugar, no milk). These drinks won’t break your fast.';
 
   @override
   String get faq_drinks => 'What can I drink during fasting?';
 
   @override
-  String get faq_drinksAnswer => 'You can drink water, plain tea, and black coffee (no sugar/milk). Caloric drinks break the fast.';
+  String get faq_drinksAnswer =>
+      'You can drink water, plain tea, and black coffee (no sugar/milk). Caloric drinks break the fast.';
 
   @override
   String get faq_plan => 'Which fasting plan should I choose?';
 
   @override
-  String get faq_planAnswer => 'If you’re new, start with 12:12 or 14:10. If experienced, try 16:8 or 18:6. 20:4 and OMAD are for advanced fasters.';
+  String get faq_planAnswer =>
+      'If you’re new, start with 12:12 or 14:10. If experienced, try 16:8 or 18:6. 20:4 and OMAD are for advanced fasters.';
 
   @override
   String get faq_exercise => 'Can I exercise while fasting?';
 
   @override
-  String get faq_exerciseAnswer => 'Yes, but avoid intense workouts. Light cardio, walking, and yoga are ideal. If lifting weights, schedule near your eating window.';
+  String get faq_exerciseAnswer =>
+      'Yes, but avoid intense workouts. Light cardio, walking, and yoga are ideal. If lifting weights, schedule near your eating window.';
 
   @override
   String get faq_weight => 'Does fasting help with weight loss?';
 
   @override
-  String get faq_weightAnswer => 'For some people, limiting eating time may reduce total energy intake. Results vary, and long-term effects are still being studied.';
+  String get faq_weightAnswer =>
+      'For some people, limiting eating time may reduce total energy intake. Results vary, and long-term effects are still being studied.';
 
   @override
   String get plan_12_desc => 'Beginner level';
 
   @override
-  String get plan_12_detail => 'Ideal for beginners. Fast 12 hours including your sleep time.';
+  String get plan_12_detail =>
+      'Ideal for beginners. Fast 12 hours including your sleep time.';
 
   @override
   String get plan_16_desc => 'Most popular plan';
 
   @override
-  String get plan_16_detail => 'The most common IF plan. 16 hours fasting, 8 hours eating window. Usually lunch to dinner.';
+  String get plan_16_detail =>
+      'The most common IF plan. 16 hours fasting, 8 hours eating window. Usually lunch to dinner.';
 
   @override
   String get plan_18_desc => 'Intermediate level';
 
   @override
-  String get plan_18_detail => '18 hours fasting, 6 hours eating window. Longer fat burning duration.';
+  String get plan_18_detail =>
+      '18 hours fasting, 6 hours eating window. Longer fat burning duration.';
 
   @override
   String get plan_20_desc => 'Advanced level';
 
   @override
-  String get plan_20_detail => '20 hours fasting, 4 hours eating window. Ideal for reaching ketosis and autophagy.';
+  String get plan_20_detail =>
+      '20 hours fasting, 4 hours eating window. Ideal for reaching ketosis and autophagy.';
 
   @override
   String get plan_omad_desc => 'One meal a day';
 
   @override
-  String get plan_omad_detail => 'One Meal A Day. 23 hours fasting, 1 hour eating window. Expert level.';
+  String get plan_omad_detail =>
+      'One Meal A Day. 23 hours fasting, 1 hour eating window. Expert level.';
 
   @override
   String get plan_52_desc => '2 days per week';
 
   @override
-  String get plan_52_detail => 'Eat normally 5 days, only ~500 calories on 2 days. An alternative approach.';
+  String get plan_52_detail =>
+      'Eat normally 5 days, only ~500 calories on 2 days. An alternative approach.';
 
   @override
   String get plan_ese_desc => '24 hour fast';
 
   @override
-  String get plan_ese_detail => 'Fast for 24 hours 1–2 times per week. For advanced users.';
+  String get plan_ese_detail =>
+      'Fast for 24 hours 1–2 times per week. For advanced users.';
 
   @override
   String get plan_warrior_desc => 'Warrior diet';
 
   @override
-  String get plan_warrior_detail => 'Eat light during the day (fruits, veggies), have your main meal in a 4-hour evening window.';
+  String get plan_warrior_detail =>
+      'Eat light during the day (fruits, veggies), have your main meal in a 4-hour evening window.';
 
   @override
   String get award_first_title => 'First Step';
@@ -1292,7 +1328,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc => 'Earned every seven completions. A missed day never erases your progress.';
+  String get game_shieldsDesc =>
+      'Earned every seven completions. A missed day never erases your progress.';
 
   @override
   String get game_league => 'Private weekly league';
@@ -1444,7 +1481,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paywall_continue => 'Continue';
 
   @override
-  String get paywall_productsUnavailable => 'Purchases are not available right now. Please try again later.';
+  String get paywall_productsUnavailable =>
+      'Purchases are not available right now. Please try again later.';
 
   @override
   String get paywall_purchaseFailed => 'The purchase could not be completed.';
@@ -1459,14 +1497,180 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paywall_terms => 'Terms of Use';
 
   @override
-  String get permission_notificationDesc => 'Fasting reminders, phase updates and completion notifications';
-
-  @override
-  String get permission_healthTitle => 'Health Connect / HealthKit';
-
-  @override
-  String get permission_healthDesc => 'Sync steps, active calories and weight with your permission';
+  String get permission_notificationDesc =>
+      'Fasting reminders, phase updates and completion notifications';
 
   @override
   String get profile_privacyChoices => 'Privacy choices';
+
+  @override
+  String get paywall_autoRenewInfo =>
+      'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in your App Store settings.';
+
+  @override
+  String paywall_perMonth(String price) {
+    return '$price / month';
+  }
+
+  @override
+  String paywall_savePercent(int percent) {
+    return 'Save $percent%';
+  }
+
+  @override
+  String paywall_freeTrialDays(int days) {
+    return '$days-day free trial';
+  }
+
+  @override
+  String get paywall_startFreeTrial => 'Start free trial';
+
+  @override
+  String get paywall_retry => 'Try again';
+
+  @override
+  String get paywall_alreadyOwned =>
+      'You already own this subscription. Tap “Restore purchases”.';
+
+  @override
+  String get paywall_storeUnavailable =>
+      'Can\'t reach the store right now. Check your connection and try again.';
+
+  @override
+  String get paywall_secureNote =>
+      'Cancel anytime. Payment is charged to your store account.';
+
+  @override
+  String get paywall_autoRenewInfoPlay =>
+      'Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel anytime in Google Play > Subscriptions.';
+
+  @override
+  String get paywall_allPlansDesc =>
+      'Unlocks 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat and Warrior';
+
+  @override
+  String get paywall_noAdsDesc =>
+      'Banner and interstitial ads are turned off completely';
+
+  @override
+  String get foodScan_title => 'AI Food Scan';
+
+  @override
+  String get foodScan_scanCta => 'Scan meal';
+
+  @override
+  String get foodScan_scanCtaDesc =>
+      'Photograph your plate, get calories and macros';
+
+  @override
+  String get foodScan_introTitle => 'Photograph your plate';
+
+  @override
+  String get foodScan_introDesc =>
+      'AI reads the photo and estimates calories, protein, carbs and fat.';
+
+  @override
+  String get foodScan_tipLight => 'Good, even light gives a better estimate';
+
+  @override
+  String get foodScan_tipFrame => 'Fit the whole plate into the frame';
+
+  @override
+  String get foodScan_tipScale =>
+      'Include cutlery or a hand so portions can be scaled';
+
+  @override
+  String get foodScan_takePhoto => 'Take photo';
+
+  @override
+  String get foodScan_chooseFromGallery => 'Choose from gallery';
+
+  @override
+  String foodScan_scansLeft(int count) {
+    return '$count scans left today';
+  }
+
+  @override
+  String get foodScan_quotaReached =>
+      'You\'ve used today\'s scans. Try again tomorrow.';
+
+  @override
+  String get foodScan_privacyNote =>
+      'The photo is sent to Google\'s Gemini API for analysis and is not stored on our servers.';
+
+  @override
+  String get foodScan_analyzing => 'Analysing your meal…';
+
+  @override
+  String get foodScan_analyzingHint => 'This usually takes a few seconds';
+
+  @override
+  String get foodScan_detectedItems => 'Detected items';
+
+  @override
+  String get foodScan_disclaimer =>
+      'AI estimates are approximate. Tap an item to correct it.';
+
+  @override
+  String get foodScan_lowConfidence =>
+      'The model is unsure about this photo. Check the numbers before saving.';
+
+  @override
+  String get foodScan_save => 'Add to meals';
+
+  @override
+  String get foodScan_retake => 'New photo';
+
+  @override
+  String get foodScan_retry => 'Try again';
+
+  @override
+  String get foodScan_editItem => 'Edit item';
+
+  @override
+  String get foodScan_portion => 'Portion';
+
+  @override
+  String get foodScan_saveEdit => 'Save';
+
+  @override
+  String get foodScan_premiumTitle => 'A Premium feature';
+
+  @override
+  String get foodScan_premiumDesc =>
+      'Photo calorie analysis is included in Premium.';
+
+  @override
+  String get foodScan_upgrade => 'See Premium';
+
+  @override
+  String get foodScan_errorNetwork =>
+      'No connection. Check your internet and try again.';
+
+  @override
+  String get foodScan_errorRateLimited =>
+      'Too many scans right now. Try again in a few minutes.';
+
+  @override
+  String get foodScan_errorUnavailable =>
+      'Photo analysis is unavailable right now.';
+
+  @override
+  String get foodScan_errorServer =>
+      'The analysis service is having trouble. Try again shortly.';
+
+  @override
+  String get foodScan_errorNoFood =>
+      'No food found in this photo. Try a clearer shot of the plate.';
+
+  @override
+  String get foodScan_errorUnreadable =>
+      'This photo couldn\'t be analysed. Try another one.';
+
+  @override
+  String get paywall_aiFoodScan => 'AI food scan';
+
+  @override
+  String get paywall_aiFoodScanDesc =>
+      'Photograph a meal and log its calories and macros in seconds';
 }

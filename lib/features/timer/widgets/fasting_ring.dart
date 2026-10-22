@@ -6,6 +6,7 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/constants/metabolic_phases.dart';
 import '../../../core/utils/metabolic_phase_l10n.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../painters/ring_painter.dart';
 
 class FastingRing extends StatelessWidget {
@@ -49,6 +50,7 @@ class FastingRing extends StatelessWidget {
         dimension: size,
         child: Stack(
           alignment: Alignment.center,
+          clipBehavior: Clip.none,
           children: [
             Container(
               width: size * .78,
@@ -75,7 +77,10 @@ class FastingRing extends StatelessWidget {
                 curve: const Cubic(.23, 1, .32, 1),
                 builder:
                     (context, value, _) => CustomPaint(
-                      size: Size.square(size - 28),
+                      // Leave enough room for the phase markers and their
+                      // labels without making their tap targets overflow the
+                      // ring widget's bounds.
+                      size: Size.square(size - 92),
                       painter: RingPainter(
                         progress: value,
                         gradientColors: colors,
@@ -100,7 +105,7 @@ class FastingRing extends StatelessWidget {
                 targetHours: targetHours,
                 ringSize: size,
               ),
-            SizedBox(width: size * .68, child: child),
+            SizedBox(width: size * .62, child: child),
           ],
         ),
       ),
@@ -133,8 +138,10 @@ class _PhaseMarker extends StatelessWidget {
             ? 0.0
             : (phase.startHour / targetHours).clamp(0.0, 1.0);
     final angle = -math.pi / 2 + 2 * math.pi * fraction;
-    final orbit = ringSize * .36;
-    const markerSize = 48.0;
+    // Keep phase controls on the outer edge of the clock instead of letting
+    // them drift into the timer copy and hands.
+    const markerSize = 44.0;
+    final orbit = (ringSize - markerSize) / 2;
     final center = ringSize / 2;
     final color = phase.gradientColors.first;
     final active = isCurrent || isCompleted;
@@ -200,71 +207,125 @@ class _PhaseMarker extends StatelessWidget {
   Future<void> _showPhaseInfo(BuildContext context) =>
       showModalBottomSheet<void>(
         context: context,
-        showDragHandle: true,
-        builder: (context) {
+        useRootNavigator: true,
+        isScrollControlled: true,
+        showDragHandle: false,
+        backgroundColor: Colors.transparent,
+        builder: (sheetContext) {
+          final context = sheetContext;
           final theme = Theme.of(context);
           final color = phase.gradientColors.first;
           final name = metabolicPhaseName(l10n, phase);
           final description = metabolicPhaseDescription(l10n, phase);
+          final phases = MetabolicPhases.all;
+          final phaseIndex = phases.indexWhere((item) => item.id == phase.id);
+          final nextPhase = phaseIndex >= 0 && phaseIndex < phases.length - 1
+              ? metabolicPhaseName(l10n, phases[phaseIndex + 1])
+              : null;
           return SafeArea(
             top: false,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          color: color.withValues(alpha: .12),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Icon(phase.icon, color: color),
-                      ),
-                      const SizedBox(width: 14),
-                      Expanded(
+            child: FractionallySizedBox(
+              heightFactor: .78,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface,
+                  borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 10, 12, 8),
+                      child: Row(children: [
+                        Container(width: 36, height: 4, decoration: BoxDecoration(color: theme.colorScheme.outlineVariant, borderRadius: BorderRadius.circular(9))),
+                        const Spacer(),
+                        IconButton(onPressed: () => Navigator.pop(sheetContext), icon: const Icon(Icons.close_rounded)),
+                      ]),
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(name, style: theme.textTheme.titleLarge),
-                            Text(
-                              l10n.phase_hours(phase.startHour, phase.endHour),
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                color: color,
-                                fontWeight: FontWeight.w700,
+                            FastingSplitArtCard(
+                              assetPath: _phaseArtwork(phase),
+                              minHeight: 174,
+                              artWidth: 150,
+                              borderRadius: 24,
+                              alignment: Alignment.centerRight,
+                              semanticLabel: name,
+                              child: Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(name, style: theme.textTheme.headlineSmall?.copyWith(color: fastingArtForeground(context), fontWeight: FontWeight.w900)),
+                                    const SizedBox(height: 5),
+                                    Text(l10n.phase_hours(phase.startHour, phase.endHour), style: theme.textTheme.labelLarge?.copyWith(color: color, fontWeight: FontWeight.w800)),
+                                  ],
+                                ),
                               ),
                             ),
+                            const SizedBox(height: 20),
+                            _PhaseInfoRow(icon: Icons.auto_awesome_rounded, color: color, title: description, body: l10n.phase_estimateLong),
+                            const SizedBox(height: 12),
+                            _PhaseInfoRow(icon: Icons.self_improvement_rounded, color: color, title: l10n.weather_listen, body: l10n.explore_rule4),
+                            const SizedBox(height: 12),
+                            _PhaseInfoRow(icon: Icons.water_drop_outlined, color: color, title: l10n.tip_water, body: l10n.tip_waterDesc),
+                            if (nextPhase != null) ...[
+                              const SizedBox(height: 12),
+                              Container(
+                                width: double.infinity,
+                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                                decoration: BoxDecoration(color: color.withValues(alpha: .09), borderRadius: BorderRadius.circular(18)),
+                                child: Row(children: [
+                                  Icon(Icons.arrow_forward_rounded, color: color),
+                                  const SizedBox(width: 12),
+                                  Expanded(child: Text(nextPhase, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800))),
+                                ]),
+                              ),
+                            ],
+                            const SizedBox(height: 14),
+                            Text(l10n.phase_estimateShort, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, height: 1.4)),
                           ],
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 18),
-                  Text(
-                    description,
-                    style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
-                  ),
-                  const SizedBox(height: 16),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(14),
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.surfaceContainer,
-                      borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Text(
-                      l10n.phase_estimateLong,
-                      style: theme.textTheme.bodySmall?.copyWith(height: 1.4),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );
         },
       );
+
+  String _phaseArtwork(MetabolicPhase phase) => 'assets/images/editorial/v5/phase-${switch (phase.id) { 'fatBurning' => 'fat-burning', _ => phase.id }}.webp';
+}
+
+class _PhaseInfoRow extends StatelessWidget {
+  const _PhaseInfoRow({required this.icon, required this.color, required this.title, required this.body});
+  final IconData icon;
+  final Color color;
+  final String title;
+  final String body;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(color: theme.colorScheme.surfaceContainerLow, borderRadius: BorderRadius.circular(20)),
+      child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Container(width: 38, height: 38, decoration: BoxDecoration(color: color.withValues(alpha: .11), borderRadius: BorderRadius.circular(12)), child: Icon(icon, size: 20, color: color)),
+        const SizedBox(width: 12),
+        Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(title, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800)),
+          const SizedBox(height: 4),
+          Text(body, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, height: 1.4)),
+        ])),
+      ]),
+    );
+  }
 }

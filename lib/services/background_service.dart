@@ -30,10 +30,11 @@ Future<void> _updateTimerNotification() async {
   final startTimeMs = prefs.getInt('fasting_start_time');
   final targetMinutes = prefs.getInt('fasting_target_minutes');
   final isActive = prefs.getBool('fasting_active') ?? false;
+  final notificationsEnabled = prefs.getBool('notificationsEnabled') ?? true;
   final locale = _resolveLocale(prefs);
-  final l10n = lookupAppLocalizations(Locale(locale));
+  final l10n = lookupAppLocalizations(_localeFromTag(locale));
 
-  if (!isActive || startTimeMs == null || targetMinutes == null) return;
+  if (!isActive || !notificationsEnabled || startTimeMs == null || targetMinutes == null) return;
 
   final startTime = DateTime.fromMillisecondsSinceEpoch(startTimeMs);
   final elapsed = DateTime.now().difference(startTime);
@@ -122,14 +123,21 @@ class BackgroundService implements FastingTimerService {
     );
 
     // Bildirimleri zamanla
+    final notificationsEnabled = prefs.getBool('notificationsEnabled') ?? true;
+    if (!notificationsEnabled) {
+      await NotificationService().cancelFastingNotifications();
+      return;
+    }
     final locale = _resolveLocale(prefs);
-    final l10n = lookupAppLocalizations(Locale(locale));
+    final l10n = lookupAppLocalizations(_localeFromTag(locale));
     final notifService = NotificationService();
     notifService.setLocale(locale);
     await notifService.scheduleFastingNotifications(
       startTime: startTime,
       targetMinutes: targetMinutes,
       planName: planName,
+      phaseNotifications: prefs.getBool('phaseNotifications') ?? true,
+      waterReminders: prefs.getBool('waterReminders') ?? true,
     );
 
     // Ongoing bildirim göster
@@ -147,16 +155,17 @@ class BackgroundService implements FastingTimerService {
     await Workmanager().cancelByUniqueName(_uniqueName);
 
     final notifService = NotificationService();
-    await notifService.cancelOngoing();
-    await notifService.cancelAll();
+    await notifService.cancelFastingNotifications();
   }
 }
 
 String _resolveLocale(SharedPreferences prefs) {
-  final locale =
+  return
       prefs.getString('locale') ??
       PlatformDispatcher.instance.locale.languageCode;
-  return const {'tr', 'en', 'es', 'pt', 'de', 'fr'}.contains(locale)
-      ? locale
-      : 'en';
+}
+
+Locale _localeFromTag(String tag) {
+  final parts = tag.replaceAll('-', '_').split('_');
+  return Locale.fromSubtags(languageCode: parts.first, countryCode: parts.length > 1 ? parts[1] : null);
 }

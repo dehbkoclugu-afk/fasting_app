@@ -1,0 +1,775 @@
+{
+  "@@locale": "th",
+  "appTitle": "FastTrack",
+  "greeting_morning": "สวัสดีตอนเช้า",
+  "greeting_afternoon": "สวัสดีตอนบ่าย",
+  "greeting_evening": "สวัสดีตอนเย็น",
+  "tab_timer": "หน้าหลัก",
+  "tab_explore": "สำรวจ",
+  "tab_stats": "รายงาน",
+  "tab_meals": "มื้ออาหาร",
+  "tab_achievements": "ความสำเร็จ",
+  "tab_profile": "บัญชี",
+  "timer_fasting": "เวลาการอดอาหาร",
+  "timer_remaining": "เหลือเวลา",
+  "timer_elapsed": "เวลาที่ผ่านไป",
+  "timer_start": "เริ่ม",
+  "timer_stop": "หยุด",
+  "timer_completed": "ยินดีด้วย!",
+  "timer_completedMessage": "คุณอดอาหารสำเร็จแล้ว!",
+  "timer_selectPlan": "เลือกแผนอดอาหาร",
+  "timer_stopConfirm": "คุณแน่ใจหรือไม่ว่าต้องการจบการอดอาหารก่อนเวลา?",
+  "timer_stopTitle": "จบการอดอาหาร",
+  "timer_cancel": "ยกเลิก",
+  "timer_confirmStop": "ใช่ จบเลย",
+  "phase_anabolic": "ระยะแอนาบอลิก",
+  "phase_anabolicDesc": "กำลังย่อยอาหาร",
+  "phase_catabolic": "ระยะแคแทบอลิก",
+  "phase_catabolicDesc": "กำลังเปลี่ยนแหล่งพลังงาน",
+  "phase_fatBurning": "เผาผลาญไขมัน",
+  "phase_fatBurningDesc": "เริ่มเผาผลาญไขมันแล้ว",
+  "phase_ketosis": "ภาวะคีโตซิส",
+  "phase_ketosisDesc": "กำลังสร้างคีโตน",
+  "phase_autophagy": "ออโตฟาจี",
+  "phase_autophagyDesc": "การฟื้นฟูเซลล์",
+  "stats_title": "สถิติ",
+  "stats_week": "สัปดาห์",
+  "stats_month": "เดือน",
+  "stats_year": "ปี",
+  "stats_totalFasts": "จำนวนการอดอาหารทั้งหมด",
+  "stats_average": "เฉลี่ย",
+  "stats_fastDuration": "ระยะเวลาอดอาหาร",
+  "stats_streak": "สถิติต่อเนื่อง",
+  "stats_daysConsecutive": "วันต่อเนื่อง",
+  "stats_success": "สำเร็จ",
+  "stats_completion": "การทำสำเร็จ",
+  "stats_weeklyFasting": "การอดอาหารรายสัปดาห์",
+  "stats_monthlyView": "มุมมองรายเดือน",
+  "stats_weightChange": "การเปลี่ยนแปลงน้ำหนัก",
+  "heatmap_none": "ไม่มี",
+  "heatmap_low": "น้อย",
+  "heatmap_good": "ดี",
+  "heatmap_full": "เต็ม",
+  "meals_title": "วางแผนมื้ออาหาร",
+  "meals_eatingWindow": "ช่วงรับประทานอาหาร",
+  "meals_windowOpen": "เปิด",
+  "meals_windowFasting": "กำลังอดอาหาร",
+  "meals_calories": "แคลอรี",
+  "meals_protein": "โปรตีน",
+  "meals_carbs": "คาร์โบไฮเดรต",
+  "meals_fat": "ไขมัน",
+  "meals_todayMeals": "มื้ออาหารวันนี้",
+  "meals_noMeals": "ยังไม่ได้เพิ่มมื้ออาหาร",
+  "meals_breakfastSuggestions": "คำแนะนำสำหรับมื้อเปิดการอดอาหาร",
+  "meals_addMeal": "เพิ่มมื้ออาหาร",
+  "profile_title": "โปรไฟล์",
+  "profile_user": "ผู้ใช้",
+  "profile_planActive": "แผน {plan} ทำงานอยู่",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "อัปเกรดเป็น Premium",
+  "profile_premiumDesc": "ทุกแผนอดอาหารโดยไม่มีโฆษณา",
+  "profile_bodyMetrics": "ข้อมูลร่างกาย",
+  "profile_height": "ส่วนสูง",
+  "profile_weight": "น้ำหนัก",
+  "profile_targetWeight": "น้ำหนักเป้าหมาย",
+  "profile_bmi": "BMI",
+  "profile_settings": "การตั้งค่า",
+  "profile_notifications": "การแจ้งเตือน",
+  "profile_darkTheme": "ธีมมืด",
+  "profile_waterReminder": "เตือนดื่มน้ำ",
+  "profile_phaseNotifications": "การแจ้งเตือนระยะ",
+  "profile_language": "ภาษา",
+  "profile_about": "เกี่ยวกับ",
+  "profile_rateApp": "ให้คะแนนแอป",
+  "profile_share": "แชร์",
+  "profile_privacyPolicy": "นโยบายความเป็นส่วนตัว",
+  "profile_version": "เวอร์ชัน",
+  "onboarding_welcome": "ยินดีต้อนรับ",
+  "onboarding_welcomeDesc": "ควบคุมเส้นทาง\nการอดอาหารเป็นช่วงของคุณ",
+  "onboarding_featureTimer": "ตัวจับเวลาอดอาหารอัจฉริยะ",
+  "onboarding_featureStats": "สถิติและกราฟโดยละเอียด",
+  "onboarding_featureMeals": "วางแผนมื้ออาหารและแนะนำสูตรอาหาร",
+  "onboarding_getStarted": "เริ่มต้นใช้งาน",
+  "onboarding_selectGoal": "เป้าหมายของคุณคืออะไร?",
+  "onboarding_selectGoalDesc": "เลือกได้หลายข้อ",
+  "onboarding_goalWeight": "ลดน้ำหนัก",
+  "onboarding_goalWeightDesc": "ลดน้ำหนักอย่างมีสุขภาพดี",
+  "onboarding_goalHealth": "พัฒนาสุขภาพ",
+  "onboarding_goalHealthDesc": "สุขภาพโดยรวมและภูมิคุ้มกัน",
+  "onboarding_goalEnergy": "เพิ่มพลังงาน",
+  "onboarding_goalEnergyDesc": "มีพลังงานตลอดวัน",
+  "onboarding_goalMental": "ความคิดปลอดโปร่ง",
+  "onboarding_goalMentalDesc": "สมาธิและความชัดเจน",
+  "onboarding_goalLongevity": "อายุยืน",
+  "onboarding_goalLongevityDesc": "ฟื้นฟูเซลล์และสูงวัยอย่างแข็งแรง",
+  "onboarding_goalDiscipline": "วินัย",
+  "onboarding_goalDisciplineDesc": "สร้างวินัยในตนเอง",
+  "onboarding_selectPlan": "เลือกแผนของคุณ",
+  "onboarding_selectPlanDesc": "เลือกแผนอดอาหารที่เหมาะกับคุณที่สุด",
+  "onboarding_bodyInfo": "กรอกข้อมูลของคุณ",
+  "onboarding_bodyInfoDesc": "เพื่อรับคำแนะนำเฉพาะบุคคล",
+  "onboarding_gender": "เพศ",
+  "onboarding_male": "ชาย",
+  "onboarding_female": "หญิง",
+  "onboarding_age": "อายุ",
+  "onboarding_bodyInfoDisclaimer": "ข้อมูลนี้เก็บไว้บนอุปกรณ์ของคุณเท่านั้นและใช้คำนวณแคลอรี",
+  "onboarding_permissions": "ขั้นตอนสุดท้าย",
+  "onboarding_permissionsDesc": "เปิดสิทธิ์เพื่อประสบการณ์ที่ดีที่สุด",
+  "onboarding_next": "ดำเนินการต่อ",
+  "onboarding_start": "เริ่มกันเลย!",
+  "onboarding_skipForNow": "ตั้งค่าภายหลัง",
+  "waterAdded": "เพิ่มน้ำ 250 มล. แล้ว",
+  "languageSelect": "เลือกภาษา",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "อัปเกรดเป็น Premium",
+  "paywall_subtitle": "ปลดล็อกทุกแผนอดอาหารและนำโฆษณาออก",
+  "paywall_allPlans": "ทุกแผนอดอาหาร",
+  "paywall_advancedStats": "สถิติขั้นสูง",
+  "paywall_mealPlanner": "วางแผนมื้ออาหาร",
+  "paywall_themes": "ปรับแต่งธีม",
+  "paywall_noAds": "ไม่มีโฆษณา",
+  "paywall_weekly": "รายสัปดาห์",
+  "paywall_monthly": "รายเดือน",
+  "paywall_yearly": "รายปี",
+  "paywall_bestValue": "คุ้มค่าที่สุด",
+  "paywall_freeTrial": "ทดลองใช้ฟรี (3 วัน)",
+  "paywall_restore": "กู้คืนการซื้อ",
+  "paywall_premiumActive": "Premium เปิดใช้งานอยู่!",
+  "paywall_premiumActiveDesc": "ปลดล็อกทุกแผนอดอาหารและปิดโฆษณาแล้ว",
+  "water_title": "ปริมาณน้ำ",
+  "water_addWater": "เพิ่มน้ำ",
+  "water_goal": "เป้าหมาย",
+  "water_ml": "มล.",
+  "common_ok": "ตกลง",
+  "common_cancel": "ยกเลิก",
+  "common_save": "บันทึก",
+  "common_delete": "ลบ",
+  "common_hours": "ชั่วโมง",
+  "common_minutes": "นาที",
+  "common_days": "วัน",
+  "common_enable": "เปิดใช้งาน",
+  "streakCard_currentStreak": "สถิติต่อเนื่องปัจจุบัน",
+  "streakCard_longestStreak": "สถิติต่อเนื่องยาวนานที่สุด",
+  "streakCard_totalSessions": "จำนวนการอดอาหารทั้งหมด",
+  "meals_mealType": "ประเภทมื้ออาหาร",
+  "meals_breakfast": "อาหารเช้า",
+  "meals_lunch": "อาหารกลางวัน",
+  "meals_dinner": "อาหารเย็น",
+  "meals_snack": "ของว่าง",
+  "meals_carbohydrate": "คาร์โบไฮเดรต",
+  "meals_add": "เพิ่ม",
+  "meals_mealName": "ชื่อมื้ออาหาร",
+  "bodyMetrics_title": "ข้อมูลร่างกาย",
+  "bodyMetrics_weight": "น้ำหนัก",
+  "bodyMetrics_target": "เป้าหมาย",
+  "bodyMetrics_save": "บันทึก",
+  "bodyMetrics_history": "ประวัติ",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "ยังไม่มีข้อมูล",
+  "meals_quickAdd": "เพิ่มด่วน",
+  "meals_manualEntry": "กรอกด้วยตนเอง",
+  "meals_added": "เพิ่ม {name} แล้ว",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "ต้องระบุชื่อและแคลอรี",
+  "bodyMetrics_addWeight": "เพิ่มน้ำหนัก",
+  "bodyMetrics_hintWeight": "เช่น 74.5",
+  "bodyMetrics_invalidWeight": "กรอกน้ำหนักที่ถูกต้อง",
+  "bodyMetrics_weightSaved": "บันทึก {value} กก. แล้ว",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "ระยะเวลา",
+  "completion_plan": "แผน",
+  "completion_lastPhase": "ระยะสุดท้าย",
+  "timer_remainingTime": "เวลาที่เหลือ",
+  "timer_ready": "พร้อมเริ่ม",
+  "streak_status": "สถานะ",
+  "streak_startToday": "เริ่มวันนี้!",
+  "streak_goodStart": "เริ่มต้นได้ดี!",
+  "streak_goingGreat": "ทำได้ดีมาก!",
+  "streak_superb": "ยอดเยี่ยม!",
+  "streak_legendary": "ระดับตำนาน!",
+  "streak_incredible": "น่าทึ่ง!",
+  "weight_noRecord": "ยังไม่มีบันทึกน้ำหนัก\nเพิ่มจาก โปรไฟล์ > ข้อมูลร่างกาย",
+  "day_mon": "จ.",
+  "day_tue": "อ.",
+  "day_wed": "พ.",
+  "day_thu": "พฤ.",
+  "day_fri": "ศ.",
+  "day_sat": "ส.",
+  "day_sun": "อา.",
+  "day_short_mon": "จ",
+  "day_short_tue": "อ",
+  "day_short_wed": "พ",
+  "day_short_thu": "พฤ",
+  "day_short_fri": "ศ",
+  "day_short_sat": "ส",
+  "day_short_sun": "อา",
+  "month_jan": "มกราคม",
+  "month_feb": "กุมภาพันธ์",
+  "month_mar": "มีนาคม",
+  "month_apr": "เมษายน",
+  "month_may": "พฤษภาคม",
+  "month_jun": "มิถุนายน",
+  "month_jul": "กรกฎาคม",
+  "month_aug": "สิงหาคม",
+  "month_sep": "กันยายน",
+  "month_oct": "ตุลาคม",
+  "month_nov": "พฤศจิกายน",
+  "month_dec": "ธันวาคม",
+  "meals_fastingWindow": "อดอาหาร ({hours} ชม.)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "รับประทานอาหาร ({hours} ชม.)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "สมูททีข้าวโอ๊ต",
+  "recipe_avocadoToast": "ขนมปังปิ้งอะโวคาโด",
+  "recipe_yogurtBowl": "โยเกิร์ตโบวล์",
+  "elapsed_time": "เวลาที่ผ่านไป",
+  "fast_ends_on": "การอดอาหารสิ้นสุดเวลา",
+  "end_fasting": "จบการอดอาหาร",
+  "start_fasting": "เริ่มอดอาหาร",
+  "water_tracker": "ติดตามการดื่มน้ำ",
+  "weight_tracker": "ติดตามน้ำหนัก",
+  "drink": "ดื่ม",
+  "log_weight": "บันทึกน้ำหนัก",
+  "bmi": "BMI",
+  "weight_lost": "น้ำหนักที่ลดลง",
+  "current_weight": "น้ำหนักปัจจุบัน",
+  "goal_weight": "น้ำหนักเป้าหมาย",
+  "daily_goal": "เป้าหมายรายวัน",
+  "completed_percent": "สำเร็จ {percent}%",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "สำรวจ",
+  "achievements": "ความสำเร็จ",
+  "profile_theme": "รูปลักษณ์",
+  "theme_select": "เลือกรูปลักษณ์",
+  "theme_system": "ค่าเริ่มต้นของระบบ",
+  "theme_light": "สว่าง",
+  "theme_dark": "มืด",
+  "language_system": "ภาษาของระบบ",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "เสียงเมื่อเสร็จสิ้น",
+  "profile_calmGamification": "เกมมิฟิเคชันแบบผ่อนคลาย",
+  "profile_calmGamificationDesc": "ลดแรงกดดันจากลีกและฤดูกาล",
+  "profile_editName": "แก้ไขชื่อของคุณ",
+  "profile_name": "ชื่อ",
+  "circle_title": "วงสนับสนุนการอดอาหาร",
+  "circle_you": "คุณ",
+  "circle_tagline": "ไปด้วยกันโดยไม่กดดัน",
+  "circle_privacy": "น้ำหนักและข้อมูลส่วนตัวจะถูกซ่อน แสดงเฉพาะความคืบหน้าและการสนับสนุน",
+  "circle_sendSupport": "ส่งกำลังใจ · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "คัดลอกรหัสเชิญแล้ว",
+  "circle_createInvite": "สร้างคำเชิญส่วนตัว",
+  "crisis_nameTitle": "ก่อนอื่น ลองบอกว่าสิ่งที่เกิดขึ้นคืออะไร",
+  "crisis_nameDesc": "อาจเป็นความหิว ความเคยชิน หรืออารมณ์",
+  "crisis_waterTitle": "ดื่มน้ำหนึ่งแก้ว",
+  "crisis_waterDesc": "จากนั้นหายใจช้า ๆ สามครั้ง",
+  "crisis_delayTitle": "เลื่อนการตัดสินใจออกไป 10 นาที",
+  "crisis_delayDesc": "หากรู้สึกไม่สบาย การจบการอดอาหารไม่ใช่ความล้มเหลว",
+  "crisis_hunger": "ความหิว",
+  "crisis_habit": "ความเคยชิน",
+  "crisis_stress": "ความเครียด",
+  "crisis_tenMore": "ให้เวลาอีก 10 นาที",
+  "stats_storyEmpty": "การอดอาหารครั้งแรกจะเริ่มเรื่องราวส่วนตัวของคุณ",
+  "stats_story": "ช่วงนี้คุณอดอาหาร {sessions} ครั้ง รักษาจังหวะได้ {hours} ชั่วโมง และมีอัตราความสำเร็จ {rate}%",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "เรื่องราวของจังหวะคุณ",
+  "home_todayRhythm": "จังหวะวันนี้",
+  "home_finalHourSupport": "กำลังใจในชั่วโมงสุดท้าย",
+  "home_needSupport": "ฉันต้องการกำลังใจเล็กน้อย",
+  "home_todaySummary": "ภาพรวมวันนี้",
+  "home_dayStreak": "วันต่อเนื่อง",
+  "home_weightGoal": "เป้าหมาย {weight} กก.",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "จังหวะของคุณคงที่",
+  "weather_gentle": "วันที่สบาย ๆ",
+  "weather_water": "น้ำหนึ่งแก้วอาจช่วยได้",
+  "weather_listen": "คุณมาไกลแล้ว รับฟังร่างกายของคุณ",
+  "weather_onPlan": "จังหวะวันนี้ตรงกับแผนของคุณ",
+  "weather_challenging": "ชั่วโมงนี้เคยท้าทายมาก่อน โหมดสนับสนุนพร้อมแล้ว",
+  "replay_copied": "คัดลอกสรุปการอดอาหารแล้ว",
+  "replay_button": "ดูย้อนหลัง",
+  "replay_text": "ฉันทำการอดอาหาร {plan} สำเร็จใน {hours}ชม. {minutes}นาที · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "เส้นทางการเผาผลาญ",
+  "journey_now": "ตอนนี้",
+  "journey_next": "อีก {time} ถึง {phase}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "เวลาของแต่ละระยะเป็นเพียงค่าประมาณทั่วไป ไม่ใช่การวัดทางการแพทย์",
+  "phase_hours": "ชั่วโมง {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "เวลานี้เป็นเพียงค่าประมาณทั่วไป การตอบสนองด้านการเผาผลาญอาจแตกต่างกันในแต่ละคน",
+  "bmi_underweight": "น้ำหนักต่ำกว่าเกณฑ์",
+  "bmi_normal": "ปกติ",
+  "bmi_overweight": "น้ำหนักเกิน",
+  "bmi_obese": "โรคอ้วน",
+  "notification_halfwayTitle": "ถึงครึ่งทางแล้ว! 💪",
+  "notification_halfwayBody": "คุณทำการอดอาหาร {plan} สำเร็จครึ่งหนึ่งแล้ว สู้ต่อไป!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "เข้าสู่ระยะแคแทบอลิกแล้ว 📉",
+  "notification_phaseFatBurning": "เริ่มเผาผลาญไขมันแล้ว! 🔥",
+  "notification_phaseKetosis": "คุณอยู่ในภาวะคีโตซิส ⚡",
+  "notification_phaseAutophagy": "ออโตฟาจีกำลังทำงาน! 🔄",
+  "notification_completedBody": "คุณทำการอดอาหาร {plan} สำเร็จแล้ว! ช่วงรับประทานอาหารเปิดแล้ว",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "ดื่มน้ำ 💧",
+  "notification_waterBody": "อย่าลืมดื่มน้ำให้เพียงพอระหว่างอดอาหาร!",
+  "notification_windowTitle": "ช่วงรับประทานอาหารใกล้สิ้นสุด ⏰",
+  "notification_windowBody": "ช่วงรับประทานอาหารจะสิ้นสุดใน 30 นาที",
+  "notification_streakTitle": "ต่อเนื่อง {days} วัน! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "คุณทำได้ดีมาก! ทำต่อในวันนี้",
+  "notification_ongoingTitle": "กำลังอดอาหาร - {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "เหลือ: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "เริ่มอดอาหาร - {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "เป้าหมาย: {hours} ชั่วโมง",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours}ชม. {minutes}นาที",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "คู่มือการอดอาหาร",
+  "explore_guideDesc": "ทุกสิ่งที่ควรรู้เกี่ยวกับการอดอาหารเป็นช่วง",
+  "explore_circleDesc": "แบ่งปันกำลังใจอย่างสงบกับกลุ่มส่วนตัวของคุณ",
+  "explore_faq": "คำถามที่พบบ่อย",
+  "explore_education": "เนื้อหานี้มีไว้เพื่อให้ความรู้ทั่วไปเท่านั้น ไม่ใช่การวินิจฉัยหรือคำแนะนำการรักษาทางการแพทย์",
+  "explore_safety": "สุขภาพและความปลอดภัย",
+  "explore_safetyDesc": "หากคุณมีโรคประจำตัว ใช้ยาเป็นประจำ มีอาการน่ากังวล กำลังตั้งครรภ์หรือให้นมบุตร โปรดปรึกษาผู้เชี่ยวชาญด้านสุขภาพก่อนอดอาหาร และหยุดหากรู้สึกไม่สบาย",
+  "explore_sources": "แหล่งข้อมูล",
+  "explore_sourcesDesc": "เนื้อหาถูกเรียบเรียงให้ง่ายขึ้นจากแหล่งข้อมูลสาธารณสุขด้านล่าง",
+  "explore_sourceError": "ไม่สามารถเปิดแหล่งข้อมูลได้",
+  "explore_rules": "กฎสำคัญ",
+  "explore_rule1": "อย่ารับประทานอาหารที่มีแคลอรีระหว่างอดอาหาร",
+  "explore_rule2": "ดื่มน้ำและของเหลวให้เพียงพอ",
+  "explore_rule3": "รับประทานอาหารให้สมดุลในช่วงรับประทานอาหาร",
+  "explore_rule4": "หยุดอดอาหารหากรู้สึกไม่สบาย",
+  "explore_rule5": "หญิงตั้งครรภ์หรือให้นมบุตรไม่ควรอดอาหาร",
+  "explore_rule6": "ปรึกษาแพทย์หากมีโรคเรื้อรัง",
+  "tip_water": "รักษาระดับน้ำในร่างกาย",
+  "tip_waterDesc": "ดื่มน้ำเมื่อกระหายและรับของเหลวพร้อมมื้ออาหาร ความต้องการอาจต่างกันตามสุขภาพ อากาศ และกิจกรรม",
+  "tip_food": "รับประทานให้เหมาะสม",
+  "tip_foodDesc": "ช่วงรับประทานอาหารให้เลือกอาหารโปรตีนสูงที่มีใยอาหารและไขมันดี หลีกเลี่ยงอาหารแปรรูป",
+  "tip_sleep": "นอนหลับให้เพียงพอ",
+  "tip_sleepDesc": "การนอนอย่างสม่ำเสมอและเพียงพอช่วยสุขภาพโดยรวม จัดเวลาอดอาหารไม่ให้รบกวนการนอน",
+  "tip_exercise": "ออกกำลังกายเบา ๆ",
+  "tip_exerciseDesc": "คุณเดินเบา ๆ หรือเล่นโยคะระหว่างอดอาหารได้ หลีกเลี่ยงการออกกำลังหนัก โดยเฉพาะช่วงสัปดาห์แรกที่ร่างกายกำลังปรับตัว",
+  "tip_drinks": "เครื่องดื่มที่อนุญาต",
+  "tip_drinksDesc": "ระหว่างอดอาหาร คุณดื่มน้ำ ชาไม่ปรุงแต่ง และกาแฟดำได้ (ไม่ใส่น้ำตาลหรือนม) เครื่องดื่มเหล่านี้ไม่ทำให้การอดอาหารสิ้นสุด",
+  "faq_drinks": "ดื่มอะไรได้บ้างระหว่างอดอาหาร?",
+  "faq_drinksAnswer": "ดื่มน้ำ ชาไม่ปรุงแต่ง และกาแฟดำได้ (ไม่ใส่น้ำตาล/นม) เครื่องดื่มที่มีแคลอรีจะทำให้การอดอาหารสิ้นสุด",
+  "faq_plan": "ควรเลือกแผนอดอาหารใด?",
+  "faq_planAnswer": "หากเพิ่งเริ่ม ให้เริ่มจาก 12:12 หรือ 14:10 หากมีประสบการณ์ ลอง 16:8 หรือ 18:6 ส่วน 20:4 และ OMAD เหมาะกับผู้มีประสบการณ์สูง",
+  "faq_exercise": "ออกกำลังกายระหว่างอดอาหารได้หรือไม่?",
+  "faq_exerciseAnswer": "ได้ แต่ควรหลีกเลี่ยงการออกกำลังหนัก คาร์ดิโอเบา ๆ การเดิน และโยคะเหมาะที่สุด หากยกน้ำหนัก ให้จัดไว้ใกล้ช่วงรับประทานอาหาร",
+  "faq_weight": "การอดอาหารช่วยลดน้ำหนักหรือไม่?",
+  "faq_weightAnswer": "สำหรับบางคน การจำกัดเวลารับประทานอาจลดพลังงานรวมที่ได้รับ ผลลัพธ์แตกต่างกันและผลระยะยาวยังอยู่ระหว่างการศึกษา",
+  "plan_12_desc": "ระดับเริ่มต้น",
+  "plan_12_detail": "เหมาะสำหรับผู้เริ่มต้น อดอาหาร 12 ชั่วโมงรวมเวลานอน",
+  "plan_16_desc": "แผนยอดนิยมที่สุด",
+  "plan_16_detail": "แผนอดอาหารเป็นช่วงที่พบบ่อยที่สุด อด 16 ชั่วโมง รับประทาน 8 ชั่วโมง โดยทั่วไปตั้งแต่มื้อกลางวันถึงมื้อเย็น",
+  "plan_18_desc": "ระดับปานกลาง",
+  "plan_18_detail": "อด 18 ชั่วโมง รับประทาน 6 ชั่วโมง มีช่วงเผาผลาญไขมันนานขึ้น",
+  "plan_20_desc": "ระดับสูง",
+  "plan_20_detail": "อด 20 ชั่วโมง รับประทาน 4 ชั่วโมง เหมาะสำหรับเข้าสู่ภาวะคีโตซิสและออโตฟาจี",
+  "plan_omad_desc": "หนึ่งมื้อต่อวัน",
+  "plan_omad_detail": "หนึ่งมื้อต่อวัน อด 23 ชั่วโมง รับประทาน 1 ชั่วโมง ระดับผู้เชี่ยวชาญ",
+  "plan_52_desc": "2 วันต่อสัปดาห์",
+  "plan_52_detail": "รับประทานตามปกติ 5 วัน และเพียงประมาณ 500 แคลอรีใน 2 วัน เป็นอีกแนวทางหนึ่ง",
+  "plan_ese_desc": "อดอาหาร 24 ชั่วโมง",
+  "plan_ese_detail": "อดอาหาร 24 ชั่วโมง สัปดาห์ละ 1–2 ครั้ง สำหรับผู้ใช้ระดับสูง",
+  "plan_warrior_desc": "อาหารแบบนักรบ",
+  "plan_warrior_detail": "รับประทานเบา ๆ ระหว่างวัน (ผลไม้ ผัก) และรับประทานมื้อหลักในช่วง 4 ชั่วโมงตอนเย็น",
+  "award_first_title": "ก้าวแรก",
+  "award_first_desc": "ทำการอดอาหารครั้งแรกให้สำเร็จ",
+  "award_rhythm3_title": "จังหวะ 3 วัน",
+  "award_rhythm3_desc": "รักษาจังหวะเป็นเวลาสามวัน",
+  "award_hours24_title": "24 ชั่วโมง",
+  "award_hours24_desc": "อดอาหารรวม 24 ชั่วโมง",
+  "award_week_title": "จังหวะหนึ่งสัปดาห์",
+  "award_week_desc": "สร้างสถิติต่อเนื่องเจ็ดวัน",
+  "award_fasts10_title": "อดอาหาร 10 ครั้ง",
+  "award_fasts10_desc": "ทำการอดอาหารสิบครั้งให้สำเร็จ",
+  "award_hours100_title": "100 ชั่วโมง",
+  "award_hours100_desc": "ทำให้ถึงทั้งหมด 100 ชั่วโมง",
+  "award_rhythm30_title": "จังหวะ 30 วัน",
+  "award_rhythm30_desc": "สร้างสถิติต่อเนื่องสามสิบวัน",
+  "award_fasts50_title": "อดอาหาร 50 ครั้ง",
+  "award_fasts50_desc": "ทำการอดอาหารห้าสิบครั้งให้สำเร็จ",
+  "award_hours500_title": "500 ชั่วโมง",
+  "award_hours500_desc": "ทำให้ถึงทั้งหมด 500 ชั่วโมง",
+  "award_fasts100_title": "อดอาหาร 100 ครั้ง",
+  "award_fasts100_desc": "ทำการอดอาหารหนึ่งร้อยครั้งให้สำเร็จ",
+  "award_rhythm90_title": "จังหวะ 90 วัน",
+  "award_rhythm90_desc": "สร้างสถิติต่อเนื่องเก้าสิบวัน",
+  "award_year_title": "เส้นทางหนึ่งปี",
+  "award_year_desc": "ทำจังหวะให้ถึง 365 วัน",
+  "awards_loadError": "โหลดความคืบหน้าไม่ได้",
+  "awards_journeyComplete": "เส้นทางเสร็จสมบูรณ์",
+  "awards_nextGoal": "เป้าหมายถัดไป",
+  "awards_allYours": "ความสำเร็จทั้งหมดเป็นของคุณ",
+  "awards_dayStreak": "วันต่อเนื่อง",
+  "awards_fasts": "ครั้งของการอดอาหาร",
+  "awards_total": "ทั้งหมด",
+  "awards_stageStart": "เริ่มต้น",
+  "awards_stageRhythm": "จังหวะ",
+  "awards_stageEndurance": "ความอดทน",
+  "awards_stageMastery": "ความชำนาญ",
+  "awards_completed": "สำเร็จแล้ว",
+  "awards_fastsRemaining": "เหลือการอดอาหาร {count} ครั้ง",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "เหลือ {count} วัน",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "เหลือ {count} ชั่วโมง",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "ลองอีกครั้ง",
+  "game_title": "ศูนย์ความคืบหน้า",
+  "game_quests": "ภารกิจวันนี้",
+  "game_questsDesc": "ก้าวเล็ก ๆ สู่จังหวะที่ยั่งยืน",
+  "game_season": "ฤดูกาล 30 ขั้น",
+  "game_seasonDesc": "รับตราสะสมทุกห้าขั้น",
+  "game_badges": "ชุดเหรียญตรา",
+  "game_shields": "โล่จังหวะ {count} อัน",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "ได้รับทุกครั้งที่ทำสำเร็จเจ็ดครั้ง การพลาดหนึ่งวันจะไม่ลบความคืบหน้าของคุณ",
+  "game_league": "ลีกส่วนตัวรายสัปดาห์",
+  "game_leagueDesc": "คะแนนจังหวะของคุณอยู่ที่เปอร์เซ็นไทล์ {percent} ของแบบจำลองส่วนตัวในเครื่อง น้ำหนักและการอดอาหารแบบสุดโต่งจะไม่ถูกจัดอันดับ",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "ระดับ {level}, คะแนนประสบการณ์ {xp}",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "นักสำรวจจังหวะ",
+  "game_streak": "สถิติต่อเนื่อง",
+  "game_targets": "เป้าหมาย",
+  "game_best": "ดีที่สุด",
+  "quest_rhythm": "สร้างจังหวะของวันนี้",
+  "quest_hydrate": "ดื่มน้ำให้ถึงครึ่งหนึ่งของเป้าหมาย",
+  "quest_steady": "รักษาสถิติต่อเนื่องของคุณ",
+  "badge_first_title": "ก้าวแรก",
+  "badge_first_desc": "บันทึกการอดอาหารครั้งแรก",
+  "badge_rhythm7_title": "ผู้รักษาจังหวะ",
+  "badge_rhythm7_desc": "ทำสถิติต่อเนื่อง 7 วัน",
+  "badge_rhythm3_title": "จังหวะสามวัน",
+  "badge_rhythm3_desc": "ทำสถิติต่อเนื่อง 3 วัน",
+  "badge_target1_title": "เป้าหมายแรก",
+  "badge_target1_desc": "ทำการอดอาหารตามเป้าหมายครั้งแรกให้สำเร็จ",
+  "badge_target3_title": "สามก้าว",
+  "badge_target3_desc": "ทำ 3 เป้าหมายให้สำเร็จ",
+  "badge_water_title": "สมดุล",
+  "badge_water_desc": "ทำเป้าหมายการดื่มน้ำรายวันให้สำเร็จ",
+  "badge_support_title": "รู้จักตนเอง",
+  "badge_support_desc": "ใช้โหมดสนับสนุน",
+  "badge_hours10_title": "10 ชั่วโมง",
+  "badge_hours10_desc": "บันทึกรวม 10 ชั่วโมง",
+  "badge_target10_title": "สิบครั้งอย่างแข็งแกร่ง",
+  "badge_target10_desc": "ทำ 10 เป้าหมายให้สำเร็จ",
+  "badge_target20_title": "ยี่สิบเป้าหมาย",
+  "badge_target20_desc": "ทำ 20 เป้าหมายให้สำเร็จ",
+  "badge_fast16_title": "16 ชั่วโมง",
+  "badge_fast16_desc": "อดอาหารครั้งเดียวให้ถึง 16 ชั่วโมง",
+  "badge_hours50_title": "50 ชั่วโมง",
+  "badge_hours50_desc": "บันทึกรวม 50 ชั่วโมง",
+  "badge_hours100_title": "หนึ่งร้อยชั่วโมง",
+  "badge_hours100_desc": "บันทึกรวม 100 ชั่วโมง",
+  "badge_target30_title": "สามสิบเป้าหมาย",
+  "badge_target30_desc": "ทำ 30 เป้าหมายให้สำเร็จ",
+  "badge_rhythm30_title": "จังหวะ 30 วัน",
+  "badge_rhythm30_desc": "ทำสถิติต่อเนื่อง 30 วัน",
+  "paywall_restoreSuccess": "กู้คืนการซื้อแล้ว!",
+  "fasting_progressSemantics": "ความคืบหน้าการอดอาหาร {percent} เปอร์เซ็นต์",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour}ชม.",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "ตลอดชีพ",
+  "paywall_once": "ครั้งเดียว",
+  "paywall_processing": "กำลังดำเนินการ…",
+  "paywall_continue": "ดำเนินการต่อ",
+  "paywall_productsUnavailable": "ไม่สามารถซื้อได้ในขณะนี้ โปรดลองอีกครั้งภายหลัง",
+  "paywall_purchaseFailed": "ไม่สามารถทำรายการซื้อให้สำเร็จ",
+  "paywall_nothingToRestore": "ไม่พบการซื้อก่อนหน้า",
+  "paywall_restoreFailed": "ไม่สามารถกู้คืนการซื้อได้",
+  "paywall_terms": "ข้อกำหนดการใช้งาน",
+  "permission_notificationDesc": "การเตือนอดอาหาร การอัปเดตระยะ และการแจ้งเตือนเมื่อเสร็จสิ้น",
+  "profile_privacyChoices": "ตัวเลือกความเป็นส่วนตัว",
+  "paywall_autoRenewInfo": "การสมัครจะต่ออายุอัตโนมัติ เว้นแต่ยกเลิกอย่างน้อย 24 ชั่วโมงก่อนสิ้นสุดรอบ จัดการหรือยกเลิกได้ทุกเมื่อในการตั้งค่า App Store",
+  "paywall_perMonth": "{price} / เดือน",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "ประหยัด {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "ทดลองใช้ฟรี {days} วัน",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "เริ่มทดลองใช้ฟรี",
+  "paywall_retry": "ลองอีกครั้ง",
+  "paywall_alreadyOwned": "คุณเป็นเจ้าของการสมัครนี้แล้ว แตะ “กู้คืนการซื้อ”",
+  "paywall_storeUnavailable": "เชื่อมต่อร้านค้าไม่ได้ในขณะนี้ ตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง",
+  "paywall_secureNote": "ยกเลิกได้ทุกเมื่อ ระบบจะเรียกเก็บเงินจากบัญชีร้านค้าของคุณ",
+  "paywall_autoRenewInfoPlay": "การสมัครจะต่ออายุอัตโนมัติ เว้นแต่ยกเลิกอย่างน้อย 24 ชั่วโมงก่อนสิ้นสุดรอบ จัดการหรือยกเลิกได้ทุกเมื่อใน Google Play > การสมัครใช้บริการ",
+  "paywall_allPlansDesc": "ปลดล็อก 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat และ Warrior",
+  "paywall_noAdsDesc": "ปิดโฆษณาแบนเนอร์และโฆษณาคั่นทั้งหมด",
+  "foodScan_title": "สแกนอาหารด้วย AI",
+  "foodScan_scanCta": "สแกนมื้ออาหาร",
+  "foodScan_scanCtaDesc": "ถ่ายภาพจานอาหารเพื่อดูแคลอรีและสารอาหารหลัก",
+  "foodScan_introTitle": "ถ่ายภาพจานอาหาร",
+  "foodScan_introDesc": "AI อ่านภาพและประมาณแคลอรี โปรตีน คาร์โบไฮเดรต และไขมัน",
+  "foodScan_tipLight": "แสงที่ดีและสม่ำเสมอช่วยให้ประมาณได้แม่นขึ้น",
+  "foodScan_tipFrame": "ให้จานทั้งหมดอยู่ในกรอบ",
+  "foodScan_tipScale": "ใส่ช้อนส้อมหรือมือในภาพเพื่อช่วยกะขนาดอาหาร",
+  "foodScan_takePhoto": "ถ่ายภาพ",
+  "foodScan_chooseFromGallery": "เลือกจากแกลเลอรี",
+  "foodScan_scansLeft": "วันนี้เหลือ {count} ครั้ง",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "คุณใช้จำนวนสแกนของวันนี้หมดแล้ว ลองอีกครั้งพรุ่งนี้",
+  "foodScan_privacyNote": "ภาพจะถูกส่งไปยัง Gemini API ของ Google เพื่อวิเคราะห์และไม่เก็บไว้บนเซิร์ฟเวอร์ของเรา",
+  "foodScan_analyzing": "กำลังวิเคราะห์มื้ออาหาร…",
+  "foodScan_analyzingHint": "โดยปกติใช้เวลาไม่กี่วินาที",
+  "foodScan_detectedItems": "รายการที่ตรวจพบ",
+  "foodScan_disclaimer": "ค่าประมาณจาก AI เป็นค่าโดยประมาณ แตะรายการเพื่อแก้ไข",
+  "foodScan_lowConfidence": "โมเดลไม่แน่ใจเกี่ยวกับภาพนี้ ตรวจสอบตัวเลขก่อนบันทึก",
+  "foodScan_save": "เพิ่มในมื้ออาหาร",
+  "foodScan_retake": "ภาพใหม่",
+  "foodScan_retry": "ลองอีกครั้ง",
+  "foodScan_editItem": "แก้ไขรายการ",
+  "foodScan_portion": "ปริมาณ",
+  "foodScan_saveEdit": "บันทึก",
+  "foodScan_premiumTitle": "ฟีเจอร์ Premium",
+  "foodScan_premiumDesc": "การวิเคราะห์แคลอรีจากภาพรวมอยู่ใน Premium",
+  "foodScan_upgrade": "ดู Premium",
+  "foodScan_errorNetwork": "ไม่มีการเชื่อมต่อ ตรวจสอบอินเทอร์เน็ตแล้วลองอีกครั้ง",
+  "foodScan_errorRateLimited": "ขณะนี้มีการสแกนมากเกินไป ลองอีกครั้งในอีกไม่กี่นาที",
+  "foodScan_errorUnavailable": "การวิเคราะห์ภาพไม่พร้อมใช้งานในขณะนี้",
+  "foodScan_errorServer": "บริการวิเคราะห์มีปัญหา โปรดลองอีกครั้งในอีกสักครู่",
+  "foodScan_errorNoFood": "ไม่พบอาหารในภาพ ลองถ่ายจานให้ชัดขึ้น",
+  "foodScan_errorUnreadable": "ไม่สามารถวิเคราะห์ภาพนี้ได้ ลองใช้ภาพอื่น",
+  "paywall_aiFoodScan": "สแกนอาหารด้วย AI",
+  "paywall_aiFoodScanDesc": "ถ่ายภาพมื้ออาหารและบันทึกแคลอรีกับสารอาหารหลักในไม่กี่วินาที",
+  "completion_earlyTitle": "สิ้นสุดการอดอาหารแล้ว",
+  "completion_earlyMessage": "บันทึกระยะเวลาของวันนี้แล้ว สถิติต่อเนื่องและความคืบหน้าของความสำเร็จไม่เปลี่ยนแปลง เนื่องจากยังไม่บรรลุเป้าหมาย"
+}

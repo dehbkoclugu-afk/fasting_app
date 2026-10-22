@@ -33,7 +33,7 @@ android {
         applicationId = "com.dehbkoclugu.fasttrack"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 26 // Required for Health Connect
+        minSdk = 26
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -55,6 +55,13 @@ android {
         release {
             signingConfig = signingConfigs.findByName("release")
             manifestPlaceholders["admobAppId"] = "ca-app-pub-2554058432197193~9748460094"
+            // -PsideloadSuffix (or ORG_GRADLE_PROJECT_sideloadSuffix) builds a
+            // test APK under its own application id, so installing it next to
+            // the Play version never replaces it or wipes its data. Play
+            // uploads must never carry this suffix.
+            if (project.hasProperty("sideloadSuffix")) {
+                applicationIdSuffix = ".sideload"
+            }
         }
     }
 }

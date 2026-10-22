@@ -4,6 +4,7 @@ import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../shared/widgets/editorial_screen_hero.dart';
 
 class FastingCircleScreen extends StatefulWidget {
   const FastingCircleScreen({super.key});
@@ -48,13 +49,11 @@ class _FastingCircleScreenState extends State<FastingCircleScreen> {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          Text(l10n.circle_tagline, style: theme.textTheme.headlineSmall),
-          const SizedBox(height: 6),
-          Text(
-            l10n.circle_privacy,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: .62),
-            ),
+          EditorialScreenHero(
+            assetPath: 'assets/images/editorial/community.webp',
+            title: l10n.circle_tagline,
+            subtitle: l10n.circle_privacy,
+            icon: Icons.people_outline,
           ),
           const SizedBox(height: 24),
           Container(

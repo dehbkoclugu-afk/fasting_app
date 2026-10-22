@@ -1,0 +1,775 @@
+{
+  "@@locale": "sk",
+  "appTitle": "FastTrack",
+  "greeting_morning": "Dobré ráno",
+  "greeting_afternoon": "Dobré popoludnie",
+  "greeting_evening": "Dobrý večer",
+  "tab_timer": "Domov",
+  "tab_explore": "Objavovať",
+  "tab_stats": "Prehľad",
+  "tab_meals": "Jedlá",
+  "tab_achievements": "Ocenenia",
+  "tab_profile": "Účet",
+  "timer_fasting": "Čas pôstu",
+  "timer_remaining": "Zostáva",
+  "timer_elapsed": "Uplynulo",
+  "timer_start": "Spustiť",
+  "timer_stop": "Ukončiť",
+  "timer_completed": "Gratulujeme!",
+  "timer_completedMessage": "Úspešne ste dokončili pôst!",
+  "timer_selectPlan": "Vyberte plán pôstu",
+  "timer_stopConfirm": "Naozaj chcete pôst ukončiť skôr?",
+  "timer_stopTitle": "Ukončiť pôst",
+  "timer_cancel": "Zrušiť",
+  "timer_confirmStop": "Áno, ukončiť",
+  "phase_anabolic": "Anabolická fáza",
+  "phase_anabolicDesc": "Prebieha trávenie",
+  "phase_catabolic": "Katabolická fáza",
+  "phase_catabolicDesc": "Prechod zdroja energie",
+  "phase_fatBurning": "Spaľovanie tukov",
+  "phase_fatBurningDesc": "Spaľovanie tukov sa začalo",
+  "phase_ketosis": "Ketóza",
+  "phase_ketosisDesc": "Tvorba ketónov je aktívna",
+  "phase_autophagy": "Autofágia",
+  "phase_autophagyDesc": "Obnova buniek",
+  "stats_title": "Štatistiky",
+  "stats_week": "Týždeň",
+  "stats_month": "Mesiac",
+  "stats_year": "Rok",
+  "stats_totalFasts": "Pôsty spolu",
+  "stats_average": "Priemer",
+  "stats_fastDuration": "dĺžka pôstu",
+  "stats_streak": "Séria",
+  "stats_daysConsecutive": "dní za sebou",
+  "stats_success": "Úspešnosť",
+  "stats_completion": "dokončenie",
+  "stats_weeklyFasting": "Týždenný pôst",
+  "stats_monthlyView": "Mesačný prehľad",
+  "stats_weightChange": "Zmena hmotnosti",
+  "heatmap_none": "Žiadna",
+  "heatmap_low": "Nízka",
+  "heatmap_good": "Dobrá",
+  "heatmap_full": "Plná",
+  "meals_title": "Plánovač jedál",
+  "meals_eatingWindow": "Okno jedenia",
+  "meals_windowOpen": "Otvorené",
+  "meals_windowFasting": "Pôst",
+  "meals_calories": "Kalórie",
+  "meals_protein": "Bielkoviny",
+  "meals_carbs": "Sacharidy",
+  "meals_fat": "Tuky",
+  "meals_todayMeals": "Dnešné jedlá",
+  "meals_noMeals": "Zatiaľ nebolo pridané žiadne jedlo",
+  "meals_breakfastSuggestions": "Tipy na prerušenie pôstu",
+  "meals_addMeal": "Pridať jedlo",
+  "profile_title": "Profil",
+  "profile_user": "Používateľ",
+  "profile_planActive": "Plán {plan} je aktívny",
+  "@profile_planActive": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_upgradePremium": "Prejsť na Premium",
+  "profile_premiumDesc": "Všetky plány pôstu bez reklám",
+  "profile_bodyMetrics": "Telesné údaje",
+  "profile_height": "Výška",
+  "profile_weight": "Hmotnosť",
+  "profile_targetWeight": "Cieľová hmotnosť",
+  "profile_bmi": "BMI",
+  "profile_settings": "Nastavenia",
+  "profile_notifications": "Upozornenia",
+  "profile_darkTheme": "Tmavý motív",
+  "profile_waterReminder": "Pripomienka pitia",
+  "profile_phaseNotifications": "Upozornenia na fázy",
+  "profile_language": "Jazyk",
+  "profile_about": "O aplikácii",
+  "profile_rateApp": "Ohodnotiť aplikáciu",
+  "profile_share": "Zdieľať",
+  "profile_privacyPolicy": "Zásady ochrany súkromia",
+  "profile_version": "Verzia",
+  "onboarding_welcome": "Vitajte",
+  "onboarding_welcomeDesc": "Prevezmite kontrolu nad svojou cestou\ns prerušovaným pôstom",
+  "onboarding_featureTimer": "Inteligentný časovač pôstu",
+  "onboarding_featureStats": "Podrobné štatistiky a grafy",
+  "onboarding_featureMeals": "Plánovač jedál a tipy na recepty",
+  "onboarding_getStarted": "Začať",
+  "onboarding_selectGoal": "Aký je váš cieľ?",
+  "onboarding_selectGoalDesc": "Môžete vybrať viac možností",
+  "onboarding_goalWeight": "Schudnúť",
+  "onboarding_goalWeightDesc": "Zdravé chudnutie",
+  "onboarding_goalHealth": "Zlepšiť zdravie",
+  "onboarding_goalHealthDesc": "Celkové zdravie a imunita",
+  "onboarding_goalEnergy": "Viac energie",
+  "onboarding_goalEnergyDesc": "Energia počas celého dňa",
+  "onboarding_goalMental": "Duševná jasnosť",
+  "onboarding_goalMentalDesc": "Sústredenie a jasná myseľ",
+  "onboarding_goalLongevity": "Dlhovekosť",
+  "onboarding_goalLongevityDesc": "Obnova buniek a zdravé starnutie",
+  "onboarding_goalDiscipline": "Disciplína",
+  "onboarding_goalDisciplineDesc": "Rozvíjať sebadisciplínu",
+  "onboarding_selectPlan": "Vyberte si plán",
+  "onboarding_selectPlanDesc": "Vyberte si plán pôstu, ktorý vám najviac vyhovuje",
+  "onboarding_bodyInfo": "Zadajte svoje údaje",
+  "onboarding_bodyInfoDesc": "Pre osobné odporúčania",
+  "onboarding_gender": "Pohlavie",
+  "onboarding_male": "Muž",
+  "onboarding_female": "Žena",
+  "onboarding_age": "Vek",
+  "onboarding_bodyInfoDisclaimer": "Tieto údaje sa ukladajú iba vo vašom zariadení a používajú sa na výpočet kalórií.",
+  "onboarding_permissions": "Posledný krok",
+  "onboarding_permissionsDesc": "Pre najlepší zážitok povoľte oprávnenia",
+  "onboarding_next": "Pokračovať",
+  "onboarding_start": "Poďme na to!",
+  "onboarding_skipForNow": "Nastaviť neskôr",
+  "waterAdded": "Pridaných 250 ml vody",
+  "languageSelect": "Vyberte jazyk",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "paywall_title": "Prejsť na Premium",
+  "paywall_subtitle": "Odomknite všetky plány pôstu a odstráňte reklamy",
+  "paywall_allPlans": "Všetky plány pôstu",
+  "paywall_advancedStats": "Pokročilé štatistiky",
+  "paywall_mealPlanner": "Plánovač jedál",
+  "paywall_themes": "Prispôsobenie motívu",
+  "paywall_noAds": "Bez reklám",
+  "paywall_weekly": "Týždenne",
+  "paywall_monthly": "Mesačne",
+  "paywall_yearly": "Ročne",
+  "paywall_bestValue": "Najvýhodnejšie",
+  "paywall_freeTrial": "Bezplatná skúšobná verzia (3 dni)",
+  "paywall_restore": "Obnoviť nákupy",
+  "paywall_premiumActive": "Premium je aktívne!",
+  "paywall_premiumActiveDesc": "Všetky plány pôstu sú odomknuté a reklamy vypnuté",
+  "water_title": "Príjem vody",
+  "water_addWater": "Pridať vodu",
+  "water_goal": "Cieľ",
+  "water_ml": "ml",
+  "common_ok": "OK",
+  "common_cancel": "Zrušiť",
+  "common_save": "Uložiť",
+  "common_delete": "Odstrániť",
+  "common_hours": "hodín",
+  "common_minutes": "minút",
+  "common_days": "dní",
+  "common_enable": "Povoliť",
+  "streakCard_currentStreak": "Aktuálna séria",
+  "streakCard_longestStreak": "Najdlhšia séria",
+  "streakCard_totalSessions": "Pôsty spolu",
+  "meals_mealType": "Typ jedla",
+  "meals_breakfast": "Raňajky",
+  "meals_lunch": "Obed",
+  "meals_dinner": "Večera",
+  "meals_snack": "Desiata",
+  "meals_carbohydrate": "Sacharidy",
+  "meals_add": "Pridať",
+  "meals_mealName": "Názov jedla",
+  "bodyMetrics_title": "Telesné údaje",
+  "bodyMetrics_weight": "Hmotnosť",
+  "bodyMetrics_target": "Cieľ",
+  "bodyMetrics_save": "Uložiť",
+  "bodyMetrics_history": "História",
+  "bodyMetrics_bmiValue": "BMI: {value}",
+  "@bodyMetrics_bmiValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bodyMetrics_noData": "Zatiaľ žiadne údaje",
+  "meals_quickAdd": "Rýchle pridanie",
+  "meals_manualEntry": "Ručné zadanie",
+  "meals_added": "Položka {name} bola pridaná",
+  "@meals_added": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_nameCalorieRequired": "Je potrebné zadať názov a kalórie",
+  "bodyMetrics_addWeight": "Pridať hmotnosť",
+  "bodyMetrics_hintWeight": "napr. 74,5",
+  "bodyMetrics_invalidWeight": "Zadajte platnú hmotnosť",
+  "bodyMetrics_weightSaved": "Uložené: {value} kg",
+  "@bodyMetrics_weightSaved": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "completion_duration": "Trvanie",
+  "completion_plan": "Plán",
+  "completion_lastPhase": "Posledná fáza",
+  "timer_remainingTime": "Zostávajúci čas",
+  "timer_ready": "Pripravené na spustenie",
+  "streak_status": "Stav",
+  "streak_startToday": "Začnite dnes!",
+  "streak_goodStart": "Dobrý začiatok!",
+  "streak_goingGreat": "Ide vám to skvele!",
+  "streak_superb": "Výborne!",
+  "streak_legendary": "Legendárne!",
+  "streak_incredible": "Neuveriteľné!",
+  "weight_noRecord": "Zatiaľ žiadne záznamy hmotnosti\nPridajte ich v Profil > Telesné údaje",
+  "day_mon": "Po",
+  "day_tue": "Ut",
+  "day_wed": "St",
+  "day_thu": "Št",
+  "day_fri": "Pi",
+  "day_sat": "So",
+  "day_sun": "Ne",
+  "day_short_mon": "P",
+  "day_short_tue": "U",
+  "day_short_wed": "S",
+  "day_short_thu": "Š",
+  "day_short_fri": "P",
+  "day_short_sat": "S",
+  "day_short_sun": "N",
+  "month_jan": "Január",
+  "month_feb": "Február",
+  "month_mar": "Marec",
+  "month_apr": "Apríl",
+  "month_may": "Máj",
+  "month_jun": "Jún",
+  "month_jul": "Júl",
+  "month_aug": "August",
+  "month_sep": "September",
+  "month_oct": "Október",
+  "month_nov": "November",
+  "month_dec": "December",
+  "meals_fastingWindow": "Pôst ({hours} h)",
+  "@meals_fastingWindow": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "meals_eatingWindowHours": "Jedenie ({hours} h)",
+  "@meals_eatingWindowHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "recipe_oatSmoothie": "Ovsené smoothie",
+  "recipe_avocadoToast": "Avokádový toast",
+  "recipe_yogurtBowl": "Jogurtová miska",
+  "elapsed_time": "Uplynulý čas",
+  "fast_ends_on": "Váš pôst sa končí o",
+  "end_fasting": "Ukončiť pôst",
+  "start_fasting": "Začať pôst",
+  "water_tracker": "Sledovanie vody",
+  "weight_tracker": "Sledovanie hmotnosti",
+  "drink": "Napiť sa",
+  "log_weight": "Zaznamenať hmotnosť",
+  "bmi": "BMI",
+  "weight_lost": "Úbytok hmotnosti",
+  "current_weight": "Aktuálna hmotnosť",
+  "goal_weight": "Cieľová hmotnosť",
+  "daily_goal": "Denný cieľ",
+  "completed_percent": "Dokončené na {percent}%",
+  "@completed_percent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Objavovať",
+  "achievements": "Úspechy",
+  "profile_theme": "Vzhľad",
+  "theme_select": "Vyberte vzhľad",
+  "theme_system": "Podľa systému",
+  "theme_light": "Svetlý",
+  "theme_dark": "Tmavý",
+  "language_system": "Jazyk systému",
+  "languageSpanish": "Español",
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "languageGerman": "Deutsch",
+  "languageFrench": "Français",
+  "profile_completionSound": "Zvuk dokončenia",
+  "profile_calmGamification": "Pokojné herné prvky",
+  "profile_calmGamificationDesc": "Znižuje tlak ligy a sezóny",
+  "profile_editName": "Upraviť meno",
+  "profile_name": "Meno",
+  "circle_title": "Pôstny kruh",
+  "circle_you": "Vy",
+  "circle_tagline": "Spolu, bez tlaku.",
+  "circle_privacy": "Hmotnosť a súkromné údaje zostávajú skryté. Viditeľný je iba pokrok a podpora.",
+  "circle_sendSupport": "Poslať podporu · {count}",
+  "@circle_sendSupport": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "circle_inviteCopied": "Kód pozvánky skopírovaný",
+  "circle_createInvite": "Vytvoriť súkromnú pozvánku",
+  "crisis_nameTitle": "Najprv pomenujte, čo sa deje",
+  "crisis_nameDesc": "Môže ísť o hlad, zvyk alebo emóciu.",
+  "crisis_waterTitle": "Vypite pohár vody",
+  "crisis_waterDesc": "Potom sa trikrát pomaly nadýchnite.",
+  "crisis_delayTitle": "Odložte rozhodnutie o 10 minút",
+  "crisis_delayDesc": "Ak sa necítite dobre, ukončenie pôstu nie je zlyhanie.",
+  "crisis_hunger": "Hlad",
+  "crisis_habit": "Zvyk",
+  "crisis_stress": "Stres",
+  "crisis_tenMore": "Dajte tomu 10 minút",
+  "stats_storyEmpty": "Vaším prvým pôstom sa začne váš osobný príbeh.",
+  "stats_story": "V tomto období ste sa postili {sessions}-krát, udržali rytmus {hours} hodín a dosiahli {rate}% mieru dokončenia.",
+  "@stats_story": {
+    "placeholders": {
+      "sessions": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "stats_storyTitle": "Príbeh vášho rytmu",
+  "home_todayRhythm": "Dnešný rytmus",
+  "home_finalHourSupport": "Podpora v poslednej hodine",
+  "home_needSupport": "Potrebujem trochu podpory",
+  "home_todaySummary": "Dnešok v skratke",
+  "home_dayStreak": "dní za sebou",
+  "home_weightGoal": "cieľ {weight} kg",
+  "@home_weightGoal": {
+    "placeholders": {
+      "weight": {
+        "type": "String"
+      }
+    }
+  },
+  "weather_steady": "Váš rytmus je stabilný",
+  "weather_gentle": "Pokojný deň",
+  "weather_water": "Pohár vody môže pomôcť.",
+  "weather_listen": "Prešli ste dlhú cestu; počúvajte svoje telo.",
+  "weather_onPlan": "Dnešné tempo zodpovedá vášmu plánu.",
+  "weather_challenging": "Táto hodina bola predtým náročná; režim podpory je pripravený.",
+  "replay_copied": "Rekapitulácia pôstu skopírovaná",
+  "replay_button": "Rekapitulácia",
+  "replay_text": "Dokončil(a) som pôst {plan} za {hours} h {minutes} min · {phase}",
+  "@replay_text": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "journey_label": "Metabolická cesta",
+  "journey_now": "Teraz",
+  "journey_next": "Do fázy {phase} zostáva {time}",
+  "@journey_next": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "phase_estimateShort": "Načasovanie fáz je všeobecný odhad, nie lekárske meranie.",
+  "phase_hours": "Hodiny {start}–{end}",
+  "@phase_hours": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_estimateLong": "Toto načasovanie je všeobecný odhad. Metabolické reakcie sa môžu medzi ľuďmi líšiť.",
+  "bmi_underweight": "Podváha",
+  "bmi_normal": "Normálna hmotnosť",
+  "bmi_overweight": "Nadváha",
+  "bmi_obese": "Obezita",
+  "notification_halfwayTitle": "Ste v polovici! 💪",
+  "notification_halfwayBody": "Dokončili ste polovicu pôstu {plan}. Pokračujte!",
+  "@notification_halfwayBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_phaseCatabolic": "Vstup do katabolickej fázy 📉",
+  "notification_phaseFatBurning": "Spaľovanie tukov sa začalo! 🔥",
+  "notification_phaseKetosis": "Ste v ketóze ⚡",
+  "notification_phaseAutophagy": "Autofágia je aktívna! 🔄",
+  "notification_completedBody": "Dokončili ste pôst {plan}! Vaše okno jedenia je otvorené.",
+  "@notification_completedBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_waterTitle": "Napite sa vody 💧",
+  "notification_waterBody": "Počas pôstu nezabúdajte piť dostatok vody!",
+  "notification_windowTitle": "Okno jedenia sa zatvára ⏰",
+  "notification_windowBody": "Vaše okno jedenia sa zatvorí o 30 minút.",
+  "notification_streakTitle": "{days} dní za sebou! 🔥",
+  "@notification_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_streakBody": "Ide vám to skvele! Pokračujte aj dnes.",
+  "notification_ongoingTitle": "Prebieha pôst – {phase}",
+  "@notification_ongoingTitle": {
+    "placeholders": {
+      "phase": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_remaining": "Zostáva: {time}",
+  "@notification_remaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_started": "Pôst sa začal – {plan}",
+  "@notification_started": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "notification_target": "Cieľ: {hours} hodín",
+  "@notification_target": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "notification_time": "{hours} h {minutes} min",
+  "@notification_time": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "explore_guide": "Sprievodca pôstom",
+  "explore_guideDesc": "Všetko, čo potrebujete vedieť o prerušovanom pôste",
+  "explore_circleDesc": "Zdieľajte tichú podporu so svojou súkromnou skupinou.",
+  "explore_faq": "Časté otázky",
+  "explore_education": "Tento obsah slúži iba na všeobecné vzdelávanie a nepredstavuje lekársku diagnózu ani radu o liečbe.",
+  "explore_safety": "Zdravie a bezpečnosť",
+  "explore_safetyDesc": "Ak máte zdravotné ťažkosti, pravidelne užívate lieky, máte znepokojujúce príznaky, ste tehotná alebo dojčíte, poraďte sa pred pôstom s kvalifikovaným zdravotníkom. Ak sa necítite dobre, pôst ukončite.",
+  "explore_sources": "Zdroje",
+  "explore_sourcesDesc": "Obsah je zjednodušený z nižšie uvedených verejných zdravotníckych zdrojov.",
+  "explore_sourceError": "Zdroj sa nepodarilo otvoriť",
+  "explore_rules": "Dôležité pravidlá",
+  "explore_rule1": "Počas pôstu nekonzumujte kalorické potraviny",
+  "explore_rule2": "Pite dostatok vody a tekutín",
+  "explore_rule3": "Počas okna jedenia jedzte vyvážene",
+  "explore_rule4": "Ak sa necítite dobre, pôst ukončite",
+  "explore_rule5": "Tehotné alebo dojčiace ženy by sa nemali postiť",
+  "explore_rule6": "Ak máte chronické ochorenie, poraďte sa s lekárom",
+  "tip_water": "Dopĺňajte tekutiny",
+  "tip_waterDesc": "Keď ste smädní, pite vodu a prijímajte tekutiny aj s jedlom. Potreba sa môže líšiť podľa zdravia, počasia a aktivity.",
+  "tip_food": "Jedzte správne",
+  "tip_foodDesc": "Počas okien jedenia si vyberajte potraviny bohaté na bielkoviny a vlákninu a zdravé tuky. Vyhýbajte sa spracovaným potravinám.",
+  "tip_sleep": "Dobre spite",
+  "tip_sleepDesc": "Pravidelný a dostatočný spánok podporuje celkovú pohodu. Naplánujte pôst tak, aby nenarúšal váš spánok.",
+  "tip_exercise": "Ľahký pohyb",
+  "tip_exerciseDesc": "Počas pôstu môžete ľahko kráčať alebo cvičiť jogu. Vyhnite sa náročnému cvičeniu, najmä v prvých týždňoch, kým si telo zvykne.",
+  "tip_drinks": "Povolené nápoje",
+  "tip_drinksDesc": "Počas pôstu môžete piť vodu, čistý čaj a čiernu kávu bez cukru a mlieka. Tieto nápoje pôst neprerušia.",
+  "faq_drinks": "Čo môžem počas pôstu piť?",
+  "faq_drinksAnswer": "Môžete piť vodu, čistý čaj a čiernu kávu bez cukru a mlieka. Kalorické nápoje pôst prerušujú.",
+  "faq_plan": "Ktorý plán pôstu si mám vybrať?",
+  "faq_planAnswer": "Ak začínate, zvoľte 12:12 alebo 14:10. Ak máte skúsenosti, skúste 16:8 alebo 18:6. Plány 20:4 a OMAD sú pre pokročilých.",
+  "faq_exercise": "Môžem počas pôstu cvičiť?",
+  "faq_exerciseAnswer": "Áno, ale vyhnite sa intenzívnym tréningom. Ideálne sú ľahké kardio, chôdza a joga. Silový tréning naplánujte blízko okna jedenia.",
+  "faq_weight": "Pomáha pôst pri chudnutí?",
+  "faq_weightAnswer": "U niektorých ľudí môže obmedzenie času jedenia znížiť celkový príjem energie. Výsledky sa líšia a dlhodobé účinky sa stále skúmajú.",
+  "plan_12_desc": "Pre začiatočníkov",
+  "plan_12_detail": "Ideálne pre začiatočníkov. Postite sa 12 hodín vrátane spánku.",
+  "plan_16_desc": "Najobľúbenejší plán",
+  "plan_16_detail": "Najbežnejší plán prerušovaného pôstu: 16 hodín pôstu a 8-hodinové okno jedenia, zvyčajne od obeda do večere.",
+  "plan_18_desc": "Stredne pokročilí",
+  "plan_18_detail": "18 hodín pôstu a 6-hodinové okno jedenia. Dlhšie spaľovanie tukov.",
+  "plan_20_desc": "Pre pokročilých",
+  "plan_20_detail": "20 hodín pôstu a 4-hodinové okno jedenia. Ideálne na dosiahnutie ketózy a autofágie.",
+  "plan_omad_desc": "Jedno jedlo denne",
+  "plan_omad_detail": "Jedno jedlo denne: 23 hodín pôstu a 1-hodinové okno jedenia. Pre expertov.",
+  "plan_52_desc": "2 dni v týždni",
+  "plan_52_detail": "Päť dní jedzte normálne a dva dni obmedzte príjem približne na 500 kalórií. Alternatívny prístup.",
+  "plan_ese_desc": "24-hodinový pôst",
+  "plan_ese_detail": "Držte 24-hodinový pôst 1–2-krát týždenne. Pre pokročilých.",
+  "plan_warrior_desc": "Bojovnícka diéta",
+  "plan_warrior_detail": "Cez deň jedzte ľahko a hlavné jedlo si dajte počas štvorhodinového večerného okna.",
+  "award_first_title": "Prvý krok",
+  "award_first_desc": "Dokončite svoj prvý pôst",
+  "award_rhythm3_title": "Trojdňový rytmus",
+  "award_rhythm3_desc": "Udržte rytmus tri dni",
+  "award_hours24_title": "24 hodín",
+  "award_hours24_desc": "Postite sa spolu 24 hodín",
+  "award_week_title": "Týždenný rytmus",
+  "award_week_desc": "Vytvorte sedemdňovú sériu",
+  "award_fasts10_title": "10 pôstov",
+  "award_fasts10_desc": "Dokončite desať pôstov",
+  "award_hours100_title": "100 hodín",
+  "award_hours100_desc": "Dosiahnite spolu 100 hodín",
+  "award_rhythm30_title": "30-dňový rytmus",
+  "award_rhythm30_desc": "Vytvorte tridsaťdňovú sériu",
+  "award_fasts50_title": "50 pôstov",
+  "award_fasts50_desc": "Dokončite päťdesiat pôstov",
+  "award_hours500_title": "500 hodín",
+  "award_hours500_desc": "Dosiahnite spolu 500 hodín",
+  "award_fasts100_title": "100 pôstov",
+  "award_fasts100_desc": "Dokončite sto pôstov",
+  "award_rhythm90_title": "90-dňový rytmus",
+  "award_rhythm90_desc": "Vytvorte deväťdesiatdňovú sériu",
+  "award_year_title": "Ročná cesta",
+  "award_year_desc": "Dosiahnite rytmus 365 dní",
+  "awards_loadError": "Pokrok sa nepodarilo načítať",
+  "awards_journeyComplete": "Cesta dokončená",
+  "awards_nextGoal": "Ďalší cieľ",
+  "awards_allYours": "Všetky úspechy sú vaše",
+  "awards_dayStreak": "dní za sebou",
+  "awards_fasts": "pôstov",
+  "awards_total": "spolu",
+  "awards_stageStart": "Začiatok",
+  "awards_stageRhythm": "Rytmus",
+  "awards_stageEndurance": "Vytrvalosť",
+  "awards_stageMastery": "Majstrovstvo",
+  "awards_completed": "Dokončené",
+  "awards_fastsRemaining": "Zostáva {count} pôstov",
+  "@awards_fastsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_daysRemaining": "Zostáva {count} dní",
+  "@awards_daysRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "awards_hoursRemaining": "Zostáva {count} hodín",
+  "@awards_hoursRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "common_retry": "Skúsiť znova",
+  "game_title": "Centrum pokroku",
+  "game_quests": "Dnešné úlohy",
+  "game_questsDesc": "Malé kroky, udržateľný rytmus.",
+  "game_season": "Sezóna s 30 krokmi",
+  "game_seasonDesc": "Za každý piaty krok získate zberateľskú pečať.",
+  "game_badges": "Zbierka odznakov",
+  "game_shields": "{count} štítov rytmu",
+  "@game_shields": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "game_shieldsDesc": "Jeden získate za každých sedem dokončení. Vynechaný deň nikdy nevymaže váš pokrok.",
+  "game_league": "Súkromná týždenná liga",
+  "game_leagueDesc": "Vaše skóre rytmu je na {percent}. percentile súkromného lokálneho modelu. Hmotnosť ani extrémny pôst sa nikdy nehodnotia.",
+  "@game_leagueDesc": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "game_levelSemantics": "Úroveň {level}, {xp} skúsenostných bodov",
+  "@game_levelSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "game_explorer": "Prieskumník rytmu",
+  "game_streak": "Séria",
+  "game_targets": "Ciele",
+  "game_best": "Najlepšie",
+  "quest_rhythm": "Budujte dnešný rytmus",
+  "quest_hydrate": "Dosiahnite polovicu cieľa príjmu vody",
+  "quest_steady": "Chráňte svoju sériu",
+  "badge_first_title": "Prvý krok",
+  "badge_first_desc": "Zaznamenajte svoj prvý pôst",
+  "badge_rhythm7_title": "Strážca rytmu",
+  "badge_rhythm7_desc": "Dosiahnite sériu 7 dní",
+  "badge_rhythm3_title": "Trojdňový rytmus",
+  "badge_rhythm3_desc": "Dosiahnite sériu 3 dní",
+  "badge_target1_title": "Prvý cieľ",
+  "badge_target1_desc": "Dokončite svoj prvý cieľový pôst",
+  "badge_target3_title": "Tri kroky",
+  "badge_target3_desc": "Dokončite 3 ciele",
+  "badge_water_title": "V rovnováhe",
+  "badge_water_desc": "Splňte denný cieľ príjmu vody",
+  "badge_support_title": "Sebavedomie",
+  "badge_support_desc": "Použite režim podpory",
+  "badge_hours10_title": "10 hodín",
+  "badge_hours10_desc": "Zaznamenajte spolu 10 hodín",
+  "badge_target10_title": "Silná desiatka",
+  "badge_target10_desc": "Dokončite 10 cieľov",
+  "badge_target20_title": "Dvadsať cieľov",
+  "badge_target20_desc": "Dokončite 20 cieľov",
+  "badge_fast16_title": "16 hodín",
+  "badge_fast16_desc": "Dosiahnite 16 hodín v jednom pôste",
+  "badge_hours50_title": "50 hodín",
+  "badge_hours50_desc": "Zaznamenajte spolu 50 hodín",
+  "badge_hours100_title": "Sto hodín",
+  "badge_hours100_desc": "Zaznamenajte spolu 100 hodín",
+  "badge_target30_title": "Tridsať cieľov",
+  "badge_target30_desc": "Dokončite 30 cieľov",
+  "badge_rhythm30_title": "30-dňový rytmus",
+  "badge_rhythm30_desc": "Dosiahnite sériu 30 dní",
+  "paywall_restoreSuccess": "Nákupy boli obnovené!",
+  "fasting_progressSemantics": "Priebeh pôstu: {percent} percent",
+  "@fasting_progressSemantics": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "phase_hourMarker": "{hour} h",
+  "@phase_hourMarker": {
+    "placeholders": {
+      "hour": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_lifetime": "Doživotne",
+  "paywall_once": "jednorazovo",
+  "paywall_processing": "Spracúva sa…",
+  "paywall_continue": "Pokračovať",
+  "paywall_productsUnavailable": "Nákupy momentálne nie sú dostupné. Skúste to neskôr.",
+  "paywall_purchaseFailed": "Nákup sa nepodarilo dokončiť.",
+  "paywall_nothingToRestore": "Nenašiel sa žiadny predchádzajúci nákup.",
+  "paywall_restoreFailed": "Nákupy sa nepodarilo obnoviť.",
+  "paywall_terms": "Podmienky používania",
+  "permission_notificationDesc": "Pripomienky pôstu, aktualizácie fáz a upozornenia na dokončenie",
+  "profile_privacyChoices": "Nastavenia súkromia",
+  "paywall_autoRenewInfo": "Predplatné sa automaticky obnoví, ak ho nezrušíte aspoň 24 hodín pred koncom obdobia. Kedykoľvek ho môžete spravovať alebo zrušiť v nastaveniach App Storu.",
+  "paywall_perMonth": "{price} / mesiac",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_savePercent": "Ušetríte {percent}%",
+  "@paywall_savePercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_freeTrialDays": "Bezplatná skúšobná verzia na {days} dní",
+  "@paywall_freeTrialDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "paywall_startFreeTrial": "Spustiť bezplatnú skúšobnú verziu",
+  "paywall_retry": "Skúsiť znova",
+  "paywall_alreadyOwned": "Toto predplatné už vlastníte. Klepnite na Obnoviť nákupy.",
+  "paywall_storeUnavailable": "Obchod momentálne nie je dostupný. Skontrolujte pripojenie a skúste to znova.",
+  "paywall_secureNote": "Kedykoľvek zrušiteľné. Platba sa účtuje na váš účet v obchode.",
+  "paywall_autoRenewInfoPlay": "Predplatné sa automaticky obnoví, ak ho nezrušíte aspoň 24 hodín pred koncom obdobia. Správa alebo zrušenie: Google Play > Predplatné.",
+  "paywall_allPlansDesc": "Odomkne 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat a Warrior",
+  "paywall_noAdsDesc": "Bannerové reklamy aj reklamy na celú obrazovku sa úplne vypnú",
+  "foodScan_title": "AI sken jedla",
+  "foodScan_scanCta": "Naskenovať jedlo",
+  "foodScan_scanCtaDesc": "Odfoťte tanier a získajte odhad kalórií a makroživín",
+  "foodScan_introTitle": "Odfoťte svoj tanier",
+  "foodScan_introDesc": "AI prečíta fotografiu a odhadne kalórie, bielkoviny, sacharidy a tuky.",
+  "foodScan_tipLight": "Dobré a rovnomerné svetlo poskytne lepší odhad",
+  "foodScan_tipFrame": "Umiestnite celý tanier do záberu",
+  "foodScan_tipScale": "Pridajte do záberu príbor alebo ruku, aby sa dala odhadnúť veľkosť porcie",
+  "foodScan_takePhoto": "Odfotiť",
+  "foodScan_chooseFromGallery": "Vybrať z galérie",
+  "foodScan_scansLeft": "Dnes zostáva {count} skenov",
+  "@foodScan_scansLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "foodScan_quotaReached": "Dnešné skeny ste vyčerpali. Skúste to znova zajtra.",
+  "foodScan_privacyNote": "Fotografia sa odošle na analýzu do rozhrania Gemini API spoločnosti Google a neukladá sa na našich serveroch.",
+  "foodScan_analyzing": "Analyzujeme vaše jedlo…",
+  "foodScan_analyzingHint": "Zvyčajne to trvá niekoľko sekúnd",
+  "foodScan_detectedItems": "Rozpoznané položky",
+  "foodScan_disclaimer": "Odhady AI sú orientačné. Klepnutím na položku ju môžete opraviť.",
+  "foodScan_lowConfidence": "Model si nie je touto fotografiou istý. Pred uložením skontrolujte hodnoty.",
+  "foodScan_save": "Pridať k jedlám",
+  "foodScan_retake": "Nová fotografia",
+  "foodScan_retry": "Skúsiť znova",
+  "foodScan_editItem": "Upraviť položku",
+  "foodScan_portion": "Porcia",
+  "foodScan_saveEdit": "Uložiť",
+  "foodScan_premiumTitle": "Funkcia Premium",
+  "foodScan_premiumDesc": "Analýza kalórií z fotografie je súčasťou Premium.",
+  "foodScan_upgrade": "Zobraziť Premium",
+  "foodScan_errorNetwork": "Bez pripojenia. Skontrolujte internet a skúste to znova.",
+  "foodScan_errorRateLimited": "Práve prebieha príliš veľa skenov. Skúste to znova o pár minút.",
+  "foodScan_errorUnavailable": "Analýza fotografií momentálne nie je dostupná.",
+  "foodScan_errorServer": "Služba analýzy má problémy. Skúste to čoskoro znova.",
+  "foodScan_errorNoFood": "Na tejto fotografii sa nenašlo žiadne jedlo. Skúste jasnejší záber taniera.",
+  "foodScan_errorUnreadable": "Túto fotografiu sa nepodarilo analyzovať. Skúste inú.",
+  "paywall_aiFoodScan": "AI sken jedla",
+  "paywall_aiFoodScanDesc": "Odfoťte jedlo a za pár sekúnd zaznamenajte kalórie a makroživiny",
+  "completion_earlyTitle": "Pôst ukončený",
+  "completion_earlyMessage": "Dnešný čas bol uložený. Séria ani postup v úspechoch sa nezmenili, pretože cieľ nebol splnený."
+}

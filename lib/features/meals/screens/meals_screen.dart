@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/section_header.dart';
+import '../../../shared/widgets/fasting_art_slot.dart';
 import '../providers/meal_provider.dart';
 import '../widgets/add_meal_sheet.dart';
-import '../../timer/providers/timer_provider.dart';
+import '../../paywall/providers/subscription_provider.dart';
 
 class MealsScreen extends ConsumerWidget {
   const MealsScreen({super.key});
@@ -16,165 +18,173 @@ class MealsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final mealState = ref.watch(mealProvider);
-    final timerState = ref.watch(timerProvider);
+    final isPremium = ref.watch(isPremiumProvider);
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
 
-    final isEatingWindow = timerState.status == TimerStatus.idle;
-
     return Scaffold(
+      appBar: AppBar(title: Text(l10n.meals_title)),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: AppSpacing.screenPadding,
+          padding: AppSpacing.screenPadding.copyWith(bottom: 48),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 8),
-              Text(
-                l10n.meals_title,
-                style: theme.textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              // Eating window bar
-              GlassCard(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              InkWell(
+                onTap: () => context.push('/food-scan'),
+                borderRadius: BorderRadius.circular(24),
+                child: FastingSplitArtCard(
+                  assetPath: 'assets/images/editorial/v2/meal-planner.webp',
+                  minHeight: 196,
+                  artWidth: 164,
+                  alignment: Alignment.centerRight,
+                  semanticLabel: l10n.foodScan_scanCta,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          l10n.meals_eatingWindow,
-                          style: theme.textTheme.titleSmall,
+                          l10n.meals_title,
+                          style: theme.textTheme.headlineSmall?.copyWith(
+                            color: fastingArtForeground(context),
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -.45,
+                          ),
                         ),
+                        const SizedBox(height: 5),
+                        Text(
+                          l10n.foodScan_scanCtaDesc,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: fastingArtMutedForeground(context),
+                            height: 1.25,
+                          ),
+                        ),
+                        const SizedBox(height: 11),
                         Container(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 4,
+                            horizontal: 13,
+                            vertical: 8,
                           ),
                           decoration: BoxDecoration(
-                            color: (isEatingWindow
-                                    ? AppColors.success
-                                    : AppColors.primary)
-                                .withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(12),
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(999),
                           ),
-                          child: Text(
-                            isEatingWindow
-                                ? l10n.meals_windowOpen
-                                : l10n.meals_windowFasting,
-                            style: TextStyle(
-                              color:
-                                  isEatingWindow
-                                      ? AppColors.success
-                                      : AppColors.primary,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                            ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                isPremium
+                                    ? PhosphorIcons.camera(
+                                      PhosphorIconsStyle.fill,
+                                    )
+                                    : PhosphorIcons.lockKey(
+                                      PhosphorIconsStyle.fill,
+                                    ),
+                                color: Colors.white,
+                                size: 17,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                l10n.foodScan_scanCta,
+                                style: theme.textTheme.labelMedium?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 12),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: SizedBox(
-                        height: 32,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 16,
-                              child: Container(
-                                color: AppColors.primary.withValues(
-                                  alpha: 0.15,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    l10n.meals_fastingWindow('16'),
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      color: AppColors.primary,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 8,
-                              child: Container(
-                                color: AppColors.success.withValues(
-                                  alpha: 0.15,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    l10n.meals_eatingWindowHours('8'),
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      color: AppColors.success,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              InkWell(
+                onTap: () => _showAddMealSheet(context),
+                borderRadius: BorderRadius.circular(20),
+                child: FastingArtSlot(
+                  assetPath: 'assets/images/editorial/v4/meal-manual-entry.webp',
+                  height: 96,
+                  borderRadius: 20,
+                  variant: FastingArtVariant.row,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.centerRight,
+                  semanticLabel: l10n.meals_manualEntry,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(18, 0, 88, 0),
+                    child: Row(
+                      children: [
+                        Icon(PhosphorIcons.pencilSimple(), size: 20, color: AppColors.primaryLight),
+                        const SizedBox(width: 9),
+                        Text(
+                          l10n.meals_manualEntry,
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
-                      ),
+                        const Spacer(),
+                        Icon(
+                          Icons.arrow_forward_rounded,
+                          color: theme.colorScheme.onSurfaceVariant,
+                          size: 20,
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
 
               // Calorie summary from real data
-              Row(
+              GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 2.25,
                 children: [
-                  Expanded(
-                    child: _buildNutrientCard(
-                      context,
-                      label: l10n.meals_calories,
-                      value: '${mealState.totalCalories}',
-                      target: '${mealState.calorieGoal}',
-                      color: AppColors.secondary,
-                      icon: PhosphorIcons.fire(PhosphorIconsStyle.fill),
-                    ),
+                  _buildNutrientCard(
+                    context,
+                    label: l10n.meals_calories,
+                    value: '${mealState.totalCalories}',
+                    target: '${mealState.calorieGoal}',
+                    progress: mealState.calorieGoal <= 0
+                        ? 0
+                        : mealState.totalCalories / mealState.calorieGoal,
+                    color: AppColors.secondary,
+                    artPath: 'assets/images/editorial/v4/macro-calories.webp',
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: _buildNutrientCard(
-                      context,
-                      label: l10n.meals_protein,
-                      value: '${mealState.totalProtein.toStringAsFixed(0)}g',
-                      target: '120g',
-                      color: Colors.blue,
-                      icon: PhosphorIcons.barbell(PhosphorIconsStyle.fill),
-                    ),
+                  _buildNutrientCard(
+                    context,
+                    label: l10n.meals_protein,
+                    value: '${mealState.totalProtein.toStringAsFixed(0)}g',
+                    target: '120g',
+                    progress: mealState.totalProtein / 120,
+                    color: Colors.blue,
+                    artPath: 'assets/images/editorial/v4/macro-protein.webp',
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: _buildNutrientCard(
-                      context,
-                      label: l10n.meals_carbs,
-                      value: '${mealState.totalCarbs.toStringAsFixed(0)}g',
-                      target: '200g',
-                      color: Colors.orange,
-                      icon: PhosphorIcons.bread(PhosphorIconsStyle.fill),
-                    ),
+                  _buildNutrientCard(
+                    context,
+                    label: l10n.meals_carbs,
+                    value: '${mealState.totalCarbs.toStringAsFixed(0)}g',
+                    target: '200g',
+                    progress: mealState.totalCarbs / 200,
+                    color: Colors.orange,
+                    artPath: 'assets/images/editorial/v4/macro-carbs.webp',
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: _buildNutrientCard(
-                      context,
-                      label: l10n.meals_fat,
-                      value: '${mealState.totalFat.toStringAsFixed(0)}g',
-                      target: '65g',
-                      color: Colors.purple,
-                      icon: PhosphorIcons.drop(PhosphorIconsStyle.fill),
-                    ),
+                  _buildNutrientCard(
+                    context,
+                    label: l10n.meals_fat,
+                    value: '${mealState.totalFat.toStringAsFixed(0)}g',
+                    target: '65g',
+                    progress: mealState.totalFat / 65,
+                    color: Colors.purple,
+                    artPath: 'assets/images/editorial/v4/macro-fat.webp',
                   ),
                 ],
               ),
@@ -183,28 +193,43 @@ class MealsScreen extends ConsumerWidget {
               // Today's meals from DB
               SectionHeader(title: l10n.meals_todayMeals),
               if (mealState.meals.isEmpty)
-                GlassCard(
-                  padding: const EdgeInsets.all(24),
-                  child: Center(
-                    child: Column(
-                      children: [
-                        Icon(
-                          PhosphorIcons.forkKnife(),
-                          size: 40,
-                          color: theme.colorScheme.onSurface.withValues(
-                            alpha: 0.2,
+                InkWell(
+                  onTap: () => context.push('/food-scan'),
+                  borderRadius: BorderRadius.circular(22),
+                  child: FastingSplitArtCard(
+                    assetPath: 'assets/images/editorial/v2/meal-empty.webp',
+                    minHeight: 132,
+                    artWidth: 140,
+                    borderRadius: 22,
+                    semanticLabel: l10n.meals_noMeals,
+                    child: Padding(
+                      padding: const EdgeInsets.all(18),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            PhosphorIcons.camera(PhosphorIconsStyle.fill),
+                            color: fastingArtForeground(context),
+                            size: 24,
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          l10n.meals_noMeals,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withValues(
-                              alpha: 0.4,
+                          const SizedBox(height: 8),
+                          Text(
+                            l10n.meals_noMeals,
+                            maxLines: 2,
+                            style: theme.textTheme.titleSmall?.copyWith(
+                              color: fastingArtForeground(context),
+                              fontWeight: FontWeight.w800,
                             ),
                           ),
-                        ),
-                      ],
+                          Text(
+                            l10n.foodScan_scanCta,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: fastingArtMutedForeground(context),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 )
@@ -249,7 +274,7 @@ class MealsScreen extends ConsumerWidget {
               // Suggestions
               SectionHeader(title: l10n.meals_breakfastSuggestions),
               SizedBox(
-                height: 140,
+                height: 168,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -257,41 +282,52 @@ class MealsScreen extends ConsumerWidget {
                       context,
                       l10n.recipe_oatSmoothie,
                       '280 kcal',
-                      Icons.blender_outlined,
+                      'assets/images/editorial/v4/quick/oats.webp',
                     ),
                     const SizedBox(width: 12),
                     _buildRecipeCard(
                       context,
                       l10n.recipe_avocadoToast,
                       '350 kcal',
-                      Icons.breakfast_dining_outlined,
+                      'assets/images/editorial/v4/quick/egg-toast.webp',
                     ),
                     const SizedBox(width: 12),
                     _buildRecipeCard(
                       context,
                       l10n.recipe_yogurtBowl,
                       '220 kcal',
-                      Icons.rice_bowl_outlined,
+                      'assets/images/editorial/v4/quick/yogurt.webp',
                     ),
+                    const SizedBox(width: 12),
+                    _buildRecipeCard(context, 'Tavuklu Kinoa', '430 kcal', 'assets/images/editorial/v4/quick/chicken-quinoa.webp'),
+                    const SizedBox(width: 12),
+                    _buildRecipeCard(context, 'Mercimek Çorbası', '310 kcal', 'assets/images/editorial/v4/quick/lentil.webp'),
+                    const SizedBox(width: 12),
+                    _buildRecipeCard(context, 'Somon ve Brokoli', '520 kcal', 'assets/images/editorial/v4/quick/salmon.webp'),
+                    const SizedBox(width: 12),
+                    _buildRecipeCard(context, 'Nohutlu Tahin', '410 kcal', 'assets/images/editorial/v4/quick/chickpea.webp'),
+                    const SizedBox(width: 12),
+                    _buildRecipeCard(context, 'Kefirli Muz', '300 kcal', 'assets/images/editorial/v4/quick/kefir.webp'),
                   ],
                 ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            showDragHandle: true,
-            builder: (_) => const AddMealSheet(),
-          );
-        },
-        child: const Icon(Icons.add),
-      ),
+    );
+  }
+
+  void _showAddMealSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      clipBehavior: Clip.antiAlias,
+      builder: (_) => const AddMealSheet(),
     );
   }
 
@@ -330,41 +366,63 @@ class MealsScreen extends ConsumerWidget {
     required String label,
     required String value,
     required String target,
+    required double progress,
     required Color color,
-    required IconData icon,
+    required String artPath,
   }) {
     final theme = Theme.of(context);
-    return GlassCard(
-      padding: const EdgeInsets.all(10),
-      child: Column(
-        children: [
-          Icon(icon, color: color, size: 18),
-          const SizedBox(height: 6),
-          Text(
-            value,
-            style: theme.textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w700,
-            ),
+    return FastingArtSlot(
+      assetPath: artPath,
+      height: 82,
+      borderRadius: 20,
+      variant: FastingArtVariant.bare,
+      fit: BoxFit.cover,
+      alignment: Alignment.centerRight,
+      semanticLabel: label,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 8, 48, 8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+                Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+                Text.rich(
+                  TextSpan(
+                    text: value,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      color: fastingArtForeground(context),
+                      fontWeight: FontWeight.w800,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: ' / $target',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: fastingArtMutedForeground(context),
+                        ),
+                      ),
+                    ],
+                  ),
+                  maxLines: 1,
+                ),
+                const SizedBox(height: 5),
+                LinearProgressIndicator(
+                  value: progress.clamp(0, 1).toDouble(),
+                  minHeight: 3,
+                  borderRadius: BorderRadius.circular(4),
+                  backgroundColor: color.withValues(alpha: .12),
+                  valueColor: AlwaysStoppedAnimation(color),
+                ),
+            ],
           ),
-          Text(
-            '/ $target',
-            style: TextStyle(
-              fontSize: 10,
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 10,
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
-    );
+        ),
+      );
   }
 
   Widget _buildMealItem(
@@ -431,41 +489,53 @@ class MealsScreen extends ConsumerWidget {
     BuildContext context,
     String title,
     String cal,
-    IconData icon,
+    String artPath,
   ) {
     final theme = Theme.of(context);
-    return GlassCard(
-      padding: const EdgeInsets.all(14),
-      child: SizedBox(
-        width: 120,
+    return SizedBox(
+      width: 156,
+      child: Container(
+        height: 184,
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerLow,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: theme.colorScheme.outlineVariant.withValues(alpha: .42)),
+        ),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(14),
+            Expanded(
+              child: Image.asset(
+                themedEditorialAssetPath(artPath, theme.brightness),
+                fit: BoxFit.cover,
               ),
-              child: Icon(icon, color: AppColors.primary, size: 28),
             ),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.labelMedium,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 2),
-            Text(
-              cal,
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(11, 8, 11, 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+              Text(
+                title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(height: 3),
+              Text(
+                cal,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
+                ],
               ),
             ),
           ],
-        ),
+          ),
       ),
     );
   }

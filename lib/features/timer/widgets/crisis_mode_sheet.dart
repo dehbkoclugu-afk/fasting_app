@@ -10,6 +10,8 @@ Future<void> showCrisisMode(BuildContext context) {
     context: context,
     isScrollControlled: true,
     useSafeArea: true,
+    useRootNavigator: true,
+    backgroundColor: Colors.transparent,
     builder: (_) => const _CrisisModeSheet(),
   );
 }
@@ -29,19 +31,35 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    final steps = [
-      (l10n.crisis_nameTitle, l10n.crisis_nameDesc),
-      (l10n.crisis_waterTitle, l10n.crisis_waterDesc),
-      (l10n.crisis_delayTitle, l10n.crisis_delayDesc),
-    ];
-    final current = steps[_step];
+    final guidance = _guidance(l10n);
+    final current = _step == 0
+        ? (
+            l10n.crisis_nameTitle,
+            l10n.crisis_nameDesc,
+            Icons.favorite_outline,
+            '',
+            l10n.onboarding_next,
+          )
+        : guidance;
 
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 18, 24, 28),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
+    return SafeArea(
+      top: false,
+      minimum: const EdgeInsets.only(bottom: 12),
+      child: AnimatedPadding(
+        duration: const Duration(milliseconds: 180),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.viewInsetsOf(context).bottom,
+        ),
+        child: Material(
+          color: theme.colorScheme.surface,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
+          clipBehavior: Clip.antiAlias,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(24, 18, 24, 24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
           Center(
             child: Container(
               width: 38,
@@ -53,7 +71,11 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
             ),
           ),
           const SizedBox(height: 26),
-          Icon(Icons.favorite_outline, color: AppColors.primary, size: 36),
+          Icon(
+            _step == 0 ? Icons.favorite_outline : current.$3,
+            color: AppColors.primary,
+            size: 40,
+          ),
           const SizedBox(height: 16),
           Text(
             current.$1,
@@ -87,33 +109,98 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
               ],
             ),
           ],
+          if (_step == 1) ...[
+            const SizedBox(height: 18),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surfaceContainer,
+                borderRadius: BorderRadius.circular(18),
+              ),
+              child: Text(
+                current.$4,
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
+                  height: 1.45,
+                ),
+              ),
+            ),
+          ],
           const SizedBox(height: 26),
           FilledButton(
-            onPressed: () async {
-              HapticFeedback.selectionClick();
-              if (_step < steps.length - 1) {
-                setState(() => _step++);
-                return;
-              }
-              final prefs = await SharedPreferences.getInstance();
-              await prefs.setInt(
-                'crisis_support_count',
-                (prefs.getInt('crisis_support_count') ?? 0) + 1,
-              );
-              await prefs.setInt('last_crisis_hour', DateTime.now().hour);
-              if (_reason != null) {
-                await prefs.setString('last_crisis_reason', _reason!);
-              }
-              if (context.mounted) Navigator.pop(context);
-            },
+            onPressed: _step == 0 && _reason == null
+                ? null
+                : () async {
+                    HapticFeedback.selectionClick();
+                    if (_step == 0) {
+                      setState(() => _step++);
+                      return;
+                    }
+                    await _finish();
+                  },
             child: Text(
-              _step == steps.length - 1
-                  ? l10n.crisis_tenMore
-                  : l10n.onboarding_next,
+              _step == 0 ? l10n.onboarding_next : current.$5,
             ),
           ),
-        ],
+          if (_step == 1) ...[
+            const SizedBox(height: 8),
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(l10n.timer_stopTitle),
+            ),
+            Text(
+              l10n.crisis_delayDesc,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ],
+          ],
+        ),
+          ),
+        ),
       ),
     );
+  }
+
+  (String, String, IconData, String, String) _guidance(AppLocalizations l10n) {
+    if (_reason == l10n.crisis_habit) {
+      return (
+        l10n.crisis_habit,
+        l10n.crisis_nameDesc,
+        Icons.route_outlined,
+        l10n.crisis_delayTitle,
+        l10n.onboarding_next,
+      );
+    }
+    if (_reason == l10n.crisis_stress) {
+      return (
+        l10n.crisis_stress,
+        l10n.crisis_waterDesc,
+        Icons.air_outlined,
+        l10n.crisis_waterTitle,
+        l10n.crisis_tenMore,
+      );
+    }
+    return (
+      l10n.crisis_hunger,
+      l10n.crisis_delayDesc,
+      Icons.monitor_heart_outlined,
+      '${l10n.crisis_waterTitle}. ${l10n.crisis_waterDesc}',
+      l10n.crisis_tenMore,
+    );
+  }
+
+  Future<void> _finish() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(
+      'crisis_support_count',
+      (prefs.getInt('crisis_support_count') ?? 0) + 1,
+    );
+    await prefs.setInt('last_crisis_hour', DateTime.now().hour);
+    if (_reason != null) await prefs.setString('last_crisis_reason', _reason!);
+    if (mounted) Navigator.pop(context);
   }
 }
