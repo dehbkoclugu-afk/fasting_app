@@ -11,8 +11,10 @@ from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from social_funnel.domain.models import CampaignManifest, JobState
+from social_funnel.campaign.registry import CampaignRegistry
 from social_funnel.exporting.manual_pack import export_manual_pack
 from social_funnel.media.service import MediaImportService
+from social_funnel.media.resolver import MediaResolver
 from social_funnel.publishing.orchestrator import PublishingOrchestrator
 from social_funnel.scheduling.service import SchedulerService
 from social_funnel.storage.database import Database
@@ -39,12 +41,25 @@ def _verified_file(row) -> bool:
 
 
 def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, workspace: Path,
-                scheduler: SchedulerService | None = None) -> APIRouter:
+                scheduler: SchedulerService | None = None,
+                registry: CampaignRegistry | None = None) -> APIRouter:
     router = APIRouter()
     scheduler = scheduler or SchedulerService(db, jobs, None)
-    orchestrator = PublishingOrchestrator(jobs, manifest, {}, workspace / "media")
+    registry = registry or CampaignRegistry(db, manifest)
     media_repository = MediaImportRepository(db)
-    media_service = MediaImportService(media_repository, manifest, workspace)
+
+    def current_manifest() -> CampaignManifest:
+        return registry.active_manifest()
+
+    def current_media_service() -> MediaImportService:
+        return MediaImportService(media_repository, current_manifest(), workspace)
+
+    def current_orchestrator() -> PublishingOrchestrator:
+        campaign = current_manifest()
+        resolver = MediaResolver(media_repository, campaign, workspace / "media")
+        return PublishingOrchestrator(
+            jobs, campaign, {}, workspace / "media", media_resolver=resolver,
+        )
 
     def csrf(request: Request) -> str:
         if "csrf" not in request.session:
@@ -58,6 +73,7 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         return values
 
     def media_context(request: Request, *, batch_id: str | None = None, issues=()):
+        manifest = current_manifest()
         active = media_repository.active_batch(manifest.slug)
         selected = media_repository.get_batch(batch_id) if batch_id else active
         if selected is not None and selected["campaign_slug"] != manifest.slug:
@@ -82,18 +98,27 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
 
     @router.get("/", response_class=HTMLResponse)
     def dashboard(request: Request):
-        rows = db.connection.execute("SELECT state,COUNT(*) AS n FROM publication_job GROUP BY state").fetchall()
+        manifest = current_manifest()
+        rows = db.connection.execute(
+            "SELECT state,COUNT(*) AS n FROM publication_job WHERE campaign_slug=? GROUP BY state",
+            (manifest.slug,),
+        ).fetchall()
         counts = {row["state"]: row["n"] for row in rows}
         accounts = db.connection.execute("SELECT id,platform,locale,public_identity FROM account_connection ORDER BY locale,platform").fetchall()
         return TEMPLATES.TemplateResponse(request, "dashboard.html", {
-            "csrf": csrf(request), "counts": counts, "total": jobs.count(),
+            "csrf": csrf(request), "counts": counts, "total": sum(counts.values()),
             "accounts": accounts, "paused": scheduler.paused, "ideas": manifest.ideas,
-            "campaign_active": scheduler.active,
+            "campaign_active": scheduler.active, "campaign_title": manifest.title,
+            "campaign_month": registry.active_month(),
         })
 
     @router.get("/health")
     def health():
-        return {"status": "ok", "jobs": jobs.count(), "paused": scheduler.paused}
+        manifest = current_manifest()
+        count = db.connection.execute(
+            "SELECT COUNT(*) FROM publication_job WHERE campaign_slug=?", (manifest.slug,),
+        ).fetchone()[0]
+        return {"status": "ok", "jobs": count, "paused": scheduler.paused}
 
     @router.get("/media", response_class=HTMLResponse)
     def media_workspace(request: Request, batch: str | None = None):
@@ -101,6 +126,7 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
 
     @router.get("/media/files/{file_id}")
     def preview_media(file_id: int):
+        manifest = current_manifest()
         row = media_repository.get_file(manifest.slug, file_id)
         if row is None:
             raise HTTPException(404)
@@ -131,7 +157,7 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
                     if total > 2 * 1024 * 1024 * 1024:
                         raise HTTPException(413, "ZIP dosyası çok büyük")
                     handle.write(chunk)
-            result = media_service.preflight(path)
+            result = current_media_service().preflight(path)
             if not result.report.valid:
                 return TEMPLATES.TemplateResponse(request, "media_import.html", media_context(
                     request, issues=result.report.issues
@@ -144,7 +170,7 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     async def activate_media(request: Request, batch_id: str):
         await check_csrf(request)
         try:
-            media_service.activate(batch_id)
+            current_media_service().activate(batch_id)
         except KeyError:
             raise HTTPException(404, "Media batch not found") from None
         scheduler.deactivate()
@@ -177,7 +203,7 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
                         raise HTTPException(413, "Dosya çok büyük")
                     handle.write(chunk)
             try:
-                batch_id = media_service.replace_slot(
+                batch_id = current_media_service().replace_slot(
                     path, day=day, locale=locale, kind=kind, position=position,
                 )
             except (FileNotFoundError, ValueError) as exc:
@@ -192,13 +218,14 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     @router.post("/media/rollback")
     async def rollback_media(request: Request):
         await check_csrf(request)
-        media_service.rollback()
+        current_media_service().rollback()
         scheduler.deactivate()
         return RedirectResponse("/media", status_code=303)
 
     @router.post("/campaign/activate")
     async def activate_campaign(request: Request):
         await check_csrf(request)
+        manifest = current_manifest()
         expected = {
             (idea.day, item.locale.value)
             for idea in manifest.ideas for item in idea.localized
@@ -226,8 +253,12 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     def day_detail(request: Request, day: int):
         if not 1 <= day <= 30:
             raise HTTPException(404)
+        manifest = current_manifest()
         idea = manifest.ideas[day - 1]
-        rows = db.connection.execute("SELECT id,locale,platform,state FROM publication_job WHERE day=? ORDER BY locale,platform", (day,)).fetchall()
+        rows = db.connection.execute(
+            """SELECT id,locale,platform,state FROM publication_job
+            WHERE campaign_slug=? AND day=? ORDER BY locale,platform""", (manifest.slug, day),
+        ).fetchall()
         return TEMPLATES.TemplateResponse(request, "content_detail.html", {
             "csrf": csrf(request), "idea": idea, "jobs": rows,
         })
@@ -248,6 +279,9 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     async def approve(request: Request, job_id: str):
         await check_csrf(request)
         job = jobs.get(job_id)
+        if job.campaign_slug != current_manifest().slug:
+            raise HTTPException(404)
+        orchestrator = current_orchestrator()
         if job.state == JobState.DRAFT:
             orchestrator.prepare(job_id)
         if jobs.get(job_id).state == JobState.NEEDS_REVIEW:
@@ -258,6 +292,8 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     async def disable(request: Request, job_id: str):
         await check_csrf(request)
         job = jobs.get(job_id)
+        if job.campaign_slug != current_manifest().slug:
+            raise HTTPException(404)
         jobs.transition(job_id, job.state, JobState.DISABLED)
         return RedirectResponse(f"/days/{job.day}", status_code=303)
 
@@ -266,9 +302,15 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         await check_csrf(request)
         if not 1 <= day <= 30:
             raise HTTPException(404)
-        ids = tuple(row[0] for row in db.connection.execute("SELECT id FROM publication_job WHERE day=? AND state!='disabled'", (day,)))
-        destination = export_manual_pack(ids, workspace / "exports" / f"day-{day:02d}.zip", jobs, manifest,
-                                         workspace / "media")
+        manifest = current_manifest()
+        ids = tuple(row[0] for row in db.connection.execute(
+            """SELECT id FROM publication_job
+            WHERE campaign_slug=? AND day=? AND state!='disabled'""", (manifest.slug, day),
+        ))
+        destination = export_manual_pack(
+            ids, workspace / "exports" / manifest.slug / f"day-{day:02d}.zip",
+            jobs, manifest, workspace / "media",
+        )
         return FileResponse(destination, media_type="application/zip", filename=destination.name)
 
     return router

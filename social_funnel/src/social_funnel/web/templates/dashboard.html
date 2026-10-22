@@ -3,8 +3,8 @@
 {% block content %}
 <section class="hero">
   <div>
-    <p class="eyebrow">30 günlük organik kampanya</p>
-    <h1>Her gün, daha sakin bir ritim.</h1>
+    <p class="eyebrow">30 günlük organik kampanya{% if campaign_month %} · {{ campaign_month }}{% endif %}</p>
+    <h1>{{ campaign_title }}</h1>
     <p>Türkçe, English ve Português do Brasil içerikleri tek yerde; yayın öncesi kontrol sende.</p>
     <div class="hero-meta"><span>{{ total }} jobs</span><span>12 destinations</span><span>3 languages</span></div>
     <p><a class="button-link" href="/media">Aylık medya yükle</a></p>

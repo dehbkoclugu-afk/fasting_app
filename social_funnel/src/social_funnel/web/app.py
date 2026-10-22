@@ -10,6 +10,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
 from social_funnel.campaign.expansion import AccountConfig, expand_publication_jobs
+from social_funnel.campaign.registry import CampaignRegistry
 from social_funnel.content.loader import load_campaign, validate_campaign_counts
 from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
 from social_funnel.storage.database import Database
@@ -38,10 +39,13 @@ def create_app(settings: WebSettings) -> FastAPI:
     app = FastAPI(title="FastTrack Social Funnel")
     app.add_middleware(SessionMiddleware, secret_key=token_urlsafe(32), same_site="strict")
     app.state.database = db
-    app.state.manifest = manifest
+    app.state.registry = CampaignRegistry(db, manifest)
+    app.state.manifest = app.state.registry.active_manifest()
     app.state.settings = settings
     app.state.media_imports = MediaImportRepository(db)
     app.state.scheduler = SchedulerService(db, jobs, None)
-    app.include_router(make_router(db, jobs, manifest, settings.workspace, app.state.scheduler))
+    app.include_router(make_router(
+        db, jobs, manifest, settings.workspace, app.state.scheduler, registry=app.state.registry,
+    ))
     app.mount("/static", StaticFiles(directory=Path(__file__).with_name("static")), name="static")
     return app
