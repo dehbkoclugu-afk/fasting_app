@@ -10,6 +10,7 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
+from social_funnel.auth.tiktok_connection import TikTokConnectionService
 from social_funnel.domain.models import CampaignManifest, JobState
 from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
 from social_funnel.campaign.expansion import AccountConfig
@@ -21,7 +22,9 @@ from social_funnel.media.resolver import MediaResolver
 from social_funnel.publishing.orchestrator import PublishingOrchestrator
 from social_funnel.scheduling.service import SchedulerService
 from social_funnel.storage.database import Database
-from social_funnel.storage.repositories import CampaignRevisionRepository, JobRepository, MediaImportRepository
+from social_funnel.storage.repositories import (
+    AccountConnectionRepository, CampaignRevisionRepository, JobRepository, MediaImportRepository,
+)
 
 
 TEMPLATES = Jinja2Templates(directory=Path(__file__).with_name("templates"))
@@ -45,13 +48,15 @@ def _verified_file(row) -> bool:
 
 def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, workspace: Path,
                 scheduler: SchedulerService | None = None,
-                registry: CampaignRegistry | None = None) -> APIRouter:
+                registry: CampaignRegistry | None = None,
+                tiktok_connection: TikTokConnectionService | None = None) -> APIRouter:
     router = APIRouter()
     scheduler = scheduler or SchedulerService(db, jobs, None)
     registry = registry or CampaignRegistry(db, manifest)
     media_repository = MediaImportRepository(db)
     revision_repository = CampaignRevisionRepository(db)
     campaign_refresh = CampaignRefreshService(db, workspace)
+    account_repository = AccountConnectionRepository(db)
     campaign_accounts = tuple(
         AccountConfig(id=f"{locale.value}-{platform.value}", locale=locale, platform=platform,
                       automation_mode=AutomationMode.APPROVAL)
@@ -101,6 +106,98 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         if not request.session.get("csrf") or values.get("csrf") != request.session["csrf"]:
             raise HTTPException(403, "Invalid CSRF token")
         return values
+
+    def oauth_redirect_uri(request: Request) -> str:
+        return str(request.url_for("tiktok_callback"))
+
+    @router.get("/accounts", response_class=HTMLResponse)
+    def account_connections(request: Request, notice: str | None = None,
+                            error: str | None = None):
+        configured = False
+        if tiktok_connection is not None:
+            try:
+                configured = tiktok_connection.configured()
+            except Exception:
+                configured = False
+        messages = {
+            "configured": "TikTok geliştirici bağlantısı güvenli kasaya kaydedildi.",
+            "connected": "TikTok hesabı doğrulandı ve bağlandı.",
+            "disconnected": "Hesap bağlantısı kaldırıldı; kampanya durduruldu.",
+        }
+        errors = {
+            "oauth": "TikTok bağlantısı tamamlanamadı. Lütfen yeniden deneyin.",
+            "config": "TikTok geliştirici bilgileri kaydedilemedi.",
+        }
+        return TEMPLATES.TemplateResponse(request, "account_connections.html", {
+            "csrf": csrf(request), "accounts": account_repository.list(),
+            "tiktok_configured": configured, "notice": messages.get(notice),
+            "error": errors.get(error),
+        })
+
+    @router.post("/accounts/tiktok/configure")
+    async def configure_tiktok(request: Request):
+        form = await check_csrf(request)
+        if tiktok_connection is None:
+            return RedirectResponse("/accounts?error=config", status_code=303)
+        try:
+            tiktok_connection.save_developer_credentials(
+                str(form.get("client_key", "")), str(form.get("client_secret", "")),
+            )
+        except (ValueError, OSError):
+            return RedirectResponse("/accounts?error=config", status_code=303)
+        return RedirectResponse("/accounts?notice=configured", status_code=303)
+
+    @router.post("/accounts/{account_id}/tiktok/connect")
+    async def connect_tiktok(request: Request, account_id: str):
+        await check_csrf(request)
+        if tiktok_connection is None:
+            return RedirectResponse("/accounts?error=config", status_code=303)
+        state = token_urlsafe(32)
+        verifier = token_urlsafe(64)
+        request.session["tiktok_oauth"] = {
+            "account_id": account_id, "state": state, "verifier": verifier,
+        }
+        try:
+            start = tiktok_connection.begin(
+                account_id, redirect_uri=oauth_redirect_uri(request),
+                state=state, verifier=verifier,
+            )
+        except (KeyError, ValueError, OSError):
+            request.session.pop("tiktok_oauth", None)
+            return RedirectResponse("/accounts?error=oauth", status_code=303)
+        return RedirectResponse(start.authorization_url, status_code=303)
+
+    @router.get("/oauth/tiktok/callback", name="tiktok_callback")
+    def tiktok_callback(request: Request, code: str | None = None,
+                        state: str | None = None, error: str | None = None):
+        pending = request.session.pop("tiktok_oauth", None)
+        if (
+            tiktok_connection is None or error or not code or not state or
+            not pending or state != pending.get("state")
+        ):
+            return RedirectResponse("/accounts?error=oauth", status_code=303)
+        try:
+            tiktok_connection.complete(
+                pending["account_id"], redirect_uri=oauth_redirect_uri(request),
+                code=code, verifier=pending["verifier"],
+            )
+        except (KeyError, ValueError, OSError):
+            return RedirectResponse("/accounts?error=oauth", status_code=303)
+        scheduler.deactivate()
+        return RedirectResponse("/accounts?notice=connected", status_code=303)
+
+    @router.post("/accounts/{account_id}/disconnect")
+    async def disconnect_account(request: Request, account_id: str):
+        await check_csrf(request)
+        try:
+            account = account_repository.get(account_id)
+            if account["platform"] != "tiktok" or tiktok_connection is None:
+                raise ValueError("Unsupported account provider")
+            tiktok_connection.disconnect(account_id)
+        except (KeyError, ValueError, OSError):
+            return RedirectResponse("/accounts?error=oauth", status_code=303)
+        scheduler.deactivate()
+        return RedirectResponse("/accounts?notice=disconnected", status_code=303)
 
     def media_context(request: Request, *, batch_id: str | None = None, issues=()):
         manifest = current_manifest()
@@ -331,8 +428,9 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
             return TEMPLATES.TemplateResponse(request, "media_import.html", media_context(request, issues=(issue,)), status_code=409)
         missing_accounts = db.connection.execute(
             """SELECT COUNT(*) FROM account_connection
-            WHERE enabled=1 AND (
+            WHERE enabled!=1 OR (
               public_identity IS NULL OR trim(public_identity)='' OR
+              provider_identity IS NULL OR trim(provider_identity)='' OR
               vault_reference IS NULL OR trim(vault_reference)=''
             )"""
         ).fetchone()[0]

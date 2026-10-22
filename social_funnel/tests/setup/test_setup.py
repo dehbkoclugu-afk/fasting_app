@@ -30,4 +30,10 @@ def test_first_run_is_idempotent(tmp_path: Path) -> None:
     with sqlite3.connect(workspace / "campaign.db") as connection:
         assert connection.execute("SELECT COUNT(*) FROM campaign").fetchone()[0] == 1
         assert connection.execute("SELECT COUNT(*) FROM account_connection").fetchone()[0] == 12
+        assert connection.execute(
+            "SELECT public_identity FROM account_connection WHERE id='tr-tiktok'"
+        ).fetchone()[0] == "@fasttrack.fasting.tr"
+        assert connection.execute(
+            "SELECT COUNT(*) FROM account_connection WHERE enabled=0"
+        ).fetchone()[0] == 12
         assert connection.execute("SELECT COUNT(*) FROM publication_job").fetchone()[0] == 360

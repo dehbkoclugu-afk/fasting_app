@@ -218,7 +218,13 @@ def test_campaign_activation_is_blocked_until_all_accounts_are_connected(tmp_pat
     assert not app.state.scheduler.active
 
     app.state.database.connection.execute(
-        "UPDATE account_connection SET public_identity=id, vault_reference='windows-vault'"
+        """
+        UPDATE account_connection
+        SET public_identity=id,
+            provider_identity='provider-' || id,
+            vault_reference='windows-vault',
+            enabled=1
+        """
     )
     app.state.database.connection.commit()
     activated = client.post(

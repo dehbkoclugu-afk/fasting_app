@@ -6,7 +6,9 @@ import pytest
 from social_funnel.domain.models import JobState, MediaAsset
 from social_funnel.setup.service import initialize_workspace
 from social_funnel.storage.database import Database
-from social_funnel.storage.repositories import CampaignRepository, JobRepository
+from social_funnel.storage.repositories import (
+    AccountConnectionRepository, CampaignRepository, JobRepository,
+)
 from social_funnel.verification.live_check import LiveCheckError, prepare_live_check
 
 
@@ -18,6 +20,11 @@ def _prepared(tmp_path: Path):
         "SELECT id, account_id FROM publication_job "
         "WHERE platform='instagram' AND locale='en' ORDER BY day LIMIT 1"
     ).fetchone()
+    AccountConnectionRepository(database).mark_connected(
+        row["account_id"], provider_identity="provider-test",
+        public_identity="@fasttrack.fasting.en", vault_reference="vault-test",
+        capabilities={"review_upload": True},
+    )
     media = tmp_path / "approved.png"
     media.write_bytes(b"reviewed-media")
     asset = MediaAsset(

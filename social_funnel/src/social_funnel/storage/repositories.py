@@ -1,9 +1,61 @@
 """Small transactional repositories; secrets never enter this database."""
 
 from datetime import datetime, timezone
+import json
 
 from social_funnel.domain.models import CampaignManifest, JobState, PublicationJob, can_transition
 from social_funnel.storage.database import Database
+
+
+class AccountConnectionRepository:
+    def __init__(self, database: Database):
+        self.db = database
+
+    def get(self, account_id: str):
+        row = self.db.connection.execute(
+            "SELECT * FROM account_connection WHERE id=?", (account_id,),
+        ).fetchone()
+        if row is None:
+            raise KeyError(account_id)
+        return row
+
+    def list(self) -> tuple:
+        return tuple(self.db.connection.execute(
+            "SELECT * FROM account_connection ORDER BY locale,platform"
+        ).fetchall())
+
+    def seed_public_identities(self, identities: dict[str, str]) -> None:
+        with self.db.connection:
+            for account_id, public_identity in identities.items():
+                self.db.connection.execute(
+                    """UPDATE account_connection SET
+                    public_identity=COALESCE(public_identity,?),
+                    enabled=CASE WHEN vault_reference IS NULL THEN 0 ELSE enabled END
+                    WHERE id=?""",
+                    (public_identity, account_id),
+                )
+
+    def mark_connected(self, account_id: str, *, provider_identity: str,
+                       public_identity: str, vault_reference: str,
+                       capabilities: dict) -> None:
+        self.get(account_id)
+        with self.db.connection:
+            self.db.connection.execute(
+                """UPDATE account_connection SET provider_identity=?,public_identity=?,
+                vault_reference=?,capabilities_json=?,enabled=1,last_verified_at=? WHERE id=?""",
+                (provider_identity, public_identity, vault_reference,
+                 json.dumps(capabilities, sort_keys=True, separators=(",", ":")),
+                 datetime.now(timezone.utc).isoformat(), account_id),
+            )
+
+    def disconnect(self, account_id: str) -> None:
+        self.get(account_id)
+        with self.db.connection:
+            self.db.connection.execute(
+                """UPDATE account_connection SET provider_identity=NULL,vault_reference=NULL,
+                capabilities_json='{}',enabled=0,last_verified_at=NULL WHERE id=?""",
+                (account_id,),
+            )
 
 
 class CampaignRepository:

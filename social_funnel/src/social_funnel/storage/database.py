@@ -17,6 +17,12 @@ class Database:
         connection.execute("PRAGMA journal_mode=WAL")
         schema = Path(__file__).with_name("schema.sql").read_text(encoding="utf-8")
         connection.executescript(schema)
+        columns = {row[1] for row in connection.execute("PRAGMA table_info(account_connection)")}
+        if "provider_identity" not in columns:
+            connection.execute("ALTER TABLE account_connection ADD COLUMN provider_identity TEXT")
+        if "last_verified_at" not in columns:
+            connection.execute("ALTER TABLE account_connection ADD COLUMN last_verified_at TEXT")
+        connection.commit()
         return cls(connection)
 
     def close(self) -> None:

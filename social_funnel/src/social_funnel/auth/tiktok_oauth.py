@@ -7,7 +7,7 @@ from urllib.parse import urlencode, urlparse
 import httpx
 
 
-REQUIRED_SCOPES = frozenset({"user.info.basic", "video.upload"})
+REQUIRED_SCOPES = frozenset({"user.info.basic", "user.info.profile", "video.upload"})
 
 
 @dataclass(frozen=True)
@@ -38,6 +38,8 @@ class TikTokTokens:
 class TikTokIdentity:
     open_id: str
     display_name: str
+    username: str
+    profile_deep_link: str
     avatar_url: str
 
 
@@ -92,7 +94,7 @@ class TikTokOAuthClient:
     def fetch_identity(self, access_token: str) -> TikTokIdentity:
         response = self.http.get(
             self.IDENTITY_URL,
-            params={"fields": "open_id,display_name,avatar_url"},
+            params={"fields": "open_id,display_name,username,profile_deep_link,avatar_url"},
             headers={"Authorization": f"Bearer {access_token}"},
         )
         payload = self._payload(response)
@@ -103,6 +105,7 @@ class TikTokOAuthClient:
             user = payload["data"]["user"]
             return TikTokIdentity(
                 open_id=user["open_id"], display_name=user["display_name"],
+                username=user["username"], profile_deep_link=user["profile_deep_link"],
                 avatar_url=user.get("avatar_url", ""),
             )
         except (KeyError, TypeError):

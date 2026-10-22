@@ -11,8 +11,9 @@ import sys
 from social_funnel.campaign.expansion import AccountConfig, expand_publication_jobs
 from social_funnel.content.loader import load_campaign, validate_campaign_counts
 from social_funnel.domain.models import AutomationMode, LocaleCode, Platform
+from social_funnel.setup.accounts import EXPECTED_PUBLIC_IDENTITIES
 from social_funnel.storage.database import Database
-from social_funnel.storage.repositories import CampaignRepository, JobRepository
+from social_funnel.storage.repositories import AccountConnectionRepository, CampaignRepository, JobRepository
 
 
 @dataclass(frozen=True)
@@ -69,6 +70,7 @@ def initialize_workspace(
         CampaignRepository(database).import_manifest(manifest)
         jobs = JobRepository(database)
         jobs.import_jobs(expanded)
+        AccountConnectionRepository(database).seed_public_identities(EXPECTED_PUBLIC_IDENTITIES)
         job_count = jobs.count()
         account_count = database.connection.execute(
             "SELECT COUNT(*) FROM account_connection"

@@ -10,9 +10,11 @@ CREATE TABLE IF NOT EXISTS account_connection (
   platform TEXT NOT NULL,
   locale TEXT NOT NULL,
   public_identity TEXT,
+  provider_identity TEXT,
   vault_reference TEXT,
   capabilities_json TEXT NOT NULL DEFAULT '{}',
-  enabled INTEGER NOT NULL DEFAULT 1
+  enabled INTEGER NOT NULL DEFAULT 0,
+  last_verified_at TEXT
 );
 CREATE TABLE IF NOT EXISTS publication_job (
   id TEXT PRIMARY KEY,

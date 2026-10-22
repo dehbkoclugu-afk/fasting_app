@@ -25,7 +25,7 @@ def test_desktop_authorization_url_uses_state_pkce_and_minimum_scopes():
     assert query == {
         "client_key": ["client-key"],
         "response_type": ["code"],
-        "scope": ["user.info.basic,video.upload"],
+        "scope": ["user.info.basic,user.info.profile,video.upload"],
         "redirect_uri": ["http://127.0.0.1:8811/oauth/tiktok/callback"],
         "state": ["state-123"],
         "code_challenge": [sha256(verifier.encode()).hexdigest()],
@@ -44,15 +44,17 @@ def test_code_exchange_and_identity_lookup_use_current_v2_contract():
                 "access_token": "access-token",
                 "refresh_token": "refresh-token",
                 "open_id": "open-123",
-                "scope": "user.info.basic,video.upload",
+                "scope": "user.info.basic,user.info.profile,video.upload",
                 "expires_in": 86400,
                 "refresh_expires_in": 31536000,
             })
-        assert request.url.params["fields"] == "open_id,display_name,avatar_url"
+        assert request.url.params["fields"] == "open_id,display_name,username,profile_deep_link,avatar_url"
         assert request.headers["authorization"] == "Bearer access-token"
         return httpx.Response(200, json={
             "data": {"user": {
                 "open_id": "open-123", "display_name": "FastTrack TR",
+                "username": "fasttrack.fasting.tr",
+                "profile_deep_link": "https://www.tiktok.com/@fasttrack.fasting.tr",
                 "avatar_url": "https://example.test/avatar.jpg",
             }},
             "error": {"code": "ok", "message": "", "log_id": "log-1"},
@@ -63,9 +65,10 @@ def test_code_exchange_and_identity_lookup_use_current_v2_contract():
     identity = client.fetch_identity(tokens.access_token)
 
     assert tokens.open_id == "open-123"
-    assert tokens.granted_scopes == frozenset({"user.info.basic", "video.upload"})
+    assert tokens.granted_scopes == frozenset({"user.info.basic", "user.info.profile", "video.upload"})
     assert identity.open_id == "open-123"
     assert identity.display_name == "FastTrack TR"
+    assert identity.username == "fasttrack.fasting.tr"
     form = parse_qs(requests[0].content.decode())
     assert form == {
         "client_key": ["client-key"],
