@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from secrets import token_urlsafe
+from hashlib import sha256
 import tempfile
 from types import SimpleNamespace
 
@@ -19,6 +20,14 @@ from social_funnel.storage.repositories import JobRepository, MediaImportReposit
 
 
 TEMPLATES = Jinja2Templates(directory=Path(__file__).with_name("templates"))
+
+
+def _checksum(path: Path) -> str:
+    digest = sha256()
+    with path.open("rb") as source:
+        for block in iter(lambda: source.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, workspace: Path,
@@ -43,6 +52,8 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     def media_context(request: Request, *, batch_id: str | None = None, issues=()):
         active = media_repository.active_batch(manifest.slug)
         selected = media_repository.get_batch(batch_id) if batch_id else active
+        if selected is not None and selected["campaign_slug"] != manifest.slug:
+            selected = None
         files = media_repository.batch_files(selected["id"]) if selected else ()
         coverage = {
             (idea.day, item.locale.value): "otomatik"
@@ -51,10 +62,14 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
         }
         for row in files:
             coverage[(row["day"], row["locale"])] = row["kind"]
+        previews: dict[tuple[int, str], list] = {}
+        for row in files:
+            previews.setdefault((row["day"], row["locale"]), []).append(row)
         ready = len(coverage)
         return {
             "csrf": csrf(request), "active": active, "selected": selected, "batches": media_repository.list_batches(manifest.slug),
-            "ready": ready, "coverage": coverage, "issues": issues, "ideas": manifest.ideas,
+            "ready": ready, "coverage": coverage, "previews": previews,
+            "issues": issues, "ideas": manifest.ideas,
         }
 
     @router.get("/", response_class=HTMLResponse)
@@ -75,6 +90,18 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
     @router.get("/media", response_class=HTMLResponse)
     def media_workspace(request: Request, batch: str | None = None):
         return TEMPLATES.TemplateResponse(request, "media_import.html", media_context(request, batch_id=batch))
+
+    @router.get("/media/files/{file_id}")
+    def preview_media(file_id: int):
+        row = media_repository.get_file(manifest.slug, file_id)
+        if row is None:
+            raise HTTPException(404)
+        path = Path(row["managed_path"])
+        if not path.is_file():
+            raise HTTPException(404)
+        if _checksum(path) != row["checksum"]:
+            raise HTTPException(409, "Media checksum mismatch")
+        return FileResponse(path, media_type=row["mime_type"])
 
     @router.post("/media/preflight")
     async def media_preflight(request: Request):

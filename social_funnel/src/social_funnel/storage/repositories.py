@@ -184,6 +184,14 @@ class MediaImportRepository:
             "SELECT * FROM media_import_file WHERE batch_id=? ORDER BY day,locale,kind,position", (batch_id,),
         ).fetchall())
 
+    def get_file(self, campaign_slug: str, file_id: int):
+        return self.db.connection.execute(
+            """SELECT f.* FROM media_import_file f
+            JOIN media_import_batch b ON b.id=f.batch_id
+            WHERE f.id=? AND b.campaign_slug=?""",
+            (file_id, campaign_slug),
+        ).fetchone()
+
     def rollback(self, campaign_slug: str) -> bool:
         row = self.db.connection.execute(
             "SELECT batch_id,previous_batch_id FROM active_media_batch WHERE campaign_slug=?", (campaign_slug,),

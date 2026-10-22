@@ -98,6 +98,12 @@ def test_media_preflight_does_not_activate_until_explicit_action(tmp_path):
     batch_id = response.headers["location"].split("batch=")[1]
     page = client.get(response.headers["location"])
     assert "60 / 90 içerik yuvası hazır" in page.text
+    assert "Paket geçmişi" in page.text
+    assert "Önizle" in page.text
+    imported = app.state.media_imports.batch_files(batch_id)[0]
+    preview = client.get(f"/media/files/{imported['id']}")
+    assert preview.status_code == 200
+    assert preview.content == png_bytes()
     csrf = csrf_from(page.text)
     app.state.scheduler.activate()
     activated = client.post(f"/media/{batch_id}/activate", data={"csrf": csrf}, follow_redirects=False)
