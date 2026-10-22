@@ -102,3 +102,87 @@ class JobRepository:
             "SELECT * FROM publication_job WHERE state IN ('uploading','processing')",
         ).fetchall()
         return tuple(PublicationJob.model_validate(dict(row)) for row in rows)
+
+
+class MediaImportRepository:
+    def __init__(self, database: Database):
+        self.db = database
+
+    def create_batch(self, batch_id: str, campaign_slug: str, archive_checksum: str) -> None:
+        with self.db.connection:
+            self.db.connection.execute(
+                "INSERT OR IGNORE INTO media_import_batch(id,campaign_slug,archive_checksum,created_at) VALUES(?,?,?,?)",
+                (batch_id, campaign_slug, archive_checksum, datetime.now(timezone.utc).isoformat()),
+            )
+
+    def find_by_checksum(self, campaign_slug: str, archive_checksum: str):
+        return self.db.connection.execute(
+            "SELECT * FROM media_import_batch WHERE campaign_slug=? AND archive_checksum=?",
+            (campaign_slug, archive_checksum),
+        ).fetchone()
+
+    def list_batches(self, campaign_slug: str) -> tuple:
+        return tuple(self.db.connection.execute(
+            "SELECT * FROM media_import_batch WHERE campaign_slug=? ORDER BY created_at DESC", (campaign_slug,),
+        ).fetchall())
+
+    def add_file(self, batch_id: str, *, day: int, locale: str, kind: str, position: int,
+                 managed_path: str, checksum: str, width: int, height: int,
+                 duration_ms: int | None, mime_type: str) -> None:
+        with self.db.connection:
+            self.db.connection.execute(
+                """INSERT OR IGNORE INTO media_import_file
+                (batch_id,day,locale,kind,position,managed_path,checksum,width,height,duration_ms,mime_type)
+                VALUES(?,?,?,?,?,?,?,?,?,?,?)""",
+                (batch_id, day, locale, kind, position, managed_path, checksum,
+                 width, height, duration_ms, mime_type),
+            )
+
+    def activate(self, campaign_slug: str, batch_id: str) -> None:
+        batch = self.db.connection.execute(
+            "SELECT id FROM media_import_batch WHERE id=? AND campaign_slug=?", (batch_id, campaign_slug),
+        ).fetchone()
+        if batch is None:
+            raise KeyError(batch_id)
+        current = self.db.connection.execute(
+            "SELECT batch_id FROM active_media_batch WHERE campaign_slug=?", (campaign_slug,),
+        ).fetchone()
+        previous = current[0] if current and current[0] != batch_id else None
+        with self.db.connection:
+            self.db.connection.execute(
+                """INSERT INTO active_media_batch(campaign_slug,batch_id,previous_batch_id) VALUES(?,?,?)
+                ON CONFLICT(campaign_slug) DO UPDATE SET
+                previous_batch_id=CASE WHEN active_media_batch.batch_id!=excluded.batch_id THEN active_media_batch.batch_id ELSE active_media_batch.previous_batch_id END,
+                batch_id=excluded.batch_id""",
+                (campaign_slug, batch_id, previous),
+            )
+
+    def active_batch(self, campaign_slug: str):
+        return self.db.connection.execute(
+            """SELECT b.* FROM active_media_batch a JOIN media_import_batch b ON b.id=a.batch_id
+            WHERE a.campaign_slug=?""", (campaign_slug,),
+        ).fetchone()
+
+    def active_files(self, campaign_slug: str) -> tuple:
+        return tuple(self.db.connection.execute(
+            """SELECT f.* FROM active_media_batch a JOIN media_import_file f ON f.batch_id=a.batch_id
+            WHERE a.campaign_slug=? ORDER BY f.day,f.locale,f.kind,f.position""", (campaign_slug,),
+        ).fetchall())
+
+    def batch_files(self, batch_id: str) -> tuple:
+        return tuple(self.db.connection.execute(
+            "SELECT * FROM media_import_file WHERE batch_id=? ORDER BY day,locale,kind,position", (batch_id,),
+        ).fetchall())
+
+    def rollback(self, campaign_slug: str) -> bool:
+        row = self.db.connection.execute(
+            "SELECT batch_id,previous_batch_id FROM active_media_batch WHERE campaign_slug=?", (campaign_slug,),
+        ).fetchone()
+        if row is None or row["previous_batch_id"] is None:
+            return False
+        with self.db.connection:
+            self.db.connection.execute(
+                "UPDATE active_media_batch SET batch_id=?,previous_batch_id=? WHERE campaign_slug=?",
+                (row["previous_batch_id"], row["batch_id"], campaign_slug),
+            )
+        return True

@@ -54,3 +54,32 @@ CREATE TABLE IF NOT EXISTS application_state (
   value TEXT NOT NULL
 );
 INSERT OR IGNORE INTO application_state(key, value) VALUES ('paused', '0');
+
+CREATE TABLE IF NOT EXISTS media_import_batch (
+  id TEXT PRIMARY KEY,
+  campaign_slug TEXT NOT NULL REFERENCES campaign(slug),
+  archive_checksum TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  UNIQUE(campaign_slug, archive_checksum)
+);
+CREATE TABLE IF NOT EXISTS media_import_file (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  batch_id TEXT NOT NULL REFERENCES media_import_batch(id) ON DELETE CASCADE,
+  day INTEGER NOT NULL CHECK(day BETWEEN 1 AND 30),
+  locale TEXT NOT NULL,
+  kind TEXT NOT NULL,
+  position INTEGER NOT NULL DEFAULT 0,
+  managed_path TEXT NOT NULL,
+  checksum TEXT NOT NULL,
+  width INTEGER NOT NULL,
+  height INTEGER NOT NULL,
+  duration_ms INTEGER,
+  mime_type TEXT NOT NULL,
+  UNIQUE(batch_id, day, locale, kind, position)
+);
+CREATE TABLE IF NOT EXISTS active_media_batch (
+  campaign_slug TEXT PRIMARY KEY REFERENCES campaign(slug),
+  batch_id TEXT NOT NULL REFERENCES media_import_batch(id),
+  previous_batch_id TEXT REFERENCES media_import_batch(id)
+);
+CREATE INDEX IF NOT EXISTS idx_media_file_slot ON media_import_file(batch_id, day, locale, kind, position);
