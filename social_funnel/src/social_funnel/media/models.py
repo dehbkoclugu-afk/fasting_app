@@ -45,3 +45,12 @@ class ImportReport(BaseModel):
     @property
     def valid(self) -> bool:
         return not any(issue.severity == "error" for issue in self.issues)
+
+
+class MediaMetadata(BaseModel):
+    model_config = ConfigDict(frozen=True)
+    checksum: str
+    width: int
+    height: int
+    mime_type: str
+    duration_ms: int | None = None

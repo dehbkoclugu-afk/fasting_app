@@ -1,10 +1,12 @@
+from io import BytesIO
 from pathlib import Path
 from zipfile import ZipFile, ZipInfo
 
 import pytest
+from PIL import Image
 
 from social_funnel.content.loader import load_campaign
-from social_funnel.media.importer import inspect_media_zip
+from social_funnel.media.importer import inspect_media_zip, stage_media_zip
 
 
 CATALOG = Path(__file__).resolve().parents[2] / "content" / "fasttrack-30-day-launch.json"
@@ -69,3 +71,23 @@ def test_inspection_enforces_entry_and_expanded_size_limits(tmp_path: Path) -> N
     oversized = archive(tmp_path, {"day-01/tr/video.mp4": b"12345"})
     report = inspect_media_zip(oversized, load_campaign(CATALOG), max_expanded_bytes=4)
     assert "archive_too_large" in {issue.code for issue in report.issues}
+
+
+def test_stage_extracts_only_after_inspection_and_probes_content(tmp_path: Path) -> None:
+    image = BytesIO()
+    Image.new("RGB", (1080, 1350), "white").save(image, "PNG")
+    report = stage_media_zip(
+        archive(tmp_path, {"day-04/tr/post.png": image.getvalue()}),
+        load_campaign(CATALOG),
+        tmp_path / "stage",
+    )
+    assert report.valid
+    assert report.files[0].staged_path.is_file()
+    assert (report.files[0].width, report.files[0].height, report.files[0].mime_type) == (1080, 1350, "image/png")
+
+
+def test_invalid_archive_is_not_extracted(tmp_path: Path) -> None:
+    destination = tmp_path / "stage"
+    report = stage_media_zip(archive(tmp_path, {"../escape.png": b"bad"}), load_campaign(CATALOG), destination)
+    assert not report.valid
+    assert not destination.exists()

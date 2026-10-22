@@ -2,11 +2,14 @@
 
 from pathlib import Path, PurePosixPath
 import re
+import shutil
 from stat import S_IFMT, S_IFLNK
+import tempfile
 from zipfile import BadZipFile, ZipFile, ZipInfo
 
 from social_funnel.domain.models import CampaignManifest, LocaleCode
 from social_funnel.media.models import ImportedFile, ImportIssue, ImportReport, MediaSlot
+from social_funnel.media.probe import probe_image, probe_video
 
 
 DEFAULT_MAX_ENTRIES = 500
@@ -109,3 +112,61 @@ def inspect_media_zip(
         issues.append(ImportIssue(code="invalid_zip", message="The selected file is not a readable ZIP archive."))
     files.sort(key=lambda item: (item.slot.day, item.slot.locale.value, item.slot.kind, item.slot.position))
     return ImportReport(archive=archive, files=tuple(files), issues=tuple(issues))
+
+
+def stage_media_zip(
+    archive: Path,
+    manifest: CampaignManifest,
+    destination: Path,
+    ffprobe=None,
+    *,
+    max_entries: int = DEFAULT_MAX_ENTRIES,
+    max_expanded_bytes: int = DEFAULT_MAX_EXPANDED_BYTES,
+) -> ImportReport:
+    report = inspect_media_zip(archive, manifest, max_entries=max_entries,
+                               max_expanded_bytes=max_expanded_bytes)
+    if not report.valid:
+        return report
+    destination = Path(destination)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    temporary = Path(tempfile.mkdtemp(prefix="media-import-", dir=destination.parent))
+    files: list[ImportedFile] = []
+    issues = list(report.issues)
+    try:
+        with ZipFile(archive) as bundle:
+            total = 0
+            for item in report.files:
+                target = temporary / PurePosixPath(item.normalized_path)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with bundle.open(item.archive_path) as source, target.open("wb") as output:
+                    while block := source.read(1024 * 1024):
+                        total += len(block)
+                        if total > max_expanded_bytes:
+                            raise ValueError("Expanded archive exceeds the configured limit.")
+                        output.write(block)
+                try:
+                    metadata = probe_video(target, runner=ffprobe) if item.slot.kind == "video" else probe_image(target)
+                except (FileNotFoundError, ValueError) as exc:
+                    issues.append(ImportIssue(code="invalid_media", message=str(exc), path=item.normalized_path))
+                    continue
+                files.append(item.model_copy(update={
+                    "staged_path": target,
+                    "checksum": metadata.checksum,
+                    "width": metadata.width,
+                    "height": metadata.height,
+                    "duration_ms": metadata.duration_ms,
+                    "mime_type": metadata.mime_type,
+                }))
+        if issues:
+            shutil.rmtree(temporary, ignore_errors=True)
+            return ImportReport(archive=Path(archive), files=tuple(files), issues=tuple(issues))
+        if destination.exists():
+            raise FileExistsError(destination)
+        temporary.replace(destination)
+        final_files = tuple(item.model_copy(update={
+            "staged_path": destination / PurePosixPath(item.normalized_path),
+        }) for item in files)
+        return ImportReport(archive=Path(archive), files=final_files, staging_directory=destination)
+    except Exception:
+        shutil.rmtree(temporary, ignore_errors=True)
+        raise
