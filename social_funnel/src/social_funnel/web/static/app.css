@@ -85,6 +85,7 @@ aside { padding: 1.4rem; align-self: start; }
 footer { padding: 1.2rem min(5vw, 5rem); border-top: 1px solid var(--line); color: var(--muted); font-size: .75rem; }
 .media-layout { display: grid; grid-template-columns: minmax(260px,.65fr) minmax(0,1.6fr); gap: 2rem; }
 .upload-card, .notice { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.4rem; align-self: start; }
+.upload-card code { overflow-wrap: anywhere; }
 .upload-card form { display: grid; gap: .8rem; margin: 1rem 0; }
 .upload-card input[type=file] { border: 1px dashed var(--sage); border-radius: 8px; padding: 1rem; max-width: 100%; }
 .notice.error { border-color: #bb765f; margin-bottom: 1rem; }

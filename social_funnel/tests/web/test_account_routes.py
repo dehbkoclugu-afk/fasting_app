@@ -128,6 +128,19 @@ def test_accounts_page_lists_destinations_and_keeps_secrets_out_of_html(tmp_path
     assert "actual-secret-value" not in page.text
 
 
+def test_accounts_page_shows_exact_oauth_callback_urls_for_current_port(tmp_path):
+    client = TestClient(
+        make_app(tmp_path, FakeTikTokConnection()),
+        base_url="http://127.0.0.1:8823",
+    )
+
+    page = client.get("/accounts")
+
+    assert "http://127.0.0.1:8823/oauth/tiktok/callback" in page.text
+    assert "http://127.0.0.1:8823/oauth/threads/callback" in page.text
+    assert "http://127.0.0.1:8823/oauth/meta/callback" in page.text
+
+
 def test_tiktok_developer_config_requires_csrf_and_is_delegated_to_vault_service(tmp_path):
     service = FakeTikTokConnection()
     client = TestClient(make_app(tmp_path, service))
