@@ -7,8 +7,28 @@ name: Android build
 on:
   push:
     branches: ['main']
+    paths:
+      - 'android/**'
+      - 'lib/**'
+      - 'test/**'
+      - 'assets/**'
+      - 'tool/**'
+      - 'pubspec.yaml'
+      - 'pubspec.lock'
+      - 'analysis_options.yaml'
+      - 'l10n.yaml'
   pull_request:
     branches: ['main']
+    paths:
+      - 'android/**'
+      - 'lib/**'
+      - 'test/**'
+      - 'assets/**'
+      - 'tool/**'
+      - 'pubspec.yaml'
+      - 'pubspec.lock'
+      - 'analysis_options.yaml'
+      - 'l10n.yaml'
   workflow_dispatch:
 
 jobs:

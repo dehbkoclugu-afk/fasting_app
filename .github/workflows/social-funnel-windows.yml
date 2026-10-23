@@ -1,0 +1,30 @@
+name: FastTrack Social Funnel Windows
+
+on:
+  push:
+    branches: ['main']
+    paths:
+      - 'social_funnel/**'
+      - '.github/workflows/social-funnel-windows.yml'
+  pull_request:
+    branches: ['main']
+    paths:
+      - 'social_funnel/**'
+      - '.github/workflows/social-funnel-windows.yml'
+  workflow_dispatch:
+
+jobs:
+  package:
+    name: Test and package Windows app
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Build and test
+        shell: pwsh
+        run: ./social_funnel/packaging/build.ps1
+      - name: Smoke test packaged EXE
+        shell: pwsh
+        run: ./social_funnel/packaging/smoke-test.ps1
