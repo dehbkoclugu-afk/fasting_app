@@ -193,6 +193,9 @@ def make_router(db: Database, jobs: JobRepository, manifest: CampaignManifest, w
             "tiktok_configured": configured, "meta_configured": meta_configured,
             "threads_configured": threads_configured,
             "hosting_configured": hosting_configured,
+            "tiktok_callback_url": oauth_redirect_uri(request),
+            "meta_callback_url": meta_redirect_uri(request),
+            "threads_callback_url": threads_redirect_uri(request),
             "notice": messages.get(notice),
             "error": errors.get(error),
         })
