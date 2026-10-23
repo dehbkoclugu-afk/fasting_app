@@ -1,0 +1,1 @@
+"""OS credential vault integration."""

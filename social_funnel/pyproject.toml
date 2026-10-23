@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fasttrack-social-funnel"
+version = "0.1.0"
+description = "Local multilingual social publishing workspace for FastTrack"
+requires-python = ">=3.13"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.30,<1",
+  "jinja2>=3.1,<4",
+  "itsdangerous>=2.2,<3",
+  "pydantic>=2.10,<3",
+  "pillow>=11,<13",
+  "apscheduler>=3.10,<4",
+  "httpx>=0.27,<1",
+  "keyring>=25,<27",
+  "python-multipart>=0.0.20,<1",
+]
+
+[project.optional-dependencies]
+hosting = ["boto3>=1.35,<2"]
+meta = ["httpx>=0.27,<1", "keyring>=25,<27"]
+tiktok = ["httpx>=0.27,<1", "keyring>=25,<27"]
+packaging = ["pyinstaller>=6,<7"]
+dev = ["pytest>=8,<10", "httpx>=0.27,<1", "respx>=0.21,<1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

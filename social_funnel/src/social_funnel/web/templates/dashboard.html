@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Kampanya | FastTrack Social{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">30 günlük organik kampanya{% if campaign_month %} · {{ campaign_month }}{% endif %}</p>
+    <h1>{{ campaign_title }}</h1>
+    <p>Türkçe, English ve Português do Brasil içerikleri tek yerde; yayın öncesi kontrol sende.</p>
+    <div class="hero-meta"><span>{{ total }} jobs</span><span>12 destinations</span><span>3 languages</span></div>
+    <p><a class="button-link" href="/campaigns">Aylık kampanya</a> <a class="button-link" href="/media">Aylık medya yükle</a></p>
+  </div>
+  <div class="status-panel">
+    <p class="eyebrow">Yayın kuyruğu</p>
+    <strong class="status {% if paused or not campaign_active %}paused{% endif %}">{{ "Paused" if paused else ("Running" if campaign_active else "Aktif değil") }}</strong>
+    <p>{% if paused %}Yeni paylaşım başlamaz. Devam eden iş tamamlanabilir.{% elif not campaign_active %}Medya ve hesaplar hazır olduğunda kampanyayı etkinleştir.{% else %}Bağlanan hesaplarda planlanan işler sırayla işlenir.{% endif %}</p>
+    <form method="post" action="/{{ 'resume' if paused else 'pause' }}"><input type="hidden" name="csrf" value="{{ csrf }}"><button type="submit">{{ "Devam ettir" if paused else "Kuyruğu duraklat" }}</button></form>
+    {% if campaign_active %}<form method="post" action="/campaign/deactivate"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="quiet" type="submit">Kampanyayı kapat</button></form>{% else %}<p>Etkinleştirme, incelenen Instagram, Facebook ve Threads işlerini planlar. TikTok videoları kendi açık onay kutusunu bekler.</p><form method="post" action="/campaign/activate"><input type="hidden" name="csrf" value="{{ csrf }}"><button type="submit">İnceledim ve kampanyayı etkinleştir</button></form>{% endif %}
+  </div>
+</section>
+<section class="stats" aria-label="Durum özeti">
+  <article><span>İnceleme bekliyor</span><strong>{{ counts.get('needs_review',0) + counts.get('draft',0) }}</strong></article>
+  <article><span>Planlandı</span><strong>{{ counts.get('scheduled',0) }}</strong></article>
+  <article><span>İşleniyor</span><strong>{{ counts.get('uploading',0) + counts.get('processing',0) }}</strong></article>
+  <article><span>Yayınlandı</span><strong>{{ counts.get('published',0) }}</strong></article>
+  <article><span>İşlem gerekli</span><strong>{{ counts.get('failed',0) }}</strong></article>
+  <article><span>Kapalı</span><strong>{{ counts.get('disabled',0) }}</strong></article>
+</section>
+<section class="columns">
+  <div>
+    <div class="section-heading"><div><p class="eyebrow">İçerik akışı</p><h2>30 günün temaları</h2></div><span>01 — 30</span></div>
+    <div class="day-grid">
+    {% for idea in ideas %}
+      <a class="day-card" href="/days/{{ idea.day }}">
+        <span class="day-num">{{ '%02d'|format(idea.day) }}</span>
+        <span><small>{{ idea.funnel_stage|replace('_',' ') }}</small><strong>{{ idea.theme }}</strong></span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    {% endfor %}
+    </div>
+  </div>
+  <aside>
+    <p class="eyebrow">Bağlantılar</p><h2>12 hedef hesap</h2>
+    <p class="muted">Hesaplar oluşturulup resmi izinleri bağlanana kadar hiçbir canlı paylaşım yapılmaz.</p>
+    <div class="account-list">
+    {% for account in accounts %}
+      <div><span><b>{{ 'TikTok' if account.platform == 'tiktok' else account.platform|capitalize }}</b><small>{{ account.locale }}</small></span><em>{{ account.public_identity or 'Bağlantı bekliyor' }}</em></div>
+    {% endfor %}
+    </div>
+  </aside>
+</section>
+{% endblock %}

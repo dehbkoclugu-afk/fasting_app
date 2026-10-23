@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}Hesaplar · FastTrack{% endblock %}
+{% block content %}
+<section class="hero compact-hero">
+  <div>
+    <p class="eyebrow">GÜVENLİ HESAP BAĞLANTILARI</p>
+    <h1>12 yayın hedefini tek yerden bağla.</h1>
+    <p>Şifreler ve erişim anahtarları bu ekranda ya da kampanya veritabanında tutulmaz. Tüm bağlantılar resmi sağlayıcı izin ekranlarından doğrulanır.</p>
+  </div>
+</section>
+
+{% if notice %}<div class="notice success">{{ notice }}</div>{% endif %}
+{% if error %}<div class="notice error">{{ error }}</div>{% endif %}
+
+<section class="provider-config-grid">
+  <article class="upload-card">
+    <p class="eyebrow">TIKTOK UYGULAMA AYARI</p>
+    <h2>{{ "Yapılandırıldı" if tiktok_configured else "Kurulum gerekli" }}</h2>
+    <p class="muted">TikTok Developer Center içindeki Desktop uygulamasının Client key ve secret değerlerini bir kez gir. Secret yalnızca Windows güvenli kasasına gider ve tekrar gösterilmez.</p>
+    <form method="post" action="/accounts/tiktok/configure">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <label>Client key<input name="client_key" required autocomplete="off"></label>
+      <label>Client secret<input name="client_secret" type="password" required autocomplete="new-password"></label>
+      <button type="submit">Güvenli kasaya kaydet</button>
+    </form>
+  </article>
+
+  <article class="upload-card">
+    <p class="eyebrow">THREADS UYGULAMA AYARI</p>
+    <h2>{{ "Yapılandırıldı" if threads_configured else "Kurulum gerekli" }}</h2>
+    <p class="muted">Threads kullanım senaryosu eklenmiş Meta uygulamasının Threads App ID ve secret değerlerini gir. Her dil hesabı ayrı resmi izinle doğrulanır.</p>
+    <form method="post" action="/accounts/threads/configure">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <label>Threads App ID<input name="app_id" required autocomplete="off"></label>
+      <label>Threads App secret<input name="app_secret" type="password" required autocomplete="new-password"></label>
+      <button type="submit">Güvenli kasaya kaydet</button>
+    </form>
+  </article>
+
+  <article class="upload-card">
+    <p class="eyebrow">META UYGULAMA AYARI</p>
+    <h2>{{ "Yapılandırıldı" if meta_configured else "Kurulum gerekli" }}</h2>
+    <p class="muted">Facebook Login for Business kullanan Meta uygulamasının App ID ve secret değerlerini bir kez gir. Her dilde Facebook Sayfası ve bağlı Instagram hesabı birlikte doğrulanır.</p>
+    <form method="post" action="/accounts/meta/configure">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <label>App ID<input name="app_id" required autocomplete="off"></label>
+      <label>App secret<input name="app_secret" type="password" required autocomplete="new-password"></label>
+      <button type="submit">Güvenli kasaya kaydet</button>
+    </form>
+  </article>
+
+  <article class="upload-card">
+    <p class="eyebrow">INSTAGRAM / THREADS MEDYASI</p>
+    <h2>Medya barındırma · {{ "Yapılandırıldı" if hosting_configured else "Kurulum gerekli" }}</h2>
+    <p class="muted">Instagram'ın görsel ve videoları alabilmesi için S3 uyumlu özel alanını bağla. Erişim anahtarları yalnızca Windows güvenli kasasında tutulur.</p>
+    <form method="post" action="/accounts/hosting/configure">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <label>S3 uç noktası<input name="endpoint_url" type="url" required placeholder="https://...r2.cloudflarestorage.com"></label>
+      <label>Bucket<input name="bucket" required autocomplete="off"></label>
+      <label>Herkese açık HTTPS adresi<input name="public_base_url" type="url" required placeholder="https://media.example.com"></label>
+      <label>Access key ID<input name="access_key_id" required autocomplete="off"></label>
+      <label>Secret access key<input name="secret_access_key" type="password" required autocomplete="new-password"></label>
+      <label>Bölge<input name="region" value="auto" required autocomplete="off"></label>
+      <button type="submit">Güvenli kasaya kaydet</button>
+    </form>
+    {% if hosting_configured %}
+    <form method="post" action="/accounts/hosting/disconnect">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <button class="quiet" type="submit">Barındırmayı kaldır</button>
+    </form>
+    {% endif %}
+  </article>
+</section>
+
+<section class="account-list-section">
+  <div>
+    <div class="section-heading"><h2>Yayın hedefleri</h2><span>3 dil · 4 platform</span></div>
+    <div class="connection-grid">
+      {% for account in accounts %}
+      <article class="connection-card" data-account-id="{{ account.id }}">
+        <div>
+          <span class="platform-label">{{ account.platform|upper }} · {{ account.locale }}</span>
+          <strong>{{ account.public_identity or account.id }}</strong>
+          <small class="{{ 'connected' if account.enabled else 'pending' }}">{{ "Bağlı" if account.enabled else "Bağlı değil" }}</small>
+        </div>
+        {% if account.platform == "tiktok" %}
+          {% if account.enabled %}
+          <form method="post" action="/accounts/{{ account.id }}/disconnect">
+            <input type="hidden" name="csrf" value="{{ csrf }}">
+            <button class="quiet" type="submit">Bağlantıyı kes</button>
+          </form>
+          {% else %}
+          <form method="post" action="/accounts/{{ account.id }}/tiktok/connect">
+            <input type="hidden" name="csrf" value="{{ csrf }}">
+            <button type="submit" {% if not tiktok_configured %}disabled title="Önce TikTok uygulama ayarını kaydet"{% endif %}>TikTok'a bağlan</button>
+          </form>
+          {% endif %}
+        {% elif account.platform == "facebook" %}
+          {% set paired = account.enabled %}
+          {% if paired %}
+          <form method="post" action="/accounts/{{ account.locale }}/meta/disconnect">
+            <input type="hidden" name="csrf" value="{{ csrf }}">
+            <button class="quiet" type="submit">Meta çiftini ayır</button>
+          </form>
+          {% else %}
+          <form method="post" action="/accounts/{{ account.locale }}/meta/connect">
+            <input type="hidden" name="csrf" value="{{ csrf }}">
+            <button type="submit" {% if not meta_configured %}disabled title="Önce Meta uygulama ayarını kaydet"{% endif %}>Facebook + Instagram bağla</button>
+          </form>
+          {% endif %}
+        {% elif account.platform == "instagram" %}
+          <span class="coming-soon">Facebook Sayfasıyla birlikte bağlanır</span>
+        {% else %}
+          {% if account.enabled %}
+          <form method="post" action="/accounts/{{ account.id }}/threads/disconnect">
+            <input type="hidden" name="csrf" value="{{ csrf }}">
+            <button class="quiet" type="submit">Bağlantıyı kes</button>
+          </form>
+          {% else %}
+          <form method="post" action="/accounts/{{ account.id }}/threads/connect">
+            <input type="hidden" name="csrf" value="{{ csrf }}">
+            <button type="submit" {% if not threads_configured %}disabled title="Önce Threads uygulama ayarını kaydet"{% endif %}>Threads'e bağlan</button>
+          </form>
+          {% endif %}
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

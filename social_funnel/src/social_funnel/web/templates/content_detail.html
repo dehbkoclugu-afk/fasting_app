@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Gün {{ idea.day }} | FastTrack Social{% endblock %}
+{% block content %}
+<div class="detail-header"><a href="/">← Kampanyaya dön</a><span>{{ idea.funnel_stage|replace('_',' ') }}</span></div>
+<section class="detail-hero"><p class="eyebrow">Gün {{ '%02d'|format(idea.day) }}</p><h1>{{ idea.theme }}</h1><p>{{ idea.purpose }}</p>
+<form method="post" action="/days/{{ idea.day }}/export"><input type="hidden" name="csrf" value="{{ csrf }}"><button type="submit">Günün ZIP paketini hazırla</button></form></section>
+<section class="locale-grid">
+{% for content in idea.localized %}
+  <article class="locale-card">
+    <span class="locale-label">{{ 'Türkçe' if content.locale.value == 'tr' else 'English' if content.locale.value == 'en' else 'Português (Brasil)' }}</span>
+    <h2>{{ content.hook }}</h2><p>{{ content.body }}</p><p class="cta">{{ content.cta }}</p><small>{{ content.hashtags|join(' ') }}</small>
+    {% if content.safety_note %}<p class="safety">{{ content.safety_note }}</p>{% endif %}
+    <div class="job-list">
+      {% for job in jobs if job.locale == content.locale.value %}
+      <div class="job-row"><span><strong>{{ 'TikTok' if job.platform == 'tiktok' else job.platform|capitalize }}</strong><small>{{ state_labels.get(job.state, job.state) }}</small><small>{{ job.scheduled_label }}</small></span>
+      <div class="job-actions">
+        {% if job.state == 'processing' and job.platform == 'tiktok' %}<p class="job-status-note">TikTok gönderimi işleniyor. Creator-review kullandıysan Creator inbox'ı kontrol et; FastTrack durumu otomatik yeniler.{% if job.remote_id %}<small>İşlem kimliği: {{ job.remote_id }}</small>{% endif %}</p>{% endif %}
+        {% if job.state == 'failed' %}<p class="job-status-note error">Yayın tamamlanamadı: {{ job.last_error or 'Platform ayrıntı vermedi.' }}</p>{% endif %}
+        {% if job.state == 'disabled' and job.platform == 'tiktok' %}<p class="job-status-note">TikTok için video olmayan işler kapalıdır. Bu görsel veya karusel Instagram ve Facebook için otomatik hazırlanır.</p>{% endif %}
+        {% if job.state in ['draft','needs_review'] %}<form method="post" action="/jobs/{{ job.id }}/approve"><input type="hidden" name="csrf" value="{{ csrf }}">{% if job.platform == 'tiktok' %}<label class="consent"><input type="checkbox" name="tiktok_consent" value="1" required> TikTok'a yüklenmesini açıkça onaylıyorum</label>{% endif %}<button type="submit">{{ "TikTok yüklemesini onayla" if job.platform == 'tiktok' else "Kontrol et ve onayla" }}</button></form>{% endif %}
+        {% if job.state not in ['disabled','published'] %}<form method="post" action="/jobs/{{ job.id }}/disable"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="quiet" type="submit">Kapat</button></form>{% endif %}
+      </div>
+      </div>
+      {% endfor %}
+    </div>
+  </article>
+{% endfor %}
+</section>
+{% endblock %}

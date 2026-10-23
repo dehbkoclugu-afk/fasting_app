@@ -1,0 +1,1 @@
+"""Curated launch campaign catalog."""

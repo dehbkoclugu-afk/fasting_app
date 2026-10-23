@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="panel setup-panel">
+  <p class="eyebrow">First run</p>
+  <h1>Set up FastTrack Social Funnel</h1>
+  <p>Create the local workspace, import the reviewed 30-day campaign, and verify this computer before publishing.</p>
+  <form method="post" action="/setup">
+    <label for="workspace">Workspace folder</label>
+    <input id="workspace" name="workspace" required autocomplete="off">
+    <button type="submit">Create workspace</button>
+  </form>
+</main>
+{% endblock %}
