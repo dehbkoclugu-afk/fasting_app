@@ -23,6 +23,9 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - name: Native photo decoder regression
+        run: python3 tool/verify_picker_sampling.py
+
       # Pinned to the version Codemagic uses: newer stables break google_fonts
       # 6.2.1 and phosphor_flutter 2.1.0.
       - uses: subosito/flutter-action@v2
@@ -43,6 +46,8 @@ jobs:
       - run: flutter build appbundle --release
 
       - uses: actions/upload-artifact@v4
+        # Storage quota may be exhausted even when the release bundle builds.
+        continue-on-error: true
         with:
           name: app-release-unsigned-aab
           path: build/app/outputs/bundle/release/*.aab

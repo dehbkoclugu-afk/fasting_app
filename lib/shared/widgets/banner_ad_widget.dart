@@ -14,30 +14,59 @@ class BannerAdWidget extends ConsumerStatefulWidget {
 class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
   BannerAd? _bannerAd;
   bool _isLoaded = false;
+  bool _loading = false;
 
   @override
   void initState() {
     super.initState();
-    _loadAd();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _syncAd());
   }
 
-  void _loadAd() {
-    _bannerAd = BannerAd(
-      adUnitId: AdmobService.bannerAdUnitId,
-      size: AdSize.banner,
-      request: const AdRequest(),
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          if (mounted) {
-            setState(() => _isLoaded = true);
-          }
-        },
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-          _bannerAd = null;
-        },
-      ),
-    )..load();
+  Future<void> _syncAd() async {
+    if (!mounted) return;
+    final subscription = ref.read(subscriptionProvider);
+    if (subscription.isPremium || !subscription.entitlementVerified) {
+      _bannerAd?.dispose();
+      _bannerAd = null;
+      if (_isLoaded) setState(() => _isLoaded = false);
+      return;
+    }
+    if (_loading || _bannerAd != null) return;
+    _loading = true;
+    try {
+      final ads = AdmobService();
+      await ads.initialize();
+      if (!mounted ||
+          !ads.canLoadAds ||
+          ref.read(subscriptionProvider).isPremium ||
+          !ref.read(subscriptionProvider).entitlementVerified)
+        return;
+      _bannerAd = BannerAd(
+        adUnitId: AdmobService.bannerAdUnitId,
+        size: AdSize.banner,
+        request: const AdRequest(),
+        listener: BannerAdListener(
+          onAdLoaded: (ad) {
+            if (mounted &&
+                ref.read(subscriptionProvider).entitlementVerified &&
+                !ref.read(subscriptionProvider).isPremium) {
+              setState(() => _isLoaded = true);
+            } else {
+              ad.dispose();
+              _bannerAd = null;
+            }
+          },
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+            _bannerAd = null;
+          },
+        ),
+      )..load();
+    } catch (error) {
+      debugPrint('Banner ad setup failed: $error');
+    } finally {
+      _loading = false;
+    }
   }
 
   @override
@@ -48,9 +77,13 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final isPremium = ref.watch(isPremiumProvider);
+    final subscription = ref.watch(subscriptionProvider);
+    ref.listen<SubscriptionState>(subscriptionProvider, (_, __) => _syncAd());
 
-    if (isPremium || !_isLoaded || _bannerAd == null) {
+    if (subscription.isPremium ||
+        !subscription.entitlementVerified ||
+        !_isLoaded ||
+        _bannerAd == null) {
       return const SizedBox.shrink();
     }
 

@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../paywall/providers/subscription_provider.dart';
 
 import '../../../core/config/build_config.dart';
 import '../../../services/food_vision_service.dart';
@@ -61,6 +62,21 @@ String detectImageMimeType(
   return 'image/jpeg';
 }
 
+/// Reject oversized picker fallbacks before allocating their complete contents.
+/// The native picker normally returns a downscaled image, but unsupported
+/// formats and recovery can return the original file.
+Future<Uint8List> readFoodPhoto(XFile file) async {
+  final length = await file.length();
+  if (length <= 0 || length > FoodVisionService.maxImageBytes) {
+    throw const FoodVisionException(FoodVisionError.unreadable);
+  }
+  final bytes = await file.readAsBytes();
+  if (bytes.isEmpty || bytes.length > FoodVisionService.maxImageBytes) {
+    throw const FoodVisionException(FoodVisionError.unreadable);
+  }
+  return bytes;
+}
+
 @immutable
 class FoodScanState {
   const FoodScanState({
@@ -118,9 +134,13 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
     FoodVisionService? service,
     ImagePicker? picker,
     int? dailyLimit,
+    DateTime Function()? clock,
+    bool Function()? canAnalyze,
   }) : _service = service ?? FoodVisionService(),
        _picker = picker ?? ImagePicker(),
        _dailyLimit = dailyLimit ?? BuildConfig.geminiDailyScanLimit,
+       _clock = clock ?? DateTime.now,
+       _canAnalyze = canAnalyze ?? (() => true),
        super(const FoodScanState()) {
     _quotaLoad = _loadQuota();
   }
@@ -128,6 +148,8 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   final FoodVisionService _service;
   final ImagePicker _picker;
   final int _dailyLimit;
+  final DateTime Function() _clock;
+  final bool Function() _canAnalyze;
   late final Future<void> _quotaLoad;
   bool _pickerInFlight = false;
   bool _analysisInFlight = false;
@@ -139,6 +161,13 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   /// and a 12 MP original would make the upload slow on mobile data.
   static const _maxImageDimension = 1024.0;
   static const _jpegQuality = 85;
+
+  Future<void> refreshQuota() async {
+    if (!mounted || _pickerInFlight || _analysisInFlight || !_canAnalyze())
+      return;
+    await _quotaLoad;
+    if (mounted) await _loadQuota();
+  }
 
   Future<void> _loadQuota() async {
     if (_dailyLimit <= 0) return;
@@ -169,10 +198,9 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   Future<void> _recordScan() async {
     if (_dailyLimit <= 0) return;
     final prefs = await SharedPreferences.getInstance();
-    final used =
-        prefs.getString(_dayKey) == _todayKey()
-            ? (prefs.getInt(_countKey) ?? 0)
-            : 0;
+    final used = prefs.getString(_dayKey) == _todayKey()
+        ? (prefs.getInt(_countKey) ?? 0)
+        : 0;
     await prefs.setString(_dayKey, _todayKey());
     await prefs.setInt(_countKey, used + 1);
     if (mounted) {
@@ -182,36 +210,35 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
     }
   }
 
-  static String _todayKey() {
-    final now = DateTime.now();
+  String _todayKey() {
+    final now = _clock();
     return '${now.year}-${now.month}-${now.day}';
   }
 
   /// Picks a photo and analyses it. Does nothing if the user backs out of the
   /// picker — that is not an error worth showing.
-  Future<void> scan(
-    PhotoSource source, {
-    String languageCode = 'en',
-  }) async {
-    await _quotaLoad;
-    if (_pickerInFlight || state.isBusy) return;
-    if (!state.hasQuotaLeft) {
-      state = state.copyWith(
-        status: FoodScanStatus.failed,
-        error: FoodVisionError.rateLimited,
-      );
+  Future<void> scan(PhotoSource source, {String languageCode = 'en'}) async {
+    if (!mounted || _pickerInFlight || _analysisInFlight || !_canAnalyze())
       return;
-    }
-
     _pickerInFlight = true;
     try {
+      await _quotaLoad;
+      if (!mounted || !_canAnalyze()) return;
+      await _loadQuota();
+      if (!mounted) return;
+      if (!state.hasQuotaLeft) {
+        state = state.copyWith(
+          status: FoodScanStatus.failed,
+          error: FoodVisionError.rateLimited,
+        );
+        return;
+      }
       XFile? file;
       try {
         file = await _picker.pickImage(
-          source:
-              source == PhotoSource.camera
-                  ? ImageSource.camera
-                  : ImageSource.gallery,
+          source: source == PhotoSource.camera
+              ? ImageSource.camera
+              : ImageSource.gallery,
           maxWidth: _maxImageDimension,
           maxHeight: _maxImageDimension,
           imageQuality: _jpegQuality,
@@ -226,10 +253,11 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
         }
         return;
       }
-      if (file == null) return;
+      if (!mounted || file == null || !_canAnalyze()) return;
 
       try {
-        final bytes = await file.readAsBytes();
+        final bytes = await readFoodPhoto(file);
+        if (!mounted) return;
         await analyzeBytes(
           bytes,
           languageCode: languageCode,
@@ -259,26 +287,40 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
     String languageCode = 'en',
     String? mimeType,
   }) async {
-    await _quotaLoad;
-    if (_analysisInFlight) return;
-    if (!state.hasQuotaLeft) {
-      state = state.copyWith(
-        status: FoodScanStatus.failed,
-        error: FoodVisionError.rateLimited,
-      );
-      return;
-    }
-
+    if (!mounted || _analysisInFlight || !_canAnalyze()) return;
     _analysisInFlight = true;
-    final resolvedMimeType = mimeType ?? detectImageMimeType(bytes);
-    state = FoodScanState(
-      status: FoodScanStatus.analyzing,
-      imageBytes: bytes,
-      imageMimeType: resolvedMimeType,
-      scansLeftToday: state.scansLeftToday,
-    );
-
     try {
+      await _quotaLoad;
+      if (!mounted || !_canAnalyze()) return;
+      await _loadQuota();
+      if (!mounted) return;
+      if (!state.hasQuotaLeft) {
+        state = state.copyWith(
+          status: FoodScanStatus.failed,
+          error: FoodVisionError.rateLimited,
+        );
+        return;
+      }
+      // Check before publishing bytes to Image.memory, not just before HTTP.
+      if (bytes.isEmpty || bytes.length > FoodVisionService.maxImageBytes) {
+        state = FoodScanState(
+          status: FoodScanStatus.failed,
+          error: FoodVisionError.unreadable,
+          scansLeftToday: state.scansLeftToday,
+        );
+        return;
+      }
+      final resolvedMimeType = mimeType ?? detectImageMimeType(bytes);
+      state = FoodScanState(
+        status: FoodScanStatus.analyzing,
+        imageBytes: bytes,
+        imageMimeType: resolvedMimeType,
+        scansLeftToday: state.scansLeftToday,
+      );
+      if (!_canAnalyze()) {
+        state = FoodScanState(scansLeftToday: state.scansLeftToday);
+        return;
+      }
       final analysis = await _service.analyze(
         imageBytes: bytes,
         languageCode: languageCode,
@@ -294,10 +336,7 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
     } on FoodVisionException catch (error) {
       debugPrint('Food scan failed: $error');
       if (!mounted) return;
-      state = state.copyWith(
-        status: FoodScanStatus.failed,
-        error: error.error,
-      );
+      state = state.copyWith(status: FoodScanStatus.failed, error: error.error);
     } catch (error) {
       debugPrint('Food scan failed: $error');
       if (!mounted) return;
@@ -312,6 +351,7 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
 
   /// Re-runs the analysis on the photo already in state.
   Future<void> retry({String languageCode = 'en'}) async {
+    if (!mounted) return;
     final bytes = state.imageBytes;
     if (bytes == null) return;
     await analyzeBytes(
@@ -337,6 +377,7 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   }
 
   void reset() {
+    if (!mounted || _analysisInFlight || _pickerInFlight) return;
     state = FoodScanState(scansLeftToday: state.scansLeftToday);
   }
 
@@ -349,5 +390,5 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
 
 final foodScanProvider =
     StateNotifierProvider.autoDispose<FoodScanNotifier, FoodScanState>((ref) {
-      return FoodScanNotifier();
+      return FoodScanNotifier(canAnalyze: () => ref.read(isPremiumProvider));
     });

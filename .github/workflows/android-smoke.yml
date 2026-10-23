@@ -1,0 +1,58 @@
+name: Android emulator smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/android-smoke.yml'
+      - 'tool/android_smoke.sh'
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Free runner space before Android build
+        run: |
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          sudo rm -rf "$ANDROID_HOME/system-images"
+          df -h .
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.38.10
+          channel: stable
+      - run: flutter pub get
+      - run: flutter gen-l10n
+      - run: flutter build apk --debug
+      - name: Keep APK and free build space for the emulator
+        run: |
+          cp build/app/outputs/flutter-apk/app-debug.apk /tmp/fasttrack-debug.apk
+          rm -rf build
+          flutter_sdk_dir=$(dirname "$(dirname "$(readlink -f "$(command -v flutter)")")")
+          case "$flutter_sdk_dir" in
+            /opt/hostedtoolcache/flutter/*) sudo rm -rf "$flutter_sdk_dir" ;;
+            *) echo "Unexpected Flutter SDK path: $flutter_sdk_dir" >&2; exit 1 ;;
+          esac
+          rm -rf "$HOME/.gradle/caches" "$HOME/.pub-cache" android/.gradle
+          df -h .
+      - name: Allow emulator hardware acceleration
+        run: |
+          if [ -e /dev/kvm ]; then
+            sudo chmod 666 /dev/kvm
+            ls -l /dev/kvm
+          fi
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          disk-size: 2048M
+          disable-animations: true
+          emulator-options: -no-window -no-audio -gpu swiftshader_indirect -no-snapshot -no-boot-anim
+          script: bash tool/android_smoke.sh

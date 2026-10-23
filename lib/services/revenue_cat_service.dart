@@ -83,7 +83,7 @@ class RevenueCatService {
       return _hasEntitlement(customerInfo);
     } catch (e) {
       debugPrint('RevenueCat isPremium error: $e');
-      return false;
+      rethrow;
     }
   }
 
@@ -153,8 +153,8 @@ class RevenueCatService {
       return switch (code) {
         PurchasesErrorCode.purchaseCancelledError => PurchaseOutcome.cancelled,
         PurchasesErrorCode.productAlreadyPurchasedError ||
-        PurchasesErrorCode
-            .receiptAlreadyInUseError => PurchaseOutcome.alreadyOwned,
+        PurchasesErrorCode.receiptAlreadyInUseError =>
+          PurchaseOutcome.alreadyOwned,
         _ => PurchaseOutcome.failed,
       };
     } catch (e) {

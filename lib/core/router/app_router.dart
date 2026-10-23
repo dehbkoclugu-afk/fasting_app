@@ -32,12 +32,15 @@ class AppRouter {
     Uint8List? recoveredFoodImage,
     String? recoveredFoodImageMimeType,
   }) {
+    // Consume a recovered photo once; reopening the scanner must not upload
+    // the same photo and spend another scan again.
+    var pendingImage = recoveredFoodImage;
+    var pendingMimeType = recoveredFoodImageMimeType;
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation:
-          recoveredFoodImage != null
-              ? '/food-scan'
-              : (showOnboarding ? '/onboarding' : '/timer'),
+      initialLocation: recoveredFoodImage != null
+          ? '/food-scan'
+          : (showOnboarding ? '/onboarding' : '/timer'),
       routes: [
         // Onboarding
         GoRoute(
@@ -68,34 +71,28 @@ class AppRouter {
           routes: [
             GoRoute(
               path: '/timer',
-              pageBuilder:
-                  (context, state) =>
-                      const NoTransitionPage(child: TimerScreen()),
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: TimerScreen()),
             ),
             GoRoute(
               path: '/explore',
-              pageBuilder:
-                  (context, state) =>
-                      const NoTransitionPage(child: ExploreScreen()),
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: ExploreScreen()),
             ),
             GoRoute(
               path: '/stats',
-              pageBuilder:
-                  (context, state) =>
-                      const NoTransitionPage(child: StatsScreen()),
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: StatsScreen()),
             ),
             GoRoute(
               path: '/achievements',
-              pageBuilder:
-                  (context, state) => const NoTransitionPage(
-                    child: GamificationDashboardScreen(),
-                  ),
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: GamificationDashboardScreen()),
             ),
             GoRoute(
               path: '/profile',
-              pageBuilder:
-                  (context, state) =>
-                      const NoTransitionPage(child: ProfileScreen()),
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: ProfileScreen()),
             ),
           ],
         ),
@@ -125,11 +122,18 @@ class AppRouter {
         GoRoute(
           path: '/food-scan',
           parentNavigatorKey: _rootNavigatorKey,
-          builder:
-              (context, state) => FoodScanScreen(
-                initialImageBytes: recoveredFoodImage,
-                initialImageMimeType: recoveredFoodImageMimeType,
-              ),
+          builder: (context, state) {
+            final bytes = pendingImage;
+            final mimeType = pendingMimeType;
+            return FoodScanScreen(
+              initialImageBytes: bytes,
+              initialImageMimeType: mimeType,
+              onInitialImageConsumed: () {
+                pendingImage = null;
+                pendingMimeType = null;
+              },
+            );
+          },
         ),
 
         // Water Tracker

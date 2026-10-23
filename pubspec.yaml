@@ -67,6 +67,13 @@ dev_dependencies:
   flutter_native_splash: ^2.4.4
   image: ^4.8.0
 
+# 0.8.13+17 computes the native decode sample size from unpopulated bounds,
+# allocating full-resolution camera bitmaps. Keep this patch until upstream
+# ships the regression fix; see third_party/image_picker_android/FASTTRACK_PATCH.md.
+dependency_overrides:
+  image_picker_android:
+    path: third_party/image_picker_android
+
 flutter_launcher_icons:
   android: true
   ios: true

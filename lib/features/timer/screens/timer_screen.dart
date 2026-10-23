@@ -10,6 +10,7 @@ import '../../../core/constants/fasting_plans.dart';
 import '../../../core/constants/metabolic_phases.dart';
 import '../../../core/theme/app_colors.dart';
 import '../providers/timer_provider.dart';
+import '../../profile/providers/settings_provider.dart';
 import '../providers/water_provider.dart';
 import '../providers/fasting_session_provider.dart';
 import '../widgets/fasting_ring.dart';
@@ -634,6 +635,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                     child: FilledButton(
                       onPressed: () {
                         ref.read(timerProvider.notifier).changePlan(selected.id);
+                        ref.read(settingsProvider.notifier).setSelectedPlan(selected.id);
                         Navigator.pop(sheetContext);
                       },
                       child: Text('${l10n.common_save} · ${selected.name}'),

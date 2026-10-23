@@ -34,10 +34,17 @@ class AdmobService {
   InterstitialAd? _interstitialAd;
   bool _isInitialized = false;
   bool _canRequestAds = false;
+  Future<void>? _initializing;
+  bool get canLoadAds => _isInitialized && _canRequestAds;
 
-  Future<void> initialize() async {
-    if (_isInitialized) return;
+  Future<void> initialize() {
+    if (_isInitialized) return Future.value();
+    return _initializing ??= _initialize().whenComplete(
+      () => _initializing = null,
+    );
+  }
 
+  Future<void> _initialize() async {
     final consentUpdated = Completer<void>();
 
     void completeConsent() {
@@ -50,8 +57,7 @@ class AdmobService {
         () async {
           try {
             await ConsentForm.loadAndShowConsentFormIfRequired((_) {});
-            _canRequestAds =
-                await ConsentInformation.instance.canRequestAds();
+            _canRequestAds = await ConsentInformation.instance.canRequestAds();
           } catch (error) {
             debugPrint('Ad consent form error: $error');
             _canRequestAds = false;
@@ -62,8 +68,7 @@ class AdmobService {
         (error) async {
           debugPrint('Ad consent update error: $error');
           try {
-            _canRequestAds =
-                await ConsentInformation.instance.canRequestAds();
+            _canRequestAds = await ConsentInformation.instance.canRequestAds();
           } catch (_) {
             _canRequestAds = false;
           } finally {

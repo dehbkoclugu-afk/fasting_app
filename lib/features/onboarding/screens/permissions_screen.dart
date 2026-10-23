@@ -39,8 +39,7 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
               const SizedBox(height: 24),
 
               EditorialScreenHero(
-                assetPath:
-                    'assets/images/editorial/onboarding-welcome.webp',
+                assetPath: 'assets/images/editorial/onboarding-welcome.webp',
                 title: l10n.onboarding_permissions,
                 subtitle: l10n.onboarding_permissionsDesc,
                 icon: Icons.notifications_none,
@@ -57,12 +56,11 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
                 color: AppColors.primary,
                 granted: _notificationGranted,
                 onEnable: () async {
-                  final granted =
-                      await NotificationService().requestPermission();
+                  final granted = await NotificationService()
+                      .requestPermission();
+                  if (!mounted) return;
                   setState(() => _notificationGranted = granted);
-                  ref
-                      .read(settingsProvider.notifier)
-                      .setNotifications(granted);
+                  ref.read(settingsProvider.notifier).setNotifications(granted);
                 },
               ),
               const Spacer(),
@@ -91,9 +89,7 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
   }
 
   void _completeOnboarding() {
-    ref
-        .read(settingsProvider.notifier)
-        .setNotifications(_notificationGranted);
+    ref.read(settingsProvider.notifier).setNotifications(_notificationGranted);
     ref.read(settingsProvider.notifier).completeOnboarding();
     context.go('/timer');
   }
@@ -112,16 +108,14 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color:
-            granted
-                ? color.withValues(alpha: 0.05)
-                : theme.colorScheme.onSurface.withValues(alpha: 0.03),
+        color: granted
+            ? color.withValues(alpha: 0.05)
+            : theme.colorScheme.onSurface.withValues(alpha: 0.03),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color:
-              granted
-                  ? color.withValues(alpha: 0.3)
-                  : theme.colorScheme.onSurface.withValues(alpha: 0.06),
+          color: granted
+              ? color.withValues(alpha: 0.3)
+              : theme.colorScheme.onSurface.withValues(alpha: 0.06),
         ),
       ),
       child: Row(

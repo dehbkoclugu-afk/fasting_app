@@ -101,6 +101,8 @@ workflows:
       groups:
         - fasttrack_release
     scripts:
+      - name: Native photo decoder regression
+        script: python3 tool/verify_picker_sampling.py
       - name: Get Flutter packages
         script: flutter pub get
       - name: Generate l10n
@@ -191,3 +193,4 @@ workflows:
         notify:
           success: true
           failure: true
+

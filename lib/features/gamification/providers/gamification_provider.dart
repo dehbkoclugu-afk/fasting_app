@@ -20,8 +20,7 @@ class GameQuest {
   final int xp;
 
   bool get completed => progress >= target;
-  double get ratio =>
-      target == 0 ? 0 : (progress / target).clamp(0.0, 1.0);
+  double get ratio => target == 0 ? 0 : (progress / target).clamp(0.0, 1.0);
 }
 
 class GameBadge {
@@ -39,8 +38,7 @@ class GameBadge {
   final int progress;
   final int target;
 
-  double get ratio =>
-      target <= 0 ? 0 : (progress / target).clamp(0.0, 1.0);
+  double get ratio => target <= 0 ? 0 : (progress / target).clamp(0.0, 1.0);
   int get remaining => math.max(0, target - progress);
 }
 
@@ -71,6 +69,7 @@ class GamificationState {
 
   static const levelSize = 500;
   double get levelProgress => levelXp / levelSize;
+
   /// Completed steps in the current 30-step season.
   /// A new account starts at 0/30; progress is never presented as earned
   /// before the user has accumulated the first 250 XP.
@@ -78,18 +77,76 @@ class GamificationState {
   int get leaguePercentile => math.min(95, 35 + level * 4 + streak * 2);
 }
 
+class _RewardLedger {
+  const _RewardLedger(this.xpFloor, this.unlockedBadges);
+  final int xpFloor;
+  final Set<String> unlockedBadges;
+}
+
+class _RewardLedgerNotifier extends StateNotifier<_RewardLedger> {
+  _RewardLedgerNotifier() : super(const _RewardLedger(0, <String>{})) {
+    _load();
+  }
+
+  Future<void> _load() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      if (!mounted) return;
+      state = _RewardLedger(
+        math.max(state.xpFloor, prefs.getInt('gamification_xp_floor') ?? 0),
+        {
+          ...state.unlockedBadges,
+          ...?prefs.getStringList('gamification_badges'),
+        },
+      );
+    } catch (_) {
+      // Continue with the current session's earned rewards if storage fails.
+    }
+  }
+
+  Future<void> _pending = Future.value();
+
+  void record(int xp, Iterable<String> badgeIds) {
+    if (!mounted) return;
+    final badges = {...state.unlockedBadges, ...badgeIds};
+    if (xp <= state.xpFloor && badges.length == state.unlockedBadges.length)
+      return;
+    state = _RewardLedger(math.max(xp, state.xpFloor), badges);
+    _pending = _pending.catchError((_) {}).then((_) async {
+      try {
+        final prefs = await SharedPreferences.getInstance();
+        if (!mounted) return;
+        await prefs.setInt('gamification_xp_floor', state.xpFloor);
+        await prefs.setStringList(
+          'gamification_badges',
+          state.unlockedBadges.toList(),
+        );
+      } catch (_) {
+        // Keep the in-memory award; a later award retries the write.
+      }
+    });
+  }
+}
+
+final _rewardLedgerProvider =
+    StateNotifierProvider<_RewardLedgerNotifier, _RewardLedger>((ref) {
+      return _RewardLedgerNotifier();
+    });
+
 final _supportCountProvider = FutureProvider<int>((ref) async {
   final prefs = await SharedPreferences.getInstance();
   return prefs.getInt('crisis_support_count') ?? 0;
 });
 
 final gamificationProvider = Provider<GamificationState>((ref) {
+  final ledger = ref.watch(_rewardLedgerProvider);
   final sessions = ref.watch(fastingSessionProvider).valueOrNull ?? const [];
   final water = ref.watch(waterProvider);
   final rawStreak = ref.watch(streakProvider);
   final supportCount = ref.watch(_supportCountProvider).valueOrNull ?? 0;
-  final finalized =
-      sessions.where((session) => session.endTime != null).toList();
+  final finalized = sessions
+      .where((session) => session.endTime != null)
+      .toList();
   final completed = finalized.where((session) => session.completed).toList();
   final recovery = _shieldedStreak(
     completed.map((session) => session.startTime),
@@ -115,13 +172,12 @@ final gamificationProvider = Provider<GamificationState>((ref) {
       hydrationXp +
       math.min(supportCount, 5) * 20;
   final today = DateTime.now();
-  final todaySessions =
-      completed.where((session) {
-        final date = session.startTime;
-        return date.year == today.year &&
-            date.month == today.month &&
-            date.day == today.day;
-      }).length;
+  final todaySessions = completed.where((session) {
+    final date = session.startTime;
+    return date.year == today.year &&
+        date.month == today.month &&
+        date.day == today.day;
+  }).length;
 
   final quests = [
     GameQuest(id: 'rhythm', progress: todaySessions, target: 1, xp: 100),
@@ -136,17 +192,57 @@ final gamificationProvider = Provider<GamificationState>((ref) {
   final questXp = quests
       .where((quest) => quest.completed)
       .fold<int>(0, (sum, quest) => sum + quest.xp);
-  final xp = baseXp + questXp;
+  final calculatedXp = baseXp + questXp;
+  final xp = math.max(calculatedXp, ledger.xpFloor);
   final level = xp ~/ GamificationState.levelSize + 1;
 
   final badges = [
-    GameBadge(id: 'first', icon: 'leaf', unlocked: completed.isNotEmpty, progress: completed.length),
-    GameBadge(id: 'rhythm7', icon: 'fire', unlocked: streak >= 7, progress: streak, target: 7),
-    GameBadge(id: 'rhythm3', icon: 'shield', unlocked: streak >= 3, progress: streak, target: 3),
-    GameBadge(id: 'target1', icon: 'target', unlocked: completed.isNotEmpty, progress: completed.length),
-    GameBadge(id: 'target3', icon: 'leaf', unlocked: completed.length >= 3, progress: completed.length, target: 3),
-    GameBadge(id: 'water', icon: 'water', unlocked: water.progress >= 1, progress: water.totalMl, target: water.goalMl),
-    GameBadge(id: 'support', icon: 'compass', unlocked: supportCount > 0, progress: supportCount),
+    GameBadge(
+      id: 'first',
+      icon: 'leaf',
+      unlocked: completed.isNotEmpty,
+      progress: completed.length,
+    ),
+    GameBadge(
+      id: 'rhythm7',
+      icon: 'fire',
+      unlocked: streak >= 7,
+      progress: streak,
+      target: 7,
+    ),
+    GameBadge(
+      id: 'rhythm3',
+      icon: 'shield',
+      unlocked: streak >= 3,
+      progress: streak,
+      target: 3,
+    ),
+    GameBadge(
+      id: 'target1',
+      icon: 'target',
+      unlocked: completed.isNotEmpty,
+      progress: completed.length,
+    ),
+    GameBadge(
+      id: 'target3',
+      icon: 'leaf',
+      unlocked: completed.length >= 3,
+      progress: completed.length,
+      target: 3,
+    ),
+    GameBadge(
+      id: 'water',
+      icon: 'water',
+      unlocked: water.progress >= 1,
+      progress: water.totalMl,
+      target: water.goalMl,
+    ),
+    GameBadge(
+      id: 'support',
+      icon: 'compass',
+      unlocked: supportCount > 0,
+      progress: supportCount,
+    ),
     GameBadge(
       id: 'hours10',
       icon: 'clock',
@@ -154,9 +250,27 @@ final gamificationProvider = Provider<GamificationState>((ref) {
       progress: totalRewardedMinutes,
       target: 600,
     ),
-    GameBadge(id: 'target10', icon: 'medal', unlocked: completed.length >= 10, progress: completed.length, target: 10),
-    GameBadge(id: 'target20', icon: 'target', unlocked: completed.length >= 20, progress: completed.length, target: 20),
-    GameBadge(id: 'fast16', icon: 'shield', unlocked: best >= 960, progress: best, target: 960),
+    GameBadge(
+      id: 'target10',
+      icon: 'medal',
+      unlocked: completed.length >= 10,
+      progress: completed.length,
+      target: 10,
+    ),
+    GameBadge(
+      id: 'target20',
+      icon: 'target',
+      unlocked: completed.length >= 20,
+      progress: completed.length,
+      target: 20,
+    ),
+    GameBadge(
+      id: 'fast16',
+      icon: 'shield',
+      unlocked: best >= 960,
+      progress: best,
+      target: 960,
+    ),
     GameBadge(
       id: 'hours50',
       icon: 'clock',
@@ -171,9 +285,31 @@ final gamificationProvider = Provider<GamificationState>((ref) {
       progress: totalRewardedMinutes,
       target: 6000,
     ),
-    GameBadge(id: 'target30', icon: 'medal', unlocked: completed.length >= 30, progress: completed.length, target: 30),
-    GameBadge(id: 'rhythm30', icon: 'crown', unlocked: streak >= 30, progress: streak, target: 30),
+    GameBadge(
+      id: 'target30',
+      icon: 'medal',
+      unlocked: completed.length >= 30,
+      progress: completed.length,
+      target: 30,
+    ),
+    GameBadge(
+      id: 'rhythm30',
+      icon: 'crown',
+      unlocked: streak >= 30,
+      progress: streak,
+      target: 30,
+    ),
   ];
+
+  final unlockedNow = badges
+      .where((badge) => badge.unlocked)
+      .map((badge) => badge.id)
+      .toSet();
+  if (calculatedXp > ledger.xpFloor ||
+      unlockedNow.difference(ledger.unlockedBadges).isNotEmpty) {
+    final notifier = ref.read(_rewardLedgerProvider.notifier);
+    Future.microtask(() => notifier.record(calculatedXp, unlockedNow));
+  }
 
   return GamificationState(
     xp: xp,
@@ -185,14 +321,28 @@ final gamificationProvider = Provider<GamificationState>((ref) {
     totalHours: totalRewardedMinutes ~/ 60,
     personalBestMinutes: best,
     quests: quests,
-    badges: badges,
+    badges: [
+      for (final badge in badges)
+        GameBadge(
+          id: badge.id,
+          icon: badge.icon,
+          unlocked: badge.unlocked || ledger.unlockedBadges.contains(badge.id),
+          progress: badge.progress,
+          target: badge.target,
+        ),
+    ],
   );
 });
 
 (int, int) _shieldedStreak(Iterable<DateTime> dates, int shields) {
-  final dayKeys =
-      dates.map((date) => '${date.year}-${date.month}-${date.day}').toSet();
-  var expected = DateTime.now();
+  final dayKeys = dates
+      .map((date) => '${date.year}-${date.month}-${date.day}')
+      .toSet();
+  final today = DateTime.now();
+  var expected = DateTime(today.year, today.month, today.day);
+  if (!dayKeys.contains('${today.year}-${today.month}-${today.day}')) {
+    expected = DateTime(today.year, today.month, today.day - 1);
+  }
   var streak = 0;
   var remaining = shields;
   for (var day = 0; day < 365; day++) {
@@ -204,7 +354,7 @@ final gamificationProvider = Provider<GamificationState>((ref) {
     } else {
       break;
     }
-    expected = expected.subtract(const Duration(days: 1));
+    expected = DateTime(expected.year, expected.month, expected.day - 1);
   }
   return (streak, remaining);
 }

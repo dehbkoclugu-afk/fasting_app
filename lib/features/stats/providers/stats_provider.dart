@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/utils/fasting_streak.dart';
 import '../../timer/providers/water_provider.dart';
 
 class StatsData {
@@ -36,20 +37,20 @@ final statsProvider = FutureProvider.family<StatsData, int>((
   final weeklyHours = List<double>.filled(7, 0);
   final weekStart = now.subtract(Duration(days: now.weekday - 1));
   for (final session in sessions) {
-    final dayIndex =
-        session.startTime
-            .difference(
-              DateTime(weekStart.year, weekStart.month, weekStart.day),
-            )
-            .inDays;
+    final dayIndex = session.startTime
+        .difference(DateTime(weekStart.year, weekStart.month, weekStart.day))
+        .inDays;
     if (dayIndex >= 0 && dayIndex < 7 && session.actualMinutes != null) {
-      weeklyHours[dayIndex] = session.actualMinutes! / 60;
+      weeklyHours[dayIndex] += session.actualMinutes! / 60;
     }
   }
 
   // Streak hesapla
   final allCompleted = await db.getCompletedSessions();
-  int currentStreak = 0;
+  final currentStreak = currentFastingStreak(
+    allCompleted.map((session) => session.startTime),
+    now,
+  );
   int longestStreak = 0;
   int tempStreak = 0;
   DateTime? lastDate;
@@ -64,21 +65,10 @@ final statsProvider = FutureProvider.family<StatsData, int>((
           .toList()
         ..sort((a, b) => b.compareTo(a));
 
-  final today = DateTime(now.year, now.month, now.day);
-  var checkDate = today;
-
-  for (final date in sortedDates) {
-    if (date == checkDate) {
-      currentStreak++;
-      checkDate = checkDate.subtract(const Duration(days: 1));
-    } else {
-      break;
-    }
-  }
-
   // En uzun streak
   for (final date in sortedDates.reversed) {
-    if (lastDate == null || date.difference(lastDate).inDays == 1) {
+    if (lastDate == null ||
+        date == DateTime(lastDate.year, lastDate.month, lastDate.day + 1)) {
       tempStreak++;
     } else {
       if (tempStreak > longestStreak) longestStreak = tempStreak;
@@ -88,19 +78,24 @@ final statsProvider = FutureProvider.family<StatsData, int>((
   }
   if (tempStreak > longestStreak) longestStreak = tempStreak;
 
-  final totalMinutes = completedSessions.fold<int>(
+  final finishedSessions = sessions
+      .where((s) => s.actualMinutes != null)
+      .toList();
+  final totalMinutes = finishedSessions.fold<int>(
     0,
     (sum, s) => sum + (s.actualMinutes ?? 0),
   );
 
   return StatsData(
     totalSessions: sessions.length,
-    averageDurationHours:
-        sessions.isEmpty ? 0 : totalMinutes / sessions.length / 60,
+    averageDurationHours: finishedSessions.isEmpty
+        ? 0
+        : totalMinutes / finishedSessions.length / 60,
     currentStreak: currentStreak,
     longestStreak: longestStreak,
-    completionRate:
-        sessions.isEmpty ? 0 : completedSessions.length / sessions.length,
+    completionRate: sessions.isEmpty
+        ? 0
+        : completedSessions.length / sessions.length,
     totalFastingHours: totalMinutes ~/ 60,
     weeklyHours: weeklyHours,
   );
@@ -112,7 +107,7 @@ final latestWeightProvider = FutureProvider<double?>((ref) async {
   final metrics = await db.getWeightHistory();
   final withWeight = metrics.where((m) => m.weight != null).toList();
   if (withWeight.isEmpty) return null;
-  return withWeight.first.weight;
+  return withWeight.last.weight;
 });
 
 /// Kilo geçmişi verisi
