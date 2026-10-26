@@ -1,17 +1,17 @@
 # Codemagic CI/CD — FastTrack iOS build to TestFlight (no Mac needed).
 #
-# ONE-TIME SETUP in the Codemagic web UI before the first build:
-#   1. Add this repository (dehbkoclugu-afk/fasting_app) as an application.
-#   2. Teams > Integrations > App Store Connect: upload your App Store Connect
-#      API key (.p8). Note the integration name you give it and set it as
-#      `app_store_connect:` below (replace "FastTrack ASC API Key").
-#      The same API key from your other app works — one Apple account.
+# ONE-TIME SETUP in the Codemagic web UI before the first build (iOS ships
+# from the Cey Studios Apple Developer account):
+#   1. Add this repository as an application in the Cey Studios team.
+#   2. Teams > Integrations > App Store Connect: upload the Cey Studios App
+#      Store Connect API key (.p8) and name the integration "Codemagic" — that
+#      is the name `app_store_connect:` below refers to.
 #   3. Create an environment variable group named "fasttrack_release" holding
-#      the values listed under `vars` below (mark the secrets as secure).
+#      the values listed under the iOS workflow (mark the secrets as secure).
 #
 # Prerequisites on the Apple side (done once, in App Store Connect):
-#   - App record created with bundle id com.dehbkoclugu.fasttrack
-#   - In-App Purchase capability enabled
+#   - App record created with bundle id com.ceystudios.fasttrack
+#   - Paid Applications Agreement signed, In-App Purchase capability enabled
 #   - IAP products: fasttrack_premium_monthly / _yearly / _lifetime
 #     attached to the RevenueCat "premium" entitlement.
 
@@ -25,12 +25,12 @@ workflows:
     environment:
       # Automatic code signing — Codemagic manages the account's distribution
       # certificate and provisioning profile via the App Store Connect
-      # integration (same pattern as the umut2/hayatiniplanla app). No manual
+      # integration. No manual
       # openssl/--create: that leaked a throwaway cert per build and hit Apple's
       # 2-cert limit (409). Codemagic reuses the shared distribution cert.
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.dehbkoclugu.fasttrack
+        bundle_identifier: com.ceystudios.fasttrack
       # Pinned: `stable` drifted to 3.44.x (Dart 3.12), which breaks two deps:
       # google_fonts 6.2.1 (FontWeight gained `==` override in 3.41 -> const map
       # key error) and phosphor_flutter 2.1.0 (IconData became `final class` in
@@ -77,7 +77,7 @@ workflows:
         submit_to_testflight: true
       email:
         recipients:
-          - dehbkoclugu@gmail.com
+          - berkaydumangoz@gmail.com
         notify:
           success: true
           failure: true

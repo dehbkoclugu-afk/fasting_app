@@ -8,7 +8,7 @@
 PRODUCT_NAME = fasting_app
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.dehbkoclugu.fastingApp
+PRODUCT_BUNDLE_IDENTIFIER = com.ceystudios.fasttrack
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2026 com.dehbkoclugu. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2026 Cey Studios. All rights reserved.
