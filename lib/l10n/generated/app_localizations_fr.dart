@@ -560,6 +560,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get completion_lastPhase => 'Dernière phase';
 
   @override
+  String get completion_earlyTitle => 'Jeûne terminé';
+
+  @override
+  String get completion_earlyMessage =>
+      'La durée d’aujourd’hui a été enregistrée. La série et la progression des succès n’ont pas changé, car l’objectif n’a pas été atteint.';
+
+  @override
   String get timer_remainingTime => 'Temps restant';
 
   @override
@@ -1616,6 +1623,16 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get foodScan_privacyNote =>
       'La photo est envoyée à l\'API Gemini de Google pour analyse et n\'est pas conservée sur nos serveurs.';
+
+  @override
+  String get foodScan_consentTitle => 'Envoyer les photos à Google Gemini ?';
+
+  @override
+  String get foodScan_consentBody =>
+      'Pour estimer les calories et les macronutriments, chaque photo de repas que vous prenez ou choisissez est envoyée au service d\'IA Gemini de Google. La photo sert uniquement à cette analyse et n\'est pas conservée sur nos serveurs.';
+
+  @override
+  String get foodScan_consentAgree => 'Accepter et continuer';
 
   @override
   String get foodScan_analyzing => 'Analyse de votre repas…';

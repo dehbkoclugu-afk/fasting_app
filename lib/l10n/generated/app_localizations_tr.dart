@@ -552,6 +552,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get completion_lastPhase => 'Son Faz';
 
   @override
+  String get completion_earlyTitle => 'Oruç sona erdi';
+
+  @override
+  String get completion_earlyMessage =>
+      'Bugünkü süre kaydedildi. Hedef tamamlanmadığı için seri ve başarı ilerlemesi değişmedi.';
+
+  @override
   String get timer_remainingTime => 'Kalan Süre';
 
   @override
@@ -1002,8 +1009,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get explore_guide => 'Oruç Rehberi';
 
   @override
-  String get explore_guideDesc =>
-      'Aralıklı oruç hakkında bilmeniz gerekenler.';
+  String get explore_guideDesc => 'Aralıklı oruç hakkında bilmeniz gerekenler.';
 
   @override
   String get explore_circleDesc => 'Özel grubunla sessizce destekleş.';
@@ -1591,6 +1597,17 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get foodScan_privacyNote =>
       'Fotoğraf analiz için Google Gemini API\'sine gönderilir ve sunucularımızda saklanmaz.';
+
+  @override
+  String get foodScan_consentTitle =>
+      'Fotoğraflar Google Gemini\'ye gönderilsin mi?';
+
+  @override
+  String get foodScan_consentBody =>
+      'Kalori ve makroları tahmin etmek için çektiğin veya seçtiğin her yemek fotoğrafı Google\'ın Gemini yapay zekâ hizmetine gönderilir. Fotoğraf yalnızca bu analiz için kullanılır ve sunucularımızda saklanmaz.';
+
+  @override
+  String get foodScan_consentAgree => 'Kabul et ve devam et';
 
   @override
   String get foodScan_analyzing => 'Öğünün analiz ediliyor…';

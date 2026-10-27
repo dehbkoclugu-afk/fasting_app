@@ -140,4 +140,26 @@ void main() {
     expect(tester.takeException(), isNull);
     expect(find.byType(Scrollable), findsWidgets);
   });
+
+  testWidgets('first scan asks before sending a photo to Gemini', (
+    tester,
+  ) async {
+    final subscription = _Subscription()..unlock();
+    final service = _Vision();
+    await openScanner(tester, subscription, service);
+    await tester.pump();
+
+    final takePhoto = find.text('Take photo');
+    await tester.ensureVisible(takePhoto);
+    await tester.tap(takePhoto);
+    await tester.pumpAndSettle();
+    expect(find.text('Send photos to Google Gemini?'), findsOneWidget);
+
+    await tester.tap(find.text('Cancel'));
+    await tester.pumpAndSettle();
+    expect(find.text('Send photos to Google Gemini?'), findsNothing);
+    expect(service.calls, 0);
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.getBool('foodScanAiConsent'), isNull);
+  });
 }

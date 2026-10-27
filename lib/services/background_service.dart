@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
@@ -113,14 +114,18 @@ class BackgroundService implements FastingTimerService {
     await prefs.setBool('fasting_active', true);
     await prefs.setString('fasting_plan_name', planName);
 
-    // Periyodik background task başlat (15 dk minimum interval)
-    await Workmanager().registerPeriodicTask(
-      _uniqueName,
-      _taskName,
-      frequency: const Duration(minutes: 15),
-      constraints: Constraints(networkType: NetworkType.not_required),
-      existingWorkPolicy: ExistingWorkPolicy.replace,
-    );
+    // Periyodik background task başlat (15 dk minimum interval). Android
+    // only: iOS has no BGTaskScheduler registration for it, so the call
+    // throws there and would skip the notification scheduling below.
+    if (Platform.isAndroid) {
+      await Workmanager().registerPeriodicTask(
+        _uniqueName,
+        _taskName,
+        frequency: const Duration(minutes: 15),
+        constraints: Constraints(networkType: NetworkType.not_required),
+        existingWorkPolicy: ExistingWorkPolicy.replace,
+      );
+    }
 
     // Bildirimleri zamanla
     final notificationsEnabled = prefs.getBool('notificationsEnabled') ?? true;
@@ -152,7 +157,9 @@ class BackgroundService implements FastingTimerService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('fasting_active', false);
 
-    await Workmanager().cancelByUniqueName(_uniqueName);
+    if (Platform.isAndroid) {
+      await Workmanager().cancelByUniqueName(_uniqueName);
+    }
 
     final notifService = NotificationService();
     await notifService.cancelFastingNotifications();

@@ -269,20 +269,24 @@ class ProfileScreen extends ConsumerWidget {
               GlassCard(
                 child: Column(
                   children: [
-                    _buildSettingsTile(
-                      context,
-                      icon: PhosphorIcons.star(),
-                      title: l10n.profile_rateApp,
-                      onTap: () => _rate(context),
-                    ),
-                    const Divider(height: 1),
-                    _buildSettingsTile(
-                      context,
-                      icon: PhosphorIcons.share(),
-                      title: l10n.profile_share,
-                      onTap: () => _share(context),
-                    ),
-                    const Divider(height: 1),
+                    // No store listing yet (iOS before release): hide the
+                    // links instead of showing buttons that only error.
+                    if (BuildConfig.storeUrl.isNotEmpty) ...[
+                      _buildSettingsTile(
+                        context,
+                        icon: PhosphorIcons.star(),
+                        title: l10n.profile_rateApp,
+                        onTap: () => _rate(context),
+                      ),
+                      const Divider(height: 1),
+                      _buildSettingsTile(
+                        context,
+                        icon: PhosphorIcons.share(),
+                        title: l10n.profile_share,
+                        onTap: () => _share(context),
+                      ),
+                      const Divider(height: 1),
+                    ],
                     _buildSettingsTile(
                       context,
                       icon: PhosphorIcons.shieldCheck(),
