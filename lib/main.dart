@@ -99,7 +99,7 @@ Future<void> _initializeOptionalServices() async {
 
   // Ask for tracking only when this build can show ads; a prompt for
   // tracking the app never does is an App Review rejection.
-  if (Platform.isIOS && BuildConfig.admobBannerId.isNotEmpty) {
+  if (Platform.isIOS && AdmobService.hasAdUnits) {
     await Future.delayed(const Duration(milliseconds: 200));
     await _runOptional(
       'tracking authorization',
