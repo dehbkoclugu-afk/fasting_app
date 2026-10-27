@@ -13,6 +13,7 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../../shared/widgets/skeleton_loader.dart';
+import '../../../services/admob_service.dart';
 import '../../../services/revenue_cat_service.dart';
 import '../providers/subscription_provider.dart';
 
@@ -290,7 +291,9 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     return EditorialScreenHero(
       assetPath: 'assets/images/editorial/v6/premium-orbit.webp',
       title: l10n.paywall_title,
-      subtitle: l10n.paywall_subtitle,
+      subtitle: AdmobService.hasAdUnits
+          ? l10n.paywall_subtitle
+          : l10n.paywall_allPlansDesc,
       icon: Icons.auto_awesome_outlined,
       height: accessibleHeight,
     );
@@ -300,8 +303,9 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     final theme = Theme.of(context);
     // Only what premium actually delivers today: the six locked plans, the
     // AI food scan and the ad-free experience. Nothing else in the app is
-    // gated. The scan row is dropped when the build has no Gemini key, so the
-    // paywall never sells a feature that build cannot run.
+    // gated. The scan row is dropped when the build has no Gemini key and the
+    // ad row when it has no ad units, so the paywall never sells a feature
+    // that build cannot run.
     final features = <(IconData, String, String)>[
       (PhosphorIcons.timer(), l10n.paywall_allPlans, l10n.paywall_allPlansDesc),
       if (BuildConfig.isFoodScanEnabled)
@@ -310,7 +314,8 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           l10n.paywall_aiFoodScan,
           l10n.paywall_aiFoodScanDesc,
         ),
-      (PhosphorIcons.prohibit(), l10n.paywall_noAds, l10n.paywall_noAdsDesc),
+      if (AdmobService.hasAdUnits)
+        (PhosphorIcons.prohibit(), l10n.paywall_noAds, l10n.paywall_noAdsDesc),
     ];
     return Container(
       padding: const EdgeInsets.all(16),

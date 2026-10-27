@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
@@ -684,7 +685,39 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
   static String _languageCode(BuildContext context) =>
       Localizations.localeOf(context).languageCode;
 
+  static const _aiConsentKey = 'foodScanAiConsent';
+
+  /// App Review 5.1.2(i): ask once, explicitly, before the first photo goes
+  /// to a third-party AI service.
+  Future<bool> _ensureAiConsent() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool(_aiConsentKey) ?? false) return true;
+    if (!mounted) return false;
+    final l10n = AppLocalizations.of(context)!;
+    final agreed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(l10n.foodScan_consentTitle),
+        content: Text(l10n.foodScan_consentBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(l10n.common_cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(l10n.foodScan_consentAgree),
+          ),
+        ],
+      ),
+    );
+    if (agreed != true) return false;
+    await prefs.setBool(_aiConsentKey, true);
+    return true;
+  }
+
   Future<void> _pick(PhotoSource source) async {
+    if (!await _ensureAiConsent() || !mounted) return;
     final languageCode = _languageCode(context);
     HapticFeedback.lightImpact();
     await ref

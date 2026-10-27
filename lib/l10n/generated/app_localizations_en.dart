@@ -554,6 +554,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get completion_lastPhase => 'Last Phase';
 
   @override
+  String get completion_earlyTitle => 'Fast ended';
+
+  @override
+  String get completion_earlyMessage =>
+      'Today\'s time was saved. Streak and achievement progress did not change because the target was not completed.';
+
+  @override
   String get timer_remainingTime => 'Remaining Time';
 
   @override
@@ -1597,6 +1604,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get foodScan_privacyNote =>
       'The photo is sent to Google\'s Gemini API for analysis and is not stored on our servers.';
+
+  @override
+  String get foodScan_consentTitle => 'Send photos to Google Gemini?';
+
+  @override
+  String get foodScan_consentBody =>
+      'To estimate calories and macros, each meal photo you take or choose is sent to Google\'s Gemini AI service. The photo is used only for this analysis and is not stored on our servers.';
+
+  @override
+  String get foodScan_consentAgree => 'Agree and continue';
 
   @override
   String get foodScan_analyzing => 'Analysing your meal…';

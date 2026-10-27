@@ -30,6 +30,11 @@ class AdmobService {
     return BuildConfig.admobInterstitialId;
   }
 
+  /// False when this build carries no ad units (the iOS build until its
+  /// AdMob account exists). Nothing ad-related should run or be sold then.
+  static bool get hasAdUnits =>
+      bannerAdUnitId.isNotEmpty || interstitialAdUnitId.isNotEmpty;
+
   BannerAd? _bannerAd;
   InterstitialAd? _interstitialAd;
   bool _isInitialized = false;
@@ -45,6 +50,7 @@ class AdmobService {
   }
 
   Future<void> _initialize() async {
+    if (!hasAdUnits) return;
     final consentUpdated = Completer<void>();
 
     void completeConsent() {
