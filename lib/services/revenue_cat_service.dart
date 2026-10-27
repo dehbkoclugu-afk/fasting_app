@@ -143,8 +143,8 @@ class RevenueCatService {
   Future<PurchaseOutcome> purchasePackage(Package package) async {
     if (!_initialized) return PurchaseOutcome.notConfigured;
     try {
-      final customerInfo = await Purchases.purchasePackage(package);
-      return _hasEntitlement(customerInfo)
+      final result = await Purchases.purchase(PurchaseParams.package(package));
+      return _hasEntitlement(result.customerInfo)
           ? PurchaseOutcome.success
           : PurchaseOutcome.failed;
     } on PlatformException catch (e) {
