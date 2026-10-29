@@ -267,7 +267,9 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                 EditorialScreenHero(
                   assetPath: 'assets/images/editorial/v6/premium-orbit.webp',
                   title: l10n.paywall_premiumActive,
-                  subtitle: l10n.paywall_premiumActiveDesc,
+                  subtitle: AdmobService.hasAdUnits
+                      ? l10n.paywall_premiumActiveDesc
+                      : l10n.paywall_allPlansDesc,
                   icon: Icons.auto_awesome_outlined,
                   height: 164,
                 ),
