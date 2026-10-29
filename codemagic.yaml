@@ -89,17 +89,16 @@ workflows:
     instance_type: mac_mini_m2
     max_build_duration: 60
     environment:
-      # Code signing. The keystore lives in the Codemagic UI under Teams >
-      # Code signing identities > Android keystores; this is its reference
-      # name. Play only accepts bundles signed with the upload key it has
+      # Code signing. The keystore lives in the Codemagic UI under Code
+      # signing identities > Android keystores; this is its reference name.
+      # Play only accepts bundles signed with the upload key it has
       # registered for com.dehbkoclugu.fasttrack (Play Console > App
-      # integrity > App signing); in October 2026 that was SHA1
-      # DE:7E:1A:6E:…, while this keystore signed with SHA1 36:ED:82:3B:….
-      # Either upload the matching keystore under this name or reset Play's
-      # upload key to build/upload_certificate.pem from this workflow.
+      # integrity > App signing): the "Regl Takip" key, SHA1
+      # DE:7E:1A:6E:46:F9:0B:C7:…. The "fasttrack_upload" keystore is a
+      # different key (SHA1 36:ED:82:3B:…) and Play rejects bundles it signs.
       # A name that does not exist fails the build.
       android_signing:
-        - fasttrack_upload
+        - regl
       flutter: 3.38.10
       java: 17
       groups:
@@ -180,6 +179,11 @@ workflows:
           # certificate in Play Console > App integrity > App signing, which
           # Play quotes as SHA1 when it rejects a bundle.
           keytool -printcert -jarfile "$AAB" | grep -E "Owner:|SHA1:|SHA256:" | head -6
+          # Fail here rather than at Play when the bundle carries another key.
+          PLAY_UPLOAD_SHA1="DE:7E:1A:6E:46:F9:0B:C7:27:54:D0:52:F8:F4:A5:F7:DA:C9:FD:56"
+          keytool -printcert -jarfile "$AAB" | grep -q "SHA1: $PLAY_UPLOAD_SHA1" || {
+            echo "Bundle is not signed with Play's upload key ($PLAY_UPLOAD_SHA1)"; exit 1;
+          }
           # The signer's public certificate, for a Play upload key reset
           # request. It holds no private key.
           keytool -printcert -rfc -jarfile "$AAB" \
