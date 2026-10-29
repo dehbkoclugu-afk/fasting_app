@@ -7,6 +7,7 @@ import 'package:purchases_flutter/purchases_flutter.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../features/paywall/providers/subscription_provider.dart';
+import '../../services/admob_service.dart';
 
 /// A high-visibility, value-first entry point to the paywall.
 ///
@@ -85,7 +86,10 @@ class PremiumPromoCard extends ConsumerWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        l10n.profile_premiumDesc,
+                        // Builds without ad units have no ads to remove.
+                        AdmobService.hasAdUnits
+                            ? l10n.profile_premiumDesc
+                            : l10n.paywall_allPlansDesc,
                         maxLines: compact ? 1 : 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.bodySmall?.copyWith(
