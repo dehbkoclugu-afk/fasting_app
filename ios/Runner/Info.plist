@@ -34,8 +34,6 @@
 		</array>
 		<key>GADApplicationIdentifier</key>
 		<string>ca-app-pub-3940256099942544~1458002511</string>
-		<key>NSUserTrackingUsageDescription</key>
-		<string>Your data is used to show you more relevant ads. You can change this anytime in Settings.</string>
 		<key>NSCameraUsageDescription</key>
 		<string>FastTrack uses the camera so you can photograph a meal and get an AI estimate of its calories and macros.</string>
 		<key>NSPhotoLibraryUsageDescription</key>
