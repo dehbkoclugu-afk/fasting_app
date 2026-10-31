@@ -55,6 +55,7 @@ android {
         release {
             signingConfig = signingConfigs.findByName("release")
             manifestPlaceholders["admobAppId"] = "ca-app-pub-2554058432197193~9748460094"
+            proguardFiles("proguard-rules.pro")
             // -PsideloadSuffix (or ORG_GRADLE_PROJECT_sideloadSuffix) builds a
             // test APK under its own application id, so installing it next to
             // the Play version never replaces it or wipes its data. Play
