@@ -205,8 +205,9 @@ class FoodVisionService {
         'responseMimeType': 'application/json',
         'responseSchema': _responseSchema,
         // The estimate does not benefit from a reasoning pass, and thinking
-        // tokens are the expensive part of the free tier's budget.
-        'thinkingConfig': {'thinkingBudget': 0},
+        // tokens are the expensive part of the free tier's budget. Gemini 3.x
+        // rejects `thinkingBudget: 0` with a 400, so use the lowest level.
+        'thinkingConfig': {'thinkingLevel': 'minimal'},
       },
       // Food photos are harmless, but a plated dish occasionally trips the
       // stricter default thresholds and comes back with no candidate at all.
