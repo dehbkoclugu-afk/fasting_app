@@ -67,13 +67,22 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
   final _service = RevenueCatService();
   bool _premiumListenerAttached = false;
 
+  // VIDEO BUILD ONLY — never merge into main. App Review asked for a recording
+  // of the subscription flow, but the recording Apple ID already owns
+  // Lifetime. Ignore purchases made before this launch so the paywall shows.
+  bool _boughtThisLaunch = false;
+  bool _fromStore(bool isPremium) => _boughtThisLaunch && isPremium;
+
   Future<void> _init() => loadProducts();
 
   void _ensurePremiumListener() {
     if (_premiumListenerAttached || !_service.isConfigured) return;
     _service.addPremiumListener((isPremium) {
       if (mounted)
-        state = state.copyWith(isPremium: isPremium, entitlementVerified: true);
+        state = state.copyWith(
+          isPremium: _fromStore(isPremium),
+          entitlementVerified: true,
+        );
     });
     _premiumListenerAttached = true;
   }
@@ -91,7 +100,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
       final isPremium = await _service.isPremium();
       final packages = await _service.getPackages();
       state = state.copyWith(
-        isPremium: isPremium,
+        isPremium: _fromStore(isPremium),
         entitlementVerified: true,
         availablePackages: packages,
         isStoreAvailable: _service.isConfigured,
@@ -109,6 +118,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
   Future<PurchaseOutcome> purchase(Package package) async {
     state = state.copyWith(isLoading: true, clearError: true);
     final outcome = await _service.purchasePackage(package);
+    if (outcome == PurchaseOutcome.success) _boughtThisLaunch = true;
     final error = switch (outcome) {
       PurchaseOutcome.success || PurchaseOutcome.cancelled => null,
       PurchaseOutcome.alreadyOwned => 'already_owned',
@@ -152,7 +162,10 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     try {
       final isPremium = await _service.isPremium();
       if (mounted)
-        state = state.copyWith(isPremium: isPremium, entitlementVerified: true);
+        state = state.copyWith(
+          isPremium: _fromStore(isPremium),
+          entitlementVerified: true,
+        );
     } catch (error) {
       debugPrint('Subscription refresh failed: $error');
       // Keep the last verified entitlement on transient store failures.
