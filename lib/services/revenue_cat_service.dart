@@ -11,7 +11,18 @@ enum PurchaseOutcome { success, cancelled, alreadyOwned, notConfigured, failed }
 /// Result of a restore attempt.
 enum RestoreOutcome { success, nothingToRestore, notConfigured, failed }
 
-class RevenueCatService {
+/// Store boundary used by the subscription state and deterministic tests.
+abstract interface class SubscriptionStore {
+  bool get isConfigured;
+  Future<void> initialize();
+  VoidCallback addPremiumListener(void Function(bool isPremium) listener);
+  Future<bool> isPremium();
+  Future<List<Package>> getPackages();
+  Future<PurchaseOutcome> purchasePackage(Package package);
+  Future<RestoreOutcome> restorePurchases();
+}
+
+class RevenueCatService implements SubscriptionStore {
   static final RevenueCatService _instance = RevenueCatService._();
   RevenueCatService._();
   factory RevenueCatService() => _instance;
@@ -24,8 +35,10 @@ class RevenueCatService {
   /// True once the SDK is configured. When false the store cannot be reached
   /// at all (missing API key or a failed configure), so the paywall shows the
   /// "unavailable" state instead of a dead purchase button.
+  @override
   bool get isConfigured => _initialized;
 
+  @override
   Future<void> initialize() async {
     if (_initialized) return;
 
@@ -69,13 +82,15 @@ class RevenueCatService {
 
   /// Fires whenever RevenueCat pushes new customer info (renewals, purchases
   /// made on another device, subscription expiry).
-  void addPremiumListener(void Function(bool isPremium) listener) {
-    if (!_initialized) return;
-    Purchases.addCustomerInfoUpdateListener(
-      (info) => listener(_hasEntitlement(info)),
-    );
+  @override
+  VoidCallback addPremiumListener(void Function(bool isPremium) listener) {
+    if (!_initialized) return () {};
+    void onCustomerInfo(CustomerInfo info) => listener(_hasEntitlement(info));
+    Purchases.addCustomerInfoUpdateListener(onCustomerInfo);
+    return () => Purchases.removeCustomerInfoUpdateListener(onCustomerInfo);
   }
 
+  @override
   Future<bool> isPremium() async {
     if (!_initialized) return false;
     try {
@@ -92,6 +107,7 @@ class RevenueCatService {
   /// Falls back to any non-empty offering when no *current* offering is set in
   /// the RevenueCat dashboard — otherwise a dashboard misconfiguration leaves
   /// the paywall with nothing to buy.
+  @override
   Future<List<Package>> getPackages() async {
     if (!_initialized) return const [];
     try {
@@ -140,6 +156,7 @@ class RevenueCatService {
     return sorted;
   }
 
+  @override
   Future<PurchaseOutcome> purchasePackage(Package package) async {
     if (!_initialized) return PurchaseOutcome.notConfigured;
     try {
@@ -163,6 +180,7 @@ class RevenueCatService {
     }
   }
 
+  @override
   Future<RestoreOutcome> restorePurchases() async {
     if (!_initialized) return RestoreOutcome.notConfigured;
     try {
