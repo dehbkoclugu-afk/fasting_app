@@ -29,10 +29,12 @@ void main() {
           locale: const Locale('en'),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          home: Builder(
-            builder: (context) => TextButton(
-              onPressed: () => showCrisisMode(context),
-              child: const Text('open'),
+          home: Scaffold(
+            body: Builder(
+              builder: (context) => TextButton(
+                onPressed: () => showCrisisMode(context),
+                child: const Text('open'),
+              ),
             ),
           ),
         ),
