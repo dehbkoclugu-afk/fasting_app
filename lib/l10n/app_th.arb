@@ -29,9 +29,9 @@
   "phase_fatBurning": "เผาผลาญไขมัน",
   "phase_fatBurningDesc": "เริ่มเผาผลาญไขมันแล้ว",
   "phase_ketosis": "ภาวะคีโตซิส",
-  "phase_ketosisDesc": "กำลังสร้างคีโตน",
+  "phase_ketosisDesc": "การผลิตคีโตนอาจเพิ่มขึ้น",
   "phase_autophagy": "ออโตฟาจี",
-  "phase_autophagyDesc": "การฟื้นฟูเซลล์",
+  "phase_autophagyDesc": "ช่วงรีไซเคิลเซลล์โดยประมาณ",
   "stats_title": "สถิติ",
   "stats_week": "สัปดาห์",
   "stats_month": "เดือน",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "ความคิดปลอดโปร่ง",
   "onboarding_goalMentalDesc": "สมาธิและความชัดเจน",
   "onboarding_goalLongevity": "อายุยืน",
-  "onboarding_goalLongevityDesc": "ฟื้นฟูเซลล์และสูงวัยอย่างแข็งแรง",
+  "onboarding_goalLongevityDesc": "สร้างกิจวัตรสุขภาพดีในระยะยาว",
   "onboarding_goalDiscipline": "วินัย",
   "onboarding_goalDisciplineDesc": "สร้างวินัยในตนเอง",
   "onboarding_selectPlan": "เลือกแผนของคุณ",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "เข้าสู่ระยะแคแทบอลิกแล้ว 📉",
   "notification_phaseFatBurning": "เริ่มเผาผลาญไขมันแล้ว! 🔥",
   "notification_phaseKetosis": "คุณอยู่ในภาวะคีโตซิส ⚡",
-  "notification_phaseAutophagy": "ออโตฟาจีกำลังทำงาน! 🔄",
+  "notification_phaseAutophagy": "ช่วงออโตฟาจีโดยประมาณ",
   "notification_completedBody": "คุณทำการอดอาหาร {plan} สำเร็จแล้ว! ช่วงรับประทานอาหารเปิดแล้ว",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "ระดับปานกลาง",
   "plan_18_detail": "อด 18 ชั่วโมง รับประทาน 6 ชั่วโมง มีช่วงเผาผลาญไขมันนานขึ้น",
   "plan_20_desc": "ระดับสูง",
-  "plan_20_detail": "อด 20 ชั่วโมง รับประทาน 4 ชั่วโมง เหมาะสำหรับเข้าสู่ภาวะคีโตซิสและออโตฟาจี",
+  "plan_20_detail": "อดอาหาร 20 ชั่วโมง กิน 4 ชั่วโมง สำหรับผู้มีประสบการณ์อดอาหาร",
   "plan_omad_desc": "หนึ่งมื้อต่อวัน",
   "plan_omad_detail": "หนึ่งมื้อต่อวัน อด 23 ชั่วโมง รับประทาน 1 ชั่วโมง ระดับผู้เชี่ยวชาญ",
   "plan_52_desc": "2 วันต่อสัปดาห์",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "ลบทั้งหมด",
   "record_deleteConfirm": "ลบรายการนี้หรือไม่",
   "profile_analytics": "แชร์ข้อมูลการใช้งานแบบไม่ระบุตัวตน",
-  "profile_analyticsDesc": "ช่วยปรับปรุงแอป ไม่รวมน้ำหนัก มื้ออาหาร หรือข้อมูลสุขภาพ"
+  "profile_analyticsDesc": "ช่วยปรับปรุงแอป ไม่รวมน้ำหนัก มื้ออาหาร หรือข้อมูลสุขภาพ",
+  "plan_longWarningTitle": "นี่คือการอดอาหารระยะยาว",
+  "plan_longWarningDesc": "การอดอาหาร 20 ชั่วโมงขึ้นไปไม่เหมาะกับทุกคนและอาจทำให้รู้สึกไม่สบาย หากไม่แน่ใจโปรดปรึกษาแพทย์ และหยุดอดอาหารหากรู้สึกไม่สบาย",
+  "plan_longWarningAccept": "เข้าใจแล้ว",
+  "paywall_trialThen": "ทดลองใช้ฟรี {days} วัน จากนั้น {price} ({plan})",
+  "widget_notFasting": "ไม่ได้อดอาหาร",
+  "widget_tapToStart": "แตะเพื่อเริ่ม"
 }

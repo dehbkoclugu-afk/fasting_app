@@ -29,9 +29,9 @@
   "phase_fatBurning": "حرق الدهون",
   "phase_fatBurningDesc": "بدأ حرق الدهون",
   "phase_ketosis": "الكيتوزية",
-  "phase_ketosisDesc": "إنتاج الكيتونات نشط",
+  "phase_ketosisDesc": "قد يزداد إنتاج الكيتونات",
   "phase_autophagy": "الالتهام الذاتي",
-  "phase_autophagyDesc": "تجدد الخلايا",
+  "phase_autophagyDesc": "مرحلة تقديرية لإعادة تدوير الخلايا",
   "stats_title": "الإحصاءات",
   "stats_week": "أسبوع",
   "stats_month": "شهر",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "صفاء الذهن",
   "onboarding_goalMentalDesc": "التركيز والوضوح",
   "onboarding_goalLongevity": "طول العمر",
-  "onboarding_goalLongevityDesc": "تجدد الخلايا والشيخوخة الصحية",
+  "onboarding_goalLongevityDesc": "ابنِ روتينًا صحيًا طويل الأمد",
   "onboarding_goalDiscipline": "الانضباط",
   "onboarding_goalDisciplineDesc": "بناء الانضباط الذاتي",
   "onboarding_selectPlan": "اختر خطتك",
@@ -420,7 +420,7 @@
   "notification_phaseCatabolic": "دخلت مرحلة الهدم 📉",
   "notification_phaseFatBurning": "بدأ حرق الدهون! 🔥",
   "notification_phaseKetosis": "أنت في حالة الكيتوزية ⚡",
-  "notification_phaseAutophagy": "الالتهام الذاتي نشط! 🔄",
+  "notification_phaseAutophagy": "مرحلة الالتهام الذاتي التقديرية",
   "notification_completedBody": "أتممت صيام {plan}! نافذة الأكل مفتوحة.",
   "@notification_completedBody": {
     "placeholders": {
@@ -527,7 +527,7 @@
   "plan_18_desc": "مستوى متوسط",
   "plan_18_detail": "18 ساعة صيام و6 ساعات أكل. مدة أطول لحرق الدهون.",
   "plan_20_desc": "مستوى متقدم",
-  "plan_20_detail": "20 ساعة صيام و4 ساعات أكل. مناسبة للوصول إلى الكيتوزية والالتهام الذاتي.",
+  "plan_20_detail": "صيام 20 ساعة و4 ساعات للأكل. لأصحاب الخبرة في الصيام.",
   "plan_omad_desc": "وجبة واحدة يوميًا",
   "plan_omad_detail": "وجبة واحدة يوميًا. 23 ساعة صيام وساعة واحدة للأكل. مستوى خبير.",
   "plan_52_desc": "يومان في الأسبوع",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "حذف الكل",
   "record_deleteConfirm": "هل تريد حذف هذا الإدخال؟",
   "profile_analytics": "مشاركة بيانات استخدام مجهولة",
-  "profile_analyticsDesc": "يساعد في تحسين التطبيق. لا يتضمن أبدًا الوزن أو الوجبات أو البيانات الصحية."
+  "profile_analyticsDesc": "يساعد في تحسين التطبيق. لا يتضمن أبدًا الوزن أو الوجبات أو البيانات الصحية.",
+  "plan_longWarningTitle": "هذا صيام طويل",
+  "plan_longWarningDesc": "الصيام لمدة 20 ساعة أو أكثر لا يناسب الجميع وقد يسبب لك توعكًا. تحدث إلى طبيب إذا لم تكن متأكدًا، وأنهِ الصيام إذا شعرت بتوعك.",
+  "plan_longWarningAccept": "فهمت",
+  "paywall_trialThen": "تجربة مجانية لمدة {days} يوم، ثم {price} ({plan})",
+  "widget_notFasting": "لا صيام",
+  "widget_tapToStart": "اضغط للبدء"
 }

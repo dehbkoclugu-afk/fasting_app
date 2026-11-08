@@ -242,6 +242,7 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
           maxWidth: _maxImageDimension,
           maxHeight: _maxImageDimension,
           imageQuality: _jpegQuality,
+          requestFullMetadata: false,
         );
       } catch (error) {
         debugPrint('Image pick failed: $error');

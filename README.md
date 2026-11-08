@@ -1,16 +1,35 @@
-# fasting_app
+# FastTrack
 
-A new Flutter project.
+Intermittent fasting tracker for Android and iOS, built with Flutter. Fasts,
+water, weight and meals stay on the device; there is no account.
 
-## Getting Started
+## Run
 
-This project is a starting point for a Flutter application.
+```bash
+flutter pub get
+flutter gen-l10n
+flutter run
+```
 
-A few resources to get you started if this is your first Flutter project:
+CI builds with Flutter 3.38.10. Newer stables currently break `google_fonts` and
+`phosphor_flutter`; see `codemagic.yaml`.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Check
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+flutter analyze --no-fatal-infos
+flutter test
+```
+
+## Layout
+
+- `lib/features/` screens and state, one folder per feature
+- `lib/services/` notifications, ads, purchases, analytics, background work
+- `lib/data/` the drift database
+- `lib/l10n/` translations; `app_en.arb` is the template, and every locale must
+  carry every key
+- `third_party/image_picker_android/` patched plugin; see `FASTTRACK_PATCH.md`
+- `legal_site/` the published privacy, terms and deletion pages
+- `social_funnel/` separate Python tool for social scheduling
+
+Releases and required secrets are in `RELEASE_SETUP.md`.

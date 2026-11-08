@@ -96,13 +96,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get phase_ketosis => 'Ketoosi';
 
   @override
-  String get phase_ketosisDesc => 'Ketonien tuotanto on aktiivista';
+  String get phase_ketosisDesc => 'Ketonien tuotanto voi kasvaa';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Solujen uusiutuminen';
+  String get phase_autophagyDesc => 'Arvioitu solujen kierrätysvaihe';
 
   @override
   String get stats_title => 'Tilastot';
@@ -311,7 +311,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get onboarding_goalLongevity => 'Pitkäikäisyys';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Solujen uusiutuminen ja terve ikääntyminen';
+  String get onboarding_goalLongevityDesc => 'Rakenna terveellinen pitkän aikavälin rutiini';
 
   @override
   String get onboarding_goalDiscipline => 'Itsekuri';
@@ -940,7 +940,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get notification_phaseKetosis => 'Olet ketoosissa ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagia on aktiivinen! 🔄';
+  String get notification_phaseAutophagy => 'Arvioitu autofagiavaihe';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get plan_20_desc => 'Edistynyt taso';
 
   @override
-  String get plan_20_detail => '20 tuntia paastoa ja 4 tunnin syömisikkuna. Sopii ketoosin ja autofagian saavuttamiseen.';
+  String get plan_20_detail => '20 tuntia paastoa, 4 tuntia syömistä. Paastoa kokeilleille.';
 
   @override
   String get plan_omad_desc => 'Yksi ateria päivässä';
@@ -1694,4 +1694,24 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Auttaa parantamaan sovellusta. Ei koskaan sisällä painoa, aterioita tai terveystietoja.';
+
+  @override
+  String get plan_longWarningTitle => 'Tämä on pitkä paasto';
+
+  @override
+  String get plan_longWarningDesc => 'Vähintään 20 tunnin paastot eivät sovi kaikille ja voivat aiheuttaa huonovointisuutta. Jos olet epävarma, keskustele lääkärin kanssa, ja lopeta paasto, jos voit huonosti.';
+
+  @override
+  String get plan_longWarningAccept => 'Ymmärrän';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days päivän ilmainen kokeilu, sitten $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Et paastoa';
+
+  @override
+  String get widget_tapToStart => 'Aloita napauttamalla';
 }

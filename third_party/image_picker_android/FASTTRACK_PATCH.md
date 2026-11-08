@@ -20,7 +20,9 @@ photo-related termination. It is not a confirmed trace of a particular user's
 device crash. The same defect was present in the published +23 source inspected
 on 2026-09-27, so a dependency upgrade alone did not resolve it.
 
-Only `ImageResizer.java` is changed from the upstream runtime files:
+`ExifDataCopier.java` also drops every GPS tag, so a resized meal photo sent for
+analysis cannot carry the location it was taken at. The other change, to
+`ImageResizer.java`:
 
 - Populate decoder bounds before calculating sample size.
 - Reject invalid dimensions and clamp a resized dimension to at least one pixel.

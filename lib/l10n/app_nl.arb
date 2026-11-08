@@ -29,9 +29,9 @@
   "phase_fatBurning": "Vetverbranding",
   "phase_fatBurningDesc": "Vetverbranding is begonnen",
   "phase_ketosis": "Ketose",
-  "phase_ketosisDesc": "Ketonproductie actief",
+  "phase_ketosisDesc": "De ketonproductie kan stijgen",
   "phase_autophagy": "Autofagie",
-  "phase_autophagyDesc": "Celvernieuwing",
+  "phase_autophagyDesc": "Geschatte fase van celrecycling",
   "stats_title": "Statistieken",
   "stats_week": "Week",
   "stats_month": "Maand",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Mentale helderheid",
   "onboarding_goalMentalDesc": "Focus en helderheid",
   "onboarding_goalLongevity": "Lang leven",
-  "onboarding_goalLongevityDesc": "Celvernieuwing en gezond ouder worden",
+  "onboarding_goalLongevityDesc": "Bouw een gezonde routine voor de lange termijn",
   "onboarding_goalDiscipline": "Discipline",
   "onboarding_goalDisciplineDesc": "Zelfdiscipline opbouwen",
   "onboarding_selectPlan": "Kies je plan",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Katabole fase bereikt 📉",
   "notification_phaseFatBurning": "Vetverbranding begonnen! 🔥",
   "notification_phaseKetosis": "Je bent in ketose ⚡",
-  "notification_phaseAutophagy": "Autofagie actief! 🔄",
+  "notification_phaseAutophagy": "Geschatte autofagiefase",
   "notification_completedBody": "Je hebt je vasten volgens {plan} voltooid! Je eetvenster is open.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Gemiddeld niveau",
   "plan_18_detail": "18 uur vasten en een eetvenster van 6 uur. De vetverbranding duurt langer.",
   "plan_20_desc": "Gevorderd niveau",
-  "plan_20_detail": "20 uur vasten en een eetvenster van 4 uur. Ideaal om ketose en autofagie te bereiken.",
+  "plan_20_detail": "20 uur vasten, 4 uur eten. Voor mensen met vastenervaring.",
   "plan_omad_desc": "Eén maaltijd per dag",
   "plan_omad_detail": "Eén maaltijd per dag: 23 uur vasten en een eetvenster van 1 uur. Expert-niveau.",
   "plan_52_desc": "2 dagen per week",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Alles verwijderen",
   "record_deleteConfirm": "Deze invoer verwijderen?",
   "profile_analytics": "Anonieme gebruiksgegevens delen",
-  "profile_analyticsDesc": "Helpt de app te verbeteren. Bevat nooit gewicht, maaltijden of gezondheidsgegevens."
+  "profile_analyticsDesc": "Helpt de app te verbeteren. Bevat nooit gewicht, maaltijden of gezondheidsgegevens.",
+  "plan_longWarningTitle": "Dit is een lange vastenperiode",
+  "plan_longWarningDesc": "Vasten van 20 uur of langer is niet voor iedereen geschikt en kan ervoor zorgen dat je je niet goed voelt. Overleg bij twijfel met een arts en stop als je je niet goed voelt.",
+  "plan_longWarningAccept": "Ik begrijp het",
+  "paywall_trialThen": "{days} dagen gratis proberen, daarna {price} ({plan})",
+  "widget_notFasting": "Niet aan het vasten",
+  "widget_tapToStart": "Tik om te starten"
 }

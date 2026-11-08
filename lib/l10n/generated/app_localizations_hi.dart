@@ -96,13 +96,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get phase_ketosis => 'कीटोसिस';
 
   @override
-  String get phase_ketosisDesc => 'कीटोन उत्पादन सक्रिय';
+  String get phase_ketosisDesc => 'कीटोन उत्पादन बढ़ सकता है';
 
   @override
   String get phase_autophagy => 'ऑटोफैजी';
 
   @override
-  String get phase_autophagyDesc => 'कोशिका नवीनीकरण';
+  String get phase_autophagyDesc => 'कोशिका पुनर्चक्रण का अनुमानित चरण';
 
   @override
   String get stats_title => 'आँकड़े';
@@ -311,7 +311,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboarding_goalLongevity => 'दीर्घायु';
 
   @override
-  String get onboarding_goalLongevityDesc => 'कोशिका नवीनीकरण और स्वस्थ उम्र बढ़ना';
+  String get onboarding_goalLongevityDesc => 'लंबे समय की स्वस्थ दिनचर्या बनाएं';
 
   @override
   String get onboarding_goalDiscipline => 'अनुशासन';
@@ -940,7 +940,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get notification_phaseKetosis => 'आप कीटोसिस में हैं ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'ऑटोफैजी सक्रिय! 🔄';
+  String get notification_phaseAutophagy => 'अनुमानित ऑटोफैगी चरण';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get plan_20_desc => 'उन्नत स्तर';
 
   @override
-  String get plan_20_detail => '20 घंटे उपवास, 4 घंटे भोजन। कीटोसिस और ऑटोफैजी तक पहुँचने के लिए उपयुक्त।';
+  String get plan_20_detail => '20 घंटे उपवास, 4 घंटे भोजन। उपवास का अनुभव रखने वालों के लिए।';
 
   @override
   String get plan_omad_desc => 'दिन में एक भोजन';
@@ -1694,4 +1694,24 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'ऐप को बेहतर बनाने में मदद करता है। इसमें वजन, भोजन या स्वास्थ्य जानकारी कभी शामिल नहीं होती।';
+
+  @override
+  String get plan_longWarningTitle => 'यह लंबा उपवास है';
+
+  @override
+  String get plan_longWarningDesc => '20 घंटे या उससे लंबे उपवास सभी के लिए उपयुक्त नहीं हैं और आपकी तबीयत बिगड़ सकती है। संदेह हो तो डॉक्टर से बात करें और तबीयत खराब लगे तो उपवास समाप्त करें।';
+
+  @override
+  String get plan_longWarningAccept => 'मैं समझता/समझती हूं';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days दिन का मुफ्त ट्रायल, फिर $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'उपवास नहीं';
+
+  @override
+  String get widget_tapToStart => 'शुरू करने के लिए टैप करें';
 }

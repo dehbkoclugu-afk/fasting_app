@@ -96,13 +96,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get phase_ketosis => 'Cétose';
 
   @override
-  String get phase_ketosisDesc => 'Production de cétone active';
+  String get phase_ketosisDesc => 'La production de cétones peut augmenter';
 
   @override
   String get phase_autophagy => 'Autophagie';
 
   @override
-  String get phase_autophagyDesc => 'Renouvellement cellulaire';
+  String get phase_autophagyDesc => 'Phase estimée de recyclage cellulaire';
 
   @override
   String get stats_title => 'Statistiques';
@@ -311,7 +311,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding_goalLongevity => 'Longévité';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Renouvellement cellulaire et anti-âge';
+  String get onboarding_goalLongevityDesc => 'Construisez une routine saine à long terme';
 
   @override
   String get onboarding_goalDiscipline => 'Discipline';
@@ -940,7 +940,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notification_phaseKetosis => 'Vous êtes en cétose ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autophagie active ! 🔄';
+  String get notification_phaseAutophagy => 'Phase d\'autophagie estimée';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get plan_20_desc => 'Niveau avancé';
 
   @override
-  String get plan_20_detail => '20 heures de jeûne, 4 heures de repas. Idéal pour atteindre la cétose et l\'autophagie.';
+  String get plan_20_detail => '20 heures de jeûne, 4 heures pour manger. Pour les personnes habituées au jeûne.';
 
   @override
   String get plan_omad_desc => 'Un repas par jour';
@@ -1694,4 +1694,24 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Aide à améliorer l\'application. N\'inclut jamais le poids, les repas ni les données de santé.';
+
+  @override
+  String get plan_longWarningTitle => 'Ceci est un jeûne long';
+
+  @override
+  String get plan_longWarningDesc => 'Les jeûnes de 20 heures ou plus ne conviennent pas à tout le monde et peuvent provoquer un malaise. Parlez-en à un médecin en cas de doute et arrêtez le jeûne si vous vous sentez mal.';
+
+  @override
+  String get plan_longWarningAccept => 'J\'ai compris';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'Essai gratuit de $days jours, puis $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Pas de jeûne';
+
+  @override
+  String get widget_tapToStart => 'Touchez pour commencer';
 }

@@ -96,13 +96,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get phase_ketosis => 'Ketos';
 
   @override
-  String get phase_ketosisDesc => 'Ketonproduktionen är aktiv';
+  String get phase_ketosisDesc => 'Ketonproduktionen kan öka';
 
   @override
   String get phase_autophagy => 'Autofagi';
 
   @override
-  String get phase_autophagyDesc => 'Cellförnyelse';
+  String get phase_autophagyDesc => 'Uppskattad fas för cellåtervinning';
 
   @override
   String get stats_title => 'Statistik';
@@ -311,7 +311,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get onboarding_goalLongevity => 'Långt liv';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Cellförnyelse och hälsosamt åldrande';
+  String get onboarding_goalLongevityDesc => 'Bygg en hälsosam rutin på lång sikt';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplin';
@@ -940,7 +940,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get notification_phaseKetosis => 'Du är i ketos ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagi är aktiv! 🔄';
+  String get notification_phaseAutophagy => 'Uppskattad autofagifas';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get plan_20_desc => 'Avancerad nivå';
 
   @override
-  String get plan_20_detail => '20 timmars fasta och ett ätfönster på 4 timmar. Perfekt för att nå ketos och autofagi.';
+  String get plan_20_detail => '20 timmars fasta, 4 timmar för att äta. För dig med erfarenhet av fasta.';
 
   @override
   String get plan_omad_desc => 'En måltid om dagen';
@@ -1694,4 +1694,24 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Hjälper till att förbättra appen. Innehåller aldrig vikt, måltider eller hälsouppgifter.';
+
+  @override
+  String get plan_longWarningTitle => 'Det här är en lång fasta';
+
+  @override
+  String get plan_longWarningDesc => 'Fastor på 20 timmar eller mer passar inte alla och kan göra att du mår dåligt. Prata med en läkare om du är osäker och avsluta fastan om du mår dåligt.';
+
+  @override
+  String get plan_longWarningAccept => 'Jag förstår';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days dagars gratis provperiod, sedan $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Fastar inte';
+
+  @override
+  String get widget_tapToStart => 'Tryck för att starta';
 }

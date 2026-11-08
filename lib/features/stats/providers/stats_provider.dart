@@ -32,13 +32,16 @@ final statsProvider = FutureProvider.family<StatsData, int>((
 
   final sessions = await db.getSessionsInRange(start, now);
   final completedSessions = sessions.where((s) => s.completed).toList();
+  final finishedSessions = sessions.where((s) => s.endTime != null).toList();
 
   // Haftalık saat dağılımı
   final weeklyHours = List<double>.filled(7, 0);
-  final weekStart = now.subtract(Duration(days: now.weekday - 1));
+  // In UTC, because a local day around a clock change is not 24 hours long.
+  final weekStart = DateTime.utc(now.year, now.month, now.day - now.weekday + 1);
   for (final session in sessions) {
-    final dayIndex = session.startTime
-        .difference(DateTime(weekStart.year, weekStart.month, weekStart.day))
+    final date = session.startTime;
+    final dayIndex = DateTime.utc(date.year, date.month, date.day)
+        .difference(weekStart)
         .inDays;
     if (dayIndex >= 0 && dayIndex < 7 && session.actualMinutes != null) {
       weeklyHours[dayIndex] += session.actualMinutes! / 60;
@@ -47,20 +50,15 @@ final statsProvider = FutureProvider.family<StatsData, int>((
 
   // Streak hesapla
   final allCompleted = await db.getCompletedSessions();
-  final currentStreak = currentFastingStreak(
-    allCompleted.map((session) => session.startTime),
-    now,
-  );
+  final currentStreak = fastingStreakFor(allCompleted, now).$1;
   int longestStreak = 0;
   int tempStreak = 0;
   DateTime? lastDate;
 
   final sortedDates =
       allCompleted
-          .map(
-            (s) =>
-                DateTime(s.startTime.year, s.startTime.month, s.startTime.day),
-          )
+          .map((s) => s.endTime ?? s.startTime)
+          .map((date) => DateTime(date.year, date.month, date.day))
           .toSet()
           .toList()
         ..sort((a, b) => b.compareTo(a));
@@ -77,25 +75,24 @@ final statsProvider = FutureProvider.family<StatsData, int>((
     lastDate = date;
   }
   if (tempStreak > longestStreak) longestStreak = tempStreak;
+  // A shield can carry the current streak past any unbroken run.
+  if (currentStreak > longestStreak) longestStreak = currentStreak;
 
-  final finishedSessions = sessions
-      .where((s) => s.actualMinutes != null)
-      .toList();
   final totalMinutes = finishedSessions.fold<int>(
     0,
     (sum, s) => sum + (s.actualMinutes ?? 0),
   );
 
   return StatsData(
-    totalSessions: sessions.length,
+    totalSessions: finishedSessions.length,
     averageDurationHours: finishedSessions.isEmpty
         ? 0
         : totalMinutes / finishedSessions.length / 60,
     currentStreak: currentStreak,
     longestStreak: longestStreak,
-    completionRate: sessions.isEmpty
+    completionRate: finishedSessions.isEmpty
         ? 0
-        : completedSessions.length / sessions.length,
+        : completedSessions.length / finishedSessions.length,
     totalFastingHours: totalMinutes ~/ 60,
     weeklyHours: weeklyHours,
   );

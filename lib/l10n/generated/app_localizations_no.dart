@@ -96,13 +96,13 @@ class AppLocalizationsNo extends AppLocalizations {
   String get phase_ketosis => 'Ketose';
 
   @override
-  String get phase_ketosisDesc => 'Ketonproduksjonen er aktiv';
+  String get phase_ketosisDesc => 'Ketonproduksjonen kan øke';
 
   @override
   String get phase_autophagy => 'Autofagi';
 
   @override
-  String get phase_autophagyDesc => 'Cellefornyelse';
+  String get phase_autophagyDesc => 'Anslått fase med cellegjenvinning';
 
   @override
   String get stats_title => 'Statistikk';
@@ -311,7 +311,7 @@ class AppLocalizationsNo extends AppLocalizations {
   String get onboarding_goalLongevity => 'Lang levetid';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Cellefornyelse og sunn aldring';
+  String get onboarding_goalLongevityDesc => 'Bygg en sunn rutine på lang sikt';
 
   @override
   String get onboarding_goalDiscipline => 'Disiplin';
@@ -940,7 +940,7 @@ class AppLocalizationsNo extends AppLocalizations {
   String get notification_phaseKetosis => 'Du er i ketose ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagi er aktiv! 🔄';
+  String get notification_phaseAutophagy => 'Anslått autofagifase';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsNo extends AppLocalizations {
   String get plan_20_desc => 'Avansert nivå';
 
   @override
-  String get plan_20_detail => '20 timers faste og et spisevindu på 4 timer. Ideell for å nå ketose og autofagi.';
+  String get plan_20_detail => '20 timers faste, 4 timer til å spise. For dem med erfaring med faste.';
 
   @override
   String get plan_omad_desc => 'Ett måltid om dagen';
@@ -1694,4 +1694,24 @@ class AppLocalizationsNo extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Hjelper med å forbedre appen. Inneholder aldri vekt, måltider eller helseopplysninger.';
+
+  @override
+  String get plan_longWarningTitle => 'Dette er en lang faste';
+
+  @override
+  String get plan_longWarningDesc => 'Faster på 20 timer eller mer passer ikke for alle og kan få deg til å føle deg dårlig. Snakk med en lege hvis du er usikker, og avslutt fasten hvis du føler deg dårlig.';
+
+  @override
+  String get plan_longWarningAccept => 'Jeg forstår';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days dager gratis prøve, deretter $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Faster ikke';
+
+  @override
+  String get widget_tapToStart => 'Trykk for å starte';
 }

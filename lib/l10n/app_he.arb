@@ -29,9 +29,9 @@
   "phase_fatBurning": "שריפת שומן",
   "phase_fatBurningDesc": "שריפת השומן החלה",
   "phase_ketosis": "קטוזיס",
-  "phase_ketosisDesc": "ייצור הקטונים פעיל",
+  "phase_ketosisDesc": "ייצור הקטונים עשוי לעלות",
   "phase_autophagy": "אוטופגיה",
-  "phase_autophagyDesc": "התחדשות תאים",
+  "phase_autophagyDesc": "שלב משוער של מיחזור תאים",
   "stats_title": "סטטיסטיקות",
   "stats_week": "שבוע",
   "stats_month": "חודש",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "בהירות מחשבתית",
   "onboarding_goalMentalDesc": "מיקוד ובהירות",
   "onboarding_goalLongevity": "אריכות ימים",
-  "onboarding_goalLongevityDesc": "התחדשות תאים והזדקנות בריאה",
+  "onboarding_goalLongevityDesc": "בניית שגרה בריאה לטווח ארוך",
   "onboarding_goalDiscipline": "משמעת",
   "onboarding_goalDisciplineDesc": "פיתוח משמעת עצמית",
   "onboarding_selectPlan": "בחירת התוכנית",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "נכנסתם לשלב הקטבולי 📉",
   "notification_phaseFatBurning": "שריפת השומן החלה! 🔥",
   "notification_phaseKetosis": "אתם בקטוזיס ⚡",
-  "notification_phaseAutophagy": "האוטופגיה פעילה! 🔄",
+  "notification_phaseAutophagy": "שלב אוטופגיה משוער",
   "notification_completedBody": "השלמתם צום {plan}! חלון האכילה פתוח.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "רמת ביניים",
   "plan_18_detail": "18 שעות צום ו-6 שעות אכילה. משך שריפת שומן ארוך יותר.",
   "plan_20_desc": "רמה מתקדמת",
-  "plan_20_detail": "20 שעות צום ו-4 שעות אכילה. מתאים להגעה לקטוזיס ולאוטופגיה.",
+  "plan_20_detail": "20 שעות צום ו-4 שעות אכילה. למי שיש ניסיון בצום.",
   "plan_omad_desc": "ארוחה אחת ביום",
   "plan_omad_detail": "ארוחה אחת ביום. 23 שעות צום ושעת אכילה אחת. רמת מומחים.",
   "plan_52_desc": "יומיים בשבוע",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "מחיקת הכול",
   "record_deleteConfirm": "למחוק את הרשומה הזו?",
   "profile_analytics": "שיתוף נתוני שימוש אנונימיים",
-  "profile_analyticsDesc": "עוזר לשפר את האפליקציה. לעולם לא כולל משקל, ארוחות או מידע בריאותי."
+  "profile_analyticsDesc": "עוזר לשפר את האפליקציה. לעולם לא כולל משקל, ארוחות או מידע בריאותי.",
+  "plan_longWarningTitle": "זה צום ארוך",
+  "plan_longWarningDesc": "צומות של 20 שעות ומעלה אינם מתאימים לכולם ועלולים לגרום להרגשה רעה. אם יש ספק יש להתייעץ עם רופא/ה, ואם מרגישים רע יש לסיים את הצום.",
+  "plan_longWarningAccept": "הבנתי",
+  "paywall_trialThen": "{days} ימי ניסיון בחינם, ואז {price} ({plan})",
+  "widget_notFasting": "לא בצום",
+  "widget_tapToStart": "יש להקיש כדי להתחיל"
 }

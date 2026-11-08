@@ -21,7 +21,7 @@ Choose a fasting plan and see elapsed and remaining time at a glance.
 Learn about anabolic, catabolic, fat-burning, ketosis and autophagy stages. Stage times are general estimates, not medical measurements.
 
 • Flexible fasting plans
-Use familiar schedules such as 12:12, 14:10, 16:8, 18:6, 20:4 and OMAD.
+Use familiar schedules such as 12:12, 16:8, 18:6, 20:4 and OMAD.
 
 • Progress reports
 Review completed fasts, consistency, duration and weight trends with readable charts.
@@ -33,13 +33,13 @@ Record hydration and body-weight entries without leaving the app.
 Receive optional fasting, phase, hydration and completion notifications.
 
 • Your language and appearance
-FastTrack follows your system language and light or dark appearance. English, Turkish, Spanish, Portuguese, German and French are supported.
+FastTrack follows your system language and light or dark appearance. It is available in 29 languages.
 
 • Private by design
 Core fasting, water, meal and weight records are stored on your device.
 
 PREMIUM
-Premium unlocks every fasting plan (18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior) and removes ads. Monthly, yearly and lifetime options may be available. Prices are shown by your store before purchase.
+Premium unlocks every fasting plan (18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior), AI meal photo analysis, and removes ads. Monthly, yearly and lifetime options may be available. Prices are shown by your store before purchase.
 
 IMPORTANT
 FastTrack provides general educational and wellness information. It does not diagnose, treat or prevent any condition. Metabolic stage times are estimates and individual responses vary. Consult a qualified healthcare professional before fasting if you have a medical condition, take medication, are pregnant or breastfeeding, or feel unwell.

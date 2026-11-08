@@ -29,9 +29,9 @@
   "phase_fatBurning": "Pembakaran Lemak",
   "phase_fatBurningDesc": "Pembakaran lemak dimulai",
   "phase_ketosis": "Ketosis",
-  "phase_ketosisDesc": "Produksi keton aktif",
+  "phase_ketosisDesc": "Produksi keton dapat meningkat",
   "phase_autophagy": "Autofagi",
-  "phase_autophagyDesc": "Pembaruan sel",
+  "phase_autophagyDesc": "Perkiraan fase daur ulang sel",
   "stats_title": "Statistik",
   "stats_week": "Minggu",
   "stats_month": "Bulan",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Kejernihan Mental",
   "onboarding_goalMentalDesc": "Fokus dan kejernihan",
   "onboarding_goalLongevity": "Umur Panjang",
-  "onboarding_goalLongevityDesc": "Pembaruan sel dan penuaan sehat",
+  "onboarding_goalLongevityDesc": "Bangun rutinitas sehat jangka panjang",
   "onboarding_goalDiscipline": "Disiplin",
   "onboarding_goalDisciplineDesc": "Bangun disiplin diri",
   "onboarding_selectPlan": "Pilih Program Anda",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Memasuki fase Katabolik 📉",
   "notification_phaseFatBurning": "Pembakaran Lemak dimulai! 🔥",
   "notification_phaseKetosis": "Anda dalam Ketosis ⚡",
-  "notification_phaseAutophagy": "Autofagi aktif! 🔄",
+  "notification_phaseAutophagy": "Perkiraan fase autofagi",
   "notification_completedBody": "Anda menyelesaikan puasa {plan}! Jendela makan Anda terbuka.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Tingkat menengah",
   "plan_18_detail": "Puasa 18 jam dan jendela makan 6 jam. Durasi pembakaran lemak lebih lama.",
   "plan_20_desc": "Tingkat lanjut",
-  "plan_20_detail": "Puasa 20 jam dan jendela makan 4 jam. Ideal untuk mencapai ketosis dan autofagi.",
+  "plan_20_detail": "Puasa 20 jam, 4 jam untuk makan. Untuk yang berpengalaman berpuasa.",
   "plan_omad_desc": "Satu kali makan sehari",
   "plan_omad_detail": "Satu kali makan sehari: puasa 23 jam dan jendela makan 1 jam. Tingkat ahli.",
   "plan_52_desc": "2 hari per minggu",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Hapus semua",
   "record_deleteConfirm": "Hapus entri ini?",
   "profile_analytics": "Bagikan data penggunaan anonim",
-  "profile_analyticsDesc": "Membantu meningkatkan aplikasi. Tidak pernah menyertakan berat badan, makanan, atau data kesehatan."
+  "profile_analyticsDesc": "Membantu meningkatkan aplikasi. Tidak pernah menyertakan berat badan, makanan, atau data kesehatan.",
+  "plan_longWarningTitle": "Ini puasa yang panjang",
+  "plan_longWarningDesc": "Puasa 20 jam atau lebih tidak cocok untuk semua orang dan dapat membuat Anda merasa tidak sehat. Bicaralah dengan dokter jika ragu, dan akhiri puasa jika merasa tidak sehat.",
+  "plan_longWarningAccept": "Saya mengerti",
+  "paywall_trialThen": "Uji coba gratis {days} hari, lalu {price} ({plan})",
+  "widget_notFasting": "Tidak berpuasa",
+  "widget_tapToStart": "Ketuk untuk mulai"
 }

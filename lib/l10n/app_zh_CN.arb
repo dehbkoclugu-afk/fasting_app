@@ -29,9 +29,9 @@
   "phase_fatBurning": "脂肪燃烧",
   "phase_fatBurningDesc": "脂肪燃烧已开始",
   "phase_ketosis": "酮症",
-  "phase_ketosisDesc": "酮体生成活跃",
+  "phase_ketosisDesc": "酮体生成可能增加",
   "phase_autophagy": "自噬",
-  "phase_autophagyDesc": "细胞更新",
+  "phase_autophagyDesc": "估计的细胞回收阶段",
   "stats_title": "统计",
   "stats_week": "周",
   "stats_month": "月",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "思维清晰",
   "onboarding_goalMentalDesc": "专注与清晰",
   "onboarding_goalLongevity": "长寿",
-  "onboarding_goalLongevityDesc": "细胞更新与健康衰老",
+  "onboarding_goalLongevityDesc": "建立健康的长期习惯",
   "onboarding_goalDiscipline": "自律",
   "onboarding_goalDisciplineDesc": "培养自律能力",
   "onboarding_selectPlan": "选择您的计划",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "已进入分解代谢期 📉",
   "notification_phaseFatBurning": "脂肪燃烧已开始！ 🔥",
   "notification_phaseKetosis": "您正处于酮症状态 ⚡",
-  "notification_phaseAutophagy": "自噬已激活！ 🔄",
+  "notification_phaseAutophagy": "估计的自噬阶段",
   "notification_completedBody": "您已完成{plan}禁食！进食窗口已开放。",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "中级",
   "plan_18_detail": "禁食18小时，进食6小时，脂肪燃烧持续更久。",
   "plan_20_desc": "高级",
-  "plan_20_detail": "禁食20小时，进食4小时，适合进入酮症和自噬。",
+  "plan_20_detail": "禁食 20 小时，进食窗口 4 小时。适合有禁食经验的人。",
   "plan_omad_desc": "一天一餐",
   "plan_omad_detail": "一天一餐。禁食23小时，进食1小时，适合专业级用户。",
   "plan_52_desc": "每周2天",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "全部删除",
   "record_deleteConfirm": "删除此记录？",
   "profile_analytics": "分享匿名使用数据",
-  "profile_analyticsDesc": "帮助改进应用。绝不包含体重、餐食或健康信息。"
+  "profile_analyticsDesc": "帮助改进应用。绝不包含体重、餐食或健康信息。",
+  "plan_longWarningTitle": "这是一次长时间禁食",
+  "plan_longWarningDesc": "20 小时或更长时间的禁食并非适合所有人，可能让你感到不适。如不确定请咨询医生，感到不适时请结束禁食。",
+  "plan_longWarningAccept": "我明白了",
+  "paywall_trialThen": "免费试用 {days} 天，之后 {price}（{plan}）",
+  "widget_notFasting": "未在禁食",
+  "widget_tapToStart": "点按开始"
 }

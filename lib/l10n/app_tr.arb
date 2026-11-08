@@ -29,9 +29,9 @@
   "phase_fatBurning": "Yağ Yakımı",
   "phase_fatBurningDesc": "Yağ yakımı başladı",
   "phase_ketosis": "Ketozis",
-  "phase_ketosisDesc": "Keton üretimi aktif",
+  "phase_ketosisDesc": "Keton üretimi artabilir",
   "phase_autophagy": "Otofaji",
-  "phase_autophagyDesc": "Hücre yenilenmesi",
+  "phase_autophagyDesc": "Tahmini hücre geri dönüşüm evresi",
   "stats_title": "İstatistikler",
   "stats_week": "Hafta",
   "stats_month": "Ay",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Mental Netlik",
   "onboarding_goalMentalDesc": "Odaklanma ve berraklık",
   "onboarding_goalLongevity": "Uzun Ömür",
-  "onboarding_goalLongevityDesc": "Hücre yenilenmesi ve anti-aging",
+  "onboarding_goalLongevityDesc": "Uzun vadeli sağlıklı bir rutin oluştur",
   "onboarding_goalDiscipline": "Disiplin",
   "onboarding_goalDisciplineDesc": "Öz disiplin geliştirme",
   "onboarding_selectPlan": "Planını Seç",
@@ -420,7 +420,7 @@
   "notification_phaseCatabolic": "Katabolik faza geçtin 📉",
   "notification_phaseFatBurning": "Yağ Yakımı başladı! 🔥",
   "notification_phaseKetosis": "Ketozis fazındasın ⚡",
-  "notification_phaseAutophagy": "Otofaji aktif! 🔄",
+  "notification_phaseAutophagy": "Tahmini otofaji evresi",
   "notification_completedBody": "{plan} orucunu tamamladın! Yemek penceren açıldı.",
   "@notification_completedBody": {
     "placeholders": {
@@ -527,7 +527,7 @@
   "plan_18_desc": "Orta seviye",
   "plan_18_detail": "18 saat oruç, 6 saat yemek penceresi. Daha uzun yağ yakım süresi sağlar.",
   "plan_20_desc": "İleri seviye",
-  "plan_20_detail": "20 saat oruç, 4 saat yemek penceresi. Ketozis ve otofaji fazlarına ulaşmak için ideal.",
+  "plan_20_detail": "20 saat oruç, 4 saat yeme penceresi. Oruç deneyimi olanlar için.",
   "plan_omad_desc": "Günde tek öğün",
   "plan_omad_detail": "Günde tek öğün. 23 saat oruç, 1 saat yemek penceresi. Uzman seviyesi.",
   "plan_52_desc": "Haftada 2 gün",
@@ -763,5 +763,11 @@
   "profile_deleteDataAction": "Her şeyi sil",
   "record_deleteConfirm": "Bu kayıt silinsin mi?",
   "profile_analytics": "Anonim kullanım verisi paylaş",
-  "profile_analyticsDesc": "Uygulamayı geliştirmeye yardımcı olur. Kilo, öğün veya sağlık bilgisi asla içermez."
+  "profile_analyticsDesc": "Uygulamayı geliştirmeye yardımcı olur. Kilo, öğün veya sağlık bilgisi asla içermez.",
+  "plan_longWarningTitle": "Bu uzun bir oruç",
+  "plan_longWarningDesc": "20 saat ve üzeri oruçlar herkes için uygun değildir ve kendini kötü hissetmene yol açabilir. Emin değilsen doktora danış, kendini kötü hissedersen orucu bitir.",
+  "plan_longWarningAccept": "Anladım",
+  "paywall_trialThen": "{days} gün ücretsiz deneme, sonra {price} ({plan})",
+  "widget_notFasting": "Oruçta değilsin",
+  "widget_tapToStart": "Başlamak için dokun"
 }

@@ -29,9 +29,9 @@
   "phase_fatBurning": "Combustione dei grassi",
   "phase_fatBurningDesc": "La combustione dei grassi è iniziata",
   "phase_ketosis": "Chetosi",
-  "phase_ketosisDesc": "Produzione di chetoni attiva",
+  "phase_ketosisDesc": "La produzione di chetoni può aumentare",
   "phase_autophagy": "Autofagia",
-  "phase_autophagyDesc": "Rinnovamento cellulare",
+  "phase_autophagyDesc": "Fase stimata di riciclo cellulare",
   "stats_title": "Statistiche",
   "stats_week": "Settimana",
   "stats_month": "Mese",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Chiarezza mentale",
   "onboarding_goalMentalDesc": "Concentrazione e lucidità",
   "onboarding_goalLongevity": "Longevità",
-  "onboarding_goalLongevityDesc": "Rinnovamento cellulare e azione antietà",
+  "onboarding_goalLongevityDesc": "Crea una routine sana a lungo termine",
   "onboarding_goalDiscipline": "Disciplina",
   "onboarding_goalDisciplineDesc": "Sviluppa l'autodisciplina",
   "onboarding_selectPlan": "Scegli il tuo piano",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Sei entrato nella fase catabolica 📉",
   "notification_phaseFatBurning": "La combustione dei grassi è iniziata! 🔥",
   "notification_phaseKetosis": "Sei in chetosi ⚡",
-  "notification_phaseAutophagy": "Autofagia attiva! 🔄",
+  "notification_phaseAutophagy": "Fase di autofagia stimata",
   "notification_completedBody": "Hai completato il digiuno {plan}! La finestra alimentare è aperta.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Livello intermedio",
   "plan_18_detail": "18 ore di digiuno e 6 ore di finestra alimentare. La fase di combustione dei grassi dura più a lungo.",
   "plan_20_desc": "Livello avanzato",
-  "plan_20_detail": "20 ore di digiuno e 4 ore di finestra alimentare. Ideale per raggiungere la chetosi e l'autofagia.",
+  "plan_20_detail": "20 ore di digiuno, 4 ore per mangiare. Per chi ha esperienza con il digiuno.",
   "plan_omad_desc": "Un pasto al giorno",
   "plan_omad_detail": "Un solo pasto al giorno: 23 ore di digiuno e 1 ora di finestra alimentare. Livello esperto.",
   "plan_52_desc": "2 giorni a settimana",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Elimina tutto",
   "record_deleteConfirm": "Eliminare questa voce?",
   "profile_analytics": "Condividi dati di utilizzo anonimi",
-  "profile_analyticsDesc": "Aiuta a migliorare l'app. Non include mai peso, pasti o dati sulla salute."
+  "profile_analyticsDesc": "Aiuta a migliorare l'app. Non include mai peso, pasti o dati sulla salute.",
+  "plan_longWarningTitle": "Questo è un digiuno lungo",
+  "plan_longWarningDesc": "I digiuni di 20 ore o più non sono adatti a tutti e possono farti stare male. In caso di dubbi parla con un medico e interrompi il digiuno se non ti senti bene.",
+  "plan_longWarningAccept": "Ho capito",
+  "paywall_trialThen": "{days} giorni di prova gratuita, poi {price} ({plan})",
+  "widget_notFasting": "Non a digiuno",
+  "widget_tapToStart": "Tocca per iniziare"
 }

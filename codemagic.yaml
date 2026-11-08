@@ -55,6 +55,10 @@ workflows:
         script: flutter pub get
       - name: Generate l10n
         script: flutter gen-l10n
+      - name: Analyze
+        script: flutter analyze --no-fatal-infos
+      - name: Test
+        script: flutter test
       - name: Set up code signing
         script: xcode-project use-profiles --project ios/Runner.xcodeproj
       - name: Build IPA

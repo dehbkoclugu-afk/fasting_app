@@ -29,9 +29,9 @@
   "phase_fatBurning": "Fettforbrenning",
   "phase_fatBurningDesc": "Fettforbrenningen har startet",
   "phase_ketosis": "Ketose",
-  "phase_ketosisDesc": "Ketonproduksjonen er aktiv",
+  "phase_ketosisDesc": "Ketonproduksjonen kan øke",
   "phase_autophagy": "Autofagi",
-  "phase_autophagyDesc": "Cellefornyelse",
+  "phase_autophagyDesc": "Anslått fase med cellegjenvinning",
   "stats_title": "Statistikk",
   "stats_week": "Uke",
   "stats_month": "Måned",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Mental klarhet",
   "onboarding_goalMentalDesc": "Fokus og klarhet",
   "onboarding_goalLongevity": "Lang levetid",
-  "onboarding_goalLongevityDesc": "Cellefornyelse og sunn aldring",
+  "onboarding_goalLongevityDesc": "Bygg en sunn rutine på lang sikt",
   "onboarding_goalDiscipline": "Disiplin",
   "onboarding_goalDisciplineDesc": "Bygg selvdisiplin",
   "onboarding_selectPlan": "Velg planen din",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Katabolsk fase nådd 📉",
   "notification_phaseFatBurning": "Fettforbrenningen har startet! 🔥",
   "notification_phaseKetosis": "Du er i ketose ⚡",
-  "notification_phaseAutophagy": "Autofagi er aktiv! 🔄",
+  "notification_phaseAutophagy": "Anslått autofagifase",
   "notification_completedBody": "Du har fullført {plan}-fasten! Spisevinduet ditt er åpent.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Mellomnivå",
   "plan_18_detail": "18 timers faste og et spisevindu på 6 timer. Lengre fettforbrenning.",
   "plan_20_desc": "Avansert nivå",
-  "plan_20_detail": "20 timers faste og et spisevindu på 4 timer. Ideell for å nå ketose og autofagi.",
+  "plan_20_detail": "20 timers faste, 4 timer til å spise. For dem med erfaring med faste.",
   "plan_omad_desc": "Ett måltid om dagen",
   "plan_omad_detail": "Ett måltid om dagen: 23 timers faste og et spisevindu på 1 time. Ekspertnivå.",
   "plan_52_desc": "2 dager i uken",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Slett alt",
   "record_deleteConfirm": "Slette denne oppføringen?",
   "profile_analytics": "Del anonyme bruksdata",
-  "profile_analyticsDesc": "Hjelper med å forbedre appen. Inneholder aldri vekt, måltider eller helseopplysninger."
+  "profile_analyticsDesc": "Hjelper med å forbedre appen. Inneholder aldri vekt, måltider eller helseopplysninger.",
+  "plan_longWarningTitle": "Dette er en lang faste",
+  "plan_longWarningDesc": "Faster på 20 timer eller mer passer ikke for alle og kan få deg til å føle deg dårlig. Snakk med en lege hvis du er usikker, og avslutt fasten hvis du føler deg dårlig.",
+  "plan_longWarningAccept": "Jeg forstår",
+  "paywall_trialThen": "{days} dager gratis prøve, deretter {price} ({plan})",
+  "widget_notFasting": "Faster ikke",
+  "widget_tapToStart": "Trykk for å starte"
 }

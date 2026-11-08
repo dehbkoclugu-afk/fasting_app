@@ -96,13 +96,13 @@ class AppLocalizationsKo extends AppLocalizations {
   String get phase_ketosis => '케토시스';
 
   @override
-  String get phase_ketosisDesc => '케톤 생성 활성화';
+  String get phase_ketosisDesc => '케톤 생성이 늘어날 수 있습니다';
 
   @override
   String get phase_autophagy => '자가포식';
 
   @override
-  String get phase_autophagyDesc => '세포 재생';
+  String get phase_autophagyDesc => '예상 세포 재활용 단계';
 
   @override
   String get stats_title => '통계';
@@ -311,7 +311,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get onboarding_goalLongevity => '장수';
 
   @override
-  String get onboarding_goalLongevityDesc => '세포 재생과 건강한 노화';
+  String get onboarding_goalLongevityDesc => '건강한 장기 루틴 만들기';
 
   @override
   String get onboarding_goalDiscipline => '절제력';
@@ -940,7 +940,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get notification_phaseKetosis => '케토시스 상태입니다 ⚡';
 
   @override
-  String get notification_phaseAutophagy => '자가포식이 활성화되었습니다! 🔄';
+  String get notification_phaseAutophagy => '예상 자가포식 단계';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get plan_20_desc => '고급';
 
   @override
-  String get plan_20_detail => '20시간 단식하고 4시간 식사합니다. 케토시스와 자가포식에 도달하기에 적합합니다.';
+  String get plan_20_detail => '단식 20시간, 식사 4시간. 단식 경험이 있는 분께 적합합니다.';
 
   @override
   String get plan_omad_desc => '하루 한 끼';
@@ -1694,4 +1694,24 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => '앱 개선에 도움이 됩니다. 체중, 식사, 건강 정보는 절대 포함되지 않습니다.';
+
+  @override
+  String get plan_longWarningTitle => '장시간 단식입니다';
+
+  @override
+  String get plan_longWarningDesc => '20시간 이상의 단식은 모든 사람에게 적합하지 않으며 몸이 안 좋아질 수 있습니다. 확실하지 않으면 의사와 상담하고, 몸이 좋지 않으면 단식을 끝내세요.';
+
+  @override
+  String get plan_longWarningAccept => '이해했습니다';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days일 무료 체험 후 $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => '단식 중 아님';
+
+  @override
+  String get widget_tapToStart => '탭하여 시작';
 }

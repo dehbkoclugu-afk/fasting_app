@@ -21,6 +21,10 @@ class FastingSafety {
   static const minAge = 18;
   static const minHealthyBmi = 18.5;
 
+  /// Plans at or past this need one explicit acknowledgement.
+  static const longFastMinutes = 20 * 60;
+  static const longFastAckKey = 'long_fast_ack';
+
   static const _blocking = {
     SafetyAnswer.under18,
     SafetyAnswer.pregnant,

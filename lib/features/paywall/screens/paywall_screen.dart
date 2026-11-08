@@ -237,7 +237,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                       textAlign: TextAlign.center,
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.onSurface.withValues(
-                          alpha: .55,
+                          alpha: .75,
                         ),
                         height: 1.35,
                       ),
@@ -589,6 +589,21 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                 textAlign: TextAlign.center,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.error,
+                ),
+              ),
+            ),
+          if (trialDays != null && selected != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Text(
+                l10n.paywall_trialThen(
+                  trialDays,
+                  selected.storeProduct.priceString,
+                  _planTitle(l10n, selected),
+                ),
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),

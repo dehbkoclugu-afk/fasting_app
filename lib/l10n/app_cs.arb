@@ -29,9 +29,9 @@
   "phase_fatBurning": "Spalování tuků",
   "phase_fatBurningDesc": "Spalování tuků začalo",
   "phase_ketosis": "Ketóza",
-  "phase_ketosisDesc": "Tvorba ketonů je aktivní",
+  "phase_ketosisDesc": "Tvorba ketonů se může zvýšit",
   "phase_autophagy": "Autofagie",
-  "phase_autophagyDesc": "Obnova buněk",
+  "phase_autophagyDesc": "Odhadovaná fáze recyklace buněk",
   "stats_title": "Statistiky",
   "stats_week": "Týden",
   "stats_month": "Měsíc",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Duševní jasnost",
   "onboarding_goalMentalDesc": "Soustředění a jasná mysl",
   "onboarding_goalLongevity": "Dlouhověkost",
-  "onboarding_goalLongevityDesc": "Obnova buněk a zdravé stárnutí",
+  "onboarding_goalLongevityDesc": "Vytvořte si zdravou dlouhodobou rutinu",
   "onboarding_goalDiscipline": "Disciplína",
   "onboarding_goalDisciplineDesc": "Rozvíjet sebekázeň",
   "onboarding_selectPlan": "Vyberte si plán",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Vstup do katabolické fáze 📉",
   "notification_phaseFatBurning": "Spalování tuků začalo! 🔥",
   "notification_phaseKetosis": "Jste v ketóze ⚡",
-  "notification_phaseAutophagy": "Autofagie je aktivní! 🔄",
+  "notification_phaseAutophagy": "Odhadovaná fáze autofagie",
   "notification_completedBody": "Dokončili jste půst {plan}! Vaše jídelní okno je otevřené.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Středně pokročilí",
   "plan_18_detail": "18 hodin půstu a 6hodinové jídelní okno. Delší doba spalování tuků.",
   "plan_20_desc": "Pro pokročilé",
-  "plan_20_detail": "20 hodin půstu a 4hodinové jídelní okno. Ideální pro dosažení ketózy a autofagie.",
+  "plan_20_detail": "20 hodin půstu, 4 hodiny na jídlo. Pro lidi se zkušeností s půstem.",
   "plan_omad_desc": "Jedno jídlo denně",
   "plan_omad_detail": "Jedno jídlo denně: 23 hodin půstu a 1hodinové jídelní okno. Pro experty.",
   "plan_52_desc": "2 dny v týdnu",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Smazat vše",
   "record_deleteConfirm": "Smazat tento záznam?",
   "profile_analytics": "Sdílet anonymní data o používání",
-  "profile_analyticsDesc": "Pomáhá vylepšovat aplikaci. Nikdy neobsahuje hmotnost, jídla ani zdravotní údaje."
+  "profile_analyticsDesc": "Pomáhá vylepšovat aplikaci. Nikdy neobsahuje hmotnost, jídla ani zdravotní údaje.",
+  "plan_longWarningTitle": "Toto je dlouhý půst",
+  "plan_longWarningDesc": "Půsty od 20 hodin nejsou vhodné pro každého a může vám z nich být špatně. Pokud si nejste jistí, poraďte se s lékařem, a když je vám špatně, půst ukončete.",
+  "plan_longWarningAccept": "Rozumím",
+  "paywall_trialThen": "Zkušební verze zdarma: {days} dní, pak {price} ({plan})",
+  "widget_notFasting": "Nepostíte se",
+  "widget_tapToStart": "Klepnutím začnete"
 }

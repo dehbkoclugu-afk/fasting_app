@@ -29,9 +29,9 @@
   "phase_fatBurning": "वसा दहन",
   "phase_fatBurningDesc": "वसा जलना शुरू हुआ",
   "phase_ketosis": "कीटोसिस",
-  "phase_ketosisDesc": "कीटोन उत्पादन सक्रिय",
+  "phase_ketosisDesc": "कीटोन उत्पादन बढ़ सकता है",
   "phase_autophagy": "ऑटोफैजी",
-  "phase_autophagyDesc": "कोशिका नवीनीकरण",
+  "phase_autophagyDesc": "कोशिका पुनर्चक्रण का अनुमानित चरण",
   "stats_title": "आँकड़े",
   "stats_week": "सप्ताह",
   "stats_month": "महीना",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "मानसिक स्पष्टता",
   "onboarding_goalMentalDesc": "एकाग्रता और स्पष्टता",
   "onboarding_goalLongevity": "दीर्घायु",
-  "onboarding_goalLongevityDesc": "कोशिका नवीनीकरण और स्वस्थ उम्र बढ़ना",
+  "onboarding_goalLongevityDesc": "लंबे समय की स्वस्थ दिनचर्या बनाएं",
   "onboarding_goalDiscipline": "अनुशासन",
   "onboarding_goalDisciplineDesc": "आत्म-अनुशासन विकसित करें",
   "onboarding_selectPlan": "अपनी योजना चुनें",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "अपचय चरण शुरू हुआ 📉",
   "notification_phaseFatBurning": "वसा दहन शुरू हुआ! 🔥",
   "notification_phaseKetosis": "आप कीटोसिस में हैं ⚡",
-  "notification_phaseAutophagy": "ऑटोफैजी सक्रिय! 🔄",
+  "notification_phaseAutophagy": "अनुमानित ऑटोफैगी चरण",
   "notification_completedBody": "आपने {plan} उपवास पूरा किया! आपकी भोजन अवधि खुली है।",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "मध्यम स्तर",
   "plan_18_detail": "18 घंटे उपवास, 6 घंटे भोजन। वसा दहन की अवधि अधिक।",
   "plan_20_desc": "उन्नत स्तर",
-  "plan_20_detail": "20 घंटे उपवास, 4 घंटे भोजन। कीटोसिस और ऑटोफैजी तक पहुँचने के लिए उपयुक्त।",
+  "plan_20_detail": "20 घंटे उपवास, 4 घंटे भोजन। उपवास का अनुभव रखने वालों के लिए।",
   "plan_omad_desc": "दिन में एक भोजन",
   "plan_omad_detail": "दिन में एक भोजन। 23 घंटे उपवास, 1 घंटे भोजन। विशेषज्ञ स्तर।",
   "plan_52_desc": "सप्ताह में 2 दिन",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "सब कुछ हटाएं",
   "record_deleteConfirm": "यह प्रविष्टि हटाएं?",
   "profile_analytics": "अनाम उपयोग डेटा साझा करें",
-  "profile_analyticsDesc": "ऐप को बेहतर बनाने में मदद करता है। इसमें वजन, भोजन या स्वास्थ्य जानकारी कभी शामिल नहीं होती।"
+  "profile_analyticsDesc": "ऐप को बेहतर बनाने में मदद करता है। इसमें वजन, भोजन या स्वास्थ्य जानकारी कभी शामिल नहीं होती।",
+  "plan_longWarningTitle": "यह लंबा उपवास है",
+  "plan_longWarningDesc": "20 घंटे या उससे लंबे उपवास सभी के लिए उपयुक्त नहीं हैं और आपकी तबीयत बिगड़ सकती है। संदेह हो तो डॉक्टर से बात करें और तबीयत खराब लगे तो उपवास समाप्त करें।",
+  "plan_longWarningAccept": "मैं समझता/समझती हूं",
+  "paywall_trialThen": "{days} दिन का मुफ्त ट्रायल, फिर {price} ({plan})",
+  "widget_notFasting": "उपवास नहीं",
+  "widget_tapToStart": "शुरू करने के लिए टैप करें"
 }

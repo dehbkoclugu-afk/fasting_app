@@ -8,6 +8,7 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../data/database/app_database.dart';
 import '../widgets/bmi_gauge_painter.dart';
 import '../../profile/providers/settings_provider.dart';
+import '../../../core/utils/calculations.dart';
 import '../../timer/providers/water_provider.dart';
 import '../../stats/providers/stats_provider.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
@@ -437,12 +438,19 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
               _savingWeight = true;
               try {
                 final db = ref.read(databaseProvider);
+                final height = ref.read(settingsProvider).height;
                 await db
                     .into(db.bodyMetrics)
                     .insert(
                       BodyMetricsCompanion.insert(
                         date: DateTime.now(),
                         weight: Value(weight),
+                        height: Value(height),
+                        bmi: Value(
+                          height == null
+                              ? null
+                              : Calculations.calculateBMI(weight, height),
+                        ),
                       ),
                     );
                 if (!mounted) return;

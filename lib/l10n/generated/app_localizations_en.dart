@@ -96,13 +96,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get phase_ketosis => 'Ketosis';
 
   @override
-  String get phase_ketosisDesc => 'Ketone production active';
+  String get phase_ketosisDesc => 'Ketone production may rise';
 
   @override
   String get phase_autophagy => 'Autophagy';
 
   @override
-  String get phase_autophagyDesc => 'Cell renewal';
+  String get phase_autophagyDesc => 'Estimated cell-recycling phase';
 
   @override
   String get stats_title => 'Statistics';
@@ -311,7 +311,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboarding_goalLongevity => 'Longevity';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Cell renewal and anti-aging';
+  String get onboarding_goalLongevityDesc => 'Build a healthy long-term routine';
 
   @override
   String get onboarding_goalDiscipline => 'Discipline';
@@ -940,7 +940,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notification_phaseKetosis => 'You’re in Ketosis ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autophagy active! 🔄';
+  String get notification_phaseAutophagy => 'Estimated autophagy phase';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get plan_20_desc => 'Advanced level';
 
   @override
-  String get plan_20_detail => '20 hours fasting, 4 hours eating window. Ideal for reaching ketosis and autophagy.';
+  String get plan_20_detail => '20 hours fasting, 4 hours eating window. For people experienced with fasting.';
 
   @override
   String get plan_omad_desc => 'One meal a day';
@@ -1694,4 +1694,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Helps improve the app. Never includes weight, meals or health details.';
+
+  @override
+  String get plan_longWarningTitle => 'This is a long fast';
+
+  @override
+  String get plan_longWarningDesc => 'Fasts of 20 hours or more are not suitable for everyone and can make you feel unwell. Talk to a doctor if you are unsure, and end the fast if you feel unwell.';
+
+  @override
+  String get plan_longWarningAccept => 'I understand';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days-day free trial, then $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Not fasting';
+
+  @override
+  String get widget_tapToStart => 'Tap to start';
 }

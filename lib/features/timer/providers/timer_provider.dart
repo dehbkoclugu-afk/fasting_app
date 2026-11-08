@@ -126,6 +126,8 @@ class TimerNotifier extends StateNotifier<TimerState> {
         await _finish(completed: true);
       } else {
         _startTicker();
+        // Android drops alarms and work on force-stop or reboot.
+        unawaited(_startOptionalServices(session));
       }
     } catch (error) {
       debugPrint('Active fasting session restore failed: $error');
@@ -310,7 +312,7 @@ class TimerNotifier extends StateNotifier<TimerState> {
       await _widgetService.updateWidget(
         isFasting: state.status == TimerStatus.running,
         planName: plan.name,
-        remainingTime: state.remainingFormatted,
+        remainingTime: widgetTime(Duration(seconds: state.remainingSeconds)),
         progress: state.progress,
         phaseName: state.currentPhase.id,
       );

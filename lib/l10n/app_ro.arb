@@ -29,9 +29,9 @@
   "phase_fatBurning": "Arderea grăsimilor",
   "phase_fatBurningDesc": "Arderea grăsimilor a început",
   "phase_ketosis": "Cetoză",
-  "phase_ketosisDesc": "Producția de cetone este activă",
+  "phase_ketosisDesc": "Producția de cetone poate crește",
   "phase_autophagy": "Autofagie",
-  "phase_autophagyDesc": "Reînnoire celulară",
+  "phase_autophagyDesc": "Faza estimată de reciclare celulară",
   "stats_title": "Statistici",
   "stats_week": "Săptămână",
   "stats_month": "Lună",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Claritate mentală",
   "onboarding_goalMentalDesc": "Concentrare și claritate",
   "onboarding_goalLongevity": "Longevitate",
-  "onboarding_goalLongevityDesc": "Reînnoire celulară și îmbătrânire sănătoasă",
+  "onboarding_goalLongevityDesc": "Construiește o rutină sănătoasă pe termen lung",
   "onboarding_goalDiscipline": "Disciplină",
   "onboarding_goalDisciplineDesc": "Dezvoltă autodisciplina",
   "onboarding_selectPlan": "Alege-ți planul",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Ai intrat în faza catabolică 📉",
   "notification_phaseFatBurning": "Arderea grăsimilor a început! 🔥",
   "notification_phaseKetosis": "Ești în cetoză ⚡",
-  "notification_phaseAutophagy": "Autofagia este activă! 🔄",
+  "notification_phaseAutophagy": "Faza estimată de autofagie",
   "notification_completedBody": "Ai finalizat postul {plan}! Fereastra ta de alimentație este deschisă.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Nivel intermediar",
   "plan_18_detail": "18 ore de post și o fereastră de alimentație de 6 ore. Arderea grăsimilor durează mai mult.",
   "plan_20_desc": "Nivel avansat",
-  "plan_20_detail": "20 de ore de post și o fereastră de alimentație de 4 ore. Ideal pentru atingerea cetozei și autofagiei.",
+  "plan_20_detail": "20 de ore de post, 4 ore de mâncat. Pentru persoane cu experiență în post.",
   "plan_omad_desc": "O masă pe zi",
   "plan_omad_detail": "O masă pe zi: 23 de ore de post și o fereastră de alimentație de 1 oră. Nivel expert.",
   "plan_52_desc": "2 zile pe săptămână",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Șterge tot",
   "record_deleteConfirm": "Ștergi această înregistrare?",
   "profile_analytics": "Partajează date anonime de utilizare",
-  "profile_analyticsDesc": "Ajută la îmbunătățirea aplicației. Nu include niciodată greutatea, mesele sau date de sănătate."
+  "profile_analyticsDesc": "Ajută la îmbunătățirea aplicației. Nu include niciodată greutatea, mesele sau date de sănătate.",
+  "plan_longWarningTitle": "Acesta este un post lung",
+  "plan_longWarningDesc": "Posturile de 20 de ore sau mai mult nu sunt potrivite pentru toată lumea și te pot face să te simți rău. Vorbește cu un medic dacă nu ești sigur și încheie postul dacă te simți rău.",
+  "plan_longWarningAccept": "Am înțeles",
+  "paywall_trialThen": "{days} zile de probă gratuită, apoi {price} ({plan})",
+  "widget_notFasting": "Nu postești",
+  "widget_tapToStart": "Atinge pentru a începe"
 }

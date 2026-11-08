@@ -96,13 +96,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get phase_ketosis => 'Cetose';
 
   @override
-  String get phase_ketosisDesc => 'Produção de cetona ativa';
+  String get phase_ketosisDesc => 'A produção de cetonas pode aumentar';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Renovação celular';
+  String get phase_autophagyDesc => 'Fase estimada de reciclagem celular';
 
   @override
   String get stats_title => 'Estatísticas';
@@ -311,7 +311,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get onboarding_goalLongevity => 'Longevidade';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Renovação celular e antienvelhecimento';
+  String get onboarding_goalLongevityDesc => 'Crie uma rotina saudável de longo prazo';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplina';
@@ -940,7 +940,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get notification_phaseKetosis => 'Você está em cetose ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagia ativa! 🔄';
+  String get notification_phaseAutophagy => 'Fase estimada de autofagia';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get plan_20_desc => 'Nível avançado';
 
   @override
-  String get plan_20_detail => '20 horas de jejum, 4 horas de janela para comer. Ideal para atingir cetose e autofagia.';
+  String get plan_20_detail => '20 horas de jejum, 4 horas para comer. Para quem tem experiência com jejum.';
 
   @override
   String get plan_omad_desc => 'Uma refeição por dia';
@@ -1694,6 +1694,26 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Ajuda a melhorar o app. Nunca inclui peso, refeições ou dados de saúde.';
+
+  @override
+  String get plan_longWarningTitle => 'Este é um jejum longo';
+
+  @override
+  String get plan_longWarningDesc => 'Jejuns de 20 horas ou mais não são adequados para todas as pessoas e podem fazer você passar mal. Fale com um médico se tiver dúvidas e encerre o jejum se não estiver bem.';
+
+  @override
+  String get plan_longWarningAccept => 'Entendi';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days dias de teste grátis, depois $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Sem jejum';
+
+  @override
+  String get widget_tapToStart => 'Toque para começar';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -1788,13 +1808,13 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get phase_ketosis => 'Cetose';
 
   @override
-  String get phase_ketosisDesc => 'Produção de cetona ativa';
+  String get phase_ketosisDesc => 'A produção de cetonas pode aumentar';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Renovação celular';
+  String get phase_autophagyDesc => 'Fase estimada de reciclagem celular';
 
   @override
   String get stats_title => 'Estatísticas';
@@ -2003,7 +2023,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get onboarding_goalLongevity => 'Longevidade';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Renovação celular e antienvelhecimento';
+  String get onboarding_goalLongevityDesc => 'Crie uma rotina saudável de longo prazo';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplina';
@@ -2632,7 +2652,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get notification_phaseKetosis => 'Você está em cetose ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagia ativa! 🔄';
+  String get notification_phaseAutophagy => 'Fase estimada de autofagia';
 
   @override
   String notification_completedBody(String plan) {
@@ -2811,7 +2831,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get plan_20_desc => 'Nível avançado';
 
   @override
-  String get plan_20_detail => '20 horas de jejum, 4 horas de janela para comer. Ideal para atingir cetose e autofagia.';
+  String get plan_20_detail => '20 horas de jejum, 4 horas para comer. Para quem tem experiência com jejum.';
 
   @override
   String get plan_omad_desc => 'Uma refeição por dia';
@@ -3386,4 +3406,24 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get profile_analyticsDesc => 'Ajuda a melhorar o app. Nunca inclui peso, refeições ou dados de saúde.';
+
+  @override
+  String get plan_longWarningTitle => 'Este é um jejum longo';
+
+  @override
+  String get plan_longWarningDesc => 'Jejuns de 20 horas ou mais não são adequados para todas as pessoas e podem fazer você passar mal. Fale com um médico se tiver dúvidas e encerre o jejum se não estiver bem.';
+
+  @override
+  String get plan_longWarningAccept => 'Entendi';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days dias de teste grátis, depois $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Sem jejum';
+
+  @override
+  String get widget_tapToStart => 'Toque para começar';
 }

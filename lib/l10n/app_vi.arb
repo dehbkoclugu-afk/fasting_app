@@ -29,9 +29,9 @@
   "phase_fatBurning": "Đốt mỡ",
   "phase_fatBurningDesc": "Đã bắt đầu đốt mỡ",
   "phase_ketosis": "Ketosis",
-  "phase_ketosisDesc": "Quá trình tạo ketone đang hoạt động",
+  "phase_ketosisDesc": "Sản xuất ketone có thể tăng",
   "phase_autophagy": "Tự thực bào",
-  "phase_autophagyDesc": "Tái tạo tế bào",
+  "phase_autophagyDesc": "Giai đoạn tái chế tế bào ước tính",
   "stats_title": "Thống kê",
   "stats_week": "Tuần",
   "stats_month": "Tháng",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Minh mẫn",
   "onboarding_goalMentalDesc": "Tập trung và sáng suốt",
   "onboarding_goalLongevity": "Sống lâu",
-  "onboarding_goalLongevityDesc": "Tái tạo tế bào và lão hóa khỏe mạnh",
+  "onboarding_goalLongevityDesc": "Xây dựng thói quen lành mạnh lâu dài",
   "onboarding_goalDiscipline": "Kỷ luật",
   "onboarding_goalDisciplineDesc": "Xây dựng tính tự giác",
   "onboarding_selectPlan": "Chọn kế hoạch của bạn",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Đã vào giai đoạn dị hóa 📉",
   "notification_phaseFatBurning": "Bắt đầu đốt mỡ! 🔥",
   "notification_phaseKetosis": "Bạn đang ở trạng thái ketosis ⚡",
-  "notification_phaseAutophagy": "Quá trình tự thực bào đang hoạt động! 🔄",
+  "notification_phaseAutophagy": "Giai đoạn tự thực ước tính",
   "notification_completedBody": "Bạn đã hoàn thành kỳ nhịn ăn {plan}! Khung giờ ăn đã mở.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Mức trung cấp",
   "plan_18_detail": "Nhịn 18 giờ, ăn trong 6 giờ. Thời gian đốt mỡ lâu hơn.",
   "plan_20_desc": "Mức nâng cao",
-  "plan_20_detail": "Nhịn 20 giờ, ăn trong 4 giờ. Lý tưởng để đạt ketosis và tự thực bào.",
+  "plan_20_detail": "Nhịn ăn 20 giờ, 4 giờ để ăn. Dành cho người đã có kinh nghiệm nhịn ăn.",
   "plan_omad_desc": "Một bữa mỗi ngày",
   "plan_omad_detail": "Một bữa mỗi ngày. Nhịn 23 giờ, ăn trong 1 giờ. Mức chuyên sâu.",
   "plan_52_desc": "2 ngày mỗi tuần",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Xóa tất cả",
   "record_deleteConfirm": "Xóa mục này?",
   "profile_analytics": "Chia sẻ dữ liệu sử dụng ẩn danh",
-  "profile_analyticsDesc": "Giúp cải thiện ứng dụng. Không bao giờ bao gồm cân nặng, bữa ăn hoặc dữ liệu sức khỏe."
+  "profile_analyticsDesc": "Giúp cải thiện ứng dụng. Không bao giờ bao gồm cân nặng, bữa ăn hoặc dữ liệu sức khỏe.",
+  "plan_longWarningTitle": "Đây là lần nhịn ăn dài",
+  "plan_longWarningDesc": "Nhịn ăn từ 20 giờ trở lên không phù hợp với tất cả mọi người và có thể khiến bạn thấy không khỏe. Hãy hỏi bác sĩ nếu chưa chắc chắn và kết thúc nhịn ăn nếu thấy không khỏe.",
+  "plan_longWarningAccept": "Tôi hiểu",
+  "paywall_trialThen": "Dùng thử miễn phí {days} ngày, sau đó {price} ({plan})",
+  "widget_notFasting": "Không nhịn ăn",
+  "widget_tapToStart": "Chạm để bắt đầu"
 }

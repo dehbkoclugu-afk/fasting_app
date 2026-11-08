@@ -29,9 +29,9 @@
   "phase_fatBurning": "Rasvanpoltto",
   "phase_fatBurningDesc": "Rasvanpoltto on alkanut",
   "phase_ketosis": "Ketoosi",
-  "phase_ketosisDesc": "Ketonien tuotanto on aktiivista",
+  "phase_ketosisDesc": "Ketonien tuotanto voi kasvaa",
   "phase_autophagy": "Autofagia",
-  "phase_autophagyDesc": "Solujen uusiutuminen",
+  "phase_autophagyDesc": "Arvioitu solujen kierrätysvaihe",
   "stats_title": "Tilastot",
   "stats_week": "Viikko",
   "stats_month": "Kuukausi",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Mielen selkeys",
   "onboarding_goalMentalDesc": "Keskittyminen ja selkeys",
   "onboarding_goalLongevity": "Pitkäikäisyys",
-  "onboarding_goalLongevityDesc": "Solujen uusiutuminen ja terve ikääntyminen",
+  "onboarding_goalLongevityDesc": "Rakenna terveellinen pitkän aikavälin rutiini",
   "onboarding_goalDiscipline": "Itsekuri",
   "onboarding_goalDisciplineDesc": "Kehitä itsekuria",
   "onboarding_selectPlan": "Valitse ohjelmasi",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Katabolinen vaihe saavutettu 📉",
   "notification_phaseFatBurning": "Rasvanpoltto alkoi! 🔥",
   "notification_phaseKetosis": "Olet ketoosissa ⚡",
-  "notification_phaseAutophagy": "Autofagia on aktiivinen! 🔄",
+  "notification_phaseAutophagy": "Arvioitu autofagiavaihe",
   "notification_completedBody": "Suoritit {plan}-paastosi! Syömisikkunasi on avoinna.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Keskitaso",
   "plan_18_detail": "18 tuntia paastoa ja 6 tunnin syömisikkuna. Rasvanpoltto kestää pidempään.",
   "plan_20_desc": "Edistynyt taso",
-  "plan_20_detail": "20 tuntia paastoa ja 4 tunnin syömisikkuna. Sopii ketoosin ja autofagian saavuttamiseen.",
+  "plan_20_detail": "20 tuntia paastoa, 4 tuntia syömistä. Paastoa kokeilleille.",
   "plan_omad_desc": "Yksi ateria päivässä",
   "plan_omad_detail": "Yksi ateria päivässä: 23 tuntia paastoa ja 1 tunnin syömisikkuna. Asiantuntijataso.",
   "plan_52_desc": "2 päivää viikossa",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Poista kaikki",
   "record_deleteConfirm": "Poistetaanko tämä merkintä?",
   "profile_analytics": "Jaa nimettömiä käyttötietoja",
-  "profile_analyticsDesc": "Auttaa parantamaan sovellusta. Ei koskaan sisällä painoa, aterioita tai terveystietoja."
+  "profile_analyticsDesc": "Auttaa parantamaan sovellusta. Ei koskaan sisällä painoa, aterioita tai terveystietoja.",
+  "plan_longWarningTitle": "Tämä on pitkä paasto",
+  "plan_longWarningDesc": "Vähintään 20 tunnin paastot eivät sovi kaikille ja voivat aiheuttaa huonovointisuutta. Jos olet epävarma, keskustele lääkärin kanssa, ja lopeta paasto, jos voit huonosti.",
+  "plan_longWarningAccept": "Ymmärrän",
+  "paywall_trialThen": "{days} päivän ilmainen kokeilu, sitten {price} ({plan})",
+  "widget_notFasting": "Et paastoa",
+  "widget_tapToStart": "Aloita napauttamalla"
 }

@@ -29,9 +29,9 @@
   "phase_fatBurning": "脂肪燃焼",
   "phase_fatBurningDesc": "脂肪燃焼が始まりました",
   "phase_ketosis": "ケトーシス",
-  "phase_ketosisDesc": "ケトン体の生成が活発です",
+  "phase_ketosisDesc": "ケトン産生が増える可能性があります",
   "phase_autophagy": "オートファジー",
-  "phase_autophagyDesc": "細胞の更新",
+  "phase_autophagyDesc": "推定される細胞リサイクル期",
   "stats_title": "統計",
   "stats_week": "週",
   "stats_month": "月",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "頭をすっきりさせる",
   "onboarding_goalMentalDesc": "集中力と思考の明瞭さ",
   "onboarding_goalLongevity": "長寿",
-  "onboarding_goalLongevityDesc": "細胞の更新と健やかな老化",
+  "onboarding_goalLongevityDesc": "健康的な長期習慣を作る",
   "onboarding_goalDiscipline": "自律",
   "onboarding_goalDisciplineDesc": "自己管理力を養う",
   "onboarding_selectPlan": "プランを選択",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "異化期に入りました 📉",
   "notification_phaseFatBurning": "脂肪燃焼が始まりました！ 🔥",
   "notification_phaseKetosis": "ケトーシス状態です ⚡",
-  "notification_phaseAutophagy": "オートファジーが活発です！ 🔄",
+  "notification_phaseAutophagy": "推定オートファジー期",
   "notification_completedBody": "{plan}断食を完了しました！食事時間が始まりました。",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "中級者向け",
   "plan_18_detail": "18時間断食し、6時間食事します。脂肪燃焼時間が長くなります。",
   "plan_20_desc": "上級者向け",
-  "plan_20_detail": "20時間断食し、4時間食事します。ケトーシスとオートファジーを目指す上級プランです。",
+  "plan_20_detail": "20時間の断食、4時間の食事時間。断食の経験がある方向けです。",
   "plan_omad_desc": "1日1食",
   "plan_omad_detail": "1日1食。23時間断食し、1時間食事します。熟練者向けです。",
   "plan_52_desc": "週2日",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "すべて削除",
   "record_deleteConfirm": "この記録を削除しますか？",
   "profile_analytics": "匿名の利用データを共有",
-  "profile_analyticsDesc": "アプリの改善に役立ちます。体重、食事、健康情報は一切含みません。"
+  "profile_analyticsDesc": "アプリの改善に役立ちます。体重、食事、健康情報は一切含みません。",
+  "plan_longWarningTitle": "これは長時間の断食です",
+  "plan_longWarningDesc": "20時間以上の断食はすべての人に適しているわけではなく、体調が悪くなることがあります。不安な場合は医師に相談し、体調が悪いときは断食を終了してください。",
+  "plan_longWarningAccept": "理解しました",
+  "paywall_trialThen": "{days}日間の無料トライアル後、{price}（{plan}）",
+  "widget_notFasting": "断食していません",
+  "widget_tapToStart": "タップして開始"
 }

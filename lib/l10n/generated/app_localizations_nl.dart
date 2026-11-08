@@ -96,13 +96,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get phase_ketosis => 'Ketose';
 
   @override
-  String get phase_ketosisDesc => 'Ketonproductie actief';
+  String get phase_ketosisDesc => 'De ketonproductie kan stijgen';
 
   @override
   String get phase_autophagy => 'Autofagie';
 
   @override
-  String get phase_autophagyDesc => 'Celvernieuwing';
+  String get phase_autophagyDesc => 'Geschatte fase van celrecycling';
 
   @override
   String get stats_title => 'Statistieken';
@@ -311,7 +311,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get onboarding_goalLongevity => 'Lang leven';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Celvernieuwing en gezond ouder worden';
+  String get onboarding_goalLongevityDesc => 'Bouw een gezonde routine voor de lange termijn';
 
   @override
   String get onboarding_goalDiscipline => 'Discipline';
@@ -940,7 +940,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get notification_phaseKetosis => 'Je bent in ketose ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagie actief! 🔄';
+  String get notification_phaseAutophagy => 'Geschatte autofagiefase';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get plan_20_desc => 'Gevorderd niveau';
 
   @override
-  String get plan_20_detail => '20 uur vasten en een eetvenster van 4 uur. Ideaal om ketose en autofagie te bereiken.';
+  String get plan_20_detail => '20 uur vasten, 4 uur eten. Voor mensen met vastenervaring.';
 
   @override
   String get plan_omad_desc => 'Eén maaltijd per dag';
@@ -1694,4 +1694,24 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Helpt de app te verbeteren. Bevat nooit gewicht, maaltijden of gezondheidsgegevens.';
+
+  @override
+  String get plan_longWarningTitle => 'Dit is een lange vastenperiode';
+
+  @override
+  String get plan_longWarningDesc => 'Vasten van 20 uur of langer is niet voor iedereen geschikt en kan ervoor zorgen dat je je niet goed voelt. Overleg bij twijfel met een arts en stop als je je niet goed voelt.';
+
+  @override
+  String get plan_longWarningAccept => 'Ik begrijp het';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days dagen gratis proberen, daarna $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Niet aan het vasten';
+
+  @override
+  String get widget_tapToStart => 'Tik om te starten';
 }

@@ -96,13 +96,13 @@ class AppLocalizationsHe extends AppLocalizations {
   String get phase_ketosis => 'קטוזיס';
 
   @override
-  String get phase_ketosisDesc => 'ייצור הקטונים פעיל';
+  String get phase_ketosisDesc => 'ייצור הקטונים עשוי לעלות';
 
   @override
   String get phase_autophagy => 'אוטופגיה';
 
   @override
-  String get phase_autophagyDesc => 'התחדשות תאים';
+  String get phase_autophagyDesc => 'שלב משוער של מיחזור תאים';
 
   @override
   String get stats_title => 'סטטיסטיקות';
@@ -311,7 +311,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get onboarding_goalLongevity => 'אריכות ימים';
 
   @override
-  String get onboarding_goalLongevityDesc => 'התחדשות תאים והזדקנות בריאה';
+  String get onboarding_goalLongevityDesc => 'בניית שגרה בריאה לטווח ארוך';
 
   @override
   String get onboarding_goalDiscipline => 'משמעת';
@@ -940,7 +940,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get notification_phaseKetosis => 'אתם בקטוזיס ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'האוטופגיה פעילה! 🔄';
+  String get notification_phaseAutophagy => 'שלב אוטופגיה משוער';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get plan_20_desc => 'רמה מתקדמת';
 
   @override
-  String get plan_20_detail => '20 שעות צום ו-4 שעות אכילה. מתאים להגעה לקטוזיס ולאוטופגיה.';
+  String get plan_20_detail => '20 שעות צום ו-4 שעות אכילה. למי שיש ניסיון בצום.';
 
   @override
   String get plan_omad_desc => 'ארוחה אחת ביום';
@@ -1694,4 +1694,24 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'עוזר לשפר את האפליקציה. לעולם לא כולל משקל, ארוחות או מידע בריאותי.';
+
+  @override
+  String get plan_longWarningTitle => 'זה צום ארוך';
+
+  @override
+  String get plan_longWarningDesc => 'צומות של 20 שעות ומעלה אינם מתאימים לכולם ועלולים לגרום להרגשה רעה. אם יש ספק יש להתייעץ עם רופא/ה, ואם מרגישים רע יש לסיים את הצום.';
+
+  @override
+  String get plan_longWarningAccept => 'הבנתי';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days ימי ניסיון בחינם, ואז $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'לא בצום';
+
+  @override
+  String get widget_tapToStart => 'יש להקיש כדי להתחיל';
 }

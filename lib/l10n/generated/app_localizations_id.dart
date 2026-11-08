@@ -96,13 +96,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get phase_ketosis => 'Ketosis';
 
   @override
-  String get phase_ketosisDesc => 'Produksi keton aktif';
+  String get phase_ketosisDesc => 'Produksi keton dapat meningkat';
 
   @override
   String get phase_autophagy => 'Autofagi';
 
   @override
-  String get phase_autophagyDesc => 'Pembaruan sel';
+  String get phase_autophagyDesc => 'Perkiraan fase daur ulang sel';
 
   @override
   String get stats_title => 'Statistik';
@@ -311,7 +311,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get onboarding_goalLongevity => 'Umur Panjang';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Pembaruan sel dan penuaan sehat';
+  String get onboarding_goalLongevityDesc => 'Bangun rutinitas sehat jangka panjang';
 
   @override
   String get onboarding_goalDiscipline => 'Disiplin';
@@ -940,7 +940,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get notification_phaseKetosis => 'Anda dalam Ketosis ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagi aktif! 🔄';
+  String get notification_phaseAutophagy => 'Perkiraan fase autofagi';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get plan_20_desc => 'Tingkat lanjut';
 
   @override
-  String get plan_20_detail => 'Puasa 20 jam dan jendela makan 4 jam. Ideal untuk mencapai ketosis dan autofagi.';
+  String get plan_20_detail => 'Puasa 20 jam, 4 jam untuk makan. Untuk yang berpengalaman berpuasa.';
 
   @override
   String get plan_omad_desc => 'Satu kali makan sehari';
@@ -1694,4 +1694,24 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Membantu meningkatkan aplikasi. Tidak pernah menyertakan berat badan, makanan, atau data kesehatan.';
+
+  @override
+  String get plan_longWarningTitle => 'Ini puasa yang panjang';
+
+  @override
+  String get plan_longWarningDesc => 'Puasa 20 jam atau lebih tidak cocok untuk semua orang dan dapat membuat Anda merasa tidak sehat. Bicaralah dengan dokter jika ragu, dan akhiri puasa jika merasa tidak sehat.';
+
+  @override
+  String get plan_longWarningAccept => 'Saya mengerti';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'Uji coba gratis $days hari, lalu $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Tidak berpuasa';
+
+  @override
+  String get widget_tapToStart => 'Ketuk untuk mulai';
 }

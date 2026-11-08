@@ -96,13 +96,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get phase_ketosis => 'ケトーシス';
 
   @override
-  String get phase_ketosisDesc => 'ケトン体の生成が活発です';
+  String get phase_ketosisDesc => 'ケトン産生が増える可能性があります';
 
   @override
   String get phase_autophagy => 'オートファジー';
 
   @override
-  String get phase_autophagyDesc => '細胞の更新';
+  String get phase_autophagyDesc => '推定される細胞リサイクル期';
 
   @override
   String get stats_title => '統計';
@@ -311,7 +311,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get onboarding_goalLongevity => '長寿';
 
   @override
-  String get onboarding_goalLongevityDesc => '細胞の更新と健やかな老化';
+  String get onboarding_goalLongevityDesc => '健康的な長期習慣を作る';
 
   @override
   String get onboarding_goalDiscipline => '自律';
@@ -940,7 +940,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notification_phaseKetosis => 'ケトーシス状態です ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'オートファジーが活発です！ 🔄';
+  String get notification_phaseAutophagy => '推定オートファジー期';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get plan_20_desc => '上級者向け';
 
   @override
-  String get plan_20_detail => '20時間断食し、4時間食事します。ケトーシスとオートファジーを目指す上級プランです。';
+  String get plan_20_detail => '20時間の断食、4時間の食事時間。断食の経験がある方向けです。';
 
   @override
   String get plan_omad_desc => '1日1食';
@@ -1694,4 +1694,24 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'アプリの改善に役立ちます。体重、食事、健康情報は一切含みません。';
+
+  @override
+  String get plan_longWarningTitle => 'これは長時間の断食です';
+
+  @override
+  String get plan_longWarningDesc => '20時間以上の断食はすべての人に適しているわけではなく、体調が悪くなることがあります。不安な場合は医師に相談し、体調が悪いときは断食を終了してください。';
+
+  @override
+  String get plan_longWarningAccept => '理解しました';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days日間の無料トライアル後、$price（$plan）';
+  }
+
+  @override
+  String get widget_notFasting => '断食していません';
+
+  @override
+  String get widget_tapToStart => 'タップして開始';
 }

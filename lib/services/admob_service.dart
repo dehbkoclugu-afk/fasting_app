@@ -135,13 +135,20 @@ class AdmobService {
   }
 
   // Interstitial Ad
+  bool _loadingInterstitial = false;
+
   void loadInterstitialAd() {
     if (!_isInitialized || interstitialAdUnitId.isEmpty) return;
+    // The timer screen asks every time its tab is rebuilt; a second ad would
+    // overwrite the first without disposing it.
+    if (_interstitialAd != null || _loadingInterstitial) return;
+    _loadingInterstitial = true;
     InterstitialAd.load(
       adUnitId: interstitialAdUnitId,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
+          _loadingInterstitial = false;
           _interstitialAd = ad;
           ad.fullScreenContentCallback = FullScreenContentCallback(
             onAdDismissedFullScreenContent: (ad) {
@@ -156,6 +163,7 @@ class AdmobService {
           );
         },
         onAdFailedToLoad: (error) {
+          _loadingInterstitial = false;
           debugPrint('Interstitial ad failed to load: $error');
           _interstitialAd = null;
         },

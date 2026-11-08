@@ -29,9 +29,9 @@
   "phase_fatBurning": "Spalanie tłuszczu",
   "phase_fatBurningDesc": "Rozpoczęło się spalanie tłuszczu",
   "phase_ketosis": "Ketoza",
-  "phase_ketosisDesc": "Produkcja ketonów jest aktywna",
+  "phase_ketosisDesc": "Produkcja ketonów może wzrosnąć",
   "phase_autophagy": "Autofagia",
-  "phase_autophagyDesc": "Odnowa komórkowa",
+  "phase_autophagyDesc": "Szacowana faza recyklingu komórkowego",
   "stats_title": "Statystyki",
   "stats_week": "Tydzień",
   "stats_month": "Miesiąc",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Jasność umysłu",
   "onboarding_goalMentalDesc": "Skupienie i jasność",
   "onboarding_goalLongevity": "Długowieczność",
-  "onboarding_goalLongevityDesc": "Odnowa komórkowa i zdrowe starzenie",
+  "onboarding_goalLongevityDesc": "Zbuduj zdrową, długofalową rutynę",
   "onboarding_goalDiscipline": "Dyscyplina",
   "onboarding_goalDisciplineDesc": "Buduj samodyscyplinę",
   "onboarding_selectPlan": "Wybierz swój plan",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Rozpoczęła się faza kataboliczna 📉",
   "notification_phaseFatBurning": "Rozpoczęło się spalanie tłuszczu! 🔥",
   "notification_phaseKetosis": "Jesteś w ketozie ⚡",
-  "notification_phaseAutophagy": "Autofagia jest aktywna! 🔄",
+  "notification_phaseAutophagy": "Szacowana faza autofagii",
   "notification_completedBody": "Ukończyłeś(-aś) post {plan}! Twoje okno żywieniowe jest otwarte.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Poziom średniozaawansowany",
   "plan_18_detail": "18 godzin postu i 6-godzinne okno żywieniowe. Dłuższe spalanie tłuszczu.",
   "plan_20_desc": "Poziom zaawansowany",
-  "plan_20_detail": "20 godzin postu i 4-godzinne okno żywieniowe. Idealny do osiągnięcia ketozy i autofagii.",
+  "plan_20_detail": "20 godzin postu, 4 godziny jedzenia. Dla osób z doświadczeniem w poście.",
   "plan_omad_desc": "Jeden posiłek dziennie",
   "plan_omad_detail": "Jeden posiłek dziennie: 23 godziny postu i 1-godzinne okno żywieniowe. Poziom ekspercki.",
   "plan_52_desc": "2 dni w tygodniu",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Usuń wszystko",
   "record_deleteConfirm": "Usunąć ten wpis?",
   "profile_analytics": "Udostępniaj anonimowe dane o użyciu",
-  "profile_analyticsDesc": "Pomaga ulepszać aplikację. Nigdy nie zawiera wagi, posiłków ani danych o zdrowiu."
+  "profile_analyticsDesc": "Pomaga ulepszać aplikację. Nigdy nie zawiera wagi, posiłków ani danych o zdrowiu.",
+  "plan_longWarningTitle": "To długi post",
+  "plan_longWarningDesc": "Posty trwające 20 godzin lub dłużej nie są odpowiednie dla każdego i mogą powodować złe samopoczucie. W razie wątpliwości porozmawiaj z lekarzem, a jeśli źle się czujesz, zakończ post.",
+  "plan_longWarningAccept": "Rozumiem",
+  "paywall_trialThen": "{days} dni bezpłatnego okresu próbnego, potem {price} ({plan})",
+  "widget_notFasting": "Bez postu",
+  "widget_tapToStart": "Dotknij, aby zacząć"
 }

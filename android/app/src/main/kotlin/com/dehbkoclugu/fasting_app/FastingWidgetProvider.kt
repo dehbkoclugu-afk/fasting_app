@@ -39,15 +39,15 @@ class FastingWidgetProvider : AppWidgetProvider() {
             val phaseName = prefs.getString("phase_name", "") ?: ""
 
             if (isFasting) {
-                views.setTextViewText(R.id.widget_status, "Fasting")
+                views.setTextViewText(R.id.widget_status, prefs.getString("status_fasting", "Fasting"))
                 views.setTextViewText(R.id.widget_time, remainingTime)
                 views.setTextViewText(R.id.widget_plan, planName)
                 views.setTextViewText(R.id.widget_phase, phaseName)
             } else {
-                views.setTextViewText(R.id.widget_status, "Not Fasting")
+                views.setTextViewText(R.id.widget_status, prefs.getString("status_idle", "Not Fasting"))
                 views.setTextViewText(R.id.widget_time, "--:--:--")
                 views.setTextViewText(R.id.widget_plan, "")
-                views.setTextViewText(R.id.widget_phase, "Tap to start")
+                views.setTextViewText(R.id.widget_phase, prefs.getString("idle_hint", "Tap to start"))
             }
 
             return views

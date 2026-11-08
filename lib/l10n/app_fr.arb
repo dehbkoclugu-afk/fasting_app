@@ -29,9 +29,9 @@
   "phase_fatBurning": "Brûler les graisses",
   "phase_fatBurningDesc": "La combustion des graisses a commencé",
   "phase_ketosis": "Cétose",
-  "phase_ketosisDesc": "Production de cétone active",
+  "phase_ketosisDesc": "La production de cétones peut augmenter",
   "phase_autophagy": "Autophagie",
-  "phase_autophagyDesc": "Renouvellement cellulaire",
+  "phase_autophagyDesc": "Phase estimée de recyclage cellulaire",
   "stats_title": "Statistiques",
   "stats_week": "Semaine",
   "stats_month": "Mois",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Clarté mentale",
   "onboarding_goalMentalDesc": "Concentration et clarté",
   "onboarding_goalLongevity": "Longévité",
-  "onboarding_goalLongevityDesc": "Renouvellement cellulaire et anti-âge",
+  "onboarding_goalLongevityDesc": "Construisez une routine saine à long terme",
   "onboarding_goalDiscipline": "Discipline",
   "onboarding_goalDisciplineDesc": "Développer l’autodiscipline",
   "onboarding_selectPlan": "Choisissez votre forfait",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Entrée en phase catabolique 📉",
   "notification_phaseFatBurning": "La combustion des graisses a commencé ! 🔥",
   "notification_phaseKetosis": "Vous êtes en cétose ⚡",
-  "notification_phaseAutophagy": "Autophagie active ! 🔄",
+  "notification_phaseAutophagy": "Phase d'autophagie estimée",
   "notification_completedBody": "Vous avez terminé votre {plan} rapidement ! Votre fenêtre de restauration est ouverte.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Niveau intermédiaire",
   "plan_18_detail": "18 heures de jeûne, 6 heures de repas. Durée de combustion des graisses plus longue.",
   "plan_20_desc": "Niveau avancé",
-  "plan_20_detail": "20 heures de jeûne, 4 heures de repas. Idéal pour atteindre la cétose et l'autophagie.",
+  "plan_20_detail": "20 heures de jeûne, 4 heures pour manger. Pour les personnes habituées au jeûne.",
   "plan_omad_desc": "Un repas par jour",
   "plan_omad_detail": "Un repas par jour. 23 heures de jeûne, 1 heure de repas. Niveau expert.",
   "plan_52_desc": "2 jours par semaine",
@@ -763,5 +763,11 @@
   "profile_deleteDataAction": "Tout supprimer",
   "record_deleteConfirm": "Supprimer cette entrée ?",
   "profile_analytics": "Partager des données d'utilisation anonymes",
-  "profile_analyticsDesc": "Aide à améliorer l'application. N'inclut jamais le poids, les repas ni les données de santé."
+  "profile_analyticsDesc": "Aide à améliorer l'application. N'inclut jamais le poids, les repas ni les données de santé.",
+  "plan_longWarningTitle": "Ceci est un jeûne long",
+  "plan_longWarningDesc": "Les jeûnes de 20 heures ou plus ne conviennent pas à tout le monde et peuvent provoquer un malaise. Parlez-en à un médecin en cas de doute et arrêtez le jeûne si vous vous sentez mal.",
+  "plan_longWarningAccept": "J'ai compris",
+  "paywall_trialThen": "Essai gratuit de {days} jours, puis {price} ({plan})",
+  "widget_notFasting": "Pas de jeûne",
+  "widget_tapToStart": "Touchez pour commencer"
 }

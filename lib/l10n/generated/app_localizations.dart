@@ -328,7 +328,7 @@ abstract class AppLocalizations {
   /// No description provided for @phase_ketosisDesc.
   ///
   /// In en, this message translates to:
-  /// **'Ketone production active'**
+  /// **'Ketone production may rise'**
   String get phase_ketosisDesc;
 
   /// No description provided for @phase_autophagy.
@@ -340,7 +340,7 @@ abstract class AppLocalizations {
   /// No description provided for @phase_autophagyDesc.
   ///
   /// In en, this message translates to:
-  /// **'Cell renewal'**
+  /// **'Estimated cell-recycling phase'**
   String get phase_autophagyDesc;
 
   /// No description provided for @stats_title.
@@ -754,7 +754,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboarding_goalLongevityDesc.
   ///
   /// In en, this message translates to:
-  /// **'Cell renewal and anti-aging'**
+  /// **'Build a healthy long-term routine'**
   String get onboarding_goalLongevityDesc;
 
   /// No description provided for @onboarding_goalDiscipline.
@@ -1960,7 +1960,7 @@ abstract class AppLocalizations {
   /// No description provided for @notification_phaseAutophagy.
   ///
   /// In en, this message translates to:
-  /// **'Autophagy active! 🔄'**
+  /// **'Estimated autophagy phase'**
   String get notification_phaseAutophagy;
 
   /// No description provided for @notification_completedBody.
@@ -2290,7 +2290,7 @@ abstract class AppLocalizations {
   /// No description provided for @plan_20_detail.
   ///
   /// In en, this message translates to:
-  /// **'20 hours fasting, 4 hours eating window. Ideal for reaching ketosis and autophagy.'**
+  /// **'20 hours fasting, 4 hours eating window. For people experienced with fasting.'**
   String get plan_20_detail;
 
   /// No description provided for @plan_omad_desc.
@@ -3396,6 +3396,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Helps improve the app. Never includes weight, meals or health details.'**
   String get profile_analyticsDesc;
+
+  /// No description provided for @plan_longWarningTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This is a long fast'**
+  String get plan_longWarningTitle;
+
+  /// No description provided for @plan_longWarningDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Fasts of 20 hours or more are not suitable for everyone and can make you feel unwell. Talk to a doctor if you are unsure, and end the fast if you feel unwell.'**
+  String get plan_longWarningDesc;
+
+  /// No description provided for @plan_longWarningAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'I understand'**
+  String get plan_longWarningAccept;
+
+  /// No description provided for @paywall_trialThen.
+  ///
+  /// In en, this message translates to:
+  /// **'{days}-day free trial, then {price} ({plan})'**
+  String paywall_trialThen(int days, String price, String plan);
+
+  /// No description provided for @widget_notFasting.
+  ///
+  /// In en, this message translates to:
+  /// **'Not fasting'**
+  String get widget_notFasting;
+
+  /// No description provided for @widget_tapToStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to start'**
+  String get widget_tapToStart;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

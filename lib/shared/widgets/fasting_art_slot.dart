@@ -81,6 +81,7 @@ class FastingSplitArtCard extends StatelessWidget {
                 color: theme.colorScheme.surfaceContainerLow,
                 child: Image.asset(
                   resolvedAsset,
+                  cacheWidth: _decodeWidth(context),
                   fit: fit,
                   alignment: alignment,
                   filterQuality: FilterQuality.high,
@@ -156,7 +157,7 @@ class FastingArtSlot extends StatelessWidget {
           height: height,
           child: Stack(
             children: [
-              Positioned.fill(child: _artwork(isDark)),
+              Positioned.fill(child: _artwork(context, isDark)),
               Positioned.fill(child: child),
             ],
           ),
@@ -165,7 +166,7 @@ class FastingArtSlot extends StatelessWidget {
     );
   }
 
-  Widget _artwork(bool isDark) {
+  Widget _artwork(BuildContext context, bool isDark) {
     final resolvedAssetPath = useThemedAsset
         ? themedEditorialAssetPath(
             assetPath,
@@ -185,6 +186,7 @@ class FastingArtSlot extends StatelessWidget {
         alignment: alignment,
         child: Image.asset(
           resolvedAssetPath,
+          cacheWidth: _decodeWidth(context),
           width: double.infinity,
           height: double.infinity,
           fit: fit,
@@ -198,4 +200,13 @@ class FastingArtSlot extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Decode at most one screen width of pixels: the art is 1672 wide, about
+/// 6 MiB per image at full size, and no card here is wider than the screen.
+int? _decodeWidth(BuildContext context) {
+  final media = MediaQuery.of(context);
+  final width = (media.size.width * media.devicePixelRatio).ceil();
+  // The window can still be zero-sized on the first frame.
+  return width > 0 ? width : null;
 }

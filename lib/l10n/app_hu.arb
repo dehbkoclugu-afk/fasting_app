@@ -29,9 +29,9 @@
   "phase_fatBurning": "Zsírégetés",
   "phase_fatBurningDesc": "A zsírégetés elkezdődött",
   "phase_ketosis": "Ketózis",
-  "phase_ketosisDesc": "Aktív ketontermelés",
+  "phase_ketosisDesc": "A ketontermelés nőhet",
   "phase_autophagy": "Autofágia",
-  "phase_autophagyDesc": "Sejtmegújulás",
+  "phase_autophagyDesc": "Becsült sejtmegújulási szakasz",
   "stats_title": "Statisztikák",
   "stats_week": "Hét",
   "stats_month": "Hónap",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Szellemi tisztaság",
   "onboarding_goalMentalDesc": "Összpontosítás és tisztánlátás",
   "onboarding_goalLongevity": "Hosszú élet",
-  "onboarding_goalLongevityDesc": "Sejtmegújulás és egészséges öregedés",
+  "onboarding_goalLongevityDesc": "Alakíts ki egészséges, hosszú távú rutint",
   "onboarding_goalDiscipline": "Fegyelem",
   "onboarding_goalDisciplineDesc": "Önfegyelem kialakítása",
   "onboarding_selectPlan": "Válassz programot",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Beléptél a katabolikus fázisba 📉",
   "notification_phaseFatBurning": "Elkezdődött a zsírégetés! 🔥",
   "notification_phaseKetosis": "Ketózisban vagy ⚡",
-  "notification_phaseAutophagy": "Az autofágia aktív! 🔄",
+  "notification_phaseAutophagy": "Becsült autofágia szakasz",
   "notification_completedBody": "Teljesítetted a(z) {plan} böjtöt! Az étkezési időablak megnyílt.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Középhaladó szint",
   "plan_18_detail": "18 óra böjt és 6 órás étkezési időablak. Hosszabb zsírégetési idő.",
   "plan_20_desc": "Haladó szint",
-  "plan_20_detail": "20 óra böjt és 4 órás étkezési időablak. Ideális a ketózis és az autofágia eléréséhez.",
+  "plan_20_detail": "20 óra böjt, 4 óra étkezés. Böjtben tapasztaltaknak.",
   "plan_omad_desc": "Napi egy étkezés",
   "plan_omad_detail": "Napi egy étkezés: 23 óra böjt és 1 órás étkezési időablak. Szakértői szint.",
   "plan_52_desc": "Heti 2 nap",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Minden törlése",
   "record_deleteConfirm": "Törlöd ezt a bejegyzést?",
   "profile_analytics": "Névtelen használati adatok megosztása",
-  "profile_analyticsDesc": "Segít javítani az alkalmazást. Soha nem tartalmaz testsúlyt, étkezést vagy egészségügyi adatot."
+  "profile_analyticsDesc": "Segít javítani az alkalmazást. Soha nem tartalmaz testsúlyt, étkezést vagy egészségügyi adatot.",
+  "plan_longWarningTitle": "Ez egy hosszú böjt",
+  "plan_longWarningDesc": "A 20 órás vagy hosszabb böjt nem mindenkinek való, és rosszulléthez vezethet. Ha bizonytalan vagy, beszélj orvossal, rosszullét esetén pedig fejezd be a böjtöt.",
+  "plan_longWarningAccept": "Értem",
+  "paywall_trialThen": "{days} nap ingyenes próba, utána {price} ({plan})",
+  "widget_notFasting": "Nem böjtölsz",
+  "widget_tapToStart": "Koppints az indításhoz"
 }

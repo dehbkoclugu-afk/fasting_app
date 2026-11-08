@@ -29,9 +29,9 @@
   "phase_fatBurning": "Спалювання жиру",
   "phase_fatBurningDesc": "Спалювання жиру розпочалося",
   "phase_ketosis": "Кетоз",
-  "phase_ketosisDesc": "Вироблення кетонів активне",
+  "phase_ketosisDesc": "Вироблення кетонів може зрости",
   "phase_autophagy": "Аутофагія",
-  "phase_autophagyDesc": "Оновлення клітин",
+  "phase_autophagyDesc": "Орієнтовна фаза оновлення клітин",
   "stats_title": "Статистика",
   "stats_week": "Тиждень",
   "stats_month": "Місяць",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Ясність розуму",
   "onboarding_goalMentalDesc": "Зосередженість і ясність",
   "onboarding_goalLongevity": "Довголіття",
-  "onboarding_goalLongevityDesc": "Оновлення клітин і здорове старіння",
+  "onboarding_goalLongevityDesc": "Створіть здорову довгострокову звичку",
   "onboarding_goalDiscipline": "Дисципліна",
   "onboarding_goalDisciplineDesc": "Розвивайте самодисципліну",
   "onboarding_selectPlan": "Виберіть свій план",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Почалася катаболічна фаза 📉",
   "notification_phaseFatBurning": "Почалося спалювання жиру! 🔥",
   "notification_phaseKetosis": "Ви в кетозі ⚡",
-  "notification_phaseAutophagy": "Аутофагія активна! 🔄",
+  "notification_phaseAutophagy": "Орієнтовна фаза аутофагії",
   "notification_completedBody": "Ви завершили голодування {plan}! Вікно харчування відкрите.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Середній рівень",
   "plan_18_detail": "18 годин голодування та 6-годинне вікно харчування. Триваліше спалювання жиру.",
   "plan_20_desc": "Просунутий рівень",
-  "plan_20_detail": "20 годин голодування та 4-годинне вікно харчування. Підходить для досягнення кетозу й аутофагії.",
+  "plan_20_detail": "20 годин голодування, 4 години на їжу. Для тих, хто має досвід голодування.",
   "plan_omad_desc": "Один прийом їжі на день",
   "plan_omad_detail": "Один прийом їжі на день: 23 години голодування та 1-годинне вікно харчування. Експертний рівень.",
   "plan_52_desc": "2 дні на тиждень",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Видалити все",
   "record_deleteConfirm": "Видалити цей запис?",
   "profile_analytics": "Надсилати анонімні дані про використання",
-  "profile_analyticsDesc": "Допомагає покращувати застосунок. Ніколи не містить ваги, харчування чи даних про здоров'я."
+  "profile_analyticsDesc": "Допомагає покращувати застосунок. Ніколи не містить ваги, харчування чи даних про здоров'я.",
+  "plan_longWarningTitle": "Це довге голодування",
+  "plan_longWarningDesc": "Голодування від 20 годин підходить не всім і може спричинити погане самопочуття. Якщо сумніваєтеся, порадьтеся з лікарем, а за поганого самопочуття завершіть голодування.",
+  "plan_longWarningAccept": "Зрозуміло",
+  "paywall_trialThen": "Безкоштовно: {days} дн., потім {price} ({plan})",
+  "widget_notFasting": "Ви не голодуєте",
+  "widget_tapToStart": "Торкніться, щоб почати"
 }

@@ -352,7 +352,9 @@ class ProfileScreen extends ConsumerWidget {
                       context,
                       icon: PhosphorIcons.info(),
                       title: l10n.profile_version,
-                      subtitle: '1.2.7 (21)',
+                      subtitle: const String.fromEnvironment(
+                        'FLUTTER_BUILD_NAME',
+                      ),
                     ),
                   ],
                 ),

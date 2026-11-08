@@ -17,6 +17,10 @@ void main() {
           if (key == 'AssetManifest.json') {
             return ByteData.sublistView(utf8.encode('{}'));
           }
+          // Asset images look themselves up here to pick a resolution.
+          if (key == 'AssetManifest.bin') {
+            return const StandardMessageCodec().encodeMessage(<String, Object>{});
+          }
           return null;
         });
   });

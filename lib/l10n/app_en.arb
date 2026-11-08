@@ -29,9 +29,9 @@
   "phase_fatBurning": "Fat Burning",
   "phase_fatBurningDesc": "Fat burning started",
   "phase_ketosis": "Ketosis",
-  "phase_ketosisDesc": "Ketone production active",
+  "phase_ketosisDesc": "Ketone production may rise",
   "phase_autophagy": "Autophagy",
-  "phase_autophagyDesc": "Cell renewal",
+  "phase_autophagyDesc": "Estimated cell-recycling phase",
   "stats_title": "Statistics",
   "stats_week": "Week",
   "stats_month": "Month",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Mental Clarity",
   "onboarding_goalMentalDesc": "Focus and clarity",
   "onboarding_goalLongevity": "Longevity",
-  "onboarding_goalLongevityDesc": "Cell renewal and anti-aging",
+  "onboarding_goalLongevityDesc": "Build a healthy long-term routine",
   "onboarding_goalDiscipline": "Discipline",
   "onboarding_goalDisciplineDesc": "Build self-discipline",
   "onboarding_selectPlan": "Choose Your Plan",
@@ -420,7 +420,7 @@
   "notification_phaseCatabolic": "Entered Catabolic phase 📉",
   "notification_phaseFatBurning": "Fat Burning started! 🔥",
   "notification_phaseKetosis": "You’re in Ketosis ⚡",
-  "notification_phaseAutophagy": "Autophagy active! 🔄",
+  "notification_phaseAutophagy": "Estimated autophagy phase",
   "notification_completedBody": "You completed your {plan} fast! Your eating window is open.",
   "@notification_completedBody": {
     "placeholders": {
@@ -527,7 +527,7 @@
   "plan_18_desc": "Intermediate level",
   "plan_18_detail": "18 hours fasting, 6 hours eating window. Longer fat burning duration.",
   "plan_20_desc": "Advanced level",
-  "plan_20_detail": "20 hours fasting, 4 hours eating window. Ideal for reaching ketosis and autophagy.",
+  "plan_20_detail": "20 hours fasting, 4 hours eating window. For people experienced with fasting.",
   "plan_omad_desc": "One meal a day",
   "plan_omad_detail": "One Meal A Day. 23 hours fasting, 1 hour eating window. Expert level.",
   "plan_52_desc": "2 days per week",
@@ -791,5 +791,24 @@
   "profile_deleteDataAction": "Delete everything",
   "record_deleteConfirm": "Delete this entry?",
   "profile_analytics": "Share anonymous usage data",
-  "profile_analyticsDesc": "Helps improve the app. Never includes weight, meals or health details."
+  "profile_analyticsDesc": "Helps improve the app. Never includes weight, meals or health details.",
+  "plan_longWarningTitle": "This is a long fast",
+  "plan_longWarningDesc": "Fasts of 20 hours or more are not suitable for everyone and can make you feel unwell. Talk to a doctor if you are unsure, and end the fast if you feel unwell.",
+  "plan_longWarningAccept": "I understand",
+  "paywall_trialThen": "{days}-day free trial, then {price} ({plan})",
+  "widget_notFasting": "Not fasting",
+  "widget_tapToStart": "Tap to start",
+  "@paywall_trialThen": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      },
+      "plan": {
+        "type": "String"
+      }
+    }
+  }
 }

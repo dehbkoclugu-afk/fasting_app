@@ -29,9 +29,9 @@
   "phase_fatBurning": "Fettförbränning",
   "phase_fatBurningDesc": "Fettförbränningen har börjat",
   "phase_ketosis": "Ketos",
-  "phase_ketosisDesc": "Ketonproduktionen är aktiv",
+  "phase_ketosisDesc": "Ketonproduktionen kan öka",
   "phase_autophagy": "Autofagi",
-  "phase_autophagyDesc": "Cellförnyelse",
+  "phase_autophagyDesc": "Uppskattad fas för cellåtervinning",
   "stats_title": "Statistik",
   "stats_week": "Vecka",
   "stats_month": "Månad",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Mental klarhet",
   "onboarding_goalMentalDesc": "Fokus och klarhet",
   "onboarding_goalLongevity": "Långt liv",
-  "onboarding_goalLongevityDesc": "Cellförnyelse och hälsosamt åldrande",
+  "onboarding_goalLongevityDesc": "Bygg en hälsosam rutin på lång sikt",
   "onboarding_goalDiscipline": "Disciplin",
   "onboarding_goalDisciplineDesc": "Bygg upp självdisciplin",
   "onboarding_selectPlan": "Välj din plan",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Katabol fas har börjat 📉",
   "notification_phaseFatBurning": "Fettförbränningen har börjat! 🔥",
   "notification_phaseKetosis": "Du är i ketos ⚡",
-  "notification_phaseAutophagy": "Autofagi är aktiv! 🔄",
+  "notification_phaseAutophagy": "Uppskattad autofagifas",
   "notification_completedBody": "Du har slutfört din {plan}-fasta! Ditt ätfönster är öppet.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Mellannivå",
   "plan_18_detail": "18 timmars fasta och ett ätfönster på 6 timmar. Längre fettförbränning.",
   "plan_20_desc": "Avancerad nivå",
-  "plan_20_detail": "20 timmars fasta och ett ätfönster på 4 timmar. Perfekt för att nå ketos och autofagi.",
+  "plan_20_detail": "20 timmars fasta, 4 timmar för att äta. För dig med erfarenhet av fasta.",
   "plan_omad_desc": "En måltid om dagen",
   "plan_omad_detail": "En måltid om dagen: 23 timmars fasta och ett ätfönster på 1 timme. Expertnivå.",
   "plan_52_desc": "2 dagar i veckan",
@@ -791,5 +791,11 @@
   "profile_deleteDataAction": "Radera allt",
   "record_deleteConfirm": "Radera den här posten?",
   "profile_analytics": "Dela anonyma användningsdata",
-  "profile_analyticsDesc": "Hjälper till att förbättra appen. Innehåller aldrig vikt, måltider eller hälsouppgifter."
+  "profile_analyticsDesc": "Hjälper till att förbättra appen. Innehåller aldrig vikt, måltider eller hälsouppgifter.",
+  "plan_longWarningTitle": "Det här är en lång fasta",
+  "plan_longWarningDesc": "Fastor på 20 timmar eller mer passar inte alla och kan göra att du mår dåligt. Prata med en läkare om du är osäker och avsluta fastan om du mår dåligt.",
+  "plan_longWarningAccept": "Jag förstår",
+  "paywall_trialThen": "{days} dagars gratis provperiod, sedan {price} ({plan})",
+  "widget_notFasting": "Fastar inte",
+  "widget_tapToStart": "Tryck för att starta"
 }

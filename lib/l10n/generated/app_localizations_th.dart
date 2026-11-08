@@ -96,13 +96,13 @@ class AppLocalizationsTh extends AppLocalizations {
   String get phase_ketosis => 'ภาวะคีโตซิส';
 
   @override
-  String get phase_ketosisDesc => 'กำลังสร้างคีโตน';
+  String get phase_ketosisDesc => 'การผลิตคีโตนอาจเพิ่มขึ้น';
 
   @override
   String get phase_autophagy => 'ออโตฟาจี';
 
   @override
-  String get phase_autophagyDesc => 'การฟื้นฟูเซลล์';
+  String get phase_autophagyDesc => 'ช่วงรีไซเคิลเซลล์โดยประมาณ';
 
   @override
   String get stats_title => 'สถิติ';
@@ -311,7 +311,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get onboarding_goalLongevity => 'อายุยืน';
 
   @override
-  String get onboarding_goalLongevityDesc => 'ฟื้นฟูเซลล์และสูงวัยอย่างแข็งแรง';
+  String get onboarding_goalLongevityDesc => 'สร้างกิจวัตรสุขภาพดีในระยะยาว';
 
   @override
   String get onboarding_goalDiscipline => 'วินัย';
@@ -940,7 +940,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get notification_phaseKetosis => 'คุณอยู่ในภาวะคีโตซิส ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'ออโตฟาจีกำลังทำงาน! 🔄';
+  String get notification_phaseAutophagy => 'ช่วงออโตฟาจีโดยประมาณ';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get plan_20_desc => 'ระดับสูง';
 
   @override
-  String get plan_20_detail => 'อด 20 ชั่วโมง รับประทาน 4 ชั่วโมง เหมาะสำหรับเข้าสู่ภาวะคีโตซิสและออโตฟาจี';
+  String get plan_20_detail => 'อดอาหาร 20 ชั่วโมง กิน 4 ชั่วโมง สำหรับผู้มีประสบการณ์อดอาหาร';
 
   @override
   String get plan_omad_desc => 'หนึ่งมื้อต่อวัน';
@@ -1694,4 +1694,24 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'ช่วยปรับปรุงแอป ไม่รวมน้ำหนัก มื้ออาหาร หรือข้อมูลสุขภาพ';
+
+  @override
+  String get plan_longWarningTitle => 'นี่คือการอดอาหารระยะยาว';
+
+  @override
+  String get plan_longWarningDesc => 'การอดอาหาร 20 ชั่วโมงขึ้นไปไม่เหมาะกับทุกคนและอาจทำให้รู้สึกไม่สบาย หากไม่แน่ใจโปรดปรึกษาแพทย์ และหยุดอดอาหารหากรู้สึกไม่สบาย';
+
+  @override
+  String get plan_longWarningAccept => 'เข้าใจแล้ว';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'ทดลองใช้ฟรี $days วัน จากนั้น $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'ไม่ได้อดอาหาร';
+
+  @override
+  String get widget_tapToStart => 'แตะเพื่อเริ่ม';
 }

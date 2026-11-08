@@ -96,13 +96,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get phase_ketosis => 'Ketosis';
 
   @override
-  String get phase_ketosisDesc => 'Quá trình tạo ketone đang hoạt động';
+  String get phase_ketosisDesc => 'Sản xuất ketone có thể tăng';
 
   @override
   String get phase_autophagy => 'Tự thực bào';
 
   @override
-  String get phase_autophagyDesc => 'Tái tạo tế bào';
+  String get phase_autophagyDesc => 'Giai đoạn tái chế tế bào ước tính';
 
   @override
   String get stats_title => 'Thống kê';
@@ -311,7 +311,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get onboarding_goalLongevity => 'Sống lâu';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Tái tạo tế bào và lão hóa khỏe mạnh';
+  String get onboarding_goalLongevityDesc => 'Xây dựng thói quen lành mạnh lâu dài';
 
   @override
   String get onboarding_goalDiscipline => 'Kỷ luật';
@@ -940,7 +940,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get notification_phaseKetosis => 'Bạn đang ở trạng thái ketosis ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Quá trình tự thực bào đang hoạt động! 🔄';
+  String get notification_phaseAutophagy => 'Giai đoạn tự thực ước tính';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get plan_20_desc => 'Mức nâng cao';
 
   @override
-  String get plan_20_detail => 'Nhịn 20 giờ, ăn trong 4 giờ. Lý tưởng để đạt ketosis và tự thực bào.';
+  String get plan_20_detail => 'Nhịn ăn 20 giờ, 4 giờ để ăn. Dành cho người đã có kinh nghiệm nhịn ăn.';
 
   @override
   String get plan_omad_desc => 'Một bữa mỗi ngày';
@@ -1694,4 +1694,24 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Giúp cải thiện ứng dụng. Không bao giờ bao gồm cân nặng, bữa ăn hoặc dữ liệu sức khỏe.';
+
+  @override
+  String get plan_longWarningTitle => 'Đây là lần nhịn ăn dài';
+
+  @override
+  String get plan_longWarningDesc => 'Nhịn ăn từ 20 giờ trở lên không phù hợp với tất cả mọi người và có thể khiến bạn thấy không khỏe. Hãy hỏi bác sĩ nếu chưa chắc chắn và kết thúc nhịn ăn nếu thấy không khỏe.';
+
+  @override
+  String get plan_longWarningAccept => 'Tôi hiểu';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'Dùng thử miễn phí $days ngày, sau đó $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Không nhịn ăn';
+
+  @override
+  String get widget_tapToStart => 'Chạm để bắt đầu';
 }

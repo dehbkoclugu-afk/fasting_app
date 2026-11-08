@@ -96,13 +96,13 @@ class AppLocalizationsSk extends AppLocalizations {
   String get phase_ketosis => 'Ketóza';
 
   @override
-  String get phase_ketosisDesc => 'Tvorba ketónov je aktívna';
+  String get phase_ketosisDesc => 'Tvorba ketónov sa môže zvýšiť';
 
   @override
   String get phase_autophagy => 'Autofágia';
 
   @override
-  String get phase_autophagyDesc => 'Obnova buniek';
+  String get phase_autophagyDesc => 'Odhadovaná fáza recyklácie buniek';
 
   @override
   String get stats_title => 'Štatistiky';
@@ -311,7 +311,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get onboarding_goalLongevity => 'Dlhovekosť';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Obnova buniek a zdravé starnutie';
+  String get onboarding_goalLongevityDesc => 'Vytvorte si zdravú dlhodobú rutinu';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplína';
@@ -940,7 +940,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get notification_phaseKetosis => 'Ste v ketóze ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofágia je aktívna! 🔄';
+  String get notification_phaseAutophagy => 'Odhadovaná fáza autofágie';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get plan_20_desc => 'Pre pokročilých';
 
   @override
-  String get plan_20_detail => '20 hodín pôstu a 4-hodinové okno jedenia. Ideálne na dosiahnutie ketózy a autofágie.';
+  String get plan_20_detail => '20 hodín pôstu, 4 hodiny na jedlo. Pre ľudí so skúsenosťou s pôstom.';
 
   @override
   String get plan_omad_desc => 'Jedno jedlo denne';
@@ -1694,4 +1694,24 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Pomáha zlepšovať aplikáciu. Nikdy neobsahuje hmotnosť, jedlá ani zdravotné údaje.';
+
+  @override
+  String get plan_longWarningTitle => 'Toto je dlhý pôst';
+
+  @override
+  String get plan_longWarningDesc => 'Pôsty od 20 hodín nie sú vhodné pre každého a môže vám z nich byť zle. Ak si nie ste istí, poraďte sa s lekárom, a keď je vám zle, pôst ukončite.';
+
+  @override
+  String get plan_longWarningAccept => 'Rozumiem';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'Skúšobná verzia zadarmo: $days dní, potom $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Nepostíte sa';
+
+  @override
+  String get widget_tapToStart => 'Klepnutím začnete';
 }

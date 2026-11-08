@@ -29,9 +29,9 @@
   "phase_fatBurning": "Queima de gordura",
   "phase_fatBurningDesc": "Começou a queima de gordura",
   "phase_ketosis": "Cetose",
-  "phase_ketosisDesc": "Produção de cetona ativa",
+  "phase_ketosisDesc": "A produção de cetonas pode aumentar",
   "phase_autophagy": "Autofagia",
-  "phase_autophagyDesc": "Renovação celular",
+  "phase_autophagyDesc": "Fase estimada de reciclagem celular",
   "stats_title": "Estatísticas",
   "stats_week": "Semana",
   "stats_month": "Mês",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Clareza Mental",
   "onboarding_goalMentalDesc": "Foco e clareza",
   "onboarding_goalLongevity": "Longevidade",
-  "onboarding_goalLongevityDesc": "Renovação celular e antienvelhecimento",
+  "onboarding_goalLongevityDesc": "Crie uma rotina saudável de longo prazo",
   "onboarding_goalDiscipline": "Disciplina",
   "onboarding_goalDisciplineDesc": "Desenvolva autodisciplina",
   "onboarding_selectPlan": "Escolha o seu plano",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Entrou na fase catabólica 📉",
   "notification_phaseFatBurning": "Começou a queima de gordura! 🔥",
   "notification_phaseKetosis": "Você está em cetose ⚡",
-  "notification_phaseAutophagy": "Autofagia ativa! 🔄",
+  "notification_phaseAutophagy": "Fase estimada de autofagia",
   "notification_completedBody": "Você completou seu {plan} rapidamente! Sua janela de alimentação está aberta.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Nível intermediário",
   "plan_18_detail": "18 horas de jejum, 6 horas de janela para comer. Maior duração da queima de gordura.",
   "plan_20_desc": "Nível avançado",
-  "plan_20_detail": "20 horas de jejum, 4 horas de janela para comer. Ideal para atingir cetose e autofagia.",
+  "plan_20_detail": "20 horas de jejum, 4 horas para comer. Para quem tem experiência com jejum.",
   "plan_omad_desc": "Uma refeição por dia",
   "plan_omad_detail": "Uma refeição por dia. 23 horas de jejum, 1 hora de janela para comer. Nível de especialista.",
   "plan_52_desc": "2 dias por semana",
@@ -763,5 +763,11 @@
   "profile_deleteDataAction": "Excluir tudo",
   "record_deleteConfirm": "Excluir este registro?",
   "profile_analytics": "Compartilhar dados de uso anônimos",
-  "profile_analyticsDesc": "Ajuda a melhorar o app. Nunca inclui peso, refeições ou dados de saúde."
+  "profile_analyticsDesc": "Ajuda a melhorar o app. Nunca inclui peso, refeições ou dados de saúde.",
+  "plan_longWarningTitle": "Este é um jejum longo",
+  "plan_longWarningDesc": "Jejuns de 20 horas ou mais não são adequados para todas as pessoas e podem fazer você passar mal. Fale com um médico se tiver dúvidas e encerre o jejum se não estiver bem.",
+  "plan_longWarningAccept": "Entendi",
+  "paywall_trialThen": "{days} dias de teste grátis, depois {price} ({plan})",
+  "widget_notFasting": "Sem jejum",
+  "widget_tapToStart": "Toque para começar"
 }

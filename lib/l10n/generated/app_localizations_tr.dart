@@ -96,13 +96,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get phase_ketosis => 'Ketozis';
 
   @override
-  String get phase_ketosisDesc => 'Keton üretimi aktif';
+  String get phase_ketosisDesc => 'Keton üretimi artabilir';
 
   @override
   String get phase_autophagy => 'Otofaji';
 
   @override
-  String get phase_autophagyDesc => 'Hücre yenilenmesi';
+  String get phase_autophagyDesc => 'Tahmini hücre geri dönüşüm evresi';
 
   @override
   String get stats_title => 'İstatistikler';
@@ -311,7 +311,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get onboarding_goalLongevity => 'Uzun Ömür';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Hücre yenilenmesi ve anti-aging';
+  String get onboarding_goalLongevityDesc => 'Uzun vadeli sağlıklı bir rutin oluştur';
 
   @override
   String get onboarding_goalDiscipline => 'Disiplin';
@@ -940,7 +940,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notification_phaseKetosis => 'Ketozis fazındasın ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Otofaji aktif! 🔄';
+  String get notification_phaseAutophagy => 'Tahmini otofaji evresi';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get plan_20_desc => 'İleri seviye';
 
   @override
-  String get plan_20_detail => '20 saat oruç, 4 saat yemek penceresi. Ketozis ve otofaji fazlarına ulaşmak için ideal.';
+  String get plan_20_detail => '20 saat oruç, 4 saat yeme penceresi. Oruç deneyimi olanlar için.';
 
   @override
   String get plan_omad_desc => 'Günde tek öğün';
@@ -1694,4 +1694,24 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Uygulamayı geliştirmeye yardımcı olur. Kilo, öğün veya sağlık bilgisi asla içermez.';
+
+  @override
+  String get plan_longWarningTitle => 'Bu uzun bir oruç';
+
+  @override
+  String get plan_longWarningDesc => '20 saat ve üzeri oruçlar herkes için uygun değildir ve kendini kötü hissetmene yol açabilir. Emin değilsen doktora danış, kendini kötü hissedersen orucu bitir.';
+
+  @override
+  String get plan_longWarningAccept => 'Anladım';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days gün ücretsiz deneme, sonra $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Oruçta değilsin';
+
+  @override
+  String get widget_tapToStart => 'Başlamak için dokun';
 }

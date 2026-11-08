@@ -96,13 +96,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get phase_ketosis => 'cetosis';
 
   @override
-  String get phase_ketosisDesc => 'Producción de cetonas activa.';
+  String get phase_ketosisDesc => 'La producción de cetonas puede aumentar';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Renovación celular';
+  String get phase_autophagyDesc => 'Fase estimada de reciclaje celular';
 
   @override
   String get stats_title => 'Estadística';
@@ -311,7 +311,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboarding_goalLongevity => 'Longevidad';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Renovación celular y antienvejecimiento';
+  String get onboarding_goalLongevityDesc => 'Crea una rutina saludable a largo plazo';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplina';
@@ -940,7 +940,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notification_phaseKetosis => 'Estás en cetosis ⚡';
 
   @override
-  String get notification_phaseAutophagy => '¡Autofagia activa! 🔄';
+  String get notification_phaseAutophagy => 'Fase estimada de autofagia';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get plan_20_desc => 'nivel avanzado';
 
   @override
-  String get plan_20_detail => '20 horas de ayuno, 4 horas de ventana para comer. Ideal para alcanzar cetosis y autofagia.';
+  String get plan_20_detail => '20 horas de ayuno y 4 horas para comer. Para personas con experiencia en el ayuno.';
 
   @override
   String get plan_omad_desc => 'Una comida al dia';
@@ -1694,6 +1694,26 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Ayuda a mejorar la app. Nunca incluye peso, comidas ni datos de salud.';
+
+  @override
+  String get plan_longWarningTitle => 'Este es un ayuno largo';
+
+  @override
+  String get plan_longWarningDesc => 'Los ayunos de 20 horas o más no son adecuados para todas las personas y pueden hacer que te encuentres mal. Consulta a un médico si tienes dudas y termina el ayuno si te encuentras mal.';
+
+  @override
+  String get plan_longWarningAccept => 'Lo entiendo';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days días de prueba gratis, luego $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Sin ayuno';
+
+  @override
+  String get widget_tapToStart => 'Toca para empezar';
 }
 
 /// The translations for Spanish Castilian, as used in Latin America and the Caribbean (`es_419`).
@@ -1788,13 +1808,13 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get phase_ketosis => 'cetosis';
 
   @override
-  String get phase_ketosisDesc => 'Producción de cetonas activa.';
+  String get phase_ketosisDesc => 'La producción de cetonas puede aumentar';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Renovación celular';
+  String get phase_autophagyDesc => 'Fase estimada de reciclaje celular';
 
   @override
   String get stats_title => 'Estadística';
@@ -2003,7 +2023,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get onboarding_goalLongevity => 'Longevidad';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Renovación celular y antienvejecimiento';
+  String get onboarding_goalLongevityDesc => 'Crea una rutina saludable a largo plazo';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplina';
@@ -2632,7 +2652,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get notification_phaseKetosis => 'Estás en cetosis ⚡';
 
   @override
-  String get notification_phaseAutophagy => '¡Autofagia activa! 🔄';
+  String get notification_phaseAutophagy => 'Fase estimada de autofagia';
 
   @override
   String notification_completedBody(String plan) {
@@ -2811,7 +2831,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get plan_20_desc => 'nivel avanzado';
 
   @override
-  String get plan_20_detail => '20 horas de ayuno, 4 horas de ventana para comer. Ideal para alcanzar cetosis y autofagia.';
+  String get plan_20_detail => '20 horas de ayuno y 4 horas para comer. Para personas con experiencia en el ayuno.';
 
   @override
   String get plan_omad_desc => 'Una comida al dia';
@@ -3386,6 +3406,26 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
 
   @override
   String get profile_analyticsDesc => 'Ayuda a mejorar la app. Nunca incluye peso, comidas ni datos de salud.';
+
+  @override
+  String get plan_longWarningTitle => 'Este es un ayuno largo';
+
+  @override
+  String get plan_longWarningDesc => 'Los ayunos de 20 horas o más no son adecuados para todas las personas y pueden hacer que te encuentres mal. Consulta a un médico si tienes dudas y termina el ayuno si te encuentras mal.';
+
+  @override
+  String get plan_longWarningAccept => 'Lo entiendo';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days días de prueba gratis, luego $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Sin ayuno';
+
+  @override
+  String get widget_tapToStart => 'Toca para empezar';
 }
 
 /// The translations for Spanish Castilian, as used in Spain (`es_ES`).
@@ -3480,13 +3520,13 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get phase_ketosis => 'cetosis';
 
   @override
-  String get phase_ketosisDesc => 'Producción de cetonas activa.';
+  String get phase_ketosisDesc => 'La producción de cetonas puede aumentar';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Renovación celular';
+  String get phase_autophagyDesc => 'Fase estimada de reciclaje celular';
 
   @override
   String get stats_title => 'Estadística';
@@ -3695,7 +3735,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get onboarding_goalLongevity => 'Longevidad';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Renovación celular y antienvejecimiento';
+  String get onboarding_goalLongevityDesc => 'Crea una rutina saludable a largo plazo';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplina';
@@ -4324,7 +4364,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get notification_phaseKetosis => 'Estás en cetosis ⚡';
 
   @override
-  String get notification_phaseAutophagy => '¡Autofagia activa! 🔄';
+  String get notification_phaseAutophagy => 'Fase estimada de autofagia';
 
   @override
   String notification_completedBody(String plan) {
@@ -4503,7 +4543,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get plan_20_desc => 'nivel avanzado';
 
   @override
-  String get plan_20_detail => '20 horas de ayuno, 4 horas de ventana para comer. Ideal para alcanzar cetosis y autofagia.';
+  String get plan_20_detail => '20 horas de ayuno y 4 horas para comer. Para personas con experiencia en el ayuno.';
 
   @override
   String get plan_omad_desc => 'Una comida al dia';
@@ -5078,4 +5118,24 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
 
   @override
   String get profile_analyticsDesc => 'Ayuda a mejorar la app. Nunca incluye peso, comidas ni datos de salud.';
+
+  @override
+  String get plan_longWarningTitle => 'Este es un ayuno largo';
+
+  @override
+  String get plan_longWarningDesc => 'Los ayunos de 20 horas o más no son adecuados para todas las personas y pueden hacer que te encuentres mal. Consulta a un médico si tienes dudas y termina el ayuno si te encuentras mal.';
+
+  @override
+  String get plan_longWarningAccept => 'Lo entiendo';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days días de prueba gratis, luego $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Sin ayuno';
+
+  @override
+  String get widget_tapToStart => 'Toca para empezar';
 }

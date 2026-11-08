@@ -96,13 +96,13 @@ class AppLocalizationsUk extends AppLocalizations {
   String get phase_ketosis => 'Кетоз';
 
   @override
-  String get phase_ketosisDesc => 'Вироблення кетонів активне';
+  String get phase_ketosisDesc => 'Вироблення кетонів може зрости';
 
   @override
   String get phase_autophagy => 'Аутофагія';
 
   @override
-  String get phase_autophagyDesc => 'Оновлення клітин';
+  String get phase_autophagyDesc => 'Орієнтовна фаза оновлення клітин';
 
   @override
   String get stats_title => 'Статистика';
@@ -311,7 +311,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get onboarding_goalLongevity => 'Довголіття';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Оновлення клітин і здорове старіння';
+  String get onboarding_goalLongevityDesc => 'Створіть здорову довгострокову звичку';
 
   @override
   String get onboarding_goalDiscipline => 'Дисципліна';
@@ -940,7 +940,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get notification_phaseKetosis => 'Ви в кетозі ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Аутофагія активна! 🔄';
+  String get notification_phaseAutophagy => 'Орієнтовна фаза аутофагії';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get plan_20_desc => 'Просунутий рівень';
 
   @override
-  String get plan_20_detail => '20 годин голодування та 4-годинне вікно харчування. Підходить для досягнення кетозу й аутофагії.';
+  String get plan_20_detail => '20 годин голодування, 4 години на їжу. Для тих, хто має досвід голодування.';
 
   @override
   String get plan_omad_desc => 'Один прийом їжі на день';
@@ -1694,4 +1694,24 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Допомагає покращувати застосунок. Ніколи не містить ваги, харчування чи даних про здоров\'я.';
+
+  @override
+  String get plan_longWarningTitle => 'Це довге голодування';
+
+  @override
+  String get plan_longWarningDesc => 'Голодування від 20 годин підходить не всім і може спричинити погане самопочуття. Якщо сумніваєтеся, порадьтеся з лікарем, а за поганого самопочуття завершіть голодування.';
+
+  @override
+  String get plan_longWarningAccept => 'Зрозуміло';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'Безкоштовно: $days дн., потім $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Ви не голодуєте';
+
+  @override
+  String get widget_tapToStart => 'Торкніться, щоб почати';
 }

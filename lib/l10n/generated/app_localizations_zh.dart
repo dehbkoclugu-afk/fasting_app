@@ -96,13 +96,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get phase_ketosis => '酮症';
 
   @override
-  String get phase_ketosisDesc => '酮体生成活跃';
+  String get phase_ketosisDesc => '酮体生成可能增加';
 
   @override
   String get phase_autophagy => '自噬';
 
   @override
-  String get phase_autophagyDesc => '细胞更新';
+  String get phase_autophagyDesc => '估计的细胞回收阶段';
 
   @override
   String get stats_title => '统计';
@@ -311,7 +311,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboarding_goalLongevity => '长寿';
 
   @override
-  String get onboarding_goalLongevityDesc => '细胞更新与健康衰老';
+  String get onboarding_goalLongevityDesc => '建立健康的长期习惯';
 
   @override
   String get onboarding_goalDiscipline => '自律';
@@ -940,7 +940,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notification_phaseKetosis => '您正处于酮症状态 ⚡';
 
   @override
-  String get notification_phaseAutophagy => '自噬已激活！ 🔄';
+  String get notification_phaseAutophagy => '估计的自噬阶段';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get plan_20_desc => '高级';
 
   @override
-  String get plan_20_detail => '禁食20小时，进食4小时，适合进入酮症和自噬。';
+  String get plan_20_detail => '禁食 20 小时，进食窗口 4 小时。适合有禁食经验的人。';
 
   @override
   String get plan_omad_desc => '一天一餐';
@@ -1694,6 +1694,26 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => '帮助改进应用。绝不包含体重、餐食或健康信息。';
+
+  @override
+  String get plan_longWarningTitle => '这是一次长时间禁食';
+
+  @override
+  String get plan_longWarningDesc => '20 小时或更长时间的禁食并非适合所有人，可能让你感到不适。如不确定请咨询医生，感到不适时请结束禁食。';
+
+  @override
+  String get plan_longWarningAccept => '我明白了';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '免费试用 $days 天，之后 $price（$plan）';
+  }
+
+  @override
+  String get widget_notFasting => '未在禁食';
+
+  @override
+  String get widget_tapToStart => '点按开始';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -1788,13 +1808,13 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get phase_ketosis => '酮症';
 
   @override
-  String get phase_ketosisDesc => '酮体生成活跃';
+  String get phase_ketosisDesc => '酮体生成可能增加';
 
   @override
   String get phase_autophagy => '自噬';
 
   @override
-  String get phase_autophagyDesc => '细胞更新';
+  String get phase_autophagyDesc => '估计的细胞回收阶段';
 
   @override
   String get stats_title => '统计';
@@ -2003,7 +2023,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get onboarding_goalLongevity => '长寿';
 
   @override
-  String get onboarding_goalLongevityDesc => '细胞更新与健康衰老';
+  String get onboarding_goalLongevityDesc => '建立健康的长期习惯';
 
   @override
   String get onboarding_goalDiscipline => '自律';
@@ -2632,7 +2652,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get notification_phaseKetosis => '您正处于酮症状态 ⚡';
 
   @override
-  String get notification_phaseAutophagy => '自噬已激活！ 🔄';
+  String get notification_phaseAutophagy => '估计的自噬阶段';
 
   @override
   String notification_completedBody(String plan) {
@@ -2811,7 +2831,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get plan_20_desc => '高级';
 
   @override
-  String get plan_20_detail => '禁食20小时，进食4小时，适合进入酮症和自噬。';
+  String get plan_20_detail => '禁食 20 小时，进食窗口 4 小时。适合有禁食经验的人。';
 
   @override
   String get plan_omad_desc => '一天一餐';
@@ -3386,4 +3406,24 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get profile_analyticsDesc => '帮助改进应用。绝不包含体重、餐食或健康信息。';
+
+  @override
+  String get plan_longWarningTitle => '这是一次长时间禁食';
+
+  @override
+  String get plan_longWarningDesc => '20 小时或更长时间的禁食并非适合所有人，可能让你感到不适。如不确定请咨询医生，感到不适时请结束禁食。';
+
+  @override
+  String get plan_longWarningAccept => '我明白了';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '免费试用 $days 天，之后 $price（$plan）';
+  }
+
+  @override
+  String get widget_notFasting => '未在禁食';
+
+  @override
+  String get widget_tapToStart => '点按开始';
 }

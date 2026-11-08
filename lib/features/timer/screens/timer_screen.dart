@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/constants/fasting_plans.dart';
 import '../../../core/constants/metabolic_phases.dart';
@@ -20,6 +21,7 @@ import '../widgets/quick_stats_row.dart';
 import '../widgets/crisis_mode_sheet.dart';
 import '../widgets/metabolic_journey.dart';
 import '../../../services/admob_service.dart';
+import '../../../core/utils/fasting_safety.dart';
 import '../../paywall/providers/subscription_provider.dart';
 import '../../stats/providers/stats_provider.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
@@ -99,13 +101,12 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
   @override
   void initState() {
     super.initState();
-    AdmobService().loadInterstitialAd();
+    if (!ref.read(isPremiumProvider)) AdmobService().loadInterstitialAd();
   }
 
   @override
   Widget build(BuildContext context) {
     final timerState = ref.watch(timerProvider);
-    final timerNotifier = ref.read(timerProvider.notifier);
     final waterState = ref.watch(waterProvider);
     final streak = ref.watch(streakProvider);
     final theme = Theme.of(context);
@@ -320,7 +321,7 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
                                 const SizedBox(height: 22),
                                 TimerControls(
                                   status: timerState.status,
-                                  onStart: timerNotifier.startFasting,
+                                  onStart: () => _startFast(context),
                                   onStop: () => _confirmStop(context, ref),
                                   enabled: !timerState.isBusy,
                                 ),
@@ -515,6 +516,38 @@ class _TimerScreenState extends ConsumerState<TimerScreen> {
         ),
       ],
     );
+  }
+
+  Future<void> _startFast(BuildContext context) async {
+    final notifier = ref.read(timerProvider.notifier);
+    final plan = FastingPlans.getById(ref.read(timerProvider).planId);
+    if (plan.fastingMinutes >= FastingSafety.longFastMinutes) {
+      final prefs = await SharedPreferences.getInstance();
+      if (prefs.getBool(FastingSafety.longFastAckKey) != true) {
+        if (!context.mounted) return;
+        final l10n = AppLocalizations.of(context)!;
+        final accepted = await showDialog<bool>(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: Text(l10n.plan_longWarningTitle),
+            content: Text(l10n.plan_longWarningDesc),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, false),
+                child: Text(l10n.common_cancel),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.pop(ctx, true),
+                child: Text(l10n.plan_longWarningAccept),
+              ),
+            ],
+          ),
+        );
+        if (accepted != true) return;
+        await prefs.setBool(FastingSafety.longFastAckKey, true);
+      }
+    }
+    await notifier.startFasting();
   }
 
   void _invalidateStatsProviders(WidgetRef ref) {

@@ -12,7 +12,7 @@ Crie com o FastTrack uma rotina de jejum que combine com a sua vida.
 
 Veja o tempo decorrido e restante, conheça estágios metabólicos gerais, registre água e peso e acompanhe seu progresso sem pressão.
 
-Inclui planos 12:12, 14:10, 16:8, 18:6, 20:4 e OMAD; relatórios visuais; lembretes opcionais; e temas claro e escuro.
+Inclui planos 12:12, 16:8, 18:6, 20:4 e OMAD; relatórios visuais; lembretes opcionais; e temas claro e escuro.
 
 Os registros principais ficam armazenados no seu dispositivo. O FastTrack oferece suporte a português, inglês, turco, espanhol, alemão e francês.
 

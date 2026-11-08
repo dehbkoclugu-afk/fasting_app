@@ -96,13 +96,13 @@ class AppLocalizationsHu extends AppLocalizations {
   String get phase_ketosis => 'Ketózis';
 
   @override
-  String get phase_ketosisDesc => 'Aktív ketontermelés';
+  String get phase_ketosisDesc => 'A ketontermelés nőhet';
 
   @override
   String get phase_autophagy => 'Autofágia';
 
   @override
-  String get phase_autophagyDesc => 'Sejtmegújulás';
+  String get phase_autophagyDesc => 'Becsült sejtmegújulási szakasz';
 
   @override
   String get stats_title => 'Statisztikák';
@@ -311,7 +311,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get onboarding_goalLongevity => 'Hosszú élet';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Sejtmegújulás és egészséges öregedés';
+  String get onboarding_goalLongevityDesc => 'Alakíts ki egészséges, hosszú távú rutint';
 
   @override
   String get onboarding_goalDiscipline => 'Fegyelem';
@@ -940,7 +940,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get notification_phaseKetosis => 'Ketózisban vagy ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Az autofágia aktív! 🔄';
+  String get notification_phaseAutophagy => 'Becsült autofágia szakasz';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get plan_20_desc => 'Haladó szint';
 
   @override
-  String get plan_20_detail => '20 óra böjt és 4 órás étkezési időablak. Ideális a ketózis és az autofágia eléréséhez.';
+  String get plan_20_detail => '20 óra böjt, 4 óra étkezés. Böjtben tapasztaltaknak.';
 
   @override
   String get plan_omad_desc => 'Napi egy étkezés';
@@ -1694,4 +1694,24 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Segít javítani az alkalmazást. Soha nem tartalmaz testsúlyt, étkezést vagy egészségügyi adatot.';
+
+  @override
+  String get plan_longWarningTitle => 'Ez egy hosszú böjt';
+
+  @override
+  String get plan_longWarningDesc => 'A 20 órás vagy hosszabb böjt nem mindenkinek való, és rosszulléthez vezethet. Ha bizonytalan vagy, beszélj orvossal, rosszullét esetén pedig fejezd be a böjtöt.';
+
+  @override
+  String get plan_longWarningAccept => 'Értem';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days nap ingyenes próba, utána $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Nem böjtölsz';
+
+  @override
+  String get widget_tapToStart => 'Koppints az indításhoz';
 }

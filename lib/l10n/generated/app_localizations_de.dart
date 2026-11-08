@@ -96,13 +96,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get phase_ketosis => 'Ketose';
 
   @override
-  String get phase_ketosisDesc => 'Ketonproduktion aktiv';
+  String get phase_ketosisDesc => 'Die Ketonproduktion kann steigen';
 
   @override
   String get phase_autophagy => 'Autophagie';
 
   @override
-  String get phase_autophagyDesc => 'Zellerneuerung';
+  String get phase_autophagyDesc => 'Geschätzte Phase des Zellrecyclings';
 
   @override
   String get stats_title => 'Statistiken';
@@ -311,7 +311,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get onboarding_goalLongevity => 'Langlebigkeit';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Zellerneuerung und Anti-Aging';
+  String get onboarding_goalLongevityDesc => 'Baue eine gesunde langfristige Routine auf';
 
   @override
   String get onboarding_goalDiscipline => 'Disziplin';
@@ -940,7 +940,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get notification_phaseKetosis => 'Du bist in Ketose ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autophagie aktiv! 🔄';
+  String get notification_phaseAutophagy => 'Geschätzte Autophagie-Phase';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get plan_20_desc => 'Fortgeschrittenes Niveau';
 
   @override
-  String get plan_20_detail => '20 Stunden Fasten, 4 Stunden Essensfenster. Ideal zum Erreichen von Ketose und Autophagie.';
+  String get plan_20_detail => '20 Stunden Fasten, 4 Stunden Essensfenster. Für Personen mit Fastenerfahrung.';
 
   @override
   String get plan_omad_desc => 'Eine Mahlzeit am Tag';
@@ -1694,4 +1694,24 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Hilft, die App zu verbessern. Enthält nie Gewicht, Mahlzeiten oder Gesundheitsangaben.';
+
+  @override
+  String get plan_longWarningTitle => 'Das ist ein langes Fasten';
+
+  @override
+  String get plan_longWarningDesc => 'Fastenzeiten ab 20 Stunden sind nicht für alle geeignet und können dazu führen, dass es dir schlecht geht. Sprich im Zweifel mit einer Ärztin oder einem Arzt und beende das Fasten, wenn es dir schlecht geht.';
+
+  @override
+  String get plan_longWarningAccept => 'Ich habe verstanden';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days Tage kostenlos testen, danach $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Kein Fasten';
+
+  @override
+  String get widget_tapToStart => 'Zum Starten tippen';
 }

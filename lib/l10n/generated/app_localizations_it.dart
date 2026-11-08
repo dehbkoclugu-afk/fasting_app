@@ -96,13 +96,13 @@ class AppLocalizationsIt extends AppLocalizations {
   String get phase_ketosis => 'Chetosi';
 
   @override
-  String get phase_ketosisDesc => 'Produzione di chetoni attiva';
+  String get phase_ketosisDesc => 'La produzione di chetoni può aumentare';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Rinnovamento cellulare';
+  String get phase_autophagyDesc => 'Fase stimata di riciclo cellulare';
 
   @override
   String get stats_title => 'Statistiche';
@@ -311,7 +311,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get onboarding_goalLongevity => 'Longevità';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Rinnovamento cellulare e azione antietà';
+  String get onboarding_goalLongevityDesc => 'Crea una routine sana a lungo termine';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplina';
@@ -940,7 +940,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get notification_phaseKetosis => 'Sei in chetosi ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagia attiva! 🔄';
+  String get notification_phaseAutophagy => 'Fase di autofagia stimata';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get plan_20_desc => 'Livello avanzato';
 
   @override
-  String get plan_20_detail => '20 ore di digiuno e 4 ore di finestra alimentare. Ideale per raggiungere la chetosi e l\'autofagia.';
+  String get plan_20_detail => '20 ore di digiuno, 4 ore per mangiare. Per chi ha esperienza con il digiuno.';
 
   @override
   String get plan_omad_desc => 'Un pasto al giorno';
@@ -1694,4 +1694,24 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Aiuta a migliorare l\'app. Non include mai peso, pasti o dati sulla salute.';
+
+  @override
+  String get plan_longWarningTitle => 'Questo è un digiuno lungo';
+
+  @override
+  String get plan_longWarningDesc => 'I digiuni di 20 ore o più non sono adatti a tutti e possono farti stare male. In caso di dubbi parla con un medico e interrompi il digiuno se non ti senti bene.';
+
+  @override
+  String get plan_longWarningAccept => 'Ho capito';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days giorni di prova gratuita, poi $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Non a digiuno';
+
+  @override
+  String get widget_tapToStart => 'Tocca per iniziare';
 }

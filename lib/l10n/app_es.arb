@@ -29,9 +29,9 @@
   "phase_fatBurning": "Quema Grasa",
   "phase_fatBurningDesc": "Comenzó la quema de grasa",
   "phase_ketosis": "cetosis",
-  "phase_ketosisDesc": "Producción de cetonas activa.",
+  "phase_ketosisDesc": "La producción de cetonas puede aumentar",
   "phase_autophagy": "Autofagia",
-  "phase_autophagyDesc": "Renovación celular",
+  "phase_autophagyDesc": "Fase estimada de reciclaje celular",
   "stats_title": "Estadística",
   "stats_week": "Semana",
   "stats_month": "Mes",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Claridad mental",
   "onboarding_goalMentalDesc": "Enfoque y claridad",
   "onboarding_goalLongevity": "Longevidad",
-  "onboarding_goalLongevityDesc": "Renovación celular y antienvejecimiento",
+  "onboarding_goalLongevityDesc": "Crea una rutina saludable a largo plazo",
   "onboarding_goalDiscipline": "Disciplina",
   "onboarding_goalDisciplineDesc": "Desarrollar la autodisciplina",
   "onboarding_selectPlan": "Elige tu plan",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "Entró en fase catabólica 📉",
   "notification_phaseFatBurning": "¡Comenzó la quema de grasa! 🔥",
   "notification_phaseKetosis": "Estás en cetosis ⚡",
-  "notification_phaseAutophagy": "¡Autofagia activa! 🔄",
+  "notification_phaseAutophagy": "Fase estimada de autofagia",
   "notification_completedBody": "¡Completaste tu {plan} rápidamente! Tu ventana para comer está abierta.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "nivel intermedio",
   "plan_18_detail": "18 horas de ayuno, 6 horas de ventana para comer. Mayor duración de la quema de grasas.",
   "plan_20_desc": "nivel avanzado",
-  "plan_20_detail": "20 horas de ayuno, 4 horas de ventana para comer. Ideal para alcanzar cetosis y autofagia.",
+  "plan_20_detail": "20 horas de ayuno y 4 horas para comer. Para personas con experiencia en el ayuno.",
   "plan_omad_desc": "Una comida al dia",
   "plan_omad_detail": "Una comida al día. 23 horas de ayuno, 1 hora de ventana para comer. Nivel experto.",
   "plan_52_desc": "2 días por semana",
@@ -763,5 +763,11 @@
   "profile_deleteDataAction": "Eliminar todo",
   "record_deleteConfirm": "¿Eliminar este registro?",
   "profile_analytics": "Compartir datos de uso anónimos",
-  "profile_analyticsDesc": "Ayuda a mejorar la app. Nunca incluye peso, comidas ni datos de salud."
+  "profile_analyticsDesc": "Ayuda a mejorar la app. Nunca incluye peso, comidas ni datos de salud.",
+  "plan_longWarningTitle": "Este es un ayuno largo",
+  "plan_longWarningDesc": "Los ayunos de 20 horas o más no son adecuados para todas las personas y pueden hacer que te encuentres mal. Consulta a un médico si tienes dudas y termina el ayuno si te encuentras mal.",
+  "plan_longWarningAccept": "Lo entiendo",
+  "paywall_trialThen": "{days} días de prueba gratis, luego {price} ({plan})",
+  "widget_notFasting": "Sin ayuno",
+  "widget_tapToStart": "Toca para empezar"
 }

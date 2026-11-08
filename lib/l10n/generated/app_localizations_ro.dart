@@ -96,13 +96,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get phase_ketosis => 'Cetoză';
 
   @override
-  String get phase_ketosisDesc => 'Producția de cetone este activă';
+  String get phase_ketosisDesc => 'Producția de cetone poate crește';
 
   @override
   String get phase_autophagy => 'Autofagie';
 
   @override
-  String get phase_autophagyDesc => 'Reînnoire celulară';
+  String get phase_autophagyDesc => 'Faza estimată de reciclare celulară';
 
   @override
   String get stats_title => 'Statistici';
@@ -311,7 +311,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get onboarding_goalLongevity => 'Longevitate';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Reînnoire celulară și îmbătrânire sănătoasă';
+  String get onboarding_goalLongevityDesc => 'Construiește o rutină sănătoasă pe termen lung';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplină';
@@ -940,7 +940,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get notification_phaseKetosis => 'Ești în cetoză ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagia este activă! 🔄';
+  String get notification_phaseAutophagy => 'Faza estimată de autofagie';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get plan_20_desc => 'Nivel avansat';
 
   @override
-  String get plan_20_detail => '20 de ore de post și o fereastră de alimentație de 4 ore. Ideal pentru atingerea cetozei și autofagiei.';
+  String get plan_20_detail => '20 de ore de post, 4 ore de mâncat. Pentru persoane cu experiență în post.';
 
   @override
   String get plan_omad_desc => 'O masă pe zi';
@@ -1694,4 +1694,24 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Ajută la îmbunătățirea aplicației. Nu include niciodată greutatea, mesele sau date de sănătate.';
+
+  @override
+  String get plan_longWarningTitle => 'Acesta este un post lung';
+
+  @override
+  String get plan_longWarningDesc => 'Posturile de 20 de ore sau mai mult nu sunt potrivite pentru toată lumea și te pot face să te simți rău. Vorbește cu un medic dacă nu ești sigur și încheie postul dacă te simți rău.';
+
+  @override
+  String get plan_longWarningAccept => 'Am înțeles';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days zile de probă gratuită, apoi $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Nu postești';
+
+  @override
+  String get widget_tapToStart => 'Atinge pentru a începe';
 }

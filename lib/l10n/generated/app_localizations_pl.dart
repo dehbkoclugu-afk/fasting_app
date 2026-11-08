@@ -96,13 +96,13 @@ class AppLocalizationsPl extends AppLocalizations {
   String get phase_ketosis => 'Ketoza';
 
   @override
-  String get phase_ketosisDesc => 'Produkcja ketonów jest aktywna';
+  String get phase_ketosisDesc => 'Produkcja ketonów może wzrosnąć';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Odnowa komórkowa';
+  String get phase_autophagyDesc => 'Szacowana faza recyklingu komórkowego';
 
   @override
   String get stats_title => 'Statystyki';
@@ -311,7 +311,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get onboarding_goalLongevity => 'Długowieczność';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Odnowa komórkowa i zdrowe starzenie';
+  String get onboarding_goalLongevityDesc => 'Zbuduj zdrową, długofalową rutynę';
 
   @override
   String get onboarding_goalDiscipline => 'Dyscyplina';
@@ -940,7 +940,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get notification_phaseKetosis => 'Jesteś w ketozie ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagia jest aktywna! 🔄';
+  String get notification_phaseAutophagy => 'Szacowana faza autofagii';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get plan_20_desc => 'Poziom zaawansowany';
 
   @override
-  String get plan_20_detail => '20 godzin postu i 4-godzinne okno żywieniowe. Idealny do osiągnięcia ketozy i autofagii.';
+  String get plan_20_detail => '20 godzin postu, 4 godziny jedzenia. Dla osób z doświadczeniem w poście.';
 
   @override
   String get plan_omad_desc => 'Jeden posiłek dziennie';
@@ -1694,4 +1694,24 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'Pomaga ulepszać aplikację. Nigdy nie zawiera wagi, posiłków ani danych o zdrowiu.';
+
+  @override
+  String get plan_longWarningTitle => 'To długi post';
+
+  @override
+  String get plan_longWarningDesc => 'Posty trwające 20 godzin lub dłużej nie są odpowiednie dla każdego i mogą powodować złe samopoczucie. W razie wątpliwości porozmawiaj z lekarzem, a jeśli źle się czujesz, zakończ post.';
+
+  @override
+  String get plan_longWarningAccept => 'Rozumiem';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days dni bezpłatnego okresu próbnego, potem $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Bez postu';
+
+  @override
+  String get widget_tapToStart => 'Dotknij, aby zacząć';
 }

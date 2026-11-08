@@ -29,9 +29,9 @@
   "phase_fatBurning": "Fettverbrennung",
   "phase_fatBurningDesc": "Die Fettverbrennung begann",
   "phase_ketosis": "Ketose",
-  "phase_ketosisDesc": "Ketonproduktion aktiv",
+  "phase_ketosisDesc": "Die Ketonproduktion kann steigen",
   "phase_autophagy": "Autophagie",
-  "phase_autophagyDesc": "Zellerneuerung",
+  "phase_autophagyDesc": "Geschätzte Phase des Zellrecyclings",
   "stats_title": "Statistiken",
   "stats_week": "Woche",
   "stats_month": "Monat",
@@ -107,7 +107,7 @@
   "onboarding_goalMental": "Geistige Klarheit",
   "onboarding_goalMentalDesc": "Konzentration und Klarheit",
   "onboarding_goalLongevity": "Langlebigkeit",
-  "onboarding_goalLongevityDesc": "Zellerneuerung und Anti-Aging",
+  "onboarding_goalLongevityDesc": "Baue eine gesunde langfristige Routine auf",
   "onboarding_goalDiscipline": "Disziplin",
   "onboarding_goalDisciplineDesc": "Bauen Sie Selbstdisziplin auf",
   "onboarding_selectPlan": "Wählen Sie Ihren Plan",
@@ -418,7 +418,7 @@
   "notification_phaseCatabolic": "In die katabole Phase eingetreten 📉",
   "notification_phaseFatBurning": "Die Fettverbrennung hat begonnen! 🔥",
   "notification_phaseKetosis": "Du bist in Ketose ⚡",
-  "notification_phaseAutophagy": "Autophagie aktiv! 🔄",
+  "notification_phaseAutophagy": "Geschätzte Autophagie-Phase",
   "notification_completedBody": "Du hast deinen {plan} schnell fertiggestellt! Ihr Essensfenster ist geöffnet.",
   "@notification_completedBody": {
     "placeholders": {
@@ -525,7 +525,7 @@
   "plan_18_desc": "Mittelstufe",
   "plan_18_detail": "18 Stunden Fasten, 6 Stunden Essensfenster. Längere Fettverbrennungsdauer.",
   "plan_20_desc": "Fortgeschrittenes Niveau",
-  "plan_20_detail": "20 Stunden Fasten, 4 Stunden Essensfenster. Ideal zum Erreichen von Ketose und Autophagie.",
+  "plan_20_detail": "20 Stunden Fasten, 4 Stunden Essensfenster. Für Personen mit Fastenerfahrung.",
   "plan_omad_desc": "Eine Mahlzeit am Tag",
   "plan_omad_detail": "Eine Mahlzeit am Tag. 23 Stunden Fasten, 1 Stunde Essensfenster. Expertenniveau.",
   "plan_52_desc": "2 Tage pro Woche",
@@ -763,5 +763,11 @@
   "profile_deleteDataAction": "Alles löschen",
   "record_deleteConfirm": "Diesen Eintrag löschen?",
   "profile_analytics": "Anonyme Nutzungsdaten teilen",
-  "profile_analyticsDesc": "Hilft, die App zu verbessern. Enthält nie Gewicht, Mahlzeiten oder Gesundheitsangaben."
+  "profile_analyticsDesc": "Hilft, die App zu verbessern. Enthält nie Gewicht, Mahlzeiten oder Gesundheitsangaben.",
+  "plan_longWarningTitle": "Das ist ein langes Fasten",
+  "plan_longWarningDesc": "Fastenzeiten ab 20 Stunden sind nicht für alle geeignet und können dazu führen, dass es dir schlecht geht. Sprich im Zweifel mit einer Ärztin oder einem Arzt und beende das Fasten, wenn es dir schlecht geht.",
+  "plan_longWarningAccept": "Ich habe verstanden",
+  "paywall_trialThen": "{days} Tage kostenlos testen, danach {price} ({plan})",
+  "widget_notFasting": "Kein Fasten",
+  "widget_tapToStart": "Zum Starten tippen"
 }

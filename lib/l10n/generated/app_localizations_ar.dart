@@ -96,13 +96,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get phase_ketosis => 'الكيتوزية';
 
   @override
-  String get phase_ketosisDesc => 'إنتاج الكيتونات نشط';
+  String get phase_ketosisDesc => 'قد يزداد إنتاج الكيتونات';
 
   @override
   String get phase_autophagy => 'الالتهام الذاتي';
 
   @override
-  String get phase_autophagyDesc => 'تجدد الخلايا';
+  String get phase_autophagyDesc => 'مرحلة تقديرية لإعادة تدوير الخلايا';
 
   @override
   String get stats_title => 'الإحصاءات';
@@ -311,7 +311,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboarding_goalLongevity => 'طول العمر';
 
   @override
-  String get onboarding_goalLongevityDesc => 'تجدد الخلايا والشيخوخة الصحية';
+  String get onboarding_goalLongevityDesc => 'ابنِ روتينًا صحيًا طويل الأمد';
 
   @override
   String get onboarding_goalDiscipline => 'الانضباط';
@@ -940,7 +940,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notification_phaseKetosis => 'أنت في حالة الكيتوزية ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'الالتهام الذاتي نشط! 🔄';
+  String get notification_phaseAutophagy => 'مرحلة الالتهام الذاتي التقديرية';
 
   @override
   String notification_completedBody(String plan) {
@@ -1119,7 +1119,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get plan_20_desc => 'مستوى متقدم';
 
   @override
-  String get plan_20_detail => '20 ساعة صيام و4 ساعات أكل. مناسبة للوصول إلى الكيتوزية والالتهام الذاتي.';
+  String get plan_20_detail => 'صيام 20 ساعة و4 ساعات للأكل. لأصحاب الخبرة في الصيام.';
 
   @override
   String get plan_omad_desc => 'وجبة واحدة يوميًا';
@@ -1694,4 +1694,24 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profile_analyticsDesc => 'يساعد في تحسين التطبيق. لا يتضمن أبدًا الوزن أو الوجبات أو البيانات الصحية.';
+
+  @override
+  String get plan_longWarningTitle => 'هذا صيام طويل';
+
+  @override
+  String get plan_longWarningDesc => 'الصيام لمدة 20 ساعة أو أكثر لا يناسب الجميع وقد يسبب لك توعكًا. تحدث إلى طبيب إذا لم تكن متأكدًا، وأنهِ الصيام إذا شعرت بتوعك.';
+
+  @override
+  String get plan_longWarningAccept => 'فهمت';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'تجربة مجانية لمدة $days يوم، ثم $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'لا صيام';
+
+  @override
+  String get widget_tapToStart => 'اضغط للبدء';
 }

@@ -28,10 +28,10 @@ class FastingSessionNotifier
   }
 
   int getStreak(List<FastingSession> sessions) {
-    return currentFastingStreak(
-      sessions.where((s) => s.completed).map((s) => s.startTime),
+    return fastingStreakFor(
+      sessions.where((s) => s.completed),
       DateTime.now(),
-    );
+    ).$1;
   }
 }
 
@@ -48,10 +48,10 @@ final streakProvider = Provider<int>((ref) {
   final sessionsAsync = ref.watch(fastingSessionProvider);
   return sessionsAsync.when(
     data: (sessions) {
-      return currentFastingStreak(
-        sessions.where((s) => s.completed).map((s) => s.startTime),
+      return fastingStreakFor(
+        sessions.where((s) => s.completed),
         DateTime.now(),
-      );
+      ).$1;
     },
     loading: () => 0,
     error: (_, __) => 0,

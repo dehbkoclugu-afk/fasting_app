@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/utils/fasting_streak.dart';
 import '../../timer/providers/fasting_session_provider.dart';
 import '../../timer/providers/water_provider.dart';
 
@@ -76,10 +77,45 @@ class GamificationState {
   int get seasonStep => math.min(30, xp ~/ 250);
 }
 
+/// Adds today's newly finished quests to the banked total. Quest progress
+/// resets daily, so anything earned has to be banked or it is lost tomorrow.
+///
+/// [bank] is null for rewards saved before banking existed: the gap between
+/// the old high-water mark and [baseXp] becomes the opening balance, so nobody
+/// loses XP or has to earn it twice.
+({int bank, Set<String> claimed}) settleQuestXp({
+  required int? bank,
+  required int xpFloor,
+  required int baseXp,
+  required Set<String> claimedToday,
+  required Iterable<GameQuest> quests,
+}) {
+  var total = bank ?? math.max(0, xpFloor - baseXp);
+  final claimed = {...claimedToday};
+  for (final quest in quests) {
+    if (quest.completed && claimed.add(quest.id)) total += quest.xp;
+  }
+  return (bank: total, claimed: claimed);
+}
+
 class _RewardLedger {
-  const _RewardLedger(this.xpFloor, this.unlockedBadges);
+  const _RewardLedger(
+    this.xpFloor,
+    this.unlockedBadges, {
+    this.questBank,
+    this.questDay = '',
+    this.claimedQuests = const {},
+    this.loaded = false,
+  });
   final int xpFloor;
   final Set<String> unlockedBadges;
+  final int? questBank;
+  final String questDay;
+  final Set<String> claimedQuests;
+
+  /// Nothing is awarded until storage has been read: an empty ledger would
+  /// claim today's quests a second time.
+  final bool loaded;
 }
 
 class _RewardLedgerNotifier extends StateNotifier<_RewardLedger> {
@@ -97,20 +133,37 @@ class _RewardLedgerNotifier extends StateNotifier<_RewardLedger> {
           ...state.unlockedBadges,
           ...?prefs.getStringList('gamification_badges'),
         },
+        questBank: prefs.getInt('gamification_quest_bank'),
+        questDay: prefs.getString('gamification_quest_day') ?? '',
+        claimedQuests: {...?prefs.getStringList('gamification_quests_claimed')},
+        loaded: true,
       );
     } catch (_) {
       // Continue with the current session's earned rewards if storage fails.
+      if (mounted) {
+        state = _RewardLedger(state.xpFloor, state.unlockedBadges, loaded: true);
+      }
     }
   }
 
   Future<void> _pending = Future.value();
 
-  void record(int xp, Iterable<String> badgeIds) {
+  void record(
+    int xp,
+    Iterable<String> badgeIds, {
+    required int questBank,
+    required String questDay,
+    required Set<String> claimedQuests,
+  }) {
     if (!mounted) return;
-    final badges = {...state.unlockedBadges, ...badgeIds};
-    if (xp <= state.xpFloor && badges.length == state.unlockedBadges.length)
-      return;
-    state = _RewardLedger(math.max(xp, state.xpFloor), badges);
+    state = _RewardLedger(
+      math.max(xp, state.xpFloor),
+      {...state.unlockedBadges, ...badgeIds},
+      questBank: questBank,
+      questDay: questDay,
+      claimedQuests: claimedQuests,
+      loaded: true,
+    );
     _pending = _pending.catchError((_) {}).then((_) async {
       try {
         final prefs = await SharedPreferences.getInstance();
@@ -119,6 +172,12 @@ class _RewardLedgerNotifier extends StateNotifier<_RewardLedger> {
         await prefs.setStringList(
           'gamification_badges',
           state.unlockedBadges.toList(),
+        );
+        await prefs.setInt('gamification_quest_bank', state.questBank ?? 0);
+        await prefs.setString('gamification_quest_day', state.questDay);
+        await prefs.setStringList(
+          'gamification_quests_claimed',
+          state.claimedQuests.toList(),
         );
       } catch (_) {
         // Keep the in-memory award; a later award retries the write.
@@ -132,7 +191,7 @@ final _rewardLedgerProvider =
       return _RewardLedgerNotifier();
     });
 
-final _supportCountProvider = FutureProvider<int>((ref) async {
+final supportCountProvider = FutureProvider<int>((ref) async {
   final prefs = await SharedPreferences.getInstance();
   return prefs.getInt('crisis_support_count') ?? 0;
 });
@@ -141,24 +200,20 @@ final _supportCountProvider = FutureProvider<int>((ref) async {
 void invalidateGamification(WidgetRef ref) {
   ref
     ..invalidate(_rewardLedgerProvider)
-    ..invalidate(_supportCountProvider);
+    ..invalidate(supportCountProvider);
 }
 
 final gamificationProvider = Provider<GamificationState>((ref) {
   final ledger = ref.watch(_rewardLedgerProvider);
   final sessions = ref.watch(fastingSessionProvider).valueOrNull ?? const [];
   final water = ref.watch(waterProvider);
-  final rawStreak = ref.watch(streakProvider);
-  final supportCount = ref.watch(_supportCountProvider).valueOrNull ?? 0;
+  final supportCount = ref.watch(supportCountProvider).valueOrNull ?? 0;
   final finalized = sessions
       .where((session) => session.endTime != null)
       .toList();
   final completed = finalized.where((session) => session.completed).toList();
-  final recovery = _shieldedStreak(
-    completed.map((session) => session.startTime),
-    completed.length ~/ 7,
-  );
-  final streak = math.max(rawStreak, recovery.$1);
+  final recovery = fastingStreakFor(completed, DateTime.now());
+  final streak = recovery.$1;
   // Only target-complete fasts award XP, streak, season or badge progress.
   // Early stops remain in history, but are deliberately neutral here.
   final totalRewardedMinutes = completed.fold<int>(
@@ -170,12 +225,10 @@ final gamificationProvider = Provider<GamificationState>((ref) {
     0,
     (value, session) => math.max(value, session.actualMinutes ?? 0),
   );
-  final hydrationXp = (water.progress * 50).round().clamp(0, 50);
   final baseXp =
       completed.length * 100 +
       (totalRewardedMinutes ~/ 60) * 4 +
       math.min(streak, 7) * 15 +
-      hydrationXp +
       math.min(supportCount, 5) * 20;
   final today = DateTime.now();
   final todaySessions = completed.where((session) {
@@ -195,10 +248,15 @@ final gamificationProvider = Provider<GamificationState>((ref) {
     ),
     GameQuest(id: 'steady', progress: streak > 0 ? 1 : 0, target: 1, xp: 75),
   ];
-  final questXp = quests
-      .where((quest) => quest.completed)
-      .fold<int>(0, (sum, quest) => sum + quest.xp);
-  final calculatedXp = baseXp + questXp;
+  final questDay = '${today.year}-${today.month}-${today.day}';
+  final settled = settleQuestXp(
+    bank: ledger.questBank,
+    xpFloor: ledger.xpFloor,
+    baseXp: baseXp,
+    claimedToday: ledger.questDay == questDay ? ledger.claimedQuests : const {},
+    quests: quests,
+  );
+  final calculatedXp = baseXp + settled.bank;
   final xp = math.max(calculatedXp, ledger.xpFloor);
   final level = xp ~/ GamificationState.levelSize + 1;
 
@@ -311,10 +369,22 @@ final gamificationProvider = Provider<GamificationState>((ref) {
       .where((badge) => badge.unlocked)
       .map((badge) => badge.id)
       .toSet();
-  if (calculatedXp > ledger.xpFloor ||
-      unlockedNow.difference(ledger.unlockedBadges).isNotEmpty) {
+  if (ledger.loaded &&
+      (calculatedXp > ledger.xpFloor ||
+          settled.bank != ledger.questBank ||
+          ledger.questDay != questDay ||
+          settled.claimed.length != ledger.claimedQuests.length ||
+          unlockedNow.difference(ledger.unlockedBadges).isNotEmpty)) {
     final notifier = ref.read(_rewardLedgerProvider.notifier);
-    Future.microtask(() => notifier.record(calculatedXp, unlockedNow));
+    Future.microtask(
+      () => notifier.record(
+        calculatedXp,
+        unlockedNow,
+        questBank: settled.bank,
+        questDay: questDay,
+        claimedQuests: settled.claimed,
+      ),
+    );
   }
 
   return GamificationState(
@@ -340,27 +410,3 @@ final gamificationProvider = Provider<GamificationState>((ref) {
   );
 });
 
-(int, int) _shieldedStreak(Iterable<DateTime> dates, int shields) {
-  final dayKeys = dates
-      .map((date) => '${date.year}-${date.month}-${date.day}')
-      .toSet();
-  final today = DateTime.now();
-  var expected = DateTime(today.year, today.month, today.day);
-  if (!dayKeys.contains('${today.year}-${today.month}-${today.day}')) {
-    expected = DateTime(today.year, today.month, today.day - 1);
-  }
-  var streak = 0;
-  var remaining = shields;
-  for (var day = 0; day < 365; day++) {
-    final key = '${expected.year}-${expected.month}-${expected.day}';
-    if (dayKeys.contains(key)) {
-      streak++;
-    } else if (remaining > 0) {
-      remaining--;
-    } else {
-      break;
-    }
-    expected = DateTime(expected.year, expected.month, expected.day - 1);
-  }
-  return (streak, remaining);
-}
