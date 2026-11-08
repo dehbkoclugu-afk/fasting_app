@@ -2,7 +2,7 @@ name: Android build
 
 # Compile check for the Android release bundle. The upload keystore lives in
 # Codemagic, not here, so the bundle this produces is unsigned and cannot be
-# uploaded to Play — it exists to catch a broken build before a release run.
+# uploaded to Play - it exists to catch a broken build before a release run.
 
 on:
   push:
@@ -67,6 +67,17 @@ jobs:
 
       - run: flutter pub get
 
+      - name: Record resolved dependency lock
+        run: cat pubspec.lock
+
+      - name: Preserve resolved dependency lock
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        continue-on-error: true
+        with:
+          name: resolved-pubspec-lock
+          path: pubspec.lock
+          if-no-files-found: error
+
       - run: flutter gen-l10n
 
       # Infos are not fatal: the repo carries pre-existing Radio deprecations.
@@ -83,3 +94,4 @@ jobs:
           name: app-release-unsigned-aab
           path: build/app/outputs/bundle/release/*.aab
           if-no-files-found: error
+
