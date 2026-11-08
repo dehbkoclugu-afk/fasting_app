@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Slutljud",
   "profile_calmGamification": "Lugn spelifiering",
-  "profile_calmGamificationDesc": "Minskar pressen från liga och säsong",
+  "profile_calmGamificationDesc": "Minskar säsongspressen",
   "profile_editName": "Redigera ditt namn",
   "profile_name": "Namn",
   "circle_title": "Fastecirkel",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Du får en för var sjunde slutförande. En missad dag raderar aldrig dina framsteg.",
-  "game_league": "Privat veckoliga",
-  "game_leagueDesc": "Din rytmpoäng ligger i den {percent}:e percentilen i en privat lokal modell. Vikt och extrem fasta rangordnas aldrig.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Nivå {level}, {xp} erfarenhetspoäng",
   "@game_levelSemantics": {
     "placeholders": {

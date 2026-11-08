@@ -295,7 +295,7 @@
   "languageFrench": "Französisch",
   "profile_completionSound": "Abschlusssound",
   "profile_calmGamification": "Ruhige Gamifizierung",
-  "profile_calmGamificationDesc": "Reduziert den Liga- und Saisondruck",
+  "profile_calmGamificationDesc": "Reduziert den Saisondruck",
   "profile_editName": "Bearbeiten Sie Ihren Namen",
   "profile_name": "Name",
   "circle_title": "Fastenkreis",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Alle sieben Abschlüsse verdient. Ein verpasster Tag macht Ihren Fortschritt nie zunichte.",
-  "game_league": "Private wöchentliche Liga",
-  "game_leagueDesc": "Ihr Rhythmus-Score liegt im {percent}-Perzentil eines privaten lokalen Modells. Gewicht und extremes Fasten werden nie gewertet.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Level {level}, {xp} Erfahrungspunkte",
   "@game_levelSemantics": {
     "placeholders": {

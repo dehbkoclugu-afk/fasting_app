@@ -767,7 +767,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get profile_calmGamification => 'משחקיות רגועה';
 
   @override
-  String get profile_calmGamificationDesc => 'מפחית לחץ מליגות ועונות';
+  String get profile_calmGamificationDesc => 'מפחית את לחץ העונה';
 
   @override
   String get profile_editName => 'עריכת השם';
@@ -1296,14 +1296,6 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'מתקבלים בכל שבע השלמות. יום שהוחמץ לעולם לא מוחק את ההתקדמות.';
-
-  @override
-  String get game_league => 'ליגה שבועית פרטית';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'ציון הקצב שלכם נמצא באחוזון $percent של מודל מקומי פרטי. משקל וצום קיצוני לעולם אינם מדורגים.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

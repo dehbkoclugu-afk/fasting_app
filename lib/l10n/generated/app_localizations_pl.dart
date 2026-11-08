@@ -767,7 +767,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get profile_calmGamification => 'Spokojna grywalizacja';
 
   @override
-  String get profile_calmGamificationDesc => 'Zmniejsza presję ligi i sezonu';
+  String get profile_calmGamificationDesc => 'Zmniejsza presję sezonu';
 
   @override
   String get profile_editName => 'Edytuj swoje imię';
@@ -1296,14 +1296,6 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Otrzymujesz jedną za każde siedem ukończeń. Pominięty dzień nigdy nie usuwa postępów.';
-
-  @override
-  String get game_league => 'Prywatna liga tygodniowa';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Twój wynik rytmu znajduje się w $percent. percentylu prywatnego modelu lokalnego. Masa ciała i skrajny post nigdy nie są klasyfikowane.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

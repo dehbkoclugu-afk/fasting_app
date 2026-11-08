@@ -767,7 +767,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get profile_calmGamification => 'Klidná gamifikace';
 
   @override
-  String get profile_calmGamificationDesc => 'Snižuje tlak spojený s ligou a sezónou';
+  String get profile_calmGamificationDesc => 'Snižuje tlak sezóny';
 
   @override
   String get profile_editName => 'Upravit jméno';
@@ -1296,14 +1296,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Jeden získáte za každých sedm dokončení. Vynechaný den nikdy nesmaže váš pokrok.';
-
-  @override
-  String get game_league => 'Soukromá týdenní liga';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Vaše skóre rytmu je na $percent. percentilu soukromého místního modelu. Hmotnost ani extrémní půst se nikdy nehodnotí.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

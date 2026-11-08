@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Suara penyelesaian",
   "profile_calmGamification": "Gamifikasi tenang",
-  "profile_calmGamificationDesc": "Mengurangi tekanan liga dan musim",
+  "profile_calmGamificationDesc": "Mengurangi tekanan musim",
   "profile_editName": "Edit nama Anda",
   "profile_name": "Nama",
   "circle_title": "Lingkaran Puasa",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Diperoleh setiap tujuh penyelesaian. Hari yang terlewat tidak pernah menghapus kemajuan Anda.",
-  "game_league": "Liga mingguan pribadi",
-  "game_leagueDesc": "Skor ritme Anda berada di persentil ke-{percent} dalam model lokal pribadi. Berat badan dan puasa ekstrem tidak pernah diperingkat.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Level {level}, {xp} poin pengalaman",
   "@game_levelSemantics": {
     "placeholders": {

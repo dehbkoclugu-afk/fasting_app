@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Suono di completamento",
   "profile_calmGamification": "Gamification tranquilla",
-  "profile_calmGamificationDesc": "Riduce la pressione di leghe e stagioni",
+  "profile_calmGamificationDesc": "Riduce la pressione della stagione",
   "profile_editName": "Modifica il tuo nome",
   "profile_name": "Nome",
   "circle_title": "Cerchia del digiuno",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Ne ottieni uno ogni sette completamenti. Un giorno saltato non cancella mai i tuoi progressi.",
-  "game_league": "Lega settimanale privata",
-  "game_leagueDesc": "Il tuo punteggio di ritmo si trova nel {percent}° percentile di un modello locale privato. Il peso e i digiuni estremi non entrano mai in classifica.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Livello {level}, {xp} punti esperienza",
   "@game_levelSemantics": {
     "placeholders": {

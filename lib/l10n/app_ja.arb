@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "完了音",
   "profile_calmGamification": "穏やかなゲーム要素",
-  "profile_calmGamificationDesc": "リーグやシーズンのプレッシャーを軽減します",
+  "profile_calmGamificationDesc": "シーズンのプレッシャーを減らします",
   "profile_editName": "名前を編集",
   "profile_name": "名前",
   "circle_title": "断食サークル",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "7回完了するごとに獲得できます。1日休んでも進捗が消えることはありません。",
-  "game_league": "非公開の週間リーグ",
-  "game_leagueDesc": "あなたのリズムスコアは非公開のローカルモデルで{percent}パーセンタイルです。体重や極端な断食を順位付けすることはありません。",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "レベル{level}、経験値{xp}",
   "@game_levelSemantics": {
     "placeholders": {

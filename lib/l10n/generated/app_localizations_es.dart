@@ -767,7 +767,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get profile_calmGamification => 'Gamificación tranquila';
 
   @override
-  String get profile_calmGamificationDesc => 'Reduce la presión de la liga y la temporada.';
+  String get profile_calmGamificationDesc => 'Reduce la presión de la temporada';
 
   @override
   String get profile_editName => 'Edita tu nombre';
@@ -1296,14 +1296,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Obtenido cada siete completaciones. Un día perdido nunca borra tu progreso.';
-
-  @override
-  String get game_league => 'Liga semanal privada';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Su puntuación de ritmo está en el percentil $percent de un modelo local privado. El peso y el ayuno extremo nunca se clasifican.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -2467,7 +2459,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get profile_calmGamification => 'Gamificación tranquila';
 
   @override
-  String get profile_calmGamificationDesc => 'Reduce la presión de la liga y la temporada.';
+  String get profile_calmGamificationDesc => 'Reduce la presión de la temporada';
 
   @override
   String get profile_editName => 'Edita tu nombre';
@@ -2996,14 +2988,6 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
 
   @override
   String get game_shieldsDesc => 'Obtenido cada siete completaciones. Un día perdido nunca borra tu progreso.';
-
-  @override
-  String get game_league => 'Liga semanal privada';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Su puntuación de ritmo está en el percentil $percent de un modelo local privado. El peso y el ayuno extremo nunca se clasifican.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -4167,7 +4151,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get profile_calmGamification => 'Gamificación tranquila';
 
   @override
-  String get profile_calmGamificationDesc => 'Reduce la presión de la liga y la temporada.';
+  String get profile_calmGamificationDesc => 'Reduce la presión de la temporada';
 
   @override
   String get profile_editName => 'Edita tu nombre';
@@ -4696,14 +4680,6 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
 
   @override
   String get game_shieldsDesc => 'Obtenido cada siete completaciones. Un día perdido nunca borra tu progreso.';
-
-  @override
-  String get game_league => 'Liga semanal privada';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Su puntuación de ritmo está en el percentil $percent de un modelo local privado. El peso y el ayuno extremo nunca se clasifican.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

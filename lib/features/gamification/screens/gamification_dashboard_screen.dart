@@ -103,47 +103,6 @@ class GamificationDashboardScreen extends ConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: 14),
-          if (!calm)
-            FastingSplitArtCard(
-              assetPath: 'assets/images/editorial/v4/weekly-league.webp',
-              minHeight: 184,
-              artWidth: 132,
-              borderRadius: 22,
-              semanticLabel: l10n.game_league,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  margin: const EdgeInsets.all(12),
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface.withValues(alpha: .90),
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.game_league,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          color: theme.colorScheme.onSurface,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        l10n.game_leagueDesc(game.leaguePercentile),
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
-                          height: 1.3,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
         ],
       ),
     );

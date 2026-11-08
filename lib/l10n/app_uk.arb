@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Звук завершення",
   "profile_calmGamification": "Спокійна ігрова механіка",
-  "profile_calmGamificationDesc": "Зменшує тиск ліги та сезону",
+  "profile_calmGamificationDesc": "Зменшує тиск сезону",
   "profile_editName": "Змінити ім’я",
   "profile_name": "Ім’я",
   "circle_title": "Коло голодування",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Один щит за кожні сім завершень. Пропущений день ніколи не стирає прогрес.",
-  "game_league": "Приватна тижнева ліга",
-  "game_leagueDesc": "Ваш показник ритму перебуває в {percent}-му процентилі приватної локальної моделі. Вага та екстремальне голодування ніколи не ранжуються.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Рівень {level}, очки досвіду: {xp}",
   "@game_levelSemantics": {
     "placeholders": {

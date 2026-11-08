@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Afslutningslyd",
   "profile_calmGamification": "Rolig gamificering",
-  "profile_calmGamificationDesc": "Mindsker presset fra liga og sæson",
+  "profile_calmGamificationDesc": "Reducerer sæsonpresset",
   "profile_editName": "Rediger dit navn",
   "profile_name": "Navn",
   "circle_title": "Fastecirkel",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Du får ét for hver syv gennemførelser. En sprunget dag sletter aldrig dine fremskridt.",
-  "game_league": "Privat ugentlig liga",
-  "game_leagueDesc": "Din rytmescore ligger i {percent}. percentil i en privat lokal model. Vægt og ekstrem faste bliver aldrig rangeret.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Niveau {level}, {xp} erfaringspoint",
   "@game_levelSemantics": {
     "placeholders": {

@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Voltooiingsgeluid",
   "profile_calmGamification": "Rustige gamificatie",
-  "profile_calmGamificationDesc": "Vermindert de druk van competities en seizoenen",
+  "profile_calmGamificationDesc": "Vermindert de seizoensdruk",
   "profile_editName": "Je naam bewerken",
   "profile_name": "Naam",
   "circle_title": "Vastenkring",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Je verdient er één na elke zeven voltooide stappen. Een gemiste dag wist je voortgang nooit.",
-  "game_league": "Privé-weekcompetitie",
-  "game_leagueDesc": "Je ritmescore valt binnen het {percent}e percentiel van een privé lokaal model. Gewicht en extreem vasten worden nooit gerangschikt.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Niveau {level}, {xp} ervaringspunten",
   "@game_levelSemantics": {
     "placeholders": {

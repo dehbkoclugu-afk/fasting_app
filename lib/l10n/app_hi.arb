@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "पूर्णता ध्वनि",
   "profile_calmGamification": "शांत गेमिफ़िकेशन",
-  "profile_calmGamificationDesc": "लीग और सीज़न का दबाव कम करता है",
+  "profile_calmGamificationDesc": "सीज़न का दबाव कम करता है",
   "profile_editName": "अपना नाम बदलें",
   "profile_name": "नाम",
   "circle_title": "उपवास मंडली",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "हर सात पूर्णताओं पर मिलता है। एक दिन छूटने से आपकी प्रगति कभी नहीं मिटती।",
-  "game_league": "निजी साप्ताहिक लीग",
-  "game_leagueDesc": "आपका लय स्कोर निजी स्थानीय मॉडल के {percent}वें प्रतिशतक में है। वजन और अत्यधिक उपवास की कभी रैंकिंग नहीं होती।",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "स्तर {level}, {xp} अनुभव अंक",
   "@game_levelSemantics": {
     "placeholders": {

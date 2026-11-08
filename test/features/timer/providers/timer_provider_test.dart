@@ -116,7 +116,49 @@ void main() {
     final sessions = await db.getAllSessions();
     expect(sessions, hasLength(1));
     expect(sessions.single.completed, isTrue);
-    expect(sessions.single.actualMinutes, 13 * 60);
+    expect(sessions.single.actualMinutes, 12 * 60);
+    expect(
+      sessions.single.endTime,
+      now.subtract(const Duration(hours: 1)),
+    );
+  });
+
+  test('lapsed subscription falls back to the free plan on start', () async {
+    notifier.dispose();
+    notifier = TimerNotifier(
+      db,
+      clock: () => now,
+      backgroundService: service,
+      widgetService: widgetService,
+      tickerFactory: (_) => FakeTimer(),
+      restoreOnCreate: false,
+      initialPlanId: '20_4',
+      canUsePlan: (plan) => !plan.isPremium,
+    );
+
+    await notifier.startFasting();
+
+    final session = (await db.getAllSessions()).single;
+    expect(session.planType, '16_8');
+    expect(session.targetMinutes, 16 * 60);
+  });
+
+  test('an active subscription keeps the premium plan', () async {
+    notifier.dispose();
+    notifier = TimerNotifier(
+      db,
+      clock: () => now,
+      backgroundService: service,
+      widgetService: widgetService,
+      tickerFactory: (_) => FakeTimer(),
+      restoreOnCreate: false,
+      initialPlanId: '20_4',
+      canUsePlan: (_) => true,
+    );
+
+    await notifier.startFasting();
+
+    expect((await db.getAllSessions()).single.planType, '20_4');
   });
 
   test('duplicate finish calls do not rewrite history', () async {

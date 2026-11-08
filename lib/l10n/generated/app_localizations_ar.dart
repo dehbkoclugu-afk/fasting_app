@@ -767,7 +767,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profile_calmGamification => 'تحفيز هادئ';
 
   @override
-  String get profile_calmGamificationDesc => 'يقلل ضغط الدوري والموسم';
+  String get profile_calmGamificationDesc => 'يقلل ضغط الموسم';
 
   @override
   String get profile_editName => 'تعديل اسمك';
@@ -1296,14 +1296,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'تُكتسب كل سبع عمليات إكمال. لا يمحو يوم فائت تقدمك أبدًا.';
-
-  @override
-  String get game_league => 'دوري أسبوعي خاص';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'درجة إيقاعك في المئين $percent ضمن نموذج محلي خاص. لا يُصنف الوزن أو الصيام المفرط أبدًا.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

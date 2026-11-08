@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Valmistumisääni",
   "profile_calmGamification": "Rauhallinen pelillistäminen",
-  "profile_calmGamificationDesc": "Vähentää liigan ja kauden aiheuttamaa painetta",
+  "profile_calmGamificationDesc": "Vähentää kauden painetta",
   "profile_editName": "Muokkaa nimeäsi",
   "profile_name": "Nimi",
   "circle_title": "Paastopiiri",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Saat yhden joka seitsemännestä suorituksesta. Väliin jäänyt päivä ei koskaan pyyhi edistymistäsi.",
-  "game_league": "Yksityinen viikkoliiga",
-  "game_leagueDesc": "Rytmipisteesi on yksityisen paikallisen mallin {percent}. prosenttipisteessä. Painoa ja äärimmäistä paastoa ei koskaan aseteta paremmuusjärjestykseen.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Taso {level}, {xp} kokemuspistettä",
   "@game_levelSemantics": {
     "placeholders": {

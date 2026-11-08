@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "צליל השלמה",
   "profile_calmGamification": "משחקיות רגועה",
-  "profile_calmGamificationDesc": "מפחית לחץ מליגות ועונות",
+  "profile_calmGamificationDesc": "מפחית את לחץ העונה",
   "profile_editName": "עריכת השם",
   "profile_name": "שם",
   "circle_title": "מעגל הצום",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "מתקבלים בכל שבע השלמות. יום שהוחמץ לעולם לא מוחק את ההתקדמות.",
-  "game_league": "ליגה שבועית פרטית",
-  "game_leagueDesc": "ציון הקצב שלכם נמצא באחוזון {percent} של מודל מקומי פרטי. משקל וצום קיצוני לעולם אינם מדורגים.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "רמה {level}, ‏{xp} נקודות ניסיון",
   "@game_levelSemantics": {
     "placeholders": {

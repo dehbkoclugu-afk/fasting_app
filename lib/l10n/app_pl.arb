@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Dźwięk ukończenia",
   "profile_calmGamification": "Spokojna grywalizacja",
-  "profile_calmGamificationDesc": "Zmniejsza presję ligi i sezonu",
+  "profile_calmGamificationDesc": "Zmniejsza presję sezonu",
   "profile_editName": "Edytuj swoje imię",
   "profile_name": "Imię",
   "circle_title": "Krąg postu",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Otrzymujesz jedną za każde siedem ukończeń. Pominięty dzień nigdy nie usuwa postępów.",
-  "game_league": "Prywatna liga tygodniowa",
-  "game_leagueDesc": "Twój wynik rytmu znajduje się w {percent}. percentylu prywatnego modelu lokalnego. Masa ciała i skrajny post nigdy nie są klasyfikowane.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Poziom {level}, {xp} punktów doświadczenia",
   "@game_levelSemantics": {
     "placeholders": {

@@ -767,7 +767,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get profile_calmGamification => 'Rolig gamificering';
 
   @override
-  String get profile_calmGamificationDesc => 'Mindsker presset fra liga og sæson';
+  String get profile_calmGamificationDesc => 'Reducerer sæsonpresset';
 
   @override
   String get profile_editName => 'Rediger dit navn';
@@ -1296,14 +1296,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Du får ét for hver syv gennemførelser. En sprunget dag sletter aldrig dine fremskridt.';
-
-  @override
-  String get game_league => 'Privat ugentlig liga';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Din rytmescore ligger i $percent. percentil i en privat lokal model. Vægt og ekstrem faste bliver aldrig rangeret.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

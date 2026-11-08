@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "เสียงเมื่อเสร็จสิ้น",
   "profile_calmGamification": "เกมมิฟิเคชันแบบผ่อนคลาย",
-  "profile_calmGamificationDesc": "ลดแรงกดดันจากลีกและฤดูกาล",
+  "profile_calmGamificationDesc": "ลดแรงกดดันของซีซัน",
   "profile_editName": "แก้ไขชื่อของคุณ",
   "profile_name": "ชื่อ",
   "circle_title": "วงสนับสนุนการอดอาหาร",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "ได้รับทุกครั้งที่ทำสำเร็จเจ็ดครั้ง การพลาดหนึ่งวันจะไม่ลบความคืบหน้าของคุณ",
-  "game_league": "ลีกส่วนตัวรายสัปดาห์",
-  "game_leagueDesc": "คะแนนจังหวะของคุณอยู่ที่เปอร์เซ็นไทล์ {percent} ของแบบจำลองส่วนตัวในเครื่อง น้ำหนักและการอดอาหารแบบสุดโต่งจะไม่ถูกจัดอันดับ",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "ระดับ {level}, คะแนนประสบการณ์ {xp}",
   "@game_levelSemantics": {
     "placeholders": {

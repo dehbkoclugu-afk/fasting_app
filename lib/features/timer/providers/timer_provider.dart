@@ -10,6 +10,7 @@ import '../../../data/database/app_database.dart';
 import '../../../services/analytics_service.dart';
 import '../../../services/background_service.dart';
 import '../../../services/widget_service.dart';
+import '../../paywall/providers/subscription_provider.dart';
 import '../../profile/providers/settings_provider.dart';
 import 'water_provider.dart';
 
@@ -85,7 +86,9 @@ class TimerNotifier extends StateNotifier<TimerState> {
     TickerFactory? tickerFactory,
     bool restoreOnCreate = true,
     String initialPlanId = '16_8',
+    bool Function(FastingPlan plan)? canUsePlan,
   }) : _clock = clock ?? DateTime.now,
+       _canUsePlan = canUsePlan ?? ((_) => true),
        _backgroundService = backgroundService ?? BackgroundService(),
        _widgetService = widgetService ?? WidgetService(),
        _tickerFactory =
@@ -104,6 +107,7 @@ class TimerNotifier extends StateNotifier<TimerState> {
 
   final AppDatabase _db;
   final Clock _clock;
+  final bool Function(FastingPlan plan) _canUsePlan;
   final FastingTimerService _backgroundService;
   final FastingWidgetService _widgetService;
   final TickerFactory _tickerFactory;
@@ -134,7 +138,10 @@ class TimerNotifier extends StateNotifier<TimerState> {
     if (state.isBusy || state.status == TimerStatus.running) return;
     state = state.copyWith(isBusy: true, clearError: true);
     try {
-      final requested = FastingPlans.getById(planId ?? state.planId);
+      final plan = FastingPlans.getById(planId ?? state.planId);
+      // The saved plan outlives the subscription that unlocked it, so the
+      // selector alone cannot enforce this.
+      final requested = _canUsePlan(plan) ? plan : FastingPlans.getById('16_8');
       final session = await _db.createOrGetActiveSession(
         FastingSessionsCompanion(
           planType: Value(requested.id),
@@ -253,12 +260,17 @@ class TimerNotifier extends StateNotifier<TimerState> {
     _timer?.cancel();
     state = state.copyWith(isBusy: true, clearError: true);
     try {
-      final elapsed = state.startTime == null
-          ? state.elapsedSeconds
-          : _elapsedSince(state.startTime!);
+      final start = state.startTime;
+      // A completed fast ends at its target. Time the app spent closed after
+      // that is not fasting, and must not inflate totals or records.
+      final elapsed = completed
+          ? state.targetSeconds
+          : (start == null ? state.elapsedSeconds : _elapsedSince(start));
       await _db.finalizeActiveSession(
         id: _activeSessionId!,
-        endTime: _clock(),
+        endTime: completed && start != null
+            ? start.add(Duration(seconds: elapsed))
+            : _clock(),
         actualMinutes: elapsed ~/ 60,
         completed: completed,
       );
@@ -318,7 +330,21 @@ final timerProvider = StateNotifierProvider<TimerNotifier, TimerState>((ref) {
   final notifier = TimerNotifier(
     ref.watch(databaseProvider),
     initialPlanId: ref.read(settingsProvider).selectedPlanId,
+    // Unverified is not lapsed: a paying user must keep their plan offline.
+    canUsePlan: (plan) {
+      if (!plan.isPremium) return true;
+      final subscription = ref.read(subscriptionProvider);
+      return subscription.isPremium || !subscription.entitlementVerified;
+    },
   );
+  ref.listen<SubscriptionState>(subscriptionProvider, (previous, next) {
+    final selected = ref.read(settingsProvider).selectedPlanId;
+    if (next.entitlementVerified &&
+        !next.isPremium &&
+        FastingPlans.getById(selected).isPremium) {
+      ref.read(settingsProvider.notifier).setSelectedPlan('16_8');
+    }
+  });
   ref.listen<AppSettings>(settingsProvider, (previous, next) {
     if (previous?.selectedPlanId != next.selectedPlanId) {
       notifier.changePlan(next.selectedPlanId);

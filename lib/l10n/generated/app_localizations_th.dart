@@ -767,7 +767,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get profile_calmGamification => 'เกมมิฟิเคชันแบบผ่อนคลาย';
 
   @override
-  String get profile_calmGamificationDesc => 'ลดแรงกดดันจากลีกและฤดูกาล';
+  String get profile_calmGamificationDesc => 'ลดแรงกดดันของซีซัน';
 
   @override
   String get profile_editName => 'แก้ไขชื่อของคุณ';
@@ -1296,14 +1296,6 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'ได้รับทุกครั้งที่ทำสำเร็จเจ็ดครั้ง การพลาดหนึ่งวันจะไม่ลบความคืบหน้าของคุณ';
-
-  @override
-  String get game_league => 'ลีกส่วนตัวรายสัปดาห์';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'คะแนนจังหวะของคุณอยู่ที่เปอร์เซ็นไทล์ $percent ของแบบจำลองส่วนตัวในเครื่อง น้ำหนักและการอดอาหารแบบสุดโต่งจะไม่ถูกจัดอันดับ';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

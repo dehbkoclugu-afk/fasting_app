@@ -767,7 +767,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profile_calmGamification => 'Sakin oyunlaştırma';
 
   @override
-  String get profile_calmGamificationDesc => 'Lig ve sezon baskısını azaltır';
+  String get profile_calmGamificationDesc => 'Sezon baskısını azaltır';
 
   @override
   String get profile_editName => 'Adını düzenle';
@@ -1296,14 +1296,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Her yedi tamamlamada kazanılır. Kaçırılan bir gün ilerlemeni değersizleştirmez.';
-
-  @override
-  String get game_league => 'Özel haftalık lig';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Ritim puanın anonim yerel modelin %$percent diliminde. Kimseyle kilo veya açlık süresi yarıştırılmaz.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

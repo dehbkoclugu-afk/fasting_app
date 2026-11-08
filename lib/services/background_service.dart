@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
@@ -33,7 +32,7 @@ Future<void> _updateTimerNotification() async {
   final isActive = prefs.getBool('fasting_active') ?? false;
   final notificationsEnabled = prefs.getBool('notificationsEnabled') ?? true;
   final locale = _resolveLocale(prefs);
-  final l10n = lookupAppLocalizations(_localeFromTag(locale));
+  final l10n = lookupAppLocalizations(resolveNotificationLocale(locale));
 
   if (!isActive || !notificationsEnabled || startTimeMs == null || targetMinutes == null) return;
 
@@ -134,7 +133,7 @@ class BackgroundService implements FastingTimerService {
       return;
     }
     final locale = _resolveLocale(prefs);
-    final l10n = lookupAppLocalizations(_localeFromTag(locale));
+    final l10n = lookupAppLocalizations(resolveNotificationLocale(locale));
     final notifService = NotificationService();
     notifService.setLocale(locale);
     await notifService.scheduleFastingNotifications(
@@ -172,7 +171,3 @@ String _resolveLocale(SharedPreferences prefs) {
       PlatformDispatcher.instance.locale.languageCode;
 }
 
-Locale _localeFromTag(String tag) {
-  final parts = tag.replaceAll('-', '_').split('_');
-  return Locale.fromSubtags(languageCode: parts.first, countryCode: parts.length > 1 ? parts[1] : null);
-}

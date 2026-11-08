@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Son d'achèvement",
   "profile_calmGamification": "Une gamification calme",
-  "profile_calmGamificationDesc": "Réduit la pression de la ligue et de la saison",
+  "profile_calmGamificationDesc": "Réduit la pression de la saison",
   "profile_editName": "Modifiez votre nom",
   "profile_name": "Nom",
   "circle_title": "Cercle de jeûne",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Obtenu toutes les sept réussites. Une journée manquée n’efface jamais vos progrès.",
-  "game_league": "Ligue hebdomadaire privée",
-  "game_leagueDesc": "Votre score rythmique se situe dans le centile {percent} d’un modèle local privé. Le poids et le jeûne extrême ne sont jamais classés.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Points d'expérience de niveau {level}, {xp}",
   "@game_levelSemantics": {
     "placeholders": {

@@ -767,7 +767,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get profile_calmGamification => 'Trò chơi hóa nhẹ nhàng';
 
   @override
-  String get profile_calmGamificationDesc => 'Giảm áp lực từ giải đấu và mùa';
+  String get profile_calmGamificationDesc => 'Giảm áp lực mùa';
 
   @override
   String get profile_editName => 'Sửa tên của bạn';
@@ -1296,14 +1296,6 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Nhận được sau mỗi bảy lần hoàn thành. Một ngày bỏ lỡ không bao giờ xóa tiến độ của bạn.';
-
-  @override
-  String get game_league => 'Giải đấu tuần riêng tư';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Điểm nhịp điệu của bạn nằm ở phân vị $percent trong mô hình cục bộ riêng tư. Cân nặng và nhịn ăn cực đoan không bao giờ được xếp hạng.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

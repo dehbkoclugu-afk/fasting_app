@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Fullføringslyd",
   "profile_calmGamification": "Rolig spillifisering",
-  "profile_calmGamificationDesc": "Reduserer presset fra liga og sesong",
+  "profile_calmGamificationDesc": "Reduserer sesongpresset",
   "profile_editName": "Rediger navnet ditt",
   "profile_name": "Navn",
   "circle_title": "Fastekrets",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Du får ett for hver sju fullføringer. En utelatt dag sletter aldri fremdriften.",
-  "game_league": "Privat ukesliga",
-  "game_leagueDesc": "Rytmepoengsummen din er i {percent}. persentil i en privat lokal modell. Vekt og ekstrem faste blir aldri rangert.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Nivå {level}, {xp} erfaringspoeng",
   "@game_levelSemantics": {
     "placeholders": {

@@ -767,7 +767,7 @@ class AppLocalizationsNo extends AppLocalizations {
   String get profile_calmGamification => 'Rolig spillifisering';
 
   @override
-  String get profile_calmGamificationDesc => 'Reduserer presset fra liga og sesong';
+  String get profile_calmGamificationDesc => 'Reduserer sesongpresset';
 
   @override
   String get profile_editName => 'Rediger navnet ditt';
@@ -1296,14 +1296,6 @@ class AppLocalizationsNo extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Du får ett for hver sju fullføringer. En utelatt dag sletter aldri fremdriften.';
-
-  @override
-  String get game_league => 'Privat ukesliga';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Rytmepoengsummen din er i $percent. persentil i en privat lokal modell. Vekt og ekstrem faste blir aldri rangert.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

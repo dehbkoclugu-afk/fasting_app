@@ -767,7 +767,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get profile_calmGamification => 'शांत गेमिफ़िकेशन';
 
   @override
-  String get profile_calmGamificationDesc => 'लीग और सीज़न का दबाव कम करता है';
+  String get profile_calmGamificationDesc => 'सीज़न का दबाव कम करता है';
 
   @override
   String get profile_editName => 'अपना नाम बदलें';
@@ -1296,14 +1296,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'हर सात पूर्णताओं पर मिलता है। एक दिन छूटने से आपकी प्रगति कभी नहीं मिटती।';
-
-  @override
-  String get game_league => 'निजी साप्ताहिक लीग';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'आपका लय स्कोर निजी स्थानीय मॉडल के $percentवें प्रतिशतक में है। वजन और अत्यधिक उपवास की कभी रैंकिंग नहीं होती।';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

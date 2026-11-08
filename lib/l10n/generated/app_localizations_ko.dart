@@ -767,7 +767,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get profile_calmGamification => '차분한 게임 요소';
 
   @override
-  String get profile_calmGamificationDesc => '리그와 시즌의 부담을 줄입니다';
+  String get profile_calmGamificationDesc => '시즌 압박을 줄입니다';
 
   @override
   String get profile_editName => '이름 수정';
@@ -1296,14 +1296,6 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => '7회 완료할 때마다 획득합니다. 하루를 놓쳐도 진행 상황은 사라지지 않습니다.';
-
-  @override
-  String get game_league => '비공개 주간 리그';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return '리듬 점수는 비공개 로컬 모델에서 $percent백분위입니다. 체중과 극단적 단식은 절대 순위를 매기지 않습니다.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

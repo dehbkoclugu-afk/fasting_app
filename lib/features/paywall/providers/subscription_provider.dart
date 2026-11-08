@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -66,6 +68,22 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
 
   final _service = RevenueCatService();
   bool _premiumListenerAttached = false;
+  Timer? _retry;
+  int _retriesLeft = 3;
+
+  @override
+  void dispose() {
+    _retry?.cancel();
+    super.dispose();
+  }
+
+  /// A failed store start must not need the paywall's button to recover: until
+  /// then, a paying user is treated as free for every premium feature.
+  void _scheduleRetry() {
+    if (state.entitlementVerified || _retriesLeft == 0) return;
+    _retriesLeft--;
+    _retry = Timer(const Duration(seconds: 30), loadProducts);
+  }
 
   Future<void> _init() => loadProducts();
 
@@ -81,6 +99,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
   /// Loads entitlement status and the purchasable packages. Safe to call
   /// again — the paywall's retry button does exactly that.
   Future<void> loadProducts() async {
+    _retry?.cancel();
     state = state.copyWith(isLoadingProducts: true, clearError: true);
     try {
       // The SDK may not have configured yet on a cold start (or configure
@@ -90,20 +109,26 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
 
       final isPremium = await _service.isPremium();
       final packages = await _service.getPackages();
+      if (!mounted) return;
+      // An unconfigured SDK answers false without asking anyone: that is not
+      // proof the user has no subscription.
+      final configured = _service.isConfigured;
       state = state.copyWith(
-        isPremium: isPremium,
-        entitlementVerified: true,
+        isPremium: configured ? isPremium : null,
+        entitlementVerified: configured ? true : null,
         availablePackages: packages,
-        isStoreAvailable: _service.isConfigured,
+        isStoreAvailable: configured,
         isLoadingProducts: false,
       );
     } catch (e) {
       debugPrint('Subscription load error: $e');
+      if (!mounted) return;
       state = state.copyWith(
         isLoadingProducts: false,
         isStoreAvailable: _service.isConfigured,
       );
     }
+    _scheduleRetry();
   }
 
   Future<PurchaseOutcome> purchase(Package package) async {
@@ -149,6 +174,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
   }
 
   Future<void> refreshStatus() async {
+    if (!_service.isConfigured) return;
     try {
       final isPremium = await _service.isPremium();
       if (mounted)

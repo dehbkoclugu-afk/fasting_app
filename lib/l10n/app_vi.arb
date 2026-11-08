@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Âm thanh hoàn thành",
   "profile_calmGamification": "Trò chơi hóa nhẹ nhàng",
-  "profile_calmGamificationDesc": "Giảm áp lực từ giải đấu và mùa",
+  "profile_calmGamificationDesc": "Giảm áp lực mùa",
   "profile_editName": "Sửa tên của bạn",
   "profile_name": "Tên",
   "circle_title": "Vòng tròn nhịn ăn",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Nhận được sau mỗi bảy lần hoàn thành. Một ngày bỏ lỡ không bao giờ xóa tiến độ của bạn.",
-  "game_league": "Giải đấu tuần riêng tư",
-  "game_leagueDesc": "Điểm nhịp điệu của bạn nằm ở phân vị {percent} trong mô hình cục bộ riêng tư. Cân nặng và nhịn ăn cực đoan không bao giờ được xếp hạng.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Cấp {level}, {xp} điểm kinh nghiệm",
   "@game_levelSemantics": {
     "placeholders": {

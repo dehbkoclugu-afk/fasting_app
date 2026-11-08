@@ -767,7 +767,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile_calmGamification => 'Calm gamification';
 
   @override
-  String get profile_calmGamificationDesc => 'Reduces league and season pressure';
+  String get profile_calmGamificationDesc => 'Reduces season pressure';
 
   @override
   String get profile_editName => 'Edit your name';
@@ -1296,14 +1296,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Earned every seven completions. A missed day never erases your progress.';
-
-  @override
-  String get game_league => 'Private weekly league';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Your rhythm score is in the ${percent}th percentile of a private local model. Weight and extreme fasting are never ranked.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

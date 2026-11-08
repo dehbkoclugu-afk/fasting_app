@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Звук завершения",
   "profile_calmGamification": "Спокойная игровая механика",
-  "profile_calmGamificationDesc": "Снижает давление лиги и сезона",
+  "profile_calmGamificationDesc": "Снижает давление сезона",
   "profile_editName": "Изменить имя",
   "profile_name": "Имя",
   "circle_title": "Круг голодания",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Один щит за каждые семь завершений. Пропущенный день никогда не стирает прогресс.",
-  "game_league": "Закрытая недельная лига",
-  "game_leagueDesc": "Ваш показатель ритма находится в {percent}-м процентиле частной локальной модели. Вес и экстремальное голодание никогда не ранжируются.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Уровень {level}, очки опыта: {xp}",
   "@game_levelSemantics": {
     "placeholders": {

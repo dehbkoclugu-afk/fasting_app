@@ -295,7 +295,7 @@
   "languageFrench": "Francês",
   "profile_completionSound": "Som de conclusão",
   "profile_calmGamification": "Gamificação calma",
-  "profile_calmGamificationDesc": "Reduz a pressão da liga e da temporada",
+  "profile_calmGamificationDesc": "Reduz a pressão da temporada",
   "profile_editName": "Edite seu nome",
   "profile_name": "Nome",
   "circle_title": "Círculo de Jejum",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Ganhou a cada sete conclusões. Um dia perdido nunca apaga seu progresso.",
-  "game_league": "Liga semanal privada",
-  "game_leagueDesc": "Sua pontuação de ritmo está no percentil {percent} de um modelo local privado. Peso e jejum extremo nunca são classificados.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Nível {level}, pontos de experiência {xp}",
   "@game_levelSemantics": {
     "placeholders": {

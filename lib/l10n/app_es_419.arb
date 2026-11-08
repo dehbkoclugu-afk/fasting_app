@@ -295,7 +295,7 @@
   "languageFrench": "francés",
   "profile_completionSound": "Sonido de finalización",
   "profile_calmGamification": "Gamificación tranquila",
-  "profile_calmGamificationDesc": "Reduce la presión de la liga y la temporada.",
+  "profile_calmGamificationDesc": "Reduce la presión de la temporada",
   "profile_editName": "Edita tu nombre",
   "profile_name": "Nombre",
   "circle_title": "Círculo de ayuno",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Obtenido cada siete completaciones. Un día perdido nunca borra tu progreso.",
-  "game_league": "Liga semanal privada",
-  "game_leagueDesc": "Su puntuación de ritmo está en el percentil {percent} de un modelo local privado. El peso y el ayuno extremo nunca se clasifican.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Nivel {level}, puntos de experiencia {xp}",
   "@game_levelSemantics": {
     "placeholders": {

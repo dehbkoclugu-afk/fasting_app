@@ -767,7 +767,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get profile_calmGamification => 'Gamifikasi tenang';
 
   @override
-  String get profile_calmGamificationDesc => 'Mengurangi tekanan liga dan musim';
+  String get profile_calmGamificationDesc => 'Mengurangi tekanan musim';
 
   @override
   String get profile_editName => 'Edit nama Anda';
@@ -1296,14 +1296,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Diperoleh setiap tujuh penyelesaian. Hari yang terlewat tidak pernah menghapus kemajuan Anda.';
-
-  @override
-  String get game_league => 'Liga mingguan pribadi';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Skor ritme Anda berada di persentil ke-$percent dalam model lokal pribadi. Berat badan dan puasa ekstrem tidak pernah diperingkat.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

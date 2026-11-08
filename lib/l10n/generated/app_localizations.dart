@@ -1642,7 +1642,7 @@ abstract class AppLocalizations {
   /// No description provided for @profile_calmGamificationDesc.
   ///
   /// In en, this message translates to:
-  /// **'Reduces league and season pressure'**
+  /// **'Reduces season pressure'**
   String get profile_calmGamificationDesc;
 
   /// No description provided for @profile_editName.
@@ -2628,18 +2628,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Earned every seven completions. A missed day never erases your progress.'**
   String get game_shieldsDesc;
-
-  /// No description provided for @game_league.
-  ///
-  /// In en, this message translates to:
-  /// **'Private weekly league'**
-  String get game_league;
-
-  /// No description provided for @game_leagueDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Your rhythm score is in the {percent}th percentile of a private local model. Weight and extreme fasting are never ranked.'**
-  String game_leagueDesc(int percent);
 
   /// No description provided for @game_levelSemantics.
   ///

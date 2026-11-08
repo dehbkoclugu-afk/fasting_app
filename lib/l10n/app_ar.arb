@@ -297,7 +297,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "صوت الإكمال",
   "profile_calmGamification": "تحفيز هادئ",
-  "profile_calmGamificationDesc": "يقلل ضغط الدوري والموسم",
+  "profile_calmGamificationDesc": "يقلل ضغط الموسم",
   "profile_editName": "تعديل اسمك",
   "profile_name": "الاسم",
   "circle_title": "دائرة الصيام",
@@ -612,15 +612,6 @@
     }
   },
   "game_shieldsDesc": "تُكتسب كل سبع عمليات إكمال. لا يمحو يوم فائت تقدمك أبدًا.",
-  "game_league": "دوري أسبوعي خاص",
-  "game_leagueDesc": "درجة إيقاعك في المئين {percent} ضمن نموذج محلي خاص. لا يُصنف الوزن أو الصيام المفرط أبدًا.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "المستوى {level}، {xp} نقطة خبرة",
   "@game_levelSemantics": {
     "placeholders": {

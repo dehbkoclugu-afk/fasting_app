@@ -767,7 +767,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get profile_calmGamification => '穏やかなゲーム要素';
 
   @override
-  String get profile_calmGamificationDesc => 'リーグやシーズンのプレッシャーを軽減します';
+  String get profile_calmGamificationDesc => 'シーズンのプレッシャーを減らします';
 
   @override
   String get profile_editName => '名前を編集';
@@ -1296,14 +1296,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => '7回完了するごとに獲得できます。1日休んでも進捗が消えることはありません。';
-
-  @override
-  String get game_league => '非公開の週間リーグ';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'あなたのリズムスコアは非公開のローカルモデルで$percentパーセンタイルです。体重や極端な断食を順位付けすることはありません。';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

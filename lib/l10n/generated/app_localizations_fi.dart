@@ -767,7 +767,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get profile_calmGamification => 'Rauhallinen pelillistäminen';
 
   @override
-  String get profile_calmGamificationDesc => 'Vähentää liigan ja kauden aiheuttamaa painetta';
+  String get profile_calmGamificationDesc => 'Vähentää kauden painetta';
 
   @override
   String get profile_editName => 'Muokkaa nimeäsi';
@@ -1296,14 +1296,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Saat yhden joka seitsemännestä suorituksesta. Väliin jäänyt päivä ei koskaan pyyhi edistymistäsi.';
-
-  @override
-  String get game_league => 'Yksityinen viikkoliiga';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Rytmipisteesi on yksityisen paikallisen mallin $percent. prosenttipisteessä. Painoa ja äärimmäistä paastoa ei koskaan aseteta paremmuusjärjestykseen.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

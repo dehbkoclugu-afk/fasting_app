@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Befejezési hang",
   "profile_calmGamification": "Nyugodt játékosítás",
-  "profile_calmGamificationDesc": "Csökkenti a liga és az idény okozta nyomást",
+  "profile_calmGamificationDesc": "Csökkenti a szezon nyomását",
   "profile_editName": "Név szerkesztése",
   "profile_name": "Név",
   "circle_title": "Böjtkör",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Minden hét teljesítés után kapsz egyet. Egy kihagyott nap soha nem törli a haladásodat.",
-  "game_league": "Privát heti liga",
-  "game_leagueDesc": "A ritmuspontszámod egy privát helyi modell {percent}. percentilisébe esik. A testsúlyt és a szélsőséges böjtöt soha nem rangsoroljuk.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "{level}. szint, {xp} tapasztalati pont",
   "@game_levelSemantics": {
     "placeholders": {

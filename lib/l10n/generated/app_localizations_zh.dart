@@ -767,7 +767,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get profile_calmGamification => '轻松游戏化';
 
   @override
-  String get profile_calmGamificationDesc => '减轻联赛和赛季压力';
+  String get profile_calmGamificationDesc => '减轻赛季压力';
 
   @override
   String get profile_editName => '编辑您的姓名';
@@ -1296,14 +1296,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => '每完成七次即可获得。错过一天也不会抹去您的进度。';
-
-  @override
-  String get game_league => '私人周联赛';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return '您的节奏得分在私人本地模型中位于第$percent百分位。体重和极端禁食永远不会参与排名。';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -2467,7 +2459,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get profile_calmGamification => '轻松游戏化';
 
   @override
-  String get profile_calmGamificationDesc => '减轻联赛和赛季压力';
+  String get profile_calmGamificationDesc => '减轻赛季压力';
 
   @override
   String get profile_editName => '编辑您的姓名';
@@ -2996,14 +2988,6 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get game_shieldsDesc => '每完成七次即可获得。错过一天也不会抹去您的进度。';
-
-  @override
-  String get game_league => '私人周联赛';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return '您的节奏得分在私人本地模型中位于第$percent百分位。体重和极端禁食永远不会参与排名。';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

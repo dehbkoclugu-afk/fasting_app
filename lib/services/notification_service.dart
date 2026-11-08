@@ -371,7 +371,9 @@ class NotificationService {
 
 Locale resolveNotificationLocale(String tag) {
   final parts = tag.replaceAll('-', '_').split('_');
-  final language = parts.first.toLowerCase();
+  var language = parts.first.toLowerCase();
+  // Android reports Norwegian as nb or nn; the app ships it as no.
+  if (language == 'nb' || language == 'nn') language = 'no';
   final country = parts.length > 1 ? parts[1].toUpperCase() : null;
   for (final locale in AppLocalizations.supportedLocales) {
     if (locale.languageCode == language && locale.countryCode == country) {

@@ -297,7 +297,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Tamamlama sesi",
   "profile_calmGamification": "Sakin oyunlaştırma",
-  "profile_calmGamificationDesc": "Lig ve sezon baskısını azaltır",
+  "profile_calmGamificationDesc": "Sezon baskısını azaltır",
   "profile_editName": "Adını düzenle",
   "profile_name": "Ad",
   "circle_title": "Oruç Çemberi",
@@ -612,15 +612,6 @@
     }
   },
   "game_shieldsDesc": "Her yedi tamamlamada kazanılır. Kaçırılan bir gün ilerlemeni değersizleştirmez.",
-  "game_league": "Özel haftalık lig",
-  "game_leagueDesc": "Ritim puanın anonim yerel modelin %{percent} diliminde. Kimseyle kilo veya açlık süresi yarıştırılmaz.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Seviye {level}, {xp} deneyim puanı",
   "@game_levelSemantics": {
     "placeholders": {

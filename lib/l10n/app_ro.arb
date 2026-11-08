@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Sunet de finalizare",
   "profile_calmGamification": "Gamificare relaxată",
-  "profile_calmGamificationDesc": "Reduce presiunea ligii și a sezonului",
+  "profile_calmGamificationDesc": "Reduce presiunea sezonului",
   "profile_editName": "Editează-ți numele",
   "profile_name": "Nume",
   "circle_title": "Cercul de post",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Primești unul la fiecare șapte finalizări. O zi ratată nu îți șterge niciodată progresul.",
-  "game_league": "Ligă săptămânală privată",
-  "game_leagueDesc": "Scorul ritmului tău se află în percentila {percent} a unui model local privat. Greutatea și postul extrem nu sunt niciodată clasificate.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Nivel {level}, {xp} puncte de experiență",
   "@game_levelSemantics": {
     "placeholders": {

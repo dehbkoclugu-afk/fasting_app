@@ -767,7 +767,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profile_calmGamification => 'Спокойная игровая механика';
 
   @override
-  String get profile_calmGamificationDesc => 'Снижает давление лиги и сезона';
+  String get profile_calmGamificationDesc => 'Снижает давление сезона';
 
   @override
   String get profile_editName => 'Изменить имя';
@@ -1296,14 +1296,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Один щит за каждые семь завершений. Пропущенный день никогда не стирает прогресс.';
-
-  @override
-  String get game_league => 'Закрытая недельная лига';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Ваш показатель ритма находится в $percent-м процентиле частной локальной модели. Вес и экстремальное голодание никогда не ранжируются.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

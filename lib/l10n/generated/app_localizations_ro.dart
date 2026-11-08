@@ -767,7 +767,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get profile_calmGamification => 'Gamificare relaxată';
 
   @override
-  String get profile_calmGamificationDesc => 'Reduce presiunea ligii și a sezonului';
+  String get profile_calmGamificationDesc => 'Reduce presiunea sezonului';
 
   @override
   String get profile_editName => 'Editează-ți numele';
@@ -1296,14 +1296,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Primești unul la fiecare șapte finalizări. O zi ratată nu îți șterge niciodată progresul.';
-
-  @override
-  String get game_league => 'Ligă săptămânală privată';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Scorul ritmului tău se află în percentila $percent a unui model local privat. Greutatea și postul extrem nu sunt niciodată clasificate.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

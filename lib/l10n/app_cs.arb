@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Zvuk dokončení",
   "profile_calmGamification": "Klidná gamifikace",
-  "profile_calmGamificationDesc": "Snižuje tlak spojený s ligou a sezónou",
+  "profile_calmGamificationDesc": "Snižuje tlak sezóny",
   "profile_editName": "Upravit jméno",
   "profile_name": "Jméno",
   "circle_title": "Půstový kruh",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "Jeden získáte za každých sedm dokončení. Vynechaný den nikdy nesmaže váš pokrok.",
-  "game_league": "Soukromá týdenní liga",
-  "game_leagueDesc": "Vaše skóre rytmu je na {percent}. percentilu soukromého místního modelu. Hmotnost ani extrémní půst se nikdy nehodnotí.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Úroveň {level}, {xp} zkušenostních bodů",
   "@game_levelSemantics": {
     "placeholders": {

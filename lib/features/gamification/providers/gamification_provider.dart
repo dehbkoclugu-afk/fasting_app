@@ -74,7 +74,6 @@ class GamificationState {
   /// A new account starts at 0/30; progress is never presented as earned
   /// before the user has accumulated the first 250 XP.
   int get seasonStep => math.min(30, xp ~/ 250);
-  int get leaguePercentile => math.min(95, 35 + level * 4 + streak * 2);
 }
 
 class _RewardLedger {

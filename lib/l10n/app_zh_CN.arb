@@ -295,7 +295,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "完成提示音",
   "profile_calmGamification": "轻松游戏化",
-  "profile_calmGamificationDesc": "减轻联赛和赛季压力",
+  "profile_calmGamificationDesc": "减轻赛季压力",
   "profile_editName": "编辑您的姓名",
   "profile_name": "姓名",
   "circle_title": "禁食圈",
@@ -610,15 +610,6 @@
     }
   },
   "game_shieldsDesc": "每完成七次即可获得。错过一天也不会抹去您的进度。",
-  "game_league": "私人周联赛",
-  "game_leagueDesc": "您的节奏得分在私人本地模型中位于第{percent}百分位。体重和极端禁食永远不会参与排名。",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "等级{level}，{xp}经验值",
   "@game_levelSemantics": {
     "placeholders": {

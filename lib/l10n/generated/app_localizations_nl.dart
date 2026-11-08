@@ -767,7 +767,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get profile_calmGamification => 'Rustige gamificatie';
 
   @override
-  String get profile_calmGamificationDesc => 'Vermindert de druk van competities en seizoenen';
+  String get profile_calmGamificationDesc => 'Vermindert de seizoensdruk';
 
   @override
   String get profile_editName => 'Je naam bewerken';
@@ -1296,14 +1296,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Je verdient er één na elke zeven voltooide stappen. Een gemiste dag wist je voortgang nooit.';
-
-  @override
-  String get game_league => 'Privé-weekcompetitie';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Je ritmescore valt binnen het ${percent}e percentiel van een privé lokaal model. Gewicht en extreem vasten worden nooit gerangschikt.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

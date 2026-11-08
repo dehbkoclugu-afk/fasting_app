@@ -767,7 +767,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get profile_calmGamification => 'Nyugodt játékosítás';
 
   @override
-  String get profile_calmGamificationDesc => 'Csökkenti a liga és az idény okozta nyomást';
+  String get profile_calmGamificationDesc => 'Csökkenti a szezon nyomását';
 
   @override
   String get profile_editName => 'Név szerkesztése';
@@ -1296,14 +1296,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Minden hét teljesítés után kapsz egyet. Egy kihagyott nap soha nem törli a haladásodat.';
-
-  @override
-  String get game_league => 'Privát heti liga';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'A ritmuspontszámod egy privát helyi modell $percent. percentilisébe esik. A testsúlyt és a szélsőséges böjtöt soha nem rangsoroljuk.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

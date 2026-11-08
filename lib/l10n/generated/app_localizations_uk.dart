@@ -767,7 +767,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get profile_calmGamification => 'Спокійна ігрова механіка';
 
   @override
-  String get profile_calmGamificationDesc => 'Зменшує тиск ліги та сезону';
+  String get profile_calmGamificationDesc => 'Зменшує тиск сезону';
 
   @override
   String get profile_editName => 'Змінити ім’я';
@@ -1296,14 +1296,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get game_shieldsDesc => 'Один щит за кожні сім завершень. Пропущений день ніколи не стирає прогрес.';
-
-  @override
-  String get game_league => 'Приватна тижнева ліга';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Ваш показник ритму перебуває в $percent-му процентилі приватної локальної моделі. Вага та екстремальне голодування ніколи не ранжуються.';
-  }
 
   @override
   String game_levelSemantics(int level, int xp) {

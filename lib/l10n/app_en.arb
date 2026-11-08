@@ -297,7 +297,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Completion sound",
   "profile_calmGamification": "Calm gamification",
-  "profile_calmGamificationDesc": "Reduces league and season pressure",
+  "profile_calmGamificationDesc": "Reduces season pressure",
   "profile_editName": "Edit your name",
   "profile_name": "Name",
   "circle_title": "Fasting Circle",
@@ -612,15 +612,6 @@
     }
   },
   "game_shieldsDesc": "Earned every seven completions. A missed day never erases your progress.",
-  "game_league": "Private weekly league",
-  "game_leagueDesc": "Your rhythm score is in the {percent}th percentile of a private local model. Weight and extreme fasting are never ranked.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Level {level}, {xp} experience points",
   "@game_levelSemantics": {
     "placeholders": {
