@@ -114,9 +114,25 @@ class TimerNotifier extends StateNotifier<TimerState> {
   Timer? _timer;
   int? _activeSessionId;
   int _widgetUpdateCounter = 0;
-  bool _finishing = false;
+  Future<void>? _pendingStart;
+  Future<void>? _pendingRestore;
+  Future<void>? _pendingFinish;
+  Future<void>? _pendingQuietEnd;
 
   Future<void> restoreActiveSession() async {
+    if (_pendingQuietEnd != null) return;
+    final pending = _pendingRestore;
+    if (pending != null) return pending;
+    final operation = _restoreActiveSession();
+    _pendingRestore = operation;
+    try {
+      await operation;
+    } finally {
+      _pendingRestore = null;
+    }
+  }
+
+  Future<void> _restoreActiveSession() async {
     try {
       final session = await _db.getActiveSession();
       if (session == null) return;
@@ -127,7 +143,7 @@ class TimerNotifier extends StateNotifier<TimerState> {
       } else {
         _startTicker();
         // Android drops alarms and work on force-stop or reboot.
-        unawaited(_startOptionalServices(session));
+        await _startOptionalServices(session);
       }
     } catch (error) {
       debugPrint('Active fasting session restore failed: $error');
@@ -137,6 +153,19 @@ class TimerNotifier extends StateNotifier<TimerState> {
   }
 
   Future<void> startFasting({String? planId}) async {
+    if (_pendingQuietEnd != null) return;
+    final pending = _pendingStart;
+    if (pending != null) return pending;
+    final operation = _startFasting(planId: planId);
+    _pendingStart = operation;
+    try {
+      await operation;
+    } finally {
+      _pendingStart = null;
+    }
+  }
+
+  Future<void> _startFasting({String? planId}) async {
     if (state.isBusy || state.status == TimerStatus.running) return;
     state = state.copyWith(isBusy: true, clearError: true);
     try {
@@ -186,7 +215,27 @@ class TimerNotifier extends StateNotifier<TimerState> {
   /// Ends any running fast and returns straight to idle, skipping the
   /// completion overlay and the ad behind it. For safety exits.
   Future<void> endFastQuietly() async {
+    final pending = _pendingQuietEnd;
+    if (pending != null) return pending;
+    final operation = _endFastQuietly();
+    _pendingQuietEnd = operation;
+    try {
+      await operation;
+    } finally {
+      _pendingQuietEnd = null;
+    }
+  }
+
+  Future<void> _endFastQuietly() async {
+    // A safety exit must not be dropped by stopFasting's busy guard. Also
+    // drain service startup/cleanup before data erasure can invalidate us.
+    await _pendingRestore;
+    await _pendingStart;
+    await _pendingFinish;
     await stopFasting();
+    if (state.status == TimerStatus.running || state.isBusy) {
+      throw state.error ?? StateError('The active fast could not be ended.');
+    }
     await resetTimer();
   }
 
@@ -257,8 +306,19 @@ class TimerNotifier extends StateNotifier<TimerState> {
   }
 
   Future<void> _finish({required bool completed}) async {
-    if (_finishing || _activeSessionId == null) return;
-    _finishing = true;
+    final pending = _pendingFinish;
+    if (pending != null) return pending;
+    final operation = _finishSession(completed: completed);
+    _pendingFinish = operation;
+    try {
+      await operation;
+    } finally {
+      _pendingFinish = null;
+    }
+  }
+
+  Future<void> _finishSession({required bool completed}) async {
+    if (_activeSessionId == null) return;
     _timer?.cancel();
     state = state.copyWith(isBusy: true, clearError: true);
     try {
@@ -288,8 +348,6 @@ class TimerNotifier extends StateNotifier<TimerState> {
     } catch (error) {
       state = state.copyWith(isBusy: false, error: error);
       if (state.status == TimerStatus.running) _startTicker();
-    } finally {
-      _finishing = false;
     }
   }
 

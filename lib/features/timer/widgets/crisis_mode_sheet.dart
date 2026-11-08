@@ -31,6 +31,7 @@ class _CrisisModeSheet extends ConsumerStatefulWidget {
 class _CrisisModeSheetState extends ConsumerState<_CrisisModeSheet> {
   int _step = 0;
   String? _reason;
+  bool _endingFast = false;
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +137,7 @@ class _CrisisModeSheetState extends ConsumerState<_CrisisModeSheet> {
           ],
           const SizedBox(height: 26),
           FilledButton(
-            onPressed: _step == 0 && _reason == null
+            onPressed: _endingFast || (_step == 0 && _reason == null)
                 ? null
                 : () async {
                     HapticFeedback.selectionClick();
@@ -157,7 +158,7 @@ class _CrisisModeSheetState extends ConsumerState<_CrisisModeSheet> {
           if (_step == 1 && !unwell) ...[
             const SizedBox(height: 8),
             OutlinedButton(
-              onPressed: _endFast,
+              onPressed: _endingFast ? null : _endFast,
               child: Text(l10n.crisis_endFast),
             ),
             const SizedBox(height: 8),
@@ -217,10 +218,27 @@ class _CrisisModeSheetState extends ConsumerState<_CrisisModeSheet> {
   /// Ends the fast with no celebration or ad: someone leaving through this
   /// sheet is not finishing a goal.
   Future<void> _endFast() async {
-    await ref.read(timerProvider.notifier).endFastQuietly();
-    await ref.read(fastingSessionProvider.notifier).loadSessions();
-    ref.invalidate(statsProvider);
-    if (mounted) Navigator.pop(context);
+    if (_endingFast) return;
+    setState(() => _endingFast = true);
+    try {
+      await ref.read(timerProvider.notifier).endFastQuietly();
+      if (!mounted) return;
+      await ref.read(fastingSessionProvider.notifier).loadSessions();
+      if (!mounted) return;
+      ref.invalidate(statsProvider);
+      Navigator.pop(context);
+    } catch (error) {
+      debugPrint('Safety exit failed: $error');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.common_retry),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _endingFast = false);
+    }
   }
 
   Future<void> _finish() async {

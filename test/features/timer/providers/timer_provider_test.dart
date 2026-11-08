@@ -200,6 +200,91 @@ void main() {
     expect(notifier.state.isBusy, isFalse);
   });
 
+
+  test('quiet exit drains startup before data can be erased', () async {
+    service.startGate = Completer<void>();
+    final start = notifier.startFasting();
+    await service.startEntered.future;
+
+    var erased = false;
+    final exit = notifier.endFastQuietly().then((_) async {
+      await db.deleteAllUserData();
+      erased = true;
+    });
+    await pumpEventQueue();
+    expect(erased, isFalse);
+
+    service.startGate!.complete();
+    await Future.wait([start, exit]);
+
+    expect(notifier.state.status, TimerStatus.idle);
+    expect(await db.getAllSessions(), isEmpty);
+    expect(service.stopCount, greaterThan(0));
+    expect(widgetService.idleCount, greaterThan(0));
+  });
+
+  test('quiet exit drains restoration before stopping the restored fast', () async {
+    await notifier.startFasting();
+    notifier.dispose();
+    service = FakeFastingTimerService()..startGate = Completer<void>();
+    notifier = TimerNotifier(
+      db,
+      clock: () => now,
+      backgroundService: service,
+      widgetService: widgetService,
+      tickerFactory: (_) => FakeTimer(),
+      restoreOnCreate: false,
+    );
+    final restore = notifier.restoreActiveSession();
+    await service.startEntered.future;
+    final exit = notifier.endFastQuietly();
+    service.startGate!.complete();
+    await Future.wait([restore, exit]);
+
+    expect(await db.getActiveSession(), isNull);
+    expect(notifier.state.status, TimerStatus.idle);
+    expect(service.stopCount, greaterThan(0));
+  });
+
+  test('quiet exit waits for cleanup and blocks a new fast until it ends', () async {
+    await notifier.startFasting();
+    service.stopGate = Completer<void>();
+    final stop = notifier.stopFasting();
+    await service.stopEntered.future;
+
+    var ended = false;
+    final exit = notifier.endFastQuietly().then((_) => ended = true);
+    await notifier.startFasting();
+    await pumpEventQueue();
+    expect(ended, isFalse);
+    expect(await db.getAllSessions(), hasLength(1));
+
+    service.stopGate!.complete();
+    await Future.wait([stop, exit]);
+    expect(notifier.state.status, TimerStatus.idle);
+    expect(await db.getActiveSession(), isNull);
+  });
+
+  test('a failed safety exit cannot proceed to data erasure', () async {
+    notifier.dispose();
+    await db.close();
+    db = FailingFinalizeDatabase();
+    notifier = TimerNotifier(
+      db,
+      clock: () => now,
+      backgroundService: service,
+      widgetService: widgetService,
+      tickerFactory: (_) => FakeTimer(),
+      restoreOnCreate: false,
+    );
+    await notifier.startFasting();
+    final erase = notifier.endFastQuietly().then((_) => db.deleteAllUserData());
+
+    await expectLater(erase, throwsStateError);
+    expect(await db.getActiveSession(), isNotNull);
+    expect(notifier.state.status, TimerStatus.running);
+  });
+
   test('optional start failure keeps the active database session', () async {
     service.failStart = true;
 
@@ -234,6 +319,10 @@ void main() {
 
 class FakeFastingTimerService implements FastingTimerService {
   Completer<void>? startGate;
+  Completer<void>? stopGate;
+  final startEntered = Completer<void>();
+  final stopEntered = Completer<void>();
+  int stopCount = 0;
   bool failStart = false;
   bool failStop = false;
 
@@ -243,12 +332,16 @@ class FakeFastingTimerService implements FastingTimerService {
     required int targetMinutes,
     required String planName,
   }) async {
+    if (!startEntered.isCompleted) startEntered.complete();
     await startGate?.future;
     if (failStart) throw StateError('start failed');
   }
 
   @override
   Future<void> stopFastingTimer() async {
+    stopCount++;
+    if (!stopEntered.isCompleted) stopEntered.complete();
+    await stopGate?.future;
     if (failStop) throw StateError('stop failed');
   }
 }
@@ -281,4 +374,18 @@ class FakeTimer implements Timer {
 
   @override
   void cancel() => _active = false;
+}
+
+class FailingFinalizeDatabase extends AppDatabase {
+  FailingFinalizeDatabase() : super.forTesting(NativeDatabase.memory());
+
+  @override
+  Future<bool> finalizeActiveSession({
+    required int id,
+    required DateTime endTime,
+    required int actualMinutes,
+    required bool completed,
+  }) async {
+    throw StateError('write failed');
+  }
 }

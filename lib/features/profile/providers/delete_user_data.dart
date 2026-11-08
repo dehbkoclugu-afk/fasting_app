@@ -7,6 +7,7 @@ import '../../../services/notification_service.dart';
 import '../../../services/widget_service.dart';
 import '../../gamification/providers/gamification_provider.dart';
 import '../../meals/providers/meal_provider.dart';
+import '../../meals/providers/food_scan_provider.dart';
 import '../../stats/providers/stats_provider.dart';
 import '../../timer/providers/fasting_session_provider.dart';
 import '../../timer/providers/timer_provider.dart';
@@ -16,6 +17,8 @@ import 'settings_provider.dart';
 /// Erases everything this app holds on the device. Subscriptions live in the
 /// store account and come back through RevenueCat.
 Future<void> deleteAllUserData(WidgetRef ref) async {
+  // Dispose in-flight analysis before clearing its quota and consent data.
+  ref.invalidate(foodScanProvider);
   await ref.read(timerProvider.notifier).endFastQuietly();
   await ref.read(databaseProvider).deleteAllUserData();
   await AnalyticsService().setEnabled(false);
@@ -24,9 +27,13 @@ Future<void> deleteAllUserData(WidgetRef ref) async {
   // The erasure already succeeded; a stale notification or widget is cosmetic.
   try {
     await NotificationService().cancelAll();
+  } catch (error) {
+    debugPrint('Post-erasure notification cleanup failed: $error');
+  }
+  try {
     await WidgetService().updateIdleWidget();
   } catch (error) {
-    debugPrint('Post-erasure cleanup failed: $error');
+    debugPrint('Post-erasure widget cleanup failed: $error');
   }
 
   invalidateGamification(ref);

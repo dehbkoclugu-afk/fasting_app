@@ -196,8 +196,9 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   }
 
   Future<void> _recordScan() async {
-    if (_dailyLimit <= 0) return;
+    if (!mounted || _dailyLimit <= 0) return;
     final prefs = await SharedPreferences.getInstance();
+    if (!mounted) return;
     final used = prefs.getString(_dayKey) == _todayKey()
         ? (prefs.getInt(_countKey) ?? 0)
         : 0;
@@ -327,6 +328,7 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
         languageCode: languageCode,
         mimeType: resolvedMimeType,
       );
+      if (!mounted) return;
       await _recordScan();
       if (!mounted) return;
       state = state.copyWith(

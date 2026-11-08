@@ -70,8 +70,17 @@ class ProfileScreen extends ConsumerWidget {
       ),
     );
     if (confirmed != true) return;
-    await deleteAllUserData(ref);
-    if (context.mounted) context.go('/onboarding');
+    try {
+      await deleteAllUserData(ref);
+      if (context.mounted) context.go('/onboarding');
+    } catch (error) {
+      debugPrint('Data erasure failed: $error');
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(l10n.common_retry)),
+        );
+      }
+    }
   }
 
   Future<void> _privacyChoices(BuildContext context) async {

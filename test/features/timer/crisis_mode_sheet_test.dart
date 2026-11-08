@@ -1,6 +1,7 @@
 import 'package:drift/native.dart';
 import 'package:fasting_app/data/database/app_database.dart';
 import 'package:fasting_app/features/timer/providers/water_provider.dart';
+import 'package:fasting_app/features/timer/providers/timer_provider.dart';
 import 'package:fasting_app/features/timer/widgets/crisis_mode_sheet.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +18,13 @@ void main() {
   });
   tearDown(() => database.close());
 
-  Future<void> openSheet(WidgetTester tester) async {
+  Future<void> openSheet(WidgetTester tester, {TimerNotifier? timer}) async {
     await tester.pumpWidget(
       ProviderScope(
-        overrides: [databaseProvider.overrideWithValue(database)],
+        overrides: [
+          databaseProvider.overrideWithValue(database),
+          if (timer != null) timerProvider.overrideWith((ref) => timer),
+        ],
         child: MaterialApp(
           locale: const Locale('en'),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -52,6 +56,20 @@ void main() {
     expect(find.widgetWithText(FilledButton, 'End my fast'), findsOneWidget);
   });
 
+  testWidgets('a failed safety exit stays open and offers a retry', (tester) async {
+    await openSheet(tester, timer: FailingSafetyTimer(database));
+    await tester.tap(find.text('I feel unwell'));
+    await tester.pump();
+    await tester.tap(find.text('Continue'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(FilledButton, 'End my fast'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('End your fast now'), findsOneWidget);
+    expect(find.text('Try again'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('other reasons still offer a real way to end', (tester) async {
     await openSheet(tester);
 
@@ -62,4 +80,14 @@ void main() {
 
     expect(find.widgetWithText(OutlinedButton, 'End my fast'), findsOneWidget);
   });
+}
+
+class FailingSafetyTimer extends TimerNotifier {
+  FailingSafetyTimer(AppDatabase database)
+    : super(database, restoreOnCreate: false);
+
+  @override
+  Future<void> endFastQuietly() async {
+    throw StateError('write failed');
+  }
 }

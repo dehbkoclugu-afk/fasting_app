@@ -185,6 +185,22 @@ void main() {
     expect(service.calls, 1);
   });
 
+  test('a disposed analysis cannot recreate preferences after erasure', () async {
+    final service = DeferredFoodVisionService();
+    final notifier = FoodScanNotifier(service: service, dailyLimit: 2);
+    final operation = notifier.analyzeBytes(_bytes);
+    await pumpEventQueue();
+    expect(service.calls, 1);
+
+    notifier.dispose();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    service.pending.complete(analysisWith(300));
+    await operation;
+
+    expect(prefs.getKeys(), isEmpty);
+  });
+
   test('exhausted quota refreshes at midnight without reopening', () async {
     var now = DateTime(2026, 9, 27, 23, 59);
     final service = FakeFoodVisionService(result: analysisWith(300));
