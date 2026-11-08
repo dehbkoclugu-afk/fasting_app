@@ -685,7 +685,9 @@ class _FoodScanScreenState extends ConsumerState<FoodScanScreen> {
   static String _languageCode(BuildContext context) =>
       Localizations.localeOf(context).languageCode;
 
-  static const _aiConsentKey = 'foodScanAiConsent';
+  // V2: the consent text changed to disclose Google's unpaid-tier data use, so
+  // earlier agreements do not cover it.
+  static const _aiConsentKey = 'foodScanAiConsentV2';
 
   /// App Review 5.1.2(i): ask once, explicitly, before the first photo goes
   /// to a third-party AI service.

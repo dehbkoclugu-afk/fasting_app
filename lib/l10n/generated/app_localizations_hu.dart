@@ -263,8 +263,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get onboarding_welcome => 'Üdvözlünk';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Vedd kézbe az időszakos böjttel\nkapcsolatos utadat';
+  String get onboarding_welcomeDesc => 'Vedd kézbe az időszakos böjttel\nkapcsolatos utadat';
 
   @override
   String get onboarding_featureTimer => 'Intelligens böjtidőzítő';
@@ -312,8 +311,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get onboarding_goalLongevity => 'Hosszú élet';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Sejtmegújulás és egészséges öregedés';
+  String get onboarding_goalLongevityDesc => 'Sejtmegújulás és egészséges öregedés';
 
   @override
   String get onboarding_goalDiscipline => 'Fegyelem';
@@ -325,8 +323,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get onboarding_selectPlan => 'Válassz programot';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Válaszd ki a számodra legjobb böjtprogramot';
+  String get onboarding_selectPlanDesc => 'Válaszd ki a számodra legjobb böjtprogramot';
 
   @override
   String get onboarding_bodyInfo => 'Add meg az adataidat';
@@ -347,15 +344,13 @@ class AppLocalizationsHu extends AppLocalizations {
   String get onboarding_age => 'Életkor';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Ezeket az adatokat csak az eszközödön tároljuk, és kalóriaszámításhoz használjuk.';
+  String get onboarding_bodyInfoDisclaimer => 'Ezeket az adatokat csak az eszközödön tároljuk, és kalóriaszámításhoz használjuk.';
 
   @override
   String get onboarding_permissions => 'Utolsó lépés';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'A legjobb élményhez engedélyezd a hozzáféréseket';
+  String get onboarding_permissionsDesc => 'A legjobb élményhez engedélyezd a hozzáféréseket';
 
   @override
   String get onboarding_next => 'Folytatás';
@@ -382,8 +377,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get paywall_title => 'Váltás Premiumra';
 
   @override
-  String get paywall_subtitle =>
-      'Oldd fel az összes böjtprogramot, és távolítsd el a reklámokat';
+  String get paywall_subtitle => 'Oldd fel az összes böjtprogramot, és távolítsd el a reklámokat';
 
   @override
   String get paywall_allPlans => 'Minden böjtprogram';
@@ -422,8 +416,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get paywall_premiumActive => 'A Premium aktív!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Minden böjtprogram fel van oldva, a reklámok pedig ki vannak kapcsolva';
+  String get paywall_premiumActiveDesc => 'Minden böjtprogram fel van oldva, a reklámok pedig ki vannak kapcsolva';
 
   @override
   String get water_title => 'Vízbevitel';
@@ -529,8 +522,7 @@ class AppLocalizationsHu extends AppLocalizations {
   }
 
   @override
-  String get meals_nameCalorieRequired =>
-      'A név és a kalória megadása kötelező';
+  String get meals_nameCalorieRequired => 'A név és a kalória megadása kötelező';
 
   @override
   String get bodyMetrics_addWeight => 'Testsúly hozzáadása';
@@ -559,8 +551,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get completion_earlyTitle => 'A böjt véget ért';
 
   @override
-  String get completion_earlyMessage =>
-      'A mai időt elmentettük. A sorozat és az eredmények előrehaladása nem változott, mert a cél nem teljesült.';
+  String get completion_earlyMessage => 'A mai időt elmentettük. A sorozat és az eredmények előrehaladása nem változott, mert a cél nem teljesült.';
 
   @override
   String get timer_remainingTime => 'Hátralévő idő';
@@ -590,8 +581,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get streak_incredible => 'Hihetetlen!';
 
   @override
-  String get weight_noRecord =>
-      'Még nincs súlyadat\nAdd hozzá a Profil > Testadatok menüben';
+  String get weight_noRecord => 'Még nincs súlyadat\nAdd hozzá a Profil > Testadatok menüben';
 
   @override
   String get day_mon => 'H';
@@ -777,8 +767,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get profile_calmGamification => 'Nyugodt játékosítás';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Csökkenti a liga és az idény okozta nyomást';
+  String get profile_calmGamificationDesc => 'Csökkenti a liga és az idény okozta nyomást';
 
   @override
   String get profile_editName => 'Név szerkesztése';
@@ -796,8 +785,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get circle_tagline => 'Együtt, nyomás nélkül.';
 
   @override
-  String get circle_privacy =>
-      'A testsúly és a személyes adatok rejtve maradnak. Csak a haladás és a támogatás látható.';
+  String get circle_privacy => 'A testsúly és a személyes adatok rejtve maradnak. Csak a haladás és a támogatás látható.';
 
   @override
   String circle_sendSupport(int count) {
@@ -826,8 +814,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get crisis_delayTitle => 'Halaszd el a döntést 10 perccel';
 
   @override
-  String get crisis_delayDesc =>
-      'Ha rosszul érzed magad, a böjt befejezése nem kudarc.';
+  String get crisis_delayDesc => 'Ha rosszul érzed magad, a böjt befejezése nem kudarc.';
 
   @override
   String get crisis_hunger => 'Éhség';
@@ -842,8 +829,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get crisis_tenMore => 'Adj neki 10 percet';
 
   @override
-  String get stats_storyEmpty =>
-      'Az első böjtöddel elkezdődik a saját történeted.';
+  String get stats_storyEmpty => 'Az első böjtöddel elkezdődik a saját történeted.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -889,8 +875,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get weather_onPlan => 'A mai tempó megfelel a programodnak.';
 
   @override
-  String get weather_challenging =>
-      'Ez az óra korábban nehéz volt; a támogatási mód készen áll.';
+  String get weather_challenging => 'Ez az óra korábban nehéz volt; a támogatási mód készen áll.';
 
   @override
   String get replay_copied => 'Böjtösszefoglaló másolva';
@@ -915,8 +900,7 @@ class AppLocalizationsHu extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'A fázisok időzítése általános becslés, nem orvosi mérés.';
+  String get phase_estimateShort => 'A fázisok időzítése általános becslés, nem orvosi mérés.';
 
   @override
   String phase_hours(int start, int end) {
@@ -924,8 +908,7 @@ class AppLocalizationsHu extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Ez az időzítés általános becslés. Az anyagcsere-reakciók egyénenként eltérhetnek.';
+  String get phase_estimateLong => 'Ez az időzítés általános becslés. Az anyagcsere-reakciók egyénenként eltérhetnek.';
 
   @override
   String get bmi_underweight => 'Soványság';
@@ -968,15 +951,13 @@ class AppLocalizationsHu extends AppLocalizations {
   String get notification_waterTitle => 'Igyál vizet 💧';
 
   @override
-  String get notification_waterBody =>
-      'Ne felejts el elegendő vizet inni böjt közben!';
+  String get notification_waterBody => 'Ne felejts el elegendő vizet inni böjt közben!';
 
   @override
   String get notification_windowTitle => 'Az étkezési időablak zárul ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Az étkezési időablak 30 perc múlva bezárul.';
+  String get notification_windowBody => 'Az étkezési időablak 30 perc múlva bezárul.';
 
   @override
   String notification_streakTitle(int days) {
@@ -1015,33 +996,28 @@ class AppLocalizationsHu extends AppLocalizations {
   String get explore_guide => 'Böjtútmutató';
 
   @override
-  String get explore_guideDesc =>
-      'Minden, amit az időszakos böjtről tudnod kell';
+  String get explore_guideDesc => 'Minden, amit az időszakos böjtről tudnod kell';
 
   @override
-  String get explore_circleDesc =>
-      'Ossz meg csendes támogatást a privát csoportoddal.';
+  String get explore_circleDesc => 'Ossz meg csendes támogatást a privát csoportoddal.';
 
   @override
   String get explore_faq => 'Gyakori kérdések';
 
   @override
-  String get explore_education =>
-      'Ez a tartalom kizárólag általános tájékoztatásra szolgál, és nem minősül orvosi diagnózisnak vagy kezelési tanácsnak.';
+  String get explore_education => 'Ez a tartalom kizárólag általános tájékoztatásra szolgál, és nem minősül orvosi diagnózisnak vagy kezelési tanácsnak.';
 
   @override
   String get explore_safety => 'Egészség és biztonság';
 
   @override
-  String get explore_safetyDesc =>
-      'Ha egészségügyi problémád van, rendszeresen gyógyszert szedsz, aggasztó tüneteid vannak, terhes vagy szoptatsz, böjt előtt kérd ki képzett egészségügyi szakember tanácsát. Hagyd abba, ha rosszul érzed magad.';
+  String get explore_safetyDesc => 'Ha egészségügyi problémád van, rendszeresen gyógyszert szedsz, aggasztó tüneteid vannak, terhes vagy szoptatsz, böjt előtt kérd ki képzett egészségügyi szakember tanácsát. Hagyd abba, ha rosszul érzed magad.';
 
   @override
   String get explore_sources => 'Források';
 
   @override
-  String get explore_sourcesDesc =>
-      'A tartalom az alábbi közegészségügyi források egyszerűsített változata.';
+  String get explore_sourcesDesc => 'A tartalom az alábbi közegészségügyi források egyszerűsített változata.';
 
   @override
   String get explore_sourceError => 'A forrás nem nyitható meg';
@@ -1056,8 +1032,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get explore_rule2 => 'Igyál sok vizet és folyadékot';
 
   @override
-  String get explore_rule3 =>
-      'Az étkezési időablakban táplálkozz kiegyensúlyozottan';
+  String get explore_rule3 => 'Az étkezési időablakban táplálkozz kiegyensúlyozottan';
 
   @override
   String get explore_rule4 => 'Hagyd abba a böjtöt, ha rosszul érzed magad';
@@ -1072,120 +1047,103 @@ class AppLocalizationsHu extends AppLocalizations {
   String get tip_water => 'Maradj hidratált';
 
   @override
-  String get tip_waterDesc =>
-      'Igyál vizet, amikor szomjas vagy, és étkezésekhez is fogyassz folyadékot. Az igény az egészségi állapottól, időjárástól és aktivitástól függhet.';
+  String get tip_waterDesc => 'Igyál vizet, amikor szomjas vagy, és étkezésekhez is fogyassz folyadékot. Az igény az egészségi állapottól, időjárástól és aktivitástól függhet.';
 
   @override
   String get tip_food => 'Táplálkozz helyesen';
 
   @override
-  String get tip_foodDesc =>
-      'Az étkezési időablakban válassz fehérjében és rostban gazdag ételeket, valamint egészséges zsírokat. Kerüld a feldolgozott élelmiszereket.';
+  String get tip_foodDesc => 'Az étkezési időablakban válassz fehérjében és rostban gazdag ételeket, valamint egészséges zsírokat. Kerüld a feldolgozott élelmiszereket.';
 
   @override
   String get tip_sleep => 'Aludj jól';
 
   @override
-  String get tip_sleepDesc =>
-      'A rendszeres, elegendő alvás támogatja az általános jóllétet. Úgy időzítsd a böjtöt, hogy ne zavarja az alvásodat.';
+  String get tip_sleepDesc => 'A rendszeres, elegendő alvás támogatja az általános jóllétet. Úgy időzítsd a böjtöt, hogy ne zavarja az alvásodat.';
 
   @override
   String get tip_exercise => 'Könnyű testmozgás';
 
   @override
-  String get tip_exerciseDesc =>
-      'Böjt alatt könnyű sétát vagy jógát végezhetsz. Kerüld a megerőltető edzést, különösen az első hetekben, amíg a tested alkalmazkodik.';
+  String get tip_exerciseDesc => 'Böjt alatt könnyű sétát vagy jógát végezhetsz. Kerüld a megerőltető edzést, különösen az első hetekben, amíg a tested alkalmazkodik.';
 
   @override
   String get tip_drinks => 'Engedélyezett italok';
 
   @override
-  String get tip_drinksDesc =>
-      'Böjt alatt vizet, ízesítetlen teát és feketekávét ihatsz cukor és tej nélkül. Ezek nem törik meg a böjtöt.';
+  String get tip_drinksDesc => 'Böjt alatt vizet, ízesítetlen teát és feketekávét ihatsz cukor és tej nélkül. Ezek nem törik meg a böjtöt.';
 
   @override
   String get faq_drinks => 'Mit ihatok böjt alatt?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Vizet, ízesítetlen teát és feketekávét ihatsz cukor és tej nélkül. A kalóriatartalmú italok megtörik a böjtöt.';
+  String get faq_drinksAnswer => 'Vizet, ízesítetlen teát és feketekávét ihatsz cukor és tej nélkül. A kalóriatartalmú italok megtörik a böjtöt.';
 
   @override
   String get faq_plan => 'Melyik böjtprogramot válasszam?';
 
   @override
-  String get faq_planAnswer =>
-      'Ha kezdő vagy, kezdd a 12:12 vagy 14:10 programmal. Ha tapasztaltabb vagy, próbáld a 16:8 vagy 18:6 programot. A 20:4 és az OMAD haladóknak való.';
+  String get faq_planAnswer => 'Ha kezdő vagy, kezdd a 12:12 vagy 14:10 programmal. Ha tapasztaltabb vagy, próbáld a 16:8 vagy 18:6 programot. A 20:4 és az OMAD haladóknak való.';
 
   @override
   String get faq_exercise => 'Edzhetek böjt alatt?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Igen, de kerüld az intenzív edzést. A könnyű kardió, séta és jóga ideális. Az erősítő edzést időzítsd az étkezési időablak közelébe.';
+  String get faq_exerciseAnswer => 'Igen, de kerüld az intenzív edzést. A könnyű kardió, séta és jóga ideális. Az erősítő edzést időzítsd az étkezési időablak közelébe.';
 
   @override
   String get faq_weight => 'Segít a böjt a fogyásban?';
 
   @override
-  String get faq_weightAnswer =>
-      'Egyeseknél az étkezési idő korlátozása csökkentheti a teljes energiabevitelt. Az eredmények eltérnek, a hosszú távú hatásokat még vizsgálják.';
+  String get faq_weightAnswer => 'Egyeseknél az étkezési idő korlátozása csökkentheti a teljes energiabevitelt. Az eredmények eltérnek, a hosszú távú hatásokat még vizsgálják.';
 
   @override
   String get plan_12_desc => 'Kezdő szint';
 
   @override
-  String get plan_12_detail =>
-      'Ideális kezdőknek. Böjtölj 12 órát, az alvásidőt is beleszámítva.';
+  String get plan_12_detail => 'Ideális kezdőknek. Böjtölj 12 órát, az alvásidőt is beleszámítva.';
 
   @override
   String get plan_16_desc => 'Legnépszerűbb program';
 
   @override
-  String get plan_16_detail =>
-      'A leggyakoribb időszakos böjtprogram: 16 óra böjt és 8 órás étkezési időablak, általában ebédtől vacsoráig.';
+  String get plan_16_detail => 'A leggyakoribb időszakos böjtprogram: 16 óra böjt és 8 órás étkezési időablak, általában ebédtől vacsoráig.';
 
   @override
   String get plan_18_desc => 'Középhaladó szint';
 
   @override
-  String get plan_18_detail =>
-      '18 óra böjt és 6 órás étkezési időablak. Hosszabb zsírégetési idő.';
+  String get plan_18_detail => '18 óra böjt és 6 órás étkezési időablak. Hosszabb zsírégetési idő.';
 
   @override
   String get plan_20_desc => 'Haladó szint';
 
   @override
-  String get plan_20_detail =>
-      '20 óra böjt és 4 órás étkezési időablak. Ideális a ketózis és az autofágia eléréséhez.';
+  String get plan_20_detail => '20 óra böjt és 4 órás étkezési időablak. Ideális a ketózis és az autofágia eléréséhez.';
 
   @override
   String get plan_omad_desc => 'Napi egy étkezés';
 
   @override
-  String get plan_omad_detail =>
-      'Napi egy étkezés: 23 óra böjt és 1 órás étkezési időablak. Szakértői szint.';
+  String get plan_omad_detail => 'Napi egy étkezés: 23 óra böjt és 1 órás étkezési időablak. Szakértői szint.';
 
   @override
   String get plan_52_desc => 'Heti 2 nap';
 
   @override
-  String get plan_52_detail =>
-      'Öt napig étkezz normálisan, két napon pedig korlátozd a bevitelt körülbelül 500 kalóriára. Alternatív megközelítés.';
+  String get plan_52_detail => 'Öt napig étkezz normálisan, két napon pedig korlátozd a bevitelt körülbelül 500 kalóriára. Alternatív megközelítés.';
 
   @override
   String get plan_ese_desc => '24 órás böjt';
 
   @override
-  String get plan_ese_detail =>
-      'Böjtölj 24 órán át hetente 1–2 alkalommal. Haladóknak.';
+  String get plan_ese_detail => 'Böjtölj 24 órán át hetente 1–2 alkalommal. Haladóknak.';
 
   @override
   String get plan_warrior_desc => 'Harcos étrend';
 
   @override
-  String get plan_warrior_detail =>
-      'Napközben étkezz könnyedén, a főétkezést pedig egy négyórás esti időablakban fogyaszd el.';
+  String get plan_warrior_detail => 'Napközben étkezz könnyedén, a főétkezést pedig egy négyórás esti időablakban fogyaszd el.';
 
   @override
   String get award_first_title => 'Első lépés';
@@ -1337,8 +1295,7 @@ class AppLocalizationsHu extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Minden hét teljesítés után kapsz egyet. Egy kihagyott nap soha nem törli a haladásodat.';
+  String get game_shieldsDesc => 'Minden hét teljesítés után kapsz egyet. Egy kihagyott nap soha nem törli a haladásodat.';
 
   @override
   String get game_league => 'Privát heti liga';
@@ -1490,8 +1447,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get paywall_continue => 'Folytatás';
 
   @override
-  String get paywall_productsUnavailable =>
-      'A vásárlások jelenleg nem érhetők el. Próbáld újra később.';
+  String get paywall_productsUnavailable => 'A vásárlások jelenleg nem érhetők el. Próbáld újra később.';
 
   @override
   String get paywall_purchaseFailed => 'A vásárlást nem sikerült befejezni.';
@@ -1500,22 +1456,19 @@ class AppLocalizationsHu extends AppLocalizations {
   String get paywall_nothingToRestore => 'Nem található korábbi vásárlás.';
 
   @override
-  String get paywall_restoreFailed =>
-      'A vásárlásokat nem sikerült visszaállítani.';
+  String get paywall_restoreFailed => 'A vásárlásokat nem sikerült visszaállítani.';
 
   @override
   String get paywall_terms => 'Felhasználási feltételek';
 
   @override
-  String get permission_notificationDesc =>
-      'Böjtemlékeztetők, fázisfrissítések és befejezési értesítések';
+  String get permission_notificationDesc => 'Böjtemlékeztetők, fázisfrissítések és befejezési értesítések';
 
   @override
   String get profile_privacyChoices => 'Adatvédelmi beállítások';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Az előfizetések automatikusan megújulnak, ha legalább 24 órával az időszak vége előtt nem mondod le őket. Az App Store beállításaiban bármikor kezelheted vagy lemondhatod őket.';
+  String get paywall_autoRenewInfo => 'Az előfizetések automatikusan megújulnak, ha legalább 24 órával az időszak vége előtt nem mondod le őket. Az App Store beállításaiban bármikor kezelheted vagy lemondhatod őket.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1539,28 +1492,22 @@ class AppLocalizationsHu extends AppLocalizations {
   String get paywall_retry => 'Újra';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Már rendelkezel ezzel az előfizetéssel. Koppints a Vásárlások visszaállítása lehetőségre.';
+  String get paywall_alreadyOwned => 'Már rendelkezel ezzel az előfizetéssel. Koppints a Vásárlások visszaállítása lehetőségre.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Az áruház most nem érhető el. Ellenőrizd a kapcsolatot, és próbáld újra.';
+  String get paywall_storeUnavailable => 'Az áruház most nem érhető el. Ellenőrizd a kapcsolatot, és próbáld újra.';
 
   @override
-  String get paywall_secureNote =>
-      'Bármikor lemondható. A fizetést az áruházi fiókod terheljük.';
+  String get paywall_secureNote => 'Bármikor lemondható. A fizetést az áruházi fiókod terheljük.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Az előfizetések automatikusan megújulnak, ha legalább 24 órával az időszak vége előtt nem mondod le őket. Kezelés vagy lemondás: Google Play > Előfizetések.';
+  String get paywall_autoRenewInfoPlay => 'Az előfizetések automatikusan megújulnak, ha legalább 24 órával az időszak vége előtt nem mondod le őket. Kezelés vagy lemondás: Google Play > Előfizetések.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Feloldja a 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat és Warrior programot';
+  String get paywall_allPlansDesc => 'Feloldja a 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat és Warrior programot';
 
   @override
-  String get paywall_noAdsDesc =>
-      'A szalag- és teljes képernyős reklámok teljesen kikapcsolnak';
+  String get paywall_noAdsDesc => 'A szalag- és teljes képernyős reklámok teljesen kikapcsolnak';
 
   @override
   String get foodScan_title => 'MI-ételszkenner';
@@ -1569,15 +1516,13 @@ class AppLocalizationsHu extends AppLocalizations {
   String get foodScan_scanCta => 'Étkezés beolvasása';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Fotózd le a tányérod, és megkapod a kalória- és makrotápanyag-becslést';
+  String get foodScan_scanCtaDesc => 'Fotózd le a tányérod, és megkapod a kalória- és makrotápanyag-becslést';
 
   @override
   String get foodScan_introTitle => 'Fotózd le a tányérod';
 
   @override
-  String get foodScan_introDesc =>
-      'Az MI elemzi a fényképet, és megbecsüli a kalóriát, fehérjét, szénhidrátot és zsírt.';
+  String get foodScan_introDesc => 'Az MI elemzi a fényképet, és megbecsüli a kalóriát, fehérjét, szénhidrátot és zsírt.';
 
   @override
   String get foodScan_tipLight => 'A jó, egyenletes fény pontosabb becslést ad';
@@ -1586,8 +1531,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get foodScan_tipFrame => 'A teljes tányér férjen bele a képbe';
 
   @override
-  String get foodScan_tipScale =>
-      'Legyen a képen evőeszköz vagy kéz, hogy megbecsülhető legyen az adag';
+  String get foodScan_tipScale => 'Legyen a képen evőeszköz vagy kéz, hogy megbecsülhető legyen az adag';
 
   @override
   String get foodScan_takePhoto => 'Fénykép készítése';
@@ -1601,19 +1545,16 @@ class AppLocalizationsHu extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Elhasználtad a mai beolvasásokat. Próbáld újra holnap.';
+  String get foodScan_quotaReached => 'Elhasználtad a mai beolvasásokat. Próbáld újra holnap.';
 
   @override
-  String get foodScan_privacyNote =>
-      'A fényképet elemzésre elküldjük a Google Gemini API-jának, és nem tároljuk a szervereinken.';
+  String get foodScan_privacyNote => 'A fotó a Google Gemini API-jához kerül. A Google felhasználhatja termékei fejlesztésére, és emberi ellenőrök is láthatják. Nem tároljuk a saját szervereinken.';
 
   @override
   String get foodScan_consentTitle => 'Elküldöd a fotókat a Google Gemininek?';
 
   @override
-  String get foodScan_consentBody =>
-      'A kalória és a makrotápanyagok becsléséhez minden általad készített vagy kiválasztott ételfotót elküldünk a Google Gemini MI-szolgáltatásának. A fotót csak ehhez az elemzéshez használjuk, és nem tároljuk a szervereinken.';
+  String get foodScan_consentBody => 'A kalóriák és makrók becsléséhez minden készített vagy kiválasztott ételfotó a Google Gemini MI-szolgáltatásához kerül. A Google felhasználhatja a fotókat termékei fejlesztésére, és emberi ellenőrök is láthatják őket, ezért ne legyenek a képen személyek, dokumentumok vagy más személyes adatok. A fotókat nem tároljuk a saját szervereinken.';
 
   @override
   String get foodScan_consentAgree => 'Elfogadom és folytatom';
@@ -1622,19 +1563,16 @@ class AppLocalizationsHu extends AppLocalizations {
   String get foodScan_analyzing => 'Az étkezés elemzése…';
 
   @override
-  String get foodScan_analyzingHint =>
-      'Ez általában néhány másodpercet vesz igénybe';
+  String get foodScan_analyzingHint => 'Ez általában néhány másodpercet vesz igénybe';
 
   @override
   String get foodScan_detectedItems => 'Felismert tételek';
 
   @override
-  String get foodScan_disclaimer =>
-      'Az MI becslései hozzávetőlegesek. Koppints egy tételre a javításhoz.';
+  String get foodScan_disclaimer => 'Az MI becslései hozzávetőlegesek. Koppints egy tételre a javításhoz.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'A modell bizonytalan ezzel a képpel kapcsolatban. Mentés előtt ellenőrizd az értékeket.';
+  String get foodScan_lowConfidence => 'A modell bizonytalan ezzel a képpel kapcsolatban. Mentés előtt ellenőrizd az értékeket.';
 
   @override
   String get foodScan_save => 'Hozzáadás az étkezésekhez';
@@ -1658,40 +1596,110 @@ class AppLocalizationsHu extends AppLocalizations {
   String get foodScan_premiumTitle => 'Premium funkció';
 
   @override
-  String get foodScan_premiumDesc =>
-      'A fényképes kalóriaelemzés a Premium része.';
+  String get foodScan_premiumDesc => 'A fényképes kalóriaelemzés a Premium része.';
 
   @override
   String get foodScan_upgrade => 'Premium megtekintése';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Nincs kapcsolat. Ellenőrizd az internetet, és próbáld újra.';
+  String get foodScan_errorNetwork => 'Nincs kapcsolat. Ellenőrizd az internetet, és próbáld újra.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Most túl sok beolvasás történik. Próbáld újra néhány perc múlva.';
+  String get foodScan_errorRateLimited => 'Most túl sok beolvasás történik. Próbáld újra néhány perc múlva.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'A képelemzés jelenleg nem érhető el.';
+  String get foodScan_errorUnavailable => 'A képelemzés jelenleg nem érhető el.';
 
   @override
-  String get foodScan_errorServer =>
-      'Az elemzési szolgáltatás hibába ütközött. Próbáld újra hamarosan.';
+  String get foodScan_errorServer => 'Az elemzési szolgáltatás hibába ütközött. Próbáld újra hamarosan.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'A fényképen nem található étel. Készíts tisztább képet a tányérról.';
+  String get foodScan_errorNoFood => 'A fényképen nem található étel. Készíts tisztább képet a tányérról.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'A fényképet nem sikerült elemezni. Próbálj másikat.';
+  String get foodScan_errorUnreadable => 'A fényképet nem sikerült elemezni. Próbálj másikat.';
 
   @override
   String get paywall_aiFoodScan => 'MI-ételszkenner';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Fotózz le egy étkezést, és másodpercek alatt rögzítsd a kalóriákat és makrotápanyagokat';
+  String get paywall_aiFoodScanDesc => 'Fotózz le egy étkezést, és másodpercek alatt rögzítsd a kalóriákat és makrotápanyagokat';
+
+  @override
+  String get safety_title => 'Mielőtt elkezded';
+
+  @override
+  String get safety_desc => 'A böjt nem mindenki számára biztonságos. Jelölj meg mindent, ami rád vonatkozik.';
+
+  @override
+  String get safety_under18 => '18 évesnél fiatalabb vagyok';
+
+  @override
+  String get safety_pregnant => 'Várandós vagyok vagy szoptatok';
+
+  @override
+  String get safety_eatingDisorder => 'Evészavarom van vagy volt';
+
+  @override
+  String get safety_underweight => 'Alulsúlyos vagyok, vagy azt mondták, ne fogyjak';
+
+  @override
+  String get safety_diabetes => 'Cukorbeteg vagyok, vagy vércukorra ható gyógyszert szedek';
+
+  @override
+  String get safety_medical => 'Más betegségem van, vagy rendszeresen gyógyszert szedek';
+
+  @override
+  String get safety_none => 'Ezek egyike sem vonatkozik rám';
+
+  @override
+  String get safety_ack => 'Böjt előtt beszélek az orvosommal';
+
+  @override
+  String get safety_blockedTitle => 'Ez az alkalmazás nem biztonságos számodra';
+
+  @override
+  String get safety_blockedDesc => 'Válaszaid alapján itt nem kínálhatunk böjtöt. Beszélj orvossal. Ha most nehéz az evés, egy egészségügyi szakember segíthet.';
+
+  @override
+  String get safety_reviewAnswers => 'Válaszaim áttekintése';
+
+  @override
+  String get safety_targetTooLow => 'Ez a cél a magasságodhoz tartozó egészséges testsúly alatt van.';
+
+  @override
+  String get onboarding_invalidBody => 'Adj meg érvényes magasságot, testsúlyt, céltestsúlyt és életkort.';
+
+  @override
+  String get crisis_unwell => 'Rosszul érzem magam';
+
+  @override
+  String get crisis_unwellTitle => 'Fejezd be most a böjtöt';
+
+  @override
+  String get crisis_unwellDesc => 'A szédülés, remegés, zavartság vagy szapora szívverés annak jele, hogy abba kell hagyni a böjtöt, és enni vagy inni kell valamit.';
+
+  @override
+  String get crisis_emergency => 'Ha elájultál, mellkasi fájdalmad van vagy nagyon rosszul vagy, azonnal hívd a helyi segélyhívó számot.';
+
+  @override
+  String get crisis_endFast => 'Böjtöm befejezése';
+
+  @override
+  String get profile_deleteData => 'Összes adatom törlése';
+
+  @override
+  String get profile_deleteDataConfirm => 'Ez véglegesen törli a böjtöket, testsúlyt, étkezéseket, vizet és beállításokat erről az eszközről. Nem vonható vissza. Az előfizetéseket az áruházi fiókodban kezelheted.';
+
+  @override
+  String get profile_deleteDataAction => 'Minden törlése';
+
+  @override
+  String get record_deleteConfirm => 'Törlöd ezt a bejegyzést?';
+
+  @override
+  String get profile_analytics => 'Névtelen használati adatok megosztása';
+
+  @override
+  String get profile_analyticsDesc => 'Segít javítani az alkalmazást. Soha nem tartalmaz testsúlyt, étkezést vagy egészségügyi adatot.';
 }

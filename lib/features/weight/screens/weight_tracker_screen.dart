@@ -52,9 +52,34 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
       _latestWeight = weighted.isEmpty ? null : weighted.first.weight;
       _weightHistory = weighted
           .where((e) => !e.date.isBefore(start))
-          .map((e) => {'date': e.date, 'weight': e.weight!})
+          .map((e) => {'id': e.id, 'date': e.date, 'weight': e.weight!})
           .toList();
     });
+  }
+
+  Future<void> _deleteEntry(int id) async {
+    final l10n = AppLocalizations.of(context)!;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        content: Text(l10n.record_deleteConfirm),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n.common_cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n.common_delete),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+    await ref.read(databaseProvider).deleteMetric(id);
+    ref.invalidate(weightHistoryProvider);
+    ref.invalidate(latestWeightProvider);
+    await _loadWeightHistory();
   }
 
   @override
@@ -287,11 +312,18 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
                                   ),
                                 ),
                               ),
+                              const Spacer(),
                               Text(
                                 '${weight.toStringAsFixed(1)} kg',
                                 style: theme.textTheme.bodyMedium?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
+                              ),
+                              IconButton(
+                                tooltip: l10n.common_delete,
+                                icon: const Icon(Icons.delete_outline),
+                                onPressed: () =>
+                                    _deleteEntry(entry['id'] as int),
                               ),
                             ],
                           ),

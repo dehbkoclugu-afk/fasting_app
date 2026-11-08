@@ -13,6 +13,7 @@ import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../../shared/widgets/premium_promo_card.dart';
 import '../../../services/admob_service.dart';
+import '../providers/delete_user_data.dart';
 import '../../../services/notification_service.dart';
 import '../../../core/config/build_config.dart';
 import '../providers/settings_provider.dart';
@@ -47,6 +48,30 @@ class ProfileScreen extends ConsumerWidget {
         SnackBar(content: Text(AppLocalizations.of(context)!.profile_share)),
       );
     }
+  }
+
+  Future<void> _confirmDeleteData(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.profile_deleteData),
+        content: Text(l10n.profile_deleteDataConfirm),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n.common_cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n.profile_deleteDataAction),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+    await deleteAllUserData(ref);
+    if (context.mounted) context.go('/onboarding');
   }
 
   Future<void> _privacyChoices(BuildContext context) async {
@@ -300,6 +325,27 @@ class ProfileScreen extends ConsumerWidget {
                       icon: PhosphorIcons.slidersHorizontal(),
                       title: l10n.profile_privacyChoices,
                       onTap: () => _privacyChoices(context),
+                    ),
+                    const Divider(height: 1),
+                    _buildSettingsTile(
+                      context,
+                      icon: PhosphorIcons.chartBar(),
+                      title: l10n.profile_analytics,
+                      subtitle: l10n.profile_analyticsDesc,
+                      trailing: Switch(
+                        value: settings.analyticsEnabled,
+                        onChanged:
+                            ref
+                                .read(settingsProvider.notifier)
+                                .setAnalyticsEnabled,
+                      ),
+                    ),
+                    const Divider(height: 1),
+                    _buildSettingsTile(
+                      context,
+                      icon: PhosphorIcons.trash(),
+                      title: l10n.profile_deleteData,
+                      onTap: () => _confirmDeleteData(context, ref),
                     ),
                     const Divider(height: 1),
                     _buildSettingsTile(

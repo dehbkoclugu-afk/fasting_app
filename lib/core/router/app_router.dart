@@ -8,6 +8,7 @@ import '../../features/onboarding/screens/goal_screen.dart';
 import '../../features/onboarding/screens/plan_select_screen.dart';
 import '../../features/onboarding/screens/body_info_screen.dart';
 import '../../features/onboarding/screens/permissions_screen.dart';
+import '../../features/onboarding/screens/safety_screen.dart';
 import '../../features/timer/screens/timer_screen.dart';
 import '../../features/stats/screens/stats_screen.dart';
 import '../../features/meals/screens/meals_screen.dart';
@@ -29,6 +30,7 @@ class AppRouter {
 
   static GoRouter router({
     required bool showOnboarding,
+    bool showSafetyGate = false,
     Uint8List? recoveredFoodImage,
     String? recoveredFoodImageMimeType,
   }) {
@@ -40,12 +42,19 @@ class AppRouter {
       navigatorKey: _rootNavigatorKey,
       initialLocation: recoveredFoodImage != null
           ? '/food-scan'
-          : (showOnboarding ? '/onboarding' : '/timer'),
+          : (showOnboarding
+                ? '/onboarding'
+                : (showSafetyGate ? '/safety' : '/timer')),
       routes: [
         // Onboarding
         GoRoute(
           path: '/onboarding',
           builder: (context, state) => const WelcomeScreen(),
+        ),
+        GoRoute(
+          path: '/safety',
+          builder: (context, state) =>
+              SafetyScreen(startBlocked: state.extra == true),
         ),
         GoRoute(
           path: '/onboarding/goals',

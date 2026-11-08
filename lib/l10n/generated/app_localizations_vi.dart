@@ -63,8 +63,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get timer_selectPlan => 'Chọn kế hoạch nhịn ăn';
 
   @override
-  String get timer_stopConfirm =>
-      'Bạn có chắc muốn kết thúc kỳ nhịn ăn sớm không?';
+  String get timer_stopConfirm => 'Bạn có chắc muốn kết thúc kỳ nhịn ăn sớm không?';
 
   @override
   String get timer_stopTitle => 'Kết thúc nhịn ăn';
@@ -264,8 +263,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get onboarding_welcome => 'Chào mừng';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Làm chủ hành trình\nnhịn ăn gián đoạn của bạn';
+  String get onboarding_welcomeDesc => 'Làm chủ hành trình\nnhịn ăn gián đoạn của bạn';
 
   @override
   String get onboarding_featureTimer => 'Bộ hẹn giờ nhịn ăn thông minh';
@@ -274,8 +272,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get onboarding_featureStats => 'Thống kê và biểu đồ chi tiết';
 
   @override
-  String get onboarding_featureMeals =>
-      'Lập kế hoạch bữa ăn và gợi ý công thức';
+  String get onboarding_featureMeals => 'Lập kế hoạch bữa ăn và gợi ý công thức';
 
   @override
   String get onboarding_getStarted => 'Bắt đầu';
@@ -314,8 +311,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get onboarding_goalLongevity => 'Sống lâu';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Tái tạo tế bào và lão hóa khỏe mạnh';
+  String get onboarding_goalLongevityDesc => 'Tái tạo tế bào và lão hóa khỏe mạnh';
 
   @override
   String get onboarding_goalDiscipline => 'Kỷ luật';
@@ -348,15 +344,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get onboarding_age => 'Tuổi';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Thông tin này chỉ được lưu trên thiết bị của bạn và dùng để tính calo.';
+  String get onboarding_bodyInfoDisclaimer => 'Thông tin này chỉ được lưu trên thiết bị của bạn và dùng để tính calo.';
 
   @override
   String get onboarding_permissions => 'Bước cuối';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Bật quyền để có trải nghiệm tốt nhất';
+  String get onboarding_permissionsDesc => 'Bật quyền để có trải nghiệm tốt nhất';
 
   @override
   String get onboarding_next => 'Tiếp tục';
@@ -383,8 +377,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get paywall_title => 'Nâng cấp lên Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Mở khóa mọi kế hoạch nhịn ăn và loại bỏ quảng cáo';
+  String get paywall_subtitle => 'Mở khóa mọi kế hoạch nhịn ăn và loại bỏ quảng cáo';
 
   @override
   String get paywall_allPlans => 'Mọi kế hoạch nhịn ăn';
@@ -423,8 +416,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get paywall_premiumActive => 'Premium đang hoạt động!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Mọi kế hoạch nhịn ăn đã được mở khóa và quảng cáo đã tắt';
+  String get paywall_premiumActiveDesc => 'Mọi kế hoạch nhịn ăn đã được mở khóa và quảng cáo đã tắt';
 
   @override
   String get water_title => 'Lượng nước uống';
@@ -559,8 +551,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get completion_earlyTitle => 'Đã kết thúc nhịn ăn';
 
   @override
-  String get completion_earlyMessage =>
-      'Thời gian hôm nay đã được lưu. Chuỗi ngày và tiến độ thành tích không thay đổi vì mục tiêu chưa hoàn thành.';
+  String get completion_earlyMessage => 'Thời gian hôm nay đã được lưu. Chuỗi ngày và tiến độ thành tích không thay đổi vì mục tiêu chưa hoàn thành.';
 
   @override
   String get timer_remainingTime => 'Thời gian còn lại';
@@ -590,8 +581,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get streak_incredible => 'Không thể tin được!';
 
   @override
-  String get weight_noRecord =>
-      'Chưa có bản ghi cân nặng\nThêm tại Hồ sơ > Chỉ số cơ thể';
+  String get weight_noRecord => 'Chưa có bản ghi cân nặng\nThêm tại Hồ sơ > Chỉ số cơ thể';
 
   @override
   String get day_mon => 'T2';
@@ -795,8 +785,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get circle_tagline => 'Cùng nhau, không áp lực.';
 
   @override
-  String get circle_privacy =>
-      'Cân nặng và các chỉ số riêng tư luôn được ẩn. Chỉ tiến độ và sự hỗ trợ được hiển thị.';
+  String get circle_privacy => 'Cân nặng và các chỉ số riêng tư luôn được ẩn. Chỉ tiến độ và sự hỗ trợ được hiển thị.';
 
   @override
   String circle_sendSupport(int count) {
@@ -825,8 +814,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get crisis_delayTitle => 'Trì hoãn quyết định trong 10 phút';
 
   @override
-  String get crisis_delayDesc =>
-      'Nếu bạn thấy không khỏe, kết thúc nhịn ăn không phải là thất bại.';
+  String get crisis_delayDesc => 'Nếu bạn thấy không khỏe, kết thúc nhịn ăn không phải là thất bại.';
 
   @override
   String get crisis_hunger => 'Đói';
@@ -841,8 +829,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get crisis_tenMore => 'Cho bản thân thêm 10 phút';
 
   @override
-  String get stats_storyEmpty =>
-      'Lần nhịn ăn đầu tiên sẽ mở đầu câu chuyện của riêng bạn.';
+  String get stats_storyEmpty => 'Lần nhịn ăn đầu tiên sẽ mở đầu câu chuyện của riêng bạn.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -882,15 +869,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get weather_water => 'Một cốc nước có thể giúp ích.';
 
   @override
-  String get weather_listen =>
-      'Bạn đã đi được một chặng dài; hãy lắng nghe cơ thể.';
+  String get weather_listen => 'Bạn đã đi được một chặng dài; hãy lắng nghe cơ thể.';
 
   @override
   String get weather_onPlan => 'Nhịp độ hôm nay phù hợp với kế hoạch của bạn.';
 
   @override
-  String get weather_challenging =>
-      'Giờ này trước đây từng khó khăn; chế độ hỗ trợ đã sẵn sàng.';
+  String get weather_challenging => 'Giờ này trước đây từng khó khăn; chế độ hỗ trợ đã sẵn sàng.';
 
   @override
   String get replay_copied => 'Đã sao chép bản tóm tắt nhịn ăn';
@@ -915,8 +900,7 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'Thời điểm của giai đoạn chỉ là ước tính chung, không phải phép đo y khoa.';
+  String get phase_estimateShort => 'Thời điểm của giai đoạn chỉ là ước tính chung, không phải phép đo y khoa.';
 
   @override
   String phase_hours(int start, int end) {
@@ -924,8 +908,7 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Thời điểm này chỉ là ước tính chung. Phản ứng chuyển hóa có thể khác nhau ở mỗi người.';
+  String get phase_estimateLong => 'Thời điểm này chỉ là ước tính chung. Phản ứng chuyển hóa có thể khác nhau ở mỗi người.';
 
   @override
   String get bmi_underweight => 'Thiếu cân';
@@ -957,8 +940,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get notification_phaseKetosis => 'Bạn đang ở trạng thái ketosis ⚡';
 
   @override
-  String get notification_phaseAutophagy =>
-      'Quá trình tự thực bào đang hoạt động! 🔄';
+  String get notification_phaseAutophagy => 'Quá trình tự thực bào đang hoạt động! 🔄';
 
   @override
   String notification_completedBody(String plan) {
@@ -975,8 +957,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get notification_windowTitle => 'Khung giờ ăn sắp kết thúc ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Khung giờ ăn của bạn sẽ kết thúc sau 30 phút.';
+  String get notification_windowBody => 'Khung giờ ăn của bạn sẽ kết thúc sau 30 phút.';
 
   @override
   String notification_streakTitle(int days) {
@@ -984,8 +965,7 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      'Bạn đang làm rất tốt! Hãy tiếp tục hôm nay.';
+  String get notification_streakBody => 'Bạn đang làm rất tốt! Hãy tiếp tục hôm nay.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1019,29 +999,25 @@ class AppLocalizationsVi extends AppLocalizations {
   String get explore_guideDesc => 'Mọi điều bạn cần biết về nhịn ăn gián đoạn';
 
   @override
-  String get explore_circleDesc =>
-      'Chia sẻ sự động viên nhẹ nhàng với nhóm riêng tư của bạn.';
+  String get explore_circleDesc => 'Chia sẻ sự động viên nhẹ nhàng với nhóm riêng tư của bạn.';
 
   @override
   String get explore_faq => 'Câu hỏi thường gặp';
 
   @override
-  String get explore_education =>
-      'Nội dung này chỉ nhằm giáo dục phổ thông, không phải chẩn đoán hay tư vấn điều trị y khoa.';
+  String get explore_education => 'Nội dung này chỉ nhằm giáo dục phổ thông, không phải chẩn đoán hay tư vấn điều trị y khoa.';
 
   @override
   String get explore_safety => 'Sức khỏe và an toàn';
 
   @override
-  String get explore_safetyDesc =>
-      'Nếu bạn có bệnh lý, dùng thuốc thường xuyên, có triệu chứng đáng lo, đang mang thai hoặc cho con bú, hãy hỏi ý kiến chuyên gia y tế đủ chuyên môn trước khi nhịn ăn. Hãy dừng lại nếu thấy không khỏe.';
+  String get explore_safetyDesc => 'Nếu bạn có bệnh lý, dùng thuốc thường xuyên, có triệu chứng đáng lo, đang mang thai hoặc cho con bú, hãy hỏi ý kiến chuyên gia y tế đủ chuyên môn trước khi nhịn ăn. Hãy dừng lại nếu thấy không khỏe.';
 
   @override
   String get explore_sources => 'Nguồn';
 
   @override
-  String get explore_sourcesDesc =>
-      'Nội dung được đơn giản hóa từ các tài liệu y tế công cộng bên dưới.';
+  String get explore_sourcesDesc => 'Nội dung được đơn giản hóa từ các tài liệu y tế công cộng bên dưới.';
 
   @override
   String get explore_sourceError => 'Không thể mở nguồn';
@@ -1050,8 +1026,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get explore_rules => 'Quy tắc quan trọng';
 
   @override
-  String get explore_rule1 =>
-      'Không dùng thực phẩm có calo trong thời gian nhịn ăn';
+  String get explore_rule1 => 'Không dùng thực phẩm có calo trong thời gian nhịn ăn';
 
   @override
   String get explore_rule2 => 'Uống nhiều nước và chất lỏng';
@@ -1063,8 +1038,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get explore_rule4 => 'Dừng nhịn ăn nếu bạn thấy không khỏe';
 
   @override
-  String get explore_rule5 =>
-      'Phụ nữ mang thai hoặc cho con bú không nên nhịn ăn';
+  String get explore_rule5 => 'Phụ nữ mang thai hoặc cho con bú không nên nhịn ăn';
 
   @override
   String get explore_rule6 => 'Tham khảo bác sĩ nếu bạn có bệnh mạn tính';
@@ -1073,120 +1047,103 @@ class AppLocalizationsVi extends AppLocalizations {
   String get tip_water => 'Giữ đủ nước';
 
   @override
-  String get tip_waterDesc =>
-      'Uống nước khi khát và bổ sung chất lỏng trong bữa ăn. Nhu cầu có thể thay đổi theo sức khỏe, thời tiết và mức vận động.';
+  String get tip_waterDesc => 'Uống nước khi khát và bổ sung chất lỏng trong bữa ăn. Nhu cầu có thể thay đổi theo sức khỏe, thời tiết và mức vận động.';
 
   @override
   String get tip_food => 'Ăn đúng cách';
 
   @override
-  String get tip_foodDesc =>
-      'Trong khung giờ ăn, hãy chọn thực phẩm giàu protein, chất xơ và chất béo lành mạnh. Tránh thực phẩm chế biến sẵn.';
+  String get tip_foodDesc => 'Trong khung giờ ăn, hãy chọn thực phẩm giàu protein, chất xơ và chất béo lành mạnh. Tránh thực phẩm chế biến sẵn.';
 
   @override
   String get tip_sleep => 'Ngủ ngon';
 
   @override
-  String get tip_sleepDesc =>
-      'Giấc ngủ đều đặn và đầy đủ hỗ trợ sức khỏe tổng thể. Hãy sắp xếp nhịn ăn để không làm gián đoạn giấc ngủ.';
+  String get tip_sleepDesc => 'Giấc ngủ đều đặn và đầy đủ hỗ trợ sức khỏe tổng thể. Hãy sắp xếp nhịn ăn để không làm gián đoạn giấc ngủ.';
 
   @override
   String get tip_exercise => 'Vận động nhẹ';
 
   @override
-  String get tip_exerciseDesc =>
-      'Bạn có thể đi bộ nhẹ hoặc tập yoga khi nhịn ăn. Tránh vận động nặng, đặc biệt trong những tuần đầu khi cơ thể chưa thích nghi.';
+  String get tip_exerciseDesc => 'Bạn có thể đi bộ nhẹ hoặc tập yoga khi nhịn ăn. Tránh vận động nặng, đặc biệt trong những tuần đầu khi cơ thể chưa thích nghi.';
 
   @override
   String get tip_drinks => 'Đồ uống được phép';
 
   @override
-  String get tip_drinksDesc =>
-      'Trong thời gian nhịn ăn, bạn có thể uống nước, trà nguyên chất và cà phê đen (không đường, không sữa). Những đồ uống này không phá vỡ kỳ nhịn ăn.';
+  String get tip_drinksDesc => 'Trong thời gian nhịn ăn, bạn có thể uống nước, trà nguyên chất và cà phê đen (không đường, không sữa). Những đồ uống này không phá vỡ kỳ nhịn ăn.';
 
   @override
   String get faq_drinks => 'Tôi có thể uống gì khi nhịn ăn?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Bạn có thể uống nước, trà nguyên chất và cà phê đen (không đường/sữa). Đồ uống có calo sẽ phá vỡ kỳ nhịn ăn.';
+  String get faq_drinksAnswer => 'Bạn có thể uống nước, trà nguyên chất và cà phê đen (không đường/sữa). Đồ uống có calo sẽ phá vỡ kỳ nhịn ăn.';
 
   @override
   String get faq_plan => 'Tôi nên chọn kế hoạch nhịn ăn nào?';
 
   @override
-  String get faq_planAnswer =>
-      'Nếu mới bắt đầu, hãy thử 12:12 hoặc 14:10. Nếu đã có kinh nghiệm, hãy thử 16:8 hoặc 18:6. 20:4 và OMAD dành cho người nhịn ăn nâng cao.';
+  String get faq_planAnswer => 'Nếu mới bắt đầu, hãy thử 12:12 hoặc 14:10. Nếu đã có kinh nghiệm, hãy thử 16:8 hoặc 18:6. 20:4 và OMAD dành cho người nhịn ăn nâng cao.';
 
   @override
   String get faq_exercise => 'Tôi có thể tập thể dục khi nhịn ăn không?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Có, nhưng hãy tránh tập cường độ cao. Cardio nhẹ, đi bộ và yoga là lựa chọn lý tưởng. Nếu tập tạ, hãy sắp xếp gần khung giờ ăn.';
+  String get faq_exerciseAnswer => 'Có, nhưng hãy tránh tập cường độ cao. Cardio nhẹ, đi bộ và yoga là lựa chọn lý tưởng. Nếu tập tạ, hãy sắp xếp gần khung giờ ăn.';
 
   @override
   String get faq_weight => 'Nhịn ăn có giúp giảm cân không?';
 
   @override
-  String get faq_weightAnswer =>
-      'Với một số người, giới hạn thời gian ăn có thể làm giảm tổng năng lượng nạp vào. Kết quả khác nhau và tác động dài hạn vẫn đang được nghiên cứu.';
+  String get faq_weightAnswer => 'Với một số người, giới hạn thời gian ăn có thể làm giảm tổng năng lượng nạp vào. Kết quả khác nhau và tác động dài hạn vẫn đang được nghiên cứu.';
 
   @override
   String get plan_12_desc => 'Mức người mới';
 
   @override
-  String get plan_12_detail =>
-      'Lý tưởng cho người mới. Nhịn ăn 12 giờ, bao gồm thời gian ngủ.';
+  String get plan_12_detail => 'Lý tưởng cho người mới. Nhịn ăn 12 giờ, bao gồm thời gian ngủ.';
 
   @override
   String get plan_16_desc => 'Kế hoạch phổ biến nhất';
 
   @override
-  String get plan_16_detail =>
-      'Kế hoạch nhịn ăn gián đoạn phổ biến nhất. Nhịn 16 giờ, ăn trong 8 giờ. Thường từ bữa trưa đến bữa tối.';
+  String get plan_16_detail => 'Kế hoạch nhịn ăn gián đoạn phổ biến nhất. Nhịn 16 giờ, ăn trong 8 giờ. Thường từ bữa trưa đến bữa tối.';
 
   @override
   String get plan_18_desc => 'Mức trung cấp';
 
   @override
-  String get plan_18_detail =>
-      'Nhịn 18 giờ, ăn trong 6 giờ. Thời gian đốt mỡ lâu hơn.';
+  String get plan_18_detail => 'Nhịn 18 giờ, ăn trong 6 giờ. Thời gian đốt mỡ lâu hơn.';
 
   @override
   String get plan_20_desc => 'Mức nâng cao';
 
   @override
-  String get plan_20_detail =>
-      'Nhịn 20 giờ, ăn trong 4 giờ. Lý tưởng để đạt ketosis và tự thực bào.';
+  String get plan_20_detail => 'Nhịn 20 giờ, ăn trong 4 giờ. Lý tưởng để đạt ketosis và tự thực bào.';
 
   @override
   String get plan_omad_desc => 'Một bữa mỗi ngày';
 
   @override
-  String get plan_omad_detail =>
-      'Một bữa mỗi ngày. Nhịn 23 giờ, ăn trong 1 giờ. Mức chuyên sâu.';
+  String get plan_omad_detail => 'Một bữa mỗi ngày. Nhịn 23 giờ, ăn trong 1 giờ. Mức chuyên sâu.';
 
   @override
   String get plan_52_desc => '2 ngày mỗi tuần';
 
   @override
-  String get plan_52_detail =>
-      'Ăn bình thường 5 ngày, chỉ khoảng 500 calo trong 2 ngày. Một phương pháp thay thế.';
+  String get plan_52_detail => 'Ăn bình thường 5 ngày, chỉ khoảng 500 calo trong 2 ngày. Một phương pháp thay thế.';
 
   @override
   String get plan_ese_desc => 'Nhịn ăn 24 giờ';
 
   @override
-  String get plan_ese_detail =>
-      'Nhịn ăn 24 giờ, 1–2 lần mỗi tuần. Dành cho người dùng nâng cao.';
+  String get plan_ese_detail => 'Nhịn ăn 24 giờ, 1–2 lần mỗi tuần. Dành cho người dùng nâng cao.';
 
   @override
   String get plan_warrior_desc => 'Chế độ ăn chiến binh';
 
   @override
-  String get plan_warrior_detail =>
-      'Ăn nhẹ ban ngày (trái cây, rau củ), dùng bữa chính trong khung 4 giờ vào buổi tối.';
+  String get plan_warrior_detail => 'Ăn nhẹ ban ngày (trái cây, rau củ), dùng bữa chính trong khung 4 giờ vào buổi tối.';
 
   @override
   String get award_first_title => 'Bước đầu tiên';
@@ -1338,8 +1295,7 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Nhận được sau mỗi bảy lần hoàn thành. Một ngày bỏ lỡ không bao giờ xóa tiến độ của bạn.';
+  String get game_shieldsDesc => 'Nhận được sau mỗi bảy lần hoàn thành. Một ngày bỏ lỡ không bao giờ xóa tiến độ của bạn.';
 
   @override
   String get game_league => 'Giải đấu tuần riêng tư';
@@ -1491,15 +1447,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get paywall_continue => 'Tiếp tục';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Hiện không thể mua hàng. Vui lòng thử lại sau.';
+  String get paywall_productsUnavailable => 'Hiện không thể mua hàng. Vui lòng thử lại sau.';
 
   @override
   String get paywall_purchaseFailed => 'Không thể hoàn tất giao dịch mua.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'Không tìm thấy giao dịch mua trước đó.';
+  String get paywall_nothingToRestore => 'Không tìm thấy giao dịch mua trước đó.';
 
   @override
   String get paywall_restoreFailed => 'Không thể khôi phục giao dịch mua.';
@@ -1508,15 +1462,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get paywall_terms => 'Điều khoản sử dụng';
 
   @override
-  String get permission_notificationDesc =>
-      'Nhắc nhở nhịn ăn, cập nhật giai đoạn và thông báo hoàn thành';
+  String get permission_notificationDesc => 'Nhắc nhở nhịn ăn, cập nhật giai đoạn và thông báo hoàn thành';
 
   @override
   String get profile_privacyChoices => 'Lựa chọn quyền riêng tư';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Gói đăng ký tự động gia hạn trừ khi bị hủy ít nhất 24 giờ trước khi kết thúc kỳ hạn. Quản lý hoặc hủy bất cứ lúc nào trong cài đặt App Store.';
+  String get paywall_autoRenewInfo => 'Gói đăng ký tự động gia hạn trừ khi bị hủy ít nhất 24 giờ trước khi kết thúc kỳ hạn. Quản lý hoặc hủy bất cứ lúc nào trong cài đặt App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1540,28 +1492,22 @@ class AppLocalizationsVi extends AppLocalizations {
   String get paywall_retry => 'Thử lại';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Bạn đã sở hữu gói đăng ký này. Nhấn “Khôi phục giao dịch mua”.';
+  String get paywall_alreadyOwned => 'Bạn đã sở hữu gói đăng ký này. Nhấn “Khôi phục giao dịch mua”.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Hiện không thể kết nối với cửa hàng. Hãy kiểm tra kết nối và thử lại.';
+  String get paywall_storeUnavailable => 'Hiện không thể kết nối với cửa hàng. Hãy kiểm tra kết nối và thử lại.';
 
   @override
-  String get paywall_secureNote =>
-      'Hủy bất cứ lúc nào. Khoản thanh toán được tính vào tài khoản cửa hàng của bạn.';
+  String get paywall_secureNote => 'Hủy bất cứ lúc nào. Khoản thanh toán được tính vào tài khoản cửa hàng của bạn.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Gói đăng ký tự động gia hạn trừ khi bị hủy ít nhất 24 giờ trước khi kết thúc kỳ hạn. Quản lý hoặc hủy bất cứ lúc nào trong Google Play > Gói thuê bao.';
+  String get paywall_autoRenewInfoPlay => 'Gói đăng ký tự động gia hạn trừ khi bị hủy ít nhất 24 giờ trước khi kết thúc kỳ hạn. Quản lý hoặc hủy bất cứ lúc nào trong Google Play > Gói thuê bao.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Mở khóa 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat và Warrior';
+  String get paywall_allPlansDesc => 'Mở khóa 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat và Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Quảng cáo biểu ngữ và quảng cáo xen kẽ được tắt hoàn toàn';
+  String get paywall_noAdsDesc => 'Quảng cáo biểu ngữ và quảng cáo xen kẽ được tắt hoàn toàn';
 
   @override
   String get foodScan_title => 'Quét món ăn bằng AI';
@@ -1570,26 +1516,22 @@ class AppLocalizationsVi extends AppLocalizations {
   String get foodScan_scanCta => 'Quét bữa ăn';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Chụp đĩa thức ăn để nhận lượng calo và các chất dinh dưỡng đa lượng';
+  String get foodScan_scanCtaDesc => 'Chụp đĩa thức ăn để nhận lượng calo và các chất dinh dưỡng đa lượng';
 
   @override
   String get foodScan_introTitle => 'Chụp đĩa thức ăn của bạn';
 
   @override
-  String get foodScan_introDesc =>
-      'AI đọc ảnh và ước tính calo, protein, carbohydrate và chất béo.';
+  String get foodScan_introDesc => 'AI đọc ảnh và ước tính calo, protein, carbohydrate và chất béo.';
 
   @override
-  String get foodScan_tipLight =>
-      'Ánh sáng đều, đủ sáng giúp ước tính chính xác hơn';
+  String get foodScan_tipLight => 'Ánh sáng đều, đủ sáng giúp ước tính chính xác hơn';
 
   @override
   String get foodScan_tipFrame => 'Đặt toàn bộ đĩa thức ăn trong khung hình';
 
   @override
-  String get foodScan_tipScale =>
-      'Đặt thêm dao nĩa hoặc bàn tay để ước lượng khẩu phần';
+  String get foodScan_tipScale => 'Đặt thêm dao nĩa hoặc bàn tay để ước lượng khẩu phần';
 
   @override
   String get foodScan_takePhoto => 'Chụp ảnh';
@@ -1603,19 +1545,16 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Bạn đã dùng hết lượt quét hôm nay. Hãy thử lại vào ngày mai.';
+  String get foodScan_quotaReached => 'Bạn đã dùng hết lượt quét hôm nay. Hãy thử lại vào ngày mai.';
 
   @override
-  String get foodScan_privacyNote =>
-      'Ảnh được gửi tới API Gemini của Google để phân tích và không được lưu trên máy chủ của chúng tôi.';
+  String get foodScan_privacyNote => 'Ảnh được gửi đến Gemini API của Google. Google có thể dùng ảnh để cải thiện sản phẩm và người đánh giá có thể xem ảnh. Chúng tôi không lưu ảnh trên máy chủ của mình.';
 
   @override
   String get foodScan_consentTitle => 'Gửi ảnh đến Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'Để ước tính calo và các chất dinh dưỡng đa lượng, mỗi ảnh bữa ăn bạn chụp hoặc chọn sẽ được gửi đến dịch vụ AI Gemini của Google. Ảnh chỉ được dùng cho lần phân tích này và không được lưu trên máy chủ của chúng tôi.';
+  String get foodScan_consentBody => 'Để ước tính calo và chất đa lượng, mỗi ảnh bữa ăn bạn chụp hoặc chọn sẽ được gửi đến dịch vụ AI Gemini của Google. Google có thể dùng ảnh để cải thiện sản phẩm và người đánh giá có thể xem ảnh, vì vậy đừng để người, giấy tờ hoặc thông tin cá nhân khác trong khung hình. Chúng tôi không lưu ảnh trên máy chủ của mình.';
 
   @override
   String get foodScan_consentAgree => 'Đồng ý và tiếp tục';
@@ -1630,12 +1569,10 @@ class AppLocalizationsVi extends AppLocalizations {
   String get foodScan_detectedItems => 'Món ăn đã nhận diện';
 
   @override
-  String get foodScan_disclaimer =>
-      'Ước tính của AI chỉ mang tính tương đối. Nhấn vào một món để chỉnh sửa.';
+  String get foodScan_disclaimer => 'Ước tính của AI chỉ mang tính tương đối. Nhấn vào một món để chỉnh sửa.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Mô hình chưa chắc chắn về ảnh này. Hãy kiểm tra số liệu trước khi lưu.';
+  String get foodScan_lowConfidence => 'Mô hình chưa chắc chắn về ảnh này. Hãy kiểm tra số liệu trước khi lưu.';
 
   @override
   String get foodScan_save => 'Thêm vào bữa ăn';
@@ -1659,39 +1596,110 @@ class AppLocalizationsVi extends AppLocalizations {
   String get foodScan_premiumTitle => 'Tính năng Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'Phân tích calo từ ảnh được bao gồm trong Premium.';
+  String get foodScan_premiumDesc => 'Phân tích calo từ ảnh được bao gồm trong Premium.';
 
   @override
   String get foodScan_upgrade => 'Xem Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Không có kết nối. Hãy kiểm tra Internet và thử lại.';
+  String get foodScan_errorNetwork => 'Không có kết nối. Hãy kiểm tra Internet và thử lại.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Hiện có quá nhiều lượt quét. Hãy thử lại sau vài phút.';
+  String get foodScan_errorRateLimited => 'Hiện có quá nhiều lượt quét. Hãy thử lại sau vài phút.';
 
   @override
   String get foodScan_errorUnavailable => 'Hiện không thể phân tích ảnh.';
 
   @override
-  String get foodScan_errorServer =>
-      'Dịch vụ phân tích đang gặp sự cố. Hãy thử lại sau ít phút.';
+  String get foodScan_errorServer => 'Dịch vụ phân tích đang gặp sự cố. Hãy thử lại sau ít phút.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Không tìm thấy thức ăn trong ảnh. Hãy thử chụp đĩa rõ hơn.';
+  String get foodScan_errorNoFood => 'Không tìm thấy thức ăn trong ảnh. Hãy thử chụp đĩa rõ hơn.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Không thể phân tích ảnh này. Hãy thử ảnh khác.';
+  String get foodScan_errorUnreadable => 'Không thể phân tích ảnh này. Hãy thử ảnh khác.';
 
   @override
   String get paywall_aiFoodScan => 'Quét món ăn bằng AI';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Chụp bữa ăn và ghi lại calo cùng chất dinh dưỡng đa lượng trong vài giây';
+  String get paywall_aiFoodScanDesc => 'Chụp bữa ăn và ghi lại calo cùng chất dinh dưỡng đa lượng trong vài giây';
+
+  @override
+  String get safety_title => 'Trước khi bắt đầu';
+
+  @override
+  String get safety_desc => 'Nhịn ăn không an toàn với tất cả mọi người. Hãy chọn mọi điều đúng với bạn.';
+
+  @override
+  String get safety_under18 => 'Tôi dưới 18 tuổi';
+
+  @override
+  String get safety_pregnant => 'Tôi đang mang thai hoặc cho con bú';
+
+  @override
+  String get safety_eatingDisorder => 'Tôi đang hoặc từng bị rối loạn ăn uống';
+
+  @override
+  String get safety_underweight => 'Tôi thiếu cân hoặc được khuyên không nên giảm cân';
+
+  @override
+  String get safety_diabetes => 'Tôi bị tiểu đường hoặc dùng thuốc ảnh hưởng đến đường huyết';
+
+  @override
+  String get safety_medical => 'Tôi có bệnh khác hoặc dùng thuốc thường xuyên';
+
+  @override
+  String get safety_none => 'Không có điều nào đúng với tôi';
+
+  @override
+  String get safety_ack => 'Tôi sẽ trao đổi với bác sĩ trước khi nhịn ăn';
+
+  @override
+  String get safety_blockedTitle => 'Ứng dụng này không an toàn với bạn';
+
+  @override
+  String get safety_blockedDesc => 'Dựa trên câu trả lời của bạn, chúng tôi không thể cung cấp nhịn ăn tại đây. Hãy trao đổi với bác sĩ. Nếu việc ăn uống đang khó khăn, chuyên gia y tế có thể giúp bạn.';
+
+  @override
+  String get safety_reviewAnswers => 'Xem lại câu trả lời';
+
+  @override
+  String get safety_targetTooLow => 'Mục tiêu đó thấp hơn cân nặng khỏe mạnh so với chiều cao của bạn.';
+
+  @override
+  String get onboarding_invalidBody => 'Nhập chiều cao, cân nặng, cân nặng mục tiêu và tuổi hợp lệ.';
+
+  @override
+  String get crisis_unwell => 'Tôi thấy không khỏe';
+
+  @override
+  String get crisis_unwellTitle => 'Kết thúc nhịn ăn ngay';
+
+  @override
+  String get crisis_unwellDesc => 'Chóng mặt, run, lú lẫn hoặc tim đập nhanh là dấu hiệu cần dừng nhịn ăn và ăn hoặc uống gì đó.';
+
+  @override
+  String get crisis_emergency => 'Nếu bạn bị ngất, đau ngực hoặc thấy rất không khỏe, hãy gọi ngay số cấp cứu tại địa phương.';
+
+  @override
+  String get crisis_endFast => 'Kết thúc nhịn ăn của tôi';
+
+  @override
+  String get profile_deleteData => 'Xóa tất cả dữ liệu của tôi';
+
+  @override
+  String get profile_deleteDataConfirm => 'Thao tác này xóa vĩnh viễn các lần nhịn ăn, cân nặng, bữa ăn, nước và cài đặt khỏi thiết bị này. Không thể hoàn tác. Gói đăng ký được quản lý trong tài khoản cửa hàng.';
+
+  @override
+  String get profile_deleteDataAction => 'Xóa tất cả';
+
+  @override
+  String get record_deleteConfirm => 'Xóa mục này?';
+
+  @override
+  String get profile_analytics => 'Chia sẻ dữ liệu sử dụng ẩn danh';
+
+  @override
+  String get profile_analyticsDesc => 'Giúp cải thiện ứng dụng. Không bao giờ bao gồm cân nặng, bữa ăn hoặc dữ liệu sức khỏe.';
 }

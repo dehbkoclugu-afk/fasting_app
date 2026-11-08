@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/fasting_plans.dart';
 import '../../../core/constants/metabolic_phases.dart';
 import '../../../data/database/app_database.dart';
+import '../../../services/analytics_service.dart';
 import '../../../services/background_service.dart';
 import '../../../services/widget_service.dart';
 import '../../profile/providers/settings_provider.dart';
@@ -147,6 +148,7 @@ class TimerNotifier extends StateNotifier<TimerState> {
         await _finish(completed: true);
         return;
       }
+      AnalyticsService().track('fast_started', {'plan': requested.id});
       await _startOptionalServices(session);
       final elapsed = _elapsedSince(session.startTime);
       state = state.copyWith(
@@ -170,6 +172,13 @@ class TimerNotifier extends StateNotifier<TimerState> {
         ? state.elapsedSeconds
         : _elapsedSince(state.startTime!);
     return _finish(completed: elapsed >= state.targetSeconds);
+  }
+
+  /// Ends any running fast and returns straight to idle, skipping the
+  /// completion overlay and the ad behind it. For safety exits.
+  Future<void> endFastQuietly() async {
+    await stopFasting();
+    await resetTimer();
   }
 
   Future<void> resetTimer() async {
@@ -254,6 +263,7 @@ class TimerNotifier extends StateNotifier<TimerState> {
         completed: completed,
       );
       _activeSessionId = null;
+      AnalyticsService().track('fast_finished', {'completed': completed});
       state = state.copyWith(
         status: TimerStatus.completed,
         elapsedSeconds: elapsed,

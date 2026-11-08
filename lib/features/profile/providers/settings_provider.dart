@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../services/analytics_service.dart';
 import '../../../services/notification_service.dart';
 
 class AppSettings {
@@ -13,6 +14,7 @@ class AppSettings {
   final bool phaseNotifications;
   final bool soundEnabled;
   final bool calmGamification;
+  final bool analyticsEnabled;
   final bool onboardingCompleted;
   final String selectedPlanId;
   final String userName;
@@ -32,6 +34,7 @@ class AppSettings {
     this.phaseNotifications = true,
     this.soundEnabled = false,
     this.calmGamification = false,
+    this.analyticsEnabled = false,
     this.onboardingCompleted = false,
     this.selectedPlanId = '16_8',
     this.userName = '',
@@ -50,6 +53,7 @@ class AppSettings {
     bool? phaseNotifications,
     bool? soundEnabled,
     bool? calmGamification,
+    bool? analyticsEnabled,
     bool? onboardingCompleted,
     String? selectedPlanId,
     String? userName,
@@ -67,6 +71,7 @@ class AppSettings {
       phaseNotifications: phaseNotifications ?? this.phaseNotifications,
       soundEnabled: soundEnabled ?? this.soundEnabled,
       calmGamification: calmGamification ?? this.calmGamification,
+      analyticsEnabled: analyticsEnabled ?? this.analyticsEnabled,
       onboardingCompleted: onboardingCompleted ?? this.onboardingCompleted,
       selectedPlanId: selectedPlanId ?? this.selectedPlanId,
       userName: userName ?? this.userName,
@@ -94,6 +99,7 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
       phaseNotifications: prefs.getBool('phaseNotifications') ?? true,
       soundEnabled: prefs.getBool('sound_enabled') ?? false,
       calmGamification: prefs.getBool('calm_gamification') ?? false,
+      analyticsEnabled: prefs.getBool(AnalyticsService.optInKey) ?? false,
       onboardingCompleted: prefs.getBool('onboardingCompleted') ?? false,
       selectedPlanId: prefs.getString('selectedPlanId') ?? '16_8',
       userName: prefs.getString('userName') ?? '',
@@ -154,6 +160,11 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
   void setSoundEnabled(bool enabled) {
     state = state.copyWith(soundEnabled: enabled);
     _save();
+  }
+
+  void setAnalyticsEnabled(bool enabled) {
+    state = state.copyWith(analyticsEnabled: enabled);
+    unawaited(AnalyticsService().setEnabled(enabled));
   }
 
   void setCalmGamification(bool enabled) {

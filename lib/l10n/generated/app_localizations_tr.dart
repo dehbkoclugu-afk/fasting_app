@@ -263,8 +263,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get onboarding_welcome => 'Hoş Geldin';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Intermittent fasting yolculuğunu\nkontrol altına al';
+  String get onboarding_welcomeDesc => 'Intermittent fasting yolculuğunu\nkontrol altına al';
 
   @override
   String get onboarding_featureTimer => 'Akıllı oruç zamanlayıcı';
@@ -345,15 +344,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get onboarding_age => 'Yaş';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Bu bilgiler sadece cihazında saklanır ve kalori hesaplamaları için kullanılır.';
+  String get onboarding_bodyInfoDisclaimer => 'Bu bilgiler sadece cihazında saklanır ve kalori hesaplamaları için kullanılır.';
 
   @override
   String get onboarding_permissions => 'Son Adım';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'En iyi deneyim için izinleri etkinleştir';
+  String get onboarding_permissionsDesc => 'En iyi deneyim için izinleri etkinleştir';
 
   @override
   String get onboarding_next => 'Devam Et';
@@ -419,8 +416,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paywall_premiumActive => 'Premium Aktif!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Tüm oruç planları açık, reklamlar kapalı';
+  String get paywall_premiumActiveDesc => 'Tüm oruç planları açık, reklamlar kapalı';
 
   @override
   String get water_title => 'Su Tüketimi';
@@ -555,8 +551,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get completion_earlyTitle => 'Oruç sona erdi';
 
   @override
-  String get completion_earlyMessage =>
-      'Bugünkü süre kaydedildi. Hedef tamamlanmadığı için seri ve başarı ilerlemesi değişmedi.';
+  String get completion_earlyMessage => 'Bugünkü süre kaydedildi. Hedef tamamlanmadığı için seri ve başarı ilerlemesi değişmedi.';
 
   @override
   String get timer_remainingTime => 'Kalan Süre';
@@ -586,8 +581,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get streak_incredible => 'İnanılmaz!';
 
   @override
-  String get weight_noRecord =>
-      'Henüz kilo kaydı yok\nProfil > Vücut Ölçüleri\'nden ekle';
+  String get weight_noRecord => 'Henüz kilo kaydı yok\nProfil > Vücut Ölçüleri\'nden ekle';
 
   @override
   String get day_mon => 'Pzt';
@@ -791,8 +785,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get circle_tagline => 'Birlikte, baskı olmadan.';
 
   @override
-  String get circle_privacy =>
-      'Kilo ve özel ölçüler paylaşılmaz. Yalnızca ilerleme ve destek görünür.';
+  String get circle_privacy => 'Kilo ve özel ölçüler paylaşılmaz. Yalnızca ilerleme ve destek görünür.';
 
   @override
   String circle_sendSupport(int count) {
@@ -821,8 +814,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get crisis_delayTitle => 'Kararı 10 dakika ertele';
 
   @override
-  String get crisis_delayDesc =>
-      'İyi hissetmiyorsan orucu bitirmek başarısızlık değildir.';
+  String get crisis_delayDesc => 'İyi hissetmiyorsan orucu bitirmek başarısızlık değildir.';
 
   @override
   String get crisis_hunger => 'Açlık';
@@ -837,8 +829,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get crisis_tenMore => '10 dakika daha';
 
   @override
-  String get stats_storyEmpty =>
-      'İlk orucun, kişisel hikâyenin başlangıcı olacak.';
+  String get stats_storyEmpty => 'İlk orucun, kişisel hikâyenin başlangıcı olacak.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -884,8 +875,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get weather_onPlan => 'Bugünkü tempon planınla uyumlu.';
 
   @override
-  String get weather_challenging =>
-      'Bu saat daha önce zorlayıcı olmuştu; destek modu hazır.';
+  String get weather_challenging => 'Bu saat daha önce zorlayıcı olmuştu; destek modu hazır.';
 
   @override
   String get replay_copied => 'Fasting Replay kopyalandı';
@@ -910,8 +900,7 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'Evre saatleri genel tahmindir; tıbbi ölçüm değildir.';
+  String get phase_estimateShort => 'Evre saatleri genel tahmindir; tıbbi ölçüm değildir.';
 
   @override
   String phase_hours(int start, int end) {
@@ -919,8 +908,7 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Bu zaman aralığı genel bir tahmindir. Metabolik yanıt kişiden kişiye değişebilir.';
+  String get phase_estimateLong => 'Bu zaman aralığı genel bir tahmindir. Metabolik yanıt kişiden kişiye değişebilir.';
 
   @override
   String get bmi_underweight => 'Zayıf';
@@ -969,8 +957,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notification_windowTitle => 'Yemek Penceresi Kapanıyor ⏰';
 
   @override
-  String get notification_windowBody =>
-      '30 dakika içinde yemek penceren kapanacak.';
+  String get notification_windowBody => '30 dakika içinde yemek penceren kapanacak.';
 
   @override
   String notification_streakTitle(int days) {
@@ -1018,22 +1005,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get explore_faq => 'Sık Sorulan Sorular';
 
   @override
-  String get explore_education =>
-      'Bu içerik yalnızca genel eğitim amaçlıdır; tıbbi tanı veya tedavi önerisi değildir.';
+  String get explore_education => 'Bu içerik yalnızca genel eğitim amaçlıdır; tıbbi tanı veya tedavi önerisi değildir.';
 
   @override
   String get explore_safety => 'Sağlık ve güvenlik';
 
   @override
-  String get explore_safetyDesc =>
-      'Bir hastalığın, düzenli ilacın veya endişe veren belirtin varsa; hamileysen ya da emziriyorsan oruç planına başlamadan önce yetkin bir sağlık uzmanına danış. Kendini kötü hissedersen orucu sonlandır.';
+  String get explore_safetyDesc => 'Bir hastalığın, düzenli ilacın veya endişe veren belirtin varsa; hamileysen ya da emziriyorsan oruç planına başlamadan önce yetkin bir sağlık uzmanına danış. Kendini kötü hissedersen orucu sonlandır.';
 
   @override
   String get explore_sources => 'Kaynaklar';
 
   @override
-  String get explore_sourcesDesc =>
-      'İçerik, aşağıdaki kamu sağlığı kaynakları temel alınarak sadeleştirilmiştir.';
+  String get explore_sourcesDesc => 'İçerik, aşağıdaki kamu sağlığı kaynakları temel alınarak sadeleştirilmiştir.';
 
   @override
   String get explore_sourceError => 'Kaynak açılamadı';
@@ -1063,120 +1047,103 @@ class AppLocalizationsTr extends AppLocalizations {
   String get tip_water => 'Bol Su İç';
 
   @override
-  String get tip_waterDesc =>
-      'Susadığınızda su için ve öğünlerle birlikte sıvı tüketin. İhtiyaç; sağlık durumu, hava ve aktiviteye göre değişebilir.';
+  String get tip_waterDesc => 'Susadığınızda su için ve öğünlerle birlikte sıvı tüketin. İhtiyaç; sağlık durumu, hava ve aktiviteye göre değişebilir.';
 
   @override
   String get tip_food => 'Doğru Beslen';
 
   @override
-  String get tip_foodDesc =>
-      'Yemek penceresinde protein ağırlıklı, lifli ve sağlıklı yağlar içeren besinler tercih edin. İşlenmiş gıdalardan kaçının.';
+  String get tip_foodDesc => 'Yemek penceresinde protein ağırlıklı, lifli ve sağlıklı yağlar içeren besinler tercih edin. İşlenmiş gıdalardan kaçının.';
 
   @override
   String get tip_sleep => 'Yeterli Uyu';
 
   @override
-  String get tip_sleepDesc =>
-      'Düzenli ve yeterli uyku genel iyilik hâlini destekler. Oruç planını uykunuzu bozmayacak saatlere yerleştirin.';
+  String get tip_sleepDesc => 'Düzenli ve yeterli uyku genel iyilik hâlini destekler. Oruç planını uykunuzu bozmayacak saatlere yerleştirin.';
 
   @override
   String get tip_exercise => 'Hafif Egzersiz';
 
   @override
-  String get tip_exerciseDesc =>
-      'Oruç sırasında hafif yürüyüş veya yoga yapabilirsiniz. Ağır egzersizlerden kaçının, özellikle ilk haftalarda vücudunuz adapte olana kadar.';
+  String get tip_exerciseDesc => 'Oruç sırasında hafif yürüyüş veya yoga yapabilirsiniz. Ağır egzersizlerden kaçının, özellikle ilk haftalarda vücudunuz adapte olana kadar.';
 
   @override
   String get tip_drinks => 'İzin Verilen İçecekler';
 
   @override
-  String get tip_drinksDesc =>
-      'Oruç süresince su, sade çay, sade kahve (şekersiz, sütsüz) tüketebilirsiniz. Bu içecekler orucu bozmaz.';
+  String get tip_drinksDesc => 'Oruç süresince su, sade çay, sade kahve (şekersiz, sütsüz) tüketebilirsiniz. Bu içecekler orucu bozmaz.';
 
   @override
   String get faq_drinks => 'Oruç sırasında ne içebilirim?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Su, sade çay, sade kahve (şekersiz ve sütsüz) içebilirsiniz. Kalorili içecekler orucu bozar.';
+  String get faq_drinksAnswer => 'Su, sade çay, sade kahve (şekersiz ve sütsüz) içebilirsiniz. Kalorili içecekler orucu bozar.';
 
   @override
   String get faq_plan => 'Hangi oruç planını seçmeliyim?';
 
   @override
-  String get faq_planAnswer =>
-      'Yeni başlıyorsanız 12:12 veya 14:10 ile başlayın. Deneyimliyseniz 16:8 veya 18:6 deneyin. 20:4 ve OMAD ileri seviye için uygundur.';
+  String get faq_planAnswer => 'Yeni başlıyorsanız 12:12 veya 14:10 ile başlayın. Deneyimliyseniz 16:8 veya 18:6 deneyin. 20:4 ve OMAD ileri seviye için uygundur.';
 
   @override
   String get faq_exercise => 'Oruç tutarken spor yapabilir miyim?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Evet, ancak yoğun egzersizlerden kaçının. Hafif kardiyo, yürüyüş ve yoga idealdir. Ağırlık çalışması yapacaksanız yemek penceresine yakın saatleri tercih edin.';
+  String get faq_exerciseAnswer => 'Evet, ancak yoğun egzersizlerden kaçının. Hafif kardiyo, yürüyüş ve yoga idealdir. Ağırlık çalışması yapacaksanız yemek penceresine yakın saatleri tercih edin.';
 
   @override
   String get faq_weight => 'Oruç kilo verdirir mi?';
 
   @override
-  String get faq_weightAnswer =>
-      'Bazı kişilerde yemek süresini sınırlamak toplam enerji alımını azaltabilir. Sonuçlar kişiden kişiye değişir ve uzun dönem etkileri için araştırmalar sürmektedir.';
+  String get faq_weightAnswer => 'Bazı kişilerde yemek süresini sınırlamak toplam enerji alımını azaltabilir. Sonuçlar kişiden kişiye değişir ve uzun dönem etkileri için araştırmalar sürmektedir.';
 
   @override
   String get plan_12_desc => 'Başlangıç seviyesi';
 
   @override
-  String get plan_12_detail =>
-      'Oruç tutmaya yeni başlayanlar için ideal. Gece uykusu ile birlikte 12 saat oruç tutarsın.';
+  String get plan_12_detail => 'Oruç tutmaya yeni başlayanlar için ideal. Gece uykusu ile birlikte 12 saat oruç tutarsın.';
 
   @override
   String get plan_16_desc => 'En popüler plan';
 
   @override
-  String get plan_16_detail =>
-      'En yaygın IF planı. 16 saat oruç, 8 saat yemek penceresi. Genelde öğle-akşam yemeği arası.';
+  String get plan_16_detail => 'En yaygın IF planı. 16 saat oruç, 8 saat yemek penceresi. Genelde öğle-akşam yemeği arası.';
 
   @override
   String get plan_18_desc => 'Orta seviye';
 
   @override
-  String get plan_18_detail =>
-      '18 saat oruç, 6 saat yemek penceresi. Daha uzun yağ yakım süresi sağlar.';
+  String get plan_18_detail => '18 saat oruç, 6 saat yemek penceresi. Daha uzun yağ yakım süresi sağlar.';
 
   @override
   String get plan_20_desc => 'İleri seviye';
 
   @override
-  String get plan_20_detail =>
-      '20 saat oruç, 4 saat yemek penceresi. Ketozis ve otofaji fazlarına ulaşmak için ideal.';
+  String get plan_20_detail => '20 saat oruç, 4 saat yemek penceresi. Ketozis ve otofaji fazlarına ulaşmak için ideal.';
 
   @override
   String get plan_omad_desc => 'Günde tek öğün';
 
   @override
-  String get plan_omad_detail =>
-      'Günde tek öğün. 23 saat oruç, 1 saat yemek penceresi. Uzman seviyesi.';
+  String get plan_omad_detail => 'Günde tek öğün. 23 saat oruç, 1 saat yemek penceresi. Uzman seviyesi.';
 
   @override
   String get plan_52_desc => 'Haftada 2 gün';
 
   @override
-  String get plan_52_detail =>
-      'Haftada 5 gün normal ye, 2 gün sadece ~500 kalori al. Alternatif bir yaklaşım.';
+  String get plan_52_detail => 'Haftada 5 gün normal ye, 2 gün sadece ~500 kalori al. Alternatif bir yaklaşım.';
 
   @override
   String get plan_ese_desc => '24 saat oruç';
 
   @override
-  String get plan_ese_detail =>
-      'Haftada 1–2 kez tam 24 saat oruç tut. İleri seviye kullanıcılar için.';
+  String get plan_ese_detail => 'Haftada 1–2 kez tam 24 saat oruç tut. İleri seviye kullanıcılar için.';
 
   @override
   String get plan_warrior_desc => 'Savaşçı diyeti';
 
   @override
-  String get plan_warrior_detail =>
-      'Gün boyunca az ye (meyve, sebze), akşam 4 saatlik pencerede ana öğününü ye.';
+  String get plan_warrior_detail => 'Gün boyunca az ye (meyve, sebze), akşam 4 saatlik pencerede ana öğününü ye.';
 
   @override
   String get award_first_title => 'İlk Adım';
@@ -1328,8 +1295,7 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Her yedi tamamlamada kazanılır. Kaçırılan bir gün ilerlemeni değersizleştirmez.';
+  String get game_shieldsDesc => 'Her yedi tamamlamada kazanılır. Kaçırılan bir gün ilerlemeni değersizleştirmez.';
 
   @override
   String get game_league => 'Özel haftalık lig';
@@ -1481,15 +1447,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paywall_continue => 'Devam et';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Satın alma seçenekleri şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.';
+  String get paywall_productsUnavailable => 'Satın alma seçenekleri şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.';
 
   @override
   String get paywall_purchaseFailed => 'Satın alma tamamlanamadı.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'Geri yüklenecek önceki bir satın alma bulunamadı.';
+  String get paywall_nothingToRestore => 'Geri yüklenecek önceki bir satın alma bulunamadı.';
 
   @override
   String get paywall_restoreFailed => 'Satın almalar geri yüklenemedi.';
@@ -1498,15 +1462,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paywall_terms => 'Kullanım Şartları';
 
   @override
-  String get permission_notificationDesc =>
-      'Oruç hatırlatmaları, faz güncellemeleri ve tamamlanma bildirimleri';
+  String get permission_notificationDesc => 'Oruç hatırlatmaları, faz güncellemeleri ve tamamlanma bildirimleri';
 
   @override
   String get profile_privacyChoices => 'Gizlilik tercihleri';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. App Store ayarlarından istediğin zaman yönetebilir veya iptal edebilirsin.';
+  String get paywall_autoRenewInfo => 'Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. App Store ayarlarından istediğin zaman yönetebilir veya iptal edebilirsin.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1530,24 +1492,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paywall_retry => 'Tekrar dene';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Bu abonelik zaten hesabında. “Satın alımları geri yükle”ye dokun.';
+  String get paywall_alreadyOwned => 'Bu abonelik zaten hesabında. “Satın alımları geri yükle”ye dokun.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Mağazaya şu anda ulaşılamıyor. Bağlantını kontrol edip tekrar dene.';
+  String get paywall_storeUnavailable => 'Mağazaya şu anda ulaşılamıyor. Bağlantını kontrol edip tekrar dene.';
 
   @override
-  String get paywall_secureNote =>
-      'İstediğin zaman iptal et. Ödeme mağaza hesabından tahsil edilir.';
+  String get paywall_secureNote => 'İstediğin zaman iptal et. Ödeme mağaza hesabından tahsil edilir.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. Google Play > Abonelikler bölümünden istediğin zaman yönetebilir veya iptal edebilirsin.';
+  String get paywall_autoRenewInfoPlay => 'Abonelikler, dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. Google Play > Abonelikler bölümünden istediğin zaman yönetebilir veya iptal edebilirsin.';
 
   @override
-  String get paywall_allPlansDesc =>
-      '18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ve Warrior kilidi açılır';
+  String get paywall_allPlansDesc => '18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ve Warrior kilidi açılır';
 
   @override
   String get paywall_noAdsDesc => 'Banner ve geçiş reklamları tamamen kapanır';
@@ -1559,15 +1516,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get foodScan_scanCta => 'Yemeği tara';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Tabağının fotoğrafını çek, kalori ve makroları al';
+  String get foodScan_scanCtaDesc => 'Tabağının fotoğrafını çek, kalori ve makroları al';
 
   @override
   String get foodScan_introTitle => 'Tabağının fotoğrafını çek';
 
   @override
-  String get foodScan_introDesc =>
-      'Yapay zekâ fotoğrafı okur; kalori, protein, karbonhidrat ve yağ tahmini yapar.';
+  String get foodScan_introDesc => 'Yapay zekâ fotoğrafı okur; kalori, protein, karbonhidrat ve yağ tahmini yapar.';
 
   @override
   String get foodScan_tipLight => 'İyi ve dengeli ışık tahmini iyileştirir';
@@ -1576,8 +1531,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get foodScan_tipFrame => 'Tüm tabağı kareye sığdır';
 
   @override
-  String get foodScan_tipScale =>
-      'Porsiyonun ölçeklenmesi için çatal bıçak veya elini de kadraja al';
+  String get foodScan_tipScale => 'Porsiyonun ölçeklenmesi için çatal bıçak veya elini de kadraja al';
 
   @override
   String get foodScan_takePhoto => 'Fotoğraf çek';
@@ -1591,20 +1545,16 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Bugünkü tarama hakkın doldu. Yarın tekrar dene.';
+  String get foodScan_quotaReached => 'Bugünkü tarama hakkın doldu. Yarın tekrar dene.';
 
   @override
-  String get foodScan_privacyNote =>
-      'Fotoğraf analiz için Google Gemini API\'sine gönderilir ve sunucularımızda saklanmaz.';
+  String get foodScan_privacyNote => 'Fotoğraf Google\'ın Gemini API\'sine gönderilir. Google onu ürünlerini geliştirmek için kullanabilir ve insan inceleyiciler görebilir. Fotoğrafı kendi sunucularımızda saklamayız.';
 
   @override
-  String get foodScan_consentTitle =>
-      'Fotoğraflar Google Gemini\'ye gönderilsin mi?';
+  String get foodScan_consentTitle => 'Fotoğraflar Google Gemini\'ye gönderilsin mi?';
 
   @override
-  String get foodScan_consentBody =>
-      'Kalori ve makroları tahmin etmek için çektiğin veya seçtiğin her yemek fotoğrafı Google\'ın Gemini yapay zekâ hizmetine gönderilir. Fotoğraf yalnızca bu analiz için kullanılır ve sunucularımızda saklanmaz.';
+  String get foodScan_consentBody => 'Kalori ve makroları tahmin etmek için çektiğin veya seçtiğin her yemek fotoğrafı Google\'ın Gemini yapay zekâ hizmetine gönderilir. Google fotoğrafları ürünlerini geliştirmek için kullanabilir ve insan inceleyiciler görebilir; bu yüzden karede kişi, belge veya başka kişisel bilgi olmasın. Fotoğrafları kendi sunucularımızda saklamayız.';
 
   @override
   String get foodScan_consentAgree => 'Kabul et ve devam et';
@@ -1619,12 +1569,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get foodScan_detectedItems => 'Tespit edilenler';
 
   @override
-  String get foodScan_disclaimer =>
-      'Yapay zekâ tahminleri yaklaşıktır. Düzeltmek için bir öğeye dokun.';
+  String get foodScan_disclaimer => 'Yapay zekâ tahminleri yaklaşıktır. Düzeltmek için bir öğeye dokun.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Model bu fotoğraftan emin değil. Kaydetmeden önce değerleri kontrol et.';
+  String get foodScan_lowConfidence => 'Model bu fotoğraftan emin değil. Kaydetmeden önce değerleri kontrol et.';
 
   @override
   String get foodScan_save => 'Öğünlere ekle';
@@ -1648,40 +1596,110 @@ class AppLocalizationsTr extends AppLocalizations {
   String get foodScan_premiumTitle => 'Premium özellik';
 
   @override
-  String get foodScan_premiumDesc =>
-      'Fotoğraftan kalori analizi Premium\'a dahildir.';
+  String get foodScan_premiumDesc => 'Fotoğraftan kalori analizi Premium\'a dahildir.';
 
   @override
   String get foodScan_upgrade => 'Premium\'u gör';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Bağlantı yok. İnternetini kontrol edip tekrar dene.';
+  String get foodScan_errorNetwork => 'Bağlantı yok. İnternetini kontrol edip tekrar dene.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Şu anda çok fazla tarama var. Birkaç dakika sonra tekrar dene.';
+  String get foodScan_errorRateLimited => 'Şu anda çok fazla tarama var. Birkaç dakika sonra tekrar dene.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'Fotoğraf analizi şu anda kullanılamıyor.';
+  String get foodScan_errorUnavailable => 'Fotoğraf analizi şu anda kullanılamıyor.';
 
   @override
-  String get foodScan_errorServer =>
-      'Analiz servisinde sorun var. Kısa süre sonra tekrar dene.';
+  String get foodScan_errorServer => 'Analiz servisinde sorun var. Kısa süre sonra tekrar dene.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Bu fotoğrafta yemek bulunamadı. Tabağın daha net bir karesini dene.';
+  String get foodScan_errorNoFood => 'Bu fotoğrafta yemek bulunamadı. Tabağın daha net bir karesini dene.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Bu fotoğraf analiz edilemedi. Başka bir tane dene.';
+  String get foodScan_errorUnreadable => 'Bu fotoğraf analiz edilemedi. Başka bir tane dene.';
 
   @override
   String get paywall_aiFoodScan => 'Yapay zekâ yemek analizi';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Öğünün fotoğrafını çek, kalori ve makrolarını saniyeler içinde kaydet';
+  String get paywall_aiFoodScanDesc => 'Öğünün fotoğrafını çek, kalori ve makrolarını saniyeler içinde kaydet';
+
+  @override
+  String get safety_title => 'Başlamadan önce';
+
+  @override
+  String get safety_desc => 'Oruç herkes için güvenli değildir. Sana uyan her şeyi seç.';
+
+  @override
+  String get safety_under18 => '18 yaşından küçüğüm';
+
+  @override
+  String get safety_pregnant => 'Hamileyim veya emziriyorum';
+
+  @override
+  String get safety_eatingDisorder => 'Yeme bozukluğum var veya geçmişte oldu';
+
+  @override
+  String get safety_underweight => 'Zayıfım veya bana kilo vermemem söylendi';
+
+  @override
+  String get safety_diabetes => 'Diyabetim var veya kan şekerini etkileyen ilaç kullanıyorum';
+
+  @override
+  String get safety_medical => 'Başka bir sağlık sorunum var veya düzenli ilaç kullanıyorum';
+
+  @override
+  String get safety_none => 'Bunların hiçbiri bana uymuyor';
+
+  @override
+  String get safety_ack => 'Oruç tutmadan önce doktoruma danışacağım';
+
+  @override
+  String get safety_blockedTitle => 'Bu uygulama senin için güvenli değil';
+
+  @override
+  String get safety_blockedDesc => 'Cevaplarına göre burada oruç sunamıyoruz. Lütfen bir doktorla görüş. Yemek ve beslenme şu an zor geliyorsa bir sağlık uzmanı yardımcı olabilir.';
+
+  @override
+  String get safety_reviewAnswers => 'Cevaplarımı gözden geçir';
+
+  @override
+  String get safety_targetTooLow => 'Bu hedef, boyuna göre sağlıklı kilonun altında.';
+
+  @override
+  String get onboarding_invalidBody => 'Geçerli bir boy, kilo, hedef kilo ve yaş gir.';
+
+  @override
+  String get crisis_unwell => 'Kendimi iyi hissetmiyorum';
+
+  @override
+  String get crisis_unwellTitle => 'Orucunu şimdi bitir';
+
+  @override
+  String get crisis_unwellDesc => 'Baş dönmesi, titreme, zihin karışıklığı veya çarpıntı, orucu bırakıp bir şeyler yiyip içmen gerektiğini gösterir.';
+
+  @override
+  String get crisis_emergency => 'Bayıldıysan, göğüs ağrın varsa veya kendini çok kötü hissediyorsan hemen acil yardım numarasını ara.';
+
+  @override
+  String get crisis_endFast => 'Orucumu bitir';
+
+  @override
+  String get profile_deleteData => 'Tüm verilerimi sil';
+
+  @override
+  String get profile_deleteDataConfirm => 'Bu işlem oruç, kilo, öğün, su kayıtlarını ve ayarları bu cihazdan kalıcı olarak siler. Geri alınamaz. Abonelikler mağaza hesabından yönetilir.';
+
+  @override
+  String get profile_deleteDataAction => 'Her şeyi sil';
+
+  @override
+  String get record_deleteConfirm => 'Bu kayıt silinsin mi?';
+
+  @override
+  String get profile_analytics => 'Anonim kullanım verisi paylaş';
+
+  @override
+  String get profile_analyticsDesc => 'Uygulamayı geliştirmeye yardımcı olur. Kilo, öğün veya sağlık bilgisi asla içermez.';
 }

@@ -63,8 +63,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get timer_selectPlan => 'उपवास योजना चुनें';
 
   @override
-  String get timer_stopConfirm =>
-      'क्या आप उपवास समय से पहले समाप्त करना चाहते हैं?';
+  String get timer_stopConfirm => 'क्या आप उपवास समय से पहले समाप्त करना चाहते हैं?';
 
   @override
   String get timer_stopTitle => 'उपवास समाप्त करें';
@@ -264,8 +263,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboarding_welcome => 'स्वागत है';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'अपनी अंतराल उपवास यात्रा का\nनियंत्रण अपने हाथ में लें';
+  String get onboarding_welcomeDesc => 'अपनी अंतराल उपवास यात्रा का\nनियंत्रण अपने हाथ में लें';
 
   @override
   String get onboarding_featureTimer => 'स्मार्ट उपवास टाइमर';
@@ -313,8 +311,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboarding_goalLongevity => 'दीर्घायु';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'कोशिका नवीनीकरण और स्वस्थ उम्र बढ़ना';
+  String get onboarding_goalLongevityDesc => 'कोशिका नवीनीकरण और स्वस्थ उम्र बढ़ना';
 
   @override
   String get onboarding_goalDiscipline => 'अनुशासन';
@@ -326,8 +323,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboarding_selectPlan => 'अपनी योजना चुनें';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'अपने लिए सबसे अच्छी उपवास योजना चुनें';
+  String get onboarding_selectPlanDesc => 'अपने लिए सबसे अच्छी उपवास योजना चुनें';
 
   @override
   String get onboarding_bodyInfo => 'अपनी जानकारी दर्ज करें';
@@ -348,15 +344,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboarding_age => 'आयु';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'यह जानकारी केवल आपके डिवाइस पर सहेजी जाती है और कैलोरी गणना के लिए उपयोग होती है।';
+  String get onboarding_bodyInfoDisclaimer => 'यह जानकारी केवल आपके डिवाइस पर सहेजी जाती है और कैलोरी गणना के लिए उपयोग होती है।';
 
   @override
   String get onboarding_permissions => 'अंतिम चरण';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'बेहतरीन अनुभव के लिए अनुमतियाँ चालू करें';
+  String get onboarding_permissionsDesc => 'बेहतरीन अनुभव के लिए अनुमतियाँ चालू करें';
 
   @override
   String get onboarding_next => 'जारी रखें';
@@ -383,8 +377,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get paywall_title => 'Premium में अपग्रेड करें';
 
   @override
-  String get paywall_subtitle =>
-      'सभी उपवास योजनाएँ अनलॉक करें और विज्ञापन हटाएँ';
+  String get paywall_subtitle => 'सभी उपवास योजनाएँ अनलॉक करें और विज्ञापन हटाएँ';
 
   @override
   String get paywall_allPlans => 'सभी उपवास योजनाएँ';
@@ -423,8 +416,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get paywall_premiumActive => 'Premium सक्रिय है!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'सभी उपवास योजनाएँ अनलॉक हैं और विज्ञापन बंद हैं';
+  String get paywall_premiumActiveDesc => 'सभी उपवास योजनाएँ अनलॉक हैं और विज्ञापन बंद हैं';
 
   @override
   String get water_title => 'पानी का सेवन';
@@ -559,8 +551,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get completion_earlyTitle => 'उपवास समाप्त हुआ';
 
   @override
-  String get completion_earlyMessage =>
-      'आज की अवधि सहेज ली गई। लक्ष्य पूरा न होने के कारण स्ट्रीक और उपलब्धि की प्रगति नहीं बदली।';
+  String get completion_earlyMessage => 'आज की अवधि सहेज ली गई। लक्ष्य पूरा न होने के कारण स्ट्रीक और उपलब्धि की प्रगति नहीं बदली।';
 
   @override
   String get timer_remainingTime => 'शेष समय';
@@ -590,8 +581,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get streak_incredible => 'अविश्वसनीय!';
 
   @override
-  String get weight_noRecord =>
-      'अभी कोई वजन रिकॉर्ड नहीं\nप्रोफ़ाइल > शारीरिक माप से जोड़ें';
+  String get weight_noRecord => 'अभी कोई वजन रिकॉर्ड नहीं\nप्रोफ़ाइल > शारीरिक माप से जोड़ें';
 
   @override
   String get day_mon => 'सोम';
@@ -795,8 +785,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get circle_tagline => 'बिना दबाव, साथ-साथ।';
 
   @override
-  String get circle_privacy =>
-      'वजन और निजी माप छिपे रहते हैं। केवल प्रगति और सहयोग दिखाई देते हैं।';
+  String get circle_privacy => 'वजन और निजी माप छिपे रहते हैं। केवल प्रगति और सहयोग दिखाई देते हैं।';
 
   @override
   String circle_sendSupport(int count) {
@@ -825,8 +814,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get crisis_delayTitle => 'निर्णय को 10 मिनट टालें';
 
   @override
-  String get crisis_delayDesc =>
-      'यदि आप अस्वस्थ महसूस करें तो उपवास समाप्त करना असफलता नहीं है।';
+  String get crisis_delayDesc => 'यदि आप अस्वस्थ महसूस करें तो उपवास समाप्त करना असफलता नहीं है।';
 
   @override
   String get crisis_hunger => 'भूख';
@@ -912,8 +900,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'चरण का समय सामान्य अनुमान है, चिकित्सकीय माप नहीं।';
+  String get phase_estimateShort => 'चरण का समय सामान्य अनुमान है, चिकित्सकीय माप नहीं।';
 
   @override
   String phase_hours(int start, int end) {
@@ -921,8 +908,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'यह समय सामान्य अनुमान है। चयापचय प्रतिक्रियाएँ हर व्यक्ति में अलग हो सकती हैं।';
+  String get phase_estimateLong => 'यह समय सामान्य अनुमान है। चयापचय प्रतिक्रियाएँ हर व्यक्ति में अलग हो सकती हैं।';
 
   @override
   String get bmi_underweight => 'कम वजन';
@@ -965,8 +951,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get notification_waterTitle => 'पानी पिएँ 💧';
 
   @override
-  String get notification_waterBody =>
-      'उपवास के दौरान पर्याप्त पानी पीना न भूलें!';
+  String get notification_waterBody => 'उपवास के दौरान पर्याप्त पानी पीना न भूलें!';
 
   @override
   String get notification_windowTitle => 'भोजन अवधि बंद होने वाली है ⏰';
@@ -980,8 +965,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      'आप बहुत अच्छा कर रहे हैं! आज भी जारी रखें।';
+  String get notification_streakBody => 'आप बहुत अच्छा कर रहे हैं! आज भी जारी रखें।';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1021,22 +1005,19 @@ class AppLocalizationsHi extends AppLocalizations {
   String get explore_faq => 'अक्सर पूछे जाने वाले प्रश्न';
 
   @override
-  String get explore_education =>
-      'यह सामग्री केवल सामान्य शिक्षा के लिए है, चिकित्सकीय निदान या उपचार सलाह नहीं।';
+  String get explore_education => 'यह सामग्री केवल सामान्य शिक्षा के लिए है, चिकित्सकीय निदान या उपचार सलाह नहीं।';
 
   @override
   String get explore_safety => 'स्वास्थ्य और सुरक्षा';
 
   @override
-  String get explore_safetyDesc =>
-      'यदि आपको कोई बीमारी है, आप नियमित दवा लेते हैं, चिंताजनक लक्षण हैं, आप गर्भवती हैं या स्तनपान करा रही हैं, तो उपवास से पहले योग्य स्वास्थ्य विशेषज्ञ से सलाह लें। अस्वस्थ लगने पर रुक जाएँ।';
+  String get explore_safetyDesc => 'यदि आपको कोई बीमारी है, आप नियमित दवा लेते हैं, चिंताजनक लक्षण हैं, आप गर्भवती हैं या स्तनपान करा रही हैं, तो उपवास से पहले योग्य स्वास्थ्य विशेषज्ञ से सलाह लें। अस्वस्थ लगने पर रुक जाएँ।';
 
   @override
   String get explore_sources => 'स्रोत';
 
   @override
-  String get explore_sourcesDesc =>
-      'सामग्री को नीचे दिए सार्वजनिक स्वास्थ्य संदर्भों से सरल बनाया गया है।';
+  String get explore_sourcesDesc => 'सामग्री को नीचे दिए सार्वजनिक स्वास्थ्य संदर्भों से सरल बनाया गया है।';
 
   @override
   String get explore_sourceError => 'स्रोत नहीं खोला जा सका';
@@ -1057,8 +1038,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get explore_rule4 => 'अस्वस्थ लगने पर उपवास रोकें';
 
   @override
-  String get explore_rule5 =>
-      'गर्भवती या स्तनपान कराने वाली महिलाओं को उपवास नहीं करना चाहिए';
+  String get explore_rule5 => 'गर्भवती या स्तनपान कराने वाली महिलाओं को उपवास नहीं करना चाहिए';
 
   @override
   String get explore_rule6 => 'पुरानी बीमारी हो तो डॉक्टर से सलाह लें';
@@ -1067,120 +1047,103 @@ class AppLocalizationsHi extends AppLocalizations {
   String get tip_water => 'शरीर में पानी बनाए रखें';
 
   @override
-  String get tip_waterDesc =>
-      'प्यास लगने पर पानी पिएँ और भोजन के साथ तरल लें। आवश्यकता स्वास्थ्य, मौसम और गतिविधि के अनुसार बदल सकती है।';
+  String get tip_waterDesc => 'प्यास लगने पर पानी पिएँ और भोजन के साथ तरल लें। आवश्यकता स्वास्थ्य, मौसम और गतिविधि के अनुसार बदल सकती है।';
 
   @override
   String get tip_food => 'सही खाएँ';
 
   @override
-  String get tip_foodDesc =>
-      'भोजन अवधि में फाइबर और स्वस्थ वसा वाले प्रोटीन-समृद्ध खाद्य चुनें। प्रसंस्कृत भोजन से बचें।';
+  String get tip_foodDesc => 'भोजन अवधि में फाइबर और स्वस्थ वसा वाले प्रोटीन-समृद्ध खाद्य चुनें। प्रसंस्कृत भोजन से बचें।';
 
   @override
   String get tip_sleep => 'अच्छी नींद लें';
 
   @override
-  String get tip_sleepDesc =>
-      'नियमित और पर्याप्त नींद समग्र स्वास्थ्य में सहायक है। उपवास ऐसे रखें कि नींद बाधित न हो।';
+  String get tip_sleepDesc => 'नियमित और पर्याप्त नींद समग्र स्वास्थ्य में सहायक है। उपवास ऐसे रखें कि नींद बाधित न हो।';
 
   @override
   String get tip_exercise => 'हल्का व्यायाम';
 
   @override
-  String get tip_exerciseDesc =>
-      'उपवास में हल्की सैर या योग कर सकते हैं। भारी व्यायाम से बचें, खासकर शुरुआती हफ्तों में जब शरीर अनुकूल हो रहा हो।';
+  String get tip_exerciseDesc => 'उपवास में हल्की सैर या योग कर सकते हैं। भारी व्यायाम से बचें, खासकर शुरुआती हफ्तों में जब शरीर अनुकूल हो रहा हो।';
 
   @override
   String get tip_drinks => 'अनुमत पेय';
 
   @override
-  String get tip_drinksDesc =>
-      'उपवास में पानी, सादी चाय और ब्लैक कॉफ़ी (बिना चीनी और दूध) ले सकते हैं। ये पेय उपवास नहीं तोड़ेंगे।';
+  String get tip_drinksDesc => 'उपवास में पानी, सादी चाय और ब्लैक कॉफ़ी (बिना चीनी और दूध) ले सकते हैं। ये पेय उपवास नहीं तोड़ेंगे।';
 
   @override
   String get faq_drinks => 'उपवास में क्या पी सकता हूँ?';
 
   @override
-  String get faq_drinksAnswer =>
-      'आप पानी, सादी चाय और ब्लैक कॉफ़ी (बिना चीनी/दूध) पी सकते हैं। कैलोरी वाले पेय उपवास तोड़ते हैं।';
+  String get faq_drinksAnswer => 'आप पानी, सादी चाय और ब्लैक कॉफ़ी (बिना चीनी/दूध) पी सकते हैं। कैलोरी वाले पेय उपवास तोड़ते हैं।';
 
   @override
   String get faq_plan => 'मुझे कौन-सी उपवास योजना चुननी चाहिए?';
 
   @override
-  String get faq_planAnswer =>
-      'यदि आप नए हैं तो 12:12 या 14:10 से शुरू करें। अनुभवी हैं तो 16:8 या 18:6 आज़माएँ। 20:4 और OMAD उन्नत उपवास करने वालों के लिए हैं।';
+  String get faq_planAnswer => 'यदि आप नए हैं तो 12:12 या 14:10 से शुरू करें। अनुभवी हैं तो 16:8 या 18:6 आज़माएँ। 20:4 और OMAD उन्नत उपवास करने वालों के लिए हैं।';
 
   @override
   String get faq_exercise => 'क्या उपवास में व्यायाम कर सकता हूँ?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'हाँ, लेकिन तीव्र कसरत से बचें। हल्का कार्डियो, पैदल चलना और योग आदर्श हैं। वजन प्रशिक्षण भोजन अवधि के पास रखें।';
+  String get faq_exerciseAnswer => 'हाँ, लेकिन तीव्र कसरत से बचें। हल्का कार्डियो, पैदल चलना और योग आदर्श हैं। वजन प्रशिक्षण भोजन अवधि के पास रखें।';
 
   @override
   String get faq_weight => 'क्या उपवास वजन घटाने में मदद करता है?';
 
   @override
-  String get faq_weightAnswer =>
-      'कुछ लोगों में भोजन का समय सीमित करने से कुल ऊर्जा सेवन घट सकता है। परिणाम अलग-अलग होते हैं और दीर्घकालीन प्रभावों का अभी अध्ययन जारी है।';
+  String get faq_weightAnswer => 'कुछ लोगों में भोजन का समय सीमित करने से कुल ऊर्जा सेवन घट सकता है। परिणाम अलग-अलग होते हैं और दीर्घकालीन प्रभावों का अभी अध्ययन जारी है।';
 
   @override
   String get plan_12_desc => 'शुरुआती स्तर';
 
   @override
-  String get plan_12_detail =>
-      'शुरुआती लोगों के लिए आदर्श। नींद सहित 12 घंटे उपवास करें।';
+  String get plan_12_detail => 'शुरुआती लोगों के लिए आदर्श। नींद सहित 12 घंटे उपवास करें।';
 
   @override
   String get plan_16_desc => 'सबसे लोकप्रिय योजना';
 
   @override
-  String get plan_16_detail =>
-      'सबसे आम अंतराल उपवास योजना। 16 घंटे उपवास, 8 घंटे भोजन। सामान्यतः दोपहर से रात के भोजन तक।';
+  String get plan_16_detail => 'सबसे आम अंतराल उपवास योजना। 16 घंटे उपवास, 8 घंटे भोजन। सामान्यतः दोपहर से रात के भोजन तक।';
 
   @override
   String get plan_18_desc => 'मध्यम स्तर';
 
   @override
-  String get plan_18_detail =>
-      '18 घंटे उपवास, 6 घंटे भोजन। वसा दहन की अवधि अधिक।';
+  String get plan_18_detail => '18 घंटे उपवास, 6 घंटे भोजन। वसा दहन की अवधि अधिक।';
 
   @override
   String get plan_20_desc => 'उन्नत स्तर';
 
   @override
-  String get plan_20_detail =>
-      '20 घंटे उपवास, 4 घंटे भोजन। कीटोसिस और ऑटोफैजी तक पहुँचने के लिए उपयुक्त।';
+  String get plan_20_detail => '20 घंटे उपवास, 4 घंटे भोजन। कीटोसिस और ऑटोफैजी तक पहुँचने के लिए उपयुक्त।';
 
   @override
   String get plan_omad_desc => 'दिन में एक भोजन';
 
   @override
-  String get plan_omad_detail =>
-      'दिन में एक भोजन। 23 घंटे उपवास, 1 घंटे भोजन। विशेषज्ञ स्तर।';
+  String get plan_omad_detail => 'दिन में एक भोजन। 23 घंटे उपवास, 1 घंटे भोजन। विशेषज्ञ स्तर।';
 
   @override
   String get plan_52_desc => 'सप्ताह में 2 दिन';
 
   @override
-  String get plan_52_detail =>
-      '5 दिन सामान्य खाएँ, 2 दिन केवल लगभग 500 कैलोरी। एक वैकल्पिक तरीका।';
+  String get plan_52_detail => '5 दिन सामान्य खाएँ, 2 दिन केवल लगभग 500 कैलोरी। एक वैकल्पिक तरीका।';
 
   @override
   String get plan_ese_desc => '24 घंटे का उपवास';
 
   @override
-  String get plan_ese_detail =>
-      'सप्ताह में 1–2 बार 24 घंटे उपवास करें। उन्नत उपयोगकर्ताओं के लिए।';
+  String get plan_ese_detail => 'सप्ताह में 1–2 बार 24 घंटे उपवास करें। उन्नत उपयोगकर्ताओं के लिए।';
 
   @override
   String get plan_warrior_desc => 'वॉरियर डाइट';
 
   @override
-  String get plan_warrior_detail =>
-      'दिन में हल्का खाएँ (फल, सब्ज़ियाँ), शाम की 4 घंटे की अवधि में मुख्य भोजन लें।';
+  String get plan_warrior_detail => 'दिन में हल्का खाएँ (फल, सब्ज़ियाँ), शाम की 4 घंटे की अवधि में मुख्य भोजन लें।';
 
   @override
   String get award_first_title => 'पहला कदम';
@@ -1332,8 +1295,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'हर सात पूर्णताओं पर मिलता है। एक दिन छूटने से आपकी प्रगति कभी नहीं मिटती।';
+  String get game_shieldsDesc => 'हर सात पूर्णताओं पर मिलता है। एक दिन छूटने से आपकी प्रगति कभी नहीं मिटती।';
 
   @override
   String get game_league => 'निजी साप्ताहिक लीग';
@@ -1485,8 +1447,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get paywall_continue => 'जारी रखें';
 
   @override
-  String get paywall_productsUnavailable =>
-      'अभी खरीदारी उपलब्ध नहीं है। कृपया बाद में फिर प्रयास करें।';
+  String get paywall_productsUnavailable => 'अभी खरीदारी उपलब्ध नहीं है। कृपया बाद में फिर प्रयास करें।';
 
   @override
   String get paywall_purchaseFailed => 'खरीदारी पूरी नहीं हो सकी।';
@@ -1501,15 +1462,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get paywall_terms => 'उपयोग की शर्तें';
 
   @override
-  String get permission_notificationDesc =>
-      'उपवास रिमाइंडर, चरण अपडेट और पूर्णता सूचनाएँ';
+  String get permission_notificationDesc => 'उपवास रिमाइंडर, चरण अपडेट और पूर्णता सूचनाएँ';
 
   @override
   String get profile_privacyChoices => 'गोपनीयता विकल्प';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'अवधि समाप्त होने से कम से कम 24 घंटे पहले रद्द न करने पर सदस्यता स्वतः नवीनीकृत होती है। App Store सेटिंग्स में कभी भी प्रबंधित या रद्द करें।';
+  String get paywall_autoRenewInfo => 'अवधि समाप्त होने से कम से कम 24 घंटे पहले रद्द न करने पर सदस्यता स्वतः नवीनीकृत होती है। App Store सेटिंग्स में कभी भी प्रबंधित या रद्द करें।';
 
   @override
   String paywall_perMonth(String price) {
@@ -1533,28 +1492,22 @@ class AppLocalizationsHi extends AppLocalizations {
   String get paywall_retry => 'फिर कोशिश करें';
 
   @override
-  String get paywall_alreadyOwned =>
-      'यह सदस्यता आपके पास पहले से है। “खरीदारी पुनर्स्थापित करें” पर टैप करें।';
+  String get paywall_alreadyOwned => 'यह सदस्यता आपके पास पहले से है। “खरीदारी पुनर्स्थापित करें” पर टैप करें।';
 
   @override
-  String get paywall_storeUnavailable =>
-      'अभी स्टोर तक नहीं पहुँच पा रहे। कनेक्शन जाँचें और फिर प्रयास करें।';
+  String get paywall_storeUnavailable => 'अभी स्टोर तक नहीं पहुँच पा रहे। कनेक्शन जाँचें और फिर प्रयास करें।';
 
   @override
-  String get paywall_secureNote =>
-      'कभी भी रद्द करें। भुगतान आपके स्टोर खाते से लिया जाता है।';
+  String get paywall_secureNote => 'कभी भी रद्द करें। भुगतान आपके स्टोर खाते से लिया जाता है।';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'अवधि समाप्त होने से कम से कम 24 घंटे पहले रद्द न करने पर सदस्यता स्वतः नवीनीकृत होती है। Google Play > सदस्यताएँ में कभी भी प्रबंधित या रद्द करें।';
+  String get paywall_autoRenewInfoPlay => 'अवधि समाप्त होने से कम से कम 24 घंटे पहले रद्द न करने पर सदस्यता स्वतः नवीनीकृत होती है। Google Play > सदस्यताएँ में कभी भी प्रबंधित या रद्द करें।';
 
   @override
-  String get paywall_allPlansDesc =>
-      '18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat और Warrior अनलॉक करता है';
+  String get paywall_allPlansDesc => '18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat और Warrior अनलॉक करता है';
 
   @override
-  String get paywall_noAdsDesc =>
-      'बैनर और इंटरस्टिशियल विज्ञापन पूरी तरह बंद होते हैं';
+  String get paywall_noAdsDesc => 'बैनर और इंटरस्टिशियल विज्ञापन पूरी तरह बंद होते हैं';
 
   @override
   String get foodScan_title => 'AI भोजन स्कैन';
@@ -1563,15 +1516,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get foodScan_scanCta => 'भोजन स्कैन करें';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'अपनी प्लेट की तस्वीर लें, कैलोरी और मैक्रो पाएँ';
+  String get foodScan_scanCtaDesc => 'अपनी प्लेट की तस्वीर लें, कैलोरी और मैक्रो पाएँ';
 
   @override
   String get foodScan_introTitle => 'अपनी प्लेट की तस्वीर लें';
 
   @override
-  String get foodScan_introDesc =>
-      'AI तस्वीर पढ़कर कैलोरी, प्रोटीन, कार्बोहाइड्रेट और वसा का अनुमान लगाता है।';
+  String get foodScan_introDesc => 'AI तस्वीर पढ़कर कैलोरी, प्रोटीन, कार्बोहाइड्रेट और वसा का अनुमान लगाता है।';
 
   @override
   String get foodScan_tipLight => 'अच्छी, समान रोशनी से बेहतर अनुमान मिलता है';
@@ -1580,8 +1531,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get foodScan_tipFrame => 'पूरी प्लेट को फ़्रेम में रखें';
 
   @override
-  String get foodScan_tipScale =>
-      'मात्रा मापने के लिए चम्मच-काँटा या हाथ शामिल करें';
+  String get foodScan_tipScale => 'मात्रा मापने के लिए चम्मच-काँटा या हाथ शामिल करें';
 
   @override
   String get foodScan_takePhoto => 'तस्वीर लें';
@@ -1595,19 +1545,16 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'आज के स्कैन पूरे हो गए। कल फिर प्रयास करें।';
+  String get foodScan_quotaReached => 'आज के स्कैन पूरे हो गए। कल फिर प्रयास करें।';
 
   @override
-  String get foodScan_privacyNote =>
-      'तस्वीर विश्लेषण के लिए Google के Gemini API को भेजी जाती है और हमारे सर्वर पर संग्रहीत नहीं होती।';
+  String get foodScan_privacyNote => 'फोटो Google के Gemini API को भेजी जाती है। Google इसे अपने उत्पाद सुधारने के लिए उपयोग कर सकता है और मानव समीक्षक इसे देख सकते हैं। हम इसे अपने सर्वर पर संग्रहीत नहीं करते।';
 
   @override
   String get foodScan_consentTitle => 'क्या फ़ोटो Google Gemini को भेजें?';
 
   @override
-  String get foodScan_consentBody =>
-      'कैलोरी और मैक्रो का अनुमान लगाने के लिए, आपकी ली गई या चुनी गई हर भोजन फ़ोटो Google की Gemini AI सेवा को भेजी जाती है। फ़ोटो का उपयोग केवल इस विश्लेषण के लिए होता है और इसे हमारे सर्वर पर संग्रहीत नहीं किया जाता।';
+  String get foodScan_consentBody => 'कैलोरी और मैक्रो का अनुमान लगाने के लिए आपकी ली या चुनी गई हर भोजन फोटो Google की Gemini AI सेवा को भेजी जाती है। Google फोटो को अपने उत्पाद सुधारने के लिए उपयोग कर सकता है और मानव समीक्षक उन्हें देख सकते हैं, इसलिए फ्रेम में लोग, दस्तावेज़ या अन्य व्यक्तिगत जानकारी न रखें। हम फोटो अपने सर्वर पर संग्रहीत नहीं करते।';
 
   @override
   String get foodScan_consentAgree => 'सहमत हूँ, जारी रखें';
@@ -1622,12 +1569,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get foodScan_detectedItems => 'पहचाने गए खाद्य';
 
   @override
-  String get foodScan_disclaimer =>
-      'AI अनुमान लगभग हैं। सुधारने के लिए किसी आइटम पर टैप करें।';
+  String get foodScan_disclaimer => 'AI अनुमान लगभग हैं। सुधारने के लिए किसी आइटम पर टैप करें।';
 
   @override
-  String get foodScan_lowConfidence =>
-      'मॉडल इस तस्वीर को लेकर अनिश्चित है। सहेजने से पहले संख्याएँ जाँचें।';
+  String get foodScan_lowConfidence => 'मॉडल इस तस्वीर को लेकर अनिश्चित है। सहेजने से पहले संख्याएँ जाँचें।';
 
   @override
   String get foodScan_save => 'भोजन में जोड़ें';
@@ -1651,39 +1596,110 @@ class AppLocalizationsHi extends AppLocalizations {
   String get foodScan_premiumTitle => 'Premium सुविधा';
 
   @override
-  String get foodScan_premiumDesc =>
-      'तस्वीर से कैलोरी विश्लेषण Premium में शामिल है।';
+  String get foodScan_premiumDesc => 'तस्वीर से कैलोरी विश्लेषण Premium में शामिल है।';
 
   @override
   String get foodScan_upgrade => 'Premium देखें';
 
   @override
-  String get foodScan_errorNetwork =>
-      'कनेक्शन नहीं है। इंटरनेट जाँचें और फिर प्रयास करें।';
+  String get foodScan_errorNetwork => 'कनेक्शन नहीं है। इंटरनेट जाँचें और फिर प्रयास करें।';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'अभी बहुत अधिक स्कैन हो रहे हैं। कुछ मिनट बाद फिर प्रयास करें।';
+  String get foodScan_errorRateLimited => 'अभी बहुत अधिक स्कैन हो रहे हैं। कुछ मिनट बाद फिर प्रयास करें।';
 
   @override
   String get foodScan_errorUnavailable => 'तस्वीर विश्लेषण अभी उपलब्ध नहीं है।';
 
   @override
-  String get foodScan_errorServer =>
-      'विश्लेषण सेवा में समस्या है। थोड़ी देर बाद फिर प्रयास करें।';
+  String get foodScan_errorServer => 'विश्लेषण सेवा में समस्या है। थोड़ी देर बाद फिर प्रयास करें।';
 
   @override
-  String get foodScan_errorNoFood =>
-      'इस तस्वीर में भोजन नहीं मिला। प्लेट की अधिक स्पष्ट तस्वीर लें।';
+  String get foodScan_errorNoFood => 'इस तस्वीर में भोजन नहीं मिला। प्लेट की अधिक स्पष्ट तस्वीर लें।';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'इस तस्वीर का विश्लेषण नहीं हो सका। दूसरी तस्वीर आज़माएँ।';
+  String get foodScan_errorUnreadable => 'इस तस्वीर का विश्लेषण नहीं हो सका। दूसरी तस्वीर आज़माएँ।';
 
   @override
   String get paywall_aiFoodScan => 'AI भोजन स्कैन';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'भोजन की तस्वीर लें और सेकंडों में कैलोरी व मैक्रो दर्ज करें';
+  String get paywall_aiFoodScanDesc => 'भोजन की तस्वीर लें और सेकंडों में कैलोरी व मैक्रो दर्ज करें';
+
+  @override
+  String get safety_title => 'शुरू करने से पहले';
+
+  @override
+  String get safety_desc => 'उपवास सभी के लिए सुरक्षित नहीं है। जो भी आप पर लागू हो, उसे चुनें।';
+
+  @override
+  String get safety_under18 => 'मेरी उम्र 18 वर्ष से कम है';
+
+  @override
+  String get safety_pregnant => 'मैं गर्भवती हूं या स्तनपान कराती हूं';
+
+  @override
+  String get safety_eatingDisorder => 'मुझे ईटिंग डिसऑर्डर है या रहा है';
+
+  @override
+  String get safety_underweight => 'मेरा वजन कम है या मुझे वजन न घटाने को कहा गया है';
+
+  @override
+  String get safety_diabetes => 'मुझे मधुमेह है या मैं ब्लड शुगर को प्रभावित करने वाली दवा लेता/लेती हूं';
+
+  @override
+  String get safety_medical => 'मुझे कोई अन्य बीमारी है या मैं नियमित दवा लेता/लेती हूं';
+
+  @override
+  String get safety_none => 'इनमें से कोई भी मुझ पर लागू नहीं होता';
+
+  @override
+  String get safety_ack => 'मैं उपवास से पहले अपने डॉक्टर से बात करूंगा/करूंगी';
+
+  @override
+  String get safety_blockedTitle => 'यह ऐप आपके लिए सुरक्षित नहीं है';
+
+  @override
+  String get safety_blockedDesc => 'आपके उत्तरों के आधार पर हम यहां उपवास की सुविधा नहीं दे सकते। कृपया डॉक्टर से बात करें। अगर अभी खाना मुश्किल लग रहा है, तो स्वास्थ्य विशेषज्ञ मदद कर सकते हैं।';
+
+  @override
+  String get safety_reviewAnswers => 'मेरे उत्तर देखें';
+
+  @override
+  String get safety_targetTooLow => 'यह लक्ष्य आपकी लंबाई के लिए स्वस्थ वजन से कम है।';
+
+  @override
+  String get onboarding_invalidBody => 'मान्य लंबाई, वजन, लक्ष्य वजन और उम्र दर्ज करें।';
+
+  @override
+  String get crisis_unwell => 'मेरी तबीयत ठीक नहीं है';
+
+  @override
+  String get crisis_unwellTitle => 'अभी अपना उपवास समाप्त करें';
+
+  @override
+  String get crisis_unwellDesc => 'चक्कर, कंपकंपी, भ्रम या तेज धड़कन इस बात के संकेत हैं कि उपवास रोककर कुछ खाएं या पिएं।';
+
+  @override
+  String get crisis_emergency => 'अगर आप बेहोश हुए हैं, सीने में दर्द है या बहुत अस्वस्थ महसूस कर रहे हैं, तो तुरंत स्थानीय आपातकालीन नंबर पर कॉल करें।';
+
+  @override
+  String get crisis_endFast => 'मेरा उपवास समाप्त करें';
+
+  @override
+  String get profile_deleteData => 'मेरा सारा डेटा हटाएं';
+
+  @override
+  String get profile_deleteDataConfirm => 'इससे आपके उपवास, वजन, भोजन, पानी और सेटिंग्स इस डिवाइस से स्थायी रूप से हट जाएंगे। इसे पूर्ववत नहीं किया जा सकता। सदस्यताएं आपके स्टोर खाते में प्रबंधित होती हैं।';
+
+  @override
+  String get profile_deleteDataAction => 'सब कुछ हटाएं';
+
+  @override
+  String get record_deleteConfirm => 'यह प्रविष्टि हटाएं?';
+
+  @override
+  String get profile_analytics => 'अनाम उपयोग डेटा साझा करें';
+
+  @override
+  String get profile_analyticsDesc => 'ऐप को बेहतर बनाने में मदद करता है। इसमें वजन, भोजन या स्वास्थ्य जानकारी कभी शामिल नहीं होती।';
 }

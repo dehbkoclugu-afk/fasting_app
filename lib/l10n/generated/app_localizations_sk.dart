@@ -263,8 +263,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get onboarding_welcome => 'Vitajte';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Prevezmite kontrolu nad svojou cestou\ns prerušovaným pôstom';
+  String get onboarding_welcomeDesc => 'Prevezmite kontrolu nad svojou cestou\ns prerušovaným pôstom';
 
   @override
   String get onboarding_featureTimer => 'Inteligentný časovač pôstu';
@@ -324,8 +323,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get onboarding_selectPlan => 'Vyberte si plán';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Vyberte si plán pôstu, ktorý vám najviac vyhovuje';
+  String get onboarding_selectPlanDesc => 'Vyberte si plán pôstu, ktorý vám najviac vyhovuje';
 
   @override
   String get onboarding_bodyInfo => 'Zadajte svoje údaje';
@@ -346,15 +344,13 @@ class AppLocalizationsSk extends AppLocalizations {
   String get onboarding_age => 'Vek';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Tieto údaje sa ukladajú iba vo vašom zariadení a používajú sa na výpočet kalórií.';
+  String get onboarding_bodyInfoDisclaimer => 'Tieto údaje sa ukladajú iba vo vašom zariadení a používajú sa na výpočet kalórií.';
 
   @override
   String get onboarding_permissions => 'Posledný krok';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Pre najlepší zážitok povoľte oprávnenia';
+  String get onboarding_permissionsDesc => 'Pre najlepší zážitok povoľte oprávnenia';
 
   @override
   String get onboarding_next => 'Pokračovať';
@@ -381,8 +377,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get paywall_title => 'Prejsť na Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Odomknite všetky plány pôstu a odstráňte reklamy';
+  String get paywall_subtitle => 'Odomknite všetky plány pôstu a odstráňte reklamy';
 
   @override
   String get paywall_allPlans => 'Všetky plány pôstu';
@@ -421,8 +416,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get paywall_premiumActive => 'Premium je aktívne!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Všetky plány pôstu sú odomknuté a reklamy vypnuté';
+  String get paywall_premiumActiveDesc => 'Všetky plány pôstu sú odomknuté a reklamy vypnuté';
 
   @override
   String get water_title => 'Príjem vody';
@@ -557,8 +551,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get completion_earlyTitle => 'Pôst ukončený';
 
   @override
-  String get completion_earlyMessage =>
-      'Dnešný čas bol uložený. Séria ani postup v úspechoch sa nezmenili, pretože cieľ nebol splnený.';
+  String get completion_earlyMessage => 'Dnešný čas bol uložený. Séria ani postup v úspechoch sa nezmenili, pretože cieľ nebol splnený.';
 
   @override
   String get timer_remainingTime => 'Zostávajúci čas';
@@ -588,8 +581,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get streak_incredible => 'Neuveriteľné!';
 
   @override
-  String get weight_noRecord =>
-      'Zatiaľ žiadne záznamy hmotnosti\nPridajte ich v Profil > Telesné údaje';
+  String get weight_noRecord => 'Zatiaľ žiadne záznamy hmotnosti\nPridajte ich v Profil > Telesné údaje';
 
   @override
   String get day_mon => 'Po';
@@ -793,8 +785,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get circle_tagline => 'Spolu, bez tlaku.';
 
   @override
-  String get circle_privacy =>
-      'Hmotnosť a súkromné údaje zostávajú skryté. Viditeľný je iba pokrok a podpora.';
+  String get circle_privacy => 'Hmotnosť a súkromné údaje zostávajú skryté. Viditeľný je iba pokrok a podpora.';
 
   @override
   String circle_sendSupport(int count) {
@@ -823,8 +814,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get crisis_delayTitle => 'Odložte rozhodnutie o 10 minút';
 
   @override
-  String get crisis_delayDesc =>
-      'Ak sa necítite dobre, ukončenie pôstu nie je zlyhanie.';
+  String get crisis_delayDesc => 'Ak sa necítite dobre, ukončenie pôstu nie je zlyhanie.';
 
   @override
   String get crisis_hunger => 'Hlad';
@@ -839,8 +829,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get crisis_tenMore => 'Dajte tomu 10 minút';
 
   @override
-  String get stats_storyEmpty =>
-      'Vaším prvým pôstom sa začne váš osobný príbeh.';
+  String get stats_storyEmpty => 'Vaším prvým pôstom sa začne váš osobný príbeh.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -886,8 +875,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get weather_onPlan => 'Dnešné tempo zodpovedá vášmu plánu.';
 
   @override
-  String get weather_challenging =>
-      'Táto hodina bola predtým náročná; režim podpory je pripravený.';
+  String get weather_challenging => 'Táto hodina bola predtým náročná; režim podpory je pripravený.';
 
   @override
   String get replay_copied => 'Rekapitulácia pôstu skopírovaná';
@@ -912,8 +900,7 @@ class AppLocalizationsSk extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'Načasovanie fáz je všeobecný odhad, nie lekárske meranie.';
+  String get phase_estimateShort => 'Načasovanie fáz je všeobecný odhad, nie lekárske meranie.';
 
   @override
   String phase_hours(int start, int end) {
@@ -921,8 +908,7 @@ class AppLocalizationsSk extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Toto načasovanie je všeobecný odhad. Metabolické reakcie sa môžu medzi ľuďmi líšiť.';
+  String get phase_estimateLong => 'Toto načasovanie je všeobecný odhad. Metabolické reakcie sa môžu medzi ľuďmi líšiť.';
 
   @override
   String get bmi_underweight => 'Podváha';
@@ -965,15 +951,13 @@ class AppLocalizationsSk extends AppLocalizations {
   String get notification_waterTitle => 'Napite sa vody 💧';
 
   @override
-  String get notification_waterBody =>
-      'Počas pôstu nezabúdajte piť dostatok vody!';
+  String get notification_waterBody => 'Počas pôstu nezabúdajte piť dostatok vody!';
 
   @override
   String get notification_windowTitle => 'Okno jedenia sa zatvára ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Vaše okno jedenia sa zatvorí o 30 minút.';
+  String get notification_windowBody => 'Vaše okno jedenia sa zatvorí o 30 minút.';
 
   @override
   String notification_streakTitle(int days) {
@@ -981,8 +965,7 @@ class AppLocalizationsSk extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      'Ide vám to skvele! Pokračujte aj dnes.';
+  String get notification_streakBody => 'Ide vám to skvele! Pokračujte aj dnes.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1013,33 +996,28 @@ class AppLocalizationsSk extends AppLocalizations {
   String get explore_guide => 'Sprievodca pôstom';
 
   @override
-  String get explore_guideDesc =>
-      'Všetko, čo potrebujete vedieť o prerušovanom pôste';
+  String get explore_guideDesc => 'Všetko, čo potrebujete vedieť o prerušovanom pôste';
 
   @override
-  String get explore_circleDesc =>
-      'Zdieľajte tichú podporu so svojou súkromnou skupinou.';
+  String get explore_circleDesc => 'Zdieľajte tichú podporu so svojou súkromnou skupinou.';
 
   @override
   String get explore_faq => 'Časté otázky';
 
   @override
-  String get explore_education =>
-      'Tento obsah slúži iba na všeobecné vzdelávanie a nepredstavuje lekársku diagnózu ani radu o liečbe.';
+  String get explore_education => 'Tento obsah slúži iba na všeobecné vzdelávanie a nepredstavuje lekársku diagnózu ani radu o liečbe.';
 
   @override
   String get explore_safety => 'Zdravie a bezpečnosť';
 
   @override
-  String get explore_safetyDesc =>
-      'Ak máte zdravotné ťažkosti, pravidelne užívate lieky, máte znepokojujúce príznaky, ste tehotná alebo dojčíte, poraďte sa pred pôstom s kvalifikovaným zdravotníkom. Ak sa necítite dobre, pôst ukončite.';
+  String get explore_safetyDesc => 'Ak máte zdravotné ťažkosti, pravidelne užívate lieky, máte znepokojujúce príznaky, ste tehotná alebo dojčíte, poraďte sa pred pôstom s kvalifikovaným zdravotníkom. Ak sa necítite dobre, pôst ukončite.';
 
   @override
   String get explore_sources => 'Zdroje';
 
   @override
-  String get explore_sourcesDesc =>
-      'Obsah je zjednodušený z nižšie uvedených verejných zdravotníckych zdrojov.';
+  String get explore_sourcesDesc => 'Obsah je zjednodušený z nižšie uvedených verejných zdravotníckych zdrojov.';
 
   @override
   String get explore_sourceError => 'Zdroj sa nepodarilo otvoriť';
@@ -1063,127 +1041,109 @@ class AppLocalizationsSk extends AppLocalizations {
   String get explore_rule5 => 'Tehotné alebo dojčiace ženy by sa nemali postiť';
 
   @override
-  String get explore_rule6 =>
-      'Ak máte chronické ochorenie, poraďte sa s lekárom';
+  String get explore_rule6 => 'Ak máte chronické ochorenie, poraďte sa s lekárom';
 
   @override
   String get tip_water => 'Dopĺňajte tekutiny';
 
   @override
-  String get tip_waterDesc =>
-      'Keď ste smädní, pite vodu a prijímajte tekutiny aj s jedlom. Potreba sa môže líšiť podľa zdravia, počasia a aktivity.';
+  String get tip_waterDesc => 'Keď ste smädní, pite vodu a prijímajte tekutiny aj s jedlom. Potreba sa môže líšiť podľa zdravia, počasia a aktivity.';
 
   @override
   String get tip_food => 'Jedzte správne';
 
   @override
-  String get tip_foodDesc =>
-      'Počas okien jedenia si vyberajte potraviny bohaté na bielkoviny a vlákninu a zdravé tuky. Vyhýbajte sa spracovaným potravinám.';
+  String get tip_foodDesc => 'Počas okien jedenia si vyberajte potraviny bohaté na bielkoviny a vlákninu a zdravé tuky. Vyhýbajte sa spracovaným potravinám.';
 
   @override
   String get tip_sleep => 'Dobre spite';
 
   @override
-  String get tip_sleepDesc =>
-      'Pravidelný a dostatočný spánok podporuje celkovú pohodu. Naplánujte pôst tak, aby nenarúšal váš spánok.';
+  String get tip_sleepDesc => 'Pravidelný a dostatočný spánok podporuje celkovú pohodu. Naplánujte pôst tak, aby nenarúšal váš spánok.';
 
   @override
   String get tip_exercise => 'Ľahký pohyb';
 
   @override
-  String get tip_exerciseDesc =>
-      'Počas pôstu môžete ľahko kráčať alebo cvičiť jogu. Vyhnite sa náročnému cvičeniu, najmä v prvých týždňoch, kým si telo zvykne.';
+  String get tip_exerciseDesc => 'Počas pôstu môžete ľahko kráčať alebo cvičiť jogu. Vyhnite sa náročnému cvičeniu, najmä v prvých týždňoch, kým si telo zvykne.';
 
   @override
   String get tip_drinks => 'Povolené nápoje';
 
   @override
-  String get tip_drinksDesc =>
-      'Počas pôstu môžete piť vodu, čistý čaj a čiernu kávu bez cukru a mlieka. Tieto nápoje pôst neprerušia.';
+  String get tip_drinksDesc => 'Počas pôstu môžete piť vodu, čistý čaj a čiernu kávu bez cukru a mlieka. Tieto nápoje pôst neprerušia.';
 
   @override
   String get faq_drinks => 'Čo môžem počas pôstu piť?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Môžete piť vodu, čistý čaj a čiernu kávu bez cukru a mlieka. Kalorické nápoje pôst prerušujú.';
+  String get faq_drinksAnswer => 'Môžete piť vodu, čistý čaj a čiernu kávu bez cukru a mlieka. Kalorické nápoje pôst prerušujú.';
 
   @override
   String get faq_plan => 'Ktorý plán pôstu si mám vybrať?';
 
   @override
-  String get faq_planAnswer =>
-      'Ak začínate, zvoľte 12:12 alebo 14:10. Ak máte skúsenosti, skúste 16:8 alebo 18:6. Plány 20:4 a OMAD sú pre pokročilých.';
+  String get faq_planAnswer => 'Ak začínate, zvoľte 12:12 alebo 14:10. Ak máte skúsenosti, skúste 16:8 alebo 18:6. Plány 20:4 a OMAD sú pre pokročilých.';
 
   @override
   String get faq_exercise => 'Môžem počas pôstu cvičiť?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Áno, ale vyhnite sa intenzívnym tréningom. Ideálne sú ľahké kardio, chôdza a joga. Silový tréning naplánujte blízko okna jedenia.';
+  String get faq_exerciseAnswer => 'Áno, ale vyhnite sa intenzívnym tréningom. Ideálne sú ľahké kardio, chôdza a joga. Silový tréning naplánujte blízko okna jedenia.';
 
   @override
   String get faq_weight => 'Pomáha pôst pri chudnutí?';
 
   @override
-  String get faq_weightAnswer =>
-      'U niektorých ľudí môže obmedzenie času jedenia znížiť celkový príjem energie. Výsledky sa líšia a dlhodobé účinky sa stále skúmajú.';
+  String get faq_weightAnswer => 'U niektorých ľudí môže obmedzenie času jedenia znížiť celkový príjem energie. Výsledky sa líšia a dlhodobé účinky sa stále skúmajú.';
 
   @override
   String get plan_12_desc => 'Pre začiatočníkov';
 
   @override
-  String get plan_12_detail =>
-      'Ideálne pre začiatočníkov. Postite sa 12 hodín vrátane spánku.';
+  String get plan_12_detail => 'Ideálne pre začiatočníkov. Postite sa 12 hodín vrátane spánku.';
 
   @override
   String get plan_16_desc => 'Najobľúbenejší plán';
 
   @override
-  String get plan_16_detail =>
-      'Najbežnejší plán prerušovaného pôstu: 16 hodín pôstu a 8-hodinové okno jedenia, zvyčajne od obeda do večere.';
+  String get plan_16_detail => 'Najbežnejší plán prerušovaného pôstu: 16 hodín pôstu a 8-hodinové okno jedenia, zvyčajne od obeda do večere.';
 
   @override
   String get plan_18_desc => 'Stredne pokročilí';
 
   @override
-  String get plan_18_detail =>
-      '18 hodín pôstu a 6-hodinové okno jedenia. Dlhšie spaľovanie tukov.';
+  String get plan_18_detail => '18 hodín pôstu a 6-hodinové okno jedenia. Dlhšie spaľovanie tukov.';
 
   @override
   String get plan_20_desc => 'Pre pokročilých';
 
   @override
-  String get plan_20_detail =>
-      '20 hodín pôstu a 4-hodinové okno jedenia. Ideálne na dosiahnutie ketózy a autofágie.';
+  String get plan_20_detail => '20 hodín pôstu a 4-hodinové okno jedenia. Ideálne na dosiahnutie ketózy a autofágie.';
 
   @override
   String get plan_omad_desc => 'Jedno jedlo denne';
 
   @override
-  String get plan_omad_detail =>
-      'Jedno jedlo denne: 23 hodín pôstu a 1-hodinové okno jedenia. Pre expertov.';
+  String get plan_omad_detail => 'Jedno jedlo denne: 23 hodín pôstu a 1-hodinové okno jedenia. Pre expertov.';
 
   @override
   String get plan_52_desc => '2 dni v týždni';
 
   @override
-  String get plan_52_detail =>
-      'Päť dní jedzte normálne a dva dni obmedzte príjem približne na 500 kalórií. Alternatívny prístup.';
+  String get plan_52_detail => 'Päť dní jedzte normálne a dva dni obmedzte príjem približne na 500 kalórií. Alternatívny prístup.';
 
   @override
   String get plan_ese_desc => '24-hodinový pôst';
 
   @override
-  String get plan_ese_detail =>
-      'Držte 24-hodinový pôst 1–2-krát týždenne. Pre pokročilých.';
+  String get plan_ese_detail => 'Držte 24-hodinový pôst 1–2-krát týždenne. Pre pokročilých.';
 
   @override
   String get plan_warrior_desc => 'Bojovnícka diéta';
 
   @override
-  String get plan_warrior_detail =>
-      'Cez deň jedzte ľahko a hlavné jedlo si dajte počas štvorhodinového večerného okna.';
+  String get plan_warrior_detail => 'Cez deň jedzte ľahko a hlavné jedlo si dajte počas štvorhodinového večerného okna.';
 
   @override
   String get award_first_title => 'Prvý krok';
@@ -1324,8 +1284,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get game_season => 'Sezóna s 30 krokmi';
 
   @override
-  String get game_seasonDesc =>
-      'Za každý piaty krok získate zberateľskú pečať.';
+  String get game_seasonDesc => 'Za každý piaty krok získate zberateľskú pečať.';
 
   @override
   String get game_badges => 'Zbierka odznakov';
@@ -1336,8 +1295,7 @@ class AppLocalizationsSk extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Jeden získate za každých sedem dokončení. Vynechaný deň nikdy nevymaže váš pokrok.';
+  String get game_shieldsDesc => 'Jeden získate za každých sedem dokončení. Vynechaný deň nikdy nevymaže váš pokrok.';
 
   @override
   String get game_league => 'Súkromná týždenná liga';
@@ -1489,15 +1447,13 @@ class AppLocalizationsSk extends AppLocalizations {
   String get paywall_continue => 'Pokračovať';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Nákupy momentálne nie sú dostupné. Skúste to neskôr.';
+  String get paywall_productsUnavailable => 'Nákupy momentálne nie sú dostupné. Skúste to neskôr.';
 
   @override
   String get paywall_purchaseFailed => 'Nákup sa nepodarilo dokončiť.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'Nenašiel sa žiadny predchádzajúci nákup.';
+  String get paywall_nothingToRestore => 'Nenašiel sa žiadny predchádzajúci nákup.';
 
   @override
   String get paywall_restoreFailed => 'Nákupy sa nepodarilo obnoviť.';
@@ -1506,15 +1462,13 @@ class AppLocalizationsSk extends AppLocalizations {
   String get paywall_terms => 'Podmienky používania';
 
   @override
-  String get permission_notificationDesc =>
-      'Pripomienky pôstu, aktualizácie fáz a upozornenia na dokončenie';
+  String get permission_notificationDesc => 'Pripomienky pôstu, aktualizácie fáz a upozornenia na dokončenie';
 
   @override
   String get profile_privacyChoices => 'Nastavenia súkromia';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Predplatné sa automaticky obnoví, ak ho nezrušíte aspoň 24 hodín pred koncom obdobia. Kedykoľvek ho môžete spravovať alebo zrušiť v nastaveniach App Storu.';
+  String get paywall_autoRenewInfo => 'Predplatné sa automaticky obnoví, ak ho nezrušíte aspoň 24 hodín pred koncom obdobia. Kedykoľvek ho môžete spravovať alebo zrušiť v nastaveniach App Storu.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1538,28 +1492,22 @@ class AppLocalizationsSk extends AppLocalizations {
   String get paywall_retry => 'Skúsiť znova';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Toto predplatné už vlastníte. Klepnite na Obnoviť nákupy.';
+  String get paywall_alreadyOwned => 'Toto predplatné už vlastníte. Klepnite na Obnoviť nákupy.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Obchod momentálne nie je dostupný. Skontrolujte pripojenie a skúste to znova.';
+  String get paywall_storeUnavailable => 'Obchod momentálne nie je dostupný. Skontrolujte pripojenie a skúste to znova.';
 
   @override
-  String get paywall_secureNote =>
-      'Kedykoľvek zrušiteľné. Platba sa účtuje na váš účet v obchode.';
+  String get paywall_secureNote => 'Kedykoľvek zrušiteľné. Platba sa účtuje na váš účet v obchode.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Predplatné sa automaticky obnoví, ak ho nezrušíte aspoň 24 hodín pred koncom obdobia. Správa alebo zrušenie: Google Play > Predplatné.';
+  String get paywall_autoRenewInfoPlay => 'Predplatné sa automaticky obnoví, ak ho nezrušíte aspoň 24 hodín pred koncom obdobia. Správa alebo zrušenie: Google Play > Predplatné.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Odomkne 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat a Warrior';
+  String get paywall_allPlansDesc => 'Odomkne 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat a Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Bannerové reklamy aj reklamy na celú obrazovku sa úplne vypnú';
+  String get paywall_noAdsDesc => 'Bannerové reklamy aj reklamy na celú obrazovku sa úplne vypnú';
 
   @override
   String get foodScan_title => 'AI sken jedla';
@@ -1568,26 +1516,22 @@ class AppLocalizationsSk extends AppLocalizations {
   String get foodScan_scanCta => 'Naskenovať jedlo';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Odfoťte tanier a získajte odhad kalórií a makroživín';
+  String get foodScan_scanCtaDesc => 'Odfoťte tanier a získajte odhad kalórií a makroživín';
 
   @override
   String get foodScan_introTitle => 'Odfoťte svoj tanier';
 
   @override
-  String get foodScan_introDesc =>
-      'AI prečíta fotografiu a odhadne kalórie, bielkoviny, sacharidy a tuky.';
+  String get foodScan_introDesc => 'AI prečíta fotografiu a odhadne kalórie, bielkoviny, sacharidy a tuky.';
 
   @override
-  String get foodScan_tipLight =>
-      'Dobré a rovnomerné svetlo poskytne lepší odhad';
+  String get foodScan_tipLight => 'Dobré a rovnomerné svetlo poskytne lepší odhad';
 
   @override
   String get foodScan_tipFrame => 'Umiestnite celý tanier do záberu';
 
   @override
-  String get foodScan_tipScale =>
-      'Pridajte do záberu príbor alebo ruku, aby sa dala odhadnúť veľkosť porcie';
+  String get foodScan_tipScale => 'Pridajte do záberu príbor alebo ruku, aby sa dala odhadnúť veľkosť porcie';
 
   @override
   String get foodScan_takePhoto => 'Odfotiť';
@@ -1601,19 +1545,16 @@ class AppLocalizationsSk extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Dnešné skeny ste vyčerpali. Skúste to znova zajtra.';
+  String get foodScan_quotaReached => 'Dnešné skeny ste vyčerpali. Skúste to znova zajtra.';
 
   @override
-  String get foodScan_privacyNote =>
-      'Fotografia sa odošle na analýzu do rozhrania Gemini API spoločnosti Google a neukladá sa na našich serveroch.';
+  String get foodScan_privacyNote => 'Fotka sa odošle do Gemini API od Googlu. Google ju môže použiť na zlepšovanie svojich produktov a môžu ju vidieť ľudskí kontrolóri. Na našich serveroch ju neukladáme.';
 
   @override
   String get foodScan_consentTitle => 'Odoslať fotky do Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'Na odhad kalórií a makroživín sa každá fotka jedla, ktorú odfotíte alebo vyberiete, odošle do služby umelej inteligencie Google Gemini. Fotka sa použije len na túto analýzu a na našich serveroch sa neukladá.';
+  String get foodScan_consentBody => 'Na odhad kalórií a makroživín sa každá nasnímaná alebo vybraná fotka jedla odošle do AI služby Gemini od Googlu. Google môže fotky použiť na zlepšovanie svojich produktov a môžu ich vidieť ľudskí kontrolóri, preto do záberu nedávajte osoby, dokumenty ani iné osobné údaje. Fotky na našich serveroch neukladáme.';
 
   @override
   String get foodScan_consentAgree => 'Súhlasím a pokračovať';
@@ -1628,12 +1569,10 @@ class AppLocalizationsSk extends AppLocalizations {
   String get foodScan_detectedItems => 'Rozpoznané položky';
 
   @override
-  String get foodScan_disclaimer =>
-      'Odhady AI sú orientačné. Klepnutím na položku ju môžete opraviť.';
+  String get foodScan_disclaimer => 'Odhady AI sú orientačné. Klepnutím na položku ju môžete opraviť.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Model si nie je touto fotografiou istý. Pred uložením skontrolujte hodnoty.';
+  String get foodScan_lowConfidence => 'Model si nie je touto fotografiou istý. Pred uložením skontrolujte hodnoty.';
 
   @override
   String get foodScan_save => 'Pridať k jedlám';
@@ -1657,40 +1596,110 @@ class AppLocalizationsSk extends AppLocalizations {
   String get foodScan_premiumTitle => 'Funkcia Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'Analýza kalórií z fotografie je súčasťou Premium.';
+  String get foodScan_premiumDesc => 'Analýza kalórií z fotografie je súčasťou Premium.';
 
   @override
   String get foodScan_upgrade => 'Zobraziť Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Bez pripojenia. Skontrolujte internet a skúste to znova.';
+  String get foodScan_errorNetwork => 'Bez pripojenia. Skontrolujte internet a skúste to znova.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Práve prebieha príliš veľa skenov. Skúste to znova o pár minút.';
+  String get foodScan_errorRateLimited => 'Práve prebieha príliš veľa skenov. Skúste to znova o pár minút.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'Analýza fotografií momentálne nie je dostupná.';
+  String get foodScan_errorUnavailable => 'Analýza fotografií momentálne nie je dostupná.';
 
   @override
-  String get foodScan_errorServer =>
-      'Služba analýzy má problémy. Skúste to čoskoro znova.';
+  String get foodScan_errorServer => 'Služba analýzy má problémy. Skúste to čoskoro znova.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Na tejto fotografii sa nenašlo žiadne jedlo. Skúste jasnejší záber taniera.';
+  String get foodScan_errorNoFood => 'Na tejto fotografii sa nenašlo žiadne jedlo. Skúste jasnejší záber taniera.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Túto fotografiu sa nepodarilo analyzovať. Skúste inú.';
+  String get foodScan_errorUnreadable => 'Túto fotografiu sa nepodarilo analyzovať. Skúste inú.';
 
   @override
   String get paywall_aiFoodScan => 'AI sken jedla';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Odfoťte jedlo a za pár sekúnd zaznamenajte kalórie a makroživiny';
+  String get paywall_aiFoodScanDesc => 'Odfoťte jedlo a za pár sekúnd zaznamenajte kalórie a makroživiny';
+
+  @override
+  String get safety_title => 'Skôr než začnete';
+
+  @override
+  String get safety_desc => 'Pôst nie je bezpečný pre každého. Vyberte všetko, čo sa vás týka.';
+
+  @override
+  String get safety_under18 => 'Mám menej ako 18 rokov';
+
+  @override
+  String get safety_pregnant => 'Som tehotná alebo dojčím';
+
+  @override
+  String get safety_eatingDisorder => 'Mám alebo som mal/a poruchu príjmu potravy';
+
+  @override
+  String get safety_underweight => 'Mám podváhu alebo mi povedali, aby som nechudol/la';
+
+  @override
+  String get safety_diabetes => 'Mám cukrovku alebo užívam lieky ovplyvňujúce hladinu cukru';
+
+  @override
+  String get safety_medical => 'Mám iné ochorenie alebo pravidelne užívam lieky';
+
+  @override
+  String get safety_none => 'Nič z toho sa ma netýka';
+
+  @override
+  String get safety_ack => 'Pred pôstom sa poradím s lekárom';
+
+  @override
+  String get safety_blockedTitle => 'Táto aplikácia pre vás nie je bezpečná';
+
+  @override
+  String get safety_blockedDesc => 'Podľa vašich odpovedí tu nemôžeme ponúknuť pôst. Porozprávajte sa s lekárom. Ak je pre vás jedlo teraz ťažké, môže pomôcť zdravotnícky odborník.';
+
+  @override
+  String get safety_reviewAnswers => 'Skontrolovať odpovede';
+
+  @override
+  String get safety_targetTooLow => 'Tento cieľ je pod zdravou hmotnosťou pre vašu výšku.';
+
+  @override
+  String get onboarding_invalidBody => 'Zadajte platnú výšku, hmotnosť, cieľovú hmotnosť a vek.';
+
+  @override
+  String get crisis_unwell => 'Necítim sa dobre';
+
+  @override
+  String get crisis_unwellTitle => 'Ukončite pôst hneď';
+
+  @override
+  String get crisis_unwellDesc => 'Závraty, chvenie, zmätenosť alebo búšenie srdca sú signálom ukončiť pôst a niečo zjesť alebo vypiť.';
+
+  @override
+  String get crisis_emergency => 'Ak ste omdleli, máte bolesť na hrudi alebo je vám veľmi zle, zavolajte hneď miestnu tiesňovú linku.';
+
+  @override
+  String get crisis_endFast => 'Ukončiť môj pôst';
+
+  @override
+  String get profile_deleteData => 'Vymazať všetky moje údaje';
+
+  @override
+  String get profile_deleteDataConfirm => 'Týmto sa z tohto zariadenia natrvalo vymažú pôsty, hmotnosť, jedlá, voda a nastavenia. Nedá sa to vrátiť späť. Predplatné sa spravuje v účte obchodu.';
+
+  @override
+  String get profile_deleteDataAction => 'Vymazať všetko';
+
+  @override
+  String get record_deleteConfirm => 'Vymazať tento záznam?';
+
+  @override
+  String get profile_analytics => 'Zdieľať anonymné údaje o používaní';
+
+  @override
+  String get profile_analyticsDesc => 'Pomáha zlepšovať aplikáciu. Nikdy neobsahuje hmotnosť, jedlá ani zdravotné údaje.';
 }

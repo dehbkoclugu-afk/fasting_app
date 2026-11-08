@@ -21,12 +21,14 @@ Locale? _localeFromTag(String? tag) {
 
 class FastingApp extends ConsumerStatefulWidget {
   final bool showOnboarding;
+  final bool showSafetyGate;
   final Uint8List? recoveredFoodImage;
   final String? recoveredFoodImageMimeType;
 
   const FastingApp({
     super.key,
     required this.showOnboarding,
+    this.showSafetyGate = false,
     this.recoveredFoodImage,
     this.recoveredFoodImageMimeType,
   });
@@ -44,6 +46,7 @@ class _FastingAppState extends ConsumerState<FastingApp> {
     // Router'ı bir kez oluştur, settings değişikliklerinde yeniden oluşturma
     _router = AppRouter.router(
       showOnboarding: widget.showOnboarding,
+      showSafetyGate: widget.showSafetyGate,
       recoveredFoodImage: widget.recoveredFoodImage,
       recoveredFoodImageMimeType: widget.recoveredFoodImageMimeType,
     );

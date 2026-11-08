@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
 import 'app.dart';
 import 'core/config/build_config.dart';
+import 'core/utils/fasting_safety.dart';
+import 'services/analytics_service.dart';
 import 'features/meals/providers/food_scan_provider.dart';
 import 'services/notification_service.dart';
 import 'services/background_service.dart';
@@ -72,10 +75,15 @@ void main() async {
   );
   final onboardingCompleted = prefs?.getBool('onboardingCompleted') ?? false;
 
+  await _initializeCrashReporting();
+
   runApp(
     ProviderScope(
       child: FastingApp(
         showOnboarding: !onboardingCompleted,
+        // Also catches people who onboarded before the gate existed.
+        showSafetyGate:
+            prefs?.getString(FastingSafety.statusKey) != FastingSafety.cleared,
         recoveredFoodImage: recoveredFoodImage,
         recoveredFoodImageMimeType: recoveredFoodImageMimeType,
       ),
@@ -85,7 +93,23 @@ void main() async {
   unawaited(_initializeOptionalServices());
 }
 
+Future<void> _initializeCrashReporting() async {
+  if (BuildConfig.sentryDsn.isEmpty) return;
+  try {
+    await SentryFlutter.init((options) {
+      options.dsn = BuildConfig.sentryDsn;
+      options.sendDefaultPii = false;
+      // Printed messages can quote user input; keep them on the device.
+      options.enablePrintBreadcrumbs = false;
+      options.tracesSampleRate = 0;
+    }).timeout(const Duration(seconds: 2));
+  } catch (error) {
+    debugPrint('Crash reporting unavailable: $error');
+  }
+}
+
 Future<void> _initializeOptionalServices() async {
+  await _runOptional('analytics', AnalyticsService().initialize);
   await _runOptional(
     'orientation lock',
     () => SystemChrome.setPreferredOrientations([

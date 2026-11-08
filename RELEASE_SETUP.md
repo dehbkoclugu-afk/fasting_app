@@ -63,6 +63,8 @@ PRIVACY_POLICY_URL
 TERMS_OF_USE_URL
 ANDROID_STORE_URL
 IOS_STORE_URL
+SENTRY_DSN     # optional: crash reporting, empty disables it
+POSTHOG_KEY    # optional: opt-in analytics, empty disables it
 GEMINI_API_KEY
 ```
 

@@ -551,8 +551,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get completion_earlyTitle => '단식이 종료되었습니다';
 
   @override
-  String get completion_earlyMessage =>
-      '오늘의 시간이 저장되었습니다. 목표를 완료하지 않아 연속 기록과 성과 진행도는 변경되지 않았습니다.';
+  String get completion_earlyMessage => '오늘의 시간이 저장되었습니다. 목표를 완료하지 않아 연속 기록과 성과 진행도는 변경되지 않았습니다.';
 
   @override
   String get timer_remainingTime => '남은 시간';
@@ -1012,8 +1011,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get explore_safety => '건강과 안전';
 
   @override
-  String get explore_safetyDesc =>
-      '질환이 있거나 정기적으로 약을 복용하거나 우려되는 증상이 있거나 임신 또는 수유 중이라면 단식 전 자격을 갖춘 의료 전문가와 상담하세요. 몸이 불편하면 중단하세요.';
+  String get explore_safetyDesc => '질환이 있거나 정기적으로 약을 복용하거나 우려되는 증상이 있거나 임신 또는 수유 중이라면 단식 전 자격을 갖춘 의료 전문가와 상담하세요. 몸이 불편하면 중단하세요.';
 
   @override
   String get explore_sources => '출처';
@@ -1049,64 +1047,55 @@ class AppLocalizationsKo extends AppLocalizations {
   String get tip_water => '수분 유지';
 
   @override
-  String get tip_waterDesc =>
-      '목이 마를 때 물을 마시고 식사와 함께 수분을 섭취하세요. 필요량은 건강, 날씨, 활동량에 따라 달라질 수 있습니다.';
+  String get tip_waterDesc => '목이 마를 때 물을 마시고 식사와 함께 수분을 섭취하세요. 필요량은 건강, 날씨, 활동량에 따라 달라질 수 있습니다.';
 
   @override
   String get tip_food => '건강하게 먹기';
 
   @override
-  String get tip_foodDesc =>
-      '식사 시간에는 섬유질과 건강한 지방이 포함된 고단백 식품을 선택하고 가공식품은 피하세요.';
+  String get tip_foodDesc => '식사 시간에는 섬유질과 건강한 지방이 포함된 고단백 식품을 선택하고 가공식품은 피하세요.';
 
   @override
   String get tip_sleep => '충분히 자기';
 
   @override
-  String get tip_sleepDesc =>
-      '규칙적이고 충분한 수면은 전반적인 건강에 도움이 됩니다. 수면을 방해하지 않도록 단식 시간을 계획하세요.';
+  String get tip_sleepDesc => '규칙적이고 충분한 수면은 전반적인 건강에 도움이 됩니다. 수면을 방해하지 않도록 단식 시간을 계획하세요.';
 
   @override
   String get tip_exercise => '가벼운 운동';
 
   @override
-  String get tip_exerciseDesc =>
-      '단식 중 가볍게 걷거나 요가를 할 수 있습니다. 몸이 적응하는 첫 몇 주에는 특히 격렬한 운동을 피하세요.';
+  String get tip_exerciseDesc => '단식 중 가볍게 걷거나 요가를 할 수 있습니다. 몸이 적응하는 첫 몇 주에는 특히 격렬한 운동을 피하세요.';
 
   @override
   String get tip_drinks => '허용되는 음료';
 
   @override
-  String get tip_drinksDesc =>
-      '단식 중에는 물, 무가당 차, 블랙커피(설탕과 우유 제외)를 마실 수 있습니다. 이러한 음료는 단식을 깨지 않습니다.';
+  String get tip_drinksDesc => '단식 중에는 물, 무가당 차, 블랙커피(설탕과 우유 제외)를 마실 수 있습니다. 이러한 음료는 단식을 깨지 않습니다.';
 
   @override
   String get faq_drinks => '단식 중 무엇을 마실 수 있나요?';
 
   @override
-  String get faq_drinksAnswer =>
-      '물, 무가당 차, 블랙커피(설탕/우유 제외)를 마실 수 있습니다. 칼로리가 있는 음료는 단식을 깹니다.';
+  String get faq_drinksAnswer => '물, 무가당 차, 블랙커피(설탕/우유 제외)를 마실 수 있습니다. 칼로리가 있는 음료는 단식을 깹니다.';
 
   @override
   String get faq_plan => '어떤 단식 계획을 선택해야 하나요?';
 
   @override
-  String get faq_planAnswer =>
-      '초보자는 12:12 또는 14:10으로 시작하세요. 경험이 있다면 16:8 또는 18:6을 시도하세요. 20:4와 OMAD는 숙련자용입니다.';
+  String get faq_planAnswer => '초보자는 12:12 또는 14:10으로 시작하세요. 경험이 있다면 16:8 또는 18:6을 시도하세요. 20:4와 OMAD는 숙련자용입니다.';
 
   @override
   String get faq_exercise => '단식 중 운동해도 되나요?';
 
   @override
-  String get faq_exerciseAnswer =>
-      '네. 다만 격렬한 운동은 피하세요. 가벼운 유산소, 걷기, 요가가 좋습니다. 웨이트 트레이닝은 식사 시간과 가깝게 하세요.';
+  String get faq_exerciseAnswer => '네. 다만 격렬한 운동은 피하세요. 가벼운 유산소, 걷기, 요가가 좋습니다. 웨이트 트레이닝은 식사 시간과 가깝게 하세요.';
 
   @override
   String get faq_weight => '단식이 체중 감량에 도움이 되나요?';
 
   @override
-  String get faq_weightAnswer =>
-      '일부 사람은 식사 시간을 제한하면 총 에너지 섭취가 줄 수 있습니다. 결과는 사람마다 다르며 장기적 영향은 아직 연구 중입니다.';
+  String get faq_weightAnswer => '일부 사람은 식사 시간을 제한하면 총 에너지 섭취가 줄 수 있습니다. 결과는 사람마다 다르며 장기적 영향은 아직 연구 중입니다.';
 
   @override
   String get plan_12_desc => '초급';
@@ -1118,8 +1107,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get plan_16_desc => '가장 인기 있는 계획';
 
   @override
-  String get plan_16_detail =>
-      '가장 일반적인 간헐적 단식 계획입니다. 16시간 단식하고 8시간 식사하며 보통 점심부터 저녁까지입니다.';
+  String get plan_16_detail => '가장 일반적인 간헐적 단식 계획입니다. 16시간 단식하고 8시간 식사하며 보통 점심부터 저녁까지입니다.';
 
   @override
   String get plan_18_desc => '중급';
@@ -1480,8 +1468,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get profile_privacyChoices => '개인정보 선택';
 
   @override
-  String get paywall_autoRenewInfo =>
-      '기간 종료 최소 24시간 전에 취소하지 않으면 구독이 자동 갱신됩니다. App Store 설정에서 언제든 관리하거나 취소할 수 있습니다.';
+  String get paywall_autoRenewInfo => '기간 종료 최소 24시간 전에 취소하지 않으면 구독이 자동 갱신됩니다. App Store 설정에서 언제든 관리하거나 취소할 수 있습니다.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1508,19 +1495,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String get paywall_alreadyOwned => '이미 이 구독을 보유하고 있습니다. ‘구매 복원’을 누르세요.';
 
   @override
-  String get paywall_storeUnavailable =>
-      '현재 스토어에 연결할 수 없습니다. 연결을 확인하고 다시 시도하세요.';
+  String get paywall_storeUnavailable => '현재 스토어에 연결할 수 없습니다. 연결을 확인하고 다시 시도하세요.';
 
   @override
   String get paywall_secureNote => '언제든 취소할 수 있습니다. 결제 금액은 스토어 계정으로 청구됩니다.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      '기간 종료 최소 24시간 전에 취소하지 않으면 구독이 자동 갱신됩니다. Google Play > 구독에서 언제든 관리하거나 취소할 수 있습니다.';
+  String get paywall_autoRenewInfoPlay => '기간 종료 최소 24시간 전에 취소하지 않으면 구독이 자동 갱신됩니다. Google Play > 구독에서 언제든 관리하거나 취소할 수 있습니다.';
 
   @override
-  String get paywall_allPlansDesc =>
-      '18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior 잠금 해제';
+  String get paywall_allPlansDesc => '18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, Warrior 잠금 해제';
 
   @override
   String get paywall_noAdsDesc => '배너 및 전면 광고가 완전히 꺼집니다';
@@ -1564,15 +1548,13 @@ class AppLocalizationsKo extends AppLocalizations {
   String get foodScan_quotaReached => '오늘의 스캔 횟수를 모두 사용했습니다. 내일 다시 시도하세요.';
 
   @override
-  String get foodScan_privacyNote =>
-      '사진은 분석을 위해 Google Gemini API로 전송되며 당사 서버에는 저장되지 않습니다.';
+  String get foodScan_privacyNote => '사진은 Google의 Gemini API로 전송됩니다. Google은 제품 개선에 사용할 수 있으며 사람 검토자가 볼 수 있습니다. 당사 서버에는 저장하지 않습니다.';
 
   @override
   String get foodScan_consentTitle => '사진을 Google Gemini로 보낼까요?';
 
   @override
-  String get foodScan_consentBody =>
-      '칼로리와 영양소를 추정하기 위해 촬영하거나 선택한 식사 사진이 Google의 AI 서비스 Gemini로 전송됩니다. 사진은 이 분석에만 사용되며 당사 서버에 저장되지 않습니다.';
+  String get foodScan_consentBody => '칼로리와 영양소를 추정하기 위해 촬영하거나 선택한 모든 식사 사진이 Google의 Gemini AI 서비스로 전송됩니다. Google은 사진을 제품 개선에 사용할 수 있고 사람 검토자가 볼 수 있으므로 사람, 문서, 기타 개인 정보가 사진에 나오지 않게 하세요. 당사 서버에는 사진을 저장하지 않습니다.';
 
   @override
   String get foodScan_consentAgree => '동의하고 계속';
@@ -1642,4 +1624,82 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get paywall_aiFoodScanDesc => '식사를 촬영하고 몇 초 만에 칼로리와 주요 영양소를 기록하세요';
+
+  @override
+  String get safety_title => '시작하기 전에';
+
+  @override
+  String get safety_desc => '단식은 모든 사람에게 안전하지 않습니다. 해당하는 항목을 모두 선택하세요.';
+
+  @override
+  String get safety_under18 => '18세 미만입니다';
+
+  @override
+  String get safety_pregnant => '임신 중이거나 수유 중입니다';
+
+  @override
+  String get safety_eatingDisorder => '섭식 장애가 있거나 있었습니다';
+
+  @override
+  String get safety_underweight => '저체중이거나 체중을 줄이지 말라는 조언을 받았습니다';
+
+  @override
+  String get safety_diabetes => '당뇨병이 있거나 혈당에 영향을 주는 약을 복용합니다';
+
+  @override
+  String get safety_medical => '다른 질환이 있거나 정기적으로 약을 복용합니다';
+
+  @override
+  String get safety_none => '해당 사항 없음';
+
+  @override
+  String get safety_ack => '단식 전에 의사와 상담하겠습니다';
+
+  @override
+  String get safety_blockedTitle => '이 앱은 회원님께 안전하지 않습니다';
+
+  @override
+  String get safety_blockedDesc => '답변에 따라 여기에서 단식을 제공할 수 없습니다. 의사와 상담하세요. 지금 먹는 일이 힘들다면 의료 전문가가 도울 수 있습니다.';
+
+  @override
+  String get safety_reviewAnswers => '내 답변 검토';
+
+  @override
+  String get safety_targetTooLow => '이 목표는 키에 비해 건강한 체중보다 낮습니다.';
+
+  @override
+  String get onboarding_invalidBody => '올바른 키, 체중, 목표 체중, 나이를 입력하세요.';
+
+  @override
+  String get crisis_unwell => '몸이 좋지 않아요';
+
+  @override
+  String get crisis_unwellTitle => '지금 단식을 끝내세요';
+
+  @override
+  String get crisis_unwellDesc => '어지러움, 떨림, 혼란, 빠른 심장 박동은 단식을 멈추고 무언가를 먹거나 마셔야 한다는 신호입니다.';
+
+  @override
+  String get crisis_emergency => '기절했거나 가슴 통증이 있거나 몸이 매우 좋지 않다면 지금 바로 지역 응급 번호로 전화하세요.';
+
+  @override
+  String get crisis_endFast => '단식 끝내기';
+
+  @override
+  String get profile_deleteData => '내 데이터 모두 삭제';
+
+  @override
+  String get profile_deleteDataConfirm => '이 기기에서 단식, 체중, 식사, 수분, 설정이 영구 삭제됩니다. 되돌릴 수 없습니다. 구독은 스토어 계정에서 관리합니다.';
+
+  @override
+  String get profile_deleteDataAction => '모두 삭제';
+
+  @override
+  String get record_deleteConfirm => '이 기록을 삭제할까요?';
+
+  @override
+  String get profile_analytics => '익명 사용 데이터 공유';
+
+  @override
+  String get profile_analyticsDesc => '앱 개선에 도움이 됩니다. 체중, 식사, 건강 정보는 절대 포함되지 않습니다.';
 }

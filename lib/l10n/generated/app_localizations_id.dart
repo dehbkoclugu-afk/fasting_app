@@ -263,8 +263,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get onboarding_welcome => 'Selamat Datang';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Kendalikan perjalanan puasa\nintermiten Anda';
+  String get onboarding_welcomeDesc => 'Kendalikan perjalanan puasa\nintermiten Anda';
 
   @override
   String get onboarding_featureTimer => 'Pengatur waktu puasa pintar';
@@ -324,8 +323,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get onboarding_selectPlan => 'Pilih Program Anda';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Pilih program puasa terbaik untuk Anda';
+  String get onboarding_selectPlanDesc => 'Pilih program puasa terbaik untuk Anda';
 
   @override
   String get onboarding_bodyInfo => 'Masukkan Data Anda';
@@ -346,15 +344,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get onboarding_age => 'Usia';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Informasi ini hanya disimpan di perangkat Anda dan digunakan untuk perhitungan kalori.';
+  String get onboarding_bodyInfoDisclaimer => 'Informasi ini hanya disimpan di perangkat Anda dan digunakan untuk perhitungan kalori.';
 
   @override
   String get onboarding_permissions => 'Langkah Terakhir';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Aktifkan izin untuk pengalaman terbaik';
+  String get onboarding_permissionsDesc => 'Aktifkan izin untuk pengalaman terbaik';
 
   @override
   String get onboarding_next => 'Lanjutkan';
@@ -420,8 +416,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get paywall_premiumActive => 'Premium Aktif!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Semua program puasa terbuka dan iklan dinonaktifkan';
+  String get paywall_premiumActiveDesc => 'Semua program puasa terbuka dan iklan dinonaktifkan';
 
   @override
   String get water_title => 'Asupan Air';
@@ -556,8 +551,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get completion_earlyTitle => 'Puasa berakhir';
 
   @override
-  String get completion_earlyMessage =>
-      'Durasi hari ini telah disimpan. Rangkaian dan progres pencapaian tidak berubah karena target belum tercapai.';
+  String get completion_earlyMessage => 'Durasi hari ini telah disimpan. Rangkaian dan progres pencapaian tidak berubah karena target belum tercapai.';
 
   @override
   String get timer_remainingTime => 'Waktu Tersisa';
@@ -587,8 +581,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get streak_incredible => 'Menakjubkan!';
 
   @override
-  String get weight_noRecord =>
-      'Belum ada catatan berat badan\nTambahkan dari Profil > Ukuran Tubuh';
+  String get weight_noRecord => 'Belum ada catatan berat badan\nTambahkan dari Profil > Ukuran Tubuh';
 
   @override
   String get day_mon => 'Sen';
@@ -774,8 +767,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get profile_calmGamification => 'Gamifikasi tenang';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Mengurangi tekanan liga dan musim';
+  String get profile_calmGamificationDesc => 'Mengurangi tekanan liga dan musim';
 
   @override
   String get profile_editName => 'Edit nama Anda';
@@ -793,8 +785,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get circle_tagline => 'Bersama, tanpa tekanan.';
 
   @override
-  String get circle_privacy =>
-      'Berat badan dan ukuran pribadi tetap tersembunyi. Hanya kemajuan dan dukungan yang terlihat.';
+  String get circle_privacy => 'Berat badan dan ukuran pribadi tetap tersembunyi. Hanya kemajuan dan dukungan yang terlihat.';
 
   @override
   String circle_sendSupport(int count) {
@@ -823,8 +814,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get crisis_delayTitle => 'Tunda keputusan selama 10 menit';
 
   @override
-  String get crisis_delayDesc =>
-      'Jika Anda merasa tidak sehat, mengakhiri puasa bukanlah kegagalan.';
+  String get crisis_delayDesc => 'Jika Anda merasa tidak sehat, mengakhiri puasa bukanlah kegagalan.';
 
   @override
   String get crisis_hunger => 'Lapar';
@@ -839,8 +829,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get crisis_tenMore => 'Beri waktu 10 menit';
 
   @override
-  String get stats_storyEmpty =>
-      'Puasa pertama akan memulai kisah pribadi Anda.';
+  String get stats_storyEmpty => 'Puasa pertama akan memulai kisah pribadi Anda.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -880,15 +869,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get weather_water => 'Segelas air mungkin membantu.';
 
   @override
-  String get weather_listen =>
-      'Anda sudah melangkah jauh; dengarkan tubuh Anda.';
+  String get weather_listen => 'Anda sudah melangkah jauh; dengarkan tubuh Anda.';
 
   @override
   String get weather_onPlan => 'Laju hari ini sesuai program Anda.';
 
   @override
-  String get weather_challenging =>
-      'Jam ini pernah terasa sulit; mode dukungan siap digunakan.';
+  String get weather_challenging => 'Jam ini pernah terasa sulit; mode dukungan siap digunakan.';
 
   @override
   String get replay_copied => 'Kilasan Puasa disalin';
@@ -913,8 +900,7 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'Waktu fase merupakan perkiraan umum, bukan pengukuran medis.';
+  String get phase_estimateShort => 'Waktu fase merupakan perkiraan umum, bukan pengukuran medis.';
 
   @override
   String phase_hours(int start, int end) {
@@ -922,8 +908,7 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Waktu ini merupakan perkiraan umum. Respons metabolisme dapat berbeda pada setiap orang.';
+  String get phase_estimateLong => 'Waktu ini merupakan perkiraan umum. Respons metabolisme dapat berbeda pada setiap orang.';
 
   @override
   String get bmi_underweight => 'Berat badan kurang';
@@ -966,15 +951,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get notification_waterTitle => 'Minum Air 💧';
 
   @override
-  String get notification_waterBody =>
-      'Jangan lupa minum cukup air selama berpuasa!';
+  String get notification_waterBody => 'Jangan lupa minum cukup air selama berpuasa!';
 
   @override
   String get notification_windowTitle => 'Jendela Makan Akan Ditutup ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Jendela makan Anda akan ditutup dalam 30 menit.';
+  String get notification_windowBody => 'Jendela makan Anda akan ditutup dalam 30 menit.';
 
   @override
   String notification_streakTitle(int days) {
@@ -1013,33 +996,28 @@ class AppLocalizationsId extends AppLocalizations {
   String get explore_guide => 'Panduan Puasa';
 
   @override
-  String get explore_guideDesc =>
-      'Semua yang perlu Anda ketahui tentang puasa intermiten';
+  String get explore_guideDesc => 'Semua yang perlu Anda ketahui tentang puasa intermiten';
 
   @override
-  String get explore_circleDesc =>
-      'Bagikan dukungan tenang dengan grup pribadi Anda.';
+  String get explore_circleDesc => 'Bagikan dukungan tenang dengan grup pribadi Anda.';
 
   @override
   String get explore_faq => 'Pertanyaan Umum';
 
   @override
-  String get explore_education =>
-      'Konten ini hanya untuk edukasi umum dan bukan diagnosis medis atau saran pengobatan.';
+  String get explore_education => 'Konten ini hanya untuk edukasi umum dan bukan diagnosis medis atau saran pengobatan.';
 
   @override
   String get explore_safety => 'Kesehatan dan keselamatan';
 
   @override
-  String get explore_safetyDesc =>
-      'Jika Anda memiliki kondisi medis, rutin minum obat, mengalami gejala yang mengkhawatirkan, sedang hamil, atau menyusui, konsultasikan dengan tenaga kesehatan sebelum berpuasa. Berhentilah jika merasa tidak sehat.';
+  String get explore_safetyDesc => 'Jika Anda memiliki kondisi medis, rutin minum obat, mengalami gejala yang mengkhawatirkan, sedang hamil, atau menyusui, konsultasikan dengan tenaga kesehatan sebelum berpuasa. Berhentilah jika merasa tidak sehat.';
 
   @override
   String get explore_sources => 'Sumber';
 
   @override
-  String get explore_sourcesDesc =>
-      'Konten disederhanakan dari referensi kesehatan masyarakat di bawah ini.';
+  String get explore_sourcesDesc => 'Konten disederhanakan dari referensi kesehatan masyarakat di bawah ini.';
 
   @override
   String get explore_sourceError => 'Sumber tidak dapat dibuka';
@@ -1048,8 +1026,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get explore_rules => 'Aturan Penting';
 
   @override
-  String get explore_rule1 =>
-      'Jangan konsumsi makanan berkalori selama berpuasa';
+  String get explore_rule1 => 'Jangan konsumsi makanan berkalori selama berpuasa';
 
   @override
   String get explore_rule2 => 'Minum banyak air dan cairan';
@@ -1061,131 +1038,112 @@ class AppLocalizationsId extends AppLocalizations {
   String get explore_rule4 => 'Hentikan puasa jika merasa tidak sehat';
 
   @override
-  String get explore_rule5 =>
-      'Ibu hamil atau menyusui sebaiknya tidak berpuasa';
+  String get explore_rule5 => 'Ibu hamil atau menyusui sebaiknya tidak berpuasa';
 
   @override
-  String get explore_rule6 =>
-      'Konsultasikan dengan dokter jika memiliki penyakit kronis';
+  String get explore_rule6 => 'Konsultasikan dengan dokter jika memiliki penyakit kronis';
 
   @override
   String get tip_water => 'Tetap Terhidrasi';
 
   @override
-  String get tip_waterDesc =>
-      'Minumlah saat haus dan sertakan cairan bersama makanan. Kebutuhan dapat berbeda menurut kesehatan, cuaca, dan aktivitas.';
+  String get tip_waterDesc => 'Minumlah saat haus dan sertakan cairan bersama makanan. Kebutuhan dapat berbeda menurut kesehatan, cuaca, dan aktivitas.';
 
   @override
   String get tip_food => 'Makan dengan Baik';
 
   @override
-  String get tip_foodDesc =>
-      'Selama jendela makan, pilih makanan kaya protein dan serat serta lemak sehat. Hindari makanan olahan.';
+  String get tip_foodDesc => 'Selama jendela makan, pilih makanan kaya protein dan serat serta lemak sehat. Hindari makanan olahan.';
 
   @override
   String get tip_sleep => 'Tidur Cukup';
 
   @override
-  String get tip_sleepDesc =>
-      'Tidur teratur dan cukup mendukung kesehatan umum. Atur puasa agar tidak mengganggu tidur.';
+  String get tip_sleepDesc => 'Tidur teratur dan cukup mendukung kesehatan umum. Atur puasa agar tidak mengganggu tidur.';
 
   @override
   String get tip_exercise => 'Olahraga Ringan';
 
   @override
-  String get tip_exerciseDesc =>
-      'Anda dapat berjalan santai atau yoga saat berpuasa. Hindari olahraga berat, terutama selama minggu-minggu pertama hingga tubuh beradaptasi.';
+  String get tip_exerciseDesc => 'Anda dapat berjalan santai atau yoga saat berpuasa. Hindari olahraga berat, terutama selama minggu-minggu pertama hingga tubuh beradaptasi.';
 
   @override
   String get tip_drinks => 'Minuman yang Diizinkan';
 
   @override
-  String get tip_drinksDesc =>
-      'Saat berpuasa, Anda dapat minum air, teh tawar, dan kopi hitam tanpa gula atau susu. Minuman ini tidak membatalkan puasa.';
+  String get tip_drinksDesc => 'Saat berpuasa, Anda dapat minum air, teh tawar, dan kopi hitam tanpa gula atau susu. Minuman ini tidak membatalkan puasa.';
 
   @override
   String get faq_drinks => 'Apa yang boleh saya minum saat berpuasa?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Anda dapat minum air, teh tawar, dan kopi hitam tanpa gula atau susu. Minuman berkalori membatalkan puasa.';
+  String get faq_drinksAnswer => 'Anda dapat minum air, teh tawar, dan kopi hitam tanpa gula atau susu. Minuman berkalori membatalkan puasa.';
 
   @override
   String get faq_plan => 'Program puasa mana yang harus saya pilih?';
 
   @override
-  String get faq_planAnswer =>
-      'Jika baru mulai, pilih 12:12 atau 14:10. Jika berpengalaman, coba 16:8 atau 18:6. 20:4 dan OMAD untuk pelaku puasa tingkat lanjut.';
+  String get faq_planAnswer => 'Jika baru mulai, pilih 12:12 atau 14:10. Jika berpengalaman, coba 16:8 atau 18:6. 20:4 dan OMAD untuk pelaku puasa tingkat lanjut.';
 
   @override
   String get faq_exercise => 'Bolehkah saya berolahraga saat berpuasa?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Ya, tetapi hindari latihan intensif. Kardio ringan, berjalan, dan yoga ideal. Jadwalkan latihan beban dekat jendela makan.';
+  String get faq_exerciseAnswer => 'Ya, tetapi hindari latihan intensif. Kardio ringan, berjalan, dan yoga ideal. Jadwalkan latihan beban dekat jendela makan.';
 
   @override
   String get faq_weight => 'Apakah puasa membantu menurunkan berat badan?';
 
   @override
-  String get faq_weightAnswer =>
-      'Bagi sebagian orang, membatasi waktu makan dapat mengurangi total asupan energi. Hasilnya beragam dan dampak jangka panjang masih diteliti.';
+  String get faq_weightAnswer => 'Bagi sebagian orang, membatasi waktu makan dapat mengurangi total asupan energi. Hasilnya beragam dan dampak jangka panjang masih diteliti.';
 
   @override
   String get plan_12_desc => 'Tingkat pemula';
 
   @override
-  String get plan_12_detail =>
-      'Ideal untuk pemula. Berpuasalah 12 jam termasuk waktu tidur.';
+  String get plan_12_detail => 'Ideal untuk pemula. Berpuasalah 12 jam termasuk waktu tidur.';
 
   @override
   String get plan_16_desc => 'Program terpopuler';
 
   @override
-  String get plan_16_detail =>
-      'Program puasa intermiten yang paling umum: puasa 16 jam dan jendela makan 8 jam, biasanya dari makan siang hingga makan malam.';
+  String get plan_16_detail => 'Program puasa intermiten yang paling umum: puasa 16 jam dan jendela makan 8 jam, biasanya dari makan siang hingga makan malam.';
 
   @override
   String get plan_18_desc => 'Tingkat menengah';
 
   @override
-  String get plan_18_detail =>
-      'Puasa 18 jam dan jendela makan 6 jam. Durasi pembakaran lemak lebih lama.';
+  String get plan_18_detail => 'Puasa 18 jam dan jendela makan 6 jam. Durasi pembakaran lemak lebih lama.';
 
   @override
   String get plan_20_desc => 'Tingkat lanjut';
 
   @override
-  String get plan_20_detail =>
-      'Puasa 20 jam dan jendela makan 4 jam. Ideal untuk mencapai ketosis dan autofagi.';
+  String get plan_20_detail => 'Puasa 20 jam dan jendela makan 4 jam. Ideal untuk mencapai ketosis dan autofagi.';
 
   @override
   String get plan_omad_desc => 'Satu kali makan sehari';
 
   @override
-  String get plan_omad_detail =>
-      'Satu kali makan sehari: puasa 23 jam dan jendela makan 1 jam. Tingkat ahli.';
+  String get plan_omad_detail => 'Satu kali makan sehari: puasa 23 jam dan jendela makan 1 jam. Tingkat ahli.';
 
   @override
   String get plan_52_desc => '2 hari per minggu';
 
   @override
-  String get plan_52_detail =>
-      'Makan normal selama 5 hari dan batasi sekitar 500 kalori selama 2 hari. Pendekatan alternatif.';
+  String get plan_52_detail => 'Makan normal selama 5 hari dan batasi sekitar 500 kalori selama 2 hari. Pendekatan alternatif.';
 
   @override
   String get plan_ese_desc => 'Puasa 24 jam';
 
   @override
-  String get plan_ese_detail =>
-      'Berpuasalah 24 jam 1–2 kali per minggu. Untuk tingkat lanjut.';
+  String get plan_ese_detail => 'Berpuasalah 24 jam 1–2 kali per minggu. Untuk tingkat lanjut.';
 
   @override
   String get plan_warrior_desc => 'Diet Prajurit';
 
   @override
-  String get plan_warrior_detail =>
-      'Makan ringan pada siang hari, lalu makan utama dalam jendela empat jam pada malam hari.';
+  String get plan_warrior_detail => 'Makan ringan pada siang hari, lalu makan utama dalam jendela empat jam pada malam hari.';
 
   @override
   String get award_first_title => 'Langkah Pertama';
@@ -1337,8 +1295,7 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Diperoleh setiap tujuh penyelesaian. Hari yang terlewat tidak pernah menghapus kemajuan Anda.';
+  String get game_shieldsDesc => 'Diperoleh setiap tujuh penyelesaian. Hari yang terlewat tidak pernah menghapus kemajuan Anda.';
 
   @override
   String get game_league => 'Liga mingguan pribadi';
@@ -1490,15 +1447,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get paywall_continue => 'Lanjutkan';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Pembelian sedang tidak tersedia. Coba lagi nanti.';
+  String get paywall_productsUnavailable => 'Pembelian sedang tidak tersedia. Coba lagi nanti.';
 
   @override
   String get paywall_purchaseFailed => 'Pembelian tidak dapat diselesaikan.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'Tidak ada pembelian sebelumnya yang ditemukan.';
+  String get paywall_nothingToRestore => 'Tidak ada pembelian sebelumnya yang ditemukan.';
 
   @override
   String get paywall_restoreFailed => 'Pembelian tidak dapat dipulihkan.';
@@ -1507,15 +1462,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get paywall_terms => 'Ketentuan Penggunaan';
 
   @override
-  String get permission_notificationDesc =>
-      'Pengingat puasa, pembaruan fase, dan notifikasi penyelesaian';
+  String get permission_notificationDesc => 'Pengingat puasa, pembaruan fase, dan notifikasi penyelesaian';
 
   @override
   String get profile_privacyChoices => 'Pilihan privasi';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Langganan diperpanjang otomatis kecuali dibatalkan setidaknya 24 jam sebelum periode berakhir. Kelola atau batalkan kapan saja di pengaturan App Store.';
+  String get paywall_autoRenewInfo => 'Langganan diperpanjang otomatis kecuali dibatalkan setidaknya 24 jam sebelum periode berakhir. Kelola atau batalkan kapan saja di pengaturan App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1539,28 +1492,22 @@ class AppLocalizationsId extends AppLocalizations {
   String get paywall_retry => 'Coba lagi';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Anda sudah memiliki langganan ini. Ketuk Pulihkan pembelian.';
+  String get paywall_alreadyOwned => 'Anda sudah memiliki langganan ini. Ketuk Pulihkan pembelian.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Toko tidak dapat diakses saat ini. Periksa koneksi dan coba lagi.';
+  String get paywall_storeUnavailable => 'Toko tidak dapat diakses saat ini. Periksa koneksi dan coba lagi.';
 
   @override
-  String get paywall_secureNote =>
-      'Batalkan kapan saja. Pembayaran dibebankan ke akun toko Anda.';
+  String get paywall_secureNote => 'Batalkan kapan saja. Pembayaran dibebankan ke akun toko Anda.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Langganan diperpanjang otomatis kecuali dibatalkan setidaknya 24 jam sebelum periode berakhir. Kelola atau batalkan di Google Play > Langganan.';
+  String get paywall_autoRenewInfoPlay => 'Langganan diperpanjang otomatis kecuali dibatalkan setidaknya 24 jam sebelum periode berakhir. Kelola atau batalkan di Google Play > Langganan.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Membuka 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, dan Warrior';
+  String get paywall_allPlansDesc => 'Membuka 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat, dan Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Iklan spanduk dan layar penuh dinonaktifkan sepenuhnya';
+  String get paywall_noAdsDesc => 'Iklan spanduk dan layar penuh dinonaktifkan sepenuhnya';
 
   @override
   String get foodScan_title => 'Pemindaian Makanan AI';
@@ -1569,26 +1516,22 @@ class AppLocalizationsId extends AppLocalizations {
   String get foodScan_scanCta => 'Pindai makanan';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Foto piring Anda untuk mendapatkan kalori dan makro';
+  String get foodScan_scanCtaDesc => 'Foto piring Anda untuk mendapatkan kalori dan makro';
 
   @override
   String get foodScan_introTitle => 'Foto piring Anda';
 
   @override
-  String get foodScan_introDesc =>
-      'AI membaca foto dan memperkirakan kalori, protein, karbohidrat, serta lemak.';
+  String get foodScan_introDesc => 'AI membaca foto dan memperkirakan kalori, protein, karbohidrat, serta lemak.';
 
   @override
-  String get foodScan_tipLight =>
-      'Cahaya yang baik dan merata memberikan perkiraan lebih baik';
+  String get foodScan_tipLight => 'Cahaya yang baik dan merata memberikan perkiraan lebih baik';
 
   @override
   String get foodScan_tipFrame => 'Pastikan seluruh piring masuk dalam bingkai';
 
   @override
-  String get foodScan_tipScale =>
-      'Sertakan alat makan atau tangan agar porsi dapat diperkirakan';
+  String get foodScan_tipScale => 'Sertakan alat makan atau tangan agar porsi dapat diperkirakan';
 
   @override
   String get foodScan_takePhoto => 'Ambil foto';
@@ -1602,19 +1545,16 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Pemindaian hari ini sudah digunakan. Coba lagi besok.';
+  String get foodScan_quotaReached => 'Pemindaian hari ini sudah digunakan. Coba lagi besok.';
 
   @override
-  String get foodScan_privacyNote =>
-      'Foto dikirim ke Gemini API Google untuk dianalisis dan tidak disimpan di server kami.';
+  String get foodScan_privacyNote => 'Foto dikirim ke Gemini API milik Google. Google dapat menggunakannya untuk meningkatkan produknya dan peninjau manusia dapat melihatnya. Kami tidak menyimpannya di server kami.';
 
   @override
   String get foodScan_consentTitle => 'Kirim foto ke Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'Untuk memperkirakan kalori dan makro, setiap foto makanan yang Anda ambil atau pilih dikirim ke layanan AI Gemini dari Google. Foto hanya digunakan untuk analisis ini dan tidak disimpan di server kami.';
+  String get foodScan_consentBody => 'Untuk memperkirakan kalori dan makro, setiap foto makanan yang Anda ambil atau pilih dikirim ke layanan AI Gemini milik Google. Google dapat menggunakan foto untuk meningkatkan produknya dan peninjau manusia dapat melihatnya, jadi jangan sertakan orang, dokumen, atau data pribadi lain dalam bingkai. Kami tidak menyimpan foto di server kami.';
 
   @override
   String get foodScan_consentAgree => 'Setuju dan lanjutkan';
@@ -1629,12 +1569,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get foodScan_detectedItems => 'Item terdeteksi';
 
   @override
-  String get foodScan_disclaimer =>
-      'Perkiraan AI bersifat mendekati. Ketuk item untuk memperbaikinya.';
+  String get foodScan_disclaimer => 'Perkiraan AI bersifat mendekati. Ketuk item untuk memperbaikinya.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Model kurang yakin dengan foto ini. Periksa angka sebelum menyimpan.';
+  String get foodScan_lowConfidence => 'Model kurang yakin dengan foto ini. Periksa angka sebelum menyimpan.';
 
   @override
   String get foodScan_save => 'Tambahkan ke makanan';
@@ -1658,40 +1596,110 @@ class AppLocalizationsId extends AppLocalizations {
   String get foodScan_premiumTitle => 'Fitur Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'Analisis kalori dari foto termasuk dalam Premium.';
+  String get foodScan_premiumDesc => 'Analisis kalori dari foto termasuk dalam Premium.';
 
   @override
   String get foodScan_upgrade => 'Lihat Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Tidak ada koneksi. Periksa internet dan coba lagi.';
+  String get foodScan_errorNetwork => 'Tidak ada koneksi. Periksa internet dan coba lagi.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Terlalu banyak pemindaian saat ini. Coba lagi dalam beberapa menit.';
+  String get foodScan_errorRateLimited => 'Terlalu banyak pemindaian saat ini. Coba lagi dalam beberapa menit.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'Analisis foto sedang tidak tersedia.';
+  String get foodScan_errorUnavailable => 'Analisis foto sedang tidak tersedia.';
 
   @override
-  String get foodScan_errorServer =>
-      'Layanan analisis mengalami gangguan. Coba lagi sebentar lagi.';
+  String get foodScan_errorServer => 'Layanan analisis mengalami gangguan. Coba lagi sebentar lagi.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Tidak ada makanan yang ditemukan dalam foto ini. Coba foto piring yang lebih jelas.';
+  String get foodScan_errorNoFood => 'Tidak ada makanan yang ditemukan dalam foto ini. Coba foto piring yang lebih jelas.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Foto ini tidak dapat dianalisis. Coba foto lain.';
+  String get foodScan_errorUnreadable => 'Foto ini tidak dapat dianalisis. Coba foto lain.';
 
   @override
   String get paywall_aiFoodScan => 'Pemindaian Makanan AI';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Foto makanan dan catat kalori serta makronya dalam hitungan detik';
+  String get paywall_aiFoodScanDesc => 'Foto makanan dan catat kalori serta makronya dalam hitungan detik';
+
+  @override
+  String get safety_title => 'Sebelum mulai';
+
+  @override
+  String get safety_desc => 'Puasa tidak aman untuk semua orang. Pilih semua yang sesuai dengan Anda.';
+
+  @override
+  String get safety_under18 => 'Saya berusia di bawah 18 tahun';
+
+  @override
+  String get safety_pregnant => 'Saya hamil atau menyusui';
+
+  @override
+  String get safety_eatingDisorder => 'Saya memiliki atau pernah memiliki gangguan makan';
+
+  @override
+  String get safety_underweight => 'Berat badan saya kurang atau saya diminta tidak menurunkan berat badan';
+
+  @override
+  String get safety_diabetes => 'Saya menderita diabetes atau minum obat yang memengaruhi gula darah';
+
+  @override
+  String get safety_medical => 'Saya memiliki kondisi medis lain atau rutin minum obat';
+
+  @override
+  String get safety_none => 'Tidak ada yang sesuai dengan saya';
+
+  @override
+  String get safety_ack => 'Saya akan berbicara dengan dokter sebelum berpuasa';
+
+  @override
+  String get safety_blockedTitle => 'Aplikasi ini tidak aman untuk Anda';
+
+  @override
+  String get safety_blockedDesc => 'Berdasarkan jawaban Anda, kami tidak dapat menawarkan puasa di sini. Silakan bicara dengan dokter. Jika makan terasa sulit saat ini, tenaga kesehatan dapat membantu.';
+
+  @override
+  String get safety_reviewAnswers => 'Tinjau jawaban saya';
+
+  @override
+  String get safety_targetTooLow => 'Target itu di bawah berat badan sehat untuk tinggi Anda.';
+
+  @override
+  String get onboarding_invalidBody => 'Masukkan tinggi, berat, berat target, dan usia yang valid.';
+
+  @override
+  String get crisis_unwell => 'Saya merasa tidak enak badan';
+
+  @override
+  String get crisis_unwellTitle => 'Akhiri puasa Anda sekarang';
+
+  @override
+  String get crisis_unwellDesc => 'Pusing, gemetar, bingung, atau jantung berdebar adalah tanda untuk menghentikan puasa dan makan atau minum sesuatu.';
+
+  @override
+  String get crisis_emergency => 'Jika Anda pingsan, nyeri dada, atau merasa sangat tidak sehat, segera hubungi nomor darurat setempat.';
+
+  @override
+  String get crisis_endFast => 'Akhiri puasa saya';
+
+  @override
+  String get profile_deleteData => 'Hapus semua data saya';
+
+  @override
+  String get profile_deleteDataConfirm => 'Ini menghapus puasa, berat badan, makanan, air, dan pengaturan Anda secara permanen dari perangkat ini. Tidak dapat dibatalkan. Langganan dikelola di akun toko Anda.';
+
+  @override
+  String get profile_deleteDataAction => 'Hapus semua';
+
+  @override
+  String get record_deleteConfirm => 'Hapus entri ini?';
+
+  @override
+  String get profile_analytics => 'Bagikan data penggunaan anonim';
+
+  @override
+  String get profile_analyticsDesc => 'Membantu meningkatkan aplikasi. Tidak pernah menyertakan berat badan, makanan, atau data kesehatan.';
 }

@@ -100,6 +100,10 @@ class AppDatabase extends _$AppDatabase {
     return into(bodyMetrics).insert(metric);
   }
 
+  Future<int> deleteMetric(int id) {
+    return (delete(bodyMetrics)..where((m) => m.id.equals(id))).go();
+  }
+
   Future<List<BodyMetric>> getWeightHistory() {
     return (select(bodyMetrics)
           ..where((m) => m.weight.isNotNull())
@@ -177,6 +181,16 @@ class AppDatabase extends _$AppDatabase {
     return into(settings).insertOnConflictUpdate(
       SettingsCompanion(key: Value(key), value: Value(value)),
     );
+  }
+
+  // --- Erasure ---
+
+  Future<void> deleteAllUserData() {
+    return transaction(() async {
+      for (final table in allTables) {
+        await delete(table).go();
+      }
+    });
   }
 }
 

@@ -63,8 +63,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get timer_selectPlan => 'Выберите план голодания';
 
   @override
-  String get timer_stopConfirm =>
-      'Вы уверены, что хотите завершить голодание раньше?';
+  String get timer_stopConfirm => 'Вы уверены, что хотите завершить голодание раньше?';
 
   @override
   String get timer_stopTitle => 'Завершить голодание';
@@ -264,8 +263,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get onboarding_welcome => 'Добро пожаловать';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Управляйте своим путём\nинтервального голодания';
+  String get onboarding_welcomeDesc => 'Управляйте своим путём\nинтервального голодания';
 
   @override
   String get onboarding_featureTimer => 'Умный таймер голодания';
@@ -274,8 +272,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get onboarding_featureStats => 'Подробная статистика и графики';
 
   @override
-  String get onboarding_featureMeals =>
-      'Планировщик питания и рекомендации рецептов';
+  String get onboarding_featureMeals => 'Планировщик питания и рекомендации рецептов';
 
   @override
   String get onboarding_getStarted => 'Начать';
@@ -314,8 +311,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get onboarding_goalLongevity => 'Долголетие';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Обновление клеток и здоровое старение';
+  String get onboarding_goalLongevityDesc => 'Обновление клеток и здоровое старение';
 
   @override
   String get onboarding_goalDiscipline => 'Дисциплина';
@@ -327,8 +323,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get onboarding_selectPlan => 'Выберите свой план';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Выберите наиболее подходящий план голодания';
+  String get onboarding_selectPlanDesc => 'Выберите наиболее подходящий план голодания';
 
   @override
   String get onboarding_bodyInfo => 'Введите свои данные';
@@ -349,15 +344,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get onboarding_age => 'Возраст';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Эти данные хранятся только на вашем устройстве и используются для расчёта калорий.';
+  String get onboarding_bodyInfoDisclaimer => 'Эти данные хранятся только на вашем устройстве и используются для расчёта калорий.';
 
   @override
   String get onboarding_permissions => 'Последний шаг';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Включите разрешения для максимально удобной работы';
+  String get onboarding_permissionsDesc => 'Включите разрешения для максимально удобной работы';
 
   @override
   String get onboarding_next => 'Продолжить';
@@ -384,8 +377,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get paywall_title => 'Перейти на Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Откройте все планы голодания и уберите рекламу';
+  String get paywall_subtitle => 'Откройте все планы голодания и уберите рекламу';
 
   @override
   String get paywall_allPlans => 'Все планы голодания';
@@ -424,8 +416,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get paywall_premiumActive => 'Premium активен!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Все планы голодания открыты, реклама отключена';
+  String get paywall_premiumActiveDesc => 'Все планы голодания открыты, реклама отключена';
 
   @override
   String get water_title => 'Потребление воды';
@@ -531,8 +522,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get meals_nameCalorieRequired =>
-      'Необходимо указать название и калории';
+  String get meals_nameCalorieRequired => 'Необходимо указать название и калории';
 
   @override
   String get bodyMetrics_addWeight => 'Добавить вес';
@@ -561,8 +551,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get completion_earlyTitle => 'Пост завершён';
 
   @override
-  String get completion_earlyMessage =>
-      'Сегодняшнее время сохранено. Серия и прогресс достижений не изменились, потому что цель не была выполнена.';
+  String get completion_earlyMessage => 'Сегодняшнее время сохранено. Серия и прогресс достижений не изменились, потому что цель не была выполнена.';
 
   @override
   String get timer_remainingTime => 'Оставшееся время';
@@ -592,8 +581,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get streak_incredible => 'Невероятно!';
 
   @override
-  String get weight_noRecord =>
-      'Записей веса пока нет\nДобавьте их в Профиль > Параметры тела';
+  String get weight_noRecord => 'Записей веса пока нет\nДобавьте их в Профиль > Параметры тела';
 
   @override
   String get day_mon => 'Пн';
@@ -797,8 +785,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get circle_tagline => 'Вместе, без давления.';
 
   @override
-  String get circle_privacy =>
-      'Вес и личные показатели остаются скрытыми. Видны только прогресс и поддержка.';
+  String get circle_privacy => 'Вес и личные показатели остаются скрытыми. Видны только прогресс и поддержка.';
 
   @override
   String circle_sendSupport(int count) {
@@ -827,8 +814,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get crisis_delayTitle => 'Отложите решение на 10 минут';
 
   @override
-  String get crisis_delayDesc =>
-      'Если вы плохо себя чувствуете, завершить голодание — не поражение.';
+  String get crisis_delayDesc => 'Если вы плохо себя чувствуете, завершить голодание — не поражение.';
 
   @override
   String get crisis_hunger => 'Голод';
@@ -843,8 +829,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get crisis_tenMore => 'Дайте себе 10 минут';
 
   @override
-  String get stats_storyEmpty =>
-      'Первое голодание станет началом вашей личной истории.';
+  String get stats_storyEmpty => 'Первое голодание станет началом вашей личной истории.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -890,8 +875,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get weather_onPlan => 'Сегодняшний темп соответствует вашему плану.';
 
   @override
-  String get weather_challenging =>
-      'Раньше этот час был сложным; режим поддержки готов.';
+  String get weather_challenging => 'Раньше этот час был сложным; режим поддержки готов.';
 
   @override
   String get replay_copied => 'Сводка голодания скопирована';
@@ -916,8 +900,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'Время фаз — общая оценка, а не медицинское измерение.';
+  String get phase_estimateShort => 'Время фаз — общая оценка, а не медицинское измерение.';
 
   @override
   String phase_hours(int start, int end) {
@@ -925,8 +908,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Это общая оценка времени. Метаболические реакции могут различаться у разных людей.';
+  String get phase_estimateLong => 'Это общая оценка времени. Метаболические реакции могут различаться у разных людей.';
 
   @override
   String get bmi_underweight => 'Недостаточный вес';
@@ -969,15 +951,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get notification_waterTitle => 'Выпейте воды 💧';
 
   @override
-  String get notification_waterBody =>
-      'Не забывайте пить достаточно воды во время голодания!';
+  String get notification_waterBody => 'Не забывайте пить достаточно воды во время голодания!';
 
   @override
   String get notification_windowTitle => 'Окно питания закрывается ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Окно питания закроется через 30 минут.';
+  String get notification_windowBody => 'Окно питания закроется через 30 минут.';
 
   @override
   String notification_streakTitle(int days) {
@@ -985,8 +965,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      'Вы отлично справляетесь! Продолжайте сегодня.';
+  String get notification_streakBody => 'Вы отлично справляетесь! Продолжайте сегодня.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1017,33 +996,28 @@ class AppLocalizationsRu extends AppLocalizations {
   String get explore_guide => 'Руководство по голоданию';
 
   @override
-  String get explore_guideDesc =>
-      'Всё, что нужно знать об интервальном голодании';
+  String get explore_guideDesc => 'Всё, что нужно знать об интервальном голодании';
 
   @override
-  String get explore_circleDesc =>
-      'Делитесь спокойной поддержкой в своей закрытой группе.';
+  String get explore_circleDesc => 'Делитесь спокойной поддержкой в своей закрытой группе.';
 
   @override
   String get explore_faq => 'Частые вопросы';
 
   @override
-  String get explore_education =>
-      'Этот материал предназначен только для общего ознакомления и не является медицинским диагнозом или советом по лечению.';
+  String get explore_education => 'Этот материал предназначен только для общего ознакомления и не является медицинским диагнозом или советом по лечению.';
 
   @override
   String get explore_safety => 'Здоровье и безопасность';
 
   @override
-  String get explore_safetyDesc =>
-      'Если у вас есть заболевание, вы регулярно принимаете лекарства, испытываете тревожные симптомы, беременны или кормите грудью, проконсультируйтесь с квалифицированным медицинским специалистом перед голоданием. Прекратите голодание при плохом самочувствии.';
+  String get explore_safetyDesc => 'Если у вас есть заболевание, вы регулярно принимаете лекарства, испытываете тревожные симптомы, беременны или кормите грудью, проконсультируйтесь с квалифицированным медицинским специалистом перед голоданием. Прекратите голодание при плохом самочувствии.';
 
   @override
   String get explore_sources => 'Источники';
 
   @override
-  String get explore_sourcesDesc =>
-      'Материал упрощён на основе приведённых ниже общедоступных источников о здоровье.';
+  String get explore_sourcesDesc => 'Материал упрощён на основе приведённых ниже общедоступных источников о здоровье.';
 
   @override
   String get explore_sourceError => 'Не удалось открыть источник';
@@ -1052,8 +1026,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get explore_rules => 'Важные правила';
 
   @override
-  String get explore_rule1 =>
-      'Не употребляйте калорийную пищу во время голодания';
+  String get explore_rule1 => 'Не употребляйте калорийную пищу во время голодания';
 
   @override
   String get explore_rule2 => 'Пейте достаточно воды и других жидкостей';
@@ -1065,131 +1038,112 @@ class AppLocalizationsRu extends AppLocalizations {
   String get explore_rule4 => 'Прекратите голодание при плохом самочувствии';
 
   @override
-  String get explore_rule5 =>
-      'Беременным и кормящим женщинам не следует голодать';
+  String get explore_rule5 => 'Беременным и кормящим женщинам не следует голодать';
 
   @override
-  String get explore_rule6 =>
-      'При хронических заболеваниях проконсультируйтесь с врачом';
+  String get explore_rule6 => 'При хронических заболеваниях проконсультируйтесь с врачом';
 
   @override
   String get tip_water => 'Поддерживайте водный баланс';
 
   @override
-  String get tip_waterDesc =>
-      'Пейте воду при жажде и употребляйте жидкости во время еды. Потребность зависит от здоровья, погоды и активности.';
+  String get tip_waterDesc => 'Пейте воду при жажде и употребляйте жидкости во время еды. Потребность зависит от здоровья, погоды и активности.';
 
   @override
   String get tip_food => 'Питайтесь правильно';
 
   @override
-  String get tip_foodDesc =>
-      'В окно питания выбирайте продукты, богатые белком и клетчаткой, а также полезные жиры. Избегайте переработанных продуктов.';
+  String get tip_foodDesc => 'В окно питания выбирайте продукты, богатые белком и клетчаткой, а также полезные жиры. Избегайте переработанных продуктов.';
 
   @override
   String get tip_sleep => 'Хорошо высыпайтесь';
 
   @override
-  String get tip_sleepDesc =>
-      'Регулярный и достаточный сон поддерживает общее самочувствие. Планируйте голодание так, чтобы оно не мешало сну.';
+  String get tip_sleepDesc => 'Регулярный и достаточный сон поддерживает общее самочувствие. Планируйте голодание так, чтобы оно не мешало сну.';
 
   @override
   String get tip_exercise => 'Лёгкая активность';
 
   @override
-  String get tip_exerciseDesc =>
-      'Во время голодания можно спокойно ходить или заниматься йогой. Избегайте тяжёлых тренировок, особенно в первые недели, пока организм адаптируется.';
+  String get tip_exerciseDesc => 'Во время голодания можно спокойно ходить или заниматься йогой. Избегайте тяжёлых тренировок, особенно в первые недели, пока организм адаптируется.';
 
   @override
   String get tip_drinks => 'Разрешённые напитки';
 
   @override
-  String get tip_drinksDesc =>
-      'Во время голодания можно пить воду, несладкий чай и чёрный кофе без сахара и молока. Эти напитки не прерывают голодание.';
+  String get tip_drinksDesc => 'Во время голодания можно пить воду, несладкий чай и чёрный кофе без сахара и молока. Эти напитки не прерывают голодание.';
 
   @override
   String get faq_drinks => 'Что можно пить во время голодания?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Можно пить воду, несладкий чай и чёрный кофе без сахара и молока. Калорийные напитки прерывают голодание.';
+  String get faq_drinksAnswer => 'Можно пить воду, несладкий чай и чёрный кофе без сахара и молока. Калорийные напитки прерывают голодание.';
 
   @override
   String get faq_plan => 'Какой план голодания выбрать?';
 
   @override
-  String get faq_planAnswer =>
-      'Если вы новичок, начните с 12:12 или 14:10. Если есть опыт, попробуйте 16:8 или 18:6. 20:4 и OMAD предназначены для опытных.';
+  String get faq_planAnswer => 'Если вы новичок, начните с 12:12 или 14:10. Если есть опыт, попробуйте 16:8 или 18:6. 20:4 и OMAD предназначены для опытных.';
 
   @override
   String get faq_exercise => 'Можно ли тренироваться во время голодания?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Да, но избегайте интенсивных тренировок. Лёгкое кардио, ходьба и йога подойдут лучше всего. Силовые тренировки планируйте ближе к окну питания.';
+  String get faq_exerciseAnswer => 'Да, но избегайте интенсивных тренировок. Лёгкое кардио, ходьба и йога подойдут лучше всего. Силовые тренировки планируйте ближе к окну питания.';
 
   @override
   String get faq_weight => 'Помогает ли голодание снизить вес?';
 
   @override
-  String get faq_weightAnswer =>
-      'У некоторых людей ограничение времени приёма пищи может снизить общее потребление энергии. Результаты различаются, а долгосрочные эффекты всё ещё изучаются.';
+  String get faq_weightAnswer => 'У некоторых людей ограничение времени приёма пищи может снизить общее потребление энергии. Результаты различаются, а долгосрочные эффекты всё ещё изучаются.';
 
   @override
   String get plan_12_desc => 'Для начинающих';
 
   @override
-  String get plan_12_detail =>
-      'Идеально для начинающих. Голодайте 12 часов, включая время сна.';
+  String get plan_12_detail => 'Идеально для начинающих. Голодайте 12 часов, включая время сна.';
 
   @override
   String get plan_16_desc => 'Самый популярный план';
 
   @override
-  String get plan_16_detail =>
-      'Самый распространённый план интервального голодания: 16 часов голодания и 8-часовое окно питания, обычно от обеда до ужина.';
+  String get plan_16_detail => 'Самый распространённый план интервального голодания: 16 часов голодания и 8-часовое окно питания, обычно от обеда до ужина.';
 
   @override
   String get plan_18_desc => 'Средний уровень';
 
   @override
-  String get plan_18_detail =>
-      '18 часов голодания и 6-часовое окно питания. Более длительное сжигание жира.';
+  String get plan_18_detail => '18 часов голодания и 6-часовое окно питания. Более длительное сжигание жира.';
 
   @override
   String get plan_20_desc => 'Продвинутый уровень';
 
   @override
-  String get plan_20_detail =>
-      '20 часов голодания и 4-часовое окно питания. Подходит для достижения кетоза и аутофагии.';
+  String get plan_20_detail => '20 часов голодания и 4-часовое окно питания. Подходит для достижения кетоза и аутофагии.';
 
   @override
   String get plan_omad_desc => 'Один приём пищи в день';
 
   @override
-  String get plan_omad_detail =>
-      'Один приём пищи в день: 23 часа голодания и 1-часовое окно питания. Экспертный уровень.';
+  String get plan_omad_detail => 'Один приём пищи в день: 23 часа голодания и 1-часовое окно питания. Экспертный уровень.';
 
   @override
   String get plan_52_desc => '2 дня в неделю';
 
   @override
-  String get plan_52_detail =>
-      'Питайтесь обычно 5 дней, а в течение 2 дней ограничьте рацион примерно 500 калориями. Альтернативный подход.';
+  String get plan_52_detail => 'Питайтесь обычно 5 дней, а в течение 2 дней ограничьте рацион примерно 500 калориями. Альтернативный подход.';
 
   @override
   String get plan_ese_desc => '24-часовое голодание';
 
   @override
-  String get plan_ese_detail =>
-      'Голодайте 24 часа 1–2 раза в неделю. Для опытных.';
+  String get plan_ese_detail => 'Голодайте 24 часа 1–2 раза в неделю. Для опытных.';
 
   @override
   String get plan_warrior_desc => 'Диета воина';
 
   @override
-  String get plan_warrior_detail =>
-      'Днём ешьте легко, а основной приём пищи устройте в четырёхчасовое вечернее окно.';
+  String get plan_warrior_detail => 'Днём ешьте легко, а основной приём пищи устройте в четырёхчасовое вечернее окно.';
 
   @override
   String get award_first_title => 'Первый шаг';
@@ -1341,8 +1295,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Один щит за каждые семь завершений. Пропущенный день никогда не стирает прогресс.';
+  String get game_shieldsDesc => 'Один щит за каждые семь завершений. Пропущенный день никогда не стирает прогресс.';
 
   @override
   String get game_league => 'Закрытая недельная лига';
@@ -1494,8 +1447,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get paywall_continue => 'Продолжить';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Покупки сейчас недоступны. Повторите попытку позже.';
+  String get paywall_productsUnavailable => 'Покупки сейчас недоступны. Повторите попытку позже.';
 
   @override
   String get paywall_purchaseFailed => 'Не удалось завершить покупку.';
@@ -1510,15 +1462,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get paywall_terms => 'Условия использования';
 
   @override
-  String get permission_notificationDesc =>
-      'Напоминания о голодании, обновления фаз и уведомления о завершении';
+  String get permission_notificationDesc => 'Напоминания о голодании, обновления фаз и уведомления о завершении';
 
   @override
   String get profile_privacyChoices => 'Настройки конфиденциальности';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Подписки продлеваются автоматически, если не отменить их минимум за 24 часа до конца периода. Управлять ими или отменить их можно в настройках App Store.';
+  String get paywall_autoRenewInfo => 'Подписки продлеваются автоматически, если не отменить их минимум за 24 часа до конца периода. Управлять ими или отменить их можно в настройках App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1542,28 +1492,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get paywall_retry => 'Повторить';
 
   @override
-  String get paywall_alreadyOwned =>
-      'У вас уже есть эта подписка. Нажмите «Восстановить покупки».';
+  String get paywall_alreadyOwned => 'У вас уже есть эта подписка. Нажмите «Восстановить покупки».';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Сейчас не удаётся подключиться к магазину. Проверьте соединение и повторите попытку.';
+  String get paywall_storeUnavailable => 'Сейчас не удаётся подключиться к магазину. Проверьте соединение и повторите попытку.';
 
   @override
-  String get paywall_secureNote =>
-      'Отмена в любое время. Плата списывается с аккаунта магазина.';
+  String get paywall_secureNote => 'Отмена в любое время. Плата списывается с аккаунта магазина.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Подписки продлеваются автоматически, если не отменить их минимум за 24 часа до конца периода. Управление и отмена: Google Play > Подписки.';
+  String get paywall_autoRenewInfoPlay => 'Подписки продлеваются автоматически, если не отменить их минимум за 24 часа до конца периода. Управление и отмена: Google Play > Подписки.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Открывает 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat и Warrior';
+  String get paywall_allPlansDesc => 'Открывает 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat и Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Баннерная и полноэкранная реклама полностью отключаются';
+  String get paywall_noAdsDesc => 'Баннерная и полноэкранная реклама полностью отключаются';
 
   @override
   String get foodScan_title => 'ИИ-сканирование еды';
@@ -1572,26 +1516,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get foodScan_scanCta => 'Сканировать блюдо';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Сфотографируйте тарелку и узнайте калории и макронутриенты';
+  String get foodScan_scanCtaDesc => 'Сфотографируйте тарелку и узнайте калории и макронутриенты';
 
   @override
   String get foodScan_introTitle => 'Сфотографируйте тарелку';
 
   @override
-  String get foodScan_introDesc =>
-      'ИИ анализирует фото и оценивает калории, белки, углеводы и жиры.';
+  String get foodScan_introDesc => 'ИИ анализирует фото и оценивает калории, белки, углеводы и жиры.';
 
   @override
-  String get foodScan_tipLight =>
-      'Хорошее равномерное освещение повышает точность';
+  String get foodScan_tipLight => 'Хорошее равномерное освещение повышает точность';
 
   @override
   String get foodScan_tipFrame => 'Вся тарелка должна быть в кадре';
 
   @override
-  String get foodScan_tipScale =>
-      'Добавьте в кадр приборы или руку для оценки размера порции';
+  String get foodScan_tipScale => 'Добавьте в кадр приборы или руку для оценки размера порции';
 
   @override
   String get foodScan_takePhoto => 'Сделать фото';
@@ -1605,19 +1545,16 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Сегодняшние сканирования израсходованы. Попробуйте завтра.';
+  String get foodScan_quotaReached => 'Сегодняшние сканирования израсходованы. Попробуйте завтра.';
 
   @override
-  String get foodScan_privacyNote =>
-      'Фото отправляется в Google Gemini API для анализа и не хранится на наших серверах.';
+  String get foodScan_privacyNote => 'Фото отправляется в Gemini API от Google. Google может использовать его для улучшения своих продуктов, а проверяющие люди могут его видеть. Мы не храним его на своих серверах.';
 
   @override
   String get foodScan_consentTitle => 'Отправлять фото в Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'Чтобы оценить калории и БЖУ, каждое снятое или выбранное фото блюда отправляется в ИИ-сервис Google Gemini. Фото используется только для этого анализа и не хранится на наших серверах.';
+  String get foodScan_consentBody => 'Чтобы оценить калории и макронутриенты, каждое снятое или выбранное фото еды отправляется в ИИ-сервис Gemini от Google. Google может использовать фото для улучшения своих продуктов, а проверяющие люди могут их видеть, поэтому не снимайте людей, документы и другие личные данные. Мы не храним фото на своих серверах.';
 
   @override
   String get foodScan_consentAgree => 'Принять и продолжить';
@@ -1632,12 +1569,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get foodScan_detectedItems => 'Распознанные продукты';
 
   @override
-  String get foodScan_disclaimer =>
-      'Оценки ИИ приблизительны. Нажмите на продукт, чтобы исправить его.';
+  String get foodScan_disclaimer => 'Оценки ИИ приблизительны. Нажмите на продукт, чтобы исправить его.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Модель не уверена в этом фото. Проверьте значения перед сохранением.';
+  String get foodScan_lowConfidence => 'Модель не уверена в этом фото. Проверьте значения перед сохранением.';
 
   @override
   String get foodScan_save => 'Добавить к питанию';
@@ -1667,32 +1602,104 @@ class AppLocalizationsRu extends AppLocalizations {
   String get foodScan_upgrade => 'Посмотреть Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Нет соединения. Проверьте интернет и повторите попытку.';
+  String get foodScan_errorNetwork => 'Нет соединения. Проверьте интернет и повторите попытку.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Сейчас слишком много сканирований. Повторите попытку через несколько минут.';
+  String get foodScan_errorRateLimited => 'Сейчас слишком много сканирований. Повторите попытку через несколько минут.';
 
   @override
   String get foodScan_errorUnavailable => 'Анализ фото сейчас недоступен.';
 
   @override
-  String get foodScan_errorServer =>
-      'Возникла проблема со службой анализа. Повторите попытку чуть позже.';
+  String get foodScan_errorServer => 'Возникла проблема со службой анализа. Повторите попытку чуть позже.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'На фото не найдена еда. Сделайте более чёткий снимок тарелки.';
+  String get foodScan_errorNoFood => 'На фото не найдена еда. Сделайте более чёткий снимок тарелки.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Не удалось проанализировать это фото. Попробуйте другое.';
+  String get foodScan_errorUnreadable => 'Не удалось проанализировать это фото. Попробуйте другое.';
 
   @override
   String get paywall_aiFoodScan => 'ИИ-сканирование еды';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Сфотографируйте блюдо и запишите калории и макронутриенты за несколько секунд';
+  String get paywall_aiFoodScanDesc => 'Сфотографируйте блюдо и запишите калории и макронутриенты за несколько секунд';
+
+  @override
+  String get safety_title => 'Перед началом';
+
+  @override
+  String get safety_desc => 'Голодание безопасно не для всех. Отметьте всё, что относится к вам.';
+
+  @override
+  String get safety_under18 => 'Мне меньше 18 лет';
+
+  @override
+  String get safety_pregnant => 'Я беременна или кормлю грудью';
+
+  @override
+  String get safety_eatingDisorder => 'У меня есть или было расстройство пищевого поведения';
+
+  @override
+  String get safety_underweight => 'У меня недостаточный вес или мне не рекомендовали худеть';
+
+  @override
+  String get safety_diabetes => 'У меня диабет или я принимаю лекарства, влияющие на сахар в крови';
+
+  @override
+  String get safety_medical => 'У меня другое заболевание или я регулярно принимаю лекарства';
+
+  @override
+  String get safety_none => 'Ничего из этого ко мне не относится';
+
+  @override
+  String get safety_ack => 'Я посоветуюсь с врачом перед голоданием';
+
+  @override
+  String get safety_blockedTitle => 'Это приложение для вас небезопасно';
+
+  @override
+  String get safety_blockedDesc => 'По вашим ответам мы не можем предложить здесь голодание. Обратитесь к врачу. Если сейчас вам трудно с едой, медицинский специалист может помочь.';
+
+  @override
+  String get safety_reviewAnswers => 'Проверить мои ответы';
+
+  @override
+  String get safety_targetTooLow => 'Эта цель ниже здорового веса для вашего роста.';
+
+  @override
+  String get onboarding_invalidBody => 'Введите корректные рост, вес, целевой вес и возраст.';
+
+  @override
+  String get crisis_unwell => 'Мне плохо';
+
+  @override
+  String get crisis_unwellTitle => 'Завершите голодание сейчас';
+
+  @override
+  String get crisis_unwellDesc => 'Головокружение, дрожь, спутанность сознания или учащённое сердцебиение — сигнал прекратить голодание и что-нибудь съесть или выпить.';
+
+  @override
+  String get crisis_emergency => 'Если вы теряли сознание, у вас боль в груди или вам очень плохо, сейчас же звоните в местную экстренную службу.';
+
+  @override
+  String get crisis_endFast => 'Завершить голодание';
+
+  @override
+  String get profile_deleteData => 'Удалить все мои данные';
+
+  @override
+  String get profile_deleteDataConfirm => 'Голодания, вес, приёмы пищи, вода и настройки будут навсегда удалены с этого устройства. Это нельзя отменить. Подписками можно управлять в аккаунте магазина.';
+
+  @override
+  String get profile_deleteDataAction => 'Удалить всё';
+
+  @override
+  String get record_deleteConfirm => 'Удалить эту запись?';
+
+  @override
+  String get profile_analytics => 'Отправлять анонимные данные об использовании';
+
+  @override
+  String get profile_analyticsDesc => 'Помогает улучшать приложение. Никогда не включает вес, питание или данные о здоровье.';
 }

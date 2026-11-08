@@ -138,6 +138,13 @@ final _supportCountProvider = FutureProvider<int>((ref) async {
   return prefs.getInt('crisis_support_count') ?? 0;
 });
 
+/// Drops the in-memory rewards after the user erases their data.
+void invalidateGamification(WidgetRef ref) {
+  ref
+    ..invalidate(_rewardLedgerProvider)
+    ..invalidate(_supportCountProvider);
+}
+
 final gamificationProvider = Provider<GamificationState>((ref) {
   final ledger = ref.watch(_rewardLedgerProvider);
   final sessions = ref.watch(fastingSessionProvider).valueOrNull ?? const [];

@@ -88,8 +88,7 @@ import 'app_localizations_zh.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -97,8 +96,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -110,13 +108,12 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -151,7 +148,7 @@ abstract class AppLocalizations {
     Locale('uk'),
     Locale('vi'),
     Locale('zh'),
-    Locale('zh', 'CN'),
+    Locale('zh', 'CN')
   ];
 
   /// No description provided for @appTitle.
@@ -3103,7 +3100,7 @@ abstract class AppLocalizations {
   /// No description provided for @foodScan_privacyNote.
   ///
   /// In en, this message translates to:
-  /// **'The photo is sent to Google\'s Gemini API for analysis and is not stored on our servers.'**
+  /// **'The photo is sent to Google\'s Gemini API. Google may use it to improve its products and human reviewers may see it. We don\'t store it on our servers.'**
   String get foodScan_privacyNote;
 
   /// No description provided for @foodScan_consentTitle.
@@ -3115,7 +3112,7 @@ abstract class AppLocalizations {
   /// No description provided for @foodScan_consentBody.
   ///
   /// In en, this message translates to:
-  /// **'To estimate calories and macros, each meal photo you take or choose is sent to Google\'s Gemini AI service. The photo is used only for this analysis and is not stored on our servers.'**
+  /// **'To estimate calories and macros, each meal photo you take or choose is sent to Google\'s Gemini AI service. Google may use photos to improve its products, and human reviewers may see them, so keep people, documents and other personal details out of the frame. We don\'t store photos on our servers.'**
   String get foodScan_consentBody;
 
   /// No description provided for @foodScan_consentAgree.
@@ -3255,10 +3252,165 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Photograph a meal and log its calories and macros in seconds'**
   String get paywall_aiFoodScanDesc;
+
+  /// No description provided for @safety_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Before you start'**
+  String get safety_title;
+
+  /// No description provided for @safety_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Fasting is not safe for everyone. Select everything that applies to you.'**
+  String get safety_desc;
+
+  /// No description provided for @safety_under18.
+  ///
+  /// In en, this message translates to:
+  /// **'I am under 18'**
+  String get safety_under18;
+
+  /// No description provided for @safety_pregnant.
+  ///
+  /// In en, this message translates to:
+  /// **'I am pregnant or breastfeeding'**
+  String get safety_pregnant;
+
+  /// No description provided for @safety_eatingDisorder.
+  ///
+  /// In en, this message translates to:
+  /// **'I have or have had an eating disorder'**
+  String get safety_eatingDisorder;
+
+  /// No description provided for @safety_underweight.
+  ///
+  /// In en, this message translates to:
+  /// **'I am underweight or was told not to lose weight'**
+  String get safety_underweight;
+
+  /// No description provided for @safety_diabetes.
+  ///
+  /// In en, this message translates to:
+  /// **'I have diabetes or take medication that affects blood sugar'**
+  String get safety_diabetes;
+
+  /// No description provided for @safety_medical.
+  ///
+  /// In en, this message translates to:
+  /// **'I have another medical condition or take regular medication'**
+  String get safety_medical;
+
+  /// No description provided for @safety_none.
+  ///
+  /// In en, this message translates to:
+  /// **'None of these apply to me'**
+  String get safety_none;
+
+  /// No description provided for @safety_ack.
+  ///
+  /// In en, this message translates to:
+  /// **'I will talk to my doctor before fasting'**
+  String get safety_ack;
+
+  /// No description provided for @safety_blockedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This app is not a safe fit for you'**
+  String get safety_blockedTitle;
+
+  /// No description provided for @safety_blockedDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on your answers, we can\'t offer fasting here. Please talk to a doctor. If food or eating feels hard right now, a health professional can help.'**
+  String get safety_blockedDesc;
+
+  /// No description provided for @safety_reviewAnswers.
+  ///
+  /// In en, this message translates to:
+  /// **'Review my answers'**
+  String get safety_reviewAnswers;
+
+  /// No description provided for @safety_targetTooLow.
+  ///
+  /// In en, this message translates to:
+  /// **'That target is below a healthy weight for your height.'**
+  String get safety_targetTooLow;
+
+  /// No description provided for @onboarding_invalidBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid height, weight, target weight and age.'**
+  String get onboarding_invalidBody;
+
+  /// No description provided for @crisis_unwell.
+  ///
+  /// In en, this message translates to:
+  /// **'I feel unwell'**
+  String get crisis_unwell;
+
+  /// No description provided for @crisis_unwellTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'End your fast now'**
+  String get crisis_unwellTitle;
+
+  /// No description provided for @crisis_unwellDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Dizziness, shaking, confusion or a racing heart are signs to stop fasting and eat or drink something.'**
+  String get crisis_unwellDesc;
+
+  /// No description provided for @crisis_emergency.
+  ///
+  /// In en, this message translates to:
+  /// **'If you fainted, have chest pain or feel very unwell, call your local emergency number now.'**
+  String get crisis_emergency;
+
+  /// No description provided for @crisis_endFast.
+  ///
+  /// In en, this message translates to:
+  /// **'End my fast'**
+  String get crisis_endFast;
+
+  /// No description provided for @profile_deleteData.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all my data'**
+  String get profile_deleteData;
+
+  /// No description provided for @profile_deleteDataConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently deletes your fasts, weight, meals, water and settings from this device. It cannot be undone. Subscriptions are managed in your store account.'**
+  String get profile_deleteDataConfirm;
+
+  /// No description provided for @profile_deleteDataAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete everything'**
+  String get profile_deleteDataAction;
+
+  /// No description provided for @record_deleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this entry?'**
+  String get record_deleteConfirm;
+
+  /// No description provided for @profile_analytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Share anonymous usage data'**
+  String get profile_analytics;
+
+  /// No description provided for @profile_analyticsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Helps improve the app. Never includes weight, meals or health details.'**
+  String get profile_analyticsDesc;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -3267,136 +3419,73 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) => <String>[
-    'ar',
-    'cs',
-    'da',
-    'de',
-    'en',
-    'es',
-    'fi',
-    'fr',
-    'he',
-    'hi',
-    'hu',
-    'id',
-    'it',
-    'ja',
-    'ko',
-    'nl',
-    'no',
-    'pl',
-    'pt',
-    'ro',
-    'ru',
-    'sk',
-    'sv',
-    'th',
-    'tr',
-    'uk',
-    'vi',
-    'zh',
-  ].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'cs', 'da', 'de', 'en', 'es', 'fi', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sv', 'th', 'tr', 'uk', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
   // Lookup logic when language+country codes are specified.
   switch (locale.languageCode) {
-    case 'es':
-      {
-        switch (locale.countryCode) {
-          case '419':
-            return AppLocalizationsEs419();
-          case 'ES':
-            return AppLocalizationsEsEs();
-        }
-        break;
-      }
-    case 'pt':
-      {
-        switch (locale.countryCode) {
-          case 'BR':
-            return AppLocalizationsPtBr();
-        }
-        break;
-      }
-    case 'zh':
-      {
-        switch (locale.countryCode) {
-          case 'CN':
-            return AppLocalizationsZhCn();
-        }
-        break;
-      }
+    case 'es': {
+  switch (locale.countryCode) {
+    case '419': return AppLocalizationsEs419();
+case 'ES': return AppLocalizationsEsEs();
+   }
+  break;
+   }
+    case 'pt': {
+  switch (locale.countryCode) {
+    case 'BR': return AppLocalizationsPtBr();
+   }
+  break;
+   }
+    case 'zh': {
+  switch (locale.countryCode) {
+    case 'CN': return AppLocalizationsZhCn();
+   }
+  break;
+   }
   }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar':
-      return AppLocalizationsAr();
-    case 'cs':
-      return AppLocalizationsCs();
-    case 'da':
-      return AppLocalizationsDa();
-    case 'de':
-      return AppLocalizationsDe();
-    case 'en':
-      return AppLocalizationsEn();
-    case 'es':
-      return AppLocalizationsEs();
-    case 'fi':
-      return AppLocalizationsFi();
-    case 'fr':
-      return AppLocalizationsFr();
-    case 'he':
-      return AppLocalizationsHe();
-    case 'hi':
-      return AppLocalizationsHi();
-    case 'hu':
-      return AppLocalizationsHu();
-    case 'id':
-      return AppLocalizationsId();
-    case 'it':
-      return AppLocalizationsIt();
-    case 'ja':
-      return AppLocalizationsJa();
-    case 'ko':
-      return AppLocalizationsKo();
-    case 'nl':
-      return AppLocalizationsNl();
-    case 'no':
-      return AppLocalizationsNo();
-    case 'pl':
-      return AppLocalizationsPl();
-    case 'pt':
-      return AppLocalizationsPt();
-    case 'ro':
-      return AppLocalizationsRo();
-    case 'ru':
-      return AppLocalizationsRu();
-    case 'sk':
-      return AppLocalizationsSk();
-    case 'sv':
-      return AppLocalizationsSv();
-    case 'th':
-      return AppLocalizationsTh();
-    case 'tr':
-      return AppLocalizationsTr();
-    case 'uk':
-      return AppLocalizationsUk();
-    case 'vi':
-      return AppLocalizationsVi();
-    case 'zh':
-      return AppLocalizationsZh();
+    case 'ar': return AppLocalizationsAr();
+    case 'cs': return AppLocalizationsCs();
+    case 'da': return AppLocalizationsDa();
+    case 'de': return AppLocalizationsDe();
+    case 'en': return AppLocalizationsEn();
+    case 'es': return AppLocalizationsEs();
+    case 'fi': return AppLocalizationsFi();
+    case 'fr': return AppLocalizationsFr();
+    case 'he': return AppLocalizationsHe();
+    case 'hi': return AppLocalizationsHi();
+    case 'hu': return AppLocalizationsHu();
+    case 'id': return AppLocalizationsId();
+    case 'it': return AppLocalizationsIt();
+    case 'ja': return AppLocalizationsJa();
+    case 'ko': return AppLocalizationsKo();
+    case 'nl': return AppLocalizationsNl();
+    case 'no': return AppLocalizationsNo();
+    case 'pl': return AppLocalizationsPl();
+    case 'pt': return AppLocalizationsPt();
+    case 'ro': return AppLocalizationsRo();
+    case 'ru': return AppLocalizationsRu();
+    case 'sk': return AppLocalizationsSk();
+    case 'sv': return AppLocalizationsSv();
+    case 'th': return AppLocalizationsTh();
+    case 'tr': return AppLocalizationsTr();
+    case 'uk': return AppLocalizationsUk();
+    case 'vi': return AppLocalizationsVi();
+    case 'zh': return AppLocalizationsZh();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }
