@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
@@ -20,6 +21,12 @@ import 'services/widget_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  LicenseRegistry.addLicense(() async* {
+    yield LicenseEntryWithLineBreaks(
+      const ['Inter'],
+      await rootBundle.loadString('assets/fonts/OFL.txt'),
+    );
+  });
 
   // Android can destroy MainActivity while the system camera is open. Recover
   // the photo before building the router so the user returns to the analysis

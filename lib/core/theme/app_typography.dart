@@ -1,73 +1,90 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTypography {
   AppTypography._();
 
   static TextTheme get textTheme {
-    return TextTheme(
-      displayLarge: GoogleFonts.inter(
+    return const TextTheme(
+      displayLarge: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 57,
         fontWeight: FontWeight.w700,
         letterSpacing: -0.25,
       ),
-      displayMedium: GoogleFonts.inter(
+      displayMedium: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 45,
         fontWeight: FontWeight.w700,
       ),
-      displaySmall: GoogleFonts.inter(
+      displaySmall: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 36,
         fontWeight: FontWeight.w600,
       ),
-      headlineLarge: GoogleFonts.inter(
+      headlineLarge: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 32,
         fontWeight: FontWeight.w600,
       ),
-      headlineMedium: GoogleFonts.inter(
+      headlineMedium: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 28,
         fontWeight: FontWeight.w600,
       ),
-      headlineSmall: GoogleFonts.inter(
+      headlineSmall: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 24,
         fontWeight: FontWeight.w600,
       ),
-      titleLarge: GoogleFonts.inter(fontSize: 22, fontWeight: FontWeight.w600),
-      titleMedium: GoogleFonts.inter(
+      titleLarge: TextStyle(
+        fontFamily: 'Inter',
+        fontSize: 22,
+        fontWeight: FontWeight.w600,
+      ),
+      titleMedium: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 16,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.15,
       ),
-      titleSmall: GoogleFonts.inter(
+      titleSmall: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 14,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.1,
       ),
-      bodyLarge: GoogleFonts.inter(
+      bodyLarge: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 16,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.5,
       ),
-      bodyMedium: GoogleFonts.inter(
+      bodyMedium: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 14,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
       ),
-      bodySmall: GoogleFonts.inter(
+      bodySmall: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 12,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.4,
       ),
-      labelLarge: GoogleFonts.inter(
+      labelLarge: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 14,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.1,
       ),
-      labelMedium: GoogleFonts.inter(
+      labelMedium: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 12,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.5,
       ),
-      labelSmall: GoogleFonts.inter(
+      labelSmall: TextStyle(
+        fontFamily: 'Inter',
         fontSize: 11,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.5,
@@ -76,7 +93,8 @@ class AppTypography {
   }
 
   // Timer-specific large numbers
-  static TextStyle timerLarge(Color color) => GoogleFonts.inter(
+  static TextStyle timerLarge(Color color) => TextStyle(
+    fontFamily: 'Inter',
     fontSize: 64,
     fontWeight: FontWeight.w700,
     color: color,
@@ -84,7 +102,8 @@ class AppTypography {
     height: 1.1,
   );
 
-  static TextStyle timerMedium(Color color) => GoogleFonts.inter(
+  static TextStyle timerMedium(Color color) => TextStyle(
+    fontFamily: 'Inter',
     fontSize: 48,
     fontWeight: FontWeight.w700,
     color: color,
@@ -92,7 +111,8 @@ class AppTypography {
     height: 1.1,
   );
 
-  static TextStyle timerSmall(Color color) => GoogleFonts.inter(
+  static TextStyle timerSmall(Color color) => TextStyle(
+    fontFamily: 'Inter',
     fontSize: 20,
     fontWeight: FontWeight.w500,
     color: color,

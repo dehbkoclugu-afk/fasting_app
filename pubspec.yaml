@@ -29,7 +29,6 @@ dependencies:
   phosphor_flutter: ^2.1.0
   fl_chart: ^0.70.2
   shimmer: ^3.0.0
-  google_fonts: 6.2.1
 
   # Notifications
   flutter_local_notifications: ^18.0.1
@@ -108,3 +107,20 @@ flutter:
     - assets/images/editorial/v6/
     - assets/icons/
     - assets/animations/
+    - assets/fonts/OFL.txt
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inter-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Inter-Black.ttf
+          weight: 900
