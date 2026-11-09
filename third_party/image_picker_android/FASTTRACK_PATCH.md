@@ -35,11 +35,16 @@ fixtures, and generated build artifacts are intentionally not vendored.
 ## Regression check
 
 Run `python3 tool/verify_picker_sampling.py` with JDK 17. This compiles the actual
-vendored Java resizer against small Android API test doubles. It checks decoder
-parameters and bitmap lifetime, not real Android codecs or physical memory.
+vendored Java resizer and EXIF copier against small Android API test doubles.
+It checks decoder parameters, bitmap lifetime and the copier's attribute output,
+not real Android codecs, EXIF byte encoding or physical memory.
 The upstream source fails the large-image case with sample=1; the patched source
-passes all nine cases. The 108 MP case uses sample=8 (6,750,000 decoded bitmap
-bytes in the model, before final scaling).
+passes all nine sampling/lifetime cases. Three additional checks seed every
+standard GPS field and verify the real copier omits them, preserves orientation
+and exposure without copying stale dimensions or modifying the source, and saves
+the destination attributes. These checks also reject mutations that reintroduce
+GPS copying, drop orientation or skip saving. The 108 MP case uses sample=8
+(6,750,000 decoded bitmap bytes in the model, before final scaling).
 
 The check runs in Android GitHub Actions and Codemagic workflows. Remove the
 override only after an upstream release passes this regression and is compatible

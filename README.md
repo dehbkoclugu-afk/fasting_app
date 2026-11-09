@@ -33,3 +33,6 @@ flutter test
 - `social_funnel/` separate Python tool for social scheduling
 
 Releases and required secrets are in `RELEASE_SETUP.md`.
+
+Current release evidence and the pending device acceptance checks are in
+[`docs/production/release-validation-2026-11-09.md`](docs/production/release-validation-2026-11-09.md).
