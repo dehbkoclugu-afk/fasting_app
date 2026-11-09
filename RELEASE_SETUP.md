@@ -163,5 +163,11 @@ Keep `release.json`, `key.properties`, and the keystore outside version control.
 Run the preflight check before every store build:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tool/release_check.ps1
+powershell -ExecutionPolicy Bypass -File tool/release_check.ps1 -Platform Android
 ```
+
+Use `-Platform iOS` for the iOS configuration check. Omitting `-Platform` keeps
+the combined Android/iOS check. A successful preflight checks configuration;
+verify the signed artifact and complete device acceptance separately.
+
+Run the preflight regression suite with `pwsh -NoProfile -File tool/test_release_check.ps1`.

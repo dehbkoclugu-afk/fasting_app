@@ -67,6 +67,31 @@ checks.
 
 ## Release gates
 
+### Local signed candidate and preflight follow-up
+
+The successful AAB from run `42539090961` was signed locally with the existing
+upload key. `jarsigner` verified the signature; its SHA1 matches the upload
+certificate recorded in `codemagic.yaml`:
+`36:ED:82:3B:8C:08:A4:12:F5:3B:D9:7E:0A:0E:11:1C:FB:0C:41:0B`.
+All 1,582 original bundle entries have identical contents after signing.
+
+The local output is
+`C:/Users/kedi/Downloads/FastTrack-Release-2026-11-09/FastTrack-1.2.9-29-473cec8-upload-signed.aab`.
+This candidate retains the CI configuration: Gemini scanning, Sentry and
+PostHog are disabled. It does not incorporate the local `release.json`.
+It is not a completed Codemagic production release, and Play Console acceptance
+or availability of versionCode 29 has not been verified. No store upload occurred.
+
+The release preflight now accepts `-Platform Android` or `-Platform iOS`, while
+the default still checks both. It recognizes multiline public key fallbacks,
+rejects missing platform files and malformed JSON, and does not echo malformed
+configuration contents. Regression fixtures cover valid combined configuration,
+platform isolation, missing keys/signing files, missing iOS files and invalid JSON.
+All eight preflight regression cases passed under PowerShell 7 and Windows
+PowerShell 5. The regression suite is included in the Android CI workflow.
+
+### Still required
+
 1. Complete the physical-device checks above. No physical phone was connected
    to this validation environment.
 2. Produce and verify the Codemagic store-signed Android AAB against the Play
