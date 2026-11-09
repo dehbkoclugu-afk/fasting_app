@@ -85,8 +85,7 @@ void main() {
 }
 
 class FailingSafetyTimer extends TimerNotifier {
-  FailingSafetyTimer(AppDatabase database)
-    : super(database, restoreOnCreate: false);
+  FailingSafetyTimer(super.database) : super(restoreOnCreate: false);
 
   @override
   Future<void> endFastQuietly() async {

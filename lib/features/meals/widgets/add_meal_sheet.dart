@@ -604,10 +604,11 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
         SnackBar(content: Text(l10n.meals_added(meal['name']! as String))),
       );
     } catch (error) {
-      if (mounted)
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(AppLocalizations.of(context)!.common_retry)),
         );
+      }
     } finally {
       if (mounted) setState(() => _saving = false);
     }
@@ -651,10 +652,11 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       navigator.pop();
       messenger.showSnackBar(SnackBar(content: Text(l10n.meals_added(name))));
     } catch (error) {
-      if (mounted)
+      if (mounted) {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text(l10n.common_retry)));
+      }
     } finally {
       if (mounted) setState(() => _saving = false);
     }
