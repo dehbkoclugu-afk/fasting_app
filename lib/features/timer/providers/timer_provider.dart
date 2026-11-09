@@ -9,6 +9,7 @@ import '../../../core/constants/metabolic_phases.dart';
 import '../../../data/database/app_database.dart';
 import '../../../services/analytics_service.dart';
 import '../../../services/background_service.dart';
+import '../../../services/fasting_elapsed_clock.dart';
 import '../../../services/widget_service.dart';
 import '../../paywall/providers/subscription_provider.dart';
 import '../../profile/providers/settings_provider.dart';
@@ -81,6 +82,7 @@ class TimerNotifier extends StateNotifier<TimerState> {
   TimerNotifier(
     this._db, {
     Clock? clock,
+    BootClockReader? readBootClock,
     FastingTimerService? backgroundService,
     FastingWidgetService? widgetService,
     TickerFactory? tickerFactory,
@@ -88,6 +90,13 @@ class TimerNotifier extends StateNotifier<TimerState> {
     String initialPlanId = '16_8',
     bool Function(FastingPlan plan)? canUsePlan,
   }) : _clock = clock ?? DateTime.now,
+       _elapsedClock = FastingElapsedClock(
+         _db,
+         wallClock: clock ?? DateTime.now,
+         readBootClock:
+             readBootClock ??
+             (clock != null ? () async => null : BootClockSnapshot.readAndroid),
+       ),
        _canUsePlan = canUsePlan ?? ((_) => true),
        _backgroundService = backgroundService ?? BackgroundService(),
        _widgetService = widgetService ?? WidgetService(),
@@ -107,6 +116,8 @@ class TimerNotifier extends StateNotifier<TimerState> {
 
   final AppDatabase _db;
   final Clock _clock;
+  final FastingElapsedClock _elapsedClock;
+  bool _tickInProgress = false;
   final bool Function(FastingPlan plan) _canUsePlan;
   final FastingTimerService _backgroundService;
   final FastingWidgetService _widgetService;
@@ -117,6 +128,7 @@ class TimerNotifier extends StateNotifier<TimerState> {
   Future<void>? _pendingStart;
   Future<void>? _pendingRestore;
   Future<void>? _pendingFinish;
+  Future<void>? _pendingStop;
   Future<void>? _pendingQuietEnd;
 
   Future<void> restoreActiveSession() async {
@@ -137,7 +149,8 @@ class TimerNotifier extends StateNotifier<TimerState> {
       final session = await _db.getActiveSession();
       if (session == null) return;
       _activeSessionId = session.id;
-      _setRunning(session);
+      await _setRunning(session);
+      if (!mounted) return;
       if (state.elapsedSeconds >= state.targetSeconds) {
         await _finish(completed: true);
       } else {
@@ -181,14 +194,16 @@ class TimerNotifier extends StateNotifier<TimerState> {
         ),
       );
       _activeSessionId = session.id;
-      _setRunning(session, isBusy: true);
+      await _setRunning(session, isBusy: true);
+      if (!mounted) return;
       if (state.elapsedSeconds >= state.targetSeconds) {
         await _finish(completed: true);
         return;
       }
       AnalyticsService().track('fast_started', {'plan': requested.id});
       await _startOptionalServices(session);
-      final elapsed = _elapsedSince(session.startTime);
+      final elapsed = await _elapsedSince(session.startTime);
+      if (!mounted) return;
       state = state.copyWith(
         elapsedSeconds: elapsed,
         currentPhase: MetabolicPhases.getPhaseForHours(elapsed / 3600),
@@ -200,15 +215,35 @@ class TimerNotifier extends StateNotifier<TimerState> {
         _startTicker();
       }
     } catch (error) {
+      if (!mounted) return;
       state = _idleForPlan(state.planId).copyWith(error: error);
     }
   }
 
-  Future<void> stopFasting() {
-    if (state.isBusy) return Future.value();
+  Future<void> stopFasting() async {
+    final pending = _pendingStop;
+    if (pending != null) return pending;
+    final operation = _stopFasting();
+    _pendingStop = operation;
+    try {
+      await operation;
+    } finally {
+      _pendingStop = null;
+    }
+  }
+
+  Future<void> _stopFasting() async {
+    if (!mounted || state.isBusy || state.status != TimerStatus.running) return;
+    final sessionId = _activeSessionId;
     final elapsed = state.startTime == null
         ? state.elapsedSeconds
-        : _elapsedSince(state.startTime!);
+        : await _elapsedSince(state.startTime!);
+    if (!mounted ||
+        state.isBusy ||
+        _activeSessionId != sessionId ||
+        state.status != TimerStatus.running) {
+      return;
+    }
     return _finish(completed: elapsed >= state.targetSeconds);
   }
 
@@ -257,8 +292,12 @@ class TimerNotifier extends StateNotifier<TimerState> {
     return TimerState(planId: plan.id, targetSeconds: plan.fastingMinutes * 60);
   }
 
-  void _setRunning(FastingSession session, {bool isBusy = false}) {
-    final elapsed = _elapsedSince(session.startTime);
+  Future<void> _setRunning(
+    FastingSession session, {
+    bool isBusy = false,
+  }) async {
+    final elapsed = await _elapsedClock.attach(session);
+    if (!mounted) return;
     state = TimerState(
       status: TimerStatus.running,
       planId: session.planType,
@@ -270,32 +309,52 @@ class TimerNotifier extends StateNotifier<TimerState> {
     );
   }
 
-  int _elapsedSince(DateTime start) =>
-      _clock().difference(start).inSeconds.clamp(0, 1 << 31);
+  Future<int> _elapsedSince(DateTime start) =>
+      _elapsedClock.elapsedSince(start);
 
   void _startTicker() {
     _timer?.cancel();
     _timer = _tickerFactory(_tick);
   }
 
-  void _tick() {
-    if (state.status != TimerStatus.running || state.startTime == null) return;
-    final elapsed = _elapsedSince(state.startTime!);
-    state = state.copyWith(
-      elapsedSeconds: elapsed,
-      currentPhase: MetabolicPhases.getPhaseForHours(elapsed / 3600),
-    );
-    if (elapsed >= state.targetSeconds) {
-      _finish(completed: true);
-    } else if (++_widgetUpdateCounter % 30 == 0) {
-      unawaited(_updateHomeWidget());
+  Future<void> _tick() async {
+    if (_tickInProgress ||
+        !mounted ||
+        state.isBusy ||
+        state.status != TimerStatus.running ||
+        state.startTime == null) {
+      return;
+    }
+    _tickInProgress = true;
+    final sessionId = _activeSessionId;
+    try {
+      final elapsed = await _elapsedSince(state.startTime!);
+      if (!mounted ||
+          state.isBusy ||
+          state.status != TimerStatus.running ||
+          _activeSessionId != sessionId) {
+        return;
+      }
+      state = state.copyWith(
+        elapsedSeconds: elapsed,
+        currentPhase: MetabolicPhases.getPhaseForHours(elapsed / 3600),
+      );
+      if (elapsed >= state.targetSeconds) {
+        await _finish(completed: true);
+      } else if (++_widgetUpdateCounter % 30 == 0) {
+        unawaited(_updateHomeWidget());
+      }
+    } finally {
+      _tickInProgress = false;
     }
   }
 
   Future<void> _startOptionalServices(FastingSession session) async {
     try {
+      final elapsed = await _elapsedSince(session.startTime);
       await _backgroundService.startFastingTimer(
-        startTime: session.startTime,
+        // Rebase scheduled reminders when reopening after a wall-clock change.
+        startTime: _clock().subtract(Duration(seconds: elapsed)),
         targetMinutes: session.targetMinutes,
         planName: FastingPlans.getById(session.planType).name,
       );
@@ -327,10 +386,10 @@ class TimerNotifier extends StateNotifier<TimerState> {
       // that is not fasting, and must not inflate totals or records.
       final elapsed = completed
           ? state.targetSeconds
-          : (start == null ? state.elapsedSeconds : _elapsedSince(start));
+          : (start == null ? state.elapsedSeconds : await _elapsedSince(start));
       await _db.finalizeActiveSession(
         id: _activeSessionId!,
-        endTime: completed && start != null
+        endTime: start != null
             ? start.add(Duration(seconds: elapsed))
             : _clock(),
         actualMinutes: elapsed ~/ 60,
@@ -338,14 +397,17 @@ class TimerNotifier extends StateNotifier<TimerState> {
       );
       _activeSessionId = null;
       AnalyticsService().track('fast_finished', {'completed': completed});
-      state = state.copyWith(
-        status: TimerStatus.completed,
-        elapsedSeconds: elapsed,
-        currentPhase: MetabolicPhases.getPhaseForHours(elapsed / 3600),
-        isBusy: false,
-      );
+      if (mounted) {
+        state = state.copyWith(
+          status: TimerStatus.completed,
+          elapsedSeconds: elapsed,
+          currentPhase: MetabolicPhases.getPhaseForHours(elapsed / 3600),
+          isBusy: false,
+        );
+      }
       await _stopOptionalServices();
     } catch (error) {
+      if (!mounted) return;
       state = state.copyWith(isBusy: false, error: error);
       if (state.status == TimerStatus.running) _startTicker();
     }
