@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "A bejegyzést nem sikerült törölni.",
+  "fastingHistory_title": "Böjti előzmények",
+  "fastingHistory_deleteWarning": "Ez a bejegyzés végleg törlődik.",
   "@@locale": "hu",
   "appTitle": "FastTrack",
   "greeting_morning": "Jó reggelt",

@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Catatan tidak dapat dihapus.",
+  "fastingHistory_title": "Riwayat puasa",
+  "fastingHistory_deleteWarning": "Catatan ini akan dihapus secara permanen.",
   "@@locale": "id",
   "appTitle": "FastTrack",
   "greeting_morning": "Selamat pagi",

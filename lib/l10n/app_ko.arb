@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "기록을 삭제하지 못했습니다.",
+  "fastingHistory_title": "단식 기록",
+  "fastingHistory_deleteWarning": "이 기록은 영구적으로 삭제됩니다.",
   "@@locale": "ko",
   "appTitle": "FastTrack",
   "greeting_morning": "좋은 아침이에요",

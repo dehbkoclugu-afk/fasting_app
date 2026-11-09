@@ -9,6 +9,15 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => '記録を削除できませんでした。';
+
+  @override
+  String get fastingHistory_title => '断食履歴';
+
+  @override
+  String get fastingHistory_deleteWarning => 'この記録は完全に削除されます。';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

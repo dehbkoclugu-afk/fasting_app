@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Záznam se nepodařilo odstranit.",
+  "fastingHistory_title": "Historie půstu",
+  "fastingHistory_deleteWarning": "Tento záznam bude trvale odstraněn.",
   "@@locale": "cs",
   "appTitle": "FastTrack",
   "greeting_morning": "Dobré ráno",

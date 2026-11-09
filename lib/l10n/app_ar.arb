@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "تعذّر حذف السجل.",
+  "fastingHistory_title": "سجل الصيام",
+  "fastingHistory_deleteWarning": "سيُحذف هذا السجل نهائيًا.",
   "@@locale": "ar",
   "appTitle": "FastTrack",
   "greeting_morning": "صباح الخير",

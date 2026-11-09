@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Der Eintrag konnte nicht gelöscht werden.",
+  "fastingHistory_title": "Fastenverlauf",
+  "fastingHistory_deleteWarning": "Dieser Eintrag wird dauerhaft gelöscht.",
   "@@locale": "de",
   "appTitle": "FastTrack",
   "greeting_morning": "Guten Morgen",

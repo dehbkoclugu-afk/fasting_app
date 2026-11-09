@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Nie udało się usunąć wpisu.",
+  "fastingHistory_title": "Historia postów",
+  "fastingHistory_deleteWarning": "Ten wpis zostanie trwale usunięty.",
   "@@locale": "pl",
   "appTitle": "FastTrack",
   "greeting_morning": "Dzień dobry",

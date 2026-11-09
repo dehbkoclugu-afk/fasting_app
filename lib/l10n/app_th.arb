@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "ไม่สามารถลบบันทึกนี้ได้",
+  "fastingHistory_title": "ประวัติการอดอาหาร",
+  "fastingHistory_deleteWarning": "บันทึกนี้จะถูกลบอย่างถาวร",
   "@@locale": "th",
   "appTitle": "FastTrack",
   "greeting_morning": "สวัสดีตอนเช้า",

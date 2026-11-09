@@ -297,6 +297,17 @@ class ProfileScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 24),
 
+              GlassCard(
+                child: _buildSettingsTile(
+                  context,
+                  icon: Icons.history,
+                  title: l10n.fastingHistory_title,
+                  trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                  onTap: () => context.push('/fasting-history'),
+                ),
+              ),
+              const SizedBox(height: 24),
+
               // About
               _buildSectionTitle(context, l10n.profile_about),
               const SizedBox(height: 8),

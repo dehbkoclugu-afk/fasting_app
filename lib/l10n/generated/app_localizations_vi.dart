@@ -9,6 +9,15 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Không thể xóa mục này.';
+
+  @override
+  String get fastingHistory_title => 'Lịch sử nhịn ăn';
+
+  @override
+  String get fastingHistory_deleteWarning => 'Mục này sẽ bị xóa vĩnh viễn.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

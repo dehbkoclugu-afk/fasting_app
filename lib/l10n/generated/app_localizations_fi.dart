@@ -9,6 +9,16 @@ class AppLocalizationsFi extends AppLocalizations {
   AppLocalizationsFi([String locale = 'fi']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Merkintää ei voitu poistaa.';
+
+  @override
+  String get fastingHistory_title => 'Paastohistoria';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Tämä merkintä poistetaan pysyvästi.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

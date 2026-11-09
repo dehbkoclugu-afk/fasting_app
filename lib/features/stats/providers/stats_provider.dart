@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/utils/fasting_streak.dart';
+import '../../timer/providers/fasting_session_provider.dart';
 import '../../timer/providers/water_provider.dart';
 
 class StatsData {
@@ -27,6 +28,8 @@ final statsProvider = FutureProvider.family<StatsData, int>((
   periodDays,
 ) async {
   final db = ref.watch(databaseProvider);
+  // Reload cached aggregates when saved fasting history changes.
+  ref.watch(fastingHistoryRevisionProvider);
   final now = DateTime.now();
   final start = now.subtract(Duration(days: periodDays));
 
@@ -37,12 +40,18 @@ final statsProvider = FutureProvider.family<StatsData, int>((
   // Haftalık saat dağılımı
   final weeklyHours = List<double>.filled(7, 0);
   // In UTC, because a local day around a clock change is not 24 hours long.
-  final weekStart = DateTime.utc(now.year, now.month, now.day - now.weekday + 1);
+  final weekStart = DateTime.utc(
+    now.year,
+    now.month,
+    now.day - now.weekday + 1,
+  );
   for (final session in sessions) {
     final date = session.startTime;
-    final dayIndex = DateTime.utc(date.year, date.month, date.day)
-        .difference(weekStart)
-        .inDays;
+    final dayIndex = DateTime.utc(
+      date.year,
+      date.month,
+      date.day,
+    ).difference(weekStart).inDays;
     if (dayIndex >= 0 && dayIndex < 7 && session.actualMinutes != null) {
       weeklyHours[dayIndex] += session.actualMinutes! / 60;
     }
@@ -125,6 +134,7 @@ final heatmapProvider = FutureProvider.family<Map<DateTime, double>, DateTime>((
   month,
 ) async {
   final db = ref.watch(databaseProvider);
+  ref.watch(fastingHistoryRevisionProvider);
   final start = DateTime(month.year, month.month, 1);
   final end = DateTime(month.year, month.month + 1, 0, 23, 59, 59);
   final sessions = await db.getSessionsInRange(start, end);

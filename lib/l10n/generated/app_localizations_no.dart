@@ -9,6 +9,16 @@ class AppLocalizationsNo extends AppLocalizations {
   AppLocalizationsNo([String locale = 'no']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Oppføringen kunne ikke slettes.';
+
+  @override
+  String get fastingHistory_title => 'Fastehistorikk';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Denne oppføringen slettes permanent.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

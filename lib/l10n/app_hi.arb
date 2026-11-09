@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "रिकॉर्ड हटाया नहीं जा सका।",
+  "fastingHistory_title": "उपवास का इतिहास",
+  "fastingHistory_deleteWarning": "यह रिकॉर्ड हमेशा के लिए मिटा दिया जाएगा।",
   "@@locale": "hi",
   "appTitle": "FastTrack",
   "greeting_morning": "सुप्रभात",

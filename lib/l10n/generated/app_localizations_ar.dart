@@ -9,6 +9,15 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'تعذّر حذف السجل.';
+
+  @override
+  String get fastingHistory_title => 'سجل الصيام';
+
+  @override
+  String get fastingHistory_deleteWarning => 'سيُحذف هذا السجل نهائيًا.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

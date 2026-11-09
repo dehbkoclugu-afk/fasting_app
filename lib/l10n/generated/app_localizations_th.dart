@@ -9,6 +9,15 @@ class AppLocalizationsTh extends AppLocalizations {
   AppLocalizationsTh([String locale = 'th']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'ไม่สามารถลบบันทึกนี้ได้';
+
+  @override
+  String get fastingHistory_title => 'ประวัติการอดอาหาร';
+
+  @override
+  String get fastingHistory_deleteWarning => 'บันทึกนี้จะถูกลบอย่างถาวร';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Merkintää ei voitu poistaa.",
+  "fastingHistory_title": "Paastohistoria",
+  "fastingHistory_deleteWarning": "Tämä merkintä poistetaan pysyvästi.",
   "@@locale": "fi",
   "appTitle": "FastTrack",
   "greeting_morning": "Hyvää huomenta",

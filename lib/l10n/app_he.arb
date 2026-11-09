@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "לא ניתן למחוק את הרשומה.",
+  "fastingHistory_title": "היסטוריית צום",
+  "fastingHistory_deleteWarning": "הרשומה הזו תימחק לצמיתות.",
   "@@locale": "he",
   "appTitle": "FastTrack",
   "greeting_morning": "בוקר טוב",

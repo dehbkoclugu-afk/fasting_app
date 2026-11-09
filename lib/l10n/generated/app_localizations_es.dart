@@ -9,6 +9,16 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'No se pudo eliminar el registro.';
+
+  @override
+  String get fastingHistory_title => 'Historial de ayuno';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Este registro se eliminará de forma permanente.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

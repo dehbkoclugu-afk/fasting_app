@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Không thể xóa mục này.",
+  "fastingHistory_title": "Lịch sử nhịn ăn",
+  "fastingHistory_deleteWarning": "Mục này sẽ bị xóa vĩnh viễn.",
   "@@locale": "vi",
   "appTitle": "FastTrack",
   "greeting_morning": "Chào buổi sáng",

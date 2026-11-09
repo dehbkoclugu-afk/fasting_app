@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Impossibile eliminare questa voce.",
+  "fastingHistory_title": "Cronologia dei digiuni",
+  "fastingHistory_deleteWarning": "Questa voce verrà eliminata definitivamente.",
   "@@locale": "it",
   "appTitle": "FastTrack",
   "greeting_morning": "Buongiorno",

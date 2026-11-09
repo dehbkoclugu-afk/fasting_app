@@ -9,6 +9,17 @@ class AppLocalizationsNl extends AppLocalizations {
   AppLocalizationsNl([String locale = 'nl']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError =>
+      'De registratie kon niet worden verwijderd.';
+
+  @override
+  String get fastingHistory_title => 'Vastengeschiedenis';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Deze registratie wordt definitief verwijderd.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

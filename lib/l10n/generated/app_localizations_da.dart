@@ -9,6 +9,16 @@ class AppLocalizationsDa extends AppLocalizations {
   AppLocalizationsDa([String locale = 'da']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Registreringen kunne ikke slettes.';
+
+  @override
+  String get fastingHistory_title => 'Fastehistorik';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Denne registrering slettes permanent.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

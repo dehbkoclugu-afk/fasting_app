@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "No se pudo eliminar el registro.",
+  "fastingHistory_title": "Historial de ayuno",
+  "fastingHistory_deleteWarning": "Este registro se eliminará de forma permanente.",
   "@@locale": "es_419",
   "appTitle": "FastTrack",
   "greeting_morning": "Buen día",

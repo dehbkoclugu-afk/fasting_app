@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Could not delete this record.",
+  "fastingHistory_title": "Fasting history",
+  "fastingHistory_deleteWarning": "This fasting record will be permanently deleted.",
   "@@locale": "en",
   "appTitle": "FastTrack",
   "greeting_morning": "Good morning",

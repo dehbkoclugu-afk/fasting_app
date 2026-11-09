@@ -9,6 +9,15 @@ class AppLocalizationsHu extends AppLocalizations {
   AppLocalizationsHu([String locale = 'hu']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'A bejegyzést nem sikerült törölni.';
+
+  @override
+  String get fastingHistory_title => 'Böjti előzmények';
+
+  @override
+  String get fastingHistory_deleteWarning => 'Ez a bejegyzés végleg törlődik.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

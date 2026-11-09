@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Не удалось удалить запись.",
+  "fastingHistory_title": "История голодания",
+  "fastingHistory_deleteWarning": "Эта запись будет удалена навсегда.",
   "@@locale": "ru",
   "appTitle": "FastTrack",
   "greeting_morning": "Доброе утро",

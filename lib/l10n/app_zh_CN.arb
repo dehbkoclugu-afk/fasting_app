@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "无法删除此记录。",
+  "fastingHistory_title": "禁食记录",
+  "fastingHistory_deleteWarning": "这条记录将被永久删除。",
   "@@locale": "zh_CN",
   "appTitle": "FastTrack",
   "greeting_morning": "早上好",

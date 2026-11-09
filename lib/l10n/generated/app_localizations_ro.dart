@@ -9,6 +9,17 @@ class AppLocalizationsRo extends AppLocalizations {
   AppLocalizationsRo([String locale = 'ro']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError =>
+      'Înregistrarea nu a putut fi ștearsă.';
+
+  @override
+  String get fastingHistory_title => 'Istoricul posturilor';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Această înregistrare va fi ștearsă definitiv.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

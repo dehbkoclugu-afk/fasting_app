@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Impossible de supprimer cette entrée.",
+  "fastingHistory_title": "Historique du jeûne",
+  "fastingHistory_deleteWarning": "Cette entrée sera supprimée définitivement.",
   "@@locale": "fr",
   "appTitle": "FastTrack",
   "greeting_morning": "Bonjour",

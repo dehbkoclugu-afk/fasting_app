@@ -9,6 +9,16 @@ class AppLocalizationsId extends AppLocalizations {
   AppLocalizationsId([String locale = 'id']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Catatan tidak dapat dihapus.';
+
+  @override
+  String get fastingHistory_title => 'Riwayat puasa';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Catatan ini akan dihapus secara permanen.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Înregistrarea nu a putut fi ștearsă.",
+  "fastingHistory_title": "Istoricul posturilor",
+  "fastingHistory_deleteWarning": "Această înregistrare va fi ștearsă definitiv.",
   "@@locale": "ro",
   "appTitle": "FastTrack",
   "greeting_morning": "Bună dimineața",

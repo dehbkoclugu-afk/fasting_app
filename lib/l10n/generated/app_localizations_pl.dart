@@ -9,6 +9,16 @@ class AppLocalizationsPl extends AppLocalizations {
   AppLocalizationsPl([String locale = 'pl']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Nie udało się usunąć wpisu.';
+
+  @override
+  String get fastingHistory_title => 'Historia postów';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Ten wpis zostanie trwale usunięty.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

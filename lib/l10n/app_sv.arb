@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Det gick inte att ta bort posten.",
+  "fastingHistory_title": "Fastehistorik",
+  "fastingHistory_deleteWarning": "Den här posten tas bort permanent.",
   "@@locale": "sv",
   "appTitle": "FastTrack",
   "greeting_morning": "God morgon",

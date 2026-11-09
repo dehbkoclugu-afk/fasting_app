@@ -9,6 +9,16 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'रिकॉर्ड हटाया नहीं जा सका।';
+
+  @override
+  String get fastingHistory_title => 'उपवास का इतिहास';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'यह रिकॉर्ड हमेशा के लिए मिटा दिया जाएगा।';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

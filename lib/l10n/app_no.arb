@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Oppføringen kunne ikke slettes.",
+  "fastingHistory_title": "Fastehistorikk",
+  "fastingHistory_deleteWarning": "Denne oppføringen slettes permanent.",
   "@@locale": "no",
   "appTitle": "FastTrack",
   "greeting_morning": "God morgen",

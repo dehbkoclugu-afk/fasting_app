@@ -9,6 +9,16 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Oruç kaydı silinemedi.';
+
+  @override
+  String get fastingHistory_title => 'Oruç geçmişi';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Bu oruç kaydı kalıcı olarak silinecek.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

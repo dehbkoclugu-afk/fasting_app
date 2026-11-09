@@ -9,6 +9,16 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Не удалось удалить запись.';
+
+  @override
+  String get fastingHistory_title => 'История голодания';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Эта запись будет удалена навсегда.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

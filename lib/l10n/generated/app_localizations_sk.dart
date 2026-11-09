@@ -9,6 +9,16 @@ class AppLocalizationsSk extends AppLocalizations {
   AppLocalizationsSk([String locale = 'sk']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Záznam sa nepodarilo odstrániť.';
+
+  @override
+  String get fastingHistory_title => 'História pôstu';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Tento záznam sa natrvalo odstráni.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

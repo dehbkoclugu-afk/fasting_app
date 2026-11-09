@@ -9,6 +9,15 @@ class AppLocalizationsHe extends AppLocalizations {
   AppLocalizationsHe([String locale = 'he']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'לא ניתן למחוק את הרשומה.';
+
+  @override
+  String get fastingHistory_title => 'היסטוריית צום';
+
+  @override
+  String get fastingHistory_deleteWarning => 'הרשומה הזו תימחק לצמיתות.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

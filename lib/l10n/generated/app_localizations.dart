@@ -151,6 +151,24 @@ abstract class AppLocalizations {
     Locale('zh', 'CN')
   ];
 
+  /// No description provided for @fastingHistory_deleteError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not delete this record.'**
+  String get fastingHistory_deleteError;
+
+  /// No description provided for @fastingHistory_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Fasting history'**
+  String get fastingHistory_title;
+
+  /// No description provided for @fastingHistory_deleteWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This fasting record will be permanently deleted.'**
+  String get fastingHistory_deleteWarning;
+
   /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:

@@ -9,6 +9,15 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => '기록을 삭제하지 못했습니다.';
+
+  @override
+  String get fastingHistory_title => '단식 기록';
+
+  @override
+  String get fastingHistory_deleteWarning => '이 기록은 영구적으로 삭제됩니다.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

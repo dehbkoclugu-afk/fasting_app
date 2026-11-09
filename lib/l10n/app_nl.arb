@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "De registratie kon niet worden verwijderd.",
+  "fastingHistory_title": "Vastengeschiedenis",
+  "fastingHistory_deleteWarning": "Deze registratie wordt definitief verwijderd.",
   "@@locale": "nl",
   "appTitle": "FastTrack",
   "greeting_morning": "Goedemorgen",

@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "Não foi possível eliminar o registo.",
+  "fastingHistory_title": "Histórico de jejum",
+  "fastingHistory_deleteWarning": "Este registo será eliminado permanentemente.",
   "@@locale": "pt",
   "appTitle": "FastTrack",
   "greeting_morning": "Bom dia",

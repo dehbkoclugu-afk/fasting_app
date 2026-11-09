@@ -9,6 +9,15 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => '无法删除此记录。';
+
+  @override
+  String get fastingHistory_title => '禁食记录';
+
+  @override
+  String get fastingHistory_deleteWarning => '这条记录将被永久删除。';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

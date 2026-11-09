@@ -9,6 +9,16 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Could not delete this record.';
+
+  @override
+  String get fastingHistory_title => 'Fasting history';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'This fasting record will be permanently deleted.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

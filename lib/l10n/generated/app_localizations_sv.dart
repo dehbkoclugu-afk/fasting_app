@@ -9,6 +9,16 @@ class AppLocalizationsSv extends AppLocalizations {
   AppLocalizationsSv([String locale = 'sv']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Det gick inte att ta bort posten.';
+
+  @override
+  String get fastingHistory_title => 'Fastehistorik';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Den här posten tas bort permanent.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

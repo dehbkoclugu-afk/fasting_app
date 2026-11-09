@@ -10,6 +10,7 @@ import '../../features/onboarding/screens/body_info_screen.dart';
 import '../../features/onboarding/screens/permissions_screen.dart';
 import '../../features/onboarding/screens/safety_screen.dart';
 import '../../features/timer/screens/timer_screen.dart';
+import '../../features/timer/screens/fasting_history_screen.dart';
 import '../../features/stats/screens/stats_screen.dart';
 import '../../features/meals/screens/meals_screen.dart';
 import '../../features/meals/screens/food_scan_screen.dart';
@@ -111,6 +112,12 @@ class AppRouter {
           path: '/paywall',
           parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => const PaywallScreen(),
+        ),
+
+        GoRoute(
+          path: '/fasting-history',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const FastingHistoryScreen(),
         ),
 
         // Body Metrics

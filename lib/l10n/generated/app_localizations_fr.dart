@@ -9,6 +9,17 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError =>
+      'Impossible de supprimer cette entrée.';
+
+  @override
+  String get fastingHistory_title => 'Historique du jeûne';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Cette entrée sera supprimée définitivement.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

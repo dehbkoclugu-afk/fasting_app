@@ -1,4 +1,7 @@
 {
+  "fastingHistory_deleteError": "記録を削除できませんでした。",
+  "fastingHistory_title": "断食履歴",
+  "fastingHistory_deleteWarning": "この記録は完全に削除されます。",
   "@@locale": "ja",
   "appTitle": "FastTrack",
   "greeting_morning": "おはようございます",

@@ -9,6 +9,16 @@ class AppLocalizationsIt extends AppLocalizations {
   AppLocalizationsIt([String locale = 'it']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Impossibile eliminare questa voce.';
+
+  @override
+  String get fastingHistory_title => 'Cronologia dei digiuni';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Questa voce verrà eliminata definitivamente.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override

@@ -9,6 +9,16 @@ class AppLocalizationsCs extends AppLocalizations {
   AppLocalizationsCs([String locale = 'cs']) : super(locale);
 
   @override
+  String get fastingHistory_deleteError => 'Záznam se nepodařilo odstranit.';
+
+  @override
+  String get fastingHistory_title => 'Historie půstu';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Tento záznam bude trvale odstraněn.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
