@@ -52,5 +52,10 @@ or the iOS Keychain. Code: `lib/data/database/database_encryption.dart`.
   mismatched keys, key store outages.
 - `tool/android_smoke.sh` seeds an onboarded user with a plaintext database on
   an emulator and checks that it migrates and reopens.
+- Emulator record on 2026-11-09: 6 passes, 1 unexplained failure (`e476b15`,
+  "Database was not encrypted after launch", before the script printed
+  diagnostics). Concurrent first queries were ruled out by a unit test. If it
+  recurs, the script now prints the process, files and log; read those before
+  changing the check.
 - Not yet verified: iOS device, signed release build, upgrade from the Play
   Store build on a real phone.
