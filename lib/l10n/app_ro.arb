@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Am înțeles",
   "paywall_trialThen": "{days} zile de probă gratuită, apoi {price} ({plan})",
   "widget_notFasting": "Nu postești",
-  "widget_tapToStart": "Atinge pentru a începe"
+  "widget_tapToStart": "Atinge pentru a începe",
+  "mealPreset_oatsFruit": "Ovăz cu fructe",
+  "mealPreset_blueberryYogurt": "Iaurt cu afine",
+  "mealPreset_eggAvocadoToast": "Pâine prăjită cu ou și avocado",
+  "mealPreset_chickenQuinoa": "Bol cu pui și quinoa",
+  "mealPreset_lentilSoup": "Supă de linte",
+  "mealPreset_salmonBroccoli": "Somon și broccoli",
+  "mealPreset_turkeyVegWrap": "Wrap cu curcan și legume",
+  "mealPreset_chickpeaTahini": "Bol cu năut și tahini",
+  "mealPreset_tunaBeanSalad": "Salată de ton cu fasole",
+  "mealPreset_appleCottageCheese": "Brânză cottage cu măr",
+  "mealPreset_hummusVegetables": "Hummus și legume crocante",
+  "mealPreset_bananaKefir": "Bol cu banană și chefir"
 }

@@ -9,6 +9,42 @@ class AppLocalizationsSk extends AppLocalizations {
   AppLocalizationsSk([String locale = 'sk']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Ovsená kaša s ovocím';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Čučoriedkový jogurt';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Toast s vajcom a avokádom';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Miska s kuracím mäsom a quinoou';
+
+  @override
+  String get mealPreset_lentilSoup => 'Šošovicová polievka';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Losos s brokolicou';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap s morčacím mäsom a zeleninou';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Cícerová miska s tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Tuniakový šalát s fazuľou';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Cottage syr s jablkom';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus a chrumkavá zelenina';
+
+  @override
+  String get mealPreset_bananaKefir => 'Banánová miska s kefírom';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

@@ -9,6 +9,42 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'フルーツオートミール';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'ブルーベリーヨーグルト';
+
+  @override
+  String get mealPreset_eggAvocadoToast => '卵とアボカドのトースト';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'チキンとキヌアのボウル';
+
+  @override
+  String get mealPreset_lentilSoup => 'レンズ豆のスープ';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'サーモンとブロッコリー';
+
+  @override
+  String get mealPreset_turkeyVegWrap => '七面鳥と野菜のラップ';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'ひよこ豆とタヒニのボウル';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'ツナと豆のサラダ';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'りんごとカッテージチーズのボウル';
+
+  @override
+  String get mealPreset_hummusVegetables => 'フムスとシャキシャキ野菜';
+
+  @override
+  String get mealPreset_bananaKefir => 'バナナとケフィアのボウル';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

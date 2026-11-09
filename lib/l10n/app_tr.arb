@@ -774,5 +774,17 @@
   "plan_longWarningAccept": "Anladım",
   "paywall_trialThen": "{days} gün ücretsiz deneme, sonra {price} ({plan})",
   "widget_notFasting": "Oruçta değilsin",
-  "widget_tapToStart": "Başlamak için dokun"
+  "widget_tapToStart": "Başlamak için dokun",
+  "mealPreset_oatsFruit": "Meyveli Yulaf",
+  "mealPreset_blueberryYogurt": "Yaban Mersinli Yoğurt",
+  "mealPreset_eggAvocadoToast": "Yumurtalı Avokado Tost",
+  "mealPreset_chickenQuinoa": "Tavuklu Kinoa Kasesi",
+  "mealPreset_lentilSoup": "Mercimek Çorbası",
+  "mealPreset_salmonBroccoli": "Somon ve Brokoli",
+  "mealPreset_turkeyVegWrap": "Sebzeli Hindi Wrap",
+  "mealPreset_chickpeaTahini": "Nohutlu Tahin Kasesi",
+  "mealPreset_tunaBeanSalad": "Ton Balıklı Fasulye Salatası",
+  "mealPreset_appleCottageCheese": "Elmalı Lor Kasesi",
+  "mealPreset_hummusVegetables": "Humus ve Çıtır Sebze",
+  "mealPreset_bananaKefir": "Kefirli Muz Kasesi"
 }

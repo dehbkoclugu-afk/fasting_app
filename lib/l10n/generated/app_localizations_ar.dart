@@ -9,6 +9,42 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'شوفان بالفواكه';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'زبادي بالتوت الأزرق';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'توست بالبيض والأفوكادو';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'وعاء كينوا بالدجاج';
+
+  @override
+  String get mealPreset_lentilSoup => 'شوربة العدس';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'سلمون وبروكلي';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'لفافة ديك رومي بالخضار';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'وعاء حبّات حمص بالطحينة';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'سلطة تونة وفاصوليا';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'جبن قريش بالتفاح';
+
+  @override
+  String get mealPreset_hummusVegetables => 'حمص مهروس وخضار مقرمشة';
+
+  @override
+  String get mealPreset_bananaKefir => 'وعاء موز بالكفير';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

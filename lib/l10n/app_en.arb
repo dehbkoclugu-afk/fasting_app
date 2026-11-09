@@ -815,5 +815,17 @@
         "type": "String"
       }
     }
-  }
+  },
+  "mealPreset_oatsFruit": "Fruit oatmeal",
+  "mealPreset_blueberryYogurt": "Blueberry yogurt",
+  "mealPreset_eggAvocadoToast": "Egg and avocado toast",
+  "mealPreset_chickenQuinoa": "Chicken quinoa bowl",
+  "mealPreset_lentilSoup": "Lentil soup",
+  "mealPreset_salmonBroccoli": "Salmon and broccoli",
+  "mealPreset_turkeyVegWrap": "Turkey and vegetable wrap",
+  "mealPreset_chickpeaTahini": "Chickpea tahini bowl",
+  "mealPreset_tunaBeanSalad": "Tuna and bean salad",
+  "mealPreset_appleCottageCheese": "Apple and cottage cheese bowl",
+  "mealPreset_hummusVegetables": "Hummus and crunchy vegetables",
+  "mealPreset_bananaKefir": "Banana kefir bowl"
 }

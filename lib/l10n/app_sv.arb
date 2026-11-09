@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Jag förstår",
   "paywall_trialThen": "{days} dagars gratis provperiod, sedan {price} ({plan})",
   "widget_notFasting": "Fastar inte",
-  "widget_tapToStart": "Tryck för att starta"
+  "widget_tapToStart": "Tryck för att starta",
+  "mealPreset_oatsFruit": "Havregrynsgröt med frukt",
+  "mealPreset_blueberryYogurt": "Blåbärsyoghurt",
+  "mealPreset_eggAvocadoToast": "Toast med ägg och avokado",
+  "mealPreset_chickenQuinoa": "Kyckling- och quinoaskål",
+  "mealPreset_lentilSoup": "Linssoppa",
+  "mealPreset_salmonBroccoli": "Lax och broccoli",
+  "mealPreset_turkeyVegWrap": "Wrap med kalkon och grönsaker",
+  "mealPreset_chickpeaTahini": "Kikärter med tahini",
+  "mealPreset_tunaBeanSalad": "Tonfisk- och bönsallad",
+  "mealPreset_appleCottageCheese": "Keso med äpple",
+  "mealPreset_hummusVegetables": "Hummus och krispiga grönsaker",
+  "mealPreset_bananaKefir": "Banan och kefir"
 }

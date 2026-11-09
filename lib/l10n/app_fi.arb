@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Ymmärrän",
   "paywall_trialThen": "{days} päivän ilmainen kokeilu, sitten {price} ({plan})",
   "widget_notFasting": "Et paastoa",
-  "widget_tapToStart": "Aloita napauttamalla"
+  "widget_tapToStart": "Aloita napauttamalla",
+  "mealPreset_oatsFruit": "Hedelmäkaurapuuro",
+  "mealPreset_blueberryYogurt": "Mustikkajogurtti",
+  "mealPreset_eggAvocadoToast": "Muna-avokadoleipä",
+  "mealPreset_chickenQuinoa": "Kana-kvinoakulho",
+  "mealPreset_lentilSoup": "Linssikeitto",
+  "mealPreset_salmonBroccoli": "Lohi ja parsakaali",
+  "mealPreset_turkeyVegWrap": "Kalkkuna-kasviswrap",
+  "mealPreset_chickpeaTahini": "Kikherne-tahinikulho",
+  "mealPreset_tunaBeanSalad": "Tonnikala-papusalaatti",
+  "mealPreset_appleCottageCheese": "Raejuusto-omenakulho",
+  "mealPreset_hummusVegetables": "Hummus ja rapeat kasvikset",
+  "mealPreset_bananaKefir": "Banaani-kefiirikulho"
 }

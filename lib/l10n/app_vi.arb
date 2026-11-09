@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Tôi hiểu",
   "paywall_trialThen": "Dùng thử miễn phí {days} ngày, sau đó {price} ({plan})",
   "widget_notFasting": "Không nhịn ăn",
-  "widget_tapToStart": "Chạm để bắt đầu"
+  "widget_tapToStart": "Chạm để bắt đầu",
+  "mealPreset_oatsFruit": "Yến mạch trái cây",
+  "mealPreset_blueberryYogurt": "Sữa chua việt quất",
+  "mealPreset_eggAvocadoToast": "Bánh mì nướng trứng và bơ",
+  "mealPreset_chickenQuinoa": "Tô quinoa thịt gà",
+  "mealPreset_lentilSoup": "Súp đậu lăng",
+  "mealPreset_salmonBroccoli": "Cá hồi và bông cải xanh",
+  "mealPreset_turkeyVegWrap": "Bánh tortilla cuộn gà tây và rau",
+  "mealPreset_chickpeaTahini": "Tô đậu gà sốt tahini",
+  "mealPreset_tunaBeanSalad": "Salad cá ngừ và đậu",
+  "mealPreset_appleCottageCheese": "Phô mai cottage và táo",
+  "mealPreset_hummusVegetables": "Hummus và rau củ giòn",
+  "mealPreset_bananaKefir": "Chuối và kefir"
 }

@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Értem",
   "paywall_trialThen": "{days} nap ingyenes próba, utána {price} ({plan})",
   "widget_notFasting": "Nem böjtölsz",
-  "widget_tapToStart": "Koppints az indításhoz"
+  "widget_tapToStart": "Koppints az indításhoz",
+  "mealPreset_oatsFruit": "Gyümölcsös zabkása",
+  "mealPreset_blueberryYogurt": "Áfonyás joghurt",
+  "mealPreset_eggAvocadoToast": "Tojásos-avokádós pirítós",
+  "mealPreset_chickenQuinoa": "Csirkés quinoatál",
+  "mealPreset_lentilSoup": "Lencseleves",
+  "mealPreset_salmonBroccoli": "Lazac brokkolival",
+  "mealPreset_turkeyVegWrap": "Pulykás-zöldséges wrap",
+  "mealPreset_chickpeaTahini": "Csicseriborsós tál tahinivel",
+  "mealPreset_tunaBeanSalad": "Tonhalas babsaláta",
+  "mealPreset_appleCottageCheese": "Almás túrótál",
+  "mealPreset_hummusVegetables": "Hummusz ropogós zöldségekkel",
+  "mealPreset_bananaKefir": "Banános kefirtál"
 }

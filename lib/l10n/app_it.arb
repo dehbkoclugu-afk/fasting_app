@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Ho capito",
   "paywall_trialThen": "{days} giorni di prova gratuita, poi {price} ({plan})",
   "widget_notFasting": "Non a digiuno",
-  "widget_tapToStart": "Tocca per iniziare"
+  "widget_tapToStart": "Tocca per iniziare",
+  "mealPreset_oatsFruit": "Porridge alla frutta",
+  "mealPreset_blueberryYogurt": "Yogurt ai mirtilli",
+  "mealPreset_eggAvocadoToast": "Toast con uova e avocado",
+  "mealPreset_chickenQuinoa": "Bowl di pollo e quinoa",
+  "mealPreset_lentilSoup": "Zuppa di lenticchie",
+  "mealPreset_salmonBroccoli": "Salmone e broccoli",
+  "mealPreset_turkeyVegWrap": "Wrap di tacchino e verdure",
+  "mealPreset_chickpeaTahini": "Bowl di ceci e tahina",
+  "mealPreset_tunaBeanSalad": "Insalata di tonno e fagioli",
+  "mealPreset_appleCottageCheese": "Fiocchi di latte e mela",
+  "mealPreset_hummusVegetables": "Hummus e verdure croccanti",
+  "mealPreset_bananaKefir": "Bowl di banana e kefir"
 }

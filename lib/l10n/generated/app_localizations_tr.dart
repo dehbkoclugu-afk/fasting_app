@@ -9,6 +9,42 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Meyveli Yulaf';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Yaban Mersinli Yoğurt';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Yumurtalı Avokado Tost';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Tavuklu Kinoa Kasesi';
+
+  @override
+  String get mealPreset_lentilSoup => 'Mercimek Çorbası';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Somon ve Brokoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Sebzeli Hindi Wrap';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Nohutlu Tahin Kasesi';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Ton Balıklı Fasulye Salatası';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Elmalı Lor Kasesi';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Humus ve Çıtır Sebze';
+
+  @override
+  String get mealPreset_bananaKefir => 'Kefirli Muz Kasesi';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

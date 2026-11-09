@@ -9,6 +9,42 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Yến mạch trái cây';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Sữa chua việt quất';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Bánh mì nướng trứng và bơ';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Tô quinoa thịt gà';
+
+  @override
+  String get mealPreset_lentilSoup => 'Súp đậu lăng';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Cá hồi và bông cải xanh';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Bánh tortilla cuộn gà tây và rau';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Tô đậu gà sốt tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Salad cá ngừ và đậu';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Phô mai cottage và táo';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus và rau củ giòn';
+
+  @override
+  String get mealPreset_bananaKefir => 'Chuối và kefir';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

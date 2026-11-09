@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Rozumiem",
   "paywall_trialThen": "Skúšobná verzia zadarmo: {days} dní, potom {price} ({plan})",
   "widget_notFasting": "Nepostíte sa",
-  "widget_tapToStart": "Klepnutím začnete"
+  "widget_tapToStart": "Klepnutím začnete",
+  "mealPreset_oatsFruit": "Ovsená kaša s ovocím",
+  "mealPreset_blueberryYogurt": "Čučoriedkový jogurt",
+  "mealPreset_eggAvocadoToast": "Toast s vajcom a avokádom",
+  "mealPreset_chickenQuinoa": "Miska s kuracím mäsom a quinoou",
+  "mealPreset_lentilSoup": "Šošovicová polievka",
+  "mealPreset_salmonBroccoli": "Losos s brokolicou",
+  "mealPreset_turkeyVegWrap": "Wrap s morčacím mäsom a zeleninou",
+  "mealPreset_chickpeaTahini": "Cícerová miska s tahini",
+  "mealPreset_tunaBeanSalad": "Tuniakový šalát s fazuľou",
+  "mealPreset_appleCottageCheese": "Cottage syr s jablkom",
+  "mealPreset_hummusVegetables": "Hummus a chrumkavá zelenina",
+  "mealPreset_bananaKefir": "Banánová miska s kefírom"
 }

@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "เข้าใจแล้ว",
   "paywall_trialThen": "ทดลองใช้ฟรี {days} วัน จากนั้น {price} ({plan})",
   "widget_notFasting": "ไม่ได้อดอาหาร",
-  "widget_tapToStart": "แตะเพื่อเริ่ม"
+  "widget_tapToStart": "แตะเพื่อเริ่ม",
+  "mealPreset_oatsFruit": "ข้าวโอ๊ตผลไม้",
+  "mealPreset_blueberryYogurt": "โยเกิร์ตบลูเบอร์รี",
+  "mealPreset_eggAvocadoToast": "ขนมปังปิ้งหน้าไข่และอะโวคาโด",
+  "mealPreset_chickenQuinoa": "ควินัวไก่",
+  "mealPreset_lentilSoup": "ซุปถั่วเลนทิล",
+  "mealPreset_salmonBroccoli": "แซลมอนและบรอกโคลี",
+  "mealPreset_turkeyVegWrap": "แรปไก่งวงและผัก",
+  "mealPreset_chickpeaTahini": "ถั่วลูกไก่กับทาฮินี",
+  "mealPreset_tunaBeanSalad": "สลัดทูน่าและถั่ว",
+  "mealPreset_appleCottageCheese": "คอตเทจชีสกับแอปเปิล",
+  "mealPreset_hummusVegetables": "ฮัมมุสและผักกรอบ",
+  "mealPreset_bananaKefir": "กล้วยกับคีเฟอร์"
 }

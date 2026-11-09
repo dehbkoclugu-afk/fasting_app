@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "理解しました",
   "paywall_trialThen": "{days}日間の無料トライアル後、{price}（{plan}）",
   "widget_notFasting": "断食していません",
-  "widget_tapToStart": "タップして開始"
+  "widget_tapToStart": "タップして開始",
+  "mealPreset_oatsFruit": "フルーツオートミール",
+  "mealPreset_blueberryYogurt": "ブルーベリーヨーグルト",
+  "mealPreset_eggAvocadoToast": "卵とアボカドのトースト",
+  "mealPreset_chickenQuinoa": "チキンとキヌアのボウル",
+  "mealPreset_lentilSoup": "レンズ豆のスープ",
+  "mealPreset_salmonBroccoli": "サーモンとブロッコリー",
+  "mealPreset_turkeyVegWrap": "七面鳥と野菜のラップ",
+  "mealPreset_chickpeaTahini": "ひよこ豆とタヒニのボウル",
+  "mealPreset_tunaBeanSalad": "ツナと豆のサラダ",
+  "mealPreset_appleCottageCheese": "りんごとカッテージチーズのボウル",
+  "mealPreset_hummusVegetables": "フムスとシャキシャキ野菜",
+  "mealPreset_bananaKefir": "バナナとケフィアのボウル"
 }

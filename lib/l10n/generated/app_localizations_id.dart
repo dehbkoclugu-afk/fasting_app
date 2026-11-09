@@ -9,6 +9,42 @@ class AppLocalizationsId extends AppLocalizations {
   AppLocalizationsId([String locale = 'id']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Oat dengan buah';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Yoghurt bluberi';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Roti panggang telur dan alpukat';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Semangkuk quinoa dan ayam';
+
+  @override
+  String get mealPreset_lentilSoup => 'Sup lentil';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Salmon dan brokoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap kalkun dan sayuran';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Semangkuk kacang arab dan tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Salad tuna dan kacang';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Keju cottage dan apel';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus dan sayuran renyah';
+
+  @override
+  String get mealPreset_bananaKefir => 'Pisang dan kefir';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

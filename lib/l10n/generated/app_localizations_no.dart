@@ -9,6 +9,42 @@ class AppLocalizationsNo extends AppLocalizations {
   AppLocalizationsNo([String locale = 'no']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Havregrøt med frukt';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Blåbæryoghurt';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Toast med egg og avokado';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Kylling- og quinoabolle';
+
+  @override
+  String get mealPreset_lentilSoup => 'Linsesuppe';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Laks og brokkoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap med kalkun og grønnsaker';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Kikerter med tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Tunfisk- og bønnesalat';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Cottage cheese med eple';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus og sprø grønnsaker';
+
+  @override
+  String get mealPreset_bananaKefir => 'Banan og kefir';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

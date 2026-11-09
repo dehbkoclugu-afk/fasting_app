@@ -88,6 +88,43 @@ import 'app_localizations_zh.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
+
+  /// Quick-add meal title: Fruit oatmeal.
+  String get mealPreset_oatsFruit;
+
+  /// Quick-add meal title: Blueberry yogurt.
+  String get mealPreset_blueberryYogurt;
+
+  /// Quick-add meal title: Egg and avocado toast.
+  String get mealPreset_eggAvocadoToast;
+
+  /// Quick-add meal title: Chicken quinoa bowl.
+  String get mealPreset_chickenQuinoa;
+
+  /// Quick-add meal title: Lentil soup.
+  String get mealPreset_lentilSoup;
+
+  /// Quick-add meal title: Salmon and broccoli.
+  String get mealPreset_salmonBroccoli;
+
+  /// Quick-add meal title: Turkey and vegetable wrap.
+  String get mealPreset_turkeyVegWrap;
+
+  /// Quick-add meal title: Chickpea tahini bowl.
+  String get mealPreset_chickpeaTahini;
+
+  /// Quick-add meal title: Tuna and bean salad.
+  String get mealPreset_tunaBeanSalad;
+
+  /// Quick-add meal title: Apple and cottage cheese bowl.
+  String get mealPreset_appleCottageCheese;
+
+  /// Quick-add meal title: Hummus and crunchy vegetables.
+  String get mealPreset_hummusVegetables;
+
+  /// Quick-add meal title: Banana kefir bowl.
+  String get mealPreset_bananaKefir;
+
   AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;

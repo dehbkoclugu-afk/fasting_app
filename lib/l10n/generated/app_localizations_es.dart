@@ -9,6 +9,42 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Avena con fruta';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Yogur con arándanos';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Tostada con huevo y aguacate';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Bol de pollo y quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Sopa de lentejas';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Salmón con brócoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap de pavo y verduras';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Bol de garbanzos con tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Ensalada de atún y alubias';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Queso cottage con manzana';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus y verduras crujientes';
+
+  @override
+  String get mealPreset_bananaKefir => 'Bol de plátano y kéfir';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
@@ -1742,6 +1778,42 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   AppLocalizationsEs419(): super('es_419');
 
   @override
+  String get mealPreset_oatsFruit => 'Avena con fruta';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Yogur con arándanos';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Tostada con huevo y aguacate';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Bol de pollo y quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Sopa de lentejas';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Salmón con brócoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap de pavo y verduras';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Bol de garbanzos con tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Ensalada de atún y alubias';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Queso cottage con manzana';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus y verduras crujientes';
+
+  @override
+  String get mealPreset_bananaKefir => 'Bol de plátano y kéfir';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -3452,6 +3524,42 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
 /// The translations for Spanish Castilian, as used in Spain (`es_ES`).
 class AppLocalizationsEsEs extends AppLocalizationsEs {
   AppLocalizationsEsEs(): super('es_ES');
+
+  @override
+  String get mealPreset_oatsFruit => 'Avena con fruta';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Yogur con arándanos';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Tostada con huevo y aguacate';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Bol de pollo y quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Sopa de lentejas';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Salmón con brócoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap de pavo y verduras';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Bol de garbanzos con tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Ensalada de atún y alubias';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Queso cottage con manzana';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus y verduras crujientes';
+
+  @override
+  String get mealPreset_bananaKefir => 'Bol de plátano y kéfir';
 
   @override
   String get appTitle => 'FastTrack';

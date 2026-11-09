@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "فهمت",
   "paywall_trialThen": "تجربة مجانية لمدة {days} يوم، ثم {price} ({plan})",
   "widget_notFasting": "لا صيام",
-  "widget_tapToStart": "اضغط للبدء"
+  "widget_tapToStart": "اضغط للبدء",
+  "mealPreset_oatsFruit": "شوفان بالفواكه",
+  "mealPreset_blueberryYogurt": "زبادي بالتوت الأزرق",
+  "mealPreset_eggAvocadoToast": "توست بالبيض والأفوكادو",
+  "mealPreset_chickenQuinoa": "وعاء كينوا بالدجاج",
+  "mealPreset_lentilSoup": "شوربة العدس",
+  "mealPreset_salmonBroccoli": "سلمون وبروكلي",
+  "mealPreset_turkeyVegWrap": "لفافة ديك رومي بالخضار",
+  "mealPreset_chickpeaTahini": "وعاء حبّات حمص بالطحينة",
+  "mealPreset_tunaBeanSalad": "سلطة تونة وفاصوليا",
+  "mealPreset_appleCottageCheese": "جبن قريش بالتفاح",
+  "mealPreset_hummusVegetables": "حمص مهروس وخضار مقرمشة",
+  "mealPreset_bananaKefir": "وعاء موز بالكفير"
 }

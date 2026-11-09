@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Saya mengerti",
   "paywall_trialThen": "Uji coba gratis {days} hari, lalu {price} ({plan})",
   "widget_notFasting": "Tidak berpuasa",
-  "widget_tapToStart": "Ketuk untuk mulai"
+  "widget_tapToStart": "Ketuk untuk mulai",
+  "mealPreset_oatsFruit": "Oat dengan buah",
+  "mealPreset_blueberryYogurt": "Yoghurt bluberi",
+  "mealPreset_eggAvocadoToast": "Roti panggang telur dan alpukat",
+  "mealPreset_chickenQuinoa": "Semangkuk quinoa dan ayam",
+  "mealPreset_lentilSoup": "Sup lentil",
+  "mealPreset_salmonBroccoli": "Salmon dan brokoli",
+  "mealPreset_turkeyVegWrap": "Wrap kalkun dan sayuran",
+  "mealPreset_chickpeaTahini": "Semangkuk kacang arab dan tahini",
+  "mealPreset_tunaBeanSalad": "Salad tuna dan kacang",
+  "mealPreset_appleCottageCheese": "Keju cottage dan apel",
+  "mealPreset_hummusVegetables": "Hummus dan sayuran renyah",
+  "mealPreset_bananaKefir": "Pisang dan kefir"
 }

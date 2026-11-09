@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Ik begrijp het",
   "paywall_trialThen": "{days} dagen gratis proberen, daarna {price} ({plan})",
   "widget_notFasting": "Niet aan het vasten",
-  "widget_tapToStart": "Tik om te starten"
+  "widget_tapToStart": "Tik om te starten",
+  "mealPreset_oatsFruit": "Havermout met fruit",
+  "mealPreset_blueberryYogurt": "Blauwebessenyoghurt",
+  "mealPreset_eggAvocadoToast": "Toast met ei en avocado",
+  "mealPreset_chickenQuinoa": "Kip-quinoabowl",
+  "mealPreset_lentilSoup": "Linzensoep",
+  "mealPreset_salmonBroccoli": "Zalm en broccoli",
+  "mealPreset_turkeyVegWrap": "Wrap met kalkoen en groenten",
+  "mealPreset_chickpeaTahini": "Kikkererwten met tahin",
+  "mealPreset_tunaBeanSalad": "Tonijn-bonensalade",
+  "mealPreset_appleCottageCheese": "Hüttenkäse met appel",
+  "mealPreset_hummusVegetables": "Hummus en knapperige groenten",
+  "mealPreset_bananaKefir": "Banaan-kefirbowl"
 }

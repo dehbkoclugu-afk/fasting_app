@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Понятно",
   "paywall_trialThen": "Бесплатно: {days} дн., затем {price} ({plan})",
   "widget_notFasting": "Вы не голодаете",
-  "widget_tapToStart": "Нажмите, чтобы начать"
+  "widget_tapToStart": "Нажмите, чтобы начать",
+  "mealPreset_oatsFruit": "Овсянка с фруктами",
+  "mealPreset_blueberryYogurt": "Йогурт с черникой",
+  "mealPreset_eggAvocadoToast": "Тост с яйцом и авокадо",
+  "mealPreset_chickenQuinoa": "Киноа с курицей",
+  "mealPreset_lentilSoup": "Чечевичный суп",
+  "mealPreset_salmonBroccoli": "Лосось с брокколи",
+  "mealPreset_turkeyVegWrap": "Ролл с индейкой и овощами",
+  "mealPreset_chickpeaTahini": "Нут с тахини",
+  "mealPreset_tunaBeanSalad": "Салат с тунцом и фасолью",
+  "mealPreset_appleCottageCheese": "Творог с яблоком",
+  "mealPreset_hummusVegetables": "Хумус с хрустящими овощами",
+  "mealPreset_bananaKefir": "Кефир с бананом"
 }

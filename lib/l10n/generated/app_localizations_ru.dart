@@ -9,6 +9,42 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Овсянка с фруктами';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Йогурт с черникой';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Тост с яйцом и авокадо';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Киноа с курицей';
+
+  @override
+  String get mealPreset_lentilSoup => 'Чечевичный суп';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Лосось с брокколи';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Ролл с индейкой и овощами';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Нут с тахини';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Салат с тунцом и фасолью';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Творог с яблоком';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Хумус с хрустящими овощами';
+
+  @override
+  String get mealPreset_bananaKefir => 'Кефир с бананом';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

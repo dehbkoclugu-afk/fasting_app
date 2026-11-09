@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Зрозуміло",
   "paywall_trialThen": "Безкоштовно: {days} дн., потім {price} ({plan})",
   "widget_notFasting": "Ви не голодуєте",
-  "widget_tapToStart": "Торкніться, щоб почати"
+  "widget_tapToStart": "Торкніться, щоб почати",
+  "mealPreset_oatsFruit": "Вівсянка з фруктами",
+  "mealPreset_blueberryYogurt": "Йогурт із чорницею",
+  "mealPreset_eggAvocadoToast": "Тост з яйцем і авокадо",
+  "mealPreset_chickenQuinoa": "Кіноа з куркою",
+  "mealPreset_lentilSoup": "Сочевичний суп",
+  "mealPreset_salmonBroccoli": "Лосось із броколі",
+  "mealPreset_turkeyVegWrap": "Рол з індичкою та овочами",
+  "mealPreset_chickpeaTahini": "Нут із тахіні",
+  "mealPreset_tunaBeanSalad": "Салат із тунцем і квасолею",
+  "mealPreset_appleCottageCheese": "Кисломолочний сир із яблуком",
+  "mealPreset_hummusVegetables": "Хумус із хрусткими овочами",
+  "mealPreset_bananaKefir": "Кефір із бананом"
 }

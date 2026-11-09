@@ -9,6 +9,42 @@ class AppLocalizationsHu extends AppLocalizations {
   AppLocalizationsHu([String locale = 'hu']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Gyümölcsös zabkása';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Áfonyás joghurt';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Tojásos-avokádós pirítós';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Csirkés quinoatál';
+
+  @override
+  String get mealPreset_lentilSoup => 'Lencseleves';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Lazac brokkolival';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Pulykás-zöldséges wrap';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Csicseriborsós tál tahinivel';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Tonhalas babsaláta';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Almás túrótál';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummusz ropogós zöldségekkel';
+
+  @override
+  String get mealPreset_bananaKefir => 'Banános kefirtál';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

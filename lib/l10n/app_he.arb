@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "הבנתי",
   "paywall_trialThen": "{days} ימי ניסיון בחינם, ואז {price} ({plan})",
   "widget_notFasting": "לא בצום",
-  "widget_tapToStart": "יש להקיש כדי להתחיל"
+  "widget_tapToStart": "יש להקיש כדי להתחיל",
+  "mealPreset_oatsFruit": "שיבולת שועל עם פירות",
+  "mealPreset_blueberryYogurt": "יוגורט עם אוכמניות",
+  "mealPreset_eggAvocadoToast": "טוסט עם ביצה ואבוקדו",
+  "mealPreset_chickenQuinoa": "קערת קינואה עם עוף",
+  "mealPreset_lentilSoup": "מרק עדשים",
+  "mealPreset_salmonBroccoli": "סלמון וברוקולי",
+  "mealPreset_turkeyVegWrap": "טורטייה עם הודו וירקות",
+  "mealPreset_chickpeaTahini": "קערת גרגרי חומוס וטחינה",
+  "mealPreset_tunaBeanSalad": "סלט טונה ושעועית",
+  "mealPreset_appleCottageCheese": "קוטג׳ עם תפוח",
+  "mealPreset_hummusVegetables": "ממרח חומוס וירקות פריכים",
+  "mealPreset_bananaKefir": "קערת בננה וקפיר"
 }

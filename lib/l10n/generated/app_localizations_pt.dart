@@ -9,6 +9,42 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Aveia com fruta';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Iogurte com mirtilos';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Tosta com ovo e abacate';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Taça de frango e quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Sopa de lentilhas';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Salmão com brócolos';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap de peru e legumes';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Taça de grão-de-bico com tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Salada de atum e feijão';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Queijo cottage com maçã';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Húmus e legumes crocantes';
+
+  @override
+  String get mealPreset_bananaKefir => 'Taça de banana e kefir';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
@@ -1741,6 +1777,42 @@ class AppLocalizationsPt extends AppLocalizations {
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
 class AppLocalizationsPtBr extends AppLocalizationsPt {
   AppLocalizationsPtBr(): super('pt_BR');
+
+  @override
+  String get mealPreset_oatsFruit => 'Aveia com frutas';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Iogurte com mirtilos';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Torrada com ovo e abacate';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Tigela de frango e quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Sopa de lentilhas';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Salmão com brócolis';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap de peru e legumes';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Tigela de grão-de-bico com tahine';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Salada de atum e feijão';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Queijo cottage com maçã';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Homus e legumes crocantes';
+
+  @override
+  String get mealPreset_bananaKefir => 'Tigela de banana e kefir';
 
   @override
   String get appTitle => 'FastTrack';

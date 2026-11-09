@@ -9,6 +9,42 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Haferflocken mit Obst';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Heidelbeerjoghurt';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Avocado-Ei-Toast';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Bowl mit Hähnchen und Quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Linsensuppe';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Lachs mit Brokkoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap mit Pute und Gemüse';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Bowl mit Kichererbsen und Tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Thunfisch-Bohnen-Salat';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Hüttenkäse mit Apfel';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus mit knackigem Gemüse';
+
+  @override
+  String get mealPreset_bananaKefir => 'Kefir-Bananen-Bowl';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

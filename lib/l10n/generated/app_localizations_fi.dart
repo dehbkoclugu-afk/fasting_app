@@ -9,6 +9,42 @@ class AppLocalizationsFi extends AppLocalizations {
   AppLocalizationsFi([String locale = 'fi']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Hedelmäkaurapuuro';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Mustikkajogurtti';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Muna-avokadoleipä';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Kana-kvinoakulho';
+
+  @override
+  String get mealPreset_lentilSoup => 'Linssikeitto';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Lohi ja parsakaali';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Kalkkuna-kasviswrap';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Kikherne-tahinikulho';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Tonnikala-papusalaatti';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Raejuusto-omenakulho';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus ja rapeat kasvikset';
+
+  @override
+  String get mealPreset_bananaKefir => 'Banaani-kefiirikulho';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

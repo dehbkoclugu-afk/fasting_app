@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "我明白了",
   "paywall_trialThen": "免费试用 {days} 天，之后 {price}（{plan}）",
   "widget_notFasting": "未在禁食",
-  "widget_tapToStart": "点按开始"
+  "widget_tapToStart": "点按开始",
+  "mealPreset_oatsFruit": "水果燕麦",
+  "mealPreset_blueberryYogurt": "蓝莓酸奶",
+  "mealPreset_eggAvocadoToast": "鸡蛋牛油果吐司",
+  "mealPreset_chickenQuinoa": "鸡肉藜麦碗",
+  "mealPreset_lentilSoup": "扁豆汤",
+  "mealPreset_salmonBroccoli": "三文鱼配西兰花",
+  "mealPreset_turkeyVegWrap": "火鸡蔬菜卷",
+  "mealPreset_chickpeaTahini": "鹰嘴豆芝麻酱碗",
+  "mealPreset_tunaBeanSalad": "金枪鱼豆类沙拉",
+  "mealPreset_appleCottageCheese": "苹果茅屋奶酪碗",
+  "mealPreset_hummusVegetables": "鹰嘴豆泥配爽脆蔬菜",
+  "mealPreset_bananaKefir": "香蕉开菲尔碗"
 }

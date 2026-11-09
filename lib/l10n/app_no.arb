@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Jeg forstår",
   "paywall_trialThen": "{days} dager gratis prøve, deretter {price} ({plan})",
   "widget_notFasting": "Faster ikke",
-  "widget_tapToStart": "Trykk for å starte"
+  "widget_tapToStart": "Trykk for å starte",
+  "mealPreset_oatsFruit": "Havregrøt med frukt",
+  "mealPreset_blueberryYogurt": "Blåbæryoghurt",
+  "mealPreset_eggAvocadoToast": "Toast med egg og avokado",
+  "mealPreset_chickenQuinoa": "Kylling- og quinoabolle",
+  "mealPreset_lentilSoup": "Linsesuppe",
+  "mealPreset_salmonBroccoli": "Laks og brokkoli",
+  "mealPreset_turkeyVegWrap": "Wrap med kalkun og grønnsaker",
+  "mealPreset_chickpeaTahini": "Kikerter med tahini",
+  "mealPreset_tunaBeanSalad": "Tunfisk- og bønnesalat",
+  "mealPreset_appleCottageCheese": "Cottage cheese med eple",
+  "mealPreset_hummusVegetables": "Hummus og sprø grønnsaker",
+  "mealPreset_bananaKefir": "Banan og kefir"
 }

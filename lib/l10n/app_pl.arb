@@ -802,5 +802,17 @@
   "plan_longWarningAccept": "Rozumiem",
   "paywall_trialThen": "{days} dni bezpłatnego okresu próbnego, potem {price} ({plan})",
   "widget_notFasting": "Bez postu",
-  "widget_tapToStart": "Dotknij, aby zacząć"
+  "widget_tapToStart": "Dotknij, aby zacząć",
+  "mealPreset_oatsFruit": "Owsianka z owocami",
+  "mealPreset_blueberryYogurt": "Jogurt z borówkami",
+  "mealPreset_eggAvocadoToast": "Tost z jajkiem i awokado",
+  "mealPreset_chickenQuinoa": "Miska z kurczakiem i komosą",
+  "mealPreset_lentilSoup": "Zupa z soczewicy",
+  "mealPreset_salmonBroccoli": "Łosoś z brokułami",
+  "mealPreset_turkeyVegWrap": "Wrap z indykiem i warzywami",
+  "mealPreset_chickpeaTahini": "Ciecierzyca z tahini",
+  "mealPreset_tunaBeanSalad": "Sałatka z tuńczykiem i fasolą",
+  "mealPreset_appleCottageCheese": "Serek wiejski z jabłkiem",
+  "mealPreset_hummusVegetables": "Hummus i chrupiące warzywa",
+  "mealPreset_bananaKefir": "Banan z kefirem"
 }

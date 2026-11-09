@@ -9,6 +9,42 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => '水果燕麦';
+
+  @override
+  String get mealPreset_blueberryYogurt => '蓝莓酸奶';
+
+  @override
+  String get mealPreset_eggAvocadoToast => '鸡蛋牛油果吐司';
+
+  @override
+  String get mealPreset_chickenQuinoa => '鸡肉藜麦碗';
+
+  @override
+  String get mealPreset_lentilSoup => '扁豆汤';
+
+  @override
+  String get mealPreset_salmonBroccoli => '三文鱼配西兰花';
+
+  @override
+  String get mealPreset_turkeyVegWrap => '火鸡蔬菜卷';
+
+  @override
+  String get mealPreset_chickpeaTahini => '鹰嘴豆芝麻酱碗';
+
+  @override
+  String get mealPreset_tunaBeanSalad => '金枪鱼豆类沙拉';
+
+  @override
+  String get mealPreset_appleCottageCheese => '苹果茅屋奶酪碗';
+
+  @override
+  String get mealPreset_hummusVegetables => '鹰嘴豆泥配爽脆蔬菜';
+
+  @override
+  String get mealPreset_bananaKefir => '香蕉开菲尔碗';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
@@ -1739,6 +1775,42 @@ class AppLocalizationsZh extends AppLocalizations {
 /// The translations for Chinese, as used in China (`zh_CN`).
 class AppLocalizationsZhCn extends AppLocalizationsZh {
   AppLocalizationsZhCn(): super('zh_CN');
+
+  @override
+  String get mealPreset_oatsFruit => '水果燕麦';
+
+  @override
+  String get mealPreset_blueberryYogurt => '蓝莓酸奶';
+
+  @override
+  String get mealPreset_eggAvocadoToast => '鸡蛋牛油果吐司';
+
+  @override
+  String get mealPreset_chickenQuinoa => '鸡肉藜麦碗';
+
+  @override
+  String get mealPreset_lentilSoup => '扁豆汤';
+
+  @override
+  String get mealPreset_salmonBroccoli => '三文鱼配西兰花';
+
+  @override
+  String get mealPreset_turkeyVegWrap => '火鸡蔬菜卷';
+
+  @override
+  String get mealPreset_chickpeaTahini => '鹰嘴豆芝麻酱碗';
+
+  @override
+  String get mealPreset_tunaBeanSalad => '金枪鱼豆类沙拉';
+
+  @override
+  String get mealPreset_appleCottageCheese => '苹果茅屋奶酪碗';
+
+  @override
+  String get mealPreset_hummusVegetables => '鹰嘴豆泥配爽脆蔬菜';
+
+  @override
+  String get mealPreset_bananaKefir => '香蕉开菲尔碗';
 
   @override
   String get appTitle => 'FastTrack';

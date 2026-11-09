@@ -9,6 +9,42 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => '과일 오트밀';
+
+  @override
+  String get mealPreset_blueberryYogurt => '블루베리 요거트';
+
+  @override
+  String get mealPreset_eggAvocadoToast => '달걀 아보카도 토스트';
+
+  @override
+  String get mealPreset_chickenQuinoa => '닭고기 퀴노아 볼';
+
+  @override
+  String get mealPreset_lentilSoup => '렌틸콩 수프';
+
+  @override
+  String get mealPreset_salmonBroccoli => '연어와 브로콜리';
+
+  @override
+  String get mealPreset_turkeyVegWrap => '칠면조 채소 랩';
+
+  @override
+  String get mealPreset_chickpeaTahini => '병아리콩 타히니 볼';
+
+  @override
+  String get mealPreset_tunaBeanSalad => '참치 콩 샐러드';
+
+  @override
+  String get mealPreset_appleCottageCheese => '사과 코티지치즈 볼';
+
+  @override
+  String get mealPreset_hummusVegetables => '후무스와 아삭한 채소';
+
+  @override
+  String get mealPreset_bananaKefir => '바나나 케피어 볼';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

@@ -9,6 +9,42 @@ class AppLocalizationsRo extends AppLocalizations {
   AppLocalizationsRo([String locale = 'ro']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Ovăz cu fructe';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Iaurt cu afine';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Pâine prăjită cu ou și avocado';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Bol cu pui și quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Supă de linte';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Somon și broccoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap cu curcan și legume';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Bol cu năut și tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Salată de ton cu fasole';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Brânză cottage cu măr';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus și legume crocante';
+
+  @override
+  String get mealPreset_bananaKefir => 'Bol cu banană și chefir';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,

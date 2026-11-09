@@ -9,6 +9,42 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'फलों वाला ओट्स';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'ब्लूबेरी वाला दही';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'अंडे और एवोकाडो का टोस्ट';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'चिकन और क्विनोआ बाउल';
+
+  @override
+  String get mealPreset_lentilSoup => 'मसूर की दाल का सूप';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'सैल्मन और ब्रोकली';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'टर्की और सब्ज़ियों का रैप';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'काबुली चने और ताहिनी का बाउल';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'टूना और बीन्स का सलाद';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'सेब और कॉटेज चीज़ का बाउल';
+
+  @override
+  String get mealPreset_hummusVegetables => 'हम्मस और कुरकुरी सब्ज़ियाँ';
+
+  @override
+  String get mealPreset_bananaKefir => 'केले और केफिर का बाउल';
+
+  @override
   String game_stepsToSeal(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
