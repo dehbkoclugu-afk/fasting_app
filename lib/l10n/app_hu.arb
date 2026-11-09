@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} lépés a pecsétig} other{{count} lépés a pecsétig}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "A bejegyzést nem sikerült törölni.",
   "fastingHistory_title": "Böjti előzmények",
   "fastingHistory_deleteWarning": "Ez a bejegyzés végleg törlődik.",

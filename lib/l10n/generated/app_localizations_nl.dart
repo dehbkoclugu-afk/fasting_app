@@ -9,6 +9,17 @@ class AppLocalizationsNl extends AppLocalizations {
   AppLocalizationsNl([String locale = 'nl']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count stappen tot het zegel',
+      one: '$count stap tot het zegel',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError =>
       'De registratie kon niet worden verwijderd.';
 

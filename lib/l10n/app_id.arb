@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} langkah menuju segel} other{{count} langkah menuju segel}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Catatan tidak dapat dihapus.",
   "fastingHistory_title": "Riwayat puasa",
   "fastingHistory_deleteWarning": "Catatan ini akan dihapus secara permanen.",

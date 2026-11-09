@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} pas până la sigiliu} few{{count} pași până la sigiliu} other{{count} de pași până la sigiliu}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Înregistrarea nu a putut fi ștearsă.",
   "fastingHistory_title": "Istoricul posturilor",
   "fastingHistory_deleteWarning": "Această înregistrare va fi ștearsă definitiv.",

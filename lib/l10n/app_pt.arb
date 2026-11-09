@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} passo até ao selo} other{{count} passos até ao selo}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Não foi possível eliminar o registo.",
   "fastingHistory_title": "Histórico de jejum",
   "fastingHistory_deleteWarning": "Este registo será eliminado permanentemente.",

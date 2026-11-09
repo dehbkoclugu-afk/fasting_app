@@ -9,6 +9,17 @@ class AppLocalizationsSv extends AppLocalizations {
   AppLocalizationsSv([String locale = 'sv']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count steg till sigillet',
+      one: '$count steg till sigillet',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError => 'Det gick inte att ta bort posten.';
 
   @override

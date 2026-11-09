@@ -9,6 +9,18 @@ class AppLocalizationsRo extends AppLocalizations {
   AppLocalizationsRo([String locale = 'ro']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count de pași până la sigiliu',
+      few: '$count pași până la sigiliu',
+      one: '$count pas până la sigiliu',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError =>
       'Înregistrarea nu a putut fi ștearsă.';
 

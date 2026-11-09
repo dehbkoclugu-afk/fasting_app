@@ -9,6 +9,19 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count кроків до печатки',
+      many: '$count кроків до печатки',
+      few: '$count кроки до печатки',
+      one: '$count крок до печатки',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError => 'Не вдалося видалити запис.';
 
   @override

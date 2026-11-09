@@ -9,6 +9,17 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '인장까지 $count단계',
+      one: '인장까지 $count단계',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError => '기록을 삭제하지 못했습니다.';
 
   @override

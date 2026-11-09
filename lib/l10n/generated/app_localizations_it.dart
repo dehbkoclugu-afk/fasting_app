@@ -9,6 +9,17 @@ class AppLocalizationsIt extends AppLocalizations {
   AppLocalizationsIt([String locale = 'it']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count passi al sigillo',
+      one: '$count passo al sigillo',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError => 'Impossibile eliminare questa voce.';
 
   @override

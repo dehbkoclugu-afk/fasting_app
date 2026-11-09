@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} stap tot het zegel} other{{count} stappen tot het zegel}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "De registratie kon niet worden verwijderd.",
   "fastingHistory_title": "Vastengeschiedenis",
   "fastingHistory_deleteWarning": "Deze registratie wordt definitief verwijderd.",

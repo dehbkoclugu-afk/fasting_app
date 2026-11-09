@@ -9,6 +9,17 @@ class AppLocalizationsTh extends AppLocalizations {
   AppLocalizationsTh([String locale = 'th']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'อีก $count ก้าวถึงตราประทับ',
+      one: 'อีก $count ก้าวถึงตราประทับ',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError => 'ไม่สามารถลบบันทึกนี้ได้';
 
   @override

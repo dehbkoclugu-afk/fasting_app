@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} крок до печатки} few{{count} кроки до печатки} many{{count} кроків до печатки} other{{count} кроків до печатки}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Не вдалося видалити запис.",
   "fastingHistory_title": "Історія голодування",
   "fastingHistory_deleteWarning": "Цей запис буде видалено назавжди.",

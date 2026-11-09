@@ -151,6 +151,12 @@ abstract class AppLocalizations {
     Locale('zh', 'CN')
   ];
 
+  /// No description provided for @game_stepsToSeal.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} step to seal} other{{count} steps to seal}}'**
+  String game_stepsToSeal(int count);
+
   /// No description provided for @fastingHistory_deleteError.
   ///
   /// In en, this message translates to:

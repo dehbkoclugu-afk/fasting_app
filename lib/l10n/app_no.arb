@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} steg til seglet} other{{count} steg til seglet}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Oppføringen kunne ikke slettes.",
   "fastingHistory_title": "Fastehistorikk",
   "fastingHistory_deleteWarning": "Denne oppføringen slettes permanent.",

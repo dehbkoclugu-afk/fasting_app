@@ -9,6 +9,17 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count passos até ao selo',
+      one: '$count passo até ao selo',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError =>
       'Não foi possível eliminar o registo.';
 

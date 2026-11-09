@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} steg till sigillet} other{{count} steg till sigillet}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Det gick inte att ta bort posten.",
   "fastingHistory_title": "Fastehistorik",
   "fastingHistory_deleteWarning": "Den här posten tas bort permanent.",

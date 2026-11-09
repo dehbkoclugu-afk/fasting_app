@@ -9,6 +9,17 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '距离印章还有$count步',
+      one: '距离印章还有$count步',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError => '无法删除此记录。';
 
   @override

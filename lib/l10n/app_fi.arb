@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} askel sinettiin} other{{count} askelta sinettiin}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Merkintää ei voitu poistaa.",
   "fastingHistory_title": "Paastohistoria",
   "fastingHistory_deleteWarning": "Tämä merkintä poistetaan pysyvästi.",

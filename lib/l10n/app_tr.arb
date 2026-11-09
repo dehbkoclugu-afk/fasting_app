@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{Mühre {count} adım} other{Mühre {count} adım}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Oruç kaydı silinemedi.",
   "fastingHistory_title": "Oruç geçmişi",
   "fastingHistory_deleteWarning": "Bu oruç kaydı kalıcı olarak silinecek.",

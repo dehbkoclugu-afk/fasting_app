@@ -9,6 +9,17 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '印章まであと$countステップ',
+      one: '印章まであと$countステップ',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError => '記録を削除できませんでした。';
 
   @override

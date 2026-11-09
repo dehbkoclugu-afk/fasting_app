@@ -9,6 +9,21 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count خطوة إلى الختم',
+      many: '$count خطوة إلى الختم',
+      few: '$count خطوات إلى الختم',
+      two: 'خطوتان إلى الختم',
+      zero: 'لا خطوات متبقية إلى الختم',
+      one: 'خطوة واحدة إلى الختم',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError => 'تعذّر حذف السجل.';
 
   @override

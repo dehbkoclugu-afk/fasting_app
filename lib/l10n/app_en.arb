@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} step to seal} other{{count} steps to seal}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Could not delete this record.",
   "fastingHistory_title": "Fasting history",
   "fastingHistory_deleteWarning": "This fasting record will be permanently deleted.",

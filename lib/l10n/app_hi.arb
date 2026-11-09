@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{मुहर तक {count} कदम} other{मुहर तक {count} कदम}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "रिकॉर्ड हटाया नहीं जा सका।",
   "fastingHistory_title": "उपवास का इतिहास",
   "fastingHistory_deleteWarning": "यह रिकॉर्ड हमेशा के लिए मिटा दिया जाएगा।",

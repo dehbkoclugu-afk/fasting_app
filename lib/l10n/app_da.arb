@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} trin til seglet} other{{count} trin til seglet}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Registreringen kunne ikke slettes.",
   "fastingHistory_title": "Fastehistorik",
   "fastingHistory_deleteWarning": "Denne registrering slettes permanent.",

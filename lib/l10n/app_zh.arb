@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{距离印章还有{count}步} other{距离印章还有{count}步}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "无法删除此记录。",
   "fastingHistory_title": "禁食记录",
   "fastingHistory_deleteWarning": "这条记录将被永久删除。",

@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} Schritt bis zum Siegel} other{{count} Schritte bis zum Siegel}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Der Eintrag konnte nicht gelöscht werden.",
   "fastingHistory_title": "Fastenverlauf",
   "fastingHistory_deleteWarning": "Dieser Eintrag wird dauerhaft gelöscht.",

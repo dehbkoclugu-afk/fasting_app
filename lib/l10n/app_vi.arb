@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{Còn {count} bước để nhận dấu} other{Còn {count} bước để nhận dấu}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Không thể xóa mục này.",
   "fastingHistory_title": "Lịch sử nhịn ăn",
   "fastingHistory_deleteWarning": "Mục này sẽ bị xóa vĩnh viễn.",

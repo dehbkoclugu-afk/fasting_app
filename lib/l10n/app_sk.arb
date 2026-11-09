@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} krok k pečati} few{{count} kroky k pečati} other{{count} krokov k pečati}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Záznam sa nepodarilo odstrániť.",
   "fastingHistory_title": "História pôstu",
   "fastingHistory_deleteWarning": "Tento záznam sa natrvalo odstráni.",

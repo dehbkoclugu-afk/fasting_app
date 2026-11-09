@@ -9,6 +9,17 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'मुहर तक $count कदम',
+      one: 'मुहर तक $count कदम',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError => 'रिकॉर्ड हटाया नहीं जा सका।';
 
   @override

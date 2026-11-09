@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} étape avant le sceau} other{{count} étapes avant le sceau}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Impossible de supprimer cette entrée.",
   "fastingHistory_title": "Historique du jeûne",
   "fastingHistory_deleteWarning": "Cette entrée sera supprimée définitivement.",

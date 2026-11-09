@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{עוד צעד אחד לחותם} two{עוד שני צעדים לחותם} other{עוד {count} צעדים לחותם}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "לא ניתן למחוק את הרשומה.",
   "fastingHistory_title": "היסטוריית צום",
   "fastingHistory_deleteWarning": "הרשומה הזו תימחק לצמיתות.",

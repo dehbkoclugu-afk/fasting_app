@@ -9,6 +9,17 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count étapes avant le sceau',
+      one: '$count étape avant le sceau',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get fastingHistory_deleteError =>
       'Impossible de supprimer cette entrée.';
 

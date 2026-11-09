@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} passo al sigillo} other{{count} passi al sigillo}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Impossibile eliminare questa voce.",
   "fastingHistory_title": "Cronologia dei digiuni",
   "fastingHistory_deleteWarning": "Questa voce verrà eliminata definitivamente.",

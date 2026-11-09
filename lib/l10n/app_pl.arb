@@ -1,4 +1,6 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} krok do pieczęci} few{{count} kroki do pieczęci} many{{count} kroków do pieczęci} other{{count} kroków do pieczęci}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
   "fastingHistory_deleteError": "Nie udało się usunąć wpisu.",
   "fastingHistory_title": "Historia postów",
   "fastingHistory_deleteWarning": "Ten wpis zostanie trwale usunięty.",
