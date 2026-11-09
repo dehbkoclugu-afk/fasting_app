@@ -63,7 +63,6 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
           weight: weight,
           targetWeight: target,
           age: age,
-          isMale: _gender == 'male',
         );
     context.go('/onboarding/permissions');
   }

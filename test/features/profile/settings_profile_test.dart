@@ -23,7 +23,7 @@ void main() {
   Future<SettingsNotifier> load(AppDatabase Function() database) async {
     final notifier = SettingsNotifier(database);
     addTearDown(notifier.dispose);
-    await notifier.bodyInfoSettled;
+    await notifier.profileSettled;
     return notifier;
   }
 
@@ -37,18 +37,56 @@ void main() {
     expect(notifier.state.targetWeight, 72.0);
     expect(notifier.state.age, 34);
     expect(notifier.state.userName, 'Sam');
-    expect(await db.getSetting('body_height'), '172.5');
-    expect(await db.getSetting('body_age'), '34');
+    expect(await db.getSetting('profile_height'), '172.5');
+    expect(await db.getSetting('profile_age'), '34');
+    expect(await db.getSetting('profile_userName'), 'Sam');
 
     final prefs = await SharedPreferences.getInstance();
-    for (final key in ['height', 'weight', 'targetWeight', 'age']) {
+    for (final key in ['userName', 'height', 'weight', 'targetWeight', 'age']) {
       expect(prefs.containsKey(key), isFalse, reason: key);
     }
-    expect(prefs.getString('userName'), 'Sam');
 
     final reloaded = await load(() => db);
     expect(reloaded.state.height, 172.5);
     expect(reloaded.state.age, 34);
+    expect(reloaded.state.userName, 'Sam');
+  });
+
+  test('values nothing reads are deleted from older installs', () async {
+    SharedPreferences.setMockInitialValues({
+      'last_crisis_hour': 3,
+      'last_crisis_reason': 'dizzy',
+      'isMale': false,
+      'crisis_support_count': 2,
+    });
+
+    await load(() => db);
+
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.containsKey('last_crisis_hour'), isFalse);
+    expect(prefs.containsKey('last_crisis_reason'), isFalse);
+    expect(prefs.containsKey('isMale'), isFalse);
+    expect(prefs.getInt('crisis_support_count'), 2);
+  });
+
+  test('a name goes to the database and survives a failed save', () async {
+    SharedPreferences.setMockInitialValues({});
+    final online = await load(() => db);
+    online.setUserName('Alex');
+    await online.profileSettled;
+    expect(await db.getSetting('profile_userName'), 'Alex');
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.containsKey('userName'), isFalse);
+
+    final offline = await load(unavailable);
+    offline.setUserName('Robin');
+    await offline.profileSettled;
+    expect(prefs.getString('userName'), 'Robin');
+
+    final recovered = await load(() => db);
+    expect(recovered.state.userName, 'Robin');
+    expect(await db.getSetting('profile_userName'), 'Robin');
+    expect(prefs.containsKey('userName'), isFalse);
   });
 
   test('unavailable database keeps preference values usable', () async {
@@ -60,7 +98,7 @@ void main() {
 
     final recovered = await load(() => db);
     expect(recovered.state.weight, 81.5);
-    expect(await db.getSetting('body_weight'), '81.5');
+    expect(await db.getSetting('profile_weight'), '81.5');
     expect(
       (await SharedPreferences.getInstance()).containsKey('weight'),
       isFalse,
@@ -73,9 +111,9 @@ void main() {
 
     notifier.setBodyInfo(height: 180.0, weight: 90.0, age: 40);
     notifier.setBodyInfo(weight: 88.5);
-    await notifier.bodyInfoSettled;
+    await notifier.profileSettled;
 
-    expect(await db.getSetting('body_weight'), '88.5');
+    expect(await db.getSetting('profile_weight'), '88.5');
     final prefs = await SharedPreferences.getInstance();
     expect(prefs.containsKey('height'), isFalse);
     expect(prefs.containsKey('weight'), isFalse);
@@ -93,10 +131,10 @@ void main() {
     final notifier = SettingsNotifier(() => db);
     addTearDown(notifier.dispose);
     notifier.setBodyInfo(weight: 79.0);
-    await notifier.bodyInfoSettled;
+    await notifier.profileSettled;
 
     expect(notifier.state.weight, 79.0);
-    expect(await db.getSetting('body_weight'), '79.0');
+    expect(await db.getSetting('profile_weight'), '79.0');
   });
 
   test('a failed save survives in preferences and moves later', () async {
@@ -104,16 +142,16 @@ void main() {
     final offline = await load(unavailable);
 
     offline.setBodyInfo(weight: 77.5, age: 29);
-    await offline.bodyInfoSettled;
+    await offline.profileSettled;
     final prefs = await SharedPreferences.getInstance();
     expect(prefs.getDouble('weight'), 77.5);
     expect(prefs.getInt('age'), 29);
 
-    await db.setSetting('body_weight', '90.0');
+    await db.setSetting('profile_weight', '90.0');
     final recovered = await load(() => db);
     expect(recovered.state.weight, 77.5);
     expect(recovered.state.age, 29);
-    expect(await db.getSetting('body_weight'), '77.5');
+    expect(await db.getSetting('profile_weight'), '77.5');
   });
 
   test('erasing the database leaves no body info behind', () async {

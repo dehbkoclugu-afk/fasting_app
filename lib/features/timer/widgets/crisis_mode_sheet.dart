@@ -247,8 +247,6 @@ class _CrisisModeSheetState extends ConsumerState<_CrisisModeSheet> {
       'crisis_support_count',
       (prefs.getInt('crisis_support_count') ?? 0) + 1,
     );
-    await prefs.setInt('last_crisis_hour', DateTime.now().hour);
-    if (_reason != null) await prefs.setString('last_crisis_reason', _reason!);
     if (mounted) ref.invalidate(supportCountProvider);
     if (mounted) Navigator.pop(context);
   }

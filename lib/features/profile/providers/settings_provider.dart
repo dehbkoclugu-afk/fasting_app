@@ -24,7 +24,6 @@ class AppSettings {
   final double? weight;
   final double? targetWeight;
   final int? age;
-  final bool isMale;
 
   /// Null means follow the device language.
   final String? locale;
@@ -44,7 +43,6 @@ class AppSettings {
     this.weight,
     this.targetWeight,
     this.age,
-    this.isMale = true,
     this.locale,
   });
 
@@ -63,7 +61,6 @@ class AppSettings {
     double? weight,
     double? targetWeight,
     int? age,
-    bool? isMale,
     Object? locale = _unset,
   }) {
     return AppSettings(
@@ -81,7 +78,6 @@ class AppSettings {
       weight: weight ?? this.weight,
       targetWeight: targetWeight ?? this.targetWeight,
       age: age ?? this.age,
-      isMale: isMale ?? this.isMale,
       locale: identical(locale, _unset) ? this.locale : locale as String?,
     );
   }
@@ -89,18 +85,22 @@ class AppSettings {
 
 class SettingsNotifier extends StateNotifier<AppSettings> {
   SettingsNotifier(this._database) : super(const AppSettings()) {
-    _bodyInfoWork = _load().then((_) => _loadBodyInfo());
+    _profileWork = _load().then((_) => _loadProfile());
   }
 
   final AppDatabase Function() _database;
-  late Future<void> _bodyInfoWork;
+  late Future<void> _profileWork;
 
-  /// Completes once body info loading and queued saves have finished.
+  /// Completes once profile loading and queued saves have finished.
   @visibleForTesting
-  Future<void> get bodyInfoSettled => _bodyInfoWork;
+  Future<void> get profileSettled => _profileWork;
 
   Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
+    // Written by older versions and never read: not worth keeping anywhere.
+    for (final key in const ['last_crisis_hour', 'last_crisis_reason', 'isMale']) {
+      await prefs.remove(key);
+    }
     if (!mounted) return;
     state = AppSettings(
       themeMode: ThemeMode.values[prefs.getInt('themeMode') ?? 0],
@@ -112,83 +112,99 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
       analyticsEnabled: prefs.getBool(AnalyticsService.optInKey) ?? false,
       onboardingCompleted: prefs.getBool('onboardingCompleted') ?? false,
       selectedPlanId: prefs.getString('selectedPlanId') ?? '16_8',
-      userName: prefs.getString('userName') ?? '',
+      userName: state.userName,
       height: state.height,
       weight: state.weight,
       targetWeight: state.targetWeight,
       age: state.age,
-      isMale: prefs.getBool('isMale') ?? true,
       locale: prefs.getString('locale'),
     );
   }
 
-  /// Body info lives in the encrypted database. A value still in preferences is
-  /// either from an older version or from a failed save, so it is the newest
-  /// one, and it is only removed once the database holds it.
-  Future<void> _loadBodyInfo() async {
+  /// The name and body info live in the encrypted database. A value still in
+  /// preferences is either from an older version or from a failed save, so it is
+  /// the newest one, and it is only removed once the database holds it.
+  Future<void> _loadProfile() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      final pending = <String, num>{
-        for (final key in _bodyInfoKeys)
-          if (prefs.get(key) case final num value) key: value,
+      final pending = <String, Object>{
+        for (final key in _profileKeys)
+          if (prefs.get(key) case final Object value) key: value,
       };
 
-      var values = pending;
+      var values = {
+        for (final MapEntry(:key, :value) in pending.entries)
+          key: value.toString(),
+      };
       try {
         final db = _database();
-        await _writeBodyInfoToDatabase(db, pending);
+        await _writeProfileToDatabase(db, pending);
         values = {
-          for (final key in _bodyInfoKeys)
-            if (num.tryParse(await db.getSetting(_databaseKey(key)) ?? '')
-                case final value?)
+          for (final key in _profileKeys)
+            if (await db.getSetting(_databaseKey(key)) case final value?)
               key: value,
         };
         for (final key in pending.keys) {
           await prefs.remove(key);
         }
       } catch (error) {
-        debugPrint('Body info database unavailable: $error');
+        debugPrint('Profile database unavailable: $error');
       }
 
       if (!mounted) return;
       // A value set while this was loading is newer than anything stored.
       state = state.copyWith(
-        height: state.height ?? values['height']?.toDouble(),
-        weight: state.weight ?? values['weight']?.toDouble(),
-        targetWeight: state.targetWeight ?? values['targetWeight']?.toDouble(),
-        age: state.age ?? values['age']?.toInt(),
+        userName: state.userName.isNotEmpty ? null : values['userName'],
+        height: state.height ?? double.tryParse(values['height'] ?? ''),
+        weight: state.weight ?? double.tryParse(values['weight'] ?? ''),
+        targetWeight:
+            state.targetWeight ?? double.tryParse(values['targetWeight'] ?? ''),
+        age: state.age ?? int.tryParse(values['age'] ?? ''),
       );
     } catch (error) {
-      debugPrint('Body info load failed: $error');
+      debugPrint('Profile load failed: $error');
     }
   }
 
-  Future<void> _saveBodyInfo() async {
-    final values = <String, num>{
+  /// Queued after loading so older stored values cannot overwrite new ones.
+  void _queueProfileSave() {
+    _profileWork = _profileWork.then((_) => _saveProfile()).catchError((
+      Object error,
+    ) {
+      debugPrint('Profile save failed: $error');
+    });
+  }
+
+  Future<void> _saveProfile() async {
+    final values = <String, Object>{
+      if (state.userName.isNotEmpty) 'userName': state.userName,
       if (state.height != null) 'height': state.height!,
       if (state.weight != null) 'weight': state.weight!,
       if (state.targetWeight != null) 'targetWeight': state.targetWeight!,
       if (state.age != null) 'age': state.age!,
     };
     try {
-      await _writeBodyInfoToDatabase(_database(), values);
+      await _writeProfileToDatabase(_database(), values);
     } catch (error) {
       // Plaintext until the next launch moves it; losing the value is worse.
-      debugPrint('Body info save failed, keeping it in preferences: $error');
+      debugPrint('Profile save failed, keeping it in preferences: $error');
       final prefs = await SharedPreferences.getInstance();
       for (final MapEntry(:key, :value) in values.entries) {
-        if (key == 'age') {
-          await prefs.setInt(key, value.toInt());
-        } else {
-          await prefs.setDouble(key, value.toDouble());
+        switch (value) {
+          case final String text:
+            await prefs.setString(key, text);
+          case final int number:
+            await prefs.setInt(key, number);
+          case final double number:
+            await prefs.setDouble(key, number);
         }
       }
     }
   }
 
-  Future<void> _writeBodyInfoToDatabase(
+  Future<void> _writeProfileToDatabase(
     AppDatabase db,
-    Map<String, num> values,
+    Map<String, Object> values,
   ) {
     return db.transaction(() async {
       for (final MapEntry(:key, :value) in values.entries) {
@@ -207,8 +223,6 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     await prefs.setBool('calm_gamification', state.calmGamification);
     await prefs.setBool('onboardingCompleted', state.onboardingCompleted);
     await prefs.setString('selectedPlanId', state.selectedPlanId);
-    await prefs.setString('userName', state.userName);
-    await prefs.setBool('isMale', state.isMale);
     if (state.locale == null) {
       await prefs.remove('locale');
     } else {
@@ -263,7 +277,7 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
 
   void setUserName(String name) {
     state = state.copyWith(userName: name);
-    _save();
+    _queueProfileSave();
   }
 
   void setBodyInfo({
@@ -271,22 +285,14 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     double? weight,
     double? targetWeight,
     int? age,
-    bool? isMale,
   }) {
     state = state.copyWith(
       height: height,
       weight: weight,
       targetWeight: targetWeight,
       age: age,
-      isMale: isMale,
     );
-    _save();
-    // Queued after loading so older stored values cannot overwrite these.
-    _bodyInfoWork = _bodyInfoWork.then((_) => _saveBodyInfo()).catchError((
-      Object error,
-    ) {
-      debugPrint('Body info save failed: $error');
-    });
+    _queueProfileSave();
   }
 
   void setLocale(String? locale) {
@@ -324,9 +330,9 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
 }
 
 const _unset = Object();
-const _bodyInfoKeys = ['height', 'weight', 'targetWeight', 'age'];
+const _profileKeys = ['userName', 'height', 'weight', 'targetWeight', 'age'];
 
-String _databaseKey(String key) => 'body_$key';
+String _databaseKey(String key) => 'profile_$key';
 
 final settingsProvider = StateNotifierProvider<SettingsNotifier, AppSettings>((
   ref,
