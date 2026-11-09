@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 11 and lower. The database key is bound to this device's Keystore,
+     so a backed-up database and key could never be opened after a restore. -->
+<full-backup-content>
+    <exclude domain="root" path="app_flutter/fasting_app.sqlite" />
+    <exclude domain="root" path="app_flutter/fasting_app.sqlite-journal" />
+    <exclude domain="root" path="app_flutter/fasting_app.sqlite.encrypting" />
+    <exclude domain="root" path="app_flutter/fasting_app.sqlite.unreadable" />
+    <exclude domain="sharedpref" path="FlutterSecureStorage.xml" />
+    <exclude domain="sharedpref" path="FlutterSecureKeyStorage.xml" />
+</full-backup-content>

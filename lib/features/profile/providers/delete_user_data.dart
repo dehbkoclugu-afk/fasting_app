@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../data/database/app_database.dart';
 import '../../../services/analytics_service.dart';
 import '../../../services/notification_service.dart';
 import '../../../services/widget_service.dart';
@@ -24,7 +25,12 @@ Future<void> deleteAllUserData(WidgetRef ref) async {
   await AnalyticsService().setEnabled(false);
   await (await SharedPreferences.getInstance()).clear();
 
-  // The erasure already succeeded; a stale notification or widget is cosmetic.
+  // The erasure already succeeded; what follows is undecryptable or cosmetic.
+  try {
+    await deleteUnreadableDatabaseCopy();
+  } catch (error) {
+    debugPrint('Unreadable database cleanup failed: $error');
+  }
   try {
     await NotificationService().cancelAll();
   } catch (error) {

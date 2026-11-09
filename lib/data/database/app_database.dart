@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:drift/drift.dart';
-import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 
+import 'database_encryption.dart';
 import 'tables/fasting_sessions.dart';
 import 'tables/body_metrics.dart';
 import 'tables/meals.dart';
@@ -205,10 +205,17 @@ class AppDatabase extends _$AppDatabase {
   }
 }
 
+Future<File> _databaseFile() async {
+  final dbFolder = await getApplicationDocumentsDirectory();
+  return File(p.join(dbFolder.path, 'fasting_app.sqlite'));
+}
+
 LazyDatabase _openConnection() {
-  return LazyDatabase(() async {
-    final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'fasting_app.sqlite'));
-    return NativeDatabase.createInBackground(file);
-  });
+  return LazyDatabase(() async => openEncryptedDatabase(await _databaseFile()));
+}
+
+/// Removes a database that could not be decrypted after its key was lost.
+Future<void> deleteUnreadableDatabaseCopy() async {
+  final copy = File(unreadableDatabasePath((await _databaseFile()).path));
+  if (copy.existsSync()) copy.deleteSync();
 }
