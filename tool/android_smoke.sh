@@ -84,7 +84,10 @@ for attempt in $(seq 1 30); do
   sleep 2
 done
 if [[ "$encrypted" != true ]]; then
-  adb logcat -d -t 2000 | grep -E 'flutter|Database' | tail -30 || true
+  echo "pid: $(adb shell pidof "$package_name" || true)"
+  adb shell dumpsys window | grep -E 'mCurrentFocus|mFocusedApp' || true
+  adb exec-out run-as "$package_name" ls -la app_flutter shared_prefs || true
+  adb logcat -d -t 2000 | tail -80 || true
   echo 'Database was not encrypted after launch' >&2
   exit 1
 fi
