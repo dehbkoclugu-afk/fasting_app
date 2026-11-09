@@ -23,8 +23,15 @@ or the iOS Keychain. Code: `lib/data/database/database_encryption.dart`.
   the database and key are excluded from backup and device transfer
   (`res/xml/backup_rules.xml`, `res/xml/data_extraction_rules.xml`). iOS keeps
   history through encrypted device backups (`first_unlock` Keychain item).
-- **Height, weight, age and target weight are still plaintext** in
-  SharedPreferences (`settings_provider.dart`), and those are still backed up.
+- Height, weight, target weight and age moved from SharedPreferences to the
+  encrypted `settings` table, so they no longer follow the user to a new Android
+  phone either. A preference value is removed only after the database holds it;
+  if the database is unavailable the value stays in, or returns to, preferences
+  and moves on the next launch.
+- **Other preferences remain plaintext and backed up**: `isMale`, `userName`,
+  `selectedPlanId`, `last_crisis_reason`, `last_crisis_hour`, `safety_status`
+  and the active fast state. The background notification task reads the fast
+  state from preferences.
 - Replacing the file does not securely erase old plaintext blocks on flash.
 - Store listings and the privacy policy should mention the backup change.
 
