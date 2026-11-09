@@ -31,8 +31,8 @@ for the current application commit.
 
 ## Phone test package
 
-Sideload workflow run for the validated application commit:
-https://github.com/dehbkoclugu-afk/fasting_app/actions/runs/42538120355
+Sideload workflow run for `85641cc`, including fasting history:
+https://github.com/dehbkoclugu-afk/fasting_app/actions/runs/42619740680
 
 The `sideload-apk` artifact contains release APKs split by CPU architecture.
 Most current physical Android phones use `arm64-v8a`. The test app has the
@@ -45,7 +45,10 @@ It cannot validate photo analysis, production telemetry, or Play purchases.
 Purchase and restore tests need an internal Play build and a license tester.
 Do not enter real health information or personal photos in a QA installation.
 
-## Manual acceptance checks still pending
+## Manual acceptance checks handed off to the release owner
+
+The release owner is running the Android phone checklist. Test results have
+not been recorded.
 
 Use fictional test data in a dedicated QA installation. Record device model,
 Android version, application commit, expected result, actual result and any
@@ -59,6 +62,7 @@ checks.
 | Safety exit | Start a fast, open crisis mode, choose the unwell path and finish. The fast ends and stays ended after relaunch. |
 | Start/exit race | Request a safety exit while starting or restoring a fast. The exit completes instead of silently disappearing. |
 | Delete data | Create fictional fasting, meal, water and weight data, then delete all data. Relaunch and confirm no records or active widget session return. |
+| Delete one fast | Open Profile → Fasting history with two ended fasts. Cancelling preserves both. Confirming removes only the selected record and updates totals. |
 | Delete failure | If finalizing the active fast fails, deletion stops and offers retry instead of claiming success. |
 | Widget and notifications | Start/end a fast, relaunch and reboot. Widget and notification state follow the saved session; clearing notifications must not skip widget cleanup. |
 | Purchases and restore | In Play internal testing, verify purchase, cancellation, restore, offline access and expiry. Old refresh results must not revoke a newer verified entitlement. |

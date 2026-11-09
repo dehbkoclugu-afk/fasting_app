@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart' hide Column;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
@@ -76,8 +77,9 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
         ],
       ),
     );
-    if (confirmed != true) return;
+    if (!mounted || confirmed != true) return;
     await ref.read(databaseProvider).deleteMetric(id);
+    if (!mounted) return;
     ref.invalidate(weightHistoryProvider);
     ref.invalidate(latestWeightProvider);
     await _loadWeightHistory();
@@ -93,6 +95,10 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    final weightFormat = NumberFormat.decimalPatternDigits(
+      locale: l10n.localeName,
+      decimalDigits: 1,
+    );
     final settings = ref.watch(settingsProvider);
 
     // bodyMetrics tablosundan en son kilo, yoksa settings'den
@@ -153,7 +159,7 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
                       context,
                       title: l10n.bodyMetrics_weight,
                       value: currentWeight != null
-                          ? '${currentWeight.toStringAsFixed(1)} kg'
+                          ? '${weightFormat.format(currentWeight)} kg'
                           : '--',
                       icon: PhosphorIcons.scales(PhosphorIconsStyle.fill),
                       color: AppColors.primary,
@@ -164,7 +170,7 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
                     child: _buildSummaryCard(
                       context,
                       title: l10n.bodyMetrics_target,
-                      value: '${targetWeight.toStringAsFixed(1)} kg',
+                      value: '${weightFormat.format(targetWeight)} kg',
                       icon: PhosphorIcons.target(PhosphorIconsStyle.fill),
                       color: AppColors.success,
                     ),
@@ -198,7 +204,7 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        '${weightChange > 0 ? '+' : ''}${weightChange.toStringAsFixed(1)} kg',
+                        '${weightChange > 0 ? '+' : ''}${weightFormat.format(weightChange)} kg',
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: weightChange < 0
@@ -243,13 +249,13 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        bmi.toStringAsFixed(1),
+                        weightFormat.format(bmi),
                         style: theme.textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.w800,
                         ),
                       ),
                       Text(
-                        _bmiCategory(bmi),
+                        _bmiCategory(bmi, l10n),
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: _bmiColor(bmi),
                           fontWeight: FontWeight.w600,
@@ -305,19 +311,22 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                '${date.day}/${date.month}/${date.year}',
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: theme.colorScheme.onSurface.withValues(
-                                    alpha: 0.6,
+                              Expanded(
+                                child: Text(
+                                  MaterialLocalizations.of(context)
+                                      .formatShortDate(date),
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    color: theme.colorScheme.onSurfaceVariant,
                                   ),
                                 ),
                               ),
-                              const Spacer(),
-                              Text(
-                                '${weight.toStringAsFixed(1)} kg',
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  fontWeight: FontWeight.w700,
+                              const SizedBox(width: 8),
+                              Flexible(
+                                child: Text(
+                                  '${weightFormat.format(weight)} kg',
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
                               ),
                               IconButton(
@@ -392,11 +401,11 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
     );
   }
 
-  String _bmiCategory(double bmi) {
-    if (bmi < 18.5) return 'Underweight';
-    if (bmi < 25) return 'Normal';
-    if (bmi < 30) return 'Overweight';
-    return 'Obese';
+  String _bmiCategory(double bmi, AppLocalizations l10n) {
+    if (bmi < 18.5) return l10n.bmi_underweight;
+    if (bmi < 25) return l10n.bmi_normal;
+    if (bmi < 30) return l10n.bmi_overweight;
+    return l10n.bmi_obese;
   }
 
   Color _bmiColor(double bmi) {
@@ -433,8 +442,9 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
               if (weight == null ||
                   !weight.isFinite ||
                   weight <= 0 ||
-                  _savingWeight)
+                  _savingWeight) {
                 return;
+              }
               _savingWeight = true;
               try {
                 final db = ref.read(databaseProvider);
@@ -461,7 +471,7 @@ class _WeightTrackerScreenState extends ConsumerState<WeightTrackerScreen> {
                 if (ctx.mounted) Navigator.pop(ctx);
                 await _loadWeightHistory();
               } catch (error) {
-                if (mounted) {
+                if (context.mounted) {
                   ScaffoldMessenger.of(
                     context,
                   ).showSnackBar(SnackBar(content: Text(l10n.common_retry)));
