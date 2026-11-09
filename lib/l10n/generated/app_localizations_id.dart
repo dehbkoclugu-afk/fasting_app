@@ -389,15 +389,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Untuk rekomendasi pribadi';
 
   @override
-  String get onboarding_gender => 'Jenis Kelamin';
-
-  @override
-  String get onboarding_male => 'Pria';
-
-  @override
-  String get onboarding_female => 'Wanita';
-
-  @override
   String get onboarding_age => 'Usia';
 
   @override

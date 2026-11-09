@@ -389,15 +389,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Kişiselleştirilmiş öneriler için';
 
   @override
-  String get onboarding_gender => 'Cinsiyet';
-
-  @override
-  String get onboarding_male => 'Erkek';
-
-  @override
-  String get onboarding_female => 'Kadın';
-
-  @override
   String get onboarding_age => 'Yaş';
 
   @override

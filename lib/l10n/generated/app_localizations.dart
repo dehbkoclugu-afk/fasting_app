@@ -854,24 +854,6 @@ abstract class AppLocalizations {
   /// **'For personalized recommendations'**
   String get onboarding_bodyInfoDesc;
 
-  /// No description provided for @onboarding_gender.
-  ///
-  /// In en, this message translates to:
-  /// **'Gender'**
-  String get onboarding_gender;
-
-  /// No description provided for @onboarding_male.
-  ///
-  /// In en, this message translates to:
-  /// **'Male'**
-  String get onboarding_male;
-
-  /// No description provided for @onboarding_female.
-  ///
-  /// In en, this message translates to:
-  /// **'Female'**
-  String get onboarding_female;
-
   /// No description provided for @onboarding_age.
   ///
   /// In en, this message translates to:

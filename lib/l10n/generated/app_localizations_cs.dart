@@ -390,15 +390,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Pro osobní doporučení';
 
   @override
-  String get onboarding_gender => 'Pohlaví';
-
-  @override
-  String get onboarding_male => 'Muž';
-
-  @override
-  String get onboarding_female => 'Žena';
-
-  @override
   String get onboarding_age => 'Věk';
 
   @override

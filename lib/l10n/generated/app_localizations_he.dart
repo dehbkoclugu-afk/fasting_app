@@ -389,15 +389,6 @@ class AppLocalizationsHe extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'לקבלת המלצות אישיות';
 
   @override
-  String get onboarding_gender => 'מגדר';
-
-  @override
-  String get onboarding_male => 'זכר';
-
-  @override
-  String get onboarding_female => 'נקבה';
-
-  @override
   String get onboarding_age => 'גיל';
 
   @override

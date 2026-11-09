@@ -388,15 +388,6 @@ class AppLocalizationsTh extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'เพื่อรับคำแนะนำเฉพาะบุคคล';
 
   @override
-  String get onboarding_gender => 'เพศ';
-
-  @override
-  String get onboarding_male => 'ชาย';
-
-  @override
-  String get onboarding_female => 'หญิง';
-
-  @override
   String get onboarding_age => 'อายุ';
 
   @override

@@ -389,15 +389,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Para recomendaciones personalizadas';
 
   @override
-  String get onboarding_gender => 'Género';
-
-  @override
-  String get onboarding_male => 'Masculino';
-
-  @override
-  String get onboarding_female => 'Femenino';
-
-  @override
   String get onboarding_age => 'Edad';
 
   @override
@@ -2137,15 +2128,6 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get onboarding_bodyInfoDesc => 'Para recomendaciones personalizadas';
 
   @override
-  String get onboarding_gender => 'Género';
-
-  @override
-  String get onboarding_male => 'Masculino';
-
-  @override
-  String get onboarding_female => 'Femenino';
-
-  @override
   String get onboarding_age => 'Edad';
 
   @override
@@ -3883,15 +3865,6 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
 
   @override
   String get onboarding_bodyInfoDesc => 'Para recomendaciones personalizadas';
-
-  @override
-  String get onboarding_gender => 'Género';
-
-  @override
-  String get onboarding_male => 'Masculino';
-
-  @override
-  String get onboarding_female => 'Femenino';
 
   @override
   String get onboarding_age => 'Edad';

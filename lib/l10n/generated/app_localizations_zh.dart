@@ -388,15 +388,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboarding_bodyInfoDesc => '用于个性化建议';
 
   @override
-  String get onboarding_gender => '性别';
-
-  @override
-  String get onboarding_male => '男';
-
-  @override
-  String get onboarding_female => '女';
-
-  @override
   String get onboarding_age => '年龄';
 
   @override
@@ -2134,15 +2125,6 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get onboarding_bodyInfoDesc => '用于个性化建议';
-
-  @override
-  String get onboarding_gender => '性别';
-
-  @override
-  String get onboarding_male => '男';
-
-  @override
-  String get onboarding_female => '女';
 
   @override
   String get onboarding_age => '年龄';

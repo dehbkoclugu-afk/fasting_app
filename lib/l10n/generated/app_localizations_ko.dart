@@ -388,15 +388,6 @@ class AppLocalizationsKo extends AppLocalizations {
   String get onboarding_bodyInfoDesc => '맞춤 추천을 위해 사용됩니다';
 
   @override
-  String get onboarding_gender => '성별';
-
-  @override
-  String get onboarding_male => '남성';
-
-  @override
-  String get onboarding_female => '여성';
-
-  @override
   String get onboarding_age => '나이';
 
   @override

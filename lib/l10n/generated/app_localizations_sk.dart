@@ -390,15 +390,6 @@ class AppLocalizationsSk extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Pre osobné odporúčania';
 
   @override
-  String get onboarding_gender => 'Pohlavie';
-
-  @override
-  String get onboarding_male => 'Muž';
-
-  @override
-  String get onboarding_female => 'Žena';
-
-  @override
   String get onboarding_age => 'Vek';
 
   @override

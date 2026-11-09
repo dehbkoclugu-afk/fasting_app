@@ -388,15 +388,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Személyre szabott ajánlásokhoz';
 
   @override
-  String get onboarding_gender => 'Nem';
-
-  @override
-  String get onboarding_male => 'Férfi';
-
-  @override
-  String get onboarding_female => 'Nő';
-
-  @override
   String get onboarding_age => 'Életkor';
 
   @override

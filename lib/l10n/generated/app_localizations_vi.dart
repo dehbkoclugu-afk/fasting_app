@@ -388,15 +388,6 @@ class AppLocalizationsVi extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Để nhận đề xuất cá nhân hóa';
 
   @override
-  String get onboarding_gender => 'Giới tính';
-
-  @override
-  String get onboarding_male => 'Nam';
-
-  @override
-  String get onboarding_female => 'Nữ';
-
-  @override
   String get onboarding_age => 'Tuổi';
 
   @override

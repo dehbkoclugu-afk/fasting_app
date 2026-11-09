@@ -391,15 +391,6 @@ class AppLocalizationsPl extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Aby otrzymywać spersonalizowane zalecenia';
 
   @override
-  String get onboarding_gender => 'Płeć';
-
-  @override
-  String get onboarding_male => 'Mężczyzna';
-
-  @override
-  String get onboarding_female => 'Kobieta';
-
-  @override
   String get onboarding_age => 'Wiek';
 
   @override

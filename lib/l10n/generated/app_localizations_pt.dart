@@ -390,15 +390,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Para recomendações personalizadas';
 
   @override
-  String get onboarding_gender => 'Gênero';
-
-  @override
-  String get onboarding_male => 'Macho';
-
-  @override
-  String get onboarding_female => 'Fêmea';
-
-  @override
   String get onboarding_age => 'Idade';
 
   @override
@@ -2136,15 +2127,6 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get onboarding_bodyInfoDesc => 'Para recomendações personalizadas';
-
-  @override
-  String get onboarding_gender => 'Gênero';
-
-  @override
-  String get onboarding_male => 'Macho';
-
-  @override
-  String get onboarding_female => 'Fêmea';
 
   @override
   String get onboarding_age => 'Idade';

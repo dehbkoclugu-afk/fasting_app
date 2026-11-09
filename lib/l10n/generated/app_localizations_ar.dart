@@ -392,15 +392,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'للحصول على توصيات مخصصة';
 
   @override
-  String get onboarding_gender => 'الجنس';
-
-  @override
-  String get onboarding_male => 'ذكر';
-
-  @override
-  String get onboarding_female => 'أنثى';
-
-  @override
   String get onboarding_age => 'العمر';
 
   @override

@@ -23,7 +23,6 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
   final _weightController = TextEditingController();
   final _targetWeightController = TextEditingController();
   final _ageController = TextEditingController();
-  String _gender = 'male';
 
   double? _number(TextEditingController controller) =>
       double.tryParse(controller.text.trim().replaceAll(',', '.'));
@@ -104,32 +103,6 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
                 alignment: Alignment.centerRight,
               ),
               const SizedBox(height: 18),
-
-              // Gender
-              Text(l10n.onboarding_gender, style: theme.textTheme.titleSmall),
-              const SizedBox(height: 8),
-              SizedBox(
-                width: double.infinity,
-                child: SegmentedButton<String>(
-                  segments: [
-                    ButtonSegment(
-                      value: 'male',
-                      icon: const Icon(Icons.male),
-                      label: Text(l10n.onboarding_male),
-                    ),
-                    ButtonSegment(
-                      value: 'female',
-                      icon: const Icon(Icons.female),
-                      label: Text(l10n.onboarding_female),
-                    ),
-                  ],
-                  selected: {_gender},
-                  showSelectedIcon: false,
-                  onSelectionChanged:
-                      (selection) => setState(() => _gender = selection.first),
-                ),
-              ),
-              const SizedBox(height: 24),
 
               // Height
               _buildInputField(

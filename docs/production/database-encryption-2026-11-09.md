@@ -30,7 +30,7 @@ or the iOS Keychain. Code: `lib/data/database/database_encryption.dart`.
   preferences and moves on the next launch.
 - `last_crisis_hour`, `last_crisis_reason` and `isMale` were written but never
   read. They are no longer stored and are deleted from existing installs. The
-  onboarding gender question is now unused.
+  onboarding gender question is gone too.
 - **Other preferences remain plaintext and backed up**: `crisis_support_count`,
   `selectedPlanId`, `safety_status` and the active fast state. The startup gate
   and the background notification task read some of these from preferences.

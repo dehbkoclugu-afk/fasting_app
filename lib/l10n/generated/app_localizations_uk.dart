@@ -391,15 +391,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Для персональних рекомендацій';
 
   @override
-  String get onboarding_gender => 'Стать';
-
-  @override
-  String get onboarding_male => 'Чоловіча';
-
-  @override
-  String get onboarding_female => 'Жіноча';
-
-  @override
   String get onboarding_age => 'Вік';
 
   @override

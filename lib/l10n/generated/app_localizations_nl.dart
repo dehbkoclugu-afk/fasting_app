@@ -390,15 +390,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Voor persoonlijke aanbevelingen';
 
   @override
-  String get onboarding_gender => 'Geslacht';
-
-  @override
-  String get onboarding_male => 'Man';
-
-  @override
-  String get onboarding_female => 'Vrouw';
-
-  @override
   String get onboarding_age => 'Leeftijd';
 
   @override

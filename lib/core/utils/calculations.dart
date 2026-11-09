@@ -17,24 +17,6 @@ class Calculations {
     return l10n.bmi_obese;
   }
 
-  /// TDEE (Total Daily Energy Expenditure) - Mifflin-St Jeor
-  /// activityLevel: 1.2 (sedanter), 1.375 (hafif), 1.55 (orta), 1.725 (yoğun), 1.9 (çok yoğun)
-  static double calculateTDEE({
-    required double weightKg,
-    required double heightCm,
-    required int age,
-    required bool isMale,
-    double activityLevel = 1.55,
-  }) {
-    double bmr;
-    if (isMale) {
-      bmr = 10 * weightKg + 6.25 * heightCm - 5 * age + 5;
-    } else {
-      bmr = 10 * weightKg + 6.25 * heightCm - 5 * age - 161;
-    }
-    return bmr * activityLevel;
-  }
-
   /// Oruç tamamlama yüzdesi
   static double fastingProgress(int elapsedMinutes, int targetMinutes) {
     if (targetMinutes <= 0) return 0;
