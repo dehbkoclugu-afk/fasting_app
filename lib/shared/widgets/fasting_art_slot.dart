@@ -76,7 +76,7 @@ class FastingSplitArtCard extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Positioned.fill(
+            if (artWidth > 0) Positioned.fill(
               child: ColoredBox(
                 color: theme.colorScheme.surfaceContainerLow,
                 child: Image.asset(

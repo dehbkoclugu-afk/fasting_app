@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
 
@@ -18,11 +19,14 @@ class StreakCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    final number = NumberFormat.decimalPattern(l10n.localeName);
+    final compact = MediaQuery.sizeOf(context).width < 360 ||
+        MediaQuery.textScalerOf(context).scale(16) > 20;
 
     return FastingSplitArtCard(
       assetPath: 'assets/images/editorial/v4/report-streak.webp',
       minHeight: 156,
-      artWidth: 164,
+      artWidth: compact ? 0 : 164,
       borderRadius: 24,
       alignment: Alignment.centerRight,
       semanticLabel: l10n.stats_streak,
@@ -32,15 +36,14 @@ class StreakCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+              Wrap(spacing: 6, crossAxisAlignment: WrapCrossAlignment.center, children: [
                 Text(
-                  '$currentStreak',
+                  number.format(currentStreak),
                   style: theme.textTheme.headlineLarge?.copyWith(
                     fontWeight: FontWeight.w800,
                     color: Colors.orange,
                   ),
                 ),
-                const SizedBox(width: 6),
                 Padding(padding: const EdgeInsets.only(bottom: 5), child: Text(
                   '${l10n.common_days} ${l10n.stats_streak.toLowerCase()}',
                   style: theme.textTheme.bodySmall?.copyWith(
@@ -52,8 +55,8 @@ class StreakCard extends StatelessWidget {
               Text(_getStreakMessage(context, currentStreak), style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.onSurface, fontWeight: FontWeight.w700)),
               const SizedBox(height: 6),
               Text(
-                '${l10n.streakCard_longestStreak}: $longestStreak ${l10n.common_days} · '
-                '${l10n.streakCard_totalSessions}: $totalSessions',
+                '${l10n.streakCard_longestStreak}: ${number.format(longestStreak)} ${l10n.common_days} · '
+                '${l10n.streakCard_totalSessions}: ${number.format(totalSessions)}',
                 style: theme.textTheme.labelSmall?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
                 ),

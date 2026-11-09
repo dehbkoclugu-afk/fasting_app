@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
 
@@ -12,6 +13,8 @@ class MonthlyHeatmap extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    final material = MaterialLocalizations.of(context);
+    final number = NumberFormat.decimalPattern(l10n.localeName);
     final firstDay = DateTime(month.year, month.month, 1);
     final lastDay = DateTime(month.year, month.month + 1, 0);
     final startWeekday = firstDay.weekday; // 1=Mon
@@ -32,7 +35,7 @@ class MonthlyHeatmap extends StatelessWidget {
       children: [
         // Month header with nav
         Text(
-              '${_monthName(context, month.month)} ${month.year}',
+              material.formatMonthYear(month),
               style: theme.textTheme.titleSmall?.copyWith(
                 fontWeight: FontWeight.w800,
               ),
@@ -115,7 +118,7 @@ class MonthlyHeatmap extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          '$dayNumber',
+                          number.format(dayNumber),
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w500,
@@ -183,23 +186,4 @@ class MonthlyHeatmap extends StatelessWidget {
     );
   }
 
-  String _monthName(BuildContext context, int month) {
-    final l10n = AppLocalizations.of(context)!;
-    final names = [
-      '',
-      l10n.month_jan,
-      l10n.month_feb,
-      l10n.month_mar,
-      l10n.month_apr,
-      l10n.month_may,
-      l10n.month_jun,
-      l10n.month_jul,
-      l10n.month_aug,
-      l10n.month_sep,
-      l10n.month_oct,
-      l10n.month_nov,
-      l10n.month_dec,
-    ];
-    return names[month];
-  }
 }
