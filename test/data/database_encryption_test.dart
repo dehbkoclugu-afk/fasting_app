@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:drift/drift.dart' show LazyDatabase;
 import 'package:drift/native.dart';
 import 'package:fasting_app/data/database/app_database.dart';
 import 'package:fasting_app/data/database/database_encryption.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sqlite3/sqlite3.dart' hide Database;
 
 const marker = 'private-weight-note';
 
@@ -83,6 +85,41 @@ void main() {
     expect(hasPlaintextHeader(), isFalse);
     expect(fileContains(file, marker), isFalse);
     expect(File('${file.path}.encrypting').existsSync(), isFalse);
+  });
+
+  test('racing first queries share one migration', () async {
+    // Settings and the timer both touch the database as the app starts.
+    final plaintext = sqlite3.open(file.path);
+    plaintext.execute('CREATE TABLE smoke_marker (value TEXT)');
+    plaintext.execute('INSERT INTO smoke_marker VALUES (?)', [marker]);
+    plaintext.close();
+    final keys = MemoryKeyStore();
+    var opens = 0;
+    final db = AppDatabase.forTesting(
+      LazyDatabase(() {
+        opens++;
+        return openEncryptedDatabase(
+          file,
+          readKey: keys.read,
+          writeKey: keys.write,
+        );
+      }),
+    );
+
+    await Future.wait([
+      db.transaction(() => db.setSetting('profile_age', '40')),
+      db.getAllSessions(),
+      db.getSetting('profile_age'),
+    ]);
+    final preserved = await db
+        .customSelect('SELECT value FROM smoke_marker')
+        .getSingle();
+    await db.close();
+
+    expect(opens, 1);
+    expect(preserved.read<String>('value'), marker);
+    expect(hasPlaintextHeader(), isFalse);
+    expect(fileContains(file, marker), isFalse);
   });
 
   test('a plaintext copy left by a crash is removed', () async {
