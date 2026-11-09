@@ -409,12 +409,14 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
           children: [
             Icon(icon, color: Colors.white, size: 15),
             const SizedBox(width: 5),
-            Text(
-              label,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 10,
-                fontWeight: FontWeight.w700,
+            Flexible(
+              child: Text(
+                label,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ],
