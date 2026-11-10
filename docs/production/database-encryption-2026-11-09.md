@@ -57,5 +57,14 @@ or the iOS Keychain. Code: `lib/data/database/database_encryption.dart`.
   diagnostics). Concurrent first queries were ruled out by a unit test. If it
   recurs, the script now prints the process, files and log; read those before
   changing the check.
+- Local upgrade test on 2026-11-10 (API 35 emulator, debug builds): `85641cc`
+  with a plaintext database (2 fasts, a weight entry, a meal, water) and profile
+  values in preferences, then `6ee545f` installed over it. The database was
+  encrypted, no temporary or unreadable file remained, the profile keys and the
+  unread crisis and gender keys left preferences, and the profile, body metrics
+  and statistics screens showed the original values. On the overloaded host
+  the first launch after install never reached Dart (system ANRs, start
+  timeouts) and the file stayed plaintext; the second launch migrated. That
+  matches the unexplained CI failure, but does not prove its cause.
 - Not yet verified: iOS device, signed release build, upgrade from the Play
   Store build on a real phone.
