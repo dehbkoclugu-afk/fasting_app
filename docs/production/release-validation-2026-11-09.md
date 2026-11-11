@@ -1,5 +1,29 @@
 # FastTrack release validation — 9 November 2026
 
+## Update, 11 November 2026
+
+- Release candidate is `fix/release-blockers`, version **1.3.0+31**. CI on
+  `663871e` passed: Android build, emulator smoke and Windows. Since `fcb17a9`
+  the branch adds database encryption (`database-encryption-2026-11-09.md`),
+  moves profile values into the encrypted database and removes the gender
+  question.
+- Phone testing must use the sideload APK from run
+  https://github.com/dehbkoclugu-afk/fasting_app/actions/runs/42679002016
+  (`6ee545f`, same app code as `663871e`) or newer, not the `85641cc` build
+  below. Add two checks: install it over the older build with data and confirm
+  the data survives; confirm onboarding no longer asks for gender.
+- The app's privacy link (`fasting-app-mauve.vercel.app/privacy/`) is served
+  from `privacy/` in this repository, not from the legal-site repository. Both
+  copies now carry the encryption and backup text and go live when this branch
+  merges. `/privacy/` and `/terms/` returned 200 on 11 November.
+- Contact addresses disagree: this repository's pages use one mailbox, the
+  legal-site PR's terms and support pages another. The release owner picks one.
+- Store privacy answers are drafted in `store-privacy-declarations-2026-11-11.md`.
+- `bug-control-protocol-100.md` was re-audited: 77 pass, 6 fixed, 13 manual,
+  3 pending (Codemagic AAB and certificate, final sign-off), 1 warning.
+- The manual phone checks below were not run on an emulator: the build host had
+  0.16 GB free memory and its emulator previously stalled with system ANRs.
+
 ## Verified source and CI
 
 Application PR: https://github.com/dehbkoclugu-afk/fasting_app/pull/73
