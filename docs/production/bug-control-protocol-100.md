@@ -147,7 +147,7 @@ Audit branch: `codex/production-bug-audit-100`
 | 77 | Recalculate macros after editing item | **PASS** | food_scan_provider_test: editing an item re-totals |
 | 78 | Recalculate macros after deleting item | **PASS** | food_scan_provider_test: removing an item drops it from totals |
 | 79 | Enforce and persist daily scan quota | **PASS** | food_scan_provider_test: daily cap, persistence, midnight refresh |
-| 80 | Declare photo processing in store privacy forms | **MANUAL** | draft in store-privacy-declarations-2026-11-11.md; scanning is off in 1.3.0 |
+| 80 | Declare photo processing in store privacy forms | **MANUAL** | draft in store-privacy-declarations-2026-11-11.md; scanning ships on in 1.3.0 |
 
 ### Notifications, background and widget
 

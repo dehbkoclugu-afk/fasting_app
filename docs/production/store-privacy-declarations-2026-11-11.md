@@ -8,9 +8,9 @@ answer against the console wording and the providers' current SDK disclosures.
 
 | Feature | State in 1.3.0+31 | Effect on the forms |
 | --- | --- | --- |
-| Photo food scan (Gemini) | Off: no `GEMINI_API_KEY`, scanner hidden | No photos leave the device. Revise both forms before enabling it. |
-| Crash reporting (Sentry) | Off: no `SENTRY_DSN` | No crash logs leave the device. |
-| Analytics (PostHog) | Off: no key; opt-in only when configured | No app interactions leave the device. |
+| Photo food scan (Gemini) | On: Codemagic injects `GEMINI_API_KEY`; premium only, user starts each scan after a consent dialog | Photos declared below. |
+| Crash reporting (Sentry) | Off unless the Codemagic group sets `SENTRY_DSN` | No crash logs leave the device. |
+| Analytics (PostHog) | Off unless the group sets `POSTHOG_KEY`; then opt-in | No app interactions leave the device. |
 | Ads (AdMob) | On for free users, UMP consent form, ATT on iOS | Declared below. |
 | Purchases (RevenueCat) | On | Declared below. |
 
@@ -33,9 +33,14 @@ encrypted on-device database. Data processed only on the device is not
 | Approximate location (from IP) | Yes | Yes, Google | Advertising, fraud prevention | No (free tier) | AdMob |
 | App interactions (ad interactions) | Yes | Yes, Google | Advertising, analytics | No (free tier) | AdMob |
 | Crash logs / diagnostics | Yes | Yes, Google | Analytics, fraud prevention | No (free tier) | AdMob SDK diagnostics |
+| Photos (meal photo) | Yes, not ephemeral | Yes, Google | App functionality | Yes | Gemini API food scan |
 
-Not collected: health and fitness, name, email, photos, contacts, precise
-location, messages, files.
+Photos are shared, not just processed for us: on the unpaid Gemini tier Google
+may use them to improve its products and human reviewers may see them. Do not
+mark them ephemeral.
+
+Not collected: health and fitness, name, email, contacts, precise location,
+messages, files. The calories estimated from a photo stay on the device.
 
 ## App Store — App Privacy
 
@@ -50,13 +55,11 @@ location, messages, files.
 | Location | Coarse Location | Third-Party Advertising |
 | Usage Data | Advertising Data, Product Interaction | Third-Party Advertising, Analytics |
 | Diagnostics | Other Diagnostic Data | Analytics |
+| User Content | Photos or Videos | App Functionality |
 
 Health & Fitness is **not** declared: it never leaves the device.
 
-## If a disabled feature is turned on
+## If the Codemagic group sets these keys
 
-- Photo scan: Play adds Photos (collected, shared with Google, optional,
-  app functionality). Apple adds Photos (not linked, App Functionality). Google's
-  unpaid tier may use photos to improve products; the in-app consent says so.
 - Sentry: add Crash logs and Diagnostics for App functionality.
 - PostHog: add App interactions for Analytics, optional (opt-in).

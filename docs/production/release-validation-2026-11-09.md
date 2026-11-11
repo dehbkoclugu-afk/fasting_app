@@ -18,7 +18,14 @@
   merges. `/privacy/` and `/terms/` returned 200 on 11 November.
 - Contact address: the release owner chose the mailbox this repository's pages
   already use; the legal-site PR now uses it on every FastTrack page too.
-- Store privacy answers are drafted in `store-privacy-declarations-2026-11-11.md`.
+- Photo food scan ships on: the release owner chose it on 11 November. The
+  Codemagic release build already requires `GEMINI_API_KEY`. CI and sideload
+  builds carry no key, so the scan can only be tested on the Codemagic build
+  in Play internal testing. Without a proxy the key can be extracted from the
+  app; limit the damage in Google Cloud (API restriction to the Generative
+  Language API, low quota, no billing or a budget alert).
+- Store privacy answers, including photos sent to Gemini, are drafted in
+  `store-privacy-declarations-2026-11-11.md`.
 - `bug-control-protocol-100.md` was re-audited: 77 pass, 6 fixed, 13 manual,
   3 pending (Codemagic AAB and certificate, final sign-off), 1 warning.
 - The manual phone checks below were not run on an emulator: the build host had
@@ -124,8 +131,10 @@ PowerShell 5. The regression suite is included in the Android CI workflow.
    to this validation environment.
 2. Produce and verify the Codemagic store-signed Android AAB against the Play
    upload certificate. The unsigned CI AAB and sideload APK do not satisfy this.
-3. Resolve Gemini proxy/key protection and the previously identified unpaid-tier
-   data and regional conditions before enabling production scanning.
+3. Scanning ships with the key in the app (owner's decision, 11 November).
+   Restrict the key and cap its quota in Google Cloud, and confirm the unpaid
+   tier's regional conditions allow the countries the app is sold in. A server
+   proxy remains the proper fix.
 4. Complete legal/contact review and Play Data Safety / Apple privacy
    declarations. Keep the legal-site PR in draft and publish it with the matching
    app release: https://github.com/dehbkoclugu-afk/dehbkoclugu-afk.github.io/pull/3
