@@ -16,8 +16,8 @@
   from `privacy/` in this repository, not from the legal-site repository. Both
   copies now carry the encryption and backup text and go live when this branch
   merges. `/privacy/` and `/terms/` returned 200 on 11 November.
-- Contact addresses disagree: this repository's pages use one mailbox, the
-  legal-site PR's terms and support pages another. The release owner picks one.
+- Contact address: the release owner chose the mailbox this repository's pages
+  already use; the legal-site PR now uses it on every FastTrack page too.
 - Store privacy answers are drafted in `store-privacy-declarations-2026-11-11.md`.
 - `bug-control-protocol-100.md` was re-audited: 77 pass, 6 fixed, 13 manual,
   3 pending (Codemagic AAB and certificate, final sign-off), 1 warning.
