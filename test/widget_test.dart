@@ -6,16 +6,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fasting_app/app.dart';
 
 void main() {
-  // google_fonts reads AssetManifest.json to find bundled fonts, and the test
-  // binding serves no assets, so building the app threw before it could be
-  // pumped. An empty manifest makes it fall back to the platform font.
+  // Supply an empty image manifest for this startup smoke test.
   setUpAll(() {
     TestWidgetsFlutterBinding.ensureInitialized();
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMessageHandler('flutter/assets', (ByteData? message) async {
           final key = utf8.decode(message!.buffer.asUint8List());
-          if (key == 'AssetManifest.json') {
-            return ByteData.sublistView(utf8.encode('{}'));
+          // Asset images look themselves up here to pick a resolution.
+          if (key == 'AssetManifest.bin') {
+            return const StandardMessageCodec().encodeMessage(<String, Object>{});
           }
           return null;
         });

@@ -9,6 +9,65 @@ class AppLocalizationsRo extends AppLocalizations {
   AppLocalizationsRo([String locale = 'ro']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Ovăz cu fructe';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Iaurt cu afine';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Pâine prăjită cu ou și avocado';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Bol cu pui și quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Supă de linte';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Somon și broccoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap cu curcan și legume';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Bol cu năut și tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Salată de ton cu fasole';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Brânză cottage cu măr';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus și legume crocante';
+
+  @override
+  String get mealPreset_bananaKefir => 'Bol cu banană și chefir';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count de pași până la sigiliu',
+      few: '$count pași până la sigiliu',
+      one: '$count pas până la sigiliu',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError =>
+      'Înregistrarea nu a putut fi ștearsă.';
+
+  @override
+  String get fastingHistory_title => 'Istoricul posturilor';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Această înregistrare va fi ștearsă definitiv.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -96,13 +155,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get phase_ketosis => 'Cetoză';
 
   @override
-  String get phase_ketosisDesc => 'Producția de cetone este activă';
+  String get phase_ketosisDesc => 'Producția de cetone poate crește';
 
   @override
   String get phase_autophagy => 'Autofagie';
 
   @override
-  String get phase_autophagyDesc => 'Reînnoire celulară';
+  String get phase_autophagyDesc => 'Faza estimată de reciclare celulară';
 
   @override
   String get stats_title => 'Statistici';
@@ -189,8 +248,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get meals_noMeals => 'Nu ai adăugat încă nicio masă';
 
   @override
-  String get meals_breakfastSuggestions =>
-      'Sugestii pentru întreruperea postului';
+  String get meals_breakfastSuggestions => 'Sugestii pentru întreruperea postului';
 
   @override
   String get meals_addMeal => 'Adaugă masă';
@@ -264,8 +322,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get onboarding_welcome => 'Bun venit';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Preia controlul asupra călătoriei tale\ncu postul intermitent';
+  String get onboarding_welcomeDesc => 'Preia controlul asupra călătoriei tale\ncu postul intermitent';
 
   @override
   String get onboarding_featureTimer => 'Cronometru inteligent pentru post';
@@ -274,8 +331,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get onboarding_featureStats => 'Statistici și grafice detaliate';
 
   @override
-  String get onboarding_featureMeals =>
-      'Planificator de mese și sugestii de rețete';
+  String get onboarding_featureMeals => 'Planificator de mese și sugestii de rețete';
 
   @override
   String get onboarding_getStarted => 'Începe';
@@ -314,8 +370,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get onboarding_goalLongevity => 'Longevitate';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Reînnoire celulară și îmbătrânire sănătoasă';
+  String get onboarding_goalLongevityDesc => 'Construiește o rutină sănătoasă pe termen lung';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplină';
@@ -327,8 +382,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get onboarding_selectPlan => 'Alege-ți planul';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Alege planul de post potrivit pentru tine';
+  String get onboarding_selectPlanDesc => 'Alege planul de post potrivit pentru tine';
 
   @override
   String get onboarding_bodyInfo => 'Introdu datele tale';
@@ -337,27 +391,16 @@ class AppLocalizationsRo extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Pentru recomandări personalizate';
 
   @override
-  String get onboarding_gender => 'Sex';
-
-  @override
-  String get onboarding_male => 'Bărbat';
-
-  @override
-  String get onboarding_female => 'Femeie';
-
-  @override
   String get onboarding_age => 'Vârstă';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Aceste informații sunt stocate doar pe dispozitivul tău și sunt folosite pentru calcularea caloriilor.';
+  String get onboarding_bodyInfoDisclaimer => 'Aceste informații sunt stocate doar pe dispozitivul tău și sunt folosite pentru calcularea caloriilor.';
 
   @override
   String get onboarding_permissions => 'Ultimul pas';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Activează permisiunile pentru cea mai bună experiență';
+  String get onboarding_permissionsDesc => 'Activează permisiunile pentru cea mai bună experiență';
 
   @override
   String get onboarding_next => 'Continuă';
@@ -384,8 +427,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get paywall_title => 'Treci la Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Deblochează toate planurile de post și elimină reclamele';
+  String get paywall_subtitle => 'Deblochează toate planurile de post și elimină reclamele';
 
   @override
   String get paywall_allPlans => 'Toate planurile de post';
@@ -424,8 +466,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get paywall_premiumActive => 'Premium este activ!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Toate planurile de post sunt deblocate, iar reclamele sunt dezactivate';
+  String get paywall_premiumActiveDesc => 'Toate planurile de post sunt deblocate, iar reclamele sunt dezactivate';
 
   @override
   String get water_title => 'Aport de apă';
@@ -531,8 +572,7 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get meals_nameCalorieRequired =>
-      'Numele și caloriile sunt obligatorii';
+  String get meals_nameCalorieRequired => 'Numele și caloriile sunt obligatorii';
 
   @override
   String get bodyMetrics_addWeight => 'Adaugă greutatea';
@@ -561,8 +601,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get completion_earlyTitle => 'Post încheiat';
 
   @override
-  String get completion_earlyMessage =>
-      'Durata de astăzi a fost salvată. Seria și progresul realizărilor nu s-au schimbat deoarece obiectivul nu a fost atins.';
+  String get completion_earlyMessage => 'Durata de astăzi a fost salvată. Seria și progresul realizărilor nu s-au schimbat deoarece obiectivul nu a fost atins.';
 
   @override
   String get timer_remainingTime => 'Timp rămas';
@@ -592,8 +631,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get streak_incredible => 'Incredibil!';
 
   @override
-  String get weight_noRecord =>
-      'Nu există încă înregistrări ale greutății\nAdaugă-le din Profil > Măsurători corporale';
+  String get weight_noRecord => 'Nu există încă înregistrări ale greutății\nAdaugă-le din Profil > Măsurători corporale';
 
   @override
   String get day_mon => 'Lun';
@@ -779,8 +817,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get profile_calmGamification => 'Gamificare relaxată';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Reduce presiunea ligii și a sezonului';
+  String get profile_calmGamificationDesc => 'Reduce presiunea sezonului';
 
   @override
   String get profile_editName => 'Editează-ți numele';
@@ -798,8 +835,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get circle_tagline => 'Împreună, fără presiune.';
 
   @override
-  String get circle_privacy =>
-      'Greutatea și măsurătorile private rămân ascunse. Sunt vizibile doar progresul și sprijinul.';
+  String get circle_privacy => 'Greutatea și măsurătorile private rămân ascunse. Sunt vizibile doar progresul și sprijinul.';
 
   @override
   String circle_sendSupport(int count) {
@@ -828,8 +864,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get crisis_delayTitle => 'Amână decizia cu 10 minute';
 
   @override
-  String get crisis_delayDesc =>
-      'Dacă nu te simți bine, încheierea postului nu este un eșec.';
+  String get crisis_delayDesc => 'Dacă nu te simți bine, încheierea postului nu este un eșec.';
 
   @override
   String get crisis_hunger => 'Foame';
@@ -844,8 +879,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get crisis_tenMore => 'Acordă-i 10 minute';
 
   @override
-  String get stats_storyEmpty =>
-      'Primul tău post va începe povestea ta personală.';
+  String get stats_storyEmpty => 'Primul tău post va începe povestea ta personală.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -891,8 +925,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get weather_onPlan => 'Ritmul de azi corespunde planului tău.';
 
   @override
-  String get weather_challenging =>
-      'Această oră a fost dificilă înainte; modul de sprijin este pregătit.';
+  String get weather_challenging => 'Această oră a fost dificilă înainte; modul de sprijin este pregătit.';
 
   @override
   String get replay_copied => 'Recapitularea postului a fost copiată';
@@ -917,8 +950,7 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'Momentele fazelor sunt estimări generale, nu măsurători medicale.';
+  String get phase_estimateShort => 'Momentele fazelor sunt estimări generale, nu măsurători medicale.';
 
   @override
   String phase_hours(int start, int end) {
@@ -926,8 +958,7 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Această temporizare este o estimare generală. Răspunsurile metabolice pot varia de la o persoană la alta.';
+  String get phase_estimateLong => 'Această temporizare este o estimare generală. Răspunsurile metabolice pot varia de la o persoană la alta.';
 
   @override
   String get bmi_underweight => 'Subponderal';
@@ -959,7 +990,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get notification_phaseKetosis => 'Ești în cetoză ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagia este activă! 🔄';
+  String get notification_phaseAutophagy => 'Faza estimată de autofagie';
 
   @override
   String notification_completedBody(String plan) {
@@ -970,16 +1001,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get notification_waterTitle => 'Bea apă 💧';
 
   @override
-  String get notification_waterBody =>
-      'Nu uita să bei suficientă apă în timpul postului!';
+  String get notification_waterBody => 'Nu uita să bei suficientă apă în timpul postului!';
 
   @override
-  String get notification_windowTitle =>
-      'Fereastra de alimentație se închide ⏰';
+  String get notification_windowTitle => 'Fereastra de alimentație se închide ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Fereastra ta de alimentație se va închide în 30 de minute.';
+  String get notification_windowBody => 'Fereastra ta de alimentație se va închide în 30 de minute.';
 
   @override
   String notification_streakTitle(int days) {
@@ -987,8 +1015,7 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      'Te descurci excelent! Continuă și azi.';
+  String get notification_streakBody => 'Te descurci excelent! Continuă și azi.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1019,33 +1046,28 @@ class AppLocalizationsRo extends AppLocalizations {
   String get explore_guide => 'Ghid de post';
 
   @override
-  String get explore_guideDesc =>
-      'Tot ce trebuie să știi despre postul intermitent';
+  String get explore_guideDesc => 'Tot ce trebuie să știi despre postul intermitent';
 
   @override
-  String get explore_circleDesc =>
-      'Împărtășește sprijin discret cu grupul tău privat.';
+  String get explore_circleDesc => 'Împărtășește sprijin discret cu grupul tău privat.';
 
   @override
   String get explore_faq => 'Întrebări frecvente';
 
   @override
-  String get explore_education =>
-      'Acest conținut este doar pentru educație generală și nu reprezintă diagnostic medical sau recomandare de tratament.';
+  String get explore_education => 'Acest conținut este doar pentru educație generală și nu reprezintă diagnostic medical sau recomandare de tratament.';
 
   @override
   String get explore_safety => 'Sănătate și siguranță';
 
   @override
-  String get explore_safetyDesc =>
-      'Dacă ai o afecțiune medicală, iei medicamente regulat, ai simptome îngrijorătoare, ești însărcinată sau alăptezi, consultă un cadru medical calificat înainte de a ține post. Oprește-te dacă nu te simți bine.';
+  String get explore_safetyDesc => 'Dacă ai o afecțiune medicală, iei medicamente regulat, ai simptome îngrijorătoare, ești însărcinată sau alăptezi, consultă un cadru medical calificat înainte de a ține post. Oprește-te dacă nu te simți bine.';
 
   @override
   String get explore_sources => 'Surse';
 
   @override
-  String get explore_sourcesDesc =>
-      'Conținutul este simplificat pe baza surselor publice de sănătate de mai jos.';
+  String get explore_sourcesDesc => 'Conținutul este simplificat pe baza surselor publice de sănătate de mai jos.';
 
   @override
   String get explore_sourceError => 'Sursa nu a putut fi deschisă';
@@ -1054,8 +1076,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get explore_rules => 'Reguli importante';
 
   @override
-  String get explore_rule1 =>
-      'Nu consuma alimente cu calorii în timpul postului';
+  String get explore_rule1 => 'Nu consuma alimente cu calorii în timpul postului';
 
   @override
   String get explore_rule2 => 'Bea suficientă apă și lichide';
@@ -1067,8 +1088,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get explore_rule4 => 'Oprește postul dacă nu te simți bine';
 
   @override
-  String get explore_rule5 =>
-      'Femeile însărcinate sau care alăptează nu ar trebui să țină post';
+  String get explore_rule5 => 'Femeile însărcinate sau care alăptează nu ar trebui să țină post';
 
   @override
   String get explore_rule6 => 'Consultă medicul dacă ai afecțiuni cronice';
@@ -1077,120 +1097,103 @@ class AppLocalizationsRo extends AppLocalizations {
   String get tip_water => 'Hidratează-te';
 
   @override
-  String get tip_waterDesc =>
-      'Bea apă când îți este sete și consumă lichide la mese. Nevoile pot varia în funcție de sănătate, vreme și activitate.';
+  String get tip_waterDesc => 'Bea apă când îți este sete și consumă lichide la mese. Nevoile pot varia în funcție de sănătate, vreme și activitate.';
 
   @override
   String get tip_food => 'Mănâncă sănătos';
 
   @override
-  String get tip_foodDesc =>
-      'În ferestrele de alimentație, alege alimente bogate în proteine și fibre, precum și grăsimi sănătoase. Evită alimentele procesate.';
+  String get tip_foodDesc => 'În ferestrele de alimentație, alege alimente bogate în proteine și fibre, precum și grăsimi sănătoase. Evită alimentele procesate.';
 
   @override
   String get tip_sleep => 'Dormi bine';
 
   @override
-  String get tip_sleepDesc =>
-      'Somnul regulat și suficient susține starea generală de bine. Programează postul astfel încât să nu-ți perturbe somnul.';
+  String get tip_sleepDesc => 'Somnul regulat și suficient susține starea generală de bine. Programează postul astfel încât să nu-ți perturbe somnul.';
 
   @override
   String get tip_exercise => 'Mișcare ușoară';
 
   @override
-  String get tip_exerciseDesc =>
-      'Poți face plimbări ușoare sau yoga în timpul postului. Evită exercițiile intense, mai ales în primele săptămâni, până când corpul se adaptează.';
+  String get tip_exerciseDesc => 'Poți face plimbări ușoare sau yoga în timpul postului. Evită exercițiile intense, mai ales în primele săptămâni, până când corpul se adaptează.';
 
   @override
   String get tip_drinks => 'Băuturi permise';
 
   @override
-  String get tip_drinksDesc =>
-      'În timpul postului poți bea apă, ceai simplu și cafea neagră fără zahăr sau lapte. Aceste băuturi nu întrerup postul.';
+  String get tip_drinksDesc => 'În timpul postului poți bea apă, ceai simplu și cafea neagră fără zahăr sau lapte. Aceste băuturi nu întrerup postul.';
 
   @override
   String get faq_drinks => 'Ce pot bea în timpul postului?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Poți bea apă, ceai simplu și cafea neagră fără zahăr sau lapte. Băuturile cu calorii întrerup postul.';
+  String get faq_drinksAnswer => 'Poți bea apă, ceai simplu și cafea neagră fără zahăr sau lapte. Băuturile cu calorii întrerup postul.';
 
   @override
   String get faq_plan => 'Ce plan de post ar trebui să aleg?';
 
   @override
-  String get faq_planAnswer =>
-      'Dacă ești începător, începe cu 12:12 sau 14:10. Dacă ai experiență, încearcă 16:8 sau 18:6. 20:4 și OMAD sunt pentru avansați.';
+  String get faq_planAnswer => 'Dacă ești începător, începe cu 12:12 sau 14:10. Dacă ai experiență, încearcă 16:8 sau 18:6. 20:4 și OMAD sunt pentru avansați.';
 
   @override
   String get faq_exercise => 'Pot face mișcare în timpul postului?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Da, dar evită antrenamentele intense. Exercițiile cardio ușoare, mersul și yoga sunt ideale. Programează antrenamentul de forță aproape de fereastra de alimentație.';
+  String get faq_exerciseAnswer => 'Da, dar evită antrenamentele intense. Exercițiile cardio ușoare, mersul și yoga sunt ideale. Programează antrenamentul de forță aproape de fereastra de alimentație.';
 
   @override
   String get faq_weight => 'Postul ajută la slăbit?';
 
   @override
-  String get faq_weightAnswer =>
-      'Pentru unele persoane, limitarea intervalului de alimentație poate reduce aportul total de energie. Rezultatele variază, iar efectele pe termen lung sunt încă studiate.';
+  String get faq_weightAnswer => 'Pentru unele persoane, limitarea intervalului de alimentație poate reduce aportul total de energie. Rezultatele variază, iar efectele pe termen lung sunt încă studiate.';
 
   @override
   String get plan_12_desc => 'Nivel începător';
 
   @override
-  String get plan_12_detail =>
-      'Ideal pentru începători. Ține post 12 ore, inclusiv timpul de somn.';
+  String get plan_12_detail => 'Ideal pentru începători. Ține post 12 ore, inclusiv timpul de somn.';
 
   @override
   String get plan_16_desc => 'Cel mai popular plan';
 
   @override
-  String get plan_16_detail =>
-      'Cel mai obișnuit plan de post intermitent: 16 ore de post și o fereastră de alimentație de 8 ore, de obicei de la prânz până la cină.';
+  String get plan_16_detail => 'Cel mai obișnuit plan de post intermitent: 16 ore de post și o fereastră de alimentație de 8 ore, de obicei de la prânz până la cină.';
 
   @override
   String get plan_18_desc => 'Nivel intermediar';
 
   @override
-  String get plan_18_detail =>
-      '18 ore de post și o fereastră de alimentație de 6 ore. Arderea grăsimilor durează mai mult.';
+  String get plan_18_detail => '18 ore de post și o fereastră de alimentație de 6 ore. Arderea grăsimilor durează mai mult.';
 
   @override
   String get plan_20_desc => 'Nivel avansat';
 
   @override
-  String get plan_20_detail =>
-      '20 de ore de post și o fereastră de alimentație de 4 ore. Ideal pentru atingerea cetozei și autofagiei.';
+  String get plan_20_detail => '20 de ore de post, 4 ore de mâncat. Pentru persoane cu experiență în post.';
 
   @override
   String get plan_omad_desc => 'O masă pe zi';
 
   @override
-  String get plan_omad_detail =>
-      'O masă pe zi: 23 de ore de post și o fereastră de alimentație de 1 oră. Nivel expert.';
+  String get plan_omad_detail => 'O masă pe zi: 23 de ore de post și o fereastră de alimentație de 1 oră. Nivel expert.';
 
   @override
   String get plan_52_desc => '2 zile pe săptămână';
 
   @override
-  String get plan_52_detail =>
-      'Mănâncă normal 5 zile și limitează-te la aproximativ 500 de calorii în 2 zile. O abordare alternativă.';
+  String get plan_52_detail => 'Mănâncă normal 5 zile și limitează-te la aproximativ 500 de calorii în 2 zile. O abordare alternativă.';
 
   @override
   String get plan_ese_desc => 'Post de 24 de ore';
 
   @override
-  String get plan_ese_detail =>
-      'Ține post 24 de ore de 1–2 ori pe săptămână. Pentru avansați.';
+  String get plan_ese_detail => 'Ține post 24 de ore de 1–2 ori pe săptămână. Pentru avansați.';
 
   @override
   String get plan_warrior_desc => 'Dieta războinicului';
 
   @override
-  String get plan_warrior_detail =>
-      'Mănâncă ușor în timpul zilei, iar masa principală într-o fereastră de patru ore seara.';
+  String get plan_warrior_detail => 'Mănâncă ușor în timpul zilei, iar masa principală într-o fereastră de patru ore seara.';
 
   @override
   String get award_first_title => 'Primul pas';
@@ -1331,8 +1334,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get game_season => 'Sezon cu 30 de pași';
 
   @override
-  String get game_seasonDesc =>
-      'O insignă de colecție la fiecare al cincilea pas.';
+  String get game_seasonDesc => 'O insignă de colecție la fiecare al cincilea pas.';
 
   @override
   String get game_badges => 'Colecție de insigne';
@@ -1343,16 +1345,7 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Primești unul la fiecare șapte finalizări. O zi ratată nu îți șterge niciodată progresul.';
-
-  @override
-  String get game_league => 'Ligă săptămânală privată';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Scorul ritmului tău se află în percentila $percent a unui model local privat. Greutatea și postul extrem nu sunt niciodată clasificate.';
-  }
+  String get game_shieldsDesc => 'Primești unul la fiecare șapte finalizări. O zi ratată nu îți șterge niciodată progresul.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1496,15 +1489,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get paywall_continue => 'Continuă';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Achizițiile nu sunt disponibile momentan. Încearcă din nou mai târziu.';
+  String get paywall_productsUnavailable => 'Achizițiile nu sunt disponibile momentan. Încearcă din nou mai târziu.';
 
   @override
   String get paywall_purchaseFailed => 'Achiziția nu a putut fi finalizată.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'Nu a fost găsită nicio achiziție anterioară.';
+  String get paywall_nothingToRestore => 'Nu a fost găsită nicio achiziție anterioară.';
 
   @override
   String get paywall_restoreFailed => 'Achizițiile nu au putut fi restaurate.';
@@ -1513,15 +1504,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get paywall_terms => 'Condiții de utilizare';
 
   @override
-  String get permission_notificationDesc =>
-      'Mementouri de post, actualizări de fază și notificări de finalizare';
+  String get permission_notificationDesc => 'Mementouri de post, actualizări de fază și notificări de finalizare';
 
   @override
   String get profile_privacyChoices => 'Opțiuni de confidențialitate';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Abonamentele se reînnoiesc automat dacă nu sunt anulate cu cel puțin 24 de ore înainte de sfârșitul perioadei. Gestionează-le sau anulează-le oricând în setările App Store.';
+  String get paywall_autoRenewInfo => 'Abonamentele se reînnoiesc automat dacă nu sunt anulate cu cel puțin 24 de ore înainte de sfârșitul perioadei. Gestionează-le sau anulează-le oricând în setările App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1545,28 +1534,22 @@ class AppLocalizationsRo extends AppLocalizations {
   String get paywall_retry => 'Încearcă din nou';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Deții deja acest abonament. Atinge Restaurează achizițiile.';
+  String get paywall_alreadyOwned => 'Deții deja acest abonament. Atinge Restaurează achizițiile.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Magazinul nu poate fi accesat momentan. Verifică conexiunea și încearcă din nou.';
+  String get paywall_storeUnavailable => 'Magazinul nu poate fi accesat momentan. Verifică conexiunea și încearcă din nou.';
 
   @override
-  String get paywall_secureNote =>
-      'Anulează oricând. Plata este debitată din contul magazinului.';
+  String get paywall_secureNote => 'Anulează oricând. Plata este debitată din contul magazinului.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Abonamentele se reînnoiesc automat dacă nu sunt anulate cu cel puțin 24 de ore înainte de sfârșitul perioadei. Gestionează-le sau anulează-le în Google Play > Abonamente.';
+  String get paywall_autoRenewInfoPlay => 'Abonamentele se reînnoiesc automat dacă nu sunt anulate cu cel puțin 24 de ore înainte de sfârșitul perioadei. Gestionează-le sau anulează-le în Google Play > Abonamente.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Deblochează 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat și Warrior';
+  String get paywall_allPlansDesc => 'Deblochează 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat și Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Reclamele banner și pe ecran complet sunt dezactivate complet';
+  String get paywall_noAdsDesc => 'Reclamele banner și pe ecran complet sunt dezactivate complet';
 
   @override
   String get foodScan_title => 'Scanare alimentară cu IA';
@@ -1575,26 +1558,22 @@ class AppLocalizationsRo extends AppLocalizations {
   String get foodScan_scanCta => 'Scanează masa';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Fotografiază farfuria și află caloriile și macronutrienții';
+  String get foodScan_scanCtaDesc => 'Fotografiază farfuria și află caloriile și macronutrienții';
 
   @override
   String get foodScan_introTitle => 'Fotografiază farfuria';
 
   @override
-  String get foodScan_introDesc =>
-      'IA citește fotografia și estimează caloriile, proteinele, carbohidrații și grăsimile.';
+  String get foodScan_introDesc => 'IA citește fotografia și estimează caloriile, proteinele, carbohidrații și grăsimile.';
 
   @override
-  String get foodScan_tipLight =>
-      'Lumina bună și uniformă oferă o estimare mai precisă';
+  String get foodScan_tipLight => 'Lumina bună și uniformă oferă o estimare mai precisă';
 
   @override
   String get foodScan_tipFrame => 'Încadrează toată farfuria';
 
   @override
-  String get foodScan_tipScale =>
-      'Include tacâmuri sau o mână pentru a putea estima porția';
+  String get foodScan_tipScale => 'Include tacâmuri sau o mână pentru a putea estima porția';
 
   @override
   String get foodScan_takePhoto => 'Fotografiază';
@@ -1608,20 +1587,16 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Ai folosit scanările de azi. Încearcă din nou mâine.';
+  String get foodScan_quotaReached => 'Ai folosit scanările de azi. Încearcă din nou mâine.';
 
   @override
-  String get foodScan_privacyNote =>
-      'Fotografia este trimisă către Gemini API de la Google pentru analiză și nu este stocată pe serverele noastre.';
+  String get foodScan_privacyNote => 'Fotografia este trimisă către API-ul Gemini de la Google. Google o poate folosi pentru a-și îmbunătăți produsele, iar evaluatori umani o pot vedea. Nu o stocăm pe serverele noastre.';
 
   @override
-  String get foodScan_consentTitle =>
-      'Trimiți fotografiile către Google Gemini?';
+  String get foodScan_consentTitle => 'Trimiți fotografiile către Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'Pentru a estima caloriile și macronutrienții, fiecare fotografie cu masa pe care o faci sau o alegi este trimisă serviciului AI Gemini de la Google. Fotografia este folosită doar pentru această analiză și nu este stocată pe serverele noastre.';
+  String get foodScan_consentBody => 'Pentru a estima caloriile și macronutrienții, fiecare fotografie a mesei făcută sau aleasă este trimisă către serviciul AI Gemini de la Google. Google poate folosi fotografiile pentru a-și îmbunătăți produsele, iar evaluatori umani le pot vedea, așa că lasă în afara cadrului persoane, documente și alte date personale. Nu stocăm fotografiile pe serverele noastre.';
 
   @override
   String get foodScan_consentAgree => 'Accept și continui';
@@ -1636,12 +1611,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get foodScan_detectedItems => 'Alimente detectate';
 
   @override
-  String get foodScan_disclaimer =>
-      'Estimările IA sunt aproximative. Atinge un aliment pentru a-l corecta.';
+  String get foodScan_disclaimer => 'Estimările IA sunt aproximative. Atinge un aliment pentru a-l corecta.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Modelul nu este sigur de această fotografie. Verifică valorile înainte de salvare.';
+  String get foodScan_lowConfidence => 'Modelul nu este sigur de această fotografie. Verifică valorile înainte de salvare.';
 
   @override
   String get foodScan_save => 'Adaugă la mese';
@@ -1665,40 +1638,130 @@ class AppLocalizationsRo extends AppLocalizations {
   String get foodScan_premiumTitle => 'O funcție Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'Analiza caloriilor din fotografie este inclusă în Premium.';
+  String get foodScan_premiumDesc => 'Analiza caloriilor din fotografie este inclusă în Premium.';
 
   @override
   String get foodScan_upgrade => 'Vezi Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Nu există conexiune. Verifică internetul și încearcă din nou.';
+  String get foodScan_errorNetwork => 'Nu există conexiune. Verifică internetul și încearcă din nou.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Sunt prea multe scanări acum. Încearcă din nou peste câteva minute.';
+  String get foodScan_errorRateLimited => 'Sunt prea multe scanări acum. Încearcă din nou peste câteva minute.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'Analiza fotografiei nu este disponibilă momentan.';
+  String get foodScan_errorUnavailable => 'Analiza fotografiei nu este disponibilă momentan.';
 
   @override
-  String get foodScan_errorServer =>
-      'Serviciul de analiză întâmpină probleme. Încearcă din nou în curând.';
+  String get foodScan_errorServer => 'Serviciul de analiză întâmpină probleme. Încearcă din nou în curând.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Nu s-a găsit mâncare în această fotografie. Încearcă o imagine mai clară a farfuriei.';
+  String get foodScan_errorNoFood => 'Nu s-a găsit mâncare în această fotografie. Încearcă o imagine mai clară a farfuriei.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Această fotografie nu a putut fi analizată. Încearcă alta.';
+  String get foodScan_errorUnreadable => 'Această fotografie nu a putut fi analizată. Încearcă alta.';
 
   @override
   String get paywall_aiFoodScan => 'Scanare alimentară cu IA';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Fotografiază o masă și înregistrează caloriile și macronutrienții în câteva secunde';
+  String get paywall_aiFoodScanDesc => 'Fotografiază o masă și înregistrează caloriile și macronutrienții în câteva secunde';
+
+  @override
+  String get safety_title => 'Înainte să începi';
+
+  @override
+  String get safety_desc => 'Postul nu este sigur pentru toată lumea. Selectează tot ce ți se aplică.';
+
+  @override
+  String get safety_under18 => 'Am sub 18 ani';
+
+  @override
+  String get safety_pregnant => 'Sunt însărcinată sau alăptez';
+
+  @override
+  String get safety_eatingDisorder => 'Am sau am avut o tulburare de alimentație';
+
+  @override
+  String get safety_underweight => 'Sunt subponderal sau mi s-a spus să nu slăbesc';
+
+  @override
+  String get safety_diabetes => 'Am diabet sau iau medicamente care afectează glicemia';
+
+  @override
+  String get safety_medical => 'Am o altă afecțiune medicală sau iau medicamente regulat';
+
+  @override
+  String get safety_none => 'Nimic din acestea nu mi se aplică';
+
+  @override
+  String get safety_ack => 'Voi vorbi cu medicul înainte de a posti';
+
+  @override
+  String get safety_blockedTitle => 'Această aplicație nu este sigură pentru tine';
+
+  @override
+  String get safety_blockedDesc => 'Pe baza răspunsurilor tale, nu putem oferi post aici. Vorbește cu un medic. Dacă mâncatul este dificil acum, un specialist în sănătate te poate ajuta.';
+
+  @override
+  String get safety_reviewAnswers => 'Revizuiește răspunsurile';
+
+  @override
+  String get safety_targetTooLow => 'Această țintă este sub o greutate sănătoasă pentru înălțimea ta.';
+
+  @override
+  String get onboarding_invalidBody => 'Introdu o înălțime, o greutate, o greutate țintă și o vârstă valide.';
+
+  @override
+  String get crisis_unwell => 'Nu mă simt bine';
+
+  @override
+  String get crisis_unwellTitle => 'Încheie postul acum';
+
+  @override
+  String get crisis_unwellDesc => 'Amețeala, tremurul, confuzia sau bătăile rapide ale inimii sunt semne să oprești postul și să mănânci sau să bei ceva.';
+
+  @override
+  String get crisis_emergency => 'Dacă ai leșinat, ai dureri în piept sau te simți foarte rău, sună acum la numărul local de urgență.';
+
+  @override
+  String get crisis_endFast => 'Încheie postul meu';
+
+  @override
+  String get profile_deleteData => 'Șterge toate datele mele';
+
+  @override
+  String get profile_deleteDataConfirm => 'Aceasta șterge definitiv posturile, greutatea, mesele, apa și setările de pe acest dispozitiv. Acțiunea nu poate fi anulată. Abonamentele se gestionează în contul magazinului.';
+
+  @override
+  String get profile_deleteDataAction => 'Șterge tot';
+
+  @override
+  String get record_deleteConfirm => 'Ștergi această înregistrare?';
+
+  @override
+  String get profile_analytics => 'Partajează date anonime de utilizare';
+
+  @override
+  String get profile_analyticsDesc => 'Ajută la îmbunătățirea aplicației. Nu include niciodată greutatea, mesele sau date de sănătate.';
+
+  @override
+  String get plan_longWarningTitle => 'Acesta este un post lung';
+
+  @override
+  String get plan_longWarningDesc => 'Posturile de 20 de ore sau mai mult nu sunt potrivite pentru toată lumea și te pot face să te simți rău. Vorbește cu un medic dacă nu ești sigur și încheie postul dacă te simți rău.';
+
+  @override
+  String get plan_longWarningAccept => 'Am înțeles';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days zile de probă gratuită, apoi $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Nu postești';
+
+  @override
+  String get widget_tapToStart => 'Atinge pentru a începe';
 }

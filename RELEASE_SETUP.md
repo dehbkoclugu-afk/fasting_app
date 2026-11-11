@@ -1,7 +1,8 @@
 # FastTrack release configuration
 
-The app deliberately keeps purchases and ads disabled when production values
-are missing. Do not commit `android/key.properties` or the upload keystore.
+Purchases and ads use the platform's build values or the public fallbacks in
+`BuildConfig`; an empty value with no fallback leaves that service disabled.
+Do not commit `android/key.properties` or the upload keystore.
 
 ## Products
 
@@ -63,6 +64,8 @@ PRIVACY_POLICY_URL
 TERMS_OF_USE_URL
 ANDROID_STORE_URL
 IOS_STORE_URL
+SENTRY_DSN     # optional: crash reporting, empty disables it
+POSTHOG_KEY    # optional: opt-in analytics, empty disables it
 GEMINI_API_KEY
 ```
 
@@ -72,13 +75,21 @@ Info.plist with the production application IDs before enabling ad unit IDs.
 ### GEMINI_API_KEY — the AI food scan
 
 The premium "scan a meal photo" feature calls Google's Generative Language
-API. Create the key at <https://aistudio.google.com/apikey>; the free tier
-covers the feature and no billing account is required to start.
+API. A key can be created at <https://aistudio.google.com/apikey>, but creating
+a key is not release approval for customer photos.
+
+The [Gemini API terms](https://ai.google.dev/gemini-api/terms) state that unpaid
+inputs and outputs may be used for product improvement and human review, and
+prohibit submitting personal, sensitive or confidential information to unpaid
+services. Serving API clients to users in the EEA, Switzerland or UK requires
+Paid Services. A consent dialog does not remove these conditions. The existing
+unpaid-tier choice remains an unresolved release gate; this guide does not
+enable billing or change that choice.
 
 Two optional overrides go with it:
 
 ```text
-GEMINI_MODEL             # default gemini-2.5-flash
+GEMINI_MODEL             # fallback: BuildConfig.geminiModel in build_config.dart
 GEMINI_DAILY_SCAN_LIMIT  # scans per device per day, default 20, 0 = unlimited
 ```
 
@@ -90,27 +101,28 @@ entry points and drops the feature row from the paywall, so nothing sells a
 capability that build cannot deliver.
 
 The key still ships inside the binary and can be extracted from it. Restrict
-it in Google Cloud to the Generative Language API and set a quota cap. If the
-feature ever carries real volume, move the call behind a small backend proxy
-and have the app talk to that instead.
+it in Google Cloud to the Generative Language API and set a quota cap. A server
+proxy with server-side authorization and quota enforcement remains a release
+gate; the per-device scan counter is not a substitute for key protection.
 
-The photo is uploaded to Google for analysis, which is a data disclosure the
-store listings have to declare: Play Data safety needs "Photos and videos —
-collected, not stored, for app functionality", and the App Store privacy
-questionnaire the equivalent. The privacy policy needs the same line.
+The photo is uploaded to Google for analysis. Review Play Data Safety, the
+App Store privacy questionnaire and the privacy policy against the actual
+service tier, provider processing/retention and app configuration. Do not copy
+a blanket "not stored" declaration from this guide.
 
 ### In-source fallbacks
 
-Every one of these values also has a fallback constant in
+Public SDK keys, AdMob unit IDs and URLs can also have fallback constants in
 `lib/core/config/build_config.dart`, under "PASTE PRODUCTION VALUES HERE". A
-`--dart-define` of the same name always wins; the constant is what a build made
+non-empty `--dart-define` of the same name wins; the constant is what a build made
 without `--dart-define-from-file` falls back to, so it ships working instead of
 quietly disabling purchases and ads. That is what happened to 1.0.0+5: the
 build carried no dart-defines, so the RevenueCat key, both AdMob unit ids and
 the store links were all empty.
 
-The store and legal URLs are already filled in. Still to paste: the four AdMob
-ad unit ids and, when the app is live on iOS, the App Store listing URL.
+Android's RevenueCat key, AdMob unit IDs, store URL and the legal URLs have
+fallbacks. iOS's RevenueCat key, AdMob unit IDs and store URL still need values.
+The Gemini key and optional telemetry values have no in-source fallback.
 
 Public SDK keys (`appl_…`, `goog_…`), AdMob unit ids and public URLs ship
 inside every build and cannot read or change account data, so they belong in
@@ -120,11 +132,12 @@ keystore must never be committed.
 ## Paywall shows no purchase option
 
 The paywall only renders plans it actually receives from the store. When it
-shows the "unavailable" card with a retry button, the cause is configuration,
-not the app — work through this list in order:
+shows the "unavailable" card with a retry button, start by checking configuration
+and store connectivity:
 
-1. `REVENUECAT_IOS_API_KEY` / `REVENUECAT_ANDROID_API_KEY` were passed to the
-   release build. An empty key disables the SDK entirely.
+1. The platform's `REVENUECAT_IOS_API_KEY` / `REVENUECAT_ANDROID_API_KEY` was
+   supplied to the build or has a non-empty public fallback in `BuildConfig`.
+   Without either source, the SDK stays disabled.
 2. RevenueCat → Offerings: one offering is marked **Current** and contains
    packages. (The app falls back to any non-empty offering, but Current is
    what the pricing is designed around.)
@@ -150,5 +163,11 @@ Keep `release.json`, `key.properties`, and the keystore outside version control.
 Run the preflight check before every store build:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tool/release_check.ps1
+powershell -ExecutionPolicy Bypass -File tool/release_check.ps1 -Platform Android
 ```
+
+Use `-Platform iOS` for the iOS configuration check. Omitting `-Platform` keeps
+the combined Android/iOS check. A successful preflight checks configuration;
+verify the signed artifact and complete device acceptance separately.
+
+Run the preflight regression suite with `pwsh -NoProfile -File tool/test_release_check.ps1`.

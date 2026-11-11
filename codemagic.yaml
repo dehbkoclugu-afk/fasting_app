@@ -55,6 +55,10 @@ workflows:
         script: flutter pub get
       - name: Generate l10n
         script: flutter gen-l10n
+      - name: Analyze
+        script: flutter analyze --no-fatal-infos
+      - name: Test
+        script: flutter test
       - name: Set up code signing
         script: xcode-project use-profiles --project ios/Runner.xcodeproj
       - name: Build IPA
@@ -66,6 +70,8 @@ workflows:
             --dart-define=PRIVACY_POLICY_URL=$PRIVACY_POLICY_URL \
             --dart-define=TERMS_OF_USE_URL=$TERMS_OF_USE_URL \
             --dart-define=IOS_STORE_URL=$IOS_STORE_URL \
+            --dart-define=SENTRY_DSN=$SENTRY_DSN \
+            --dart-define=POSTHOG_KEY=$POSTHOG_KEY \
             --dart-define=GEMINI_API_KEY=$GEMINI_API_KEY \
             --export-options-plist=/Users/builder/export_options.plist
     artifacts:
@@ -149,6 +155,8 @@ workflows:
             --dart-define=PRIVACY_POLICY_URL=$PRIVACY_POLICY_URL \
             --dart-define=TERMS_OF_USE_URL=$TERMS_OF_USE_URL \
             --dart-define=ANDROID_STORE_URL=$ANDROID_STORE_URL \
+            --dart-define=SENTRY_DSN=$SENTRY_DSN \
+            --dart-define=POSTHOG_KEY=$POSTHOG_KEY \
             --dart-define=GEMINI_API_KEY=$GEMINI_API_KEY
       - name: Build APK
         # Produces an installable release APK for direct distribution. The same
@@ -161,6 +169,8 @@ workflows:
             --dart-define=PRIVACY_POLICY_URL=$PRIVACY_POLICY_URL \
             --dart-define=TERMS_OF_USE_URL=$TERMS_OF_USE_URL \
             --dart-define=ANDROID_STORE_URL=$ANDROID_STORE_URL \
+            --dart-define=SENTRY_DSN=$SENTRY_DSN \
+            --dart-define=POSTHOG_KEY=$POSTHOG_KEY \
             --dart-define=GEMINI_API_KEY=$GEMINI_API_KEY
       - name: Verify the bundle is signed
         # Play refuses an unsigned upload, and a successful build is not proof

@@ -143,7 +143,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
               GradientButton(
                 text: l10n.onboarding_getStarted,
-                onPressed: () => context.go('/onboarding/goals'),
+                onPressed: () => context.go('/safety'),
               ),
               const SizedBox(height: 16),
                     ],

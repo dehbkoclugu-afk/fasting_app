@@ -9,6 +9,62 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'フルーツオートミール';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'ブルーベリーヨーグルト';
+
+  @override
+  String get mealPreset_eggAvocadoToast => '卵とアボカドのトースト';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'チキンとキヌアのボウル';
+
+  @override
+  String get mealPreset_lentilSoup => 'レンズ豆のスープ';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'サーモンとブロッコリー';
+
+  @override
+  String get mealPreset_turkeyVegWrap => '七面鳥と野菜のラップ';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'ひよこ豆とタヒニのボウル';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'ツナと豆のサラダ';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'りんごとカッテージチーズのボウル';
+
+  @override
+  String get mealPreset_hummusVegetables => 'フムスとシャキシャキ野菜';
+
+  @override
+  String get mealPreset_bananaKefir => 'バナナとケフィアのボウル';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '印章まであと$countステップ',
+      one: '印章まであと$countステップ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError => '記録を削除できませんでした。';
+
+  @override
+  String get fastingHistory_title => '断食履歴';
+
+  @override
+  String get fastingHistory_deleteWarning => 'この記録は完全に削除されます。';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -96,13 +152,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get phase_ketosis => 'ケトーシス';
 
   @override
-  String get phase_ketosisDesc => 'ケトン体の生成が活発です';
+  String get phase_ketosisDesc => 'ケトン産生が増える可能性があります';
 
   @override
   String get phase_autophagy => 'オートファジー';
 
   @override
-  String get phase_autophagyDesc => '細胞の更新';
+  String get phase_autophagyDesc => '推定される細胞リサイクル期';
 
   @override
   String get stats_title => '統計';
@@ -311,7 +367,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get onboarding_goalLongevity => '長寿';
 
   @override
-  String get onboarding_goalLongevityDesc => '細胞の更新と健やかな老化';
+  String get onboarding_goalLongevityDesc => '健康的な長期習慣を作る';
 
   @override
   String get onboarding_goalDiscipline => '自律';
@@ -330,15 +386,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get onboarding_bodyInfoDesc => '個別のおすすめを提供するために使用します';
-
-  @override
-  String get onboarding_gender => '性別';
-
-  @override
-  String get onboarding_male => '男性';
-
-  @override
-  String get onboarding_female => '女性';
 
   @override
   String get onboarding_age => '年齢';
@@ -551,8 +598,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get completion_earlyTitle => '断食を終了しました';
 
   @override
-  String get completion_earlyMessage =>
-      '今日の時間を保存しました。目標を達成していないため、連続記録と実績の進行状況は変わりません。';
+  String get completion_earlyMessage => '今日の時間を保存しました。目標を達成していないため、連続記録と実績の進行状況は変わりません。';
 
   @override
   String get timer_remainingTime => '残り時間';
@@ -768,7 +814,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get profile_calmGamification => '穏やかなゲーム要素';
 
   @override
-  String get profile_calmGamificationDesc => 'リーグやシーズンのプレッシャーを軽減します';
+  String get profile_calmGamificationDesc => 'シーズンのプレッシャーを減らします';
 
   @override
   String get profile_editName => '名前を編集';
@@ -941,7 +987,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notification_phaseKetosis => 'ケトーシス状態です ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'オートファジーが活発です！ 🔄';
+  String get notification_phaseAutophagy => '推定オートファジー期';
 
   @override
   String notification_completedBody(String plan) {
@@ -1012,8 +1058,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get explore_safety => '健康と安全';
 
   @override
-  String get explore_safetyDesc =>
-      '持病がある、常用薬を服用している、気になる症状がある、妊娠中または授乳中の場合は、断食を始める前に資格を持つ医療専門家に相談してください。気分が悪くなったら中止してください。';
+  String get explore_safetyDesc => '持病がある、常用薬を服用している、気になる症状がある、妊娠中または授乳中の場合は、断食を始める前に資格を持つ医療専門家に相談してください。気分が悪くなったら中止してください。';
 
   @override
   String get explore_sources => '出典';
@@ -1049,8 +1094,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get tip_water => '水分を保つ';
 
   @override
-  String get tip_waterDesc =>
-      '喉が渇いたら水を飲み、食事にも水分を取り入れましょう。必要量は健康状態、天候、活動量によって異なります。';
+  String get tip_waterDesc => '喉が渇いたら水を飲み、食事にも水分を取り入れましょう。必要量は健康状態、天候、活動量によって異なります。';
 
   @override
   String get tip_food => '正しく食べる';
@@ -1068,43 +1112,37 @@ class AppLocalizationsJa extends AppLocalizations {
   String get tip_exercise => '軽い運動';
 
   @override
-  String get tip_exerciseDesc =>
-      '断食中も軽い散歩やヨガはできます。特に身体が慣れるまでの最初の数週間は激しい運動を避けてください。';
+  String get tip_exerciseDesc => '断食中も軽い散歩やヨガはできます。特に身体が慣れるまでの最初の数週間は激しい運動を避けてください。';
 
   @override
   String get tip_drinks => '飲めるもの';
 
   @override
-  String get tip_drinksDesc =>
-      '断食中は水、無糖のお茶、ブラックコーヒー（砂糖・ミルクなし）を飲めます。これらは断食を中断しません。';
+  String get tip_drinksDesc => '断食中は水、無糖のお茶、ブラックコーヒー（砂糖・ミルクなし）を飲めます。これらは断食を中断しません。';
 
   @override
   String get faq_drinks => '断食中に何を飲めますか？';
 
   @override
-  String get faq_drinksAnswer =>
-      '水、無糖のお茶、ブラックコーヒー（砂糖・ミルクなし）を飲めます。カロリーのある飲み物は断食を中断します。';
+  String get faq_drinksAnswer => '水、無糖のお茶、ブラックコーヒー（砂糖・ミルクなし）を飲めます。カロリーのある飲み物は断食を中断します。';
 
   @override
   String get faq_plan => 'どの断食プランを選べばよいですか？';
 
   @override
-  String get faq_planAnswer =>
-      '初心者は12:12または14:10から始めましょう。経験者は16:8または18:6を試せます。20:4とOMADは上級者向けです。';
+  String get faq_planAnswer => '初心者は12:12または14:10から始めましょう。経験者は16:8または18:6を試せます。20:4とOMADは上級者向けです。';
 
   @override
   String get faq_exercise => '断食中に運動できますか？';
 
   @override
-  String get faq_exerciseAnswer =>
-      'はい。ただし激しい運動は避けてください。軽い有酸素運動、散歩、ヨガが適しています。筋力トレーニングは食事時間の近くに行いましょう。';
+  String get faq_exerciseAnswer => 'はい。ただし激しい運動は避けてください。軽い有酸素運動、散歩、ヨガが適しています。筋力トレーニングは食事時間の近くに行いましょう。';
 
   @override
   String get faq_weight => '断食は減量に役立ちますか？';
 
   @override
-  String get faq_weightAnswer =>
-      '食事時間を制限すると総摂取エネルギーが減る人もいます。結果には個人差があり、長期的な影響は現在も研究中です。';
+  String get faq_weightAnswer => '食事時間を制限すると総摂取エネルギーが減る人もいます。結果には個人差があり、長期的な影響は現在も研究中です。';
 
   @override
   String get plan_12_desc => '初心者向け';
@@ -1128,7 +1166,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get plan_20_desc => '上級者向け';
 
   @override
-  String get plan_20_detail => '20時間断食し、4時間食事します。ケトーシスとオートファジーを目指す上級プランです。';
+  String get plan_20_detail => '20時間の断食、4時間の食事時間。断食の経験がある方向けです。';
 
   @override
   String get plan_omad_desc => '1日1食';
@@ -1307,14 +1345,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get game_shieldsDesc => '7回完了するごとに獲得できます。1日休んでも進捗が消えることはありません。';
 
   @override
-  String get game_league => '非公開の週間リーグ';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'あなたのリズムスコアは非公開のローカルモデルで$percentパーセンタイルです。体重や極端な断食を順位付けすることはありません。';
-  }
-
-  @override
   String game_levelSemantics(int level, int xp) {
     return 'レベル$level、経験値$xp';
   }
@@ -1477,8 +1507,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get profile_privacyChoices => 'プライバシーの選択';
 
   @override
-  String get paywall_autoRenewInfo =>
-      '期間終了の24時間以上前に解約しない限り、サブスクリプションは自動更新されます。App Storeの設定からいつでも管理または解約できます。';
+  String get paywall_autoRenewInfo => '期間終了の24時間以上前に解約しない限り、サブスクリプションは自動更新されます。App Storeの設定からいつでも管理または解約できます。';
 
   @override
   String paywall_perMonth(String price) {
@@ -1511,12 +1540,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get paywall_secureNote => 'いつでも解約できます。料金はストアアカウントに請求されます。';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      '期間終了の24時間以上前に解約しない限り、サブスクリプションは自動更新されます。Google Play > 定期購入からいつでも管理または解約できます。';
+  String get paywall_autoRenewInfoPlay => '期間終了の24時間以上前に解約しない限り、サブスクリプションは自動更新されます。Google Play > 定期購入からいつでも管理または解約できます。';
 
   @override
-  String get paywall_allPlansDesc =>
-      '18:6、20:4、OMAD、5:2、Eat-Stop-Eat、Warriorを利用可能';
+  String get paywall_allPlansDesc => '18:6、20:4、OMAD、5:2、Eat-Stop-Eat、Warriorを利用可能';
 
   @override
   String get paywall_noAdsDesc => 'バナー広告と全画面広告を完全に非表示にします';
@@ -1560,15 +1587,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get foodScan_quotaReached => '今日のスキャン回数を使い切りました。明日もう一度お試しください。';
 
   @override
-  String get foodScan_privacyNote =>
-      '写真は分析のためGoogleのGemini APIに送信され、当社のサーバーには保存されません。';
+  String get foodScan_privacyNote => '写真はGoogleのGemini APIに送信されます。Googleは製品改善に使用する場合があり、人間の審査担当者が見る場合があります。当社のサーバーには保存しません。';
 
   @override
   String get foodScan_consentTitle => '写真を Google Gemini に送信しますか？';
 
   @override
-  String get foodScan_consentBody =>
-      'カロリーと栄養素を推定するため、撮影または選択した食事の写真は Google の AI サービス Gemini に送信されます。写真はこの分析にのみ使用され、当社のサーバーには保存されません。';
+  String get foodScan_consentBody => 'カロリーと栄養素を推定するため、撮影または選択した食事写真はそれぞれGoogleのGemini AIサービスに送信されます。Googleは写真を製品改善に使用する場合があり、人間の審査担当者が見る場合があるため、人物、書類、その他の個人情報を写さないでください。当社のサーバーに写真は保存しません。';
 
   @override
   String get foodScan_consentAgree => '同意して続ける';
@@ -1638,4 +1663,102 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get paywall_aiFoodScanDesc => '食事を撮影し、カロリーと主要栄養素を数秒で記録します';
+
+  @override
+  String get safety_title => '始める前に';
+
+  @override
+  String get safety_desc => '断食はすべての人に安全とは限りません。当てはまるものをすべて選択してください。';
+
+  @override
+  String get safety_under18 => '18歳未満です';
+
+  @override
+  String get safety_pregnant => '妊娠中または授乳中です';
+
+  @override
+  String get safety_eatingDisorder => '摂食障害がある、または過去にありました';
+
+  @override
+  String get safety_underweight => '低体重である、または減量しないよう言われています';
+
+  @override
+  String get safety_diabetes => '糖尿病がある、または血糖値に影響する薬を服用しています';
+
+  @override
+  String get safety_medical => '他の持病がある、または定期的に薬を服用しています';
+
+  @override
+  String get safety_none => 'どれも当てはまりません';
+
+  @override
+  String get safety_ack => '断食の前に医師に相談します';
+
+  @override
+  String get safety_blockedTitle => 'このアプリはあなたにとって安全ではありません';
+
+  @override
+  String get safety_blockedDesc => 'ご回答に基づき、ここでは断食を提供できません。医師にご相談ください。今、食べることがつらい場合は、医療の専門家が力になれます。';
+
+  @override
+  String get safety_reviewAnswers => '回答を見直す';
+
+  @override
+  String get safety_targetTooLow => 'この目標は身長に対して健康的な体重を下回っています。';
+
+  @override
+  String get onboarding_invalidBody => '有効な身長、体重、目標体重、年齢を入力してください。';
+
+  @override
+  String get crisis_unwell => '体調が悪い';
+
+  @override
+  String get crisis_unwellTitle => '今すぐ断食を終了してください';
+
+  @override
+  String get crisis_unwellDesc => 'めまい、震え、混乱、動悸は、断食をやめて何か食べたり飲んだりすべきサインです。';
+
+  @override
+  String get crisis_emergency => '失神した、胸が痛む、または非常に具合が悪い場合は、すぐに地域の緊急番号に電話してください。';
+
+  @override
+  String get crisis_endFast => '断食を終了する';
+
+  @override
+  String get profile_deleteData => 'すべてのデータを削除';
+
+  @override
+  String get profile_deleteDataConfirm => '断食、体重、食事、水分、設定をこのデバイスから完全に削除します。元に戻せません。サブスクリプションはストアのアカウントで管理します。';
+
+  @override
+  String get profile_deleteDataAction => 'すべて削除';
+
+  @override
+  String get record_deleteConfirm => 'この記録を削除しますか？';
+
+  @override
+  String get profile_analytics => '匿名の利用データを共有';
+
+  @override
+  String get profile_analyticsDesc => 'アプリの改善に役立ちます。体重、食事、健康情報は一切含みません。';
+
+  @override
+  String get plan_longWarningTitle => 'これは長時間の断食です';
+
+  @override
+  String get plan_longWarningDesc => '20時間以上の断食はすべての人に適しているわけではなく、体調が悪くなることがあります。不安な場合は医師に相談し、体調が悪いときは断食を終了してください。';
+
+  @override
+  String get plan_longWarningAccept => '理解しました';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days日間の無料トライアル後、$price（$plan）';
+  }
+
+  @override
+  String get widget_notFasting => '断食していません';
+
+  @override
+  String get widget_tapToStart => 'タップして開始';
 }

@@ -160,7 +160,9 @@ class _MainShellState extends ConsumerState<MainShell>
                 phaseName: metabolicPhaseName(l10n, timer.currentPhase),
                 onDismiss: () {
                   ref.read(timerProvider.notifier).resetTimer();
-                  if (!ref.read(isPremiumProvider)) {
+                  final subscription = ref.read(subscriptionProvider);
+                  if (subscription.entitlementVerified &&
+                      !subscription.isPremium) {
                     AdmobService().showInterstitialAd();
                   }
                 },

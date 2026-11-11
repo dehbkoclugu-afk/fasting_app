@@ -9,6 +9,63 @@ class AppLocalizationsFi extends AppLocalizations {
   AppLocalizationsFi([String locale = 'fi']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Hedelmäkaurapuuro';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Mustikkajogurtti';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Muna-avokadoleipä';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Kana-kvinoakulho';
+
+  @override
+  String get mealPreset_lentilSoup => 'Linssikeitto';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Lohi ja parsakaali';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Kalkkuna-kasviswrap';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Kikherne-tahinikulho';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Tonnikala-papusalaatti';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Raejuusto-omenakulho';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus ja rapeat kasvikset';
+
+  @override
+  String get mealPreset_bananaKefir => 'Banaani-kefiirikulho';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count askelta sinettiin',
+      one: '$count askel sinettiin',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError => 'Merkintää ei voitu poistaa.';
+
+  @override
+  String get fastingHistory_title => 'Paastohistoria';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Tämä merkintä poistetaan pysyvästi.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -63,8 +120,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get timer_selectPlan => 'Valitse paasto-ohjelma';
 
   @override
-  String get timer_stopConfirm =>
-      'Haluatko varmasti lopettaa paaston etuajassa?';
+  String get timer_stopConfirm => 'Haluatko varmasti lopettaa paaston etuajassa?';
 
   @override
   String get timer_stopTitle => 'Lopeta paasto';
@@ -97,13 +153,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get phase_ketosis => 'Ketoosi';
 
   @override
-  String get phase_ketosisDesc => 'Ketonien tuotanto on aktiivista';
+  String get phase_ketosisDesc => 'Ketonien tuotanto voi kasvaa';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Solujen uusiutuminen';
+  String get phase_autophagyDesc => 'Arvioitu solujen kierrätysvaihe';
 
   @override
   String get stats_title => 'Tilastot';
@@ -264,8 +320,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get onboarding_welcome => 'Tervetuloa';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Ota ajoittaisen paaston matkasi\nhaltuun';
+  String get onboarding_welcomeDesc => 'Ota ajoittaisen paaston matkasi\nhaltuun';
 
   @override
   String get onboarding_featureTimer => 'Älykäs paastoajastin';
@@ -274,8 +329,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get onboarding_featureStats => 'Yksityiskohtaiset tilastot ja kaaviot';
 
   @override
-  String get onboarding_featureMeals =>
-      'Ateriasuunnittelija ja reseptiehdotukset';
+  String get onboarding_featureMeals => 'Ateriasuunnittelija ja reseptiehdotukset';
 
   @override
   String get onboarding_getStarted => 'Aloita';
@@ -314,8 +368,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get onboarding_goalLongevity => 'Pitkäikäisyys';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Solujen uusiutuminen ja terve ikääntyminen';
+  String get onboarding_goalLongevityDesc => 'Rakenna terveellinen pitkän aikavälin rutiini';
 
   @override
   String get onboarding_goalDiscipline => 'Itsekuri';
@@ -327,8 +380,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get onboarding_selectPlan => 'Valitse ohjelmasi';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Valitse sinulle parhaiten sopiva paasto-ohjelma';
+  String get onboarding_selectPlanDesc => 'Valitse sinulle parhaiten sopiva paasto-ohjelma';
 
   @override
   String get onboarding_bodyInfo => 'Anna tietosi';
@@ -337,27 +389,16 @@ class AppLocalizationsFi extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Henkilökohtaisia suosituksia varten';
 
   @override
-  String get onboarding_gender => 'Sukupuoli';
-
-  @override
-  String get onboarding_male => 'Mies';
-
-  @override
-  String get onboarding_female => 'Nainen';
-
-  @override
   String get onboarding_age => 'Ikä';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Nämä tiedot tallennetaan vain laitteellesi ja niitä käytetään kalorilaskelmiin.';
+  String get onboarding_bodyInfoDisclaimer => 'Nämä tiedot tallennetaan vain laitteellesi ja niitä käytetään kalorilaskelmiin.';
 
   @override
   String get onboarding_permissions => 'Viimeinen vaihe';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Ota käyttöoikeudet käyttöön parasta kokemusta varten';
+  String get onboarding_permissionsDesc => 'Ota käyttöoikeudet käyttöön parasta kokemusta varten';
 
   @override
   String get onboarding_next => 'Jatka';
@@ -384,8 +425,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get paywall_title => 'Päivitä Premiumiin';
 
   @override
-  String get paywall_subtitle =>
-      'Avaa kaikki paasto-ohjelmat ja poista mainokset';
+  String get paywall_subtitle => 'Avaa kaikki paasto-ohjelmat ja poista mainokset';
 
   @override
   String get paywall_allPlans => 'Kaikki paasto-ohjelmat';
@@ -424,8 +464,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get paywall_premiumActive => 'Premium on aktiivinen!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Kaikki paasto-ohjelmat on avattu ja mainokset poistettu';
+  String get paywall_premiumActiveDesc => 'Kaikki paasto-ohjelmat on avattu ja mainokset poistettu';
 
   @override
   String get water_title => 'Veden saanti';
@@ -560,8 +599,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get completion_earlyTitle => 'Paasto päättyi';
 
   @override
-  String get completion_earlyMessage =>
-      'Tämän päivän aika tallennettiin. Putki ja saavutusten edistyminen eivät muuttuneet, koska tavoitetta ei saavutettu.';
+  String get completion_earlyMessage => 'Tämän päivän aika tallennettiin. Putki ja saavutusten edistyminen eivät muuttuneet, koska tavoitetta ei saavutettu.';
 
   @override
   String get timer_remainingTime => 'Jäljellä oleva aika';
@@ -591,8 +629,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get streak_incredible => 'Uskomatonta!';
 
   @override
-  String get weight_noRecord =>
-      'Painomerkintöjä ei vielä ole\nLisää niitä kohdassa Profiili > Kehon mitat';
+  String get weight_noRecord => 'Painomerkintöjä ei vielä ole\nLisää niitä kohdassa Profiili > Kehon mitat';
 
   @override
   String get day_mon => 'Ma';
@@ -778,8 +815,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get profile_calmGamification => 'Rauhallinen pelillistäminen';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Vähentää liigan ja kauden aiheuttamaa painetta';
+  String get profile_calmGamificationDesc => 'Vähentää kauden painetta';
 
   @override
   String get profile_editName => 'Muokkaa nimeäsi';
@@ -797,8 +833,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get circle_tagline => 'Yhdessä, ilman paineita.';
 
   @override
-  String get circle_privacy =>
-      'Paino ja yksityiset mittarit pysyvät piilossa. Vain edistyminen ja tuki näkyvät.';
+  String get circle_privacy => 'Paino ja yksityiset mittarit pysyvät piilossa. Vain edistyminen ja tuki näkyvät.';
 
   @override
   String circle_sendSupport(int count) {
@@ -827,8 +862,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get crisis_delayTitle => 'Siirrä päätöstä 10 minuutilla';
 
   @override
-  String get crisis_delayDesc =>
-      'Jos voit huonosti, paaston lopettaminen ei ole epäonnistuminen.';
+  String get crisis_delayDesc => 'Jos voit huonosti, paaston lopettaminen ei ole epäonnistuminen.';
 
   @override
   String get crisis_hunger => 'Nälkä';
@@ -843,8 +877,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get crisis_tenMore => 'Anna sille 10 minuuttia';
 
   @override
-  String get stats_storyEmpty =>
-      'Ensimmäinen paastosi aloittaa henkilökohtaisen tarinasi.';
+  String get stats_storyEmpty => 'Ensimmäinen paastosi aloittaa henkilökohtaisen tarinasi.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -890,8 +923,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get weather_onPlan => 'Tämän päivän tahti vastaa ohjelmaasi.';
 
   @override
-  String get weather_challenging =>
-      'Tämä tunti on ollut aiemmin haastava; tukitila on valmiina.';
+  String get weather_challenging => 'Tämä tunti on ollut aiemmin haastava; tukitila on valmiina.';
 
   @override
   String get replay_copied => 'Paastokooste kopioitu';
@@ -916,8 +948,7 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'Vaiheiden ajoitus on yleinen arvio, ei lääketieteellinen mittaus.';
+  String get phase_estimateShort => 'Vaiheiden ajoitus on yleinen arvio, ei lääketieteellinen mittaus.';
 
   @override
   String phase_hours(int start, int end) {
@@ -925,8 +956,7 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Tämä ajoitus on yleinen arvio. Aineenvaihdunnan reaktiot voivat vaihdella ihmisestä toiseen.';
+  String get phase_estimateLong => 'Tämä ajoitus on yleinen arvio. Aineenvaihdunnan reaktiot voivat vaihdella ihmisestä toiseen.';
 
   @override
   String get bmi_underweight => 'Alipaino';
@@ -958,7 +988,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get notification_phaseKetosis => 'Olet ketoosissa ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagia on aktiivinen! 🔄';
+  String get notification_phaseAutophagy => 'Arvioitu autofagiavaihe';
 
   @override
   String notification_completedBody(String plan) {
@@ -969,15 +999,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get notification_waterTitle => 'Juo vettä 💧';
 
   @override
-  String get notification_waterBody =>
-      'Muista juoda runsaasti vettä paaston aikana!';
+  String get notification_waterBody => 'Muista juoda runsaasti vettä paaston aikana!';
 
   @override
   String get notification_windowTitle => 'Syömisikkuna sulkeutuu ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Syömisikkunasi sulkeutuu 30 minuutin kuluttua.';
+  String get notification_windowBody => 'Syömisikkunasi sulkeutuu 30 minuutin kuluttua.';
 
   @override
   String notification_streakTitle(int days) {
@@ -985,8 +1013,7 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      'Sinulla menee hienosti! Jatka tänään samaan tapaan.';
+  String get notification_streakBody => 'Sinulla menee hienosti! Jatka tänään samaan tapaan.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1017,33 +1044,28 @@ class AppLocalizationsFi extends AppLocalizations {
   String get explore_guide => 'Paasto-opas';
 
   @override
-  String get explore_guideDesc =>
-      'Kaikki, mitä sinun tarvitsee tietää ajoittaisesta paastosta';
+  String get explore_guideDesc => 'Kaikki, mitä sinun tarvitsee tietää ajoittaisesta paastosta';
 
   @override
-  String get explore_circleDesc =>
-      'Jaa rauhallista tukea yksityisen ryhmäsi kanssa.';
+  String get explore_circleDesc => 'Jaa rauhallista tukea yksityisen ryhmäsi kanssa.';
 
   @override
   String get explore_faq => 'Usein kysytyt kysymykset';
 
   @override
-  String get explore_education =>
-      'Tämä sisältö on tarkoitettu vain yleiseksi tiedoksi, eikä se ole lääketieteellinen diagnoosi tai hoito-ohje.';
+  String get explore_education => 'Tämä sisältö on tarkoitettu vain yleiseksi tiedoksi, eikä se ole lääketieteellinen diagnoosi tai hoito-ohje.';
 
   @override
   String get explore_safety => 'Terveys ja turvallisuus';
 
   @override
-  String get explore_safetyDesc =>
-      'Jos sinulla on sairaus, käytät säännöllisesti lääkkeitä, sinulla on huolestuttavia oireita, olet raskaana tai imetät, keskustele pätevän terveydenhuollon ammattilaisen kanssa ennen paastoa. Lopeta, jos voit huonosti.';
+  String get explore_safetyDesc => 'Jos sinulla on sairaus, käytät säännöllisesti lääkkeitä, sinulla on huolestuttavia oireita, olet raskaana tai imetät, keskustele pätevän terveydenhuollon ammattilaisen kanssa ennen paastoa. Lopeta, jos voit huonosti.';
 
   @override
   String get explore_sources => 'Lähteet';
 
   @override
-  String get explore_sourcesDesc =>
-      'Sisältö on yksinkertaistettu alla mainituista julkisista terveyslähteistä.';
+  String get explore_sourcesDesc => 'Sisältö on yksinkertaistettu alla mainituista julkisista terveyslähteistä.';
 
   @override
   String get explore_sourceError => 'Lähdettä ei voitu avata';
@@ -1064,131 +1086,112 @@ class AppLocalizationsFi extends AppLocalizations {
   String get explore_rule4 => 'Lopeta paasto, jos voit huonosti';
 
   @override
-  String get explore_rule5 =>
-      'Raskaana olevien tai imettävien ei tule paastota';
+  String get explore_rule5 => 'Raskaana olevien tai imettävien ei tule paastota';
 
   @override
-  String get explore_rule6 =>
-      'Keskustele lääkärin kanssa, jos sinulla on pitkäaikaissairaus';
+  String get explore_rule6 => 'Keskustele lääkärin kanssa, jos sinulla on pitkäaikaissairaus';
 
   @override
   String get tip_water => 'Huolehdi nesteytyksestä';
 
   @override
-  String get tip_waterDesc =>
-      'Juo vettä, kun janottaa, ja nauti nesteitä aterioiden yhteydessä. Tarve voi vaihdella terveyden, sään ja aktiivisuuden mukaan.';
+  String get tip_waterDesc => 'Juo vettä, kun janottaa, ja nauti nesteitä aterioiden yhteydessä. Tarve voi vaihdella terveyden, sään ja aktiivisuuden mukaan.';
 
   @override
   String get tip_food => 'Syö hyvin';
 
   @override
-  String get tip_foodDesc =>
-      'Valitse syömisikkunoiden aikana proteiini- ja kuitupitoisia ruokia sekä pehmeitä rasvoja. Vältä pitkälle jalostettuja ruokia.';
+  String get tip_foodDesc => 'Valitse syömisikkunoiden aikana proteiini- ja kuitupitoisia ruokia sekä pehmeitä rasvoja. Vältä pitkälle jalostettuja ruokia.';
 
   @override
   String get tip_sleep => 'Nuku hyvin';
 
   @override
-  String get tip_sleepDesc =>
-      'Säännöllinen ja riittävä uni tukee yleistä hyvinvointia. Ajoita paasto niin, ettei se häiritse untasi.';
+  String get tip_sleepDesc => 'Säännöllinen ja riittävä uni tukee yleistä hyvinvointia. Ajoita paasto niin, ettei se häiritse untasi.';
 
   @override
   String get tip_exercise => 'Kevyt liikunta';
 
   @override
-  String get tip_exerciseDesc =>
-      'Voit kävellä kevyesti tai harrastaa joogaa paaston aikana. Vältä raskasta liikuntaa etenkin ensimmäisinä viikkoina, kun kehosi totuttelee.';
+  String get tip_exerciseDesc => 'Voit kävellä kevyesti tai harrastaa joogaa paaston aikana. Vältä raskasta liikuntaa etenkin ensimmäisinä viikkoina, kun kehosi totuttelee.';
 
   @override
   String get tip_drinks => 'Sallitut juomat';
 
   @override
-  String get tip_drinksDesc =>
-      'Paaston aikana voit juoda vettä, maustamatonta teetä ja mustaa kahvia ilman sokeria tai maitoa. Nämä juomat eivät katkaise paastoa.';
+  String get tip_drinksDesc => 'Paaston aikana voit juoda vettä, maustamatonta teetä ja mustaa kahvia ilman sokeria tai maitoa. Nämä juomat eivät katkaise paastoa.';
 
   @override
   String get faq_drinks => 'Mitä voin juoda paaston aikana?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Voit juoda vettä, maustamatonta teetä ja mustaa kahvia ilman sokeria tai maitoa. Kaloripitoiset juomat katkaisevat paaston.';
+  String get faq_drinksAnswer => 'Voit juoda vettä, maustamatonta teetä ja mustaa kahvia ilman sokeria tai maitoa. Kaloripitoiset juomat katkaisevat paaston.';
 
   @override
   String get faq_plan => 'Mikä paasto-ohjelma minun kannattaa valita?';
 
   @override
-  String get faq_planAnswer =>
-      'Jos olet aloittelija, aloita 12:12- tai 14:10-ohjelmalla. Jos sinulla on kokemusta, kokeile 16:8- tai 18:6-ohjelmaa. 20:4 ja OMAD sopivat edistyneille.';
+  String get faq_planAnswer => 'Jos olet aloittelija, aloita 12:12- tai 14:10-ohjelmalla. Jos sinulla on kokemusta, kokeile 16:8- tai 18:6-ohjelmaa. 20:4 ja OMAD sopivat edistyneille.';
 
   @override
   String get faq_exercise => 'Voinko liikkua paaston aikana?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Kyllä, mutta vältä raskaita harjoituksia. Kevyt aerobinen liikunta, kävely ja jooga ovat ihanteellisia. Ajoita voimaharjoittelu lähelle syömisikkunaasi.';
+  String get faq_exerciseAnswer => 'Kyllä, mutta vältä raskaita harjoituksia. Kevyt aerobinen liikunta, kävely ja jooga ovat ihanteellisia. Ajoita voimaharjoittelu lähelle syömisikkunaasi.';
 
   @override
   String get faq_weight => 'Auttaako paasto painonpudotuksessa?';
 
   @override
-  String get faq_weightAnswer =>
-      'Joillakin ihmisillä syömisajan rajoittaminen voi vähentää energian kokonaissaantia. Tulokset vaihtelevat, ja pitkäaikaisvaikutuksia tutkitaan edelleen.';
+  String get faq_weightAnswer => 'Joillakin ihmisillä syömisajan rajoittaminen voi vähentää energian kokonaissaantia. Tulokset vaihtelevat, ja pitkäaikaisvaikutuksia tutkitaan edelleen.';
 
   @override
   String get plan_12_desc => 'Aloittelijataso';
 
   @override
-  String get plan_12_detail =>
-      'Sopii aloittelijoille. Paastoa 12 tuntia, myös nukkumisaika mukaan lukien.';
+  String get plan_12_detail => 'Sopii aloittelijoille. Paastoa 12 tuntia, myös nukkumisaika mukaan lukien.';
 
   @override
   String get plan_16_desc => 'Suosituin ohjelma';
 
   @override
-  String get plan_16_detail =>
-      'Yleisin ajoittaisen paaston ohjelma: 16 tuntia paastoa ja 8 tunnin syömisikkuna, tavallisesti lounaasta päivälliseen.';
+  String get plan_16_detail => 'Yleisin ajoittaisen paaston ohjelma: 16 tuntia paastoa ja 8 tunnin syömisikkuna, tavallisesti lounaasta päivälliseen.';
 
   @override
   String get plan_18_desc => 'Keskitaso';
 
   @override
-  String get plan_18_detail =>
-      '18 tuntia paastoa ja 6 tunnin syömisikkuna. Rasvanpoltto kestää pidempään.';
+  String get plan_18_detail => '18 tuntia paastoa ja 6 tunnin syömisikkuna. Rasvanpoltto kestää pidempään.';
 
   @override
   String get plan_20_desc => 'Edistynyt taso';
 
   @override
-  String get plan_20_detail =>
-      '20 tuntia paastoa ja 4 tunnin syömisikkuna. Sopii ketoosin ja autofagian saavuttamiseen.';
+  String get plan_20_detail => '20 tuntia paastoa, 4 tuntia syömistä. Paastoa kokeilleille.';
 
   @override
   String get plan_omad_desc => 'Yksi ateria päivässä';
 
   @override
-  String get plan_omad_detail =>
-      'Yksi ateria päivässä: 23 tuntia paastoa ja 1 tunnin syömisikkuna. Asiantuntijataso.';
+  String get plan_omad_detail => 'Yksi ateria päivässä: 23 tuntia paastoa ja 1 tunnin syömisikkuna. Asiantuntijataso.';
 
   @override
   String get plan_52_desc => '2 päivää viikossa';
 
   @override
-  String get plan_52_detail =>
-      'Syö normaalisti 5 päivänä ja rajoita energiansaanti noin 500 kaloriin 2 päivänä. Vaihtoehtoinen lähestymistapa.';
+  String get plan_52_detail => 'Syö normaalisti 5 päivänä ja rajoita energiansaanti noin 500 kaloriin 2 päivänä. Vaihtoehtoinen lähestymistapa.';
 
   @override
   String get plan_ese_desc => '24 tunnin paasto';
 
   @override
-  String get plan_ese_detail =>
-      'Paastoa 24 tuntia 1–2 kertaa viikossa. Edistyneille.';
+  String get plan_ese_detail => 'Paastoa 24 tuntia 1–2 kertaa viikossa. Edistyneille.';
 
   @override
   String get plan_warrior_desc => 'Soturidieetti';
 
   @override
-  String get plan_warrior_detail =>
-      'Syö päivällä kevyesti ja pääateria neljän tunnin iltaikkunan aikana.';
+  String get plan_warrior_detail => 'Syö päivällä kevyesti ja pääateria neljän tunnin iltaikkunan aikana.';
 
   @override
   String get award_first_title => 'Ensimmäinen askel';
@@ -1340,16 +1343,7 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Saat yhden joka seitsemännestä suorituksesta. Väliin jäänyt päivä ei koskaan pyyhi edistymistäsi.';
-
-  @override
-  String get game_league => 'Yksityinen viikkoliiga';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Rytmipisteesi on yksityisen paikallisen mallin $percent. prosenttipisteessä. Painoa ja äärimmäistä paastoa ei koskaan aseteta paremmuusjärjestykseen.';
-  }
+  String get game_shieldsDesc => 'Saat yhden joka seitsemännestä suorituksesta. Väliin jäänyt päivä ei koskaan pyyhi edistymistäsi.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1493,8 +1487,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get paywall_continue => 'Jatka';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Ostokset eivät ole juuri nyt saatavilla. Yritä myöhemmin uudelleen.';
+  String get paywall_productsUnavailable => 'Ostokset eivät ole juuri nyt saatavilla. Yritä myöhemmin uudelleen.';
 
   @override
   String get paywall_purchaseFailed => 'Ostosta ei voitu suorittaa.';
@@ -1509,15 +1502,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get paywall_terms => 'Käyttöehdot';
 
   @override
-  String get permission_notificationDesc =>
-      'Paastomuistutukset, vaiheen päivitykset ja valmistumisilmoitukset';
+  String get permission_notificationDesc => 'Paastomuistutukset, vaiheen päivitykset ja valmistumisilmoitukset';
 
   @override
   String get profile_privacyChoices => 'Tietosuojavalinnat';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Tilaukset uusiutuvat automaattisesti, ellei niitä peruta vähintään 24 tuntia ennen jakson päättymistä. Hallitse tai peruuta milloin tahansa App Storen asetuksissa.';
+  String get paywall_autoRenewInfo => 'Tilaukset uusiutuvat automaattisesti, ellei niitä peruta vähintään 24 tuntia ennen jakson päättymistä. Hallitse tai peruuta milloin tahansa App Storen asetuksissa.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1541,28 +1532,22 @@ class AppLocalizationsFi extends AppLocalizations {
   String get paywall_retry => 'Yritä uudelleen';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Omistat jo tämän tilauksen. Napauta Palauta ostokset.';
+  String get paywall_alreadyOwned => 'Omistat jo tämän tilauksen. Napauta Palauta ostokset.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Kauppaan ei saada juuri nyt yhteyttä. Tarkista yhteys ja yritä uudelleen.';
+  String get paywall_storeUnavailable => 'Kauppaan ei saada juuri nyt yhteyttä. Tarkista yhteys ja yritä uudelleen.';
 
   @override
-  String get paywall_secureNote =>
-      'Peruuta milloin tahansa. Maksu veloitetaan kauppatililtäsi.';
+  String get paywall_secureNote => 'Peruuta milloin tahansa. Maksu veloitetaan kauppatililtäsi.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Tilaukset uusiutuvat automaattisesti, ellei niitä peruta vähintään 24 tuntia ennen jakson päättymistä. Hallitse tai peruuta kohdassa Google Play > Tilaukset.';
+  String get paywall_autoRenewInfoPlay => 'Tilaukset uusiutuvat automaattisesti, ellei niitä peruta vähintään 24 tuntia ennen jakson päättymistä. Hallitse tai peruuta kohdassa Google Play > Tilaukset.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Avaa ohjelmat 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ja Warrior';
+  String get paywall_allPlansDesc => 'Avaa ohjelmat 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ja Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Banneri- ja koko näytön mainokset poistetaan kokonaan';
+  String get paywall_noAdsDesc => 'Banneri- ja koko näytön mainokset poistetaan kokonaan';
 
   @override
   String get foodScan_title => 'Tekoälyruokaskannaus';
@@ -1571,15 +1556,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get foodScan_scanCta => 'Skannaa ateria';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Kuvaa lautasesi ja saat arvion kaloreista ja makroravinteista';
+  String get foodScan_scanCtaDesc => 'Kuvaa lautasesi ja saat arvion kaloreista ja makroravinteista';
 
   @override
   String get foodScan_introTitle => 'Kuvaa lautasesi';
 
   @override
-  String get foodScan_introDesc =>
-      'Tekoäly lukee kuvan ja arvioi kalorit, proteiinin, hiilihydraatit ja rasvan.';
+  String get foodScan_introDesc => 'Tekoäly lukee kuvan ja arvioi kalorit, proteiinin, hiilihydraatit ja rasvan.';
 
   @override
   String get foodScan_tipLight => 'Hyvä ja tasainen valaistus parantaa arviota';
@@ -1588,8 +1571,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get foodScan_tipFrame => 'Sovita koko lautanen kuvaan';
 
   @override
-  String get foodScan_tipScale =>
-      'Ota kuvaan aterimet tai käsi, jotta annoskoko voidaan arvioida';
+  String get foodScan_tipScale => 'Ota kuvaan aterimet tai käsi, jotta annoskoko voidaan arvioida';
 
   @override
   String get foodScan_takePhoto => 'Ota kuva';
@@ -1603,19 +1585,16 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Olet käyttänyt tämän päivän skannaukset. Yritä huomenna uudelleen.';
+  String get foodScan_quotaReached => 'Olet käyttänyt tämän päivän skannaukset. Yritä huomenna uudelleen.';
 
   @override
-  String get foodScan_privacyNote =>
-      'Kuva lähetetään analysoitavaksi Googlen Gemini APIin, eikä sitä tallenneta palvelimillemme.';
+  String get foodScan_privacyNote => 'Kuva lähetetään Googlen Gemini-rajapintaan. Google voi käyttää sitä tuotteidensa parantamiseen ja ihmistarkastajat voivat nähdä sen. Emme säilytä sitä palvelimillamme.';
 
   @override
   String get foodScan_consentTitle => 'Lähetetäänkö kuvat Google Geminille?';
 
   @override
-  String get foodScan_consentBody =>
-      'Kalorien ja makroravinteiden arvioimiseksi jokainen ottamasi tai valitsemasi ateriakuva lähetetään Googlen Gemini-tekoälypalveluun. Kuvaa käytetään vain tähän analyysiin, eikä sitä tallenneta palvelimillemme.';
+  String get foodScan_consentBody => 'Kalorien ja makrojen arvioimiseksi jokainen ottamasi tai valitsemasi ateriakuva lähetetään Googlen Gemini-tekoälypalveluun. Google voi käyttää kuvia tuotteidensa parantamiseen ja ihmistarkastajat voivat nähdä ne, joten pidä ihmiset, asiakirjat ja muut henkilötiedot poissa kuvasta. Emme säilytä kuvia palvelimillamme.';
 
   @override
   String get foodScan_consentAgree => 'Hyväksy ja jatka';
@@ -1630,12 +1609,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get foodScan_detectedItems => 'Tunnistetut tuotteet';
 
   @override
-  String get foodScan_disclaimer =>
-      'Tekoälyn arviot ovat suuntaa antavia. Korjaa tuotetta napauttamalla sitä.';
+  String get foodScan_disclaimer => 'Tekoälyn arviot ovat suuntaa antavia. Korjaa tuotetta napauttamalla sitä.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Malli ei ole varma tästä kuvasta. Tarkista luvut ennen tallentamista.';
+  String get foodScan_lowConfidence => 'Malli ei ole varma tästä kuvasta. Tarkista luvut ennen tallentamista.';
 
   @override
   String get foodScan_save => 'Lisää aterioihin';
@@ -1659,40 +1636,130 @@ class AppLocalizationsFi extends AppLocalizations {
   String get foodScan_premiumTitle => 'Premium-ominaisuus';
 
   @override
-  String get foodScan_premiumDesc =>
-      'Kuvan kalorianalyysi sisältyy Premiumiin.';
+  String get foodScan_premiumDesc => 'Kuvan kalorianalyysi sisältyy Premiumiin.';
 
   @override
   String get foodScan_upgrade => 'Tutustu Premiumiin';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Ei yhteyttä. Tarkista internetyhteys ja yritä uudelleen.';
+  String get foodScan_errorNetwork => 'Ei yhteyttä. Tarkista internetyhteys ja yritä uudelleen.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Skannauksia tehdään juuri nyt liikaa. Yritä uudelleen muutaman minuutin kuluttua.';
+  String get foodScan_errorRateLimited => 'Skannauksia tehdään juuri nyt liikaa. Yritä uudelleen muutaman minuutin kuluttua.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'Kuva-analyysi ei ole juuri nyt käytettävissä.';
+  String get foodScan_errorUnavailable => 'Kuva-analyysi ei ole juuri nyt käytettävissä.';
 
   @override
-  String get foodScan_errorServer =>
-      'Analyysipalvelussa on ongelmia. Yritä pian uudelleen.';
+  String get foodScan_errorServer => 'Analyysipalvelussa on ongelmia. Yritä pian uudelleen.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Kuvasta ei löytynyt ruokaa. Ota selkeämpi kuva lautasesta.';
+  String get foodScan_errorNoFood => 'Kuvasta ei löytynyt ruokaa. Ota selkeämpi kuva lautasesta.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Tätä kuvaa ei voitu analysoida. Kokeile toista kuvaa.';
+  String get foodScan_errorUnreadable => 'Tätä kuvaa ei voitu analysoida. Kokeile toista kuvaa.';
 
   @override
   String get paywall_aiFoodScan => 'Tekoälyruokaskannaus';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Kuvaa ateria ja kirjaa sen kalorit ja makroravinteet sekunneissa';
+  String get paywall_aiFoodScanDesc => 'Kuvaa ateria ja kirjaa sen kalorit ja makroravinteet sekunneissa';
+
+  @override
+  String get safety_title => 'Ennen aloitusta';
+
+  @override
+  String get safety_desc => 'Paasto ei ole turvallista kaikille. Valitse kaikki, jotka koskevat sinua.';
+
+  @override
+  String get safety_under18 => 'Olen alle 18-vuotias';
+
+  @override
+  String get safety_pregnant => 'Olen raskaana tai imetän';
+
+  @override
+  String get safety_eatingDisorder => 'Minulla on tai on ollut syömishäiriö';
+
+  @override
+  String get safety_underweight => 'Olen alipainoinen tai minua on kehotettu olemaan laihduttamatta';
+
+  @override
+  String get safety_diabetes => 'Minulla on diabetes tai käytän verensokeriin vaikuttavaa lääkettä';
+
+  @override
+  String get safety_medical => 'Minulla on muu sairaus tai käytän säännöllistä lääkitystä';
+
+  @override
+  String get safety_none => 'Mikään näistä ei koske minua';
+
+  @override
+  String get safety_ack => 'Keskustelen lääkärini kanssa ennen paastoa';
+
+  @override
+  String get safety_blockedTitle => 'Tämä sovellus ei ole sinulle turvallinen';
+
+  @override
+  String get safety_blockedDesc => 'Vastaustesi perusteella emme voi tarjota paastoa täällä. Keskustele lääkärin kanssa. Jos syöminen tuntuu nyt vaikealta, terveydenhuollon ammattilainen voi auttaa.';
+
+  @override
+  String get safety_reviewAnswers => 'Tarkista vastaukseni';
+
+  @override
+  String get safety_targetTooLow => 'Tämä tavoite on pituudellesi terveen painon alapuolella.';
+
+  @override
+  String get onboarding_invalidBody => 'Anna kelvollinen pituus, paino, tavoitepaino ja ikä.';
+
+  @override
+  String get crisis_unwell => 'Voin huonosti';
+
+  @override
+  String get crisis_unwellTitle => 'Lopeta paasto nyt';
+
+  @override
+  String get crisis_unwellDesc => 'Huimaus, vapina, sekavuus tai sydämentykytys ovat merkkejä lopettaa paasto ja syödä tai juoda jotain.';
+
+  @override
+  String get crisis_emergency => 'Jos pyörryit, sinulla on rintakipua tai voit hyvin huonosti, soita heti paikalliseen hätänumeroon.';
+
+  @override
+  String get crisis_endFast => 'Lopeta paastoni';
+
+  @override
+  String get profile_deleteData => 'Poista kaikki tietoni';
+
+  @override
+  String get profile_deleteDataConfirm => 'Tämä poistaa paastot, painon, ateriat, veden ja asetukset pysyvästi tästä laitteesta. Toimintoa ei voi perua. Tilauksia hallitaan kauppatililläsi.';
+
+  @override
+  String get profile_deleteDataAction => 'Poista kaikki';
+
+  @override
+  String get record_deleteConfirm => 'Poistetaanko tämä merkintä?';
+
+  @override
+  String get profile_analytics => 'Jaa nimettömiä käyttötietoja';
+
+  @override
+  String get profile_analyticsDesc => 'Auttaa parantamaan sovellusta. Ei koskaan sisällä painoa, aterioita tai terveystietoja.';
+
+  @override
+  String get plan_longWarningTitle => 'Tämä on pitkä paasto';
+
+  @override
+  String get plan_longWarningDesc => 'Vähintään 20 tunnin paastot eivät sovi kaikille ja voivat aiheuttaa huonovointisuutta. Jos olet epävarma, keskustele lääkärin kanssa, ja lopeta paasto, jos voit huonosti.';
+
+  @override
+  String get plan_longWarningAccept => 'Ymmärrän';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days päivän ilmainen kokeilu, sitten $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Et paastoa';
+
+  @override
+  String get widget_tapToStart => 'Aloita napauttamalla';
 }

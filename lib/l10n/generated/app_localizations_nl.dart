@@ -9,6 +9,64 @@ class AppLocalizationsNl extends AppLocalizations {
   AppLocalizationsNl([String locale = 'nl']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Havermout met fruit';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Blauwebessenyoghurt';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Toast met ei en avocado';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Kip-quinoabowl';
+
+  @override
+  String get mealPreset_lentilSoup => 'Linzensoep';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Zalm en broccoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap met kalkoen en groenten';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Kikkererwten met tahin';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Tonijn-bonensalade';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Hüttenkäse met appel';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus en knapperige groenten';
+
+  @override
+  String get mealPreset_bananaKefir => 'Banaan-kefirbowl';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count stappen tot het zegel',
+      one: '$count stap tot het zegel',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError =>
+      'De registratie kon niet worden verwijderd.';
+
+  @override
+  String get fastingHistory_title => 'Vastengeschiedenis';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Deze registratie wordt definitief verwijderd.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -63,8 +121,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get timer_selectPlan => 'Kies een vastenplan';
 
   @override
-  String get timer_stopConfirm =>
-      'Weet je zeker dat je het vasten voortijdig wilt beëindigen?';
+  String get timer_stopConfirm => 'Weet je zeker dat je het vasten voortijdig wilt beëindigen?';
 
   @override
   String get timer_stopTitle => 'Vasten beëindigen';
@@ -97,13 +154,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get phase_ketosis => 'Ketose';
 
   @override
-  String get phase_ketosisDesc => 'Ketonproductie actief';
+  String get phase_ketosisDesc => 'De ketonproductie kan stijgen';
 
   @override
   String get phase_autophagy => 'Autofagie';
 
   @override
-  String get phase_autophagyDesc => 'Celvernieuwing';
+  String get phase_autophagyDesc => 'Geschatte fase van celrecycling';
 
   @override
   String get stats_title => 'Statistieken';
@@ -264,15 +321,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get onboarding_welcome => 'Welkom';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Neem de regie over je\nreis met periodiek vasten';
+  String get onboarding_welcomeDesc => 'Neem de regie over je\nreis met periodiek vasten';
 
   @override
   String get onboarding_featureTimer => 'Slimme vastentimer';
 
   @override
-  String get onboarding_featureStats =>
-      'Gedetailleerde statistieken en grafieken';
+  String get onboarding_featureStats => 'Gedetailleerde statistieken en grafieken';
 
   @override
   String get onboarding_featureMeals => 'Maaltijdplanner en receptsuggesties';
@@ -314,8 +369,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get onboarding_goalLongevity => 'Lang leven';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Celvernieuwing en gezond ouder worden';
+  String get onboarding_goalLongevityDesc => 'Bouw een gezonde routine voor de lange termijn';
 
   @override
   String get onboarding_goalDiscipline => 'Discipline';
@@ -327,8 +381,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get onboarding_selectPlan => 'Kies je plan';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Kies het vastenplan dat het beste bij je past';
+  String get onboarding_selectPlanDesc => 'Kies het vastenplan dat het beste bij je past';
 
   @override
   String get onboarding_bodyInfo => 'Vul je gegevens in';
@@ -337,27 +390,16 @@ class AppLocalizationsNl extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Voor persoonlijke aanbevelingen';
 
   @override
-  String get onboarding_gender => 'Geslacht';
-
-  @override
-  String get onboarding_male => 'Man';
-
-  @override
-  String get onboarding_female => 'Vrouw';
-
-  @override
   String get onboarding_age => 'Leeftijd';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Deze informatie wordt alleen op je apparaat opgeslagen en gebruikt voor calorieberekeningen.';
+  String get onboarding_bodyInfoDisclaimer => 'Deze informatie wordt alleen op je apparaat opgeslagen en gebruikt voor calorieberekeningen.';
 
   @override
   String get onboarding_permissions => 'Laatste stap';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Schakel machtigingen in voor de beste ervaring';
+  String get onboarding_permissionsDesc => 'Schakel machtigingen in voor de beste ervaring';
 
   @override
   String get onboarding_next => 'Doorgaan';
@@ -384,8 +426,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get paywall_title => 'Upgraden naar Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Ontgrendel alle vastenplannen en verwijder advertenties';
+  String get paywall_subtitle => 'Ontgrendel alle vastenplannen en verwijder advertenties';
 
   @override
   String get paywall_allPlans => 'Alle vastenplannen';
@@ -424,8 +465,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get paywall_premiumActive => 'Premium actief!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Alle vastenplannen zijn ontgrendeld en advertenties zijn uitgeschakeld';
+  String get paywall_premiumActiveDesc => 'Alle vastenplannen zijn ontgrendeld en advertenties zijn uitgeschakeld';
 
   @override
   String get water_title => 'Waterinname';
@@ -560,8 +600,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get completion_earlyTitle => 'Vasten beëindigd';
 
   @override
-  String get completion_earlyMessage =>
-      'De tijd van vandaag is opgeslagen. Je reeks en prestatievoortgang zijn niet gewijzigd omdat het doel niet is behaald.';
+  String get completion_earlyMessage => 'De tijd van vandaag is opgeslagen. Je reeks en prestatievoortgang zijn niet gewijzigd omdat het doel niet is behaald.';
 
   @override
   String get timer_remainingTime => 'Resterende tijd';
@@ -591,8 +630,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get streak_incredible => 'Ongelooflijk!';
 
   @override
-  String get weight_noRecord =>
-      'Nog geen gewichtsmetingen\nVoeg ze toe via Profiel > Lichaamsmetingen';
+  String get weight_noRecord => 'Nog geen gewichtsmetingen\nVoeg ze toe via Profiel > Lichaamsmetingen';
 
   @override
   String get day_mon => 'Ma';
@@ -778,8 +816,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get profile_calmGamification => 'Rustige gamificatie';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Vermindert de druk van competities en seizoenen';
+  String get profile_calmGamificationDesc => 'Vermindert de seizoensdruk';
 
   @override
   String get profile_editName => 'Je naam bewerken';
@@ -797,8 +834,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get circle_tagline => 'Samen, zonder druk.';
 
   @override
-  String get circle_privacy =>
-      'Gewicht en persoonlijke metingen blijven verborgen. Alleen voortgang en steun zijn zichtbaar.';
+  String get circle_privacy => 'Gewicht en persoonlijke metingen blijven verborgen. Alleen voortgang en steun zijn zichtbaar.';
 
   @override
   String circle_sendSupport(int count) {
@@ -827,8 +863,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get crisis_delayTitle => 'Stel de beslissing 10 minuten uit';
 
   @override
-  String get crisis_delayDesc =>
-      'Als je je niet goed voelt, is stoppen met vasten geen mislukking.';
+  String get crisis_delayDesc => 'Als je je niet goed voelt, is stoppen met vasten geen mislukking.';
 
   @override
   String get crisis_hunger => 'Honger';
@@ -843,8 +878,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get crisis_tenMore => 'Geef het 10 minuten';
 
   @override
-  String get stats_storyEmpty =>
-      'Je eerste vastenperiode begint jouw persoonlijke verhaal.';
+  String get stats_storyEmpty => 'Je eerste vastenperiode begint jouw persoonlijke verhaal.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -884,15 +918,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get weather_water => 'Een glas water kan helpen.';
 
   @override
-  String get weather_listen =>
-      'Je bent al ver gekomen; luister naar je lichaam.';
+  String get weather_listen => 'Je bent al ver gekomen; luister naar je lichaam.';
 
   @override
   String get weather_onPlan => 'Het tempo van vandaag past bij je plan.';
 
   @override
-  String get weather_challenging =>
-      'Dit uur was eerder lastig; de ondersteuningsmodus staat klaar.';
+  String get weather_challenging => 'Dit uur was eerder lastig; de ondersteuningsmodus staat klaar.';
 
   @override
   String get replay_copied => 'Vastenoverzicht gekopieerd';
@@ -917,8 +949,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'De timing van fasen is een algemene schatting, geen medische meting.';
+  String get phase_estimateShort => 'De timing van fasen is een algemene schatting, geen medische meting.';
 
   @override
   String phase_hours(int start, int end) {
@@ -926,8 +957,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Deze timing is een algemene schatting. Metabole reacties verschillen per persoon.';
+  String get phase_estimateLong => 'Deze timing is een algemene schatting. Metabole reacties verschillen per persoon.';
 
   @override
   String get bmi_underweight => 'Ondergewicht';
@@ -959,7 +989,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get notification_phaseKetosis => 'Je bent in ketose ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagie actief! 🔄';
+  String get notification_phaseAutophagy => 'Geschatte autofagiefase';
 
   @override
   String notification_completedBody(String plan) {
@@ -970,8 +1000,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get notification_waterTitle => 'Drink water 💧';
 
   @override
-  String get notification_waterBody =>
-      'Vergeet niet voldoende water te drinken tijdens het vasten!';
+  String get notification_waterBody => 'Vergeet niet voldoende water te drinken tijdens het vasten!';
 
   @override
   String get notification_windowTitle => 'Eetvenster sluit bijna ⏰';
@@ -985,8 +1014,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      'Je bent goed bezig! Houd het vandaag vol.';
+  String get notification_streakBody => 'Je bent goed bezig! Houd het vandaag vol.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1017,8 +1045,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get explore_guide => 'Vastengids';
 
   @override
-  String get explore_guideDesc =>
-      'Alles wat je moet weten over periodiek vasten';
+  String get explore_guideDesc => 'Alles wat je moet weten over periodiek vasten';
 
   @override
   String get explore_circleDesc => 'Deel rustige steun met je privégroep.';
@@ -1027,22 +1054,19 @@ class AppLocalizationsNl extends AppLocalizations {
   String get explore_faq => 'Veelgestelde vragen';
 
   @override
-  String get explore_education =>
-      'Deze inhoud is uitsluitend bedoeld voor algemene voorlichting en is geen medische diagnose of behandeladvies.';
+  String get explore_education => 'Deze inhoud is uitsluitend bedoeld voor algemene voorlichting en is geen medische diagnose of behandeladvies.';
 
   @override
   String get explore_safety => 'Gezondheid en veiligheid';
 
   @override
-  String get explore_safetyDesc =>
-      'Heb je een medische aandoening, gebruik je regelmatig medicijnen, heb je zorgwekkende klachten, ben je zwanger of geef je borstvoeding? Raadpleeg dan vóór het vasten een bevoegde zorgverlener. Stop als je je niet goed voelt.';
+  String get explore_safetyDesc => 'Heb je een medische aandoening, gebruik je regelmatig medicijnen, heb je zorgwekkende klachten, ben je zwanger of geef je borstvoeding? Raadpleeg dan vóór het vasten een bevoegde zorgverlener. Stop als je je niet goed voelt.';
 
   @override
   String get explore_sources => 'Bronnen';
 
   @override
-  String get explore_sourcesDesc =>
-      'De inhoud is vereenvoudigd op basis van de onderstaande bronnen voor volksgezondheid.';
+  String get explore_sourcesDesc => 'De inhoud is vereenvoudigd op basis van de onderstaande bronnen voor volksgezondheid.';
 
   @override
   String get explore_sourceError => 'De bron kon niet worden geopend';
@@ -1051,8 +1075,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get explore_rules => 'Belangrijke regels';
 
   @override
-  String get explore_rule1 =>
-      'Gebruik tijdens het vasten geen calorierijk eten';
+  String get explore_rule1 => 'Gebruik tijdens het vasten geen calorierijk eten';
 
   @override
   String get explore_rule2 => 'Drink voldoende water en andere vloeistoffen';
@@ -1064,131 +1087,112 @@ class AppLocalizationsNl extends AppLocalizations {
   String get explore_rule4 => 'Stop met vasten als je je niet goed voelt';
 
   @override
-  String get explore_rule5 =>
-      'Zwangere vrouwen en vrouwen die borstvoeding geven, moeten niet vasten';
+  String get explore_rule5 => 'Zwangere vrouwen en vrouwen die borstvoeding geven, moeten niet vasten';
 
   @override
-  String get explore_rule6 =>
-      'Raadpleeg je arts als je een chronische aandoening hebt';
+  String get explore_rule6 => 'Raadpleeg je arts als je een chronische aandoening hebt';
 
   @override
   String get tip_water => 'Blijf gehydrateerd';
 
   @override
-  String get tip_waterDesc =>
-      'Drink water wanneer je dorst hebt en neem vocht bij de maaltijden. Je behoefte kan verschillen door gezondheid, weer en activiteit.';
+  String get tip_waterDesc => 'Drink water wanneer je dorst hebt en neem vocht bij de maaltijden. Je behoefte kan verschillen door gezondheid, weer en activiteit.';
 
   @override
   String get tip_food => 'Eet gezond';
 
   @override
-  String get tip_foodDesc =>
-      'Kies tijdens eetvensters voor eiwitrijke voeding met vezels en gezonde vetten. Vermijd sterk bewerkte voeding.';
+  String get tip_foodDesc => 'Kies tijdens eetvensters voor eiwitrijke voeding met vezels en gezonde vetten. Vermijd sterk bewerkte voeding.';
 
   @override
   String get tip_sleep => 'Slaap goed';
 
   @override
-  String get tip_sleepDesc =>
-      'Regelmatige en voldoende slaap ondersteunt je algemene welzijn. Plan het vasten zo dat het je slaap niet verstoort.';
+  String get tip_sleepDesc => 'Regelmatige en voldoende slaap ondersteunt je algemene welzijn. Plan het vasten zo dat het je slaap niet verstoort.';
 
   @override
   String get tip_exercise => 'Lichte beweging';
 
   @override
-  String get tip_exerciseDesc =>
-      'Tijdens het vasten kun je rustig wandelen of yoga doen. Vermijd zware inspanning, vooral in de eerste weken terwijl je lichaam zich aanpast.';
+  String get tip_exerciseDesc => 'Tijdens het vasten kun je rustig wandelen of yoga doen. Vermijd zware inspanning, vooral in de eerste weken terwijl je lichaam zich aanpast.';
 
   @override
   String get tip_drinks => 'Toegestane dranken';
 
   @override
-  String get tip_drinksDesc =>
-      'Tijdens het vasten kun je water, thee zonder toevoegingen en zwarte koffie drinken (zonder suiker of melk). Deze dranken verbreken het vasten niet.';
+  String get tip_drinksDesc => 'Tijdens het vasten kun je water, thee zonder toevoegingen en zwarte koffie drinken (zonder suiker of melk). Deze dranken verbreken het vasten niet.';
 
   @override
   String get faq_drinks => 'Wat kan ik drinken tijdens het vasten?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Je kunt water, thee zonder toevoegingen en zwarte koffie drinken (zonder suiker of melk). Calorierijke dranken verbreken het vasten.';
+  String get faq_drinksAnswer => 'Je kunt water, thee zonder toevoegingen en zwarte koffie drinken (zonder suiker of melk). Calorierijke dranken verbreken het vasten.';
 
   @override
   String get faq_plan => 'Welk vastenplan moet ik kiezen?';
 
   @override
-  String get faq_planAnswer =>
-      'Begin als nieuwkomer met 12:12 of 14:10. Heb je ervaring, probeer dan 16:8 of 18:6. 20:4 en OMAD zijn bedoeld voor gevorderden.';
+  String get faq_planAnswer => 'Begin als nieuwkomer met 12:12 of 14:10. Heb je ervaring, probeer dan 16:8 of 18:6. 20:4 en OMAD zijn bedoeld voor gevorderden.';
 
   @override
   String get faq_exercise => 'Kan ik sporten tijdens het vasten?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Ja, maar vermijd intensieve trainingen. Lichte cardio, wandelen en yoga zijn ideaal. Plan krachttraining dicht bij je eetvenster.';
+  String get faq_exerciseAnswer => 'Ja, maar vermijd intensieve trainingen. Lichte cardio, wandelen en yoga zijn ideaal. Plan krachttraining dicht bij je eetvenster.';
 
   @override
   String get faq_weight => 'Helpt vasten bij gewichtsverlies?';
 
   @override
-  String get faq_weightAnswer =>
-      'Voor sommige mensen kan een beperkt eetvenster de totale energie-inname verlagen. Resultaten verschillen en de langetermijneffecten worden nog onderzocht.';
+  String get faq_weightAnswer => 'Voor sommige mensen kan een beperkt eetvenster de totale energie-inname verlagen. Resultaten verschillen en de langetermijneffecten worden nog onderzocht.';
 
   @override
   String get plan_12_desc => 'Beginnersniveau';
 
   @override
-  String get plan_12_detail =>
-      'Ideaal voor beginners. Vast 12 uur, inclusief je slaaptijd.';
+  String get plan_12_detail => 'Ideaal voor beginners. Vast 12 uur, inclusief je slaaptijd.';
 
   @override
   String get plan_16_desc => 'Populairste plan';
 
   @override
-  String get plan_16_detail =>
-      'Het meest gebruikte plan voor periodiek vasten: 16 uur vasten en een eetvenster van 8 uur, meestal van lunch tot avondeten.';
+  String get plan_16_detail => 'Het meest gebruikte plan voor periodiek vasten: 16 uur vasten en een eetvenster van 8 uur, meestal van lunch tot avondeten.';
 
   @override
   String get plan_18_desc => 'Gemiddeld niveau';
 
   @override
-  String get plan_18_detail =>
-      '18 uur vasten en een eetvenster van 6 uur. De vetverbranding duurt langer.';
+  String get plan_18_detail => '18 uur vasten en een eetvenster van 6 uur. De vetverbranding duurt langer.';
 
   @override
   String get plan_20_desc => 'Gevorderd niveau';
 
   @override
-  String get plan_20_detail =>
-      '20 uur vasten en een eetvenster van 4 uur. Ideaal om ketose en autofagie te bereiken.';
+  String get plan_20_detail => '20 uur vasten, 4 uur eten. Voor mensen met vastenervaring.';
 
   @override
   String get plan_omad_desc => 'Eén maaltijd per dag';
 
   @override
-  String get plan_omad_detail =>
-      'Eén maaltijd per dag: 23 uur vasten en een eetvenster van 1 uur. Expert-niveau.';
+  String get plan_omad_detail => 'Eén maaltijd per dag: 23 uur vasten en een eetvenster van 1 uur. Expert-niveau.';
 
   @override
   String get plan_52_desc => '2 dagen per week';
 
   @override
-  String get plan_52_detail =>
-      'Eet 5 dagen normaal en beperk je op 2 dagen tot ongeveer 500 calorieën. Een alternatieve aanpak.';
+  String get plan_52_detail => 'Eet 5 dagen normaal en beperk je op 2 dagen tot ongeveer 500 calorieën. Een alternatieve aanpak.';
 
   @override
   String get plan_ese_desc => '24 uur vasten';
 
   @override
-  String get plan_ese_detail =>
-      'Vast 1–2 keer per week 24 uur. Voor gevorderden.';
+  String get plan_ese_detail => 'Vast 1–2 keer per week 24 uur. Voor gevorderden.';
 
   @override
   String get plan_warrior_desc => 'Krijgersdieet';
 
   @override
-  String get plan_warrior_detail =>
-      'Eet overdag licht (fruit en groenten) en neem je hoofdmaaltijd binnen een eetvenster van 4 uur in de avond.';
+  String get plan_warrior_detail => 'Eet overdag licht (fruit en groenten) en neem je hoofdmaaltijd binnen een eetvenster van 4 uur in de avond.';
 
   @override
   String get award_first_title => 'Eerste stap';
@@ -1329,8 +1333,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get game_season => 'Seizoen van 30 stappen';
 
   @override
-  String get game_seasonDesc =>
-      'Na elke vijfde stap ontvang je een verzamelzegel.';
+  String get game_seasonDesc => 'Na elke vijfde stap ontvang je een verzamelzegel.';
 
   @override
   String get game_badges => 'Badgeverzameling';
@@ -1341,16 +1344,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Je verdient er één na elke zeven voltooide stappen. Een gemiste dag wist je voortgang nooit.';
-
-  @override
-  String get game_league => 'Privé-weekcompetitie';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Je ritmescore valt binnen het ${percent}e percentiel van een privé lokaal model. Gewicht en extreem vasten worden nooit gerangschikt.';
-  }
+  String get game_shieldsDesc => 'Je verdient er één na elke zeven voltooide stappen. Een gemiste dag wist je voortgang nooit.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1494,8 +1488,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get paywall_continue => 'Doorgaan';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Aankopen zijn momenteel niet beschikbaar. Probeer het later opnieuw.';
+  String get paywall_productsUnavailable => 'Aankopen zijn momenteel niet beschikbaar. Probeer het later opnieuw.';
 
   @override
   String get paywall_purchaseFailed => 'De aankoop kon niet worden voltooid.';
@@ -1510,15 +1503,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get paywall_terms => 'Gebruiksvoorwaarden';
 
   @override
-  String get permission_notificationDesc =>
-      'Herinneringen voor vasten, fase-updates en meldingen bij voltooiing';
+  String get permission_notificationDesc => 'Herinneringen voor vasten, fase-updates en meldingen bij voltooiing';
 
   @override
   String get profile_privacyChoices => 'Privacykeuzes';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Abonnementen worden automatisch verlengd, tenzij ze minstens 24 uur voor het einde van de periode worden opgezegd. Je kunt je abonnement op elk moment beheren of opzeggen in de instellingen van de App Store.';
+  String get paywall_autoRenewInfo => 'Abonnementen worden automatisch verlengd, tenzij ze minstens 24 uur voor het einde van de periode worden opgezegd. Je kunt je abonnement op elk moment beheren of opzeggen in de instellingen van de App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1542,28 +1533,22 @@ class AppLocalizationsNl extends AppLocalizations {
   String get paywall_retry => 'Opnieuw proberen';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Je hebt dit abonnement al. Tik op ‘Aankopen herstellen’.';
+  String get paywall_alreadyOwned => 'Je hebt dit abonnement al. Tik op ‘Aankopen herstellen’.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'De winkel is momenteel niet bereikbaar. Controleer je verbinding en probeer het opnieuw.';
+  String get paywall_storeUnavailable => 'De winkel is momenteel niet bereikbaar. Controleer je verbinding en probeer het opnieuw.';
 
   @override
-  String get paywall_secureNote =>
-      'Je kunt op elk moment opzeggen. De betaling wordt in rekening gebracht via je winkelaccount.';
+  String get paywall_secureNote => 'Je kunt op elk moment opzeggen. De betaling wordt in rekening gebracht via je winkelaccount.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Abonnementen worden automatisch verlengd, tenzij ze minstens 24 uur voor het einde van de periode worden opgezegd. Je kunt je abonnement op elk moment beheren of opzeggen via Google Play > Abonnementen.';
+  String get paywall_autoRenewInfoPlay => 'Abonnementen worden automatisch verlengd, tenzij ze minstens 24 uur voor het einde van de periode worden opgezegd. Je kunt je abonnement op elk moment beheren of opzeggen via Google Play > Abonnementen.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Ontgrendelt 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat en Warrior';
+  String get paywall_allPlansDesc => 'Ontgrendelt 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat en Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Banner- en interstitial-advertenties worden volledig uitgeschakeld';
+  String get paywall_noAdsDesc => 'Banner- en interstitial-advertenties worden volledig uitgeschakeld';
 
   @override
   String get foodScan_title => 'AI-voedingsscan';
@@ -1572,27 +1557,22 @@ class AppLocalizationsNl extends AppLocalizations {
   String get foodScan_scanCta => 'Maaltijd scannen';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Fotografeer je bord en ontvang een schatting van calorieën en macro\'s';
+  String get foodScan_scanCtaDesc => 'Fotografeer je bord en ontvang een schatting van calorieën en macro\'s';
 
   @override
   String get foodScan_introTitle => 'Fotografeer je bord';
 
   @override
-  String get foodScan_introDesc =>
-      'AI leest de foto en schat de calorieën, eiwitten, koolhydraten en vetten.';
+  String get foodScan_introDesc => 'AI leest de foto en schat de calorieën, eiwitten, koolhydraten en vetten.';
 
   @override
-  String get foodScan_tipLight =>
-      'Goed, gelijkmatig licht zorgt voor een betere schatting';
+  String get foodScan_tipLight => 'Goed, gelijkmatig licht zorgt voor een betere schatting';
 
   @override
-  String get foodScan_tipFrame =>
-      'Zorg dat het hele bord binnen het kader past';
+  String get foodScan_tipFrame => 'Zorg dat het hele bord binnen het kader past';
 
   @override
-  String get foodScan_tipScale =>
-      'Leg bestek of een hand in beeld om de portiegrootte te kunnen inschatten';
+  String get foodScan_tipScale => 'Leg bestek of een hand in beeld om de portiegrootte te kunnen inschatten';
 
   @override
   String get foodScan_takePhoto => 'Foto maken';
@@ -1606,19 +1586,16 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Je hebt de scans van vandaag gebruikt. Probeer het morgen opnieuw.';
+  String get foodScan_quotaReached => 'Je hebt de scans van vandaag gebruikt. Probeer het morgen opnieuw.';
 
   @override
-  String get foodScan_privacyNote =>
-      'De foto wordt voor analyse naar de Gemini-API van Google gestuurd en wordt niet op onze servers opgeslagen.';
+  String get foodScan_privacyNote => 'De foto wordt naar de Gemini API van Google gestuurd. Google kan deze gebruiken om zijn producten te verbeteren en menselijke beoordelaars kunnen hem zien. Wij bewaren hem niet op onze servers.';
 
   @override
   String get foodScan_consentTitle => 'Foto\'s naar Google Gemini sturen?';
 
   @override
-  String get foodScan_consentBody =>
-      'Om calorieën en macro\'s te schatten, wordt elke maaltijdfoto die je maakt of kiest naar de AI-dienst Gemini van Google gestuurd. De foto wordt alleen voor deze analyse gebruikt en niet op onze servers opgeslagen.';
+  String get foodScan_consentBody => 'Om calorieën en macro\'s te schatten, wordt elke maaltijdfoto die je maakt of kiest naar de Gemini AI-dienst van Google gestuurd. Google kan foto\'s gebruiken om zijn producten te verbeteren en menselijke beoordelaars kunnen ze zien, dus houd personen, documenten en andere persoonlijke gegevens buiten beeld. Wij bewaren foto\'s niet op onze servers.';
 
   @override
   String get foodScan_consentAgree => 'Akkoord en doorgaan';
@@ -1633,12 +1610,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get foodScan_detectedItems => 'Herkende items';
 
   @override
-  String get foodScan_disclaimer =>
-      'AI-schattingen zijn bij benadering. Tik op een item om het te corrigeren.';
+  String get foodScan_disclaimer => 'AI-schattingen zijn bij benadering. Tik op een item om het te corrigeren.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Het model is niet zeker over deze foto. Controleer de waarden voordat je ze opslaat.';
+  String get foodScan_lowConfidence => 'Het model is niet zeker over deze foto. Controleer de waarden voordat je ze opslaat.';
 
   @override
   String get foodScan_save => 'Aan maaltijden toevoegen';
@@ -1662,40 +1637,130 @@ class AppLocalizationsNl extends AppLocalizations {
   String get foodScan_premiumTitle => 'Een Premium-functie';
 
   @override
-  String get foodScan_premiumDesc =>
-      'Calorieanalyse via een foto is inbegrepen bij Premium.';
+  String get foodScan_premiumDesc => 'Calorieanalyse via een foto is inbegrepen bij Premium.';
 
   @override
   String get foodScan_upgrade => 'Premium bekijken';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Geen verbinding. Controleer je internetverbinding en probeer het opnieuw.';
+  String get foodScan_errorNetwork => 'Geen verbinding. Controleer je internetverbinding en probeer het opnieuw.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Er worden momenteel te veel scans uitgevoerd. Probeer het over een paar minuten opnieuw.';
+  String get foodScan_errorRateLimited => 'Er worden momenteel te veel scans uitgevoerd. Probeer het over een paar minuten opnieuw.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'Fotoanalyse is momenteel niet beschikbaar.';
+  String get foodScan_errorUnavailable => 'Fotoanalyse is momenteel niet beschikbaar.';
 
   @override
-  String get foodScan_errorServer =>
-      'Er is een probleem met de analyseservice. Probeer het zo opnieuw.';
+  String get foodScan_errorServer => 'Er is een probleem met de analyseservice. Probeer het zo opnieuw.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Er is geen eten op deze foto gevonden. Maak een duidelijkere foto van het bord.';
+  String get foodScan_errorNoFood => 'Er is geen eten op deze foto gevonden. Maak een duidelijkere foto van het bord.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Deze foto kon niet worden geanalyseerd. Probeer een andere foto.';
+  String get foodScan_errorUnreadable => 'Deze foto kon niet worden geanalyseerd. Probeer een andere foto.';
 
   @override
   String get paywall_aiFoodScan => 'AI-voedingsscan';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Fotografeer een maaltijd en registreer binnen enkele seconden de calorieën en macro\'s';
+  String get paywall_aiFoodScanDesc => 'Fotografeer een maaltijd en registreer binnen enkele seconden de calorieën en macro\'s';
+
+  @override
+  String get safety_title => 'Voordat je begint';
+
+  @override
+  String get safety_desc => 'Vasten is niet voor iedereen veilig. Selecteer alles wat op jou van toepassing is.';
+
+  @override
+  String get safety_under18 => 'Ik ben jonger dan 18';
+
+  @override
+  String get safety_pregnant => 'Ik ben zwanger of geef borstvoeding';
+
+  @override
+  String get safety_eatingDisorder => 'Ik heb of had een eetstoornis';
+
+  @override
+  String get safety_underweight => 'Ik heb ondergewicht of mij is gezegd niet af te vallen';
+
+  @override
+  String get safety_diabetes => 'Ik heb diabetes of gebruik medicijnen die de bloedsuiker beïnvloeden';
+
+  @override
+  String get safety_medical => 'Ik heb een andere medische aandoening of gebruik regelmatig medicijnen';
+
+  @override
+  String get safety_none => 'Niets hiervan is op mij van toepassing';
+
+  @override
+  String get safety_ack => 'Ik overleg met mijn arts voordat ik ga vasten';
+
+  @override
+  String get safety_blockedTitle => 'Deze app is niet veilig voor jou';
+
+  @override
+  String get safety_blockedDesc => 'Op basis van je antwoorden kunnen we hier geen vasten aanbieden. Praat met een arts. Als eten nu moeilijk voelt, kan een zorgverlener helpen.';
+
+  @override
+  String get safety_reviewAnswers => 'Mijn antwoorden bekijken';
+
+  @override
+  String get safety_targetTooLow => 'Dit doel ligt onder een gezond gewicht voor je lengte.';
+
+  @override
+  String get onboarding_invalidBody => 'Vul een geldige lengte, gewicht, streefgewicht en leeftijd in.';
+
+  @override
+  String get crisis_unwell => 'Ik voel me niet goed';
+
+  @override
+  String get crisis_unwellTitle => 'Stop nu met vasten';
+
+  @override
+  String get crisis_unwellDesc => 'Duizeligheid, trillen, verwardheid of hartkloppingen zijn signalen om te stoppen met vasten en iets te eten of drinken.';
+
+  @override
+  String get crisis_emergency => 'Als je bent flauwgevallen, pijn op de borst hebt of je erg slecht voelt, bel dan nu het lokale noodnummer.';
+
+  @override
+  String get crisis_endFast => 'Mijn vasten beëindigen';
+
+  @override
+  String get profile_deleteData => 'Al mijn gegevens verwijderen';
+
+  @override
+  String get profile_deleteDataConfirm => 'Hiermee worden je vastperiodes, gewicht, maaltijden, water en instellingen definitief van dit apparaat verwijderd. Dit kan niet ongedaan worden gemaakt. Abonnementen beheer je in je store-account.';
+
+  @override
+  String get profile_deleteDataAction => 'Alles verwijderen';
+
+  @override
+  String get record_deleteConfirm => 'Deze invoer verwijderen?';
+
+  @override
+  String get profile_analytics => 'Anonieme gebruiksgegevens delen';
+
+  @override
+  String get profile_analyticsDesc => 'Helpt de app te verbeteren. Bevat nooit gewicht, maaltijden of gezondheidsgegevens.';
+
+  @override
+  String get plan_longWarningTitle => 'Dit is een lange vastenperiode';
+
+  @override
+  String get plan_longWarningDesc => 'Vasten van 20 uur of langer is niet voor iedereen geschikt en kan ervoor zorgen dat je je niet goed voelt. Overleg bij twijfel met een arts en stop als je je niet goed voelt.';
+
+  @override
+  String get plan_longWarningAccept => 'Ik begrijp het';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days dagen gratis proberen, daarna $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Niet aan het vasten';
+
+  @override
+  String get widget_tapToStart => 'Tik om te starten';
 }

@@ -1,11 +1,11 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
 import 'notification_service.dart';
+import 'widget_service.dart';
 
 const _taskName = 'fastingTimerUpdate';
 const _uniqueName = 'com.dehbkoclugu.fasting.timer';
@@ -33,7 +33,7 @@ Future<void> _updateTimerNotification() async {
   final isActive = prefs.getBool('fasting_active') ?? false;
   final notificationsEnabled = prefs.getBool('notificationsEnabled') ?? true;
   final locale = _resolveLocale(prefs);
-  final l10n = lookupAppLocalizations(_localeFromTag(locale));
+  final l10n = lookupAppLocalizations(resolveNotificationLocale(locale));
 
   if (!isActive || !notificationsEnabled || startTimeMs == null || targetMinutes == null) return;
 
@@ -46,6 +46,9 @@ Future<void> _updateTimerNotification() async {
     final notifService = NotificationService();
     await notifService.initialize();
     await notifService.cancelOngoing();
+    await WidgetService().updateIdleWidget();
+    // Nothing left to update until the next fast.
+    await Workmanager().cancelByUniqueName(_uniqueName);
     return;
   }
 
@@ -73,6 +76,13 @@ Future<void> _updateTimerNotification() async {
   await notifService.updateOngoingNotification(
     remaining: remainingStr,
     phase: phase,
+  );
+  await WidgetService().updateWidget(
+    isFasting: true,
+    planName: prefs.getString('fasting_plan_name') ?? '',
+    remainingTime: widgetTime(remaining),
+    progress: elapsed.inMinutes / targetMinutes,
+    phaseName: phase,
   );
 }
 
@@ -118,6 +128,8 @@ class BackgroundService implements FastingTimerService {
     // only: iOS has no BGTaskScheduler registration for it, so the call
     // throws there and would skip the notification scheduling below.
     if (Platform.isAndroid) {
+      // A restored fast can get here before main() has finished starting up.
+      await initialize();
       await Workmanager().registerPeriodicTask(
         _uniqueName,
         _taskName,
@@ -134,7 +146,7 @@ class BackgroundService implements FastingTimerService {
       return;
     }
     final locale = _resolveLocale(prefs);
-    final l10n = lookupAppLocalizations(_localeFromTag(locale));
+    final l10n = lookupAppLocalizations(resolveNotificationLocale(locale));
     final notifService = NotificationService();
     notifService.setLocale(locale);
     await notifService.scheduleFastingNotifications(
@@ -172,7 +184,3 @@ String _resolveLocale(SharedPreferences prefs) {
       PlatformDispatcher.instance.locale.languageCode;
 }
 
-Locale _localeFromTag(String tag) {
-  final parts = tag.replaceAll('-', '_').split('_');
-  return Locale.fromSubtags(languageCode: parts.first, countryCode: parts.length > 1 ? parts[1] : null);
-}

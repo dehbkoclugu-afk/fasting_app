@@ -19,7 +19,9 @@ class SectionHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: Theme.of(context).textTheme.titleMedium),
+          Flexible(
+            child: Text(title, style: Theme.of(context).textTheme.titleMedium),
+          ),
           if (actionText != null)
             TextButton(onPressed: onAction, child: Text(actionText!)),
         ],

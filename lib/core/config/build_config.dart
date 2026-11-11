@@ -48,8 +48,12 @@ class BuildConfig {
   // Gemini — the AI food photo analysis (premium only).
   // ===========================================================================
 
-  /// Google AI Studio API key (https://aistudio.google.com/apikey). The free
-  /// tier is enough for the feature; billing is only needed past its quota.
+  /// Google AI Studio API key (https://aistudio.google.com/apikey).
+  ///
+  /// The app runs on the unpaid tier, where Google may use photos to improve
+  /// its products and reviewers may read them; `foodScan_consentBody` says so.
+  /// Google's terms also bar personal data on that tier and require the paid
+  /// tier for users in the EEA, Switzerland and the UK.
   ///
   /// Unlike the keys above this one is NOT public information: it bills a
   /// Google Cloud project and anyone who pulls it out of the binary can spend
@@ -155,6 +159,12 @@ class BuildConfig {
 
   static String get termsOfUseUrl =>
       _pick(_termsOfUseUrlEnv, _termsOfUseUrlFallback);
+
+  /// Crash reporting. Empty disables Sentry entirely.
+  static const sentryDsn = String.fromEnvironment('SENTRY_DSN');
+
+  /// PostHog project key (public by design). Empty disables analytics.
+  static const posthogKey = String.fromEnvironment('POSTHOG_KEY');
 
   /// Google AI Studio key for the food photo analysis. Empty when the build
   /// carried no `GEMINI_API_KEY`.

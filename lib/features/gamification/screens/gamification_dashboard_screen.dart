@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 
@@ -103,47 +104,6 @@ class GamificationDashboardScreen extends ConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: 14),
-          if (!calm)
-            FastingSplitArtCard(
-              assetPath: 'assets/images/editorial/v4/weekly-league.webp',
-              minHeight: 184,
-              artWidth: 132,
-              borderRadius: 22,
-              semanticLabel: l10n.game_league,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  margin: const EdgeInsets.all(12),
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface.withValues(alpha: .90),
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.game_league,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          color: theme.colorScheme.onSurface,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        l10n.game_leagueDesc(game.leaguePercentile),
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
-                          height: 1.3,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
         ],
       ),
     );
@@ -160,7 +120,7 @@ class _LevelHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final tr = Localizations.localeOf(context).languageCode == 'tr';
+    final number = NumberFormat.decimalPattern(l10n.localeName);
     return Semantics(
       label: l10n.game_levelSemantics(game.level, game.xp),
       child: FastingSplitArtCard(
@@ -188,7 +148,7 @@ class _LevelHero extends StatelessWidget {
               Text(
                 calm
                     ? l10n.game_questsDesc
-                    : '${tr ? 'Seviye' : 'Level'} ${game.level} • ${game.xp} XP',
+                    : l10n.game_levelSemantics(game.level, game.xp),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodySmall?.copyWith(
@@ -199,7 +159,7 @@ class _LevelHero extends StatelessWidget {
               if (!calm) ...[
                 const SizedBox(height: 16),
                 Text(
-                  '${game.levelXp} / ${GamificationState.levelSize} XP',
+                  '${number.format(game.levelXp)} / ${number.format(GamificationState.levelSize)} XP',
                   style: theme.textTheme.labelLarge?.copyWith(
                     color: fastingArtForeground(context),
                     fontWeight: FontWeight.w800,
@@ -215,7 +175,7 @@ class _LevelHero extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  '${GamificationState.levelSize - game.levelXp} XP ${tr ? 'kaldı' : 'left'}',
+                  '${l10n.timer_remaining} · ${number.format(GamificationState.levelSize - game.levelXp)} XP',
                   style: theme.textTheme.labelSmall?.copyWith(
                     color: fastingArtMutedForeground(context),
                   ),
@@ -376,7 +336,8 @@ class _SeasonPath extends StatelessWidget {
     final theme = Theme.of(context);
     final nextReward = current >= 30 ? 30 : ((current ~/ 5) + 1) * 5;
     final remaining = (nextReward - current).clamp(0, 30);
-    final isTurkish = Localizations.localeOf(context).languageCode == 'tr';
+    final l10n = AppLocalizations.of(context)!;
+    final number = NumberFormat.decimalPattern(l10n.localeName);
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -391,15 +352,17 @@ class _SeasonPath extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text('$current / 30', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900)),
+              Text('${number.format(current)} / ${number.format(30)}', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900)),
               const Spacer(),
-              Text(
-                current >= 30
-                    ? (isTurkish ? 'Sezon tamamlandı' : 'Season complete')
-                    : (isTurkish ? 'Mühre $remaining adım' : '$remaining steps to seal'),
-                style: theme.textTheme.labelMedium?.copyWith(
-                  color: AppColors.primary,
-                  fontWeight: FontWeight.w800,
+              Flexible(
+                child: Text(
+                  current >= 30
+                      ? l10n.awards_completed
+                      : l10n.game_stepsToSeal(remaining),
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: AppColors.primary,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ),
             ],
@@ -575,16 +538,20 @@ class _BadgeToken extends StatelessWidget {
   );
 
   String _progressLabel(GameBadge badge) {
+    final number = NumberFormat.decimalPatternDigits(
+      locale: l10n.localeName,
+      decimalDigits: 1,
+    );
     if (badge.id.startsWith('hours')) {
       final currentHours = badge.progress / 60;
       final targetHours = badge.target / 60;
       final current = currentHours == currentHours.roundToDouble()
-          ? currentHours.round().toString()
-          : currentHours.toStringAsFixed(1);
-      final unit = l10n.localeName == 'tr' ? 'saat' : 'hours';
-      return '$current / ${targetHours.round()} $unit';
+          ? NumberFormat.decimalPattern(l10n.localeName).format(currentHours)
+          : number.format(currentHours);
+      return '$current / ${NumberFormat.decimalPattern(l10n.localeName).format(targetHours)} ${l10n.common_hours}';
     }
-    return '${badge.progress} / ${badge.target}';
+    final integer = NumberFormat.decimalPattern(l10n.localeName);
+    return '${integer.format(badge.progress)} / ${integer.format(badge.target)}';
   }
 
   String _badgeArtwork(String id) {

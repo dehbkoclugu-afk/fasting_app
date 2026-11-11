@@ -33,7 +33,7 @@ void main() {
     );
     expect(images, isNotEmpty);
     expect(
-      images.map((image) => (image.image as AssetImage).assetName).toSet(),
+      images.map((image) => ((image.image as ResizeImage).imageProvider as AssetImage).assetName).toSet(),
       {darkPath},
     );
   });
@@ -48,7 +48,7 @@ void main() {
     );
     expect(images, isNotEmpty);
     expect(
-      images.map((image) => (image.image as AssetImage).assetName).toSet(),
+      images.map((image) => ((image.image as ResizeImage).imageProvider as AssetImage).assetName).toSet(),
       {lightPath},
     );
   });

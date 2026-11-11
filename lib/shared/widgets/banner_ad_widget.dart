@@ -39,8 +39,9 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
       if (!mounted ||
           !ads.canLoadAds ||
           ref.read(subscriptionProvider).isPremium ||
-          !ref.read(subscriptionProvider).entitlementVerified)
+          !ref.read(subscriptionProvider).entitlementVerified) {
         return;
+      }
       _bannerAd = BannerAd(
         adUnitId: AdmobService.bannerAdUnitId,
         size: AdSize.banner,

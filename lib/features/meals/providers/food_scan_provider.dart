@@ -163,8 +163,9 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   static const _jpegQuality = 85;
 
   Future<void> refreshQuota() async {
-    if (!mounted || _pickerInFlight || _analysisInFlight || !_canAnalyze())
+    if (!mounted || _pickerInFlight || _analysisInFlight || !_canAnalyze()) {
       return;
+    }
     await _quotaLoad;
     if (mounted) await _loadQuota();
   }
@@ -196,8 +197,9 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   }
 
   Future<void> _recordScan() async {
-    if (_dailyLimit <= 0) return;
+    if (!mounted || _dailyLimit <= 0) return;
     final prefs = await SharedPreferences.getInstance();
+    if (!mounted) return;
     final used = prefs.getString(_dayKey) == _todayKey()
         ? (prefs.getInt(_countKey) ?? 0)
         : 0;
@@ -218,8 +220,9 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
   /// Picks a photo and analyses it. Does nothing if the user backs out of the
   /// picker — that is not an error worth showing.
   Future<void> scan(PhotoSource source, {String languageCode = 'en'}) async {
-    if (!mounted || _pickerInFlight || _analysisInFlight || !_canAnalyze())
+    if (!mounted || _pickerInFlight || _analysisInFlight || !_canAnalyze()) {
       return;
+    }
     _pickerInFlight = true;
     try {
       await _quotaLoad;
@@ -242,6 +245,7 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
           maxWidth: _maxImageDimension,
           maxHeight: _maxImageDimension,
           imageQuality: _jpegQuality,
+          requestFullMetadata: false,
         );
       } catch (error) {
         debugPrint('Image pick failed: $error');
@@ -326,6 +330,7 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
         languageCode: languageCode,
         mimeType: resolvedMimeType,
       );
+      if (!mounted) return;
       await _recordScan();
       if (!mounted) return;
       state = state.copyWith(

@@ -9,6 +9,64 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Porridge aux fruits';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Yaourt aux myrtilles';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Toast aux œufs et à l’avocat';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Bol de quinoa au poulet';
+
+  @override
+  String get mealPreset_lentilSoup => 'Soupe de lentilles';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Saumon et brocoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap à la dinde et aux légumes';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Bol de pois chiches au tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Salade de thon et de haricots';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Fromage frais à la pomme';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Houmous et légumes croquants';
+
+  @override
+  String get mealPreset_bananaKefir => 'Bol de banane au kéfir';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count étapes avant le sceau',
+      one: '$count étape avant le sceau',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError =>
+      'Impossible de supprimer cette entrée.';
+
+  @override
+  String get fastingHistory_title => 'Historique du jeûne';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Cette entrée sera supprimée définitivement.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -57,18 +115,16 @@ class AppLocalizationsFr extends AppLocalizations {
   String get timer_completed => 'Félicitations!';
 
   @override
-  String get timer_completedMessage =>
-      'Vous avez terminé votre jeûne avec succès !';
+  String get timer_completedMessage => 'Vous avez terminé votre jeûne avec succès !';
 
   @override
   String get timer_selectPlan => 'Sélectionnez un plan de jeûne';
 
   @override
-  String get timer_stopConfirm =>
-      'Etes-vous sûr de vouloir mettre fin au jeûne plus tôt ?';
+  String get timer_stopConfirm => 'Etes-vous sûr de vouloir mettre fin au jeûne plus tôt ?';
 
   @override
-  String get timer_stopTitle => 'Terminer rapidement';
+  String get timer_stopTitle => 'Terminer le jeûne';
 
   @override
   String get timer_cancel => 'Annuler';
@@ -98,13 +154,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get phase_ketosis => 'Cétose';
 
   @override
-  String get phase_ketosisDesc => 'Production de cétone active';
+  String get phase_ketosisDesc => 'La production de cétones peut augmenter';
 
   @override
   String get phase_autophagy => 'Autophagie';
 
   @override
-  String get phase_autophagyDesc => 'Renouvellement cellulaire';
+  String get phase_autophagyDesc => 'Phase estimée de recyclage cellulaire';
 
   @override
   String get stats_title => 'Statistiques';
@@ -265,8 +321,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding_welcome => 'Accueillir';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Prenez le contrôle de votre\nvoyage de jeûne intermittent';
+  String get onboarding_welcomeDesc => 'Prenez le contrôle de votre\nvoyage de jeûne intermittent';
 
   @override
   String get onboarding_featureTimer => 'Minuterie de jeûne intelligente';
@@ -275,8 +330,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding_featureStats => 'Statistiques et graphiques détaillés';
 
   @override
-  String get onboarding_featureMeals =>
-      'Planificateur de repas et suggestions de recettes';
+  String get onboarding_featureMeals => 'Planificateur de repas et suggestions de recettes';
 
   @override
   String get onboarding_getStarted => 'Commencer';
@@ -303,8 +357,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding_goalEnergy => 'Plus d\'énergie';
 
   @override
-  String get onboarding_goalEnergyDesc =>
-      'De l\'énergie tout au long de la journée';
+  String get onboarding_goalEnergyDesc => 'De l\'énergie tout au long de la journée';
 
   @override
   String get onboarding_goalMental => 'Clarté mentale';
@@ -316,8 +369,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding_goalLongevity => 'Longévité';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Renouvellement cellulaire et anti-âge';
+  String get onboarding_goalLongevityDesc => 'Construisez une routine saine à long terme';
 
   @override
   String get onboarding_goalDiscipline => 'Discipline';
@@ -329,38 +381,25 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding_selectPlan => 'Choisissez votre forfait';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Sélectionnez le meilleur plan de jeûne pour vous';
+  String get onboarding_selectPlanDesc => 'Sélectionnez le meilleur plan de jeûne pour vous';
 
   @override
   String get onboarding_bodyInfo => 'Entrez vos informations';
 
   @override
-  String get onboarding_bodyInfoDesc =>
-      'Pour des recommandations personnalisées';
-
-  @override
-  String get onboarding_gender => 'Genre';
-
-  @override
-  String get onboarding_male => 'Mâle';
-
-  @override
-  String get onboarding_female => 'Femelle';
+  String get onboarding_bodyInfoDesc => 'Pour des recommandations personnalisées';
 
   @override
   String get onboarding_age => 'Âge';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Ces informations sont stockées uniquement sur votre appareil et utilisées pour le calcul des calories.';
+  String get onboarding_bodyInfoDisclaimer => 'Ces informations sont stockées uniquement sur votre appareil et utilisées pour le calcul des calories.';
 
   @override
   String get onboarding_permissions => 'Dernière étape';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Activez les autorisations pour la meilleure expérience';
+  String get onboarding_permissionsDesc => 'Activez les autorisations pour la meilleure expérience';
 
   @override
   String get onboarding_next => 'Continuer';
@@ -387,8 +426,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get paywall_title => 'Passer à Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Débloquez tous les plans de jeûne et supprimez les publicités';
+  String get paywall_subtitle => 'Débloquez tous les plans de jeûne et supprimez les publicités';
 
   @override
   String get paywall_allPlans => 'Tous les plans de jeûne';
@@ -427,8 +465,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get paywall_premiumActive => 'Actif Premium !';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Tous les plans de jeûne sont débloqués et les publicités désactivées';
+  String get paywall_premiumActiveDesc => 'Tous les plans de jeûne sont débloqués et les publicités désactivées';
 
   @override
   String get water_title => 'Prise d\'eau';
@@ -563,8 +600,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get completion_earlyTitle => 'Jeûne terminé';
 
   @override
-  String get completion_earlyMessage =>
-      'La durée d’aujourd’hui a été enregistrée. La série et la progression des succès n’ont pas changé, car l’objectif n’a pas été atteint.';
+  String get completion_earlyMessage => 'La durée d’aujourd’hui a été enregistrée. La série et la progression des succès n’ont pas changé, car l’objectif n’a pas été atteint.';
 
   @override
   String get timer_remainingTime => 'Temps restant';
@@ -594,8 +630,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get streak_incredible => 'Incroyable!';
 
   @override
-  String get weight_noRecord =>
-      'Aucun enregistrement de poids pour l\'instant\nAjouter depuis Profil > Mesures corporelles';
+  String get weight_noRecord => 'Aucun enregistrement de poids pour l\'instant\nAjouter depuis Profil > Mesures corporelles';
 
   @override
   String get day_mon => 'Lun';
@@ -781,8 +816,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get profile_calmGamification => 'Une gamification calme';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Réduit la pression de la ligue et de la saison';
+  String get profile_calmGamificationDesc => 'Réduit la pression de la saison';
 
   @override
   String get profile_editName => 'Modifiez votre nom';
@@ -800,8 +834,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get circle_tagline => 'Ensemble, sans pression.';
 
   @override
-  String get circle_privacy =>
-      'Le poids et les mesures privées restent masqués. Seuls les progrès et le soutien sont visibles.';
+  String get circle_privacy => 'Le poids et les mesures privées restent masqués. Seuls les progrès et le soutien sont visibles.';
 
   @override
   String circle_sendSupport(int count) {
@@ -818,8 +851,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get crisis_nameTitle => 'Tout d’abord, nommez ce qui se passe';
 
   @override
-  String get crisis_nameDesc =>
-      'Cela peut être la faim, l\'habitude ou l\'émotion.';
+  String get crisis_nameDesc => 'Cela peut être la faim, l\'habitude ou l\'émotion.';
 
   @override
   String get crisis_waterTitle => 'Boire un verre d\'eau';
@@ -831,8 +863,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get crisis_delayTitle => 'Retarder la décision de 10 minutes';
 
   @override
-  String get crisis_delayDesc =>
-      'Si vous ne vous sentez pas bien, mettre fin au jeûne n’est pas un échec.';
+  String get crisis_delayDesc => 'Si vous ne vous sentez pas bien, mettre fin au jeûne n’est pas un échec.';
 
   @override
   String get crisis_hunger => 'Faim';
@@ -847,8 +878,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get crisis_tenMore => 'Donnez-lui 10 minutes';
 
   @override
-  String get stats_storyEmpty =>
-      'Votre premier jeûne commencera votre histoire personnelle.';
+  String get stats_storyEmpty => 'Votre premier jeûne commencera votre histoire personnelle.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -891,12 +921,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get weather_listen => 'Vous êtes venu loin ; écoutez votre corps.';
 
   @override
-  String get weather_onPlan =>
-      'Le rythme d’aujourd’hui correspond à votre plan.';
+  String get weather_onPlan => 'Le rythme d’aujourd’hui correspond à votre plan.';
 
   @override
-  String get weather_challenging =>
-      'Cette heure était un défi auparavant ; le mode support est prêt.';
+  String get weather_challenging => 'Cette heure était un défi auparavant ; le mode support est prêt.';
 
   @override
   String get replay_copied => 'Jeûne Replay copié';
@@ -921,8 +949,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'La synchronisation des phases est une estimation générale et non une mesure médicale.';
+  String get phase_estimateShort => 'La synchronisation des phases est une estimation générale et non une mesure médicale.';
 
   @override
   String phase_hours(int start, int end) {
@@ -930,8 +957,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Ce timing est une estimation générale. Les réponses métaboliques peuvent varier d’une personne à l’autre.';
+  String get phase_estimateLong => 'Ce timing est une estimation générale. Les réponses métaboliques peuvent varier d’une personne à l’autre.';
 
   @override
   String get bmi_underweight => 'Insuffisance pondérale';
@@ -957,14 +983,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notification_phaseCatabolic => 'Entrée en phase catabolique 📉';
 
   @override
-  String get notification_phaseFatBurning =>
-      'La combustion des graisses a commencé ! 🔥';
+  String get notification_phaseFatBurning => 'La combustion des graisses a commencé ! 🔥';
 
   @override
   String get notification_phaseKetosis => 'Vous êtes en cétose ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autophagie active ! 🔄';
+  String get notification_phaseAutophagy => 'Phase d\'autophagie estimée';
 
   @override
   String notification_completedBody(String plan) {
@@ -975,16 +1000,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notification_waterTitle => 'Boire de l\'eau 💧';
 
   @override
-  String get notification_waterBody =>
-      'N’oubliez pas de boire beaucoup d’eau pendant le jeûne !';
+  String get notification_waterBody => 'N’oubliez pas de boire beaucoup d’eau pendant le jeûne !';
 
   @override
-  String get notification_windowTitle =>
-      'Fermeture de la fenêtre de restauration ⏰';
+  String get notification_windowTitle => 'Fermeture de la fenêtre de restauration ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Votre fenêtre de restauration se fermera dans 30 minutes.';
+  String get notification_windowBody => 'Votre fenêtre de restauration se fermera dans 30 minutes.';
 
   @override
   String notification_streakTitle(int days) {
@@ -992,8 +1014,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      'Vous allez très bien ! Continuez ainsi aujourd\'hui.';
+  String get notification_streakBody => 'Vous allez très bien ! Continuez ainsi aujourd\'hui.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1024,33 +1045,28 @@ class AppLocalizationsFr extends AppLocalizations {
   String get explore_guide => 'Guide du jeûne';
 
   @override
-  String get explore_guideDesc =>
-      'Tout ce qu’il faut savoir sur le jeûne intermittent';
+  String get explore_guideDesc => 'Tout ce qu’il faut savoir sur le jeûne intermittent';
 
   @override
-  String get explore_circleDesc =>
-      'Partagez un soutien discret avec votre groupe privé.';
+  String get explore_circleDesc => 'Partagez un soutien discret avec votre groupe privé.';
 
   @override
   String get explore_faq => 'Foire aux questions';
 
   @override
-  String get explore_education =>
-      'Ce contenu est destiné uniquement à l’éducation générale et ne constitue pas un diagnostic médical ni un conseil de traitement.';
+  String get explore_education => 'Ce contenu est destiné uniquement à l’éducation générale et ne constitue pas un diagnostic médical ni un conseil de traitement.';
 
   @override
   String get explore_safety => 'Santé et sécurité';
 
   @override
-  String get explore_safetyDesc =>
-      'Si vous souffrez d\'un problème de santé, prenez régulièrement des médicaments, présentez des symptômes inquiétants, êtes enceinte ou allaitez, consultez un professionnel de la santé qualifié avant de jeûner. Arrêtez-vous si vous ne vous sentez pas bien.';
+  String get explore_safetyDesc => 'Si vous souffrez d\'un problème de santé, prenez régulièrement des médicaments, présentez des symptômes inquiétants, êtes enceinte ou allaitez, consultez un professionnel de la santé qualifié avant de jeûner. Arrêtez-vous si vous ne vous sentez pas bien.';
 
   @override
   String get explore_sources => 'Sources';
 
   @override
-  String get explore_sourcesDesc =>
-      'Le contenu est simplifié à partir des références de santé publique ci-dessous.';
+  String get explore_sourcesDesc => 'Le contenu est simplifié à partir des références de santé publique ci-dessous.';
 
   @override
   String get explore_sourceError => 'La source n\'a pas pu être ouverte';
@@ -1059,8 +1075,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get explore_rules => 'Règles importantes';
 
   @override
-  String get explore_rule1 =>
-      'Ne consommez pas d’aliments caloriques pendant le jeûne';
+  String get explore_rule1 => 'Ne consommez pas d’aliments caloriques pendant le jeûne';
 
   @override
   String get explore_rule2 => 'Boire beaucoup d\'eau et de liquides';
@@ -1069,135 +1084,115 @@ class AppLocalizationsFr extends AppLocalizations {
   String get explore_rule3 => 'Mangez équilibré pendant votre fenêtre de repas';
 
   @override
-  String get explore_rule4 =>
-      'Arrêtez de jeûner si vous ne vous sentez pas bien';
+  String get explore_rule4 => 'Arrêtez de jeûner si vous ne vous sentez pas bien';
 
   @override
-  String get explore_rule5 =>
-      'Les femmes enceintes ou allaitantes ne devraient pas jeûner';
+  String get explore_rule5 => 'Les femmes enceintes ou allaitantes ne devraient pas jeûner';
 
   @override
-  String get explore_rule6 =>
-      'Consultez votre médecin si vous souffrez de maladies chroniques';
+  String get explore_rule6 => 'Consultez votre médecin si vous souffrez de maladies chroniques';
 
   @override
   String get tip_water => 'Restez hydraté';
 
   @override
-  String get tip_waterDesc =>
-      'Buvez de l’eau lorsque vous avez soif et incluez des liquides aux repas. Les besoins peuvent varier en fonction de la santé, de la météo et de l\'activité.';
+  String get tip_waterDesc => 'Buvez de l’eau lorsque vous avez soif et incluez des liquides aux repas. Les besoins peuvent varier en fonction de la santé, de la météo et de l\'activité.';
 
   @override
   String get tip_food => 'Mangez bien';
 
   @override
-  String get tip_foodDesc =>
-      'Pendant les périodes de repas, choisissez des aliments riches en protéines, en fibres et en graisses saines. Évitez les aliments transformés.';
+  String get tip_foodDesc => 'Pendant les périodes de repas, choisissez des aliments riches en protéines, en fibres et en graisses saines. Évitez les aliments transformés.';
 
   @override
   String get tip_sleep => 'Dors bien';
 
   @override
-  String get tip_sleepDesc =>
-      'Un sommeil régulier et suffisant favorise le bien-être général. Planifiez le jeûne afin qu\'il ne perturbe pas votre sommeil.';
+  String get tip_sleepDesc => 'Un sommeil régulier et suffisant favorise le bien-être général. Planifiez le jeûne afin qu\'il ne perturbe pas votre sommeil.';
 
   @override
   String get tip_exercise => 'Exercice léger';
 
   @override
-  String get tip_exerciseDesc =>
-      'Vous pouvez faire de la marche légère ou du yoga tout en jeûnant. Évitez les exercices intenses, surtout pendant les premières semaines jusqu\'à ce que votre corps s\'adapte.';
+  String get tip_exerciseDesc => 'Vous pouvez faire de la marche légère ou du yoga tout en jeûnant. Évitez les exercices intenses, surtout pendant les premières semaines jusqu\'à ce que votre corps s\'adapte.';
 
   @override
   String get tip_drinks => 'Boissons autorisées';
 
   @override
-  String get tip_drinksDesc =>
-      'Pendant le jeûne, vous pouvez consommer de l’eau, du thé nature et du café noir (sans sucre, sans lait). Ces boissons ne rompront pas votre jeûne.';
+  String get tip_drinksDesc => 'Pendant le jeûne, vous pouvez consommer de l’eau, du thé nature et du café noir (sans sucre, sans lait). Ces boissons ne rompront pas votre jeûne.';
 
   @override
   String get faq_drinks => 'Que puis-je boire pendant le jeûne ?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Vous pouvez boire de l\'eau, du thé nature et du café noir (sans sucre ni lait). Les boissons caloriques rompent le jeûne.';
+  String get faq_drinksAnswer => 'Vous pouvez boire de l\'eau, du thé nature et du café noir (sans sucre ni lait). Les boissons caloriques rompent le jeûne.';
 
   @override
   String get faq_plan => 'Quel programme de jeûne dois-je choisir ?';
 
   @override
-  String get faq_planAnswer =>
-      'Si vous êtes nouveau, commencez par 12h12 ou 14h10. Si vous êtes expérimenté, essayez le 16:8 ou le 18:6. 20:4 et OMAD sont destinés aux jeûneurs avancés.';
+  String get faq_planAnswer => 'Si vous êtes nouveau, commencez par 12h12 ou 14h10. Si vous êtes expérimenté, essayez le 16:8 ou le 18:6. 20:4 et OMAD sont destinés aux jeûneurs avancés.';
 
   @override
   String get faq_exercise => 'Puis-je faire de l’exercice en jeûnant ?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Oui, mais évitez les entraînements intenses. Le cardio léger, la marche et le yoga sont idéaux. Si vous soulevez des poids, programmez-le près de votre fenêtre de repas.';
+  String get faq_exerciseAnswer => 'Oui, mais évitez les entraînements intenses. Le cardio léger, la marche et le yoga sont idéaux. Si vous soulevez des poids, programmez-le près de votre fenêtre de repas.';
 
   @override
   String get faq_weight => 'Le jeûne aide-t-il à perdre du poids ?';
 
   @override
-  String get faq_weightAnswer =>
-      'Pour certaines personnes, limiter le temps consacré aux repas peut réduire l’apport énergétique total. Les résultats varient et les effets à long terme sont encore à l’étude.';
+  String get faq_weightAnswer => 'Pour certaines personnes, limiter le temps consacré aux repas peut réduire l’apport énergétique total. Les résultats varient et les effets à long terme sont encore à l’étude.';
 
   @override
   String get plan_12_desc => 'Niveau débutant';
 
   @override
-  String get plan_12_detail =>
-      'Idéal pour les débutants. Rapide 12 heures incluant votre temps de sommeil.';
+  String get plan_12_detail => 'Idéal pour les débutants. Rapide 12 heures incluant votre temps de sommeil.';
 
   @override
   String get plan_16_desc => 'Forfait le plus populaire';
 
   @override
-  String get plan_16_detail =>
-      'Le plan IF le plus courant. 16 heures de jeûne, 8 heures de repas. Généralement du déjeuner au dîner.';
+  String get plan_16_detail => 'Le plan IF le plus courant. 16 heures de jeûne, 8 heures de repas. Généralement du déjeuner au dîner.';
 
   @override
   String get plan_18_desc => 'Niveau intermédiaire';
 
   @override
-  String get plan_18_detail =>
-      '18 heures de jeûne, 6 heures de repas. Durée de combustion des graisses plus longue.';
+  String get plan_18_detail => '18 heures de jeûne, 6 heures de repas. Durée de combustion des graisses plus longue.';
 
   @override
   String get plan_20_desc => 'Niveau avancé';
 
   @override
-  String get plan_20_detail =>
-      '20 heures de jeûne, 4 heures de repas. Idéal pour atteindre la cétose et l\'autophagie.';
+  String get plan_20_detail => '20 heures de jeûne, 4 heures pour manger. Pour les personnes habituées au jeûne.';
 
   @override
   String get plan_omad_desc => 'Un repas par jour';
 
   @override
-  String get plan_omad_detail =>
-      'Un repas par jour. 23 heures de jeûne, 1 heure de repas. Niveau expert.';
+  String get plan_omad_detail => 'Un repas par jour. 23 heures de jeûne, 1 heure de repas. Niveau expert.';
 
   @override
   String get plan_52_desc => '2 jours par semaine';
 
   @override
-  String get plan_52_detail =>
-      'Mangez normalement 5 jours, seulement ~500 calories sur 2 jours. Une approche alternative.';
+  String get plan_52_detail => 'Mangez normalement 5 jours, seulement ~500 calories sur 2 jours. Une approche alternative.';
 
   @override
   String get plan_ese_desc => '24 heures rapide';
 
   @override
-  String get plan_ese_detail =>
-      'Jeûner pendant 24 heures 1 à 2 fois par semaine. Pour les utilisateurs avancés.';
+  String get plan_ese_detail => 'Jeûner pendant 24 heures 1 à 2 fois par semaine. Pour les utilisateurs avancés.';
 
   @override
   String get plan_warrior_desc => 'Régime guerrier';
 
   @override
-  String get plan_warrior_detail =>
-      'Mangez léger pendant la journée (fruits, légumes), prenez votre repas principal dans une fenêtre de 4 heures en soirée.';
+  String get plan_warrior_detail => 'Mangez léger pendant la journée (fruits, légumes), prenez votre repas principal dans une fenêtre de 4 heures en soirée.';
 
   @override
   String get award_first_title => 'Premier pas';
@@ -1263,8 +1258,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get award_rhythm90_title => 'Rythme de 90 jours';
 
   @override
-  String get award_rhythm90_desc =>
-      'Construisez une séquence de quatre-vingt-dix jours';
+  String get award_rhythm90_desc => 'Construisez une séquence de quatre-vingt-dix jours';
 
   @override
   String get award_year_title => 'Voyage d\'un an';
@@ -1339,8 +1333,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get game_season => 'Saison en 30 étapes';
 
   @override
-  String get game_seasonDesc =>
-      'Un sceau de collection toutes les cinq étapes.';
+  String get game_seasonDesc => 'Un sceau de collection toutes les cinq étapes.';
 
   @override
   String get game_badges => 'Collection de badges';
@@ -1351,16 +1344,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Obtenu toutes les sept réussites. Une journée manquée n’efface jamais vos progrès.';
-
-  @override
-  String get game_league => 'Ligue hebdomadaire privée';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Votre score rythmique se situe dans le centile $percent d’un modèle local privé. Le poids et le jeûne extrême ne sont jamais classés.';
-  }
+  String get game_shieldsDesc => 'Obtenu toutes les sept réussites. Une journée manquée n’efface jamais vos progrès.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1410,8 +1394,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get badge_target1_title => 'Première cible';
 
   @override
-  String get badge_target1_desc =>
-      'Complétez rapidement votre premier objectif';
+  String get badge_target1_desc => 'Complétez rapidement votre premier objectif';
 
   @override
   String get badge_target3_title => 'Trois étapes';
@@ -1505,15 +1488,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get paywall_continue => 'Continuer';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Les achats sont indisponibles pour le moment. Réessayez plus tard.';
+  String get paywall_productsUnavailable => 'Les achats sont indisponibles pour le moment. Réessayez plus tard.';
 
   @override
   String get paywall_purchaseFailed => 'L’achat n’a pas pu être finalisé.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'Aucun achat antérieur n’a été trouvé.';
+  String get paywall_nothingToRestore => 'Aucun achat antérieur n’a été trouvé.';
 
   @override
   String get paywall_restoreFailed => 'Les achats n’ont pas pu être restaurés.';
@@ -1522,15 +1503,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get paywall_terms => 'Conditions d’utilisation';
 
   @override
-  String get permission_notificationDesc =>
-      'Rappels de jeûne, changements de phase et notifications de fin';
+  String get permission_notificationDesc => 'Rappels de jeûne, changements de phase et notifications de fin';
 
   @override
   String get profile_privacyChoices => 'Choix de confidentialité';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Les abonnements se renouvellent automatiquement sauf résiliation au moins 24 heures avant la fin de la période. Gérez-les dans les réglages de l\'App Store.';
+  String get paywall_autoRenewInfo => 'Les abonnements se renouvellent automatiquement sauf résiliation au moins 24 heures avant la fin de la période. Gérez-les dans les réglages de l\'App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1554,28 +1533,22 @@ class AppLocalizationsFr extends AppLocalizations {
   String get paywall_retry => 'Réessayer';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Vous possédez déjà cet abonnement. Touchez « Restaurer les achats ».';
+  String get paywall_alreadyOwned => 'Vous possédez déjà cet abonnement. Touchez « Restaurer les achats ».';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Impossible de joindre la boutique. Vérifiez votre connexion et réessayez.';
+  String get paywall_storeUnavailable => 'Impossible de joindre la boutique. Vérifiez votre connexion et réessayez.';
 
   @override
-  String get paywall_secureNote =>
-      'Annulez à tout moment. Le paiement est débité de votre compte.';
+  String get paywall_secureNote => 'Annulez à tout moment. Le paiement est débité de votre compte.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Les abonnements sont renouvelés automatiquement sauf résiliation au moins 24 heures avant la fin de la période. Gérez ou résiliez à tout moment dans Google Play > Abonnements.';
+  String get paywall_autoRenewInfoPlay => 'Les abonnements sont renouvelés automatiquement sauf résiliation au moins 24 heures avant la fin de la période. Gérez ou résiliez à tout moment dans Google Play > Abonnements.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Débloque 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat et Warrior';
+  String get paywall_allPlansDesc => 'Débloque 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat et Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Les bannières et les interstitiels sont entièrement désactivés';
+  String get paywall_noAdsDesc => 'Les bannières et les interstitiels sont entièrement désactivés';
 
   @override
   String get foodScan_title => 'Analyse de repas par IA';
@@ -1584,26 +1557,22 @@ class AppLocalizationsFr extends AppLocalizations {
   String get foodScan_scanCta => 'Scanner le repas';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Photographiez votre assiette, obtenez calories et macros';
+  String get foodScan_scanCtaDesc => 'Photographiez votre assiette, obtenez calories et macros';
 
   @override
   String get foodScan_introTitle => 'Photographiez votre assiette';
 
   @override
-  String get foodScan_introDesc =>
-      'L\'IA analyse la photo et estime calories, protéines, glucides et lipides.';
+  String get foodScan_introDesc => 'L\'IA analyse la photo et estime calories, protéines, glucides et lipides.';
 
   @override
-  String get foodScan_tipLight =>
-      'Une lumière bonne et uniforme améliore l\'estimation';
+  String get foodScan_tipLight => 'Une lumière bonne et uniforme améliore l\'estimation';
 
   @override
   String get foodScan_tipFrame => 'Cadrez l\'assiette entière';
 
   @override
-  String get foodScan_tipScale =>
-      'Incluez des couverts ou une main pour estimer la portion';
+  String get foodScan_tipScale => 'Incluez des couverts ou une main pour estimer la portion';
 
   @override
   String get foodScan_takePhoto => 'Prendre une photo';
@@ -1617,19 +1586,16 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Vous avez utilisé les scans du jour. Réessayez demain.';
+  String get foodScan_quotaReached => 'Vous avez utilisé les scans du jour. Réessayez demain.';
 
   @override
-  String get foodScan_privacyNote =>
-      'La photo est envoyée à l\'API Gemini de Google pour analyse et n\'est pas conservée sur nos serveurs.';
+  String get foodScan_privacyNote => 'La photo est envoyée à l\'API Gemini de Google. Google peut l\'utiliser pour améliorer ses produits et des réviseurs humains peuvent la voir. Nous ne la conservons pas sur nos serveurs.';
 
   @override
   String get foodScan_consentTitle => 'Envoyer les photos à Google Gemini ?';
 
   @override
-  String get foodScan_consentBody =>
-      'Pour estimer les calories et les macronutriments, chaque photo de repas que vous prenez ou choisissez est envoyée au service d\'IA Gemini de Google. La photo sert uniquement à cette analyse et n\'est pas conservée sur nos serveurs.';
+  String get foodScan_consentBody => 'Pour estimer les calories et les macros, chaque photo de repas prise ou choisie est envoyée au service d\'IA Gemini de Google. Google peut utiliser les photos pour améliorer ses produits et des réviseurs humains peuvent les voir ; évitez donc de cadrer des personnes, des documents ou d\'autres données personnelles. Nous ne conservons pas les photos sur nos serveurs.';
 
   @override
   String get foodScan_consentAgree => 'Accepter et continuer';
@@ -1638,19 +1604,16 @@ class AppLocalizationsFr extends AppLocalizations {
   String get foodScan_analyzing => 'Analyse de votre repas…';
 
   @override
-  String get foodScan_analyzingHint =>
-      'Cela prend généralement quelques secondes';
+  String get foodScan_analyzingHint => 'Cela prend généralement quelques secondes';
 
   @override
   String get foodScan_detectedItems => 'Aliments détectés';
 
   @override
-  String get foodScan_disclaimer =>
-      'Les estimations de l\'IA sont approximatives. Touchez un élément pour le corriger.';
+  String get foodScan_disclaimer => 'Les estimations de l\'IA sont approximatives. Touchez un élément pour le corriger.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Le modèle est incertain sur cette photo. Vérifiez les valeurs avant d\'enregistrer.';
+  String get foodScan_lowConfidence => 'Le modèle est incertain sur cette photo. Vérifiez les valeurs avant d\'enregistrer.';
 
   @override
   String get foodScan_save => 'Ajouter aux repas';
@@ -1674,40 +1637,130 @@ class AppLocalizationsFr extends AppLocalizations {
   String get foodScan_premiumTitle => 'Fonctionnalité Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'L\'analyse des calories par photo est incluse dans Premium.';
+  String get foodScan_premiumDesc => 'L\'analyse des calories par photo est incluse dans Premium.';
 
   @override
   String get foodScan_upgrade => 'Voir Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Pas de connexion. Vérifiez votre réseau et réessayez.';
+  String get foodScan_errorNetwork => 'Pas de connexion. Vérifiez votre réseau et réessayez.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Trop de scans en ce moment. Réessayez dans quelques minutes.';
+  String get foodScan_errorRateLimited => 'Trop de scans en ce moment. Réessayez dans quelques minutes.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'L\'analyse photo est indisponible pour le moment.';
+  String get foodScan_errorUnavailable => 'L\'analyse photo est indisponible pour le moment.';
 
   @override
-  String get foodScan_errorServer =>
-      'Le service d\'analyse rencontre un problème. Réessayez sous peu.';
+  String get foodScan_errorServer => 'Le service d\'analyse rencontre un problème. Réessayez sous peu.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Aucun aliment détecté sur cette photo. Essayez une prise plus nette de l\'assiette.';
+  String get foodScan_errorNoFood => 'Aucun aliment détecté sur cette photo. Essayez une prise plus nette de l\'assiette.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Cette photo n\'a pas pu être analysée. Essayez-en une autre.';
+  String get foodScan_errorUnreadable => 'Cette photo n\'a pas pu être analysée. Essayez-en une autre.';
 
   @override
   String get paywall_aiFoodScan => 'Scan de repas par IA';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Photographiez un repas et enregistrez calories et macros en quelques secondes';
+  String get paywall_aiFoodScanDesc => 'Photographiez un repas et enregistrez calories et macros en quelques secondes';
+
+  @override
+  String get safety_title => 'Avant de commencer';
+
+  @override
+  String get safety_desc => 'Le jeûne ne convient pas à tout le monde. Sélectionnez tout ce qui vous concerne.';
+
+  @override
+  String get safety_under18 => 'J\'ai moins de 18 ans';
+
+  @override
+  String get safety_pregnant => 'Je suis enceinte ou j\'allaite';
+
+  @override
+  String get safety_eatingDisorder => 'J\'ai ou j\'ai eu un trouble alimentaire';
+
+  @override
+  String get safety_underweight => 'Je suis en sous-poids ou on m\'a déconseillé de perdre du poids';
+
+  @override
+  String get safety_diabetes => 'J\'ai du diabète ou je prends un traitement qui agit sur la glycémie';
+
+  @override
+  String get safety_medical => 'J\'ai un autre problème de santé ou je prends un traitement régulier';
+
+  @override
+  String get safety_none => 'Rien de tout cela ne me concerne';
+
+  @override
+  String get safety_ack => 'Je parlerai à mon médecin avant de jeûner';
+
+  @override
+  String get safety_blockedTitle => 'Cette application n\'est pas sûre pour vous';
+
+  @override
+  String get safety_blockedDesc => 'D\'après vos réponses, nous ne pouvons pas proposer le jeûne ici. Parlez-en à un médecin. Si l\'alimentation est difficile en ce moment, un professionnel de santé peut vous aider.';
+
+  @override
+  String get safety_reviewAnswers => 'Revoir mes réponses';
+
+  @override
+  String get safety_targetTooLow => 'Cet objectif est inférieur à un poids sain pour votre taille.';
+
+  @override
+  String get onboarding_invalidBody => 'Saisissez une taille, un poids, un poids cible et un âge valides.';
+
+  @override
+  String get crisis_unwell => 'Je ne me sens pas bien';
+
+  @override
+  String get crisis_unwellTitle => 'Arrêtez votre jeûne maintenant';
+
+  @override
+  String get crisis_unwellDesc => 'Des vertiges, tremblements, une confusion ou un cœur qui s\'emballe sont des signes pour arrêter de jeûner et manger ou boire quelque chose.';
+
+  @override
+  String get crisis_emergency => 'Si vous vous êtes évanoui, avez une douleur à la poitrine ou vous sentez très mal, appelez immédiatement le numéro d\'urgence local.';
+
+  @override
+  String get crisis_endFast => 'Arrêter mon jeûne';
+
+  @override
+  String get profile_deleteData => 'Supprimer toutes mes données';
+
+  @override
+  String get profile_deleteDataConfirm => 'Cela supprime définitivement vos jeûnes, poids, repas, eau et réglages de cet appareil. Cette action est irréversible. Les abonnements se gèrent dans votre compte de la boutique.';
+
+  @override
+  String get profile_deleteDataAction => 'Tout supprimer';
+
+  @override
+  String get record_deleteConfirm => 'Supprimer cette entrée ?';
+
+  @override
+  String get profile_analytics => 'Partager des données d\'utilisation anonymes';
+
+  @override
+  String get profile_analyticsDesc => 'Aide à améliorer l\'application. N\'inclut jamais le poids, les repas ni les données de santé.';
+
+  @override
+  String get plan_longWarningTitle => 'Ceci est un jeûne long';
+
+  @override
+  String get plan_longWarningDesc => 'Les jeûnes de 20 heures ou plus ne conviennent pas à tout le monde et peuvent provoquer un malaise. Parlez-en à un médecin en cas de doute et arrêtez le jeûne si vous vous sentez mal.';
+
+  @override
+  String get plan_longWarningAccept => 'J\'ai compris';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'Essai gratuit de $days jours, puis $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Pas de jeûne';
+
+  @override
+  String get widget_tapToStart => 'Touchez pour commencer';
 }

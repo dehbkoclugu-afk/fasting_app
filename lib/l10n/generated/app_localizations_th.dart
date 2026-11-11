@@ -9,6 +9,62 @@ class AppLocalizationsTh extends AppLocalizations {
   AppLocalizationsTh([String locale = 'th']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'ข้าวโอ๊ตผลไม้';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'โยเกิร์ตบลูเบอร์รี';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'ขนมปังปิ้งหน้าไข่และอะโวคาโด';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'ควินัวไก่';
+
+  @override
+  String get mealPreset_lentilSoup => 'ซุปถั่วเลนทิล';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'แซลมอนและบรอกโคลี';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'แรปไก่งวงและผัก';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'ถั่วลูกไก่กับทาฮินี';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'สลัดทูน่าและถั่ว';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'คอตเทจชีสกับแอปเปิล';
+
+  @override
+  String get mealPreset_hummusVegetables => 'ฮัมมุสและผักกรอบ';
+
+  @override
+  String get mealPreset_bananaKefir => 'กล้วยกับคีเฟอร์';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'อีก $count ก้าวถึงตราประทับ',
+      one: 'อีก $count ก้าวถึงตราประทับ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError => 'ไม่สามารถลบบันทึกนี้ได้';
+
+  @override
+  String get fastingHistory_title => 'ประวัติการอดอาหาร';
+
+  @override
+  String get fastingHistory_deleteWarning => 'บันทึกนี้จะถูกลบอย่างถาวร';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -63,8 +119,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get timer_selectPlan => 'เลือกแผนอดอาหาร';
 
   @override
-  String get timer_stopConfirm =>
-      'คุณแน่ใจหรือไม่ว่าต้องการจบการอดอาหารก่อนเวลา?';
+  String get timer_stopConfirm => 'คุณแน่ใจหรือไม่ว่าต้องการจบการอดอาหารก่อนเวลา?';
 
   @override
   String get timer_stopTitle => 'จบการอดอาหาร';
@@ -97,13 +152,13 @@ class AppLocalizationsTh extends AppLocalizations {
   String get phase_ketosis => 'ภาวะคีโตซิส';
 
   @override
-  String get phase_ketosisDesc => 'กำลังสร้างคีโตน';
+  String get phase_ketosisDesc => 'การผลิตคีโตนอาจเพิ่มขึ้น';
 
   @override
   String get phase_autophagy => 'ออโตฟาจี';
 
   @override
-  String get phase_autophagyDesc => 'การฟื้นฟูเซลล์';
+  String get phase_autophagyDesc => 'ช่วงรีไซเคิลเซลล์โดยประมาณ';
 
   @override
   String get stats_title => 'สถิติ';
@@ -264,8 +319,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get onboarding_welcome => 'ยินดีต้อนรับ';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'ควบคุมเส้นทาง\nการอดอาหารเป็นช่วงของคุณ';
+  String get onboarding_welcomeDesc => 'ควบคุมเส้นทาง\nการอดอาหารเป็นช่วงของคุณ';
 
   @override
   String get onboarding_featureTimer => 'ตัวจับเวลาอดอาหารอัจฉริยะ';
@@ -313,7 +367,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get onboarding_goalLongevity => 'อายุยืน';
 
   @override
-  String get onboarding_goalLongevityDesc => 'ฟื้นฟูเซลล์และสูงวัยอย่างแข็งแรง';
+  String get onboarding_goalLongevityDesc => 'สร้างกิจวัตรสุขภาพดีในระยะยาว';
 
   @override
   String get onboarding_goalDiscipline => 'วินัย';
@@ -334,27 +388,16 @@ class AppLocalizationsTh extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'เพื่อรับคำแนะนำเฉพาะบุคคล';
 
   @override
-  String get onboarding_gender => 'เพศ';
-
-  @override
-  String get onboarding_male => 'ชาย';
-
-  @override
-  String get onboarding_female => 'หญิง';
-
-  @override
   String get onboarding_age => 'อายุ';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'ข้อมูลนี้เก็บไว้บนอุปกรณ์ของคุณเท่านั้นและใช้คำนวณแคลอรี';
+  String get onboarding_bodyInfoDisclaimer => 'ข้อมูลนี้เก็บไว้บนอุปกรณ์ของคุณเท่านั้นและใช้คำนวณแคลอรี';
 
   @override
   String get onboarding_permissions => 'ขั้นตอนสุดท้าย';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'เปิดสิทธิ์เพื่อประสบการณ์ที่ดีที่สุด';
+  String get onboarding_permissionsDesc => 'เปิดสิทธิ์เพื่อประสบการณ์ที่ดีที่สุด';
 
   @override
   String get onboarding_next => 'ดำเนินการต่อ';
@@ -555,8 +598,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get completion_earlyTitle => 'สิ้นสุดการอดอาหารแล้ว';
 
   @override
-  String get completion_earlyMessage =>
-      'บันทึกระยะเวลาของวันนี้แล้ว สถิติต่อเนื่องและความคืบหน้าของความสำเร็จไม่เปลี่ยนแปลง เนื่องจากยังไม่บรรลุเป้าหมาย';
+  String get completion_earlyMessage => 'บันทึกระยะเวลาของวันนี้แล้ว สถิติต่อเนื่องและความคืบหน้าของความสำเร็จไม่เปลี่ยนแปลง เนื่องจากยังไม่บรรลุเป้าหมาย';
 
   @override
   String get timer_remainingTime => 'เวลาที่เหลือ';
@@ -586,8 +628,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get streak_incredible => 'น่าทึ่ง!';
 
   @override
-  String get weight_noRecord =>
-      'ยังไม่มีบันทึกน้ำหนัก\nเพิ่มจาก โปรไฟล์ > ข้อมูลร่างกาย';
+  String get weight_noRecord => 'ยังไม่มีบันทึกน้ำหนัก\nเพิ่มจาก โปรไฟล์ > ข้อมูลร่างกาย';
 
   @override
   String get day_mon => 'จ.';
@@ -773,7 +814,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get profile_calmGamification => 'เกมมิฟิเคชันแบบผ่อนคลาย';
 
   @override
-  String get profile_calmGamificationDesc => 'ลดแรงกดดันจากลีกและฤดูกาล';
+  String get profile_calmGamificationDesc => 'ลดแรงกดดันของซีซัน';
 
   @override
   String get profile_editName => 'แก้ไขชื่อของคุณ';
@@ -791,8 +832,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get circle_tagline => 'ไปด้วยกันโดยไม่กดดัน';
 
   @override
-  String get circle_privacy =>
-      'น้ำหนักและข้อมูลส่วนตัวจะถูกซ่อน แสดงเฉพาะความคืบหน้าและการสนับสนุน';
+  String get circle_privacy => 'น้ำหนักและข้อมูลส่วนตัวจะถูกซ่อน แสดงเฉพาะความคืบหน้าและการสนับสนุน';
 
   @override
   String circle_sendSupport(int count) {
@@ -821,8 +861,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get crisis_delayTitle => 'เลื่อนการตัดสินใจออกไป 10 นาที';
 
   @override
-  String get crisis_delayDesc =>
-      'หากรู้สึกไม่สบาย การจบการอดอาหารไม่ใช่ความล้มเหลว';
+  String get crisis_delayDesc => 'หากรู้สึกไม่สบาย การจบการอดอาหารไม่ใช่ความล้มเหลว';
 
   @override
   String get crisis_hunger => 'ความหิว';
@@ -837,8 +876,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get crisis_tenMore => 'ให้เวลาอีก 10 นาที';
 
   @override
-  String get stats_storyEmpty =>
-      'การอดอาหารครั้งแรกจะเริ่มเรื่องราวส่วนตัวของคุณ';
+  String get stats_storyEmpty => 'การอดอาหารครั้งแรกจะเริ่มเรื่องราวส่วนตัวของคุณ';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -884,8 +922,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get weather_onPlan => 'จังหวะวันนี้ตรงกับแผนของคุณ';
 
   @override
-  String get weather_challenging =>
-      'ชั่วโมงนี้เคยท้าทายมาก่อน โหมดสนับสนุนพร้อมแล้ว';
+  String get weather_challenging => 'ชั่วโมงนี้เคยท้าทายมาก่อน โหมดสนับสนุนพร้อมแล้ว';
 
   @override
   String get replay_copied => 'คัดลอกสรุปการอดอาหารแล้ว';
@@ -910,8 +947,7 @@ class AppLocalizationsTh extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'เวลาของแต่ละระยะเป็นเพียงค่าประมาณทั่วไป ไม่ใช่การวัดทางการแพทย์';
+  String get phase_estimateShort => 'เวลาของแต่ละระยะเป็นเพียงค่าประมาณทั่วไป ไม่ใช่การวัดทางการแพทย์';
 
   @override
   String phase_hours(int start, int end) {
@@ -919,8 +955,7 @@ class AppLocalizationsTh extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'เวลานี้เป็นเพียงค่าประมาณทั่วไป การตอบสนองด้านการเผาผลาญอาจแตกต่างกันในแต่ละคน';
+  String get phase_estimateLong => 'เวลานี้เป็นเพียงค่าประมาณทั่วไป การตอบสนองด้านการเผาผลาญอาจแตกต่างกันในแต่ละคน';
 
   @override
   String get bmi_underweight => 'น้ำหนักต่ำกว่าเกณฑ์';
@@ -952,7 +987,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get notification_phaseKetosis => 'คุณอยู่ในภาวะคีโตซิส ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'ออโตฟาจีกำลังทำงาน! 🔄';
+  String get notification_phaseAutophagy => 'ช่วงออโตฟาจีโดยประมาณ';
 
   @override
   String notification_completedBody(String plan) {
@@ -963,8 +998,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get notification_waterTitle => 'ดื่มน้ำ 💧';
 
   @override
-  String get notification_waterBody =>
-      'อย่าลืมดื่มน้ำให้เพียงพอระหว่างอดอาหาร!';
+  String get notification_waterBody => 'อย่าลืมดื่มน้ำให้เพียงพอระหว่างอดอาหาร!';
 
   @override
   String get notification_windowTitle => 'ช่วงรับประทานอาหารใกล้สิ้นสุด ⏰';
@@ -1012,29 +1046,25 @@ class AppLocalizationsTh extends AppLocalizations {
   String get explore_guideDesc => 'ทุกสิ่งที่ควรรู้เกี่ยวกับการอดอาหารเป็นช่วง';
 
   @override
-  String get explore_circleDesc =>
-      'แบ่งปันกำลังใจอย่างสงบกับกลุ่มส่วนตัวของคุณ';
+  String get explore_circleDesc => 'แบ่งปันกำลังใจอย่างสงบกับกลุ่มส่วนตัวของคุณ';
 
   @override
   String get explore_faq => 'คำถามที่พบบ่อย';
 
   @override
-  String get explore_education =>
-      'เนื้อหานี้มีไว้เพื่อให้ความรู้ทั่วไปเท่านั้น ไม่ใช่การวินิจฉัยหรือคำแนะนำการรักษาทางการแพทย์';
+  String get explore_education => 'เนื้อหานี้มีไว้เพื่อให้ความรู้ทั่วไปเท่านั้น ไม่ใช่การวินิจฉัยหรือคำแนะนำการรักษาทางการแพทย์';
 
   @override
   String get explore_safety => 'สุขภาพและความปลอดภัย';
 
   @override
-  String get explore_safetyDesc =>
-      'หากคุณมีโรคประจำตัว ใช้ยาเป็นประจำ มีอาการน่ากังวล กำลังตั้งครรภ์หรือให้นมบุตร โปรดปรึกษาผู้เชี่ยวชาญด้านสุขภาพก่อนอดอาหาร และหยุดหากรู้สึกไม่สบาย';
+  String get explore_safetyDesc => 'หากคุณมีโรคประจำตัว ใช้ยาเป็นประจำ มีอาการน่ากังวล กำลังตั้งครรภ์หรือให้นมบุตร โปรดปรึกษาผู้เชี่ยวชาญด้านสุขภาพก่อนอดอาหาร และหยุดหากรู้สึกไม่สบาย';
 
   @override
   String get explore_sources => 'แหล่งข้อมูล';
 
   @override
-  String get explore_sourcesDesc =>
-      'เนื้อหาถูกเรียบเรียงให้ง่ายขึ้นจากแหล่งข้อมูลสาธารณสุขด้านล่าง';
+  String get explore_sourcesDesc => 'เนื้อหาถูกเรียบเรียงให้ง่ายขึ้นจากแหล่งข้อมูลสาธารณสุขด้านล่าง';
 
   @override
   String get explore_sourceError => 'ไม่สามารถเปิดแหล่งข้อมูลได้';
@@ -1064,120 +1094,103 @@ class AppLocalizationsTh extends AppLocalizations {
   String get tip_water => 'รักษาระดับน้ำในร่างกาย';
 
   @override
-  String get tip_waterDesc =>
-      'ดื่มน้ำเมื่อกระหายและรับของเหลวพร้อมมื้ออาหาร ความต้องการอาจต่างกันตามสุขภาพ อากาศ และกิจกรรม';
+  String get tip_waterDesc => 'ดื่มน้ำเมื่อกระหายและรับของเหลวพร้อมมื้ออาหาร ความต้องการอาจต่างกันตามสุขภาพ อากาศ และกิจกรรม';
 
   @override
   String get tip_food => 'รับประทานให้เหมาะสม';
 
   @override
-  String get tip_foodDesc =>
-      'ช่วงรับประทานอาหารให้เลือกอาหารโปรตีนสูงที่มีใยอาหารและไขมันดี หลีกเลี่ยงอาหารแปรรูป';
+  String get tip_foodDesc => 'ช่วงรับประทานอาหารให้เลือกอาหารโปรตีนสูงที่มีใยอาหารและไขมันดี หลีกเลี่ยงอาหารแปรรูป';
 
   @override
   String get tip_sleep => 'นอนหลับให้เพียงพอ';
 
   @override
-  String get tip_sleepDesc =>
-      'การนอนอย่างสม่ำเสมอและเพียงพอช่วยสุขภาพโดยรวม จัดเวลาอดอาหารไม่ให้รบกวนการนอน';
+  String get tip_sleepDesc => 'การนอนอย่างสม่ำเสมอและเพียงพอช่วยสุขภาพโดยรวม จัดเวลาอดอาหารไม่ให้รบกวนการนอน';
 
   @override
   String get tip_exercise => 'ออกกำลังกายเบา ๆ';
 
   @override
-  String get tip_exerciseDesc =>
-      'คุณเดินเบา ๆ หรือเล่นโยคะระหว่างอดอาหารได้ หลีกเลี่ยงการออกกำลังหนัก โดยเฉพาะช่วงสัปดาห์แรกที่ร่างกายกำลังปรับตัว';
+  String get tip_exerciseDesc => 'คุณเดินเบา ๆ หรือเล่นโยคะระหว่างอดอาหารได้ หลีกเลี่ยงการออกกำลังหนัก โดยเฉพาะช่วงสัปดาห์แรกที่ร่างกายกำลังปรับตัว';
 
   @override
   String get tip_drinks => 'เครื่องดื่มที่อนุญาต';
 
   @override
-  String get tip_drinksDesc =>
-      'ระหว่างอดอาหาร คุณดื่มน้ำ ชาไม่ปรุงแต่ง และกาแฟดำได้ (ไม่ใส่น้ำตาลหรือนม) เครื่องดื่มเหล่านี้ไม่ทำให้การอดอาหารสิ้นสุด';
+  String get tip_drinksDesc => 'ระหว่างอดอาหาร คุณดื่มน้ำ ชาไม่ปรุงแต่ง และกาแฟดำได้ (ไม่ใส่น้ำตาลหรือนม) เครื่องดื่มเหล่านี้ไม่ทำให้การอดอาหารสิ้นสุด';
 
   @override
   String get faq_drinks => 'ดื่มอะไรได้บ้างระหว่างอดอาหาร?';
 
   @override
-  String get faq_drinksAnswer =>
-      'ดื่มน้ำ ชาไม่ปรุงแต่ง และกาแฟดำได้ (ไม่ใส่น้ำตาล/นม) เครื่องดื่มที่มีแคลอรีจะทำให้การอดอาหารสิ้นสุด';
+  String get faq_drinksAnswer => 'ดื่มน้ำ ชาไม่ปรุงแต่ง และกาแฟดำได้ (ไม่ใส่น้ำตาล/นม) เครื่องดื่มที่มีแคลอรีจะทำให้การอดอาหารสิ้นสุด';
 
   @override
   String get faq_plan => 'ควรเลือกแผนอดอาหารใด?';
 
   @override
-  String get faq_planAnswer =>
-      'หากเพิ่งเริ่ม ให้เริ่มจาก 12:12 หรือ 14:10 หากมีประสบการณ์ ลอง 16:8 หรือ 18:6 ส่วน 20:4 และ OMAD เหมาะกับผู้มีประสบการณ์สูง';
+  String get faq_planAnswer => 'หากเพิ่งเริ่ม ให้เริ่มจาก 12:12 หรือ 14:10 หากมีประสบการณ์ ลอง 16:8 หรือ 18:6 ส่วน 20:4 และ OMAD เหมาะกับผู้มีประสบการณ์สูง';
 
   @override
   String get faq_exercise => 'ออกกำลังกายระหว่างอดอาหารได้หรือไม่?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'ได้ แต่ควรหลีกเลี่ยงการออกกำลังหนัก คาร์ดิโอเบา ๆ การเดิน และโยคะเหมาะที่สุด หากยกน้ำหนัก ให้จัดไว้ใกล้ช่วงรับประทานอาหาร';
+  String get faq_exerciseAnswer => 'ได้ แต่ควรหลีกเลี่ยงการออกกำลังหนัก คาร์ดิโอเบา ๆ การเดิน และโยคะเหมาะที่สุด หากยกน้ำหนัก ให้จัดไว้ใกล้ช่วงรับประทานอาหาร';
 
   @override
   String get faq_weight => 'การอดอาหารช่วยลดน้ำหนักหรือไม่?';
 
   @override
-  String get faq_weightAnswer =>
-      'สำหรับบางคน การจำกัดเวลารับประทานอาจลดพลังงานรวมที่ได้รับ ผลลัพธ์แตกต่างกันและผลระยะยาวยังอยู่ระหว่างการศึกษา';
+  String get faq_weightAnswer => 'สำหรับบางคน การจำกัดเวลารับประทานอาจลดพลังงานรวมที่ได้รับ ผลลัพธ์แตกต่างกันและผลระยะยาวยังอยู่ระหว่างการศึกษา';
 
   @override
   String get plan_12_desc => 'ระดับเริ่มต้น';
 
   @override
-  String get plan_12_detail =>
-      'เหมาะสำหรับผู้เริ่มต้น อดอาหาร 12 ชั่วโมงรวมเวลานอน';
+  String get plan_12_detail => 'เหมาะสำหรับผู้เริ่มต้น อดอาหาร 12 ชั่วโมงรวมเวลานอน';
 
   @override
   String get plan_16_desc => 'แผนยอดนิยมที่สุด';
 
   @override
-  String get plan_16_detail =>
-      'แผนอดอาหารเป็นช่วงที่พบบ่อยที่สุด อด 16 ชั่วโมง รับประทาน 8 ชั่วโมง โดยทั่วไปตั้งแต่มื้อกลางวันถึงมื้อเย็น';
+  String get plan_16_detail => 'แผนอดอาหารเป็นช่วงที่พบบ่อยที่สุด อด 16 ชั่วโมง รับประทาน 8 ชั่วโมง โดยทั่วไปตั้งแต่มื้อกลางวันถึงมื้อเย็น';
 
   @override
   String get plan_18_desc => 'ระดับปานกลาง';
 
   @override
-  String get plan_18_detail =>
-      'อด 18 ชั่วโมง รับประทาน 6 ชั่วโมง มีช่วงเผาผลาญไขมันนานขึ้น';
+  String get plan_18_detail => 'อด 18 ชั่วโมง รับประทาน 6 ชั่วโมง มีช่วงเผาผลาญไขมันนานขึ้น';
 
   @override
   String get plan_20_desc => 'ระดับสูง';
 
   @override
-  String get plan_20_detail =>
-      'อด 20 ชั่วโมง รับประทาน 4 ชั่วโมง เหมาะสำหรับเข้าสู่ภาวะคีโตซิสและออโตฟาจี';
+  String get plan_20_detail => 'อดอาหาร 20 ชั่วโมง กิน 4 ชั่วโมง สำหรับผู้มีประสบการณ์อดอาหาร';
 
   @override
   String get plan_omad_desc => 'หนึ่งมื้อต่อวัน';
 
   @override
-  String get plan_omad_detail =>
-      'หนึ่งมื้อต่อวัน อด 23 ชั่วโมง รับประทาน 1 ชั่วโมง ระดับผู้เชี่ยวชาญ';
+  String get plan_omad_detail => 'หนึ่งมื้อต่อวัน อด 23 ชั่วโมง รับประทาน 1 ชั่วโมง ระดับผู้เชี่ยวชาญ';
 
   @override
   String get plan_52_desc => '2 วันต่อสัปดาห์';
 
   @override
-  String get plan_52_detail =>
-      'รับประทานตามปกติ 5 วัน และเพียงประมาณ 500 แคลอรีใน 2 วัน เป็นอีกแนวทางหนึ่ง';
+  String get plan_52_detail => 'รับประทานตามปกติ 5 วัน และเพียงประมาณ 500 แคลอรีใน 2 วัน เป็นอีกแนวทางหนึ่ง';
 
   @override
   String get plan_ese_desc => 'อดอาหาร 24 ชั่วโมง';
 
   @override
-  String get plan_ese_detail =>
-      'อดอาหาร 24 ชั่วโมง สัปดาห์ละ 1–2 ครั้ง สำหรับผู้ใช้ระดับสูง';
+  String get plan_ese_detail => 'อดอาหาร 24 ชั่วโมง สัปดาห์ละ 1–2 ครั้ง สำหรับผู้ใช้ระดับสูง';
 
   @override
   String get plan_warrior_desc => 'อาหารแบบนักรบ';
 
   @override
-  String get plan_warrior_detail =>
-      'รับประทานเบา ๆ ระหว่างวัน (ผลไม้ ผัก) และรับประทานมื้อหลักในช่วง 4 ชั่วโมงตอนเย็น';
+  String get plan_warrior_detail => 'รับประทานเบา ๆ ระหว่างวัน (ผลไม้ ผัก) และรับประทานมื้อหลักในช่วง 4 ชั่วโมงตอนเย็น';
 
   @override
   String get award_first_title => 'ก้าวแรก';
@@ -1329,16 +1342,7 @@ class AppLocalizationsTh extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'ได้รับทุกครั้งที่ทำสำเร็จเจ็ดครั้ง การพลาดหนึ่งวันจะไม่ลบความคืบหน้าของคุณ';
-
-  @override
-  String get game_league => 'ลีกส่วนตัวรายสัปดาห์';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'คะแนนจังหวะของคุณอยู่ที่เปอร์เซ็นไทล์ $percent ของแบบจำลองส่วนตัวในเครื่อง น้ำหนักและการอดอาหารแบบสุดโต่งจะไม่ถูกจัดอันดับ';
-  }
+  String get game_shieldsDesc => 'ได้รับทุกครั้งที่ทำสำเร็จเจ็ดครั้ง การพลาดหนึ่งวันจะไม่ลบความคืบหน้าของคุณ';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1482,8 +1486,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get paywall_continue => 'ดำเนินการต่อ';
 
   @override
-  String get paywall_productsUnavailable =>
-      'ไม่สามารถซื้อได้ในขณะนี้ โปรดลองอีกครั้งภายหลัง';
+  String get paywall_productsUnavailable => 'ไม่สามารถซื้อได้ในขณะนี้ โปรดลองอีกครั้งภายหลัง';
 
   @override
   String get paywall_purchaseFailed => 'ไม่สามารถทำรายการซื้อให้สำเร็จ';
@@ -1498,15 +1501,13 @@ class AppLocalizationsTh extends AppLocalizations {
   String get paywall_terms => 'ข้อกำหนดการใช้งาน';
 
   @override
-  String get permission_notificationDesc =>
-      'การเตือนอดอาหาร การอัปเดตระยะ และการแจ้งเตือนเมื่อเสร็จสิ้น';
+  String get permission_notificationDesc => 'การเตือนอดอาหาร การอัปเดตระยะ และการแจ้งเตือนเมื่อเสร็จสิ้น';
 
   @override
   String get profile_privacyChoices => 'ตัวเลือกความเป็นส่วนตัว';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'การสมัครจะต่ออายุอัตโนมัติ เว้นแต่ยกเลิกอย่างน้อย 24 ชั่วโมงก่อนสิ้นสุดรอบ จัดการหรือยกเลิกได้ทุกเมื่อในการตั้งค่า App Store';
+  String get paywall_autoRenewInfo => 'การสมัครจะต่ออายุอัตโนมัติ เว้นแต่ยกเลิกอย่างน้อย 24 ชั่วโมงก่อนสิ้นสุดรอบ จัดการหรือยกเลิกได้ทุกเมื่อในการตั้งค่า App Store';
 
   @override
   String paywall_perMonth(String price) {
@@ -1530,24 +1531,19 @@ class AppLocalizationsTh extends AppLocalizations {
   String get paywall_retry => 'ลองอีกครั้ง';
 
   @override
-  String get paywall_alreadyOwned =>
-      'คุณเป็นเจ้าของการสมัครนี้แล้ว แตะ “กู้คืนการซื้อ”';
+  String get paywall_alreadyOwned => 'คุณเป็นเจ้าของการสมัครนี้แล้ว แตะ “กู้คืนการซื้อ”';
 
   @override
-  String get paywall_storeUnavailable =>
-      'เชื่อมต่อร้านค้าไม่ได้ในขณะนี้ ตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง';
+  String get paywall_storeUnavailable => 'เชื่อมต่อร้านค้าไม่ได้ในขณะนี้ ตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง';
 
   @override
-  String get paywall_secureNote =>
-      'ยกเลิกได้ทุกเมื่อ ระบบจะเรียกเก็บเงินจากบัญชีร้านค้าของคุณ';
+  String get paywall_secureNote => 'ยกเลิกได้ทุกเมื่อ ระบบจะเรียกเก็บเงินจากบัญชีร้านค้าของคุณ';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'การสมัครจะต่ออายุอัตโนมัติ เว้นแต่ยกเลิกอย่างน้อย 24 ชั่วโมงก่อนสิ้นสุดรอบ จัดการหรือยกเลิกได้ทุกเมื่อใน Google Play > การสมัครใช้บริการ';
+  String get paywall_autoRenewInfoPlay => 'การสมัครจะต่ออายุอัตโนมัติ เว้นแต่ยกเลิกอย่างน้อย 24 ชั่วโมงก่อนสิ้นสุดรอบ จัดการหรือยกเลิกได้ทุกเมื่อใน Google Play > การสมัครใช้บริการ';
 
   @override
-  String get paywall_allPlansDesc =>
-      'ปลดล็อก 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat และ Warrior';
+  String get paywall_allPlansDesc => 'ปลดล็อก 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat และ Warrior';
 
   @override
   String get paywall_noAdsDesc => 'ปิดโฆษณาแบนเนอร์และโฆษณาคั่นทั้งหมด';
@@ -1559,15 +1555,13 @@ class AppLocalizationsTh extends AppLocalizations {
   String get foodScan_scanCta => 'สแกนมื้ออาหาร';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'ถ่ายภาพจานอาหารเพื่อดูแคลอรีและสารอาหารหลัก';
+  String get foodScan_scanCtaDesc => 'ถ่ายภาพจานอาหารเพื่อดูแคลอรีและสารอาหารหลัก';
 
   @override
   String get foodScan_introTitle => 'ถ่ายภาพจานอาหาร';
 
   @override
-  String get foodScan_introDesc =>
-      'AI อ่านภาพและประมาณแคลอรี โปรตีน คาร์โบไฮเดรต และไขมัน';
+  String get foodScan_introDesc => 'AI อ่านภาพและประมาณแคลอรี โปรตีน คาร์โบไฮเดรต และไขมัน';
 
   @override
   String get foodScan_tipLight => 'แสงที่ดีและสม่ำเสมอช่วยให้ประมาณได้แม่นขึ้น';
@@ -1590,19 +1584,16 @@ class AppLocalizationsTh extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'คุณใช้จำนวนสแกนของวันนี้หมดแล้ว ลองอีกครั้งพรุ่งนี้';
+  String get foodScan_quotaReached => 'คุณใช้จำนวนสแกนของวันนี้หมดแล้ว ลองอีกครั้งพรุ่งนี้';
 
   @override
-  String get foodScan_privacyNote =>
-      'ภาพจะถูกส่งไปยัง Gemini API ของ Google เพื่อวิเคราะห์และไม่เก็บไว้บนเซิร์ฟเวอร์ของเรา';
+  String get foodScan_privacyNote => 'รูปภาพจะถูกส่งไปยัง Gemini API ของ Google ซึ่ง Google อาจใช้เพื่อปรับปรุงผลิตภัณฑ์และผู้ตรวจสอบที่เป็นมนุษย์อาจเห็นได้ เราไม่เก็บรูปภาพไว้บนเซิร์ฟเวอร์ของเรา';
 
   @override
   String get foodScan_consentTitle => 'ส่งรูปภาพไปยัง Google Gemini หรือไม่';
 
   @override
-  String get foodScan_consentBody =>
-      'เพื่อประมาณแคลอรีและสารอาหารหลัก รูปอาหารทุกรูปที่คุณถ่ายหรือเลือกจะถูกส่งไปยังบริการ AI Gemini ของ Google รูปภาพจะใช้สำหรับการวิเคราะห์นี้เท่านั้นและไม่ถูกจัดเก็บบนเซิร์ฟเวอร์ของเรา';
+  String get foodScan_consentBody => 'เพื่อประเมินแคลอรีและสารอาหารหลัก รูปอาหารทุกรูปที่คุณถ่ายหรือเลือกจะถูกส่งไปยังบริการ AI Gemini ของ Google ซึ่ง Google อาจใช้รูปเพื่อปรับปรุงผลิตภัณฑ์และผู้ตรวจสอบที่เป็นมนุษย์อาจเห็นได้ ดังนั้นอย่าให้มีบุคคล เอกสาร หรือข้อมูลส่วนตัวอื่นในภาพ เราไม่เก็บรูปภาพไว้บนเซิร์ฟเวอร์ของเรา';
 
   @override
   String get foodScan_consentAgree => 'ยอมรับและดำเนินการต่อ';
@@ -1617,12 +1608,10 @@ class AppLocalizationsTh extends AppLocalizations {
   String get foodScan_detectedItems => 'รายการที่ตรวจพบ';
 
   @override
-  String get foodScan_disclaimer =>
-      'ค่าประมาณจาก AI เป็นค่าโดยประมาณ แตะรายการเพื่อแก้ไข';
+  String get foodScan_disclaimer => 'ค่าประมาณจาก AI เป็นค่าโดยประมาณ แตะรายการเพื่อแก้ไข';
 
   @override
-  String get foodScan_lowConfidence =>
-      'โมเดลไม่แน่ใจเกี่ยวกับภาพนี้ ตรวจสอบตัวเลขก่อนบันทึก';
+  String get foodScan_lowConfidence => 'โมเดลไม่แน่ใจเกี่ยวกับภาพนี้ ตรวจสอบตัวเลขก่อนบันทึก';
 
   @override
   String get foodScan_save => 'เพิ่มในมื้ออาหาร';
@@ -1646,39 +1635,130 @@ class AppLocalizationsTh extends AppLocalizations {
   String get foodScan_premiumTitle => 'ฟีเจอร์ Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'การวิเคราะห์แคลอรีจากภาพรวมอยู่ใน Premium';
+  String get foodScan_premiumDesc => 'การวิเคราะห์แคลอรีจากภาพรวมอยู่ใน Premium';
 
   @override
   String get foodScan_upgrade => 'ดู Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'ไม่มีการเชื่อมต่อ ตรวจสอบอินเทอร์เน็ตแล้วลองอีกครั้ง';
+  String get foodScan_errorNetwork => 'ไม่มีการเชื่อมต่อ ตรวจสอบอินเทอร์เน็ตแล้วลองอีกครั้ง';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'ขณะนี้มีการสแกนมากเกินไป ลองอีกครั้งในอีกไม่กี่นาที';
+  String get foodScan_errorRateLimited => 'ขณะนี้มีการสแกนมากเกินไป ลองอีกครั้งในอีกไม่กี่นาที';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'การวิเคราะห์ภาพไม่พร้อมใช้งานในขณะนี้';
+  String get foodScan_errorUnavailable => 'การวิเคราะห์ภาพไม่พร้อมใช้งานในขณะนี้';
 
   @override
-  String get foodScan_errorServer =>
-      'บริการวิเคราะห์มีปัญหา โปรดลองอีกครั้งในอีกสักครู่';
+  String get foodScan_errorServer => 'บริการวิเคราะห์มีปัญหา โปรดลองอีกครั้งในอีกสักครู่';
 
   @override
   String get foodScan_errorNoFood => 'ไม่พบอาหารในภาพ ลองถ่ายจานให้ชัดขึ้น';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'ไม่สามารถวิเคราะห์ภาพนี้ได้ ลองใช้ภาพอื่น';
+  String get foodScan_errorUnreadable => 'ไม่สามารถวิเคราะห์ภาพนี้ได้ ลองใช้ภาพอื่น';
 
   @override
   String get paywall_aiFoodScan => 'สแกนอาหารด้วย AI';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'ถ่ายภาพมื้ออาหารและบันทึกแคลอรีกับสารอาหารหลักในไม่กี่วินาที';
+  String get paywall_aiFoodScanDesc => 'ถ่ายภาพมื้ออาหารและบันทึกแคลอรีกับสารอาหารหลักในไม่กี่วินาที';
+
+  @override
+  String get safety_title => 'ก่อนเริ่มต้น';
+
+  @override
+  String get safety_desc => 'การอดอาหารไม่ปลอดภัยสำหรับทุกคน เลือกทุกข้อที่ตรงกับคุณ';
+
+  @override
+  String get safety_under18 => 'ฉันอายุต่ำกว่า 18 ปี';
+
+  @override
+  String get safety_pregnant => 'ฉันตั้งครรภ์หรือให้นมบุตร';
+
+  @override
+  String get safety_eatingDisorder => 'ฉันมีหรือเคยมีความผิดปกติในการกิน';
+
+  @override
+  String get safety_underweight => 'ฉันน้ำหนักน้อยหรือได้รับคำแนะนำไม่ให้ลดน้ำหนัก';
+
+  @override
+  String get safety_diabetes => 'ฉันเป็นเบาหวานหรือใช้ยาที่มีผลต่อน้ำตาลในเลือด';
+
+  @override
+  String get safety_medical => 'ฉันมีโรคประจำตัวอื่นหรือใช้ยาเป็นประจำ';
+
+  @override
+  String get safety_none => 'ไม่มีข้อใดตรงกับฉัน';
+
+  @override
+  String get safety_ack => 'ฉันจะปรึกษาแพทย์ก่อนอดอาหาร';
+
+  @override
+  String get safety_blockedTitle => 'แอปนี้ไม่ปลอดภัยสำหรับคุณ';
+
+  @override
+  String get safety_blockedDesc => 'จากคำตอบของคุณ เราไม่สามารถให้บริการอดอาหารที่นี่ได้ โปรดปรึกษาแพทย์ หากตอนนี้การกินเป็นเรื่องยาก บุคลากรทางการแพทย์ช่วยคุณได้';
+
+  @override
+  String get safety_reviewAnswers => 'ตรวจสอบคำตอบของฉัน';
+
+  @override
+  String get safety_targetTooLow => 'เป้าหมายนี้ต่ำกว่าน้ำหนักที่ดีต่อสุขภาพสำหรับส่วนสูงของคุณ';
+
+  @override
+  String get onboarding_invalidBody => 'กรอกส่วนสูง น้ำหนัก น้ำหนักเป้าหมาย และอายุให้ถูกต้อง';
+
+  @override
+  String get crisis_unwell => 'ฉันรู้สึกไม่สบาย';
+
+  @override
+  String get crisis_unwellTitle => 'หยุดอดอาหารทันที';
+
+  @override
+  String get crisis_unwellDesc => 'เวียนศีรษะ มือสั่น สับสน หรือใจสั่น เป็นสัญญาณให้หยุดอดอาหารและกินหรือดื่มอะไรบางอย่าง';
+
+  @override
+  String get crisis_emergency => 'หากคุณเป็นลม เจ็บหน้าอก หรือรู้สึกแย่มาก โปรดโทรหาหมายเลขฉุกเฉินในพื้นที่ทันที';
+
+  @override
+  String get crisis_endFast => 'หยุดอดอาหารของฉัน';
+
+  @override
+  String get profile_deleteData => 'ลบข้อมูลทั้งหมดของฉัน';
+
+  @override
+  String get profile_deleteDataConfirm => 'การดำเนินการนี้จะลบการอดอาหาร น้ำหนัก มื้ออาหาร น้ำ และการตั้งค่าออกจากอุปกรณ์นี้อย่างถาวร และย้อนกลับไม่ได้ การสมัครสมาชิกจัดการได้ในบัญชีร้านค้าของคุณ';
+
+  @override
+  String get profile_deleteDataAction => 'ลบทั้งหมด';
+
+  @override
+  String get record_deleteConfirm => 'ลบรายการนี้หรือไม่';
+
+  @override
+  String get profile_analytics => 'แชร์ข้อมูลการใช้งานแบบไม่ระบุตัวตน';
+
+  @override
+  String get profile_analyticsDesc => 'ช่วยปรับปรุงแอป ไม่รวมน้ำหนัก มื้ออาหาร หรือข้อมูลสุขภาพ';
+
+  @override
+  String get plan_longWarningTitle => 'นี่คือการอดอาหารระยะยาว';
+
+  @override
+  String get plan_longWarningDesc => 'การอดอาหาร 20 ชั่วโมงขึ้นไปไม่เหมาะกับทุกคนและอาจทำให้รู้สึกไม่สบาย หากไม่แน่ใจโปรดปรึกษาแพทย์ และหยุดอดอาหารหากรู้สึกไม่สบาย';
+
+  @override
+  String get plan_longWarningAccept => 'เข้าใจแล้ว';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'ทดลองใช้ฟรี $days วัน จากนั้น $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'ไม่ได้อดอาหาร';
+
+  @override
+  String get widget_tapToStart => 'แตะเพื่อเริ่ม';
 }

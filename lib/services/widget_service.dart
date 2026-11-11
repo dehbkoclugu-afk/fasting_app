@@ -1,5 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:home_widget/home_widget.dart';
+import 'package:fasting_app/l10n/generated/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'notification_service.dart';
 
 abstract interface class FastingWidgetService {
   Future<void> updateWidget({
@@ -32,7 +36,8 @@ class WidgetService implements FastingWidgetService {
     }
   }
 
-  /// Update the widget with current fasting state
+  /// Update the widget with current fasting state. It only refreshes when the
+  /// app or the background worker runs, so it shows no ticking seconds.
   @override
   Future<void> updateWidget({
     required bool isFasting,
@@ -42,7 +47,23 @@ class WidgetService implements FastingWidgetService {
     required String phaseName,
   }) async {
     try {
+      final prefs = await SharedPreferences.getInstance();
+      final l10n = lookupAppLocalizations(
+        resolveNotificationLocale(
+          prefs.getString('locale') ??
+              PlatformDispatcher.instance.locale.languageCode,
+        ),
+      );
       await Future.wait([
+        HomeWidget.saveWidgetData<String>(
+          'status_fasting',
+          l10n.meals_windowFasting,
+        ),
+        HomeWidget.saveWidgetData<String>(
+          'status_idle',
+          l10n.widget_notFasting,
+        ),
+        HomeWidget.saveWidgetData<String>('idle_hint', l10n.widget_tapToStart),
         HomeWidget.saveWidgetData<bool>('is_fasting', isFasting),
         HomeWidget.saveWidgetData<String>('plan_name', planName),
         HomeWidget.saveWidgetData<String>('remaining_time', remainingTime),
@@ -69,4 +90,10 @@ class WidgetService implements FastingWidgetService {
       phaseName: '',
     );
   }
+}
+
+/// Hours and minutes left, as the home widget shows them.
+String widgetTime(Duration remaining) {
+  final minutes = (remaining.inMinutes % 60).toString().padLeft(2, '0');
+  return '${remaining.inHours}:$minutes';
 }

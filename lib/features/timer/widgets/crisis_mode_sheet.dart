@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../gamification/providers/gamification_provider.dart';
+import '../../stats/providers/stats_provider.dart';
+import '../providers/fasting_session_provider.dart';
+import '../providers/timer_provider.dart';
 
 Future<void> showCrisisMode(BuildContext context) {
   return showModalBottomSheet<void>(
@@ -16,22 +21,24 @@ Future<void> showCrisisMode(BuildContext context) {
   );
 }
 
-class _CrisisModeSheet extends StatefulWidget {
+class _CrisisModeSheet extends ConsumerStatefulWidget {
   const _CrisisModeSheet();
 
   @override
-  State<_CrisisModeSheet> createState() => _CrisisModeSheetState();
+  ConsumerState<_CrisisModeSheet> createState() => _CrisisModeSheetState();
 }
 
-class _CrisisModeSheetState extends State<_CrisisModeSheet> {
+class _CrisisModeSheetState extends ConsumerState<_CrisisModeSheet> {
   int _step = 0;
   String? _reason;
+  bool _endingFast = false;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final guidance = _guidance(l10n);
+    final unwell = _reason == l10n.crisis_unwell;
     final current = _step == 0
         ? (
             l10n.crisis_nameTitle,
@@ -100,6 +107,7 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
                   l10n.crisis_hunger,
                   l10n.crisis_habit,
                   l10n.crisis_stress,
+                  l10n.crisis_unwell,
                 ])
                   ChoiceChip(
                     label: Text(reason),
@@ -129,7 +137,7 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
           ],
           const SizedBox(height: 26),
           FilledButton(
-            onPressed: _step == 0 && _reason == null
+            onPressed: _endingFast || (_step == 0 && _reason == null)
                 ? null
                 : () async {
                     HapticFeedback.selectionClick();
@@ -137,18 +145,23 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
                       setState(() => _step++);
                       return;
                     }
-                    await _finish();
+                    if (unwell) {
+                      await _endFast();
+                    } else {
+                      await _finish();
+                    }
                   },
             child: Text(
               _step == 0 ? l10n.onboarding_next : current.$5,
             ),
           ),
-          if (_step == 1) ...[
+          if (_step == 1 && !unwell) ...[
             const SizedBox(height: 8),
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text(l10n.timer_stopTitle),
+            OutlinedButton(
+              onPressed: _endingFast ? null : _endFast,
+              child: Text(l10n.crisis_endFast),
             ),
+            const SizedBox(height: 8),
             Text(
               l10n.crisis_delayDesc,
               textAlign: TextAlign.center,
@@ -166,6 +179,15 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
   }
 
   (String, String, IconData, String, String) _guidance(AppLocalizations l10n) {
+    if (_reason == l10n.crisis_unwell) {
+      return (
+        l10n.crisis_unwellTitle,
+        l10n.crisis_unwellDesc,
+        Icons.health_and_safety_outlined,
+        l10n.crisis_emergency,
+        l10n.crisis_endFast,
+      );
+    }
     if (_reason == l10n.crisis_habit) {
       return (
         l10n.crisis_habit,
@@ -193,14 +215,39 @@ class _CrisisModeSheetState extends State<_CrisisModeSheet> {
     );
   }
 
+  /// Ends the fast with no celebration or ad: someone leaving through this
+  /// sheet is not finishing a goal.
+  Future<void> _endFast() async {
+    if (_endingFast) return;
+    setState(() => _endingFast = true);
+    try {
+      await ref.read(timerProvider.notifier).endFastQuietly();
+      if (!mounted) return;
+      await ref.read(fastingSessionProvider.notifier).loadSessions();
+      if (!mounted) return;
+      ref.invalidate(statsProvider);
+      Navigator.pop(context);
+    } catch (error) {
+      debugPrint('Safety exit failed: $error');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.common_retry),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _endingFast = false);
+    }
+  }
+
   Future<void> _finish() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt(
       'crisis_support_count',
       (prefs.getInt('crisis_support_count') ?? 0) + 1,
     );
-    await prefs.setInt('last_crisis_hour', DateTime.now().hour);
-    if (_reason != null) await prefs.setString('last_crisis_reason', _reason!);
+    if (mounted) ref.invalidate(supportCountProvider);
     if (mounted) Navigator.pop(context);
   }
 }

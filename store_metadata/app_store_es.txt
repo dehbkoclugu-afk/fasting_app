@@ -12,7 +12,7 @@ Crea con FastTrack una rutina de ayuno que se adapte a tu vida.
 
 Consulta el tiempo transcurrido y restante, conoce las etapas metabólicas generales, registra agua y peso y revisa tu progreso sin presión.
 
-Incluye planes 12:12, 14:10, 16:8, 18:6, 20:4 y OMAD; informes visuales; recordatorios opcionales; y temas claro y oscuro.
+Incluye planes 12:12, 16:8, 18:6, 20:4 y OMAD; informes visuales; recordatorios opcionales; y temas claro y oscuro.
 
 Los registros principales se guardan en tu dispositivo. FastTrack está disponible en español, inglés, turco, portugués, alemán y francés.
 

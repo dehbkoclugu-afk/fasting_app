@@ -1,11 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
+import '../../../core/utils/fasting_safety.dart';
 import '../../../shared/widgets/gradient_button.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../profile/providers/settings_provider.dart';
 import '../widgets/onboarding_progress.dart';
+import 'safety_screen.dart';
 
 class BodyInfoScreen extends ConsumerStatefulWidget {
   const BodyInfoScreen({super.key});
@@ -15,11 +19,52 @@ class BodyInfoScreen extends ConsumerStatefulWidget {
 }
 
 class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
-  final _heightController = TextEditingController(text: '175');
-  final _weightController = TextEditingController(text: '75');
-  final _targetWeightController = TextEditingController(text: '70');
-  final _ageController = TextEditingController(text: '30');
-  String _gender = 'male';
+  final _heightController = TextEditingController();
+  final _weightController = TextEditingController();
+  final _targetWeightController = TextEditingController();
+  final _ageController = TextEditingController();
+
+  double? _number(TextEditingController controller) =>
+      double.tryParse(controller.text.trim().replaceAll(',', '.'));
+
+  void _submit() {
+    final l10n = AppLocalizations.of(context)!;
+    final messenger = ScaffoldMessenger.of(context);
+    final height = _number(_heightController);
+    final weight = _number(_weightController);
+    final target = _number(_targetWeightController);
+    final age = int.tryParse(_ageController.text.trim());
+    if (height == null || height < 100 || height > 250 ||
+        weight == null || weight < 20 || weight > 500 ||
+        target == null || target < 20 || target > 500 ||
+        age == null || age < 1 || age > 120) {
+      messenger.showSnackBar(
+        SnackBar(content: Text(l10n.onboarding_invalidBody)),
+      );
+      return;
+    }
+    if (age < FastingSafety.minAge ||
+        FastingSafety.isUnderweight(weight, height)) {
+      unawaited(blockFasting(ref));
+      context.go('/safety', extra: true);
+      return;
+    }
+    if (FastingSafety.isUnderweight(target, height)) {
+      messenger.showSnackBar(
+        SnackBar(content: Text(l10n.safety_targetTooLow)),
+      );
+      return;
+    }
+    ref
+        .read(settingsProvider.notifier)
+        .setBodyInfo(
+          height: height,
+          weight: weight,
+          targetWeight: target,
+          age: age,
+        );
+    context.go('/onboarding/permissions');
+  }
 
   @override
   void dispose() {
@@ -59,32 +104,6 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
               ),
               const SizedBox(height: 18),
 
-              // Gender
-              Text(l10n.onboarding_gender, style: theme.textTheme.titleSmall),
-              const SizedBox(height: 8),
-              SizedBox(
-                width: double.infinity,
-                child: SegmentedButton<String>(
-                  segments: [
-                    ButtonSegment(
-                      value: 'male',
-                      icon: const Icon(Icons.male),
-                      label: Text(l10n.onboarding_male),
-                    ),
-                    ButtonSegment(
-                      value: 'female',
-                      icon: const Icon(Icons.female),
-                      label: Text(l10n.onboarding_female),
-                    ),
-                  ],
-                  selected: {_gender},
-                  showSelectedIcon: false,
-                  onSelectionChanged:
-                      (selection) => setState(() => _gender = selection.first),
-                ),
-              ),
-              const SizedBox(height: 24),
-
               // Height
               _buildInputField(
                 context,
@@ -120,7 +139,6 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
                 context,
                 label: l10n.onboarding_age,
                 controller: _ageController,
-                suffix: 'yaş',
                 icon: Icons.cake_outlined,
               ),
 
@@ -137,20 +155,7 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
 
               GradientButton(
                 text: l10n.onboarding_next,
-                onPressed: () {
-                  ref
-                      .read(settingsProvider.notifier)
-                      .setBodyInfo(
-                        height: double.tryParse(_heightController.text),
-                        weight: double.tryParse(_weightController.text),
-                        targetWeight: double.tryParse(
-                          _targetWeightController.text,
-                        ),
-                        age: int.tryParse(_ageController.text),
-                        isMale: _gender == 'male',
-                      );
-                  context.go('/onboarding/permissions');
-                },
+                onPressed: _submit,
               ),
               const SizedBox(height: 8),
             ],
@@ -164,7 +169,7 @@ class _BodyInfoScreenState extends ConsumerState<BodyInfoScreen> {
     BuildContext context, {
     required String label,
     required TextEditingController controller,
-    required String suffix,
+    String? suffix,
     required IconData icon,
   }) {
     final theme = Theme.of(context);

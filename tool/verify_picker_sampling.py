@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Run the actual vendored ImageResizer against small Android API test doubles.
+"""Run the vendored ImageResizer and ExifDataCopier against Android API doubles.
 
 This checks the options passed to the decoder and bitmap recycling, not Android
-pixel decoding or a physical device's memory. Requires JDK 17; --ecj can use an
-already-downloaded Eclipse compiler with a Java 17 runtime instead.
+pixel decoding, EXIF byte encoding or a physical device's memory. Requires JDK
+17; --ecj can use an already-downloaded Eclipse compiler with Java 17 instead.
 """
 import argparse
 import pathlib
+import re
 import shutil
 import subprocess
 import tempfile
@@ -14,6 +15,15 @@ import tempfile
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PACKAGE = "io/flutter/plugins/imagepicker"
 DEFAULT_SOURCE = ROOT / "third_party/image_picker_android/android/src/main/java" / PACKAGE / "ImageResizer.java"
+DEFAULT_EXIF_SOURCE = DEFAULT_SOURCE.with_name("ExifDataCopier.java")
+
+# Independent location fixtures, including coordinates, movement and timestamps.
+GPS_TAGS = """VERSION_ID LATITUDE_REF LATITUDE LONGITUDE_REF LONGITUDE ALTITUDE_REF
+ALTITUDE TIMESTAMP SATELLITES STATUS MEASURE_MODE DOP SPEED_REF SPEED TRACK_REF
+TRACK IMG_DIRECTION_REF IMG_DIRECTION MAP_DATUM DEST_LATITUDE_REF DEST_LATITUDE
+DEST_LONGITUDE_REF DEST_LONGITUDE DEST_BEARING_REF DEST_BEARING DEST_DISTANCE_REF
+DEST_DISTANCE PROCESSING_METHOD AREA_INFORMATION DATESTAMP DIFFERENTIAL
+H_POSITIONING_ERROR""".split()
 
 STUBS = {
     "android/content/Context.java": """package android.content;
@@ -29,13 +39,6 @@ public class SizeFCompat {
   public SizeFCompat(float w,float h){width=w;height=h;}
   public float getWidth(){return width;} public float getHeight(){return height;}
 }
-""",
-    "androidx/exifinterface/media/ExifInterface.java": """package androidx.exifinterface.media;
-public class ExifInterface { public ExifInterface(String path){} }
-""",
-    PACKAGE + "/ExifDataCopier.java": """package io.flutter.plugins.imagepicker;
-import androidx.exifinterface.media.ExifInterface;
-class ExifDataCopier { void copyExif(ExifInterface from,ExifInterface to){} }
 """,
     "android/graphics/Bitmap.java": """package android.graphics;
 import java.io.OutputStream;
@@ -104,18 +107,71 @@ public class SamplingRegression {
   }
 }
 """,
+    PACKAGE + "/ExifPrivacyRegression.java": """package io.flutter.plugins.imagepicker;
+import androidx.exifinterface.media.ExifInterface;
+public class ExifPrivacyRegression {
+  public static void main(String[] args) throws Exception {
+    ExifInterface source=new ExifInterface("source.jpg");
+    ExifInterface destination=new ExifInterface("resized.jpg");
+    for(java.lang.reflect.Field field:ExifInterface.class.getFields()) {
+      if(field.getName().startsWith("TAG_GPS_"))
+        source.setAttribute((String)field.get(null),"private location");
+    }
+    source.setAttribute(ExifInterface.TAG_ORIENTATION,"6");
+    source.setAttribute(ExifInterface.TAG_EXPOSURE_TIME,"1/100");
+    source.setAttribute(ExifInterface.TAG_IMAGE_WIDTH,"12000");
+    new ExifDataCopier().copyExif(source,destination);
+    for(String tag:destination.attributes.keySet())
+      if(tag.startsWith("TAG_GPS_"))throw new AssertionError("GPS leaked: "+tag);
+    System.out.println("PASS resized EXIF omits every seeded GPS field");
+    if(!"6".equals(destination.getAttribute(ExifInterface.TAG_ORIENTATION)))
+      throw new AssertionError("orientation lost");
+    if(!"1/100".equals(destination.getAttribute(ExifInterface.TAG_EXPOSURE_TIME)))
+      throw new AssertionError("exposure lost");
+    if(destination.getAttribute(ExifInterface.TAG_IMAGE_WIDTH)!=null)
+      throw new AssertionError("stale source dimensions copied");
+    if(!"private location".equals(source.getAttribute(ExifInterface.TAG_GPS_LATITUDE)))
+      throw new AssertionError("original photo metadata changed");
+    System.out.println("PASS orientation/exposure preserved without copying stale dimensions or altering source");
+    if(destination.saveCount!=1)throw new AssertionError("EXIF output not saved exactly once");
+    System.out.println("PASS filtered EXIF attributes saved");
+  }
+}
+""",
 }
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=pathlib.Path, default=DEFAULT_SOURCE)
+    parser.add_argument("--exif-source", type=pathlib.Path, default=DEFAULT_EXIF_SOURCE)
     parser.add_argument("--ecj", type=pathlib.Path)
     parser.add_argument("--java", default=shutil.which("java") or "java")
     args = parser.parse_args()
     with tempfile.TemporaryDirectory(prefix="picker-regression-") as temp:
         root = pathlib.Path(temp)
         files = dict(STUBS)
+        exif_source = args.exif_source.read_text()
+        # Constants are Android API names, not a reimplementation of copyExif.
+        # Expectations live in the independent GPS fixtures and Java assertions.
+        tags = set(re.findall(r"ExifInterface\.(TAG_[A-Z0-9_]+)", exif_source))
+        tags.update("TAG_GPS_" + tag for tag in GPS_TAGS)
+        tags.update(("TAG_ORIENTATION", "TAG_EXPOSURE_TIME", "TAG_IMAGE_WIDTH"))
+        constants = "\n".join(f'  public static final String {tag}="{tag}";' for tag in sorted(tags))
+        files["androidx/exifinterface/media/ExifInterface.java"] = """package androidx.exifinterface.media;
+import java.util.HashMap;
+import java.util.Map;
+public class ExifInterface {
+""" + constants + """
+  public final Map<String,String> attributes=new HashMap<>();
+  public int saveCount;
+  public ExifInterface(String path){}
+  public String getAttribute(String tag){return attributes.get(tag);}
+  public void setAttribute(String tag,String value){attributes.put(tag,value);}
+  public void saveAttributes(){saveCount++;}
+}
+"""
+        files[PACKAGE + "/ExifDataCopier.java"] = exif_source
         for annotation in ("NonNull", "Nullable", "VisibleForTesting"):
             files[f"androidx/annotation/{annotation}.java"] = f"package androidx.annotation; public @interface {annotation} {{}}"
         files[PACKAGE + "/ImageResizer.java"] = args.source.read_text()
@@ -128,6 +184,7 @@ def main():
         compiler = [args.java, "-jar", str(args.ecj), "-17", "-proc:none"] if args.ecj else ["javac", "--release", "17"]
         subprocess.run(compiler + ["-d", str(out)] + [str(root / p) for p in files], check=True)
         subprocess.run([args.java, "-Djava.io.tmpdir=" + temp, "-cp", str(out), "io.flutter.plugins.imagepicker.SamplingRegression"], check=True)
+        subprocess.run([args.java, "-cp", str(out), "io.flutter.plugins.imagepicker.ExifPrivacyRegression"], check=True)
 
 
 if __name__ == "__main__":

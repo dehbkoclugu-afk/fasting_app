@@ -160,6 +160,6 @@ void main() {
     expect(find.text('Send photos to Google Gemini?'), findsNothing);
     expect(service.calls, 0);
     final prefs = await SharedPreferences.getInstance();
-    expect(prefs.getBool('foodScanAiConsent'), isNull);
+    expect(prefs.getBool('foodScanAiConsentV2'), isNull);
   });
 }

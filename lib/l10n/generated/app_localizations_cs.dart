@@ -9,6 +9,64 @@ class AppLocalizationsCs extends AppLocalizations {
   AppLocalizationsCs([String locale = 'cs']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Ovesná kaše s ovocem';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Borůvkový jogurt';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Toast s vejcem a avokádem';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Miska s kuřetem a quinoou';
+
+  @override
+  String get mealPreset_lentilSoup => 'Čočková polévka';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Losos s brokolicí';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap s krůtou a zeleninou';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Cizrnová miska s tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Tuňákový salát s fazolemi';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Cottage sýr s jablkem';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus a křupavá zelenina';
+
+  @override
+  String get mealPreset_bananaKefir => 'Banánová miska s kefírem';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count kroků k pečeti',
+      few: '$count kroky k pečeti',
+      one: '$count krok k pečeti',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError => 'Záznam se nepodařilo odstranit.';
+
+  @override
+  String get fastingHistory_title => 'Historie půstu';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Tento záznam bude trvale odstraněn.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -96,13 +154,13 @@ class AppLocalizationsCs extends AppLocalizations {
   String get phase_ketosis => 'Ketóza';
 
   @override
-  String get phase_ketosisDesc => 'Tvorba ketonů je aktivní';
+  String get phase_ketosisDesc => 'Tvorba ketonů se může zvýšit';
 
   @override
   String get phase_autophagy => 'Autofagie';
 
   @override
-  String get phase_autophagyDesc => 'Obnova buněk';
+  String get phase_autophagyDesc => 'Odhadovaná fáze recyklace buněk';
 
   @override
   String get stats_title => 'Statistiky';
@@ -263,8 +321,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get onboarding_welcome => 'Vítejte';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Převezměte kontrolu nad svou cestou\ns přerušovaným půstem';
+  String get onboarding_welcomeDesc => 'Převezměte kontrolu nad svou cestou\ns přerušovaným půstem';
 
   @override
   String get onboarding_featureTimer => 'Chytrý časovač půstu';
@@ -312,7 +369,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get onboarding_goalLongevity => 'Dlouhověkost';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Obnova buněk a zdravé stárnutí';
+  String get onboarding_goalLongevityDesc => 'Vytvořte si zdravou dlouhodobou rutinu';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplína';
@@ -324,8 +381,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get onboarding_selectPlan => 'Vyberte si plán';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Vyberte si plán půstu, který vám nejlépe vyhovuje';
+  String get onboarding_selectPlanDesc => 'Vyberte si plán půstu, který vám nejlépe vyhovuje';
 
   @override
   String get onboarding_bodyInfo => 'Zadejte své údaje';
@@ -334,27 +390,16 @@ class AppLocalizationsCs extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Pro osobní doporučení';
 
   @override
-  String get onboarding_gender => 'Pohlaví';
-
-  @override
-  String get onboarding_male => 'Muž';
-
-  @override
-  String get onboarding_female => 'Žena';
-
-  @override
   String get onboarding_age => 'Věk';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Tyto informace se ukládají pouze ve vašem zařízení a používají se k výpočtu kalorií.';
+  String get onboarding_bodyInfoDisclaimer => 'Tyto informace se ukládají pouze ve vašem zařízení a používají se k výpočtu kalorií.';
 
   @override
   String get onboarding_permissions => 'Poslední krok';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Pro nejlepší zážitek povolte oprávnění';
+  String get onboarding_permissionsDesc => 'Pro nejlepší zážitek povolte oprávnění';
 
   @override
   String get onboarding_next => 'Pokračovat';
@@ -381,8 +426,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get paywall_title => 'Přejít na Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Odemkněte všechny plány půstu a odstraňte reklamy';
+  String get paywall_subtitle => 'Odemkněte všechny plány půstu a odstraňte reklamy';
 
   @override
   String get paywall_allPlans => 'Všechny plány půstu';
@@ -421,8 +465,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get paywall_premiumActive => 'Premium je aktivní!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Všechny plány půstu jsou odemčené a reklamy vypnuté';
+  String get paywall_premiumActiveDesc => 'Všechny plány půstu jsou odemčené a reklamy vypnuté';
 
   @override
   String get water_title => 'Příjem vody';
@@ -557,8 +600,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get completion_earlyTitle => 'Půst ukončen';
 
   @override
-  String get completion_earlyMessage =>
-      'Dnešní doba byla uložena. Série ani postup v úspěších se nezměnily, protože cíl nebyl splněn.';
+  String get completion_earlyMessage => 'Dnešní doba byla uložena. Série ani postup v úspěších se nezměnily, protože cíl nebyl splněn.';
 
   @override
   String get timer_remainingTime => 'Zbývající čas';
@@ -588,8 +630,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get streak_incredible => 'Neuvěřitelné!';
 
   @override
-  String get weight_noRecord =>
-      'Zatím žádné záznamy hmotnosti\nPřidejte je v Profil > Tělesné údaje';
+  String get weight_noRecord => 'Zatím žádné záznamy hmotnosti\nPřidejte je v Profil > Tělesné údaje';
 
   @override
   String get day_mon => 'Po';
@@ -775,8 +816,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get profile_calmGamification => 'Klidná gamifikace';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Snižuje tlak spojený s ligou a sezónou';
+  String get profile_calmGamificationDesc => 'Snižuje tlak sezóny';
 
   @override
   String get profile_editName => 'Upravit jméno';
@@ -794,8 +834,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get circle_tagline => 'Společně, bez tlaku.';
 
   @override
-  String get circle_privacy =>
-      'Hmotnost a soukromé údaje zůstávají skryté. Viditelný je pouze pokrok a podpora.';
+  String get circle_privacy => 'Hmotnost a soukromé údaje zůstávají skryté. Viditelný je pouze pokrok a podpora.';
 
   @override
   String circle_sendSupport(int count) {
@@ -824,8 +863,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get crisis_delayTitle => 'Odložte rozhodnutí o 10 minut';
 
   @override
-  String get crisis_delayDesc =>
-      'Pokud se necítíte dobře, ukončení půstu není selhání.';
+  String get crisis_delayDesc => 'Pokud se necítíte dobře, ukončení půstu není selhání.';
 
   @override
   String get crisis_hunger => 'Hlad';
@@ -880,15 +918,13 @@ class AppLocalizationsCs extends AppLocalizations {
   String get weather_water => 'Sklenice vody může pomoci.';
 
   @override
-  String get weather_listen =>
-      'Ušli jste dlouhou cestu; naslouchejte svému tělu.';
+  String get weather_listen => 'Ušli jste dlouhou cestu; naslouchejte svému tělu.';
 
   @override
   String get weather_onPlan => 'Dnešní tempo odpovídá vašemu plánu.';
 
   @override
-  String get weather_challenging =>
-      'Tato hodina pro vás dříve byla náročná; režim podpory je připraven.';
+  String get weather_challenging => 'Tato hodina pro vás dříve byla náročná; režim podpory je připraven.';
 
   @override
   String get replay_copied => 'Rekapitulace půstu zkopírována';
@@ -913,8 +949,7 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'Časování fází je obecný odhad, nikoli lékařské měření.';
+  String get phase_estimateShort => 'Časování fází je obecný odhad, nikoli lékařské měření.';
 
   @override
   String phase_hours(int start, int end) {
@@ -922,8 +957,7 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Toto časování je obecný odhad. Metabolické reakce se mohou u jednotlivých lidí lišit.';
+  String get phase_estimateLong => 'Toto časování je obecný odhad. Metabolické reakce se mohou u jednotlivých lidí lišit.';
 
   @override
   String get bmi_underweight => 'Podváha';
@@ -955,7 +989,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get notification_phaseKetosis => 'Jste v ketóze ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagie je aktivní! 🔄';
+  String get notification_phaseAutophagy => 'Odhadovaná fáze autofagie';
 
   @override
   String notification_completedBody(String plan) {
@@ -966,15 +1000,13 @@ class AppLocalizationsCs extends AppLocalizations {
   String get notification_waterTitle => 'Napijte se vody 💧';
 
   @override
-  String get notification_waterBody =>
-      'Během půstu nezapomínejte pít dostatek vody!';
+  String get notification_waterBody => 'Během půstu nezapomínejte pít dostatek vody!';
 
   @override
   String get notification_windowTitle => 'Jídelní okno se zavírá ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Vaše jídelní okno se zavře za 30 minut.';
+  String get notification_windowBody => 'Vaše jídelní okno se zavře za 30 minut.';
 
   @override
   String notification_streakTitle(int days) {
@@ -1013,33 +1045,28 @@ class AppLocalizationsCs extends AppLocalizations {
   String get explore_guide => 'Průvodce půstem';
 
   @override
-  String get explore_guideDesc =>
-      'Vše, co potřebujete vědět o přerušovaném půstu';
+  String get explore_guideDesc => 'Vše, co potřebujete vědět o přerušovaném půstu';
 
   @override
-  String get explore_circleDesc =>
-      'Sdílejte tichou podporu se svou soukromou skupinou.';
+  String get explore_circleDesc => 'Sdílejte tichou podporu se svou soukromou skupinou.';
 
   @override
   String get explore_faq => 'Časté dotazy';
 
   @override
-  String get explore_education =>
-      'Tento obsah slouží pouze k obecnému vzdělávání a nepředstavuje lékařskou diagnózu ani doporučení léčby.';
+  String get explore_education => 'Tento obsah slouží pouze k obecnému vzdělávání a nepředstavuje lékařskou diagnózu ani doporučení léčby.';
 
   @override
   String get explore_safety => 'Zdraví a bezpečnost';
 
   @override
-  String get explore_safetyDesc =>
-      'Pokud máte zdravotní potíže, pravidelně užíváte léky, máte znepokojivé příznaky, jste těhotná nebo kojíte, poraďte se před půstem s kvalifikovaným zdravotníkem. Pokud se necítíte dobře, půst ukončete.';
+  String get explore_safetyDesc => 'Pokud máte zdravotní potíže, pravidelně užíváte léky, máte znepokojivé příznaky, jste těhotná nebo kojíte, poraďte se před půstem s kvalifikovaným zdravotníkem. Pokud se necítíte dobře, půst ukončete.';
 
   @override
   String get explore_sources => 'Zdroje';
 
   @override
-  String get explore_sourcesDesc =>
-      'Obsah je zjednodušen z níže uvedených veřejně dostupných zdravotnických zdrojů.';
+  String get explore_sourcesDesc => 'Obsah je zjednodušen z níže uvedených veřejně dostupných zdravotnických zdrojů.';
 
   @override
   String get explore_sourceError => 'Zdroj se nepodařilo otevřít';
@@ -1063,127 +1090,109 @@ class AppLocalizationsCs extends AppLocalizations {
   String get explore_rule5 => 'Těhotné a kojící ženy by se neměly postit';
 
   @override
-  String get explore_rule6 =>
-      'Pokud máte chronické onemocnění, poraďte se s lékařem';
+  String get explore_rule6 => 'Pokud máte chronické onemocnění, poraďte se s lékařem';
 
   @override
   String get tip_water => 'Doplňujte tekutiny';
 
   @override
-  String get tip_waterDesc =>
-      'Když máte žízeň, pijte vodu a přijímejte tekutiny také s jídlem. Potřeba se může lišit podle zdravotního stavu, počasí a aktivity.';
+  String get tip_waterDesc => 'Když máte žízeň, pijte vodu a přijímejte tekutiny také s jídlem. Potřeba se může lišit podle zdravotního stavu, počasí a aktivity.';
 
   @override
   String get tip_food => 'Jezte správně';
 
   @override
-  String get tip_foodDesc =>
-      'Během jídelních oken vybírejte potraviny bohaté na bílkoviny a vlákninu a zdravé tuky. Vyhýbejte se průmyslově zpracovaným potravinám.';
+  String get tip_foodDesc => 'Během jídelních oken vybírejte potraviny bohaté na bílkoviny a vlákninu a zdravé tuky. Vyhýbejte se průmyslově zpracovaným potravinám.';
 
   @override
   String get tip_sleep => 'Dobře spěte';
 
   @override
-  String get tip_sleepDesc =>
-      'Pravidelný a dostatečný spánek podporuje celkovou pohodu. Naplánujte půst tak, aby nenarušoval váš spánek.';
+  String get tip_sleepDesc => 'Pravidelný a dostatečný spánek podporuje celkovou pohodu. Naplánujte půst tak, aby nenarušoval váš spánek.';
 
   @override
   String get tip_exercise => 'Lehký pohyb';
 
   @override
-  String get tip_exerciseDesc =>
-      'Během půstu můžete lehce chodit nebo cvičit jógu. Vyhněte se náročnému cvičení, zejména v prvních týdnech, než se tělo přizpůsobí.';
+  String get tip_exerciseDesc => 'Během půstu můžete lehce chodit nebo cvičit jógu. Vyhněte se náročnému cvičení, zejména v prvních týdnech, než se tělo přizpůsobí.';
 
   @override
   String get tip_drinks => 'Povolené nápoje';
 
   @override
-  String get tip_drinksDesc =>
-      'Během půstu můžete pít vodu, čistý čaj a černou kávu (bez cukru a mléka). Tyto nápoje půst nepřeruší.';
+  String get tip_drinksDesc => 'Během půstu můžete pít vodu, čistý čaj a černou kávu (bez cukru a mléka). Tyto nápoje půst nepřeruší.';
 
   @override
   String get faq_drinks => 'Co mohu během půstu pít?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Můžete pít vodu, čistý čaj a černou kávu (bez cukru a mléka). Kalorické nápoje půst přerušují.';
+  String get faq_drinksAnswer => 'Můžete pít vodu, čistý čaj a černou kávu (bez cukru a mléka). Kalorické nápoje půst přerušují.';
 
   @override
   String get faq_plan => 'Který plán půstu si mám vybrat?';
 
   @override
-  String get faq_planAnswer =>
-      'Pokud začínáte, zvolte 12:12 nebo 14:10. Máte-li zkušenosti, zkuste 16:8 nebo 18:6. Plány 20:4 a OMAD jsou pro pokročilé.';
+  String get faq_planAnswer => 'Pokud začínáte, zvolte 12:12 nebo 14:10. Máte-li zkušenosti, zkuste 16:8 nebo 18:6. Plány 20:4 a OMAD jsou pro pokročilé.';
 
   @override
   String get faq_exercise => 'Mohu během půstu cvičit?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Ano, ale vyhněte se intenzivnímu tréninku. Ideální je lehké kardio, chůze a jóga. Silový trénink naplánujte blízko jídelního okna.';
+  String get faq_exerciseAnswer => 'Ano, ale vyhněte se intenzivnímu tréninku. Ideální je lehké kardio, chůze a jóga. Silový trénink naplánujte blízko jídelního okna.';
 
   @override
   String get faq_weight => 'Pomáhá půst při hubnutí?';
 
   @override
-  String get faq_weightAnswer =>
-      'U některých lidí může omezení doby jídla snížit celkový příjem energie. Výsledky se liší a dlouhodobé účinky se stále zkoumají.';
+  String get faq_weightAnswer => 'U některých lidí může omezení doby jídla snížit celkový příjem energie. Výsledky se liší a dlouhodobé účinky se stále zkoumají.';
 
   @override
   String get plan_12_desc => 'Pro začátečníky';
 
   @override
-  String get plan_12_detail =>
-      'Ideální pro začátečníky. Postěte se 12 hodin včetně doby spánku.';
+  String get plan_12_detail => 'Ideální pro začátečníky. Postěte se 12 hodin včetně doby spánku.';
 
   @override
   String get plan_16_desc => 'Nejoblíbenější plán';
 
   @override
-  String get plan_16_detail =>
-      'Nejběžnější plán přerušovaného půstu: 16 hodin půstu a 8hodinové jídelní okno, obvykle od oběda do večeře.';
+  String get plan_16_detail => 'Nejběžnější plán přerušovaného půstu: 16 hodin půstu a 8hodinové jídelní okno, obvykle od oběda do večeře.';
 
   @override
   String get plan_18_desc => 'Středně pokročilí';
 
   @override
-  String get plan_18_detail =>
-      '18 hodin půstu a 6hodinové jídelní okno. Delší doba spalování tuků.';
+  String get plan_18_detail => '18 hodin půstu a 6hodinové jídelní okno. Delší doba spalování tuků.';
 
   @override
   String get plan_20_desc => 'Pro pokročilé';
 
   @override
-  String get plan_20_detail =>
-      '20 hodin půstu a 4hodinové jídelní okno. Ideální pro dosažení ketózy a autofagie.';
+  String get plan_20_detail => '20 hodin půstu, 4 hodiny na jídlo. Pro lidi se zkušeností s půstem.';
 
   @override
   String get plan_omad_desc => 'Jedno jídlo denně';
 
   @override
-  String get plan_omad_detail =>
-      'Jedno jídlo denně: 23 hodin půstu a 1hodinové jídelní okno. Pro experty.';
+  String get plan_omad_detail => 'Jedno jídlo denně: 23 hodin půstu a 1hodinové jídelní okno. Pro experty.';
 
   @override
   String get plan_52_desc => '2 dny v týdnu';
 
   @override
-  String get plan_52_detail =>
-      'Pět dní jezte normálně a dva dny omezte příjem přibližně na 500 kalorií. Alternativní přístup.';
+  String get plan_52_detail => 'Pět dní jezte normálně a dva dny omezte příjem přibližně na 500 kalorií. Alternativní přístup.';
 
   @override
   String get plan_ese_desc => '24hodinový půst';
 
   @override
-  String get plan_ese_detail =>
-      'Držte 24hodinový půst 1–2krát týdně. Pro pokročilé.';
+  String get plan_ese_detail => 'Držte 24hodinový půst 1–2krát týdně. Pro pokročilé.';
 
   @override
   String get plan_warrior_desc => 'Válečnická dieta';
 
   @override
-  String get plan_warrior_detail =>
-      'Přes den jezte lehce (ovoce a zeleninu) a hlavní jídlo si dejte během čtyřhodinového večerního okna.';
+  String get plan_warrior_detail => 'Přes den jezte lehce (ovoce a zeleninu) a hlavní jídlo si dejte během čtyřhodinového večerního okna.';
 
   @override
   String get award_first_title => 'První krok';
@@ -1324,8 +1333,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get game_season => 'Sezóna o 30 krocích';
 
   @override
-  String get game_seasonDesc =>
-      'Za každý pátý krok získáte sběratelskou pečeť.';
+  String get game_seasonDesc => 'Za každý pátý krok získáte sběratelskou pečeť.';
 
   @override
   String get game_badges => 'Sbírka odznaků';
@@ -1336,16 +1344,7 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Jeden získáte za každých sedm dokončení. Vynechaný den nikdy nesmaže váš pokrok.';
-
-  @override
-  String get game_league => 'Soukromá týdenní liga';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Vaše skóre rytmu je na $percent. percentilu soukromého místního modelu. Hmotnost ani extrémní půst se nikdy nehodnotí.';
-  }
+  String get game_shieldsDesc => 'Jeden získáte za každých sedm dokončení. Vynechaný den nikdy nesmaže váš pokrok.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1489,8 +1488,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get paywall_continue => 'Pokračovat';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Nákupy nyní nejsou dostupné. Zkuste to prosím později.';
+  String get paywall_productsUnavailable => 'Nákupy nyní nejsou dostupné. Zkuste to prosím později.';
 
   @override
   String get paywall_purchaseFailed => 'Nákup se nepodařilo dokončit.';
@@ -1505,15 +1503,13 @@ class AppLocalizationsCs extends AppLocalizations {
   String get paywall_terms => 'Podmínky použití';
 
   @override
-  String get permission_notificationDesc =>
-      'Připomínky půstu, aktualizace fází a oznámení o dokončení';
+  String get permission_notificationDesc => 'Připomínky půstu, aktualizace fází a oznámení o dokončení';
 
   @override
   String get profile_privacyChoices => 'Nastavení soukromí';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Předplatné se automaticky obnoví, pokud je nezrušíte alespoň 24 hodin před koncem období. Kdykoli je můžete spravovat nebo zrušit v nastavení App Storu.';
+  String get paywall_autoRenewInfo => 'Předplatné se automaticky obnoví, pokud je nezrušíte alespoň 24 hodin před koncem období. Kdykoli je můžete spravovat nebo zrušit v nastavení App Storu.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1537,28 +1533,22 @@ class AppLocalizationsCs extends AppLocalizations {
   String get paywall_retry => 'Zkusit znovu';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Toto předplatné už vlastníte. Klepněte na „Obnovit nákupy“.';
+  String get paywall_alreadyOwned => 'Toto předplatné už vlastníte. Klepněte na „Obnovit nákupy“.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Obchod nyní není dostupný. Zkontrolujte připojení a zkuste to znovu.';
+  String get paywall_storeUnavailable => 'Obchod nyní není dostupný. Zkontrolujte připojení a zkuste to znovu.';
 
   @override
-  String get paywall_secureNote =>
-      'Předplatné můžete kdykoli zrušit. Platba bude účtována na váš účet v obchodě.';
+  String get paywall_secureNote => 'Předplatné můžete kdykoli zrušit. Platba bude účtována na váš účet v obchodě.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Předplatné se automaticky obnoví, pokud je nezrušíte alespoň 24 hodin před koncem období. Kdykoli je můžete spravovat nebo zrušit v Google Play > Předplatná.';
+  String get paywall_autoRenewInfoPlay => 'Předplatné se automaticky obnoví, pokud je nezrušíte alespoň 24 hodin před koncem období. Kdykoli je můžete spravovat nebo zrušit v Google Play > Předplatná.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Odemkne 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat a Warrior';
+  String get paywall_allPlansDesc => 'Odemkne 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat a Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Bannerové reklamy i reklamy přes celou obrazovku se zcela vypnou';
+  String get paywall_noAdsDesc => 'Bannerové reklamy i reklamy přes celou obrazovku se zcela vypnou';
 
   @override
   String get foodScan_title => 'AI sken jídla';
@@ -1567,15 +1557,13 @@ class AppLocalizationsCs extends AppLocalizations {
   String get foodScan_scanCta => 'Naskenovat jídlo';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Vyfoťte talíř a zjistěte odhad kalorií a makroživin';
+  String get foodScan_scanCtaDesc => 'Vyfoťte talíř a zjistěte odhad kalorií a makroživin';
 
   @override
   String get foodScan_introTitle => 'Vyfoťte svůj talíř';
 
   @override
-  String get foodScan_introDesc =>
-      'AI snímek přečte a odhadne kalorie, bílkoviny, sacharidy a tuky.';
+  String get foodScan_introDesc => 'AI snímek přečte a odhadne kalorie, bílkoviny, sacharidy a tuky.';
 
   @override
   String get foodScan_tipLight => 'Dobré a rovnoměrné osvětlení zpřesní odhad';
@@ -1584,8 +1572,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get foodScan_tipFrame => 'Do záběru umístěte celý talíř';
 
   @override
-  String get foodScan_tipScale =>
-      'Přidejte do záběru příbor nebo ruku, aby bylo možné odhadnout velikost porce';
+  String get foodScan_tipScale => 'Přidejte do záběru příbor nebo ruku, aby bylo možné odhadnout velikost porce';
 
   @override
   String get foodScan_takePhoto => 'Pořídit fotografii';
@@ -1599,19 +1586,16 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Dnešní skeny jste vyčerpali. Zkuste to znovu zítra.';
+  String get foodScan_quotaReached => 'Dnešní skeny jste vyčerpali. Zkuste to znovu zítra.';
 
   @override
-  String get foodScan_privacyNote =>
-      'Fotografie se odešle k analýze do rozhraní Gemini API společnosti Google a na našich serverech se neukládá.';
+  String get foodScan_privacyNote => 'Fotka se odešle do Gemini API od Googlu. Google ji může použít ke zlepšování svých produktů a mohou ji vidět lidští kontroloři. Na našich serverech ji neukládáme.';
 
   @override
   String get foodScan_consentTitle => 'Odeslat fotky do Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'Pro odhad kalorií a makroživin se každá fotka jídla, kterou pořídíte nebo vyberete, odešle do služby umělé inteligence Google Gemini. Fotka se použije jen pro tuto analýzu a na našich serverech se neukládá.';
+  String get foodScan_consentBody => 'Pro odhad kalorií a makroživin se každá pořízená nebo vybraná fotka jídla odešle do AI služby Gemini od Googlu. Google může fotky použít ke zlepšování svých produktů a mohou je vidět lidští kontroloři, proto do záběru nedávejte osoby, dokumenty ani jiné osobní údaje. Fotky na našich serverech neukládáme.';
 
   @override
   String get foodScan_consentAgree => 'Souhlasím a pokračovat';
@@ -1626,12 +1610,10 @@ class AppLocalizationsCs extends AppLocalizations {
   String get foodScan_detectedItems => 'Rozpoznané položky';
 
   @override
-  String get foodScan_disclaimer =>
-      'Odhady AI jsou pouze orientační. Klepnutím na položku ji můžete opravit.';
+  String get foodScan_disclaimer => 'Odhady AI jsou pouze orientační. Klepnutím na položku ji můžete opravit.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Model si tímto snímkem není jistý. Před uložením údaje zkontrolujte.';
+  String get foodScan_lowConfidence => 'Model si tímto snímkem není jistý. Před uložením údaje zkontrolujte.';
 
   @override
   String get foodScan_save => 'Přidat k jídlům';
@@ -1655,40 +1637,130 @@ class AppLocalizationsCs extends AppLocalizations {
   String get foodScan_premiumTitle => 'Funkce Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'Analýza kalorií z fotografie je součástí Premium.';
+  String get foodScan_premiumDesc => 'Analýza kalorií z fotografie je součástí Premium.';
 
   @override
   String get foodScan_upgrade => 'Zobrazit Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Bez připojení. Zkontrolujte internet a zkuste to znovu.';
+  String get foodScan_errorNetwork => 'Bez připojení. Zkontrolujte internet a zkuste to znovu.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Právě probíhá příliš mnoho skenů. Zkuste to znovu za několik minut.';
+  String get foodScan_errorRateLimited => 'Právě probíhá příliš mnoho skenů. Zkuste to znovu za několik minut.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'Analýza fotografií nyní není dostupná.';
+  String get foodScan_errorUnavailable => 'Analýza fotografií nyní není dostupná.';
 
   @override
-  String get foodScan_errorServer =>
-      'Služba analýzy má potíže. Zkuste to znovu za chvíli.';
+  String get foodScan_errorServer => 'Služba analýzy má potíže. Zkuste to znovu za chvíli.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Na této fotografii nebylo nalezeno žádné jídlo. Zkuste pořídit zřetelnější snímek talíře.';
+  String get foodScan_errorNoFood => 'Na této fotografii nebylo nalezeno žádné jídlo. Zkuste pořídit zřetelnější snímek talíře.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Tuto fotografii se nepodařilo analyzovat. Zkuste jinou.';
+  String get foodScan_errorUnreadable => 'Tuto fotografii se nepodařilo analyzovat. Zkuste jinou.';
 
   @override
   String get paywall_aiFoodScan => 'AI sken jídla';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Vyfoťte jídlo a během několika sekund zaznamenejte jeho kalorie a makroživiny';
+  String get paywall_aiFoodScanDesc => 'Vyfoťte jídlo a během několika sekund zaznamenejte jeho kalorie a makroživiny';
+
+  @override
+  String get safety_title => 'Než začnete';
+
+  @override
+  String get safety_desc => 'Půst není bezpečný pro každého. Vyberte vše, co se vás týká.';
+
+  @override
+  String get safety_under18 => 'Je mi méně než 18 let';
+
+  @override
+  String get safety_pregnant => 'Jsem těhotná nebo kojím';
+
+  @override
+  String get safety_eatingDisorder => 'Mám nebo jsem měl/a poruchu příjmu potravy';
+
+  @override
+  String get safety_underweight => 'Mám podváhu nebo mi bylo řečeno, abych nehubl/a';
+
+  @override
+  String get safety_diabetes => 'Mám cukrovku nebo užívám léky ovlivňující hladinu cukru';
+
+  @override
+  String get safety_medical => 'Mám jiné onemocnění nebo pravidelně užívám léky';
+
+  @override
+  String get safety_none => 'Nic z toho se mě netýká';
+
+  @override
+  String get safety_ack => 'Před půstem se poradím s lékařem';
+
+  @override
+  String get safety_blockedTitle => 'Tato aplikace pro vás není bezpečná';
+
+  @override
+  String get safety_blockedDesc => 'Podle vašich odpovědí zde nemůžeme půst nabídnout. Promluvte si s lékařem. Pokud je pro vás jídlo teď obtížné, může pomoci zdravotnický odborník.';
+
+  @override
+  String get safety_reviewAnswers => 'Zkontrolovat odpovědi';
+
+  @override
+  String get safety_targetTooLow => 'Tento cíl je pod zdravou hmotností pro vaši výšku.';
+
+  @override
+  String get onboarding_invalidBody => 'Zadejte platnou výšku, hmotnost, cílovou hmotnost a věk.';
+
+  @override
+  String get crisis_unwell => 'Necítím se dobře';
+
+  @override
+  String get crisis_unwellTitle => 'Ukončete půst hned';
+
+  @override
+  String get crisis_unwellDesc => 'Závratě, třes, zmatenost nebo bušení srdce jsou signálem ukončit půst a něco sníst nebo vypít.';
+
+  @override
+  String get crisis_emergency => 'Pokud jste omdleli, máte bolest na hrudi nebo je vám velmi špatně, zavolejte hned místní tísňovou linku.';
+
+  @override
+  String get crisis_endFast => 'Ukončit můj půst';
+
+  @override
+  String get profile_deleteData => 'Smazat všechna moje data';
+
+  @override
+  String get profile_deleteDataConfirm => 'Tím se z tohoto zařízení trvale smažou půsty, hmotnost, jídla, voda a nastavení. Nelze to vrátit zpět. Předplatná se spravují v účtu obchodu.';
+
+  @override
+  String get profile_deleteDataAction => 'Smazat vše';
+
+  @override
+  String get record_deleteConfirm => 'Smazat tento záznam?';
+
+  @override
+  String get profile_analytics => 'Sdílet anonymní data o používání';
+
+  @override
+  String get profile_analyticsDesc => 'Pomáhá vylepšovat aplikaci. Nikdy neobsahuje hmotnost, jídla ani zdravotní údaje.';
+
+  @override
+  String get plan_longWarningTitle => 'Toto je dlouhý půst';
+
+  @override
+  String get plan_longWarningDesc => 'Půsty od 20 hodin nejsou vhodné pro každého a může vám z nich být špatně. Pokud si nejste jistí, poraďte se s lékařem, a když je vám špatně, půst ukončete.';
+
+  @override
+  String get plan_longWarningAccept => 'Rozumím';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'Zkušební verze zdarma: $days dní, pak $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Nepostíte se';
+
+  @override
+  String get widget_tapToStart => 'Klepnutím začnete';
 }

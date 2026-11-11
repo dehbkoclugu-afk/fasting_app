@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:drift/drift.dart';
-import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 
+import 'database_encryption.dart';
 import 'tables/fasting_sessions.dart';
 import 'tables/body_metrics.dart';
 import 'tables/meals.dart';
@@ -53,8 +53,9 @@ class AppDatabase extends _$AppDatabase {
       final active = await getActiveSession();
       if (active != null) return active;
       final id = await into(fastingSessions).insert(session);
-      return (select(fastingSessions)
-        ..where((s) => s.id.equals(id))).getSingle();
+      return (select(
+        fastingSessions,
+      )..where((s) => s.id.equals(id))).getSingle();
     });
   }
 
@@ -64,14 +65,16 @@ class AppDatabase extends _$AppDatabase {
     required int actualMinutes,
     required bool completed,
   }) async {
-    final changed = await (update(fastingSessions)
-      ..where((s) => s.id.equals(id) & s.endTime.isNull())).write(
-      FastingSessionsCompanion(
-        endTime: Value(endTime),
-        actualMinutes: Value(actualMinutes),
-        completed: Value(completed),
-      ),
-    );
+    final changed =
+        await (update(
+          fastingSessions,
+        )..where((s) => s.id.equals(id) & s.endTime.isNull())).write(
+          FastingSessionsCompanion(
+            endTime: Value(endTime),
+            actualMinutes: Value(actualMinutes),
+            completed: Value(completed),
+          ),
+        );
     return changed == 1;
   }
 
@@ -82,11 +85,19 @@ class AppDatabase extends _$AppDatabase {
         .get();
   }
 
+  /// History can erase ended fasts without disrupting the active timer.
+  Future<int> deleteFinishedSession(int id) {
+    return (delete(
+      fastingSessions,
+    )..where((s) => s.id.equals(id) & s.endTime.isNotNull())).go();
+  }
+
   // --- Body Metrics ---
 
   Future<List<BodyMetric>> getAllMetrics() {
-    return (select(bodyMetrics)
-      ..orderBy([(m) => OrderingTerm.desc(m.date)])).get();
+    return (select(
+      bodyMetrics,
+    )..orderBy([(m) => OrderingTerm.desc(m.date)])).get();
   }
 
   Future<BodyMetric?> getLatestMetric() {
@@ -98,6 +109,10 @@ class AppDatabase extends _$AppDatabase {
 
   Future<int> insertMetric(BodyMetricsCompanion metric) {
     return into(bodyMetrics).insert(metric);
+  }
+
+  Future<int> deleteMetric(int id) {
+    return (delete(bodyMetrics)..where((m) => m.id.equals(id))).go();
   }
 
   Future<List<BodyMetric>> getWeightHistory() {
@@ -135,12 +150,12 @@ class AppDatabase extends _$AppDatabase {
   Future<List<WaterIntakeData>> getWaterForDate(DateTime date) {
     final start = DateTime(date.year, date.month, date.day);
     final end = start.add(const Duration(days: 1));
-    return (select(waterIntake)
-      ..where(
-        (w) =>
-            w.date.isBiggerOrEqualValue(start) &
-            w.date.isSmallerThanValue(end),
-      )).get();
+    return (select(waterIntake)..where(
+          (w) =>
+              w.date.isBiggerOrEqualValue(start) &
+              w.date.isSmallerThanValue(end),
+        ))
+        .get();
   }
 
   Future<int> insertWater(WaterIntakeCompanion entry) {
@@ -167,9 +182,9 @@ class AppDatabase extends _$AppDatabase {
   // --- Settings ---
 
   Future<String?> getSetting(String key) async {
-    final result =
-        await (select(settings)
-          ..where((s) => s.key.equals(key))).getSingleOrNull();
+    final result = await (select(
+      settings,
+    )..where((s) => s.key.equals(key))).getSingleOrNull();
     return result?.value;
   }
 
@@ -178,12 +193,29 @@ class AppDatabase extends _$AppDatabase {
       SettingsCompanion(key: Value(key), value: Value(value)),
     );
   }
+
+  // --- Erasure ---
+
+  Future<void> deleteAllUserData() {
+    return transaction(() async {
+      for (final table in allTables) {
+        await delete(table).go();
+      }
+    });
+  }
+}
+
+Future<File> _databaseFile() async {
+  final dbFolder = await getApplicationDocumentsDirectory();
+  return File(p.join(dbFolder.path, 'fasting_app.sqlite'));
 }
 
 LazyDatabase _openConnection() {
-  return LazyDatabase(() async {
-    final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'fasting_app.sqlite'));
-    return NativeDatabase.createInBackground(file);
-  });
+  return LazyDatabase(() async => openEncryptedDatabase(await _databaseFile()));
+}
+
+/// Removes a database that could not be decrypted after its key was lost.
+Future<void> deleteUnreadableDatabaseCopy() async {
+  final copy = File(unreadableDatabasePath((await _databaseFile()).path));
+  if (copy.existsSync()) copy.deleteSync();
 }

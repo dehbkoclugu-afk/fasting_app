@@ -9,6 +9,62 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => '水果燕麦';
+
+  @override
+  String get mealPreset_blueberryYogurt => '蓝莓酸奶';
+
+  @override
+  String get mealPreset_eggAvocadoToast => '鸡蛋牛油果吐司';
+
+  @override
+  String get mealPreset_chickenQuinoa => '鸡肉藜麦碗';
+
+  @override
+  String get mealPreset_lentilSoup => '扁豆汤';
+
+  @override
+  String get mealPreset_salmonBroccoli => '三文鱼配西兰花';
+
+  @override
+  String get mealPreset_turkeyVegWrap => '火鸡蔬菜卷';
+
+  @override
+  String get mealPreset_chickpeaTahini => '鹰嘴豆芝麻酱碗';
+
+  @override
+  String get mealPreset_tunaBeanSalad => '金枪鱼豆类沙拉';
+
+  @override
+  String get mealPreset_appleCottageCheese => '苹果茅屋奶酪碗';
+
+  @override
+  String get mealPreset_hummusVegetables => '鹰嘴豆泥配爽脆蔬菜';
+
+  @override
+  String get mealPreset_bananaKefir => '香蕉开菲尔碗';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '距离印章还有$count步',
+      one: '距离印章还有$count步',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError => '无法删除此记录。';
+
+  @override
+  String get fastingHistory_title => '禁食记录';
+
+  @override
+  String get fastingHistory_deleteWarning => '这条记录将被永久删除。';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -96,13 +152,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get phase_ketosis => '酮症';
 
   @override
-  String get phase_ketosisDesc => '酮体生成活跃';
+  String get phase_ketosisDesc => '酮体生成可能增加';
 
   @override
   String get phase_autophagy => '自噬';
 
   @override
-  String get phase_autophagyDesc => '细胞更新';
+  String get phase_autophagyDesc => '估计的细胞回收阶段';
 
   @override
   String get stats_title => '统计';
@@ -311,7 +367,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboarding_goalLongevity => '长寿';
 
   @override
-  String get onboarding_goalLongevityDesc => '细胞更新与健康衰老';
+  String get onboarding_goalLongevityDesc => '建立健康的长期习惯';
 
   @override
   String get onboarding_goalDiscipline => '自律';
@@ -330,15 +386,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get onboarding_bodyInfoDesc => '用于个性化建议';
-
-  @override
-  String get onboarding_gender => '性别';
-
-  @override
-  String get onboarding_male => '男';
-
-  @override
-  String get onboarding_female => '女';
 
   @override
   String get onboarding_age => '年龄';
@@ -767,7 +814,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get profile_calmGamification => '轻松游戏化';
 
   @override
-  String get profile_calmGamificationDesc => '减轻联赛和赛季压力';
+  String get profile_calmGamificationDesc => '减轻赛季压力';
 
   @override
   String get profile_editName => '编辑您的姓名';
@@ -940,7 +987,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notification_phaseKetosis => '您正处于酮症状态 ⚡';
 
   @override
-  String get notification_phaseAutophagy => '自噬已激活！ 🔄';
+  String get notification_phaseAutophagy => '估计的自噬阶段';
 
   @override
   String notification_completedBody(String plan) {
@@ -1011,8 +1058,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get explore_safety => '健康与安全';
 
   @override
-  String get explore_safetyDesc =>
-      '如果您有疾病、长期服药、出现令人担忧的症状、正在怀孕或哺乳，请在禁食前咨询合格的医疗专业人员。如感觉不适，请停止禁食。';
+  String get explore_safetyDesc => '如果您有疾病、长期服药、出现令人担忧的症状、正在怀孕或哺乳，请在禁食前咨询合格的医疗专业人员。如感觉不适，请停止禁食。';
 
   @override
   String get explore_sources => '资料来源';
@@ -1084,15 +1130,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get faq_plan => '我该选择哪种禁食计划？';
 
   @override
-  String get faq_planAnswer =>
-      '新手可从12:12或14:10开始。有经验者可尝试16:8或18:6。20:4和OMAD适合高级禁食者。';
+  String get faq_planAnswer => '新手可从12:12或14:10开始。有经验者可尝试16:8或18:6。20:4和OMAD适合高级禁食者。';
 
   @override
   String get faq_exercise => '禁食期间可以运动吗？';
 
   @override
-  String get faq_exerciseAnswer =>
-      '可以，但请避免高强度训练。轻度有氧、散步和瑜伽较为理想。力量训练请安排在进食窗口附近。';
+  String get faq_exerciseAnswer => '可以，但请避免高强度训练。轻度有氧、散步和瑜伽较为理想。力量训练请安排在进食窗口附近。';
 
   @override
   String get faq_weight => '禁食有助于减重吗？';
@@ -1122,7 +1166,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get plan_20_desc => '高级';
 
   @override
-  String get plan_20_detail => '禁食20小时，进食4小时，适合进入酮症和自噬。';
+  String get plan_20_detail => '禁食 20 小时，进食窗口 4 小时。适合有禁食经验的人。';
 
   @override
   String get plan_omad_desc => '一天一餐';
@@ -1301,14 +1345,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get game_shieldsDesc => '每完成七次即可获得。错过一天也不会抹去您的进度。';
 
   @override
-  String get game_league => '私人周联赛';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return '您的节奏得分在私人本地模型中位于第$percent百分位。体重和极端禁食永远不会参与排名。';
-  }
-
-  @override
   String game_levelSemantics(int level, int xp) {
     return '等级$level，$xp经验值';
   }
@@ -1471,8 +1507,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get profile_privacyChoices => '隐私选项';
 
   @override
-  String get paywall_autoRenewInfo =>
-      '除非在周期结束前至少24小时取消，否则订阅会自动续订。您可以随时在App Store设置中管理或取消。';
+  String get paywall_autoRenewInfo => '除非在周期结束前至少24小时取消，否则订阅会自动续订。您可以随时在App Store设置中管理或取消。';
 
   @override
   String paywall_perMonth(String price) {
@@ -1505,12 +1540,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get paywall_secureNote => '可随时取消。费用将从您的商店账户扣除。';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      '除非在周期结束前至少24小时取消，否则订阅会自动续订。您可以随时在Google Play > 订阅中管理或取消。';
+  String get paywall_autoRenewInfoPlay => '除非在周期结束前至少24小时取消，否则订阅会自动续订。您可以随时在Google Play > 订阅中管理或取消。';
 
   @override
-  String get paywall_allPlansDesc =>
-      '解锁18:6、20:4、OMAD、5:2、Eat-Stop-Eat和Warrior';
+  String get paywall_allPlansDesc => '解锁18:6、20:4、OMAD、5:2、Eat-Stop-Eat和Warrior';
 
   @override
   String get paywall_noAdsDesc => '横幅广告和插页广告将完全关闭';
@@ -1554,15 +1587,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get foodScan_quotaReached => '您已用完今天的扫描次数，请明天再试。';
 
   @override
-  String get foodScan_privacyNote =>
-      '照片会发送至Google的Gemini API进行分析，不会存储在我们的服务器上。';
+  String get foodScan_privacyNote => '照片会发送到 Google 的 Gemini API。Google 可能用它改进产品，人工审核员也可能看到。我们不会将其存储在自己的服务器上。';
 
   @override
   String get foodScan_consentTitle => '要将照片发送给 Google Gemini 吗？';
 
   @override
-  String get foodScan_consentBody =>
-      '为估算卡路里和宏量营养素，你拍摄或选择的每张餐食照片都会发送到 Google 的 Gemini AI 服务。照片仅用于此次分析，不会存储在我们的服务器上。';
+  String get foodScan_consentBody => '为估算卡路里和宏量营养素，你拍摄或选择的每张餐食照片都会发送到 Google 的 Gemini AI 服务。Google 可能用照片改进产品，人工审核员也可能看到，因此请勿在画面中包含人物、证件或其他个人信息。我们不会将照片存储在自己的服务器上。';
 
   @override
   String get foodScan_consentAgree => '同意并继续';
@@ -1632,11 +1663,145 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get paywall_aiFoodScanDesc => '拍摄膳食，数秒内记录卡路里和宏量营养素';
+
+  @override
+  String get safety_title => '开始之前';
+
+  @override
+  String get safety_desc => '禁食并非对所有人都安全。请选择所有符合你情况的选项。';
+
+  @override
+  String get safety_under18 => '我未满 18 岁';
+
+  @override
+  String get safety_pregnant => '我正在怀孕或哺乳';
+
+  @override
+  String get safety_eatingDisorder => '我患有或曾患有进食障碍';
+
+  @override
+  String get safety_underweight => '我体重过低或被告知不要减重';
+
+  @override
+  String get safety_diabetes => '我患有糖尿病或正在服用影响血糖的药物';
+
+  @override
+  String get safety_medical => '我有其他疾病或长期服药';
+
+  @override
+  String get safety_none => '以上都不符合';
+
+  @override
+  String get safety_ack => '禁食前我会咨询医生';
+
+  @override
+  String get safety_blockedTitle => '此应用对你并不安全';
+
+  @override
+  String get safety_blockedDesc => '根据你的回答，我们无法在此提供禁食功能。请咨询医生。如果你现在觉得进食很困难，医疗专业人员可以提供帮助。';
+
+  @override
+  String get safety_reviewAnswers => '查看我的回答';
+
+  @override
+  String get safety_targetTooLow => '该目标低于你身高对应的健康体重。';
+
+  @override
+  String get onboarding_invalidBody => '请输入有效的身高、体重、目标体重和年龄。';
+
+  @override
+  String get crisis_unwell => '我感觉不舒服';
+
+  @override
+  String get crisis_unwellTitle => '立即结束禁食';
+
+  @override
+  String get crisis_unwellDesc => '头晕、发抖、意识混乱或心跳加速都是应停止禁食并吃喝一些东西的信号。';
+
+  @override
+  String get crisis_emergency => '如果你曾昏厥、胸痛或感觉非常不适，请立即拨打当地急救电话。';
+
+  @override
+  String get crisis_endFast => '结束我的禁食';
+
+  @override
+  String get profile_deleteData => '删除我的所有数据';
+
+  @override
+  String get profile_deleteDataConfirm => '这将从此设备永久删除你的禁食、体重、餐食、饮水和设置，且无法撤销。订阅需在商店账户中管理。';
+
+  @override
+  String get profile_deleteDataAction => '全部删除';
+
+  @override
+  String get record_deleteConfirm => '删除此记录？';
+
+  @override
+  String get profile_analytics => '分享匿名使用数据';
+
+  @override
+  String get profile_analyticsDesc => '帮助改进应用。绝不包含体重、餐食或健康信息。';
+
+  @override
+  String get plan_longWarningTitle => '这是一次长时间禁食';
+
+  @override
+  String get plan_longWarningDesc => '20 小时或更长时间的禁食并非适合所有人，可能让你感到不适。如不确定请咨询医生，感到不适时请结束禁食。';
+
+  @override
+  String get plan_longWarningAccept => '我明白了';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '免费试用 $days 天，之后 $price（$plan）';
+  }
+
+  @override
+  String get widget_notFasting => '未在禁食';
+
+  @override
+  String get widget_tapToStart => '点按开始';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
 class AppLocalizationsZhCn extends AppLocalizationsZh {
-  AppLocalizationsZhCn() : super('zh_CN');
+  AppLocalizationsZhCn(): super('zh_CN');
+
+  @override
+  String get mealPreset_oatsFruit => '水果燕麦';
+
+  @override
+  String get mealPreset_blueberryYogurt => '蓝莓酸奶';
+
+  @override
+  String get mealPreset_eggAvocadoToast => '鸡蛋牛油果吐司';
+
+  @override
+  String get mealPreset_chickenQuinoa => '鸡肉藜麦碗';
+
+  @override
+  String get mealPreset_lentilSoup => '扁豆汤';
+
+  @override
+  String get mealPreset_salmonBroccoli => '三文鱼配西兰花';
+
+  @override
+  String get mealPreset_turkeyVegWrap => '火鸡蔬菜卷';
+
+  @override
+  String get mealPreset_chickpeaTahini => '鹰嘴豆芝麻酱碗';
+
+  @override
+  String get mealPreset_tunaBeanSalad => '金枪鱼豆类沙拉';
+
+  @override
+  String get mealPreset_appleCottageCheese => '苹果茅屋奶酪碗';
+
+  @override
+  String get mealPreset_hummusVegetables => '鹰嘴豆泥配爽脆蔬菜';
+
+  @override
+  String get mealPreset_bananaKefir => '香蕉开菲尔碗';
 
   @override
   String get appTitle => 'FastTrack';
@@ -1726,13 +1891,13 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get phase_ketosis => '酮症';
 
   @override
-  String get phase_ketosisDesc => '酮体生成活跃';
+  String get phase_ketosisDesc => '酮体生成可能增加';
 
   @override
   String get phase_autophagy => '自噬';
 
   @override
-  String get phase_autophagyDesc => '细胞更新';
+  String get phase_autophagyDesc => '估计的细胞回收阶段';
 
   @override
   String get stats_title => '统计';
@@ -1941,7 +2106,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get onboarding_goalLongevity => '长寿';
 
   @override
-  String get onboarding_goalLongevityDesc => '细胞更新与健康衰老';
+  String get onboarding_goalLongevityDesc => '建立健康的长期习惯';
 
   @override
   String get onboarding_goalDiscipline => '自律';
@@ -1960,15 +2125,6 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get onboarding_bodyInfoDesc => '用于个性化建议';
-
-  @override
-  String get onboarding_gender => '性别';
-
-  @override
-  String get onboarding_male => '男';
-
-  @override
-  String get onboarding_female => '女';
 
   @override
   String get onboarding_age => '年龄';
@@ -2397,7 +2553,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get profile_calmGamification => '轻松游戏化';
 
   @override
-  String get profile_calmGamificationDesc => '减轻联赛和赛季压力';
+  String get profile_calmGamificationDesc => '减轻赛季压力';
 
   @override
   String get profile_editName => '编辑您的姓名';
@@ -2570,7 +2726,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get notification_phaseKetosis => '您正处于酮症状态 ⚡';
 
   @override
-  String get notification_phaseAutophagy => '自噬已激活！ 🔄';
+  String get notification_phaseAutophagy => '估计的自噬阶段';
 
   @override
   String notification_completedBody(String plan) {
@@ -2641,8 +2797,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get explore_safety => '健康与安全';
 
   @override
-  String get explore_safetyDesc =>
-      '如果您有疾病、长期服药、出现令人担忧的症状、正在怀孕或哺乳，请在禁食前咨询合格的医疗专业人员。如感觉不适，请停止禁食。';
+  String get explore_safetyDesc => '如果您有疾病、长期服药、出现令人担忧的症状、正在怀孕或哺乳，请在禁食前咨询合格的医疗专业人员。如感觉不适，请停止禁食。';
 
   @override
   String get explore_sources => '资料来源';
@@ -2714,15 +2869,13 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get faq_plan => '我该选择哪种禁食计划？';
 
   @override
-  String get faq_planAnswer =>
-      '新手可从12:12或14:10开始。有经验者可尝试16:8或18:6。20:4和OMAD适合高级禁食者。';
+  String get faq_planAnswer => '新手可从12:12或14:10开始。有经验者可尝试16:8或18:6。20:4和OMAD适合高级禁食者。';
 
   @override
   String get faq_exercise => '禁食期间可以运动吗？';
 
   @override
-  String get faq_exerciseAnswer =>
-      '可以，但请避免高强度训练。轻度有氧、散步和瑜伽较为理想。力量训练请安排在进食窗口附近。';
+  String get faq_exerciseAnswer => '可以，但请避免高强度训练。轻度有氧、散步和瑜伽较为理想。力量训练请安排在进食窗口附近。';
 
   @override
   String get faq_weight => '禁食有助于减重吗？';
@@ -2752,7 +2905,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get plan_20_desc => '高级';
 
   @override
-  String get plan_20_detail => '禁食20小时，进食4小时，适合进入酮症和自噬。';
+  String get plan_20_detail => '禁食 20 小时，进食窗口 4 小时。适合有禁食经验的人。';
 
   @override
   String get plan_omad_desc => '一天一餐';
@@ -2931,14 +3084,6 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get game_shieldsDesc => '每完成七次即可获得。错过一天也不会抹去您的进度。';
 
   @override
-  String get game_league => '私人周联赛';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return '您的节奏得分在私人本地模型中位于第$percent百分位。体重和极端禁食永远不会参与排名。';
-  }
-
-  @override
   String game_levelSemantics(int level, int xp) {
     return '等级$level，$xp经验值';
   }
@@ -3101,8 +3246,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get profile_privacyChoices => '隐私选项';
 
   @override
-  String get paywall_autoRenewInfo =>
-      '除非在周期结束前至少24小时取消，否则订阅会自动续订。您可以随时在App Store设置中管理或取消。';
+  String get paywall_autoRenewInfo => '除非在周期结束前至少24小时取消，否则订阅会自动续订。您可以随时在App Store设置中管理或取消。';
 
   @override
   String paywall_perMonth(String price) {
@@ -3135,12 +3279,10 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get paywall_secureNote => '可随时取消。费用将从您的商店账户扣除。';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      '除非在周期结束前至少24小时取消，否则订阅会自动续订。您可以随时在Google Play > 订阅中管理或取消。';
+  String get paywall_autoRenewInfoPlay => '除非在周期结束前至少24小时取消，否则订阅会自动续订。您可以随时在Google Play > 订阅中管理或取消。';
 
   @override
-  String get paywall_allPlansDesc =>
-      '解锁18:6、20:4、OMAD、5:2、Eat-Stop-Eat和Warrior';
+  String get paywall_allPlansDesc => '解锁18:6、20:4、OMAD、5:2、Eat-Stop-Eat和Warrior';
 
   @override
   String get paywall_noAdsDesc => '横幅广告和插页广告将完全关闭';
@@ -3184,15 +3326,13 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get foodScan_quotaReached => '您已用完今天的扫描次数，请明天再试。';
 
   @override
-  String get foodScan_privacyNote =>
-      '照片会发送至Google的Gemini API进行分析，不会存储在我们的服务器上。';
+  String get foodScan_privacyNote => '照片会发送到 Google 的 Gemini API。Google 可能用它改进产品，人工审核员也可能看到。我们不会将其存储在自己的服务器上。';
 
   @override
   String get foodScan_consentTitle => '要将照片发送给 Google Gemini 吗？';
 
   @override
-  String get foodScan_consentBody =>
-      '为估算卡路里和宏量营养素，你拍摄或选择的每张餐食照片都会发送到 Google 的 Gemini AI 服务。照片仅用于此次分析，不会存储在我们的服务器上。';
+  String get foodScan_consentBody => '为估算卡路里和宏量营养素，你拍摄或选择的每张餐食照片都会发送到 Google 的 Gemini AI 服务。Google 可能用照片改进产品，人工审核员也可能看到，因此请勿在画面中包含人物、证件或其他个人信息。我们不会将照片存储在自己的服务器上。';
 
   @override
   String get foodScan_consentAgree => '同意并继续';
@@ -3262,4 +3402,102 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get paywall_aiFoodScanDesc => '拍摄膳食，数秒内记录卡路里和宏量营养素';
+
+  @override
+  String get safety_title => '开始之前';
+
+  @override
+  String get safety_desc => '禁食并非对所有人都安全。请选择所有符合你情况的选项。';
+
+  @override
+  String get safety_under18 => '我未满 18 岁';
+
+  @override
+  String get safety_pregnant => '我正在怀孕或哺乳';
+
+  @override
+  String get safety_eatingDisorder => '我患有或曾患有进食障碍';
+
+  @override
+  String get safety_underweight => '我体重过低或被告知不要减重';
+
+  @override
+  String get safety_diabetes => '我患有糖尿病或正在服用影响血糖的药物';
+
+  @override
+  String get safety_medical => '我有其他疾病或长期服药';
+
+  @override
+  String get safety_none => '以上都不符合';
+
+  @override
+  String get safety_ack => '禁食前我会咨询医生';
+
+  @override
+  String get safety_blockedTitle => '此应用对你并不安全';
+
+  @override
+  String get safety_blockedDesc => '根据你的回答，我们无法在此提供禁食功能。请咨询医生。如果你现在觉得进食很困难，医疗专业人员可以提供帮助。';
+
+  @override
+  String get safety_reviewAnswers => '查看我的回答';
+
+  @override
+  String get safety_targetTooLow => '该目标低于你身高对应的健康体重。';
+
+  @override
+  String get onboarding_invalidBody => '请输入有效的身高、体重、目标体重和年龄。';
+
+  @override
+  String get crisis_unwell => '我感觉不舒服';
+
+  @override
+  String get crisis_unwellTitle => '立即结束禁食';
+
+  @override
+  String get crisis_unwellDesc => '头晕、发抖、意识混乱或心跳加速都是应停止禁食并吃喝一些东西的信号。';
+
+  @override
+  String get crisis_emergency => '如果你曾昏厥、胸痛或感觉非常不适，请立即拨打当地急救电话。';
+
+  @override
+  String get crisis_endFast => '结束我的禁食';
+
+  @override
+  String get profile_deleteData => '删除我的所有数据';
+
+  @override
+  String get profile_deleteDataConfirm => '这将从此设备永久删除你的禁食、体重、餐食、饮水和设置，且无法撤销。订阅需在商店账户中管理。';
+
+  @override
+  String get profile_deleteDataAction => '全部删除';
+
+  @override
+  String get record_deleteConfirm => '删除此记录？';
+
+  @override
+  String get profile_analytics => '分享匿名使用数据';
+
+  @override
+  String get profile_analyticsDesc => '帮助改进应用。绝不包含体重、餐食或健康信息。';
+
+  @override
+  String get plan_longWarningTitle => '这是一次长时间禁食';
+
+  @override
+  String get plan_longWarningDesc => '20 小时或更长时间的禁食并非适合所有人，可能让你感到不适。如不确定请咨询医生，感到不适时请结束禁食。';
+
+  @override
+  String get plan_longWarningAccept => '我明白了';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '免费试用 $days 天，之后 $price（$plan）';
+  }
+
+  @override
+  String get widget_notFasting => '未在禁食';
+
+  @override
+  String get widget_tapToStart => '点按开始';
 }

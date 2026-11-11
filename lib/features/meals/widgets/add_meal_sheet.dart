@@ -26,9 +26,9 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
   String _mealType = 'lunch';
   bool _saving = false;
 
-  final _quickMeals = const [
+  List<Map<String, Object>> _quickMeals(AppLocalizations l10n) => [
     {
-      'name': 'Meyveli Yulaf',
+      'name': l10n.mealPreset_oatsFruit,
       'cal': 320,
       'p': 12.0,
       'c': 48.0,
@@ -36,7 +36,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/oats.webp',
     },
     {
-      'name': 'Yaban Mersinli Yoğurt',
+      'name': l10n.mealPreset_blueberryYogurt,
       'cal': 240,
       'p': 18.0,
       'c': 26.0,
@@ -44,7 +44,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/yogurt.webp',
     },
     {
-      'name': 'Yumurtalı Avokado Tost',
+      'name': l10n.mealPreset_eggAvocadoToast,
       'cal': 390,
       'p': 22.0,
       'c': 32.0,
@@ -52,7 +52,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/egg-toast.webp',
     },
     {
-      'name': 'Tavuklu Kinoa Kasesi',
+      'name': l10n.mealPreset_chickenQuinoa,
       'cal': 430,
       'p': 42.0,
       'c': 38.0,
@@ -60,7 +60,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/chicken-quinoa.webp',
     },
     {
-      'name': 'Mercimek Çorbası',
+      'name': l10n.mealPreset_lentilSoup,
       'cal': 310,
       'p': 18.0,
       'c': 48.0,
@@ -68,7 +68,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/lentil.webp',
     },
     {
-      'name': 'Somon ve Brokoli',
+      'name': l10n.mealPreset_salmonBroccoli,
       'cal': 520,
       'p': 38.0,
       'c': 42.0,
@@ -76,7 +76,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/salmon.webp',
     },
     {
-      'name': 'Sebzeli Hindi Wrap',
+      'name': l10n.mealPreset_turkeyVegWrap,
       'cal': 360,
       'p': 32.0,
       'c': 40.0,
@@ -84,7 +84,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/turkey-wrap.webp',
     },
     {
-      'name': 'Nohutlu Tahin Kasesi',
+      'name': l10n.mealPreset_chickpeaTahini,
       'cal': 410,
       'p': 19.0,
       'c': 55.0,
@@ -92,7 +92,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/chickpea.webp',
     },
     {
-      'name': 'Ton Balıklı Fasulye Salatası',
+      'name': l10n.mealPreset_tunaBeanSalad,
       'cal': 350,
       'p': 35.0,
       'c': 28.0,
@@ -100,7 +100,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/tuna.webp',
     },
     {
-      'name': 'Elmalı Lor Kasesi',
+      'name': l10n.mealPreset_appleCottageCheese,
       'cal': 230,
       'p': 24.0,
       'c': 25.0,
@@ -108,7 +108,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/cottage.webp',
     },
     {
-      'name': 'Humus ve Çıtır Sebze',
+      'name': l10n.mealPreset_hummusVegetables,
       'cal': 280,
       'p': 12.0,
       'c': 34.0,
@@ -116,7 +116,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       'art': 'assets/images/editorial/v4/quick/hummus.webp',
     },
     {
-      'name': 'Kefirli Muz Kasesi',
+      'name': l10n.mealPreset_bananaKefir,
       'cal': 300,
       'p': 15.0,
       'c': 42.0,
@@ -139,6 +139,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    final quickMeals = _quickMeals(l10n);
 
     return DraggableScrollableSheet(
       initialChildSize: .94,
@@ -279,7 +280,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: _quickMeals.length,
+                itemCount: quickMeals.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 10,
@@ -287,7 +288,7 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
                   childAspectRatio: 1,
                 ),
                 itemBuilder: (context, index) =>
-                    _quickMealCard(context, _quickMeals[index]),
+                    _quickMealCard(context, quickMeals[index]),
               ),
               const SizedBox(height: 24),
               _sectionTitle(
@@ -408,12 +409,14 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
           children: [
             Icon(icon, color: Colors.white, size: 15),
             const SizedBox(width: 5),
-            Text(
-              label,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 10,
-                fontWeight: FontWeight.w700,
+            Flexible(
+              child: Text(
+                label,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ],
@@ -604,10 +607,11 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
         SnackBar(content: Text(l10n.meals_added(meal['name']! as String))),
       );
     } catch (error) {
-      if (mounted)
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(AppLocalizations.of(context)!.common_retry)),
         );
+      }
     } finally {
       if (mounted) setState(() => _saving = false);
     }
@@ -651,10 +655,11 @@ class _AddMealSheetState extends ConsumerState<AddMealSheet> {
       navigator.pop();
       messenger.showSnackBar(SnackBar(content: Text(l10n.meals_added(name))));
     } catch (error) {
-      if (mounted)
+      if (mounted) {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text(l10n.common_retry)));
+      }
     } finally {
       if (mounted) setState(() => _saving = false);
     }

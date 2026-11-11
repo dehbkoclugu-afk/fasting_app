@@ -1,4 +1,9 @@
 {
+  "game_stepsToSeal": "{count, plural, one{{count} step to seal} other{{count} steps to seal}}",
+  "@game_stepsToSeal": {"placeholders": {"count": {"type": "int"}}},
+  "fastingHistory_deleteError": "Could not delete this record.",
+  "fastingHistory_title": "Fasting history",
+  "fastingHistory_deleteWarning": "This fasting record will be permanently deleted.",
   "@@locale": "en",
   "appTitle": "FastTrack",
   "greeting_morning": "Good morning",
@@ -29,9 +34,9 @@
   "phase_fatBurning": "Fat Burning",
   "phase_fatBurningDesc": "Fat burning started",
   "phase_ketosis": "Ketosis",
-  "phase_ketosisDesc": "Ketone production active",
+  "phase_ketosisDesc": "Ketone production may rise",
   "phase_autophagy": "Autophagy",
-  "phase_autophagyDesc": "Cell renewal",
+  "phase_autophagyDesc": "Estimated cell-recycling phase",
   "stats_title": "Statistics",
   "stats_week": "Week",
   "stats_month": "Month",
@@ -107,16 +112,13 @@
   "onboarding_goalMental": "Mental Clarity",
   "onboarding_goalMentalDesc": "Focus and clarity",
   "onboarding_goalLongevity": "Longevity",
-  "onboarding_goalLongevityDesc": "Cell renewal and anti-aging",
+  "onboarding_goalLongevityDesc": "Build a healthy long-term routine",
   "onboarding_goalDiscipline": "Discipline",
   "onboarding_goalDisciplineDesc": "Build self-discipline",
   "onboarding_selectPlan": "Choose Your Plan",
   "onboarding_selectPlanDesc": "Select the best fasting plan for you",
   "onboarding_bodyInfo": "Enter Your Info",
   "onboarding_bodyInfoDesc": "For personalized recommendations",
-  "onboarding_gender": "Gender",
-  "onboarding_male": "Male",
-  "onboarding_female": "Female",
   "onboarding_age": "Age",
   "onboarding_bodyInfoDisclaimer": "This information is stored only on your device and used for calorie calculations.",
   "onboarding_permissions": "Final Step",
@@ -297,7 +299,7 @@
   "languageFrench": "Français",
   "profile_completionSound": "Completion sound",
   "profile_calmGamification": "Calm gamification",
-  "profile_calmGamificationDesc": "Reduces league and season pressure",
+  "profile_calmGamificationDesc": "Reduces season pressure",
   "profile_editName": "Edit your name",
   "profile_name": "Name",
   "circle_title": "Fasting Circle",
@@ -420,7 +422,7 @@
   "notification_phaseCatabolic": "Entered Catabolic phase 📉",
   "notification_phaseFatBurning": "Fat Burning started! 🔥",
   "notification_phaseKetosis": "You’re in Ketosis ⚡",
-  "notification_phaseAutophagy": "Autophagy active! 🔄",
+  "notification_phaseAutophagy": "Estimated autophagy phase",
   "notification_completedBody": "You completed your {plan} fast! Your eating window is open.",
   "@notification_completedBody": {
     "placeholders": {
@@ -527,7 +529,7 @@
   "plan_18_desc": "Intermediate level",
   "plan_18_detail": "18 hours fasting, 6 hours eating window. Longer fat burning duration.",
   "plan_20_desc": "Advanced level",
-  "plan_20_detail": "20 hours fasting, 4 hours eating window. Ideal for reaching ketosis and autophagy.",
+  "plan_20_detail": "20 hours fasting, 4 hours eating window. For people experienced with fasting.",
   "plan_omad_desc": "One meal a day",
   "plan_omad_detail": "One Meal A Day. 23 hours fasting, 1 hour eating window. Expert level.",
   "plan_52_desc": "2 days per week",
@@ -612,15 +614,6 @@
     }
   },
   "game_shieldsDesc": "Earned every seven completions. A missed day never erases your progress.",
-  "game_league": "Private weekly league",
-  "game_leagueDesc": "Your rhythm score is in the {percent}th percentile of a private local model. Weight and extreme fasting are never ranked.",
-  "@game_leagueDesc": {
-    "placeholders": {
-      "percent": {
-        "type": "int"
-      }
-    }
-  },
   "game_levelSemantics": "Level {level}, {xp} experience points",
   "@game_levelSemantics": {
     "placeholders": {
@@ -749,9 +742,9 @@
     }
   },
   "foodScan_quotaReached": "You've used today's scans. Try again tomorrow.",
-  "foodScan_privacyNote": "The photo is sent to Google's Gemini API for analysis and is not stored on our servers.",
+  "foodScan_privacyNote": "The photo is sent to Google's Gemini API. Google may use it to improve its products and human reviewers may see it. We don't store it on our servers.",
   "foodScan_consentTitle": "Send photos to Google Gemini?",
-  "foodScan_consentBody": "To estimate calories and macros, each meal photo you take or choose is sent to Google's Gemini AI service. The photo is used only for this analysis and is not stored on our servers.",
+  "foodScan_consentBody": "To estimate calories and macros, each meal photo you take or choose is sent to Google's Gemini AI service. Google may use photos to improve its products, and human reviewers may see them, so keep people, documents and other personal details out of the frame. We don't store photos on our servers.",
   "foodScan_consentAgree": "Agree and continue",
   "foodScan_analyzing": "Analysing your meal…",
   "foodScan_analyzingHint": "This usually takes a few seconds",
@@ -774,5 +767,62 @@
   "foodScan_errorNoFood": "No food found in this photo. Try a clearer shot of the plate.",
   "foodScan_errorUnreadable": "This photo couldn't be analysed. Try another one.",
   "paywall_aiFoodScan": "AI food scan",
-  "paywall_aiFoodScanDesc": "Photograph a meal and log its calories and macros in seconds"
+  "paywall_aiFoodScanDesc": "Photograph a meal and log its calories and macros in seconds",
+  "safety_title": "Before you start",
+  "safety_desc": "Fasting is not safe for everyone. Select everything that applies to you.",
+  "safety_under18": "I am under 18",
+  "safety_pregnant": "I am pregnant or breastfeeding",
+  "safety_eatingDisorder": "I have or have had an eating disorder",
+  "safety_underweight": "I am underweight or was told not to lose weight",
+  "safety_diabetes": "I have diabetes or take medication that affects blood sugar",
+  "safety_medical": "I have another medical condition or take regular medication",
+  "safety_none": "None of these apply to me",
+  "safety_ack": "I will talk to my doctor before fasting",
+  "safety_blockedTitle": "This app is not a safe fit for you",
+  "safety_blockedDesc": "Based on your answers, we can't offer fasting here. Please talk to a doctor. If food or eating feels hard right now, a health professional can help.",
+  "safety_reviewAnswers": "Review my answers",
+  "safety_targetTooLow": "That target is below a healthy weight for your height.",
+  "onboarding_invalidBody": "Enter a valid height, weight, target weight and age.",
+  "crisis_unwell": "I feel unwell",
+  "crisis_unwellTitle": "End your fast now",
+  "crisis_unwellDesc": "Dizziness, shaking, confusion or a racing heart are signs to stop fasting and eat or drink something.",
+  "crisis_emergency": "If you fainted, have chest pain or feel very unwell, call your local emergency number now.",
+  "crisis_endFast": "End my fast",
+  "profile_deleteData": "Delete all my data",
+  "profile_deleteDataConfirm": "This permanently deletes your fasts, weight, meals, water and settings from this device. It cannot be undone. Subscriptions are managed in your store account.",
+  "profile_deleteDataAction": "Delete everything",
+  "record_deleteConfirm": "Delete this entry?",
+  "profile_analytics": "Share anonymous usage data",
+  "profile_analyticsDesc": "Helps improve the app. Never includes weight, meals or health details.",
+  "plan_longWarningTitle": "This is a long fast",
+  "plan_longWarningDesc": "Fasts of 20 hours or more are not suitable for everyone and can make you feel unwell. Talk to a doctor if you are unsure, and end the fast if you feel unwell.",
+  "plan_longWarningAccept": "I understand",
+  "paywall_trialThen": "{days}-day free trial, then {price} ({plan})",
+  "widget_notFasting": "Not fasting",
+  "widget_tapToStart": "Tap to start",
+  "@paywall_trialThen": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      },
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "mealPreset_oatsFruit": "Fruit oatmeal",
+  "mealPreset_blueberryYogurt": "Blueberry yogurt",
+  "mealPreset_eggAvocadoToast": "Egg and avocado toast",
+  "mealPreset_chickenQuinoa": "Chicken quinoa bowl",
+  "mealPreset_lentilSoup": "Lentil soup",
+  "mealPreset_salmonBroccoli": "Salmon and broccoli",
+  "mealPreset_turkeyVegWrap": "Turkey and vegetable wrap",
+  "mealPreset_chickpeaTahini": "Chickpea tahini bowl",
+  "mealPreset_tunaBeanSalad": "Tuna and bean salad",
+  "mealPreset_appleCottageCheese": "Apple and cottage cheese bowl",
+  "mealPreset_hummusVegetables": "Hummus and crunchy vegetables",
+  "mealPreset_bananaKefir": "Banana kefir bowl"
 }

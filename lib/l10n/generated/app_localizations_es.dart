@@ -9,6 +9,63 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Avena con fruta';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Yogur con arándanos';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Tostada con huevo y aguacate';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Bol de pollo y quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Sopa de lentejas';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Salmón con brócoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap de pavo y verduras';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Bol de garbanzos con tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Ensalada de atún y alubias';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Queso cottage con manzana';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus y verduras crujientes';
+
+  @override
+  String get mealPreset_bananaKefir => 'Bol de plátano y kéfir';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count pasos para el sello',
+      one: '$count paso para el sello',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError => 'No se pudo eliminar el registro.';
+
+  @override
+  String get fastingHistory_title => 'Historial de ayuno';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Este registro se eliminará de forma permanente.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -63,11 +120,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get timer_selectPlan => 'Seleccionar plan de ayuno';
 
   @override
-  String get timer_stopConfirm =>
-      '¿Estás seguro de que quieres terminar el ayuno antes de tiempo?';
+  String get timer_stopConfirm => '¿Estás seguro de que quieres terminar el ayuno antes de tiempo?';
 
   @override
-  String get timer_stopTitle => 'Terminar rápido';
+  String get timer_stopTitle => 'Terminar ayuno';
 
   @override
   String get timer_cancel => 'Cancelar';
@@ -97,13 +153,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get phase_ketosis => 'cetosis';
 
   @override
-  String get phase_ketosisDesc => 'Producción de cetonas activa.';
+  String get phase_ketosisDesc => 'La producción de cetonas puede aumentar';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Renovación celular';
+  String get phase_autophagyDesc => 'Fase estimada de reciclaje celular';
 
   @override
   String get stats_title => 'Estadística';
@@ -264,8 +320,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboarding_welcome => 'Bienvenido';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Toma el control de tu\nviaje de ayuno intermitente';
+  String get onboarding_welcomeDesc => 'Toma el control de tu\nviaje de ayuno intermitente';
 
   @override
   String get onboarding_featureTimer => 'Temporizador de ayuno inteligente';
@@ -274,8 +329,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboarding_featureStats => 'Estadísticas y gráficos detallados';
 
   @override
-  String get onboarding_featureMeals =>
-      'Planificador de comidas y sugerencias de recetas.';
+  String get onboarding_featureMeals => 'Planificador de comidas y sugerencias de recetas.';
 
   @override
   String get onboarding_getStarted => 'Empezar';
@@ -314,8 +368,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboarding_goalLongevity => 'Longevidad';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Renovación celular y antienvejecimiento';
+  String get onboarding_goalLongevityDesc => 'Crea una rutina saludable a largo plazo';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplina';
@@ -327,8 +380,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboarding_selectPlan => 'Elige tu plan';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Selecciona el mejor plan de ayuno para ti';
+  String get onboarding_selectPlanDesc => 'Selecciona el mejor plan de ayuno para ti';
 
   @override
   String get onboarding_bodyInfo => 'Ingrese su información';
@@ -337,27 +389,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Para recomendaciones personalizadas';
 
   @override
-  String get onboarding_gender => 'Género';
-
-  @override
-  String get onboarding_male => 'Masculino';
-
-  @override
-  String get onboarding_female => 'Femenino';
-
-  @override
   String get onboarding_age => 'Edad';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Esta información se almacena únicamente en su dispositivo y se utiliza para cálculos de calorías.';
+  String get onboarding_bodyInfoDisclaimer => 'Esta información se almacena únicamente en su dispositivo y se utiliza para cálculos de calorías.';
 
   @override
   String get onboarding_permissions => 'Paso final';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Habilite permisos para la mejor experiencia';
+  String get onboarding_permissionsDesc => 'Habilite permisos para la mejor experiencia';
 
   @override
   String get onboarding_next => 'Continuar';
@@ -384,8 +425,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get paywall_title => 'Actualizar a Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Desbloquea todos los planes de ayuno y quita los anuncios';
+  String get paywall_subtitle => 'Desbloquea todos los planes de ayuno y quita los anuncios';
 
   @override
   String get paywall_allPlans => 'Todos los planes de ayuno';
@@ -424,8 +464,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get paywall_premiumActive => 'Premium Activo!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Todos los planes de ayuno están desbloqueados y los anuncios, desactivados';
+  String get paywall_premiumActiveDesc => 'Todos los planes de ayuno están desbloqueados y los anuncios, desactivados';
 
   @override
   String get water_title => 'Ingesta de agua';
@@ -560,8 +599,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get completion_earlyTitle => 'Ayuno finalizado';
 
   @override
-  String get completion_earlyMessage =>
-      'Se guardó el tiempo de hoy. La racha y el progreso de logros no cambiaron porque no se completó el objetivo.';
+  String get completion_earlyMessage => 'Se guardó el tiempo de hoy. La racha y el progreso de logros no cambiaron porque no se completó el objetivo.';
 
   @override
   String get timer_remainingTime => 'Tiempo restante';
@@ -591,8 +629,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get streak_incredible => '¡Increíble!';
 
   @override
-  String get weight_noRecord =>
-      'Aún no hay registros de peso\nAgregar desde perfil > Métricas corporales';
+  String get weight_noRecord => 'Aún no hay registros de peso\nAgregar desde perfil > Métricas corporales';
 
   @override
   String get day_mon => 'Lun';
@@ -778,8 +815,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get profile_calmGamification => 'Gamificación tranquila';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Reduce la presión de la liga y la temporada.';
+  String get profile_calmGamificationDesc => 'Reduce la presión de la temporada';
 
   @override
   String get profile_editName => 'Edita tu nombre';
@@ -797,8 +833,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get circle_tagline => 'Juntos, sin presiones.';
 
   @override
-  String get circle_privacy =>
-      'El peso y las métricas privadas permanecen ocultas. Sólo el progreso y el apoyo son visibles.';
+  String get circle_privacy => 'El peso y las métricas privadas permanecen ocultas. Sólo el progreso y el apoyo son visibles.';
 
   @override
   String circle_sendSupport(int count) {
@@ -827,8 +862,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get crisis_delayTitle => 'Retrasar la decisión durante 10 minutos.';
 
   @override
-  String get crisis_delayDesc =>
-      'Si no se siente bien, poner fin al ayuno no es un fracaso.';
+  String get crisis_delayDesc => 'Si no se siente bien, poner fin al ayuno no es un fracaso.';
 
   @override
   String get crisis_hunger => 'Hambre';
@@ -843,8 +877,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get crisis_tenMore => 'Dale 10 minutos';
 
   @override
-  String get stats_storyEmpty =>
-      'Tu primer ayuno comenzará tu historia personal.';
+  String get stats_storyEmpty => 'Tu primer ayuno comenzará tu historia personal.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -890,8 +923,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get weather_onPlan => 'El ritmo de hoy coincide con su plan.';
 
   @override
-  String get weather_challenging =>
-      'Esta hora antes era desafiante; El modo de soporte está listo.';
+  String get weather_challenging => 'Esta hora antes era desafiante; El modo de soporte está listo.';
 
   @override
   String get replay_copied => 'Repetición del ayuno copiada';
@@ -916,8 +948,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'El tiempo de fase es una estimación general, no una medición médica.';
+  String get phase_estimateShort => 'El tiempo de fase es una estimación general, no una medición médica.';
 
   @override
   String phase_hours(int start, int end) {
@@ -925,8 +956,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Este momento es una estimación general. Las respuestas metabólicas pueden variar entre personas.';
+  String get phase_estimateLong => 'Este momento es una estimación general. Las respuestas metabólicas pueden variar entre personas.';
 
   @override
   String get bmi_underweight => 'Bajo peso';
@@ -958,7 +988,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notification_phaseKetosis => 'Estás en cetosis ⚡';
 
   @override
-  String get notification_phaseAutophagy => '¡Autofagia activa! 🔄';
+  String get notification_phaseAutophagy => 'Fase estimada de autofagia';
 
   @override
   String notification_completedBody(String plan) {
@@ -969,15 +999,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notification_waterTitle => 'Bebe agua 💧';
 
   @override
-  String get notification_waterBody =>
-      '¡No olvides beber mucha agua mientras ayunas!';
+  String get notification_waterBody => '¡No olvides beber mucha agua mientras ayunas!';
 
   @override
   String get notification_windowTitle => 'Comer Ventana Cerrándose ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Su ventana para comer se cerrará en 30 minutos.';
+  String get notification_windowBody => 'Su ventana para comer se cerrará en 30 minutos.';
 
   @override
   String notification_streakTitle(int days) {
@@ -985,8 +1013,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      '¡Lo estás haciendo genial! Sigue así hoy.';
+  String get notification_streakBody => '¡Lo estás haciendo genial! Sigue así hoy.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1017,33 +1044,28 @@ class AppLocalizationsEs extends AppLocalizations {
   String get explore_guide => 'Guía de ayuno';
 
   @override
-  String get explore_guideDesc =>
-      'Todo lo que necesitas saber sobre el ayuno intermitente';
+  String get explore_guideDesc => 'Todo lo que necesitas saber sobre el ayuno intermitente';
 
   @override
-  String get explore_circleDesc =>
-      'Comparte apoyo silencioso con tu grupo privado.';
+  String get explore_circleDesc => 'Comparte apoyo silencioso con tu grupo privado.';
 
   @override
   String get explore_faq => 'Preguntas frecuentes';
 
   @override
-  String get explore_education =>
-      'Este contenido es solo para educación general y no es un diagnóstico médico ni un consejo de tratamiento.';
+  String get explore_education => 'Este contenido es solo para educación general y no es un diagnóstico médico ni un consejo de tratamiento.';
 
   @override
   String get explore_safety => 'Salud y seguridad';
 
   @override
-  String get explore_safetyDesc =>
-      'Si tiene una condición médica, toma medicamentos regularmente, tiene síntomas preocupantes, está embarazada o amamantando, consulte a un profesional de la salud calificado antes de ayunar. Deténgase si no se siente bien.';
+  String get explore_safetyDesc => 'Si tiene una condición médica, toma medicamentos regularmente, tiene síntomas preocupantes, está embarazada o amamantando, consulte a un profesional de la salud calificado antes de ayunar. Deténgase si no se siente bien.';
 
   @override
   String get explore_sources => 'Fuentes';
 
   @override
-  String get explore_sourcesDesc =>
-      'El contenido se simplifica a partir de las referencias de salud pública que aparecen a continuación.';
+  String get explore_sourcesDesc => 'El contenido se simplifica a partir de las referencias de salud pública que aparecen a continuación.';
 
   @override
   String get explore_sourceError => 'No se pudo abrir la fuente.';
@@ -1052,145 +1074,124 @@ class AppLocalizationsEs extends AppLocalizations {
   String get explore_rules => 'Reglas importantes';
 
   @override
-  String get explore_rule1 =>
-      'No consumir alimentos calóricos durante el ayuno';
+  String get explore_rule1 => 'No consumir alimentos calóricos durante el ayuno';
 
   @override
   String get explore_rule2 => 'Beba mucha agua y líquidos.';
 
   @override
-  String get explore_rule3 =>
-      'Coma equilibrado durante su período de alimentación';
+  String get explore_rule3 => 'Coma equilibrado durante su período de alimentación';
 
   @override
   String get explore_rule4 => 'Deja de ayunar si no te sientes bien';
 
   @override
-  String get explore_rule5 =>
-      'Las mujeres embarazadas o en período de lactancia no deben ayunar';
+  String get explore_rule5 => 'Las mujeres embarazadas o en período de lactancia no deben ayunar';
 
   @override
-  String get explore_rule6 =>
-      'Consulta a tu médico si tienes enfermedades crónicas.';
+  String get explore_rule6 => 'Consulta a tu médico si tienes enfermedades crónicas.';
 
   @override
   String get tip_water => 'Mantente hidratado';
 
   @override
-  String get tip_waterDesc =>
-      'Beba agua cuando tenga sed e incluya líquidos con las comidas. Las necesidades pueden variar según la salud, el clima y la actividad.';
+  String get tip_waterDesc => 'Beba agua cuando tenga sed e incluya líquidos con las comidas. Las necesidades pueden variar según la salud, el clima y la actividad.';
 
   @override
   String get tip_food => 'comer bien';
 
   @override
-  String get tip_foodDesc =>
-      'Durante las ventanas para comer, elija alimentos ricos en proteínas, con fibra y grasas saludables. Evite los alimentos procesados.';
+  String get tip_foodDesc => 'Durante las ventanas para comer, elija alimentos ricos en proteínas, con fibra y grasas saludables. Evite los alimentos procesados.';
 
   @override
   String get tip_sleep => 'Dormir bien';
 
   @override
-  String get tip_sleepDesc =>
-      'Dormir lo suficiente y con regularidad contribuye al bienestar general. Programe el ayuno para que no interrumpa su sueño.';
+  String get tip_sleepDesc => 'Dormir lo suficiente y con regularidad contribuye al bienestar general. Programe el ayuno para que no interrumpa su sueño.';
 
   @override
   String get tip_exercise => 'Ejercicio ligero';
 
   @override
-  String get tip_exerciseDesc =>
-      'Puedes hacer caminatas ligeras o yoga en ayunas. Evite el ejercicio intenso, especialmente durante las primeras semanas hasta que su cuerpo se adapte.';
+  String get tip_exerciseDesc => 'Puedes hacer caminatas ligeras o yoga en ayunas. Evite el ejercicio intenso, especialmente durante las primeras semanas hasta que su cuerpo se adapte.';
 
   @override
   String get tip_drinks => 'Bebidas permitidas';
 
   @override
-  String get tip_drinksDesc =>
-      'Durante el ayuno, puedes consumir agua, té natural y café negro (sin azúcar ni leche). Estas bebidas no romperán tu ayuno.';
+  String get tip_drinksDesc => 'Durante el ayuno, puedes consumir agua, té natural y café negro (sin azúcar ni leche). Estas bebidas no romperán tu ayuno.';
 
   @override
   String get faq_drinks => '¿Qué puedo beber durante el ayuno?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Puede beber agua, té simple y café negro (sin azúcar ni leche). Las bebidas calóricas rompen el ayuno.';
+  String get faq_drinksAnswer => 'Puede beber agua, té simple y café negro (sin azúcar ni leche). Las bebidas calóricas rompen el ayuno.';
 
   @override
   String get faq_plan => '¿Qué plan de ayuno debo elegir?';
 
   @override
-  String get faq_planAnswer =>
-      'Si eres nuevo, comienza con las 12:12 o 14:10. Si tiene experiencia, pruebe con 16:8 o 18:6. 20:4 y OMAD son para ayunadores avanzados.';
+  String get faq_planAnswer => 'Si eres nuevo, comienza con las 12:12 o 14:10. Si tiene experiencia, pruebe con 16:8 o 18:6. 20:4 y OMAD son para ayunadores avanzados.';
 
   @override
   String get faq_exercise => '¿Puedo hacer ejercicio en ayunas?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Sí, pero evita los entrenamientos intensos. Lo ideal son ejercicios cardiovasculares ligeros, caminar y yoga. Si levanta pesas, programe un horario cerca de su ventana para comer.';
+  String get faq_exerciseAnswer => 'Sí, pero evita los entrenamientos intensos. Lo ideal son ejercicios cardiovasculares ligeros, caminar y yoga. Si levanta pesas, programe un horario cerca de su ventana para comer.';
 
   @override
   String get faq_weight => '¿El ayuno ayuda a perder peso?';
 
   @override
-  String get faq_weightAnswer =>
-      'Para algunas personas, limitar el tiempo para comer puede reducir la ingesta total de energía. Los resultados varían y todavía se están estudiando los efectos a largo plazo.';
+  String get faq_weightAnswer => 'Para algunas personas, limitar el tiempo para comer puede reducir la ingesta total de energía. Los resultados varían y todavía se están estudiando los efectos a largo plazo.';
 
   @override
   String get plan_12_desc => 'Nivel principiante';
 
   @override
-  String get plan_12_detail =>
-      'Ideal para principiantes. Ayuno 12 horas incluyendo tu tiempo de sueño.';
+  String get plan_12_detail => 'Ideal para principiantes. Ayuno 12 horas incluyendo tu tiempo de sueño.';
 
   @override
   String get plan_16_desc => 'plan más popular';
 
   @override
-  String get plan_16_detail =>
-      'El plan IF más común. 16 horas de ayuno, 8 horas de ventana para comer. Generalmente desde el almuerzo hasta la cena.';
+  String get plan_16_detail => 'El plan IF más común. 16 horas de ayuno, 8 horas de ventana para comer. Generalmente desde el almuerzo hasta la cena.';
 
   @override
   String get plan_18_desc => 'nivel intermedio';
 
   @override
-  String get plan_18_detail =>
-      '18 horas de ayuno, 6 horas de ventana para comer. Mayor duración de la quema de grasas.';
+  String get plan_18_detail => '18 horas de ayuno, 6 horas de ventana para comer. Mayor duración de la quema de grasas.';
 
   @override
   String get plan_20_desc => 'nivel avanzado';
 
   @override
-  String get plan_20_detail =>
-      '20 horas de ayuno, 4 horas de ventana para comer. Ideal para alcanzar cetosis y autofagia.';
+  String get plan_20_detail => '20 horas de ayuno y 4 horas para comer. Para personas con experiencia en el ayuno.';
 
   @override
   String get plan_omad_desc => 'Una comida al dia';
 
   @override
-  String get plan_omad_detail =>
-      'Una comida al día. 23 horas de ayuno, 1 hora de ventana para comer. Nivel experto.';
+  String get plan_omad_detail => 'Una comida al día. 23 horas de ayuno, 1 hora de ventana para comer. Nivel experto.';
 
   @override
   String get plan_52_desc => '2 días por semana';
 
   @override
-  String get plan_52_detail =>
-      'Coma normalmente durante 5 días, sólo ~500 calorías en 2 días. Un enfoque alternativo.';
+  String get plan_52_detail => 'Coma normalmente durante 5 días, sólo ~500 calorías en 2 días. Un enfoque alternativo.';
 
   @override
   String get plan_ese_desc => 'ayuno de 24 horas';
 
   @override
-  String get plan_ese_detail =>
-      'Ayune durante 24 horas 1 o 2 veces por semana. Para usuarios avanzados.';
+  String get plan_ese_detail => 'Ayune durante 24 horas 1 o 2 veces por semana. Para usuarios avanzados.';
 
   @override
   String get plan_warrior_desc => 'Dieta del guerrero';
 
   @override
-  String get plan_warrior_detail =>
-      'Coma ligero durante el día (frutas, verduras), tome su comida principal en un período de 4 horas por la noche.';
+  String get plan_warrior_detail => 'Coma ligero durante el día (frutas, verduras), tome su comida principal en un período de 4 horas por la noche.';
 
   @override
   String get award_first_title => 'Primer paso';
@@ -1342,16 +1343,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Obtenido cada siete completaciones. Un día perdido nunca borra tu progreso.';
-
-  @override
-  String get game_league => 'Liga semanal privada';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Su puntuación de ritmo está en el percentil $percent de un modelo local privado. El peso y el ayuno extremo nunca se clasifican.';
-  }
+  String get game_shieldsDesc => 'Obtenido cada siete completaciones. Un día perdido nunca borra tu progreso.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1495,15 +1487,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get paywall_continue => 'Continuar';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Las compras no están disponibles ahora. Inténtalo de nuevo más tarde.';
+  String get paywall_productsUnavailable => 'Las compras no están disponibles ahora. Inténtalo de nuevo más tarde.';
 
   @override
   String get paywall_purchaseFailed => 'No se pudo completar la compra.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'No se encontró ninguna compra anterior.';
+  String get paywall_nothingToRestore => 'No se encontró ninguna compra anterior.';
 
   @override
   String get paywall_restoreFailed => 'No se pudieron restaurar las compras.';
@@ -1512,15 +1502,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get paywall_terms => 'Términos de uso';
 
   @override
-  String get permission_notificationDesc =>
-      'Recordatorios de ayuno, cambios de fase y avisos de finalización';
+  String get permission_notificationDesc => 'Recordatorios de ayuno, cambios de fase y avisos de finalización';
 
   @override
   String get profile_privacyChoices => 'Opciones de privacidad';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del fin del periodo. Gestiónalas en los ajustes de la App Store.';
+  String get paywall_autoRenewInfo => 'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del fin del periodo. Gestiónalas en los ajustes de la App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1544,28 +1532,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get paywall_retry => 'Reintentar';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Ya tienes esta suscripción. Toca «Restaurar compras».';
+  String get paywall_alreadyOwned => 'Ya tienes esta suscripción. Toca «Restaurar compras».';
 
   @override
-  String get paywall_storeUnavailable =>
-      'No se puede conectar con la tienda. Comprueba tu conexión e inténtalo de nuevo.';
+  String get paywall_storeUnavailable => 'No se puede conectar con la tienda. Comprueba tu conexión e inténtalo de nuevo.';
 
   @override
-  String get paywall_secureNote =>
-      'Cancela cuando quieras. El pago se carga a tu cuenta de la tienda.';
+  String get paywall_secureNote => 'Cancela cuando quieras. El pago se carga a tu cuenta de la tienda.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del final del periodo. Gestiónalas o cancélalas cuando quieras en Google Play > Suscripciones.';
+  String get paywall_autoRenewInfoPlay => 'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del final del periodo. Gestiónalas o cancélalas cuando quieras en Google Play > Suscripciones.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Desbloquea 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat y Warrior';
+  String get paywall_allPlansDesc => 'Desbloquea 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat y Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Los anuncios de banner e intersticiales se desactivan por completo';
+  String get paywall_noAdsDesc => 'Los anuncios de banner e intersticiales se desactivan por completo';
 
   @override
   String get foodScan_title => 'Análisis de comida con IA';
@@ -1574,26 +1556,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get foodScan_scanCta => 'Escanear comida';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Fotografía tu plato y obtén calorías y macros';
+  String get foodScan_scanCtaDesc => 'Fotografía tu plato y obtén calorías y macros';
 
   @override
   String get foodScan_introTitle => 'Fotografía tu plato';
 
   @override
-  String get foodScan_introDesc =>
-      'La IA lee la foto y estima calorías, proteínas, carbohidratos y grasas.';
+  String get foodScan_introDesc => 'La IA lee la foto y estima calorías, proteínas, carbohidratos y grasas.';
 
   @override
-  String get foodScan_tipLight =>
-      'Una luz buena y uniforme mejora la estimación';
+  String get foodScan_tipLight => 'Una luz buena y uniforme mejora la estimación';
 
   @override
   String get foodScan_tipFrame => 'Encuadra el plato completo';
 
   @override
-  String get foodScan_tipScale =>
-      'Incluye cubiertos o una mano para calcular la porción';
+  String get foodScan_tipScale => 'Incluye cubiertos o una mano para calcular la porción';
 
   @override
   String get foodScan_takePhoto => 'Tomar foto';
@@ -1607,19 +1585,16 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Has usado los escaneos de hoy. Inténtalo mañana.';
+  String get foodScan_quotaReached => 'Has usado los escaneos de hoy. Inténtalo mañana.';
 
   @override
-  String get foodScan_privacyNote =>
-      'La foto se envía a la API Gemini de Google para su análisis y no se almacena en nuestros servidores.';
+  String get foodScan_privacyNote => 'La foto se envía a la API Gemini de Google. Google puede usarla para mejorar sus productos y pueden verla revisores humanos. No la guardamos en nuestros servidores.';
 
   @override
   String get foodScan_consentTitle => '¿Enviar fotos a Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'Para estimar calorías y macronutrientes, cada foto de comida que tomes o elijas se envía al servicio de IA Gemini de Google. La foto solo se usa para este análisis y no se guarda en nuestros servidores.';
+  String get foodScan_consentBody => 'Para estimar calorías y macros, cada foto de comida que hagas o elijas se envía al servicio de IA Gemini de Google. Google puede usar las fotos para mejorar sus productos y pueden verlas revisores humanos, así que deja fuera del encuadre personas, documentos y otros datos personales. No guardamos las fotos en nuestros servidores.';
 
   @override
   String get foodScan_consentAgree => 'Aceptar y continuar';
@@ -1634,12 +1609,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get foodScan_detectedItems => 'Alimentos detectados';
 
   @override
-  String get foodScan_disclaimer =>
-      'Las estimaciones de la IA son aproximadas. Toca un elemento para corregirlo.';
+  String get foodScan_disclaimer => 'Las estimaciones de la IA son aproximadas. Toca un elemento para corregirlo.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'El modelo no está seguro con esta foto. Revisa los valores antes de guardar.';
+  String get foodScan_lowConfidence => 'El modelo no está seguro con esta foto. Revisa los valores antes de guardar.';
 
   @override
   String get foodScan_save => 'Añadir a comidas';
@@ -1663,47 +1636,173 @@ class AppLocalizationsEs extends AppLocalizations {
   String get foodScan_premiumTitle => 'Función Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'El análisis de calorías por foto está incluido en Premium.';
+  String get foodScan_premiumDesc => 'El análisis de calorías por foto está incluido en Premium.';
 
   @override
   String get foodScan_upgrade => 'Ver Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Sin conexión. Revisa tu internet e inténtalo de nuevo.';
+  String get foodScan_errorNetwork => 'Sin conexión. Revisa tu internet e inténtalo de nuevo.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Demasiados escaneos ahora mismo. Inténtalo en unos minutos.';
+  String get foodScan_errorRateLimited => 'Demasiados escaneos ahora mismo. Inténtalo en unos minutos.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'El análisis de fotos no está disponible ahora.';
+  String get foodScan_errorUnavailable => 'El análisis de fotos no está disponible ahora.';
 
   @override
-  String get foodScan_errorServer =>
-      'El servicio de análisis tiene problemas. Inténtalo en breve.';
+  String get foodScan_errorServer => 'El servicio de análisis tiene problemas. Inténtalo en breve.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'No se encontró comida en esta foto. Prueba con una toma más clara del plato.';
+  String get foodScan_errorNoFood => 'No se encontró comida en esta foto. Prueba con una toma más clara del plato.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'No se pudo analizar esta foto. Prueba con otra.';
+  String get foodScan_errorUnreadable => 'No se pudo analizar esta foto. Prueba con otra.';
 
   @override
   String get paywall_aiFoodScan => 'Escáner de comida con IA';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Fotografía una comida y registra sus calorías y macros en segundos';
+  String get paywall_aiFoodScanDesc => 'Fotografía una comida y registra sus calorías y macros en segundos';
+
+  @override
+  String get safety_title => 'Antes de empezar';
+
+  @override
+  String get safety_desc => 'El ayuno no es seguro para todas las personas. Selecciona todo lo que se aplique a ti.';
+
+  @override
+  String get safety_under18 => 'Soy menor de 18 años';
+
+  @override
+  String get safety_pregnant => 'Estoy embarazada o en período de lactancia';
+
+  @override
+  String get safety_eatingDisorder => 'Tengo o he tenido un trastorno alimentario';
+
+  @override
+  String get safety_underweight => 'Tengo bajo peso o me han dicho que no adelgace';
+
+  @override
+  String get safety_diabetes => 'Tengo diabetes o tomo medicación que afecta al azúcar en sangre';
+
+  @override
+  String get safety_medical => 'Tengo otra afección médica o tomo medicación habitual';
+
+  @override
+  String get safety_none => 'Nada de esto se aplica a mí';
+
+  @override
+  String get safety_ack => 'Hablaré con mi médico antes de ayunar';
+
+  @override
+  String get safety_blockedTitle => 'Esta app no es segura para ti';
+
+  @override
+  String get safety_blockedDesc => 'Según tus respuestas, no podemos ofrecerte ayuno aquí. Habla con un médico. Si comer te resulta difícil ahora, un profesional sanitario puede ayudarte.';
+
+  @override
+  String get safety_reviewAnswers => 'Revisar mis respuestas';
+
+  @override
+  String get safety_targetTooLow => 'Ese objetivo está por debajo de un peso saludable para tu altura.';
+
+  @override
+  String get onboarding_invalidBody => 'Introduce una altura, un peso, un peso objetivo y una edad válidos.';
+
+  @override
+  String get crisis_unwell => 'Me encuentro mal';
+
+  @override
+  String get crisis_unwellTitle => 'Termina tu ayuno ahora';
+
+  @override
+  String get crisis_unwellDesc => 'Los mareos, temblores, la confusión o las palpitaciones son señales para dejar de ayunar y comer o beber algo.';
+
+  @override
+  String get crisis_emergency => 'Si te has desmayado, tienes dolor en el pecho o te encuentras muy mal, llama ahora al número de emergencias local.';
+
+  @override
+  String get crisis_endFast => 'Terminar mi ayuno';
+
+  @override
+  String get profile_deleteData => 'Eliminar todos mis datos';
+
+  @override
+  String get profile_deleteDataConfirm => 'Esto elimina de forma permanente tus ayunos, peso, comidas, agua y ajustes de este dispositivo. No se puede deshacer. Las suscripciones se gestionan en tu cuenta de la tienda.';
+
+  @override
+  String get profile_deleteDataAction => 'Eliminar todo';
+
+  @override
+  String get record_deleteConfirm => '¿Eliminar este registro?';
+
+  @override
+  String get profile_analytics => 'Compartir datos de uso anónimos';
+
+  @override
+  String get profile_analyticsDesc => 'Ayuda a mejorar la app. Nunca incluye peso, comidas ni datos de salud.';
+
+  @override
+  String get plan_longWarningTitle => 'Este es un ayuno largo';
+
+  @override
+  String get plan_longWarningDesc => 'Los ayunos de 20 horas o más no son adecuados para todas las personas y pueden hacer que te encuentres mal. Consulta a un médico si tienes dudas y termina el ayuno si te encuentras mal.';
+
+  @override
+  String get plan_longWarningAccept => 'Lo entiendo';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days días de prueba gratis, luego $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Sin ayuno';
+
+  @override
+  String get widget_tapToStart => 'Toca para empezar';
 }
 
 /// The translations for Spanish Castilian, as used in Latin America and the Caribbean (`es_419`).
 class AppLocalizationsEs419 extends AppLocalizationsEs {
-  AppLocalizationsEs419() : super('es_419');
+  AppLocalizationsEs419(): super('es_419');
+
+  @override
+  String get mealPreset_oatsFruit => 'Avena con fruta';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Yogur con arándanos';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Tostada con huevo y aguacate';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Bol de pollo y quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Sopa de lentejas';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Salmón con brócoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap de pavo y verduras';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Bol de garbanzos con tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Ensalada de atún y alubias';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Queso cottage con manzana';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus y verduras crujientes';
+
+  @override
+  String get mealPreset_bananaKefir => 'Bol de plátano y kéfir';
 
   @override
   String get appTitle => 'FastTrack';
@@ -1760,11 +1859,10 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get timer_selectPlan => 'Seleccionar plan de ayuno';
 
   @override
-  String get timer_stopConfirm =>
-      '¿Estás seguro de que quieres terminar el ayuno antes de tiempo?';
+  String get timer_stopConfirm => '¿Estás seguro de que quieres terminar el ayuno antes de tiempo?';
 
   @override
-  String get timer_stopTitle => 'Terminar rápido';
+  String get timer_stopTitle => 'Terminar ayuno';
 
   @override
   String get timer_cancel => 'Cancelar';
@@ -1794,13 +1892,13 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get phase_ketosis => 'cetosis';
 
   @override
-  String get phase_ketosisDesc => 'Producción de cetonas activa.';
+  String get phase_ketosisDesc => 'La producción de cetonas puede aumentar';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Renovación celular';
+  String get phase_autophagyDesc => 'Fase estimada de reciclaje celular';
 
   @override
   String get stats_title => 'Estadística';
@@ -1961,8 +2059,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get onboarding_welcome => 'Bienvenido';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Toma el control de tu\nviaje de ayuno intermitente';
+  String get onboarding_welcomeDesc => 'Toma el control de tu\nviaje de ayuno intermitente';
 
   @override
   String get onboarding_featureTimer => 'Temporizador de ayuno inteligente';
@@ -1971,8 +2068,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get onboarding_featureStats => 'Estadísticas y gráficos detallados';
 
   @override
-  String get onboarding_featureMeals =>
-      'Planificador de comidas y sugerencias de recetas.';
+  String get onboarding_featureMeals => 'Planificador de comidas y sugerencias de recetas.';
 
   @override
   String get onboarding_getStarted => 'Empezar';
@@ -2011,8 +2107,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get onboarding_goalLongevity => 'Longevidad';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Renovación celular y antienvejecimiento';
+  String get onboarding_goalLongevityDesc => 'Crea una rutina saludable a largo plazo';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplina';
@@ -2024,8 +2119,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get onboarding_selectPlan => 'Elige tu plan';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Selecciona el mejor plan de ayuno para ti';
+  String get onboarding_selectPlanDesc => 'Selecciona el mejor plan de ayuno para ti';
 
   @override
   String get onboarding_bodyInfo => 'Ingrese su información';
@@ -2034,27 +2128,16 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get onboarding_bodyInfoDesc => 'Para recomendaciones personalizadas';
 
   @override
-  String get onboarding_gender => 'Género';
-
-  @override
-  String get onboarding_male => 'Masculino';
-
-  @override
-  String get onboarding_female => 'Femenino';
-
-  @override
   String get onboarding_age => 'Edad';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Esta información se almacena únicamente en su dispositivo y se utiliza para cálculos de calorías.';
+  String get onboarding_bodyInfoDisclaimer => 'Esta información se almacena únicamente en su dispositivo y se utiliza para cálculos de calorías.';
 
   @override
   String get onboarding_permissions => 'Paso final';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Habilite permisos para la mejor experiencia';
+  String get onboarding_permissionsDesc => 'Habilite permisos para la mejor experiencia';
 
   @override
   String get onboarding_next => 'Continuar';
@@ -2081,8 +2164,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get paywall_title => 'Actualizar a Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Desbloquea todos los planes de ayuno y quita los anuncios';
+  String get paywall_subtitle => 'Desbloquea todos los planes de ayuno y quita los anuncios';
 
   @override
   String get paywall_allPlans => 'Todos los planes de ayuno';
@@ -2121,8 +2203,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get paywall_premiumActive => 'Premium Activo!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Todos los planes de ayuno están desbloqueados y los anuncios, desactivados';
+  String get paywall_premiumActiveDesc => 'Todos los planes de ayuno están desbloqueados y los anuncios, desactivados';
 
   @override
   String get water_title => 'Ingesta de agua';
@@ -2257,8 +2338,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get completion_earlyTitle => 'Ayuno finalizado';
 
   @override
-  String get completion_earlyMessage =>
-      'Se guardó el tiempo de hoy. La racha y el progreso de logros no cambiaron porque no se completó el objetivo.';
+  String get completion_earlyMessage => 'Se guardó el tiempo de hoy. La racha y el progreso de logros no cambiaron porque no se completó el objetivo.';
 
   @override
   String get timer_remainingTime => 'Tiempo restante';
@@ -2288,8 +2368,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get streak_incredible => '¡Increíble!';
 
   @override
-  String get weight_noRecord =>
-      'Aún no hay registros de peso\nAgregar desde perfil > Métricas corporales';
+  String get weight_noRecord => 'Aún no hay registros de peso\nAgregar desde perfil > Métricas corporales';
 
   @override
   String get day_mon => 'Lun';
@@ -2475,8 +2554,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get profile_calmGamification => 'Gamificación tranquila';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Reduce la presión de la liga y la temporada.';
+  String get profile_calmGamificationDesc => 'Reduce la presión de la temporada';
 
   @override
   String get profile_editName => 'Edita tu nombre';
@@ -2494,8 +2572,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get circle_tagline => 'Juntos, sin presiones.';
 
   @override
-  String get circle_privacy =>
-      'El peso y las métricas privadas permanecen ocultas. Sólo el progreso y el apoyo son visibles.';
+  String get circle_privacy => 'El peso y las métricas privadas permanecen ocultas. Sólo el progreso y el apoyo son visibles.';
 
   @override
   String circle_sendSupport(int count) {
@@ -2524,8 +2601,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get crisis_delayTitle => 'Retrasar la decisión durante 10 minutos.';
 
   @override
-  String get crisis_delayDesc =>
-      'Si no se siente bien, poner fin al ayuno no es un fracaso.';
+  String get crisis_delayDesc => 'Si no se siente bien, poner fin al ayuno no es un fracaso.';
 
   @override
   String get crisis_hunger => 'Hambre';
@@ -2540,8 +2616,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get crisis_tenMore => 'Dale 10 minutos';
 
   @override
-  String get stats_storyEmpty =>
-      'Tu primer ayuno comenzará tu historia personal.';
+  String get stats_storyEmpty => 'Tu primer ayuno comenzará tu historia personal.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -2587,8 +2662,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get weather_onPlan => 'El ritmo de hoy coincide con su plan.';
 
   @override
-  String get weather_challenging =>
-      'Esta hora antes era desafiante; El modo de soporte está listo.';
+  String get weather_challenging => 'Esta hora antes era desafiante; El modo de soporte está listo.';
 
   @override
   String get replay_copied => 'Repetición del ayuno copiada';
@@ -2613,8 +2687,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   }
 
   @override
-  String get phase_estimateShort =>
-      'El tiempo de fase es una estimación general, no una medición médica.';
+  String get phase_estimateShort => 'El tiempo de fase es una estimación general, no una medición médica.';
 
   @override
   String phase_hours(int start, int end) {
@@ -2622,8 +2695,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Este momento es una estimación general. Las respuestas metabólicas pueden variar entre personas.';
+  String get phase_estimateLong => 'Este momento es una estimación general. Las respuestas metabólicas pueden variar entre personas.';
 
   @override
   String get bmi_underweight => 'Bajo peso';
@@ -2655,7 +2727,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get notification_phaseKetosis => 'Estás en cetosis ⚡';
 
   @override
-  String get notification_phaseAutophagy => '¡Autofagia activa! 🔄';
+  String get notification_phaseAutophagy => 'Fase estimada de autofagia';
 
   @override
   String notification_completedBody(String plan) {
@@ -2666,15 +2738,13 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get notification_waterTitle => 'Bebe agua 💧';
 
   @override
-  String get notification_waterBody =>
-      '¡No olvides beber mucha agua mientras ayunas!';
+  String get notification_waterBody => '¡No olvides beber mucha agua mientras ayunas!';
 
   @override
   String get notification_windowTitle => 'Comer Ventana Cerrándose ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Su ventana para comer se cerrará en 30 minutos.';
+  String get notification_windowBody => 'Su ventana para comer se cerrará en 30 minutos.';
 
   @override
   String notification_streakTitle(int days) {
@@ -2682,8 +2752,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   }
 
   @override
-  String get notification_streakBody =>
-      '¡Lo estás haciendo genial! Sigue así hoy.';
+  String get notification_streakBody => '¡Lo estás haciendo genial! Sigue así hoy.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -2714,33 +2783,28 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get explore_guide => 'Guía de ayuno';
 
   @override
-  String get explore_guideDesc =>
-      'Todo lo que necesitas saber sobre el ayuno intermitente';
+  String get explore_guideDesc => 'Todo lo que necesitas saber sobre el ayuno intermitente';
 
   @override
-  String get explore_circleDesc =>
-      'Comparte apoyo silencioso con tu grupo privado.';
+  String get explore_circleDesc => 'Comparte apoyo silencioso con tu grupo privado.';
 
   @override
   String get explore_faq => 'Preguntas frecuentes';
 
   @override
-  String get explore_education =>
-      'Este contenido es solo para educación general y no es un diagnóstico médico ni un consejo de tratamiento.';
+  String get explore_education => 'Este contenido es solo para educación general y no es un diagnóstico médico ni un consejo de tratamiento.';
 
   @override
   String get explore_safety => 'Salud y seguridad';
 
   @override
-  String get explore_safetyDesc =>
-      'Si tiene una condición médica, toma medicamentos regularmente, tiene síntomas preocupantes, está embarazada o amamantando, consulte a un profesional de la salud calificado antes de ayunar. Deténgase si no se siente bien.';
+  String get explore_safetyDesc => 'Si tiene una condición médica, toma medicamentos regularmente, tiene síntomas preocupantes, está embarazada o amamantando, consulte a un profesional de la salud calificado antes de ayunar. Deténgase si no se siente bien.';
 
   @override
   String get explore_sources => 'Fuentes';
 
   @override
-  String get explore_sourcesDesc =>
-      'El contenido se simplifica a partir de las referencias de salud pública que aparecen a continuación.';
+  String get explore_sourcesDesc => 'El contenido se simplifica a partir de las referencias de salud pública que aparecen a continuación.';
 
   @override
   String get explore_sourceError => 'No se pudo abrir la fuente.';
@@ -2749,145 +2813,124 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get explore_rules => 'Reglas importantes';
 
   @override
-  String get explore_rule1 =>
-      'No consumir alimentos calóricos durante el ayuno';
+  String get explore_rule1 => 'No consumir alimentos calóricos durante el ayuno';
 
   @override
   String get explore_rule2 => 'Beba mucha agua y líquidos.';
 
   @override
-  String get explore_rule3 =>
-      'Coma equilibrado durante su período de alimentación';
+  String get explore_rule3 => 'Coma equilibrado durante su período de alimentación';
 
   @override
   String get explore_rule4 => 'Deja de ayunar si no te sientes bien';
 
   @override
-  String get explore_rule5 =>
-      'Las mujeres embarazadas o en período de lactancia no deben ayunar';
+  String get explore_rule5 => 'Las mujeres embarazadas o en período de lactancia no deben ayunar';
 
   @override
-  String get explore_rule6 =>
-      'Consulta a tu médico si tienes enfermedades crónicas.';
+  String get explore_rule6 => 'Consulta a tu médico si tienes enfermedades crónicas.';
 
   @override
   String get tip_water => 'Mantente hidratado';
 
   @override
-  String get tip_waterDesc =>
-      'Beba agua cuando tenga sed e incluya líquidos con las comidas. Las necesidades pueden variar según la salud, el clima y la actividad.';
+  String get tip_waterDesc => 'Beba agua cuando tenga sed e incluya líquidos con las comidas. Las necesidades pueden variar según la salud, el clima y la actividad.';
 
   @override
   String get tip_food => 'comer bien';
 
   @override
-  String get tip_foodDesc =>
-      'Durante las ventanas para comer, elija alimentos ricos en proteínas, con fibra y grasas saludables. Evite los alimentos procesados.';
+  String get tip_foodDesc => 'Durante las ventanas para comer, elija alimentos ricos en proteínas, con fibra y grasas saludables. Evite los alimentos procesados.';
 
   @override
   String get tip_sleep => 'Dormir bien';
 
   @override
-  String get tip_sleepDesc =>
-      'Dormir lo suficiente y con regularidad contribuye al bienestar general. Programe el ayuno para que no interrumpa su sueño.';
+  String get tip_sleepDesc => 'Dormir lo suficiente y con regularidad contribuye al bienestar general. Programe el ayuno para que no interrumpa su sueño.';
 
   @override
   String get tip_exercise => 'Ejercicio ligero';
 
   @override
-  String get tip_exerciseDesc =>
-      'Puedes hacer caminatas ligeras o yoga en ayunas. Evite el ejercicio intenso, especialmente durante las primeras semanas hasta que su cuerpo se adapte.';
+  String get tip_exerciseDesc => 'Puedes hacer caminatas ligeras o yoga en ayunas. Evite el ejercicio intenso, especialmente durante las primeras semanas hasta que su cuerpo se adapte.';
 
   @override
   String get tip_drinks => 'Bebidas permitidas';
 
   @override
-  String get tip_drinksDesc =>
-      'Durante el ayuno, puedes consumir agua, té natural y café negro (sin azúcar ni leche). Estas bebidas no romperán tu ayuno.';
+  String get tip_drinksDesc => 'Durante el ayuno, puedes consumir agua, té natural y café negro (sin azúcar ni leche). Estas bebidas no romperán tu ayuno.';
 
   @override
   String get faq_drinks => '¿Qué puedo beber durante el ayuno?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Puede beber agua, té simple y café negro (sin azúcar ni leche). Las bebidas calóricas rompen el ayuno.';
+  String get faq_drinksAnswer => 'Puede beber agua, té simple y café negro (sin azúcar ni leche). Las bebidas calóricas rompen el ayuno.';
 
   @override
   String get faq_plan => '¿Qué plan de ayuno debo elegir?';
 
   @override
-  String get faq_planAnswer =>
-      'Si eres nuevo, comienza con las 12:12 o 14:10. Si tiene experiencia, pruebe con 16:8 o 18:6. 20:4 y OMAD son para ayunadores avanzados.';
+  String get faq_planAnswer => 'Si eres nuevo, comienza con las 12:12 o 14:10. Si tiene experiencia, pruebe con 16:8 o 18:6. 20:4 y OMAD son para ayunadores avanzados.';
 
   @override
   String get faq_exercise => '¿Puedo hacer ejercicio en ayunas?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Sí, pero evita los entrenamientos intensos. Lo ideal son ejercicios cardiovasculares ligeros, caminar y yoga. Si levanta pesas, programe un horario cerca de su ventana para comer.';
+  String get faq_exerciseAnswer => 'Sí, pero evita los entrenamientos intensos. Lo ideal son ejercicios cardiovasculares ligeros, caminar y yoga. Si levanta pesas, programe un horario cerca de su ventana para comer.';
 
   @override
   String get faq_weight => '¿El ayuno ayuda a perder peso?';
 
   @override
-  String get faq_weightAnswer =>
-      'Para algunas personas, limitar el tiempo para comer puede reducir la ingesta total de energía. Los resultados varían y todavía se están estudiando los efectos a largo plazo.';
+  String get faq_weightAnswer => 'Para algunas personas, limitar el tiempo para comer puede reducir la ingesta total de energía. Los resultados varían y todavía se están estudiando los efectos a largo plazo.';
 
   @override
   String get plan_12_desc => 'Nivel principiante';
 
   @override
-  String get plan_12_detail =>
-      'Ideal para principiantes. Ayuno 12 horas incluyendo tu tiempo de sueño.';
+  String get plan_12_detail => 'Ideal para principiantes. Ayuno 12 horas incluyendo tu tiempo de sueño.';
 
   @override
   String get plan_16_desc => 'plan más popular';
 
   @override
-  String get plan_16_detail =>
-      'El plan IF más común. 16 horas de ayuno, 8 horas de ventana para comer. Generalmente desde el almuerzo hasta la cena.';
+  String get plan_16_detail => 'El plan IF más común. 16 horas de ayuno, 8 horas de ventana para comer. Generalmente desde el almuerzo hasta la cena.';
 
   @override
   String get plan_18_desc => 'nivel intermedio';
 
   @override
-  String get plan_18_detail =>
-      '18 horas de ayuno, 6 horas de ventana para comer. Mayor duración de la quema de grasas.';
+  String get plan_18_detail => '18 horas de ayuno, 6 horas de ventana para comer. Mayor duración de la quema de grasas.';
 
   @override
   String get plan_20_desc => 'nivel avanzado';
 
   @override
-  String get plan_20_detail =>
-      '20 horas de ayuno, 4 horas de ventana para comer. Ideal para alcanzar cetosis y autofagia.';
+  String get plan_20_detail => '20 horas de ayuno y 4 horas para comer. Para personas con experiencia en el ayuno.';
 
   @override
   String get plan_omad_desc => 'Una comida al dia';
 
   @override
-  String get plan_omad_detail =>
-      'Una comida al día. 23 horas de ayuno, 1 hora de ventana para comer. Nivel experto.';
+  String get plan_omad_detail => 'Una comida al día. 23 horas de ayuno, 1 hora de ventana para comer. Nivel experto.';
 
   @override
   String get plan_52_desc => '2 días por semana';
 
   @override
-  String get plan_52_detail =>
-      'Coma normalmente durante 5 días, sólo ~500 calorías en 2 días. Un enfoque alternativo.';
+  String get plan_52_detail => 'Coma normalmente durante 5 días, sólo ~500 calorías en 2 días. Un enfoque alternativo.';
 
   @override
   String get plan_ese_desc => 'ayuno de 24 horas';
 
   @override
-  String get plan_ese_detail =>
-      'Ayune durante 24 horas 1 o 2 veces por semana. Para usuarios avanzados.';
+  String get plan_ese_detail => 'Ayune durante 24 horas 1 o 2 veces por semana. Para usuarios avanzados.';
 
   @override
   String get plan_warrior_desc => 'Dieta del guerrero';
 
   @override
-  String get plan_warrior_detail =>
-      'Coma ligero durante el día (frutas, verduras), tome su comida principal en un período de 4 horas por la noche.';
+  String get plan_warrior_detail => 'Coma ligero durante el día (frutas, verduras), tome su comida principal en un período de 4 horas por la noche.';
 
   @override
   String get award_first_title => 'Primer paso';
@@ -3039,16 +3082,7 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Obtenido cada siete completaciones. Un día perdido nunca borra tu progreso.';
-
-  @override
-  String get game_league => 'Liga semanal privada';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Su puntuación de ritmo está en el percentil $percent de un modelo local privado. El peso y el ayuno extremo nunca se clasifican.';
-  }
+  String get game_shieldsDesc => 'Obtenido cada siete completaciones. Un día perdido nunca borra tu progreso.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -3192,15 +3226,13 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get paywall_continue => 'Continuar';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Las compras no están disponibles ahora. Inténtalo de nuevo más tarde.';
+  String get paywall_productsUnavailable => 'Las compras no están disponibles ahora. Inténtalo de nuevo más tarde.';
 
   @override
   String get paywall_purchaseFailed => 'No se pudo completar la compra.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'No se encontró ninguna compra anterior.';
+  String get paywall_nothingToRestore => 'No se encontró ninguna compra anterior.';
 
   @override
   String get paywall_restoreFailed => 'No se pudieron restaurar las compras.';
@@ -3209,15 +3241,13 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get paywall_terms => 'Términos de uso';
 
   @override
-  String get permission_notificationDesc =>
-      'Recordatorios de ayuno, cambios de fase y avisos de finalización';
+  String get permission_notificationDesc => 'Recordatorios de ayuno, cambios de fase y avisos de finalización';
 
   @override
   String get profile_privacyChoices => 'Opciones de privacidad';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del fin del periodo. Gestiónalas en los ajustes de la App Store.';
+  String get paywall_autoRenewInfo => 'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del fin del periodo. Gestiónalas en los ajustes de la App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -3241,28 +3271,22 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get paywall_retry => 'Reintentar';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Ya tienes esta suscripción. Toca «Restaurar compras».';
+  String get paywall_alreadyOwned => 'Ya tienes esta suscripción. Toca «Restaurar compras».';
 
   @override
-  String get paywall_storeUnavailable =>
-      'No se puede conectar con la tienda. Comprueba tu conexión e inténtalo de nuevo.';
+  String get paywall_storeUnavailable => 'No se puede conectar con la tienda. Comprueba tu conexión e inténtalo de nuevo.';
 
   @override
-  String get paywall_secureNote =>
-      'Cancela cuando quieras. El pago se carga a tu cuenta de la tienda.';
+  String get paywall_secureNote => 'Cancela cuando quieras. El pago se carga a tu cuenta de la tienda.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del final del periodo. Gestiónalas o cancélalas cuando quieras en Google Play > Suscripciones.';
+  String get paywall_autoRenewInfoPlay => 'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del final del periodo. Gestiónalas o cancélalas cuando quieras en Google Play > Suscripciones.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Desbloquea 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat y Warrior';
+  String get paywall_allPlansDesc => 'Desbloquea 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat y Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Los anuncios de banner e intersticiales se desactivan por completo';
+  String get paywall_noAdsDesc => 'Los anuncios de banner e intersticiales se desactivan por completo';
 
   @override
   String get foodScan_title => 'Análisis de comida con IA';
@@ -3271,26 +3295,22 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get foodScan_scanCta => 'Escanear comida';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Fotografía tu plato y obtén calorías y macros';
+  String get foodScan_scanCtaDesc => 'Fotografía tu plato y obtén calorías y macros';
 
   @override
   String get foodScan_introTitle => 'Fotografía tu plato';
 
   @override
-  String get foodScan_introDesc =>
-      'La IA lee la foto y estima calorías, proteínas, carbohidratos y grasas.';
+  String get foodScan_introDesc => 'La IA lee la foto y estima calorías, proteínas, carbohidratos y grasas.';
 
   @override
-  String get foodScan_tipLight =>
-      'Una luz buena y uniforme mejora la estimación';
+  String get foodScan_tipLight => 'Una luz buena y uniforme mejora la estimación';
 
   @override
   String get foodScan_tipFrame => 'Encuadra el plato completo';
 
   @override
-  String get foodScan_tipScale =>
-      'Incluye cubiertos o una mano para calcular la porción';
+  String get foodScan_tipScale => 'Incluye cubiertos o una mano para calcular la porción';
 
   @override
   String get foodScan_takePhoto => 'Tomar foto';
@@ -3304,19 +3324,16 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Has usado los escaneos de hoy. Inténtalo mañana.';
+  String get foodScan_quotaReached => 'Has usado los escaneos de hoy. Inténtalo mañana.';
 
   @override
-  String get foodScan_privacyNote =>
-      'La foto se envía a la API Gemini de Google para su análisis y no se almacena en nuestros servidores.';
+  String get foodScan_privacyNote => 'La foto se envía a la API Gemini de Google. Google puede usarla para mejorar sus productos y pueden verla revisores humanos. No la guardamos en nuestros servidores.';
 
   @override
   String get foodScan_consentTitle => '¿Enviar fotos a Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'Para estimar calorías y macronutrientes, cada foto de comida que tomes o elijas se envía al servicio de IA Gemini de Google. La foto solo se usa para este análisis y no se guarda en nuestros servidores.';
+  String get foodScan_consentBody => 'Para estimar calorías y macros, cada foto de comida que hagas o elijas se envía al servicio de IA Gemini de Google. Google puede usar las fotos para mejorar sus productos y pueden verlas revisores humanos, así que deja fuera del encuadre personas, documentos y otros datos personales. No guardamos las fotos en nuestros servidores.';
 
   @override
   String get foodScan_consentAgree => 'Aceptar y continuar';
@@ -3331,12 +3348,10 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get foodScan_detectedItems => 'Alimentos detectados';
 
   @override
-  String get foodScan_disclaimer =>
-      'Las estimaciones de la IA son aproximadas. Toca un elemento para corregirlo.';
+  String get foodScan_disclaimer => 'Las estimaciones de la IA son aproximadas. Toca un elemento para corregirlo.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'El modelo no está seguro con esta foto. Revisa los valores antes de guardar.';
+  String get foodScan_lowConfidence => 'El modelo no está seguro con esta foto. Revisa los valores antes de guardar.';
 
   @override
   String get foodScan_save => 'Añadir a comidas';
@@ -3360,47 +3375,173 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get foodScan_premiumTitle => 'Función Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'El análisis de calorías por foto está incluido en Premium.';
+  String get foodScan_premiumDesc => 'El análisis de calorías por foto está incluido en Premium.';
 
   @override
   String get foodScan_upgrade => 'Ver Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Sin conexión. Revisa tu internet e inténtalo de nuevo.';
+  String get foodScan_errorNetwork => 'Sin conexión. Revisa tu internet e inténtalo de nuevo.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Demasiados escaneos ahora mismo. Inténtalo en unos minutos.';
+  String get foodScan_errorRateLimited => 'Demasiados escaneos ahora mismo. Inténtalo en unos minutos.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'El análisis de fotos no está disponible ahora.';
+  String get foodScan_errorUnavailable => 'El análisis de fotos no está disponible ahora.';
 
   @override
-  String get foodScan_errorServer =>
-      'El servicio de análisis tiene problemas. Inténtalo en breve.';
+  String get foodScan_errorServer => 'El servicio de análisis tiene problemas. Inténtalo en breve.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'No se encontró comida en esta foto. Prueba con una toma más clara del plato.';
+  String get foodScan_errorNoFood => 'No se encontró comida en esta foto. Prueba con una toma más clara del plato.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'No se pudo analizar esta foto. Prueba con otra.';
+  String get foodScan_errorUnreadable => 'No se pudo analizar esta foto. Prueba con otra.';
 
   @override
   String get paywall_aiFoodScan => 'Escáner de comida con IA';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Fotografía una comida y registra sus calorías y macros en segundos';
+  String get paywall_aiFoodScanDesc => 'Fotografía una comida y registra sus calorías y macros en segundos';
+
+  @override
+  String get safety_title => 'Antes de empezar';
+
+  @override
+  String get safety_desc => 'El ayuno no es seguro para todas las personas. Selecciona todo lo que se aplique a ti.';
+
+  @override
+  String get safety_under18 => 'Soy menor de 18 años';
+
+  @override
+  String get safety_pregnant => 'Estoy embarazada o en período de lactancia';
+
+  @override
+  String get safety_eatingDisorder => 'Tengo o he tenido un trastorno alimentario';
+
+  @override
+  String get safety_underweight => 'Tengo bajo peso o me han dicho que no adelgace';
+
+  @override
+  String get safety_diabetes => 'Tengo diabetes o tomo medicación que afecta al azúcar en sangre';
+
+  @override
+  String get safety_medical => 'Tengo otra afección médica o tomo medicación habitual';
+
+  @override
+  String get safety_none => 'Nada de esto se aplica a mí';
+
+  @override
+  String get safety_ack => 'Hablaré con mi médico antes de ayunar';
+
+  @override
+  String get safety_blockedTitle => 'Esta app no es segura para ti';
+
+  @override
+  String get safety_blockedDesc => 'Según tus respuestas, no podemos ofrecerte ayuno aquí. Habla con un médico. Si comer te resulta difícil ahora, un profesional sanitario puede ayudarte.';
+
+  @override
+  String get safety_reviewAnswers => 'Revisar mis respuestas';
+
+  @override
+  String get safety_targetTooLow => 'Ese objetivo está por debajo de un peso saludable para tu altura.';
+
+  @override
+  String get onboarding_invalidBody => 'Introduce una altura, un peso, un peso objetivo y una edad válidos.';
+
+  @override
+  String get crisis_unwell => 'Me encuentro mal';
+
+  @override
+  String get crisis_unwellTitle => 'Termina tu ayuno ahora';
+
+  @override
+  String get crisis_unwellDesc => 'Los mareos, temblores, la confusión o las palpitaciones son señales para dejar de ayunar y comer o beber algo.';
+
+  @override
+  String get crisis_emergency => 'Si te has desmayado, tienes dolor en el pecho o te encuentras muy mal, llama ahora al número de emergencias local.';
+
+  @override
+  String get crisis_endFast => 'Terminar mi ayuno';
+
+  @override
+  String get profile_deleteData => 'Eliminar todos mis datos';
+
+  @override
+  String get profile_deleteDataConfirm => 'Esto elimina de forma permanente tus ayunos, peso, comidas, agua y ajustes de este dispositivo. No se puede deshacer. Las suscripciones se gestionan en tu cuenta de la tienda.';
+
+  @override
+  String get profile_deleteDataAction => 'Eliminar todo';
+
+  @override
+  String get record_deleteConfirm => '¿Eliminar este registro?';
+
+  @override
+  String get profile_analytics => 'Compartir datos de uso anónimos';
+
+  @override
+  String get profile_analyticsDesc => 'Ayuda a mejorar la app. Nunca incluye peso, comidas ni datos de salud.';
+
+  @override
+  String get plan_longWarningTitle => 'Este es un ayuno largo';
+
+  @override
+  String get plan_longWarningDesc => 'Los ayunos de 20 horas o más no son adecuados para todas las personas y pueden hacer que te encuentres mal. Consulta a un médico si tienes dudas y termina el ayuno si te encuentras mal.';
+
+  @override
+  String get plan_longWarningAccept => 'Lo entiendo';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days días de prueba gratis, luego $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Sin ayuno';
+
+  @override
+  String get widget_tapToStart => 'Toca para empezar';
 }
 
 /// The translations for Spanish Castilian, as used in Spain (`es_ES`).
 class AppLocalizationsEsEs extends AppLocalizationsEs {
-  AppLocalizationsEsEs() : super('es_ES');
+  AppLocalizationsEsEs(): super('es_ES');
+
+  @override
+  String get mealPreset_oatsFruit => 'Avena con fruta';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Yogur con arándanos';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Tostada con huevo y aguacate';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Bol de pollo y quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Sopa de lentejas';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Salmón con brócoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap de pavo y verduras';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Bol de garbanzos con tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Ensalada de atún y alubias';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Queso cottage con manzana';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus y verduras crujientes';
+
+  @override
+  String get mealPreset_bananaKefir => 'Bol de plátano y kéfir';
 
   @override
   String get appTitle => 'FastTrack';
@@ -3457,11 +3598,10 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get timer_selectPlan => 'Seleccionar plan de ayuno';
 
   @override
-  String get timer_stopConfirm =>
-      '¿Estás seguro de que quieres terminar el ayuno antes de tiempo?';
+  String get timer_stopConfirm => '¿Estás seguro de que quieres terminar el ayuno antes de tiempo?';
 
   @override
-  String get timer_stopTitle => 'Terminar rápido';
+  String get timer_stopTitle => 'Terminar ayuno';
 
   @override
   String get timer_cancel => 'Cancelar';
@@ -3491,13 +3631,13 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get phase_ketosis => 'cetosis';
 
   @override
-  String get phase_ketosisDesc => 'Producción de cetonas activa.';
+  String get phase_ketosisDesc => 'La producción de cetonas puede aumentar';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Renovación celular';
+  String get phase_autophagyDesc => 'Fase estimada de reciclaje celular';
 
   @override
   String get stats_title => 'Estadística';
@@ -3658,8 +3798,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get onboarding_welcome => 'Bienvenido';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Toma el control de tu\nviaje de ayuno intermitente';
+  String get onboarding_welcomeDesc => 'Toma el control de tu\nviaje de ayuno intermitente';
 
   @override
   String get onboarding_featureTimer => 'Temporizador de ayuno inteligente';
@@ -3668,8 +3807,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get onboarding_featureStats => 'Estadísticas y gráficos detallados';
 
   @override
-  String get onboarding_featureMeals =>
-      'Planificador de comidas y sugerencias de recetas.';
+  String get onboarding_featureMeals => 'Planificador de comidas y sugerencias de recetas.';
 
   @override
   String get onboarding_getStarted => 'Empezar';
@@ -3708,8 +3846,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get onboarding_goalLongevity => 'Longevidad';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Renovación celular y antienvejecimiento';
+  String get onboarding_goalLongevityDesc => 'Crea una rutina saludable a largo plazo';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplina';
@@ -3721,8 +3858,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get onboarding_selectPlan => 'Elige tu plan';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Selecciona el mejor plan de ayuno para ti';
+  String get onboarding_selectPlanDesc => 'Selecciona el mejor plan de ayuno para ti';
 
   @override
   String get onboarding_bodyInfo => 'Ingrese su información';
@@ -3731,27 +3867,16 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get onboarding_bodyInfoDesc => 'Para recomendaciones personalizadas';
 
   @override
-  String get onboarding_gender => 'Género';
-
-  @override
-  String get onboarding_male => 'Masculino';
-
-  @override
-  String get onboarding_female => 'Femenino';
-
-  @override
   String get onboarding_age => 'Edad';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Esta información se almacena únicamente en su dispositivo y se utiliza para cálculos de calorías.';
+  String get onboarding_bodyInfoDisclaimer => 'Esta información se almacena únicamente en su dispositivo y se utiliza para cálculos de calorías.';
 
   @override
   String get onboarding_permissions => 'Paso final';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Habilite permisos para la mejor experiencia';
+  String get onboarding_permissionsDesc => 'Habilite permisos para la mejor experiencia';
 
   @override
   String get onboarding_next => 'Continuar';
@@ -3778,8 +3903,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get paywall_title => 'Actualizar a Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Desbloquea todos los planes de ayuno y quita los anuncios';
+  String get paywall_subtitle => 'Desbloquea todos los planes de ayuno y quita los anuncios';
 
   @override
   String get paywall_allPlans => 'Todos los planes de ayuno';
@@ -3818,8 +3942,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get paywall_premiumActive => 'Premium Activo!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Todos los planes de ayuno están desbloqueados y los anuncios, desactivados';
+  String get paywall_premiumActiveDesc => 'Todos los planes de ayuno están desbloqueados y los anuncios, desactivados';
 
   @override
   String get water_title => 'Ingesta de agua';
@@ -3954,8 +4077,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get completion_earlyTitle => 'Ayuno finalizado';
 
   @override
-  String get completion_earlyMessage =>
-      'Se guardó el tiempo de hoy. La racha y el progreso de logros no cambiaron porque no se completó el objetivo.';
+  String get completion_earlyMessage => 'Se guardó el tiempo de hoy. La racha y el progreso de logros no cambiaron porque no se completó el objetivo.';
 
   @override
   String get timer_remainingTime => 'Tiempo restante';
@@ -3985,8 +4107,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get streak_incredible => '¡Increíble!';
 
   @override
-  String get weight_noRecord =>
-      'Aún no hay registros de peso\nAgregar desde perfil > Métricas corporales';
+  String get weight_noRecord => 'Aún no hay registros de peso\nAgregar desde perfil > Métricas corporales';
 
   @override
   String get day_mon => 'Lun';
@@ -4172,8 +4293,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get profile_calmGamification => 'Gamificación tranquila';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Reduce la presión de la liga y la temporada.';
+  String get profile_calmGamificationDesc => 'Reduce la presión de la temporada';
 
   @override
   String get profile_editName => 'Edita tu nombre';
@@ -4191,8 +4311,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get circle_tagline => 'Juntos, sin presiones.';
 
   @override
-  String get circle_privacy =>
-      'El peso y las métricas privadas permanecen ocultas. Sólo el progreso y el apoyo son visibles.';
+  String get circle_privacy => 'El peso y las métricas privadas permanecen ocultas. Sólo el progreso y el apoyo son visibles.';
 
   @override
   String circle_sendSupport(int count) {
@@ -4221,8 +4340,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get crisis_delayTitle => 'Retrasar la decisión durante 10 minutos.';
 
   @override
-  String get crisis_delayDesc =>
-      'Si no se siente bien, poner fin al ayuno no es un fracaso.';
+  String get crisis_delayDesc => 'Si no se siente bien, poner fin al ayuno no es un fracaso.';
 
   @override
   String get crisis_hunger => 'Hambre';
@@ -4237,8 +4355,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get crisis_tenMore => 'Dale 10 minutos';
 
   @override
-  String get stats_storyEmpty =>
-      'Tu primer ayuno comenzará tu historia personal.';
+  String get stats_storyEmpty => 'Tu primer ayuno comenzará tu historia personal.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -4284,8 +4401,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get weather_onPlan => 'El ritmo de hoy coincide con su plan.';
 
   @override
-  String get weather_challenging =>
-      'Esta hora antes era desafiante; El modo de soporte está listo.';
+  String get weather_challenging => 'Esta hora antes era desafiante; El modo de soporte está listo.';
 
   @override
   String get replay_copied => 'Repetición del ayuno copiada';
@@ -4310,8 +4426,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   }
 
   @override
-  String get phase_estimateShort =>
-      'El tiempo de fase es una estimación general, no una medición médica.';
+  String get phase_estimateShort => 'El tiempo de fase es una estimación general, no una medición médica.';
 
   @override
   String phase_hours(int start, int end) {
@@ -4319,8 +4434,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Este momento es una estimación general. Las respuestas metabólicas pueden variar entre personas.';
+  String get phase_estimateLong => 'Este momento es una estimación general. Las respuestas metabólicas pueden variar entre personas.';
 
   @override
   String get bmi_underweight => 'Bajo peso';
@@ -4352,7 +4466,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get notification_phaseKetosis => 'Estás en cetosis ⚡';
 
   @override
-  String get notification_phaseAutophagy => '¡Autofagia activa! 🔄';
+  String get notification_phaseAutophagy => 'Fase estimada de autofagia';
 
   @override
   String notification_completedBody(String plan) {
@@ -4363,15 +4477,13 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get notification_waterTitle => 'Bebe agua 💧';
 
   @override
-  String get notification_waterBody =>
-      '¡No olvides beber mucha agua mientras ayunas!';
+  String get notification_waterBody => '¡No olvides beber mucha agua mientras ayunas!';
 
   @override
   String get notification_windowTitle => 'Comer Ventana Cerrándose ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Su ventana para comer se cerrará en 30 minutos.';
+  String get notification_windowBody => 'Su ventana para comer se cerrará en 30 minutos.';
 
   @override
   String notification_streakTitle(int days) {
@@ -4379,8 +4491,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   }
 
   @override
-  String get notification_streakBody =>
-      '¡Lo estás haciendo genial! Sigue así hoy.';
+  String get notification_streakBody => '¡Lo estás haciendo genial! Sigue así hoy.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -4411,33 +4522,28 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get explore_guide => 'Guía de ayuno';
 
   @override
-  String get explore_guideDesc =>
-      'Todo lo que necesitas saber sobre el ayuno intermitente';
+  String get explore_guideDesc => 'Todo lo que necesitas saber sobre el ayuno intermitente';
 
   @override
-  String get explore_circleDesc =>
-      'Comparte apoyo silencioso con tu grupo privado.';
+  String get explore_circleDesc => 'Comparte apoyo silencioso con tu grupo privado.';
 
   @override
   String get explore_faq => 'Preguntas frecuentes';
 
   @override
-  String get explore_education =>
-      'Este contenido es solo para educación general y no es un diagnóstico médico ni un consejo de tratamiento.';
+  String get explore_education => 'Este contenido es solo para educación general y no es un diagnóstico médico ni un consejo de tratamiento.';
 
   @override
   String get explore_safety => 'Salud y seguridad';
 
   @override
-  String get explore_safetyDesc =>
-      'Si tiene una condición médica, toma medicamentos regularmente, tiene síntomas preocupantes, está embarazada o amamantando, consulte a un profesional de la salud calificado antes de ayunar. Deténgase si no se siente bien.';
+  String get explore_safetyDesc => 'Si tiene una condición médica, toma medicamentos regularmente, tiene síntomas preocupantes, está embarazada o amamantando, consulte a un profesional de la salud calificado antes de ayunar. Deténgase si no se siente bien.';
 
   @override
   String get explore_sources => 'Fuentes';
 
   @override
-  String get explore_sourcesDesc =>
-      'El contenido se simplifica a partir de las referencias de salud pública que aparecen a continuación.';
+  String get explore_sourcesDesc => 'El contenido se simplifica a partir de las referencias de salud pública que aparecen a continuación.';
 
   @override
   String get explore_sourceError => 'No se pudo abrir la fuente.';
@@ -4446,145 +4552,124 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get explore_rules => 'Reglas importantes';
 
   @override
-  String get explore_rule1 =>
-      'No consumir alimentos calóricos durante el ayuno';
+  String get explore_rule1 => 'No consumir alimentos calóricos durante el ayuno';
 
   @override
   String get explore_rule2 => 'Beba mucha agua y líquidos.';
 
   @override
-  String get explore_rule3 =>
-      'Coma equilibrado durante su período de alimentación';
+  String get explore_rule3 => 'Coma equilibrado durante su período de alimentación';
 
   @override
   String get explore_rule4 => 'Deja de ayunar si no te sientes bien';
 
   @override
-  String get explore_rule5 =>
-      'Las mujeres embarazadas o en período de lactancia no deben ayunar';
+  String get explore_rule5 => 'Las mujeres embarazadas o en período de lactancia no deben ayunar';
 
   @override
-  String get explore_rule6 =>
-      'Consulta a tu médico si tienes enfermedades crónicas.';
+  String get explore_rule6 => 'Consulta a tu médico si tienes enfermedades crónicas.';
 
   @override
   String get tip_water => 'Mantente hidratado';
 
   @override
-  String get tip_waterDesc =>
-      'Beba agua cuando tenga sed e incluya líquidos con las comidas. Las necesidades pueden variar según la salud, el clima y la actividad.';
+  String get tip_waterDesc => 'Beba agua cuando tenga sed e incluya líquidos con las comidas. Las necesidades pueden variar según la salud, el clima y la actividad.';
 
   @override
   String get tip_food => 'comer bien';
 
   @override
-  String get tip_foodDesc =>
-      'Durante las ventanas para comer, elija alimentos ricos en proteínas, con fibra y grasas saludables. Evite los alimentos procesados.';
+  String get tip_foodDesc => 'Durante las ventanas para comer, elija alimentos ricos en proteínas, con fibra y grasas saludables. Evite los alimentos procesados.';
 
   @override
   String get tip_sleep => 'Dormir bien';
 
   @override
-  String get tip_sleepDesc =>
-      'Dormir lo suficiente y con regularidad contribuye al bienestar general. Programe el ayuno para que no interrumpa su sueño.';
+  String get tip_sleepDesc => 'Dormir lo suficiente y con regularidad contribuye al bienestar general. Programe el ayuno para que no interrumpa su sueño.';
 
   @override
   String get tip_exercise => 'Ejercicio ligero';
 
   @override
-  String get tip_exerciseDesc =>
-      'Puedes hacer caminatas ligeras o yoga en ayunas. Evite el ejercicio intenso, especialmente durante las primeras semanas hasta que su cuerpo se adapte.';
+  String get tip_exerciseDesc => 'Puedes hacer caminatas ligeras o yoga en ayunas. Evite el ejercicio intenso, especialmente durante las primeras semanas hasta que su cuerpo se adapte.';
 
   @override
   String get tip_drinks => 'Bebidas permitidas';
 
   @override
-  String get tip_drinksDesc =>
-      'Durante el ayuno, puedes consumir agua, té natural y café negro (sin azúcar ni leche). Estas bebidas no romperán tu ayuno.';
+  String get tip_drinksDesc => 'Durante el ayuno, puedes consumir agua, té natural y café negro (sin azúcar ni leche). Estas bebidas no romperán tu ayuno.';
 
   @override
   String get faq_drinks => '¿Qué puedo beber durante el ayuno?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Puede beber agua, té simple y café negro (sin azúcar ni leche). Las bebidas calóricas rompen el ayuno.';
+  String get faq_drinksAnswer => 'Puede beber agua, té simple y café negro (sin azúcar ni leche). Las bebidas calóricas rompen el ayuno.';
 
   @override
   String get faq_plan => '¿Qué plan de ayuno debo elegir?';
 
   @override
-  String get faq_planAnswer =>
-      'Si eres nuevo, comienza con las 12:12 o 14:10. Si tiene experiencia, pruebe con 16:8 o 18:6. 20:4 y OMAD son para ayunadores avanzados.';
+  String get faq_planAnswer => 'Si eres nuevo, comienza con las 12:12 o 14:10. Si tiene experiencia, pruebe con 16:8 o 18:6. 20:4 y OMAD son para ayunadores avanzados.';
 
   @override
   String get faq_exercise => '¿Puedo hacer ejercicio en ayunas?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Sí, pero evita los entrenamientos intensos. Lo ideal son ejercicios cardiovasculares ligeros, caminar y yoga. Si levanta pesas, programe un horario cerca de su ventana para comer.';
+  String get faq_exerciseAnswer => 'Sí, pero evita los entrenamientos intensos. Lo ideal son ejercicios cardiovasculares ligeros, caminar y yoga. Si levanta pesas, programe un horario cerca de su ventana para comer.';
 
   @override
   String get faq_weight => '¿El ayuno ayuda a perder peso?';
 
   @override
-  String get faq_weightAnswer =>
-      'Para algunas personas, limitar el tiempo para comer puede reducir la ingesta total de energía. Los resultados varían y todavía se están estudiando los efectos a largo plazo.';
+  String get faq_weightAnswer => 'Para algunas personas, limitar el tiempo para comer puede reducir la ingesta total de energía. Los resultados varían y todavía se están estudiando los efectos a largo plazo.';
 
   @override
   String get plan_12_desc => 'Nivel principiante';
 
   @override
-  String get plan_12_detail =>
-      'Ideal para principiantes. Ayuno 12 horas incluyendo tu tiempo de sueño.';
+  String get plan_12_detail => 'Ideal para principiantes. Ayuno 12 horas incluyendo tu tiempo de sueño.';
 
   @override
   String get plan_16_desc => 'plan más popular';
 
   @override
-  String get plan_16_detail =>
-      'El plan IF más común. 16 horas de ayuno, 8 horas de ventana para comer. Generalmente desde el almuerzo hasta la cena.';
+  String get plan_16_detail => 'El plan IF más común. 16 horas de ayuno, 8 horas de ventana para comer. Generalmente desde el almuerzo hasta la cena.';
 
   @override
   String get plan_18_desc => 'nivel intermedio';
 
   @override
-  String get plan_18_detail =>
-      '18 horas de ayuno, 6 horas de ventana para comer. Mayor duración de la quema de grasas.';
+  String get plan_18_detail => '18 horas de ayuno, 6 horas de ventana para comer. Mayor duración de la quema de grasas.';
 
   @override
   String get plan_20_desc => 'nivel avanzado';
 
   @override
-  String get plan_20_detail =>
-      '20 horas de ayuno, 4 horas de ventana para comer. Ideal para alcanzar cetosis y autofagia.';
+  String get plan_20_detail => '20 horas de ayuno y 4 horas para comer. Para personas con experiencia en el ayuno.';
 
   @override
   String get plan_omad_desc => 'Una comida al dia';
 
   @override
-  String get plan_omad_detail =>
-      'Una comida al día. 23 horas de ayuno, 1 hora de ventana para comer. Nivel experto.';
+  String get plan_omad_detail => 'Una comida al día. 23 horas de ayuno, 1 hora de ventana para comer. Nivel experto.';
 
   @override
   String get plan_52_desc => '2 días por semana';
 
   @override
-  String get plan_52_detail =>
-      'Coma normalmente durante 5 días, sólo ~500 calorías en 2 días. Un enfoque alternativo.';
+  String get plan_52_detail => 'Coma normalmente durante 5 días, sólo ~500 calorías en 2 días. Un enfoque alternativo.';
 
   @override
   String get plan_ese_desc => 'ayuno de 24 horas';
 
   @override
-  String get plan_ese_detail =>
-      'Ayune durante 24 horas 1 o 2 veces por semana. Para usuarios avanzados.';
+  String get plan_ese_detail => 'Ayune durante 24 horas 1 o 2 veces por semana. Para usuarios avanzados.';
 
   @override
   String get plan_warrior_desc => 'Dieta del guerrero';
 
   @override
-  String get plan_warrior_detail =>
-      'Coma ligero durante el día (frutas, verduras), tome su comida principal en un período de 4 horas por la noche.';
+  String get plan_warrior_detail => 'Coma ligero durante el día (frutas, verduras), tome su comida principal en un período de 4 horas por la noche.';
 
   @override
   String get award_first_title => 'Primer paso';
@@ -4736,16 +4821,7 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Obtenido cada siete completaciones. Un día perdido nunca borra tu progreso.';
-
-  @override
-  String get game_league => 'Liga semanal privada';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Su puntuación de ritmo está en el percentil $percent de un modelo local privado. El peso y el ayuno extremo nunca se clasifican.';
-  }
+  String get game_shieldsDesc => 'Obtenido cada siete completaciones. Un día perdido nunca borra tu progreso.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -4889,15 +4965,13 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get paywall_continue => 'Continuar';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Las compras no están disponibles ahora. Inténtalo de nuevo más tarde.';
+  String get paywall_productsUnavailable => 'Las compras no están disponibles ahora. Inténtalo de nuevo más tarde.';
 
   @override
   String get paywall_purchaseFailed => 'No se pudo completar la compra.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'No se encontró ninguna compra anterior.';
+  String get paywall_nothingToRestore => 'No se encontró ninguna compra anterior.';
 
   @override
   String get paywall_restoreFailed => 'No se pudieron restaurar las compras.';
@@ -4906,15 +4980,13 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get paywall_terms => 'Términos de uso';
 
   @override
-  String get permission_notificationDesc =>
-      'Recordatorios de ayuno, cambios de fase y avisos de finalización';
+  String get permission_notificationDesc => 'Recordatorios de ayuno, cambios de fase y avisos de finalización';
 
   @override
   String get profile_privacyChoices => 'Opciones de privacidad';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del fin del periodo. Gestiónalas en los ajustes de la App Store.';
+  String get paywall_autoRenewInfo => 'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del fin del periodo. Gestiónalas en los ajustes de la App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -4938,28 +5010,22 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get paywall_retry => 'Reintentar';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Ya tienes esta suscripción. Toca «Restaurar compras».';
+  String get paywall_alreadyOwned => 'Ya tienes esta suscripción. Toca «Restaurar compras».';
 
   @override
-  String get paywall_storeUnavailable =>
-      'No se puede conectar con la tienda. Comprueba tu conexión e inténtalo de nuevo.';
+  String get paywall_storeUnavailable => 'No se puede conectar con la tienda. Comprueba tu conexión e inténtalo de nuevo.';
 
   @override
-  String get paywall_secureNote =>
-      'Cancela cuando quieras. El pago se carga a tu cuenta de la tienda.';
+  String get paywall_secureNote => 'Cancela cuando quieras. El pago se carga a tu cuenta de la tienda.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del final del periodo. Gestiónalas o cancélalas cuando quieras en Google Play > Suscripciones.';
+  String get paywall_autoRenewInfoPlay => 'Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del final del periodo. Gestiónalas o cancélalas cuando quieras en Google Play > Suscripciones.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Desbloquea 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat y Warrior';
+  String get paywall_allPlansDesc => 'Desbloquea 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat y Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Los anuncios de banner e intersticiales se desactivan por completo';
+  String get paywall_noAdsDesc => 'Los anuncios de banner e intersticiales se desactivan por completo';
 
   @override
   String get foodScan_title => 'Análisis de comida con IA';
@@ -4968,26 +5034,22 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get foodScan_scanCta => 'Escanear comida';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Fotografía tu plato y obtén calorías y macros';
+  String get foodScan_scanCtaDesc => 'Fotografía tu plato y obtén calorías y macros';
 
   @override
   String get foodScan_introTitle => 'Fotografía tu plato';
 
   @override
-  String get foodScan_introDesc =>
-      'La IA lee la foto y estima calorías, proteínas, carbohidratos y grasas.';
+  String get foodScan_introDesc => 'La IA lee la foto y estima calorías, proteínas, carbohidratos y grasas.';
 
   @override
-  String get foodScan_tipLight =>
-      'Una luz buena y uniforme mejora la estimación';
+  String get foodScan_tipLight => 'Una luz buena y uniforme mejora la estimación';
 
   @override
   String get foodScan_tipFrame => 'Encuadra el plato completo';
 
   @override
-  String get foodScan_tipScale =>
-      'Incluye cubiertos o una mano para calcular la porción';
+  String get foodScan_tipScale => 'Incluye cubiertos o una mano para calcular la porción';
 
   @override
   String get foodScan_takePhoto => 'Tomar foto';
@@ -5001,19 +5063,16 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Has usado los escaneos de hoy. Inténtalo mañana.';
+  String get foodScan_quotaReached => 'Has usado los escaneos de hoy. Inténtalo mañana.';
 
   @override
-  String get foodScan_privacyNote =>
-      'La foto se envía a la API Gemini de Google para su análisis y no se almacena en nuestros servidores.';
+  String get foodScan_privacyNote => 'La foto se envía a la API Gemini de Google. Google puede usarla para mejorar sus productos y pueden verla revisores humanos. No la guardamos en nuestros servidores.';
 
   @override
   String get foodScan_consentTitle => '¿Enviar fotos a Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'Para estimar calorías y macronutrientes, cada foto de comida que tomes o elijas se envía al servicio de IA Gemini de Google. La foto solo se usa para este análisis y no se guarda en nuestros servidores.';
+  String get foodScan_consentBody => 'Para estimar calorías y macros, cada foto de comida que hagas o elijas se envía al servicio de IA Gemini de Google. Google puede usar las fotos para mejorar sus productos y pueden verlas revisores humanos, así que deja fuera del encuadre personas, documentos y otros datos personales. No guardamos las fotos en nuestros servidores.';
 
   @override
   String get foodScan_consentAgree => 'Aceptar y continuar';
@@ -5028,12 +5087,10 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get foodScan_detectedItems => 'Alimentos detectados';
 
   @override
-  String get foodScan_disclaimer =>
-      'Las estimaciones de la IA son aproximadas. Toca un elemento para corregirlo.';
+  String get foodScan_disclaimer => 'Las estimaciones de la IA son aproximadas. Toca un elemento para corregirlo.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'El modelo no está seguro con esta foto. Revisa los valores antes de guardar.';
+  String get foodScan_lowConfidence => 'El modelo no está seguro con esta foto. Revisa los valores antes de guardar.';
 
   @override
   String get foodScan_save => 'Añadir a comidas';
@@ -5057,40 +5114,130 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
   String get foodScan_premiumTitle => 'Función Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'El análisis de calorías por foto está incluido en Premium.';
+  String get foodScan_premiumDesc => 'El análisis de calorías por foto está incluido en Premium.';
 
   @override
   String get foodScan_upgrade => 'Ver Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Sin conexión. Revisa tu internet e inténtalo de nuevo.';
+  String get foodScan_errorNetwork => 'Sin conexión. Revisa tu internet e inténtalo de nuevo.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Demasiados escaneos ahora mismo. Inténtalo en unos minutos.';
+  String get foodScan_errorRateLimited => 'Demasiados escaneos ahora mismo. Inténtalo en unos minutos.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'El análisis de fotos no está disponible ahora.';
+  String get foodScan_errorUnavailable => 'El análisis de fotos no está disponible ahora.';
 
   @override
-  String get foodScan_errorServer =>
-      'El servicio de análisis tiene problemas. Inténtalo en breve.';
+  String get foodScan_errorServer => 'El servicio de análisis tiene problemas. Inténtalo en breve.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'No se encontró comida en esta foto. Prueba con una toma más clara del plato.';
+  String get foodScan_errorNoFood => 'No se encontró comida en esta foto. Prueba con una toma más clara del plato.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'No se pudo analizar esta foto. Prueba con otra.';
+  String get foodScan_errorUnreadable => 'No se pudo analizar esta foto. Prueba con otra.';
 
   @override
   String get paywall_aiFoodScan => 'Escáner de comida con IA';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Fotografía una comida y registra sus calorías y macros en segundos';
+  String get paywall_aiFoodScanDesc => 'Fotografía una comida y registra sus calorías y macros en segundos';
+
+  @override
+  String get safety_title => 'Antes de empezar';
+
+  @override
+  String get safety_desc => 'El ayuno no es seguro para todas las personas. Selecciona todo lo que se aplique a ti.';
+
+  @override
+  String get safety_under18 => 'Soy menor de 18 años';
+
+  @override
+  String get safety_pregnant => 'Estoy embarazada o en período de lactancia';
+
+  @override
+  String get safety_eatingDisorder => 'Tengo o he tenido un trastorno alimentario';
+
+  @override
+  String get safety_underweight => 'Tengo bajo peso o me han dicho que no adelgace';
+
+  @override
+  String get safety_diabetes => 'Tengo diabetes o tomo medicación que afecta al azúcar en sangre';
+
+  @override
+  String get safety_medical => 'Tengo otra afección médica o tomo medicación habitual';
+
+  @override
+  String get safety_none => 'Nada de esto se aplica a mí';
+
+  @override
+  String get safety_ack => 'Hablaré con mi médico antes de ayunar';
+
+  @override
+  String get safety_blockedTitle => 'Esta app no es segura para ti';
+
+  @override
+  String get safety_blockedDesc => 'Según tus respuestas, no podemos ofrecerte ayuno aquí. Habla con un médico. Si comer te resulta difícil ahora, un profesional sanitario puede ayudarte.';
+
+  @override
+  String get safety_reviewAnswers => 'Revisar mis respuestas';
+
+  @override
+  String get safety_targetTooLow => 'Ese objetivo está por debajo de un peso saludable para tu altura.';
+
+  @override
+  String get onboarding_invalidBody => 'Introduce una altura, un peso, un peso objetivo y una edad válidos.';
+
+  @override
+  String get crisis_unwell => 'Me encuentro mal';
+
+  @override
+  String get crisis_unwellTitle => 'Termina tu ayuno ahora';
+
+  @override
+  String get crisis_unwellDesc => 'Los mareos, temblores, la confusión o las palpitaciones son señales para dejar de ayunar y comer o beber algo.';
+
+  @override
+  String get crisis_emergency => 'Si te has desmayado, tienes dolor en el pecho o te encuentras muy mal, llama ahora al número de emergencias local.';
+
+  @override
+  String get crisis_endFast => 'Terminar mi ayuno';
+
+  @override
+  String get profile_deleteData => 'Eliminar todos mis datos';
+
+  @override
+  String get profile_deleteDataConfirm => 'Esto elimina de forma permanente tus ayunos, peso, comidas, agua y ajustes de este dispositivo. No se puede deshacer. Las suscripciones se gestionan en tu cuenta de la tienda.';
+
+  @override
+  String get profile_deleteDataAction => 'Eliminar todo';
+
+  @override
+  String get record_deleteConfirm => '¿Eliminar este registro?';
+
+  @override
+  String get profile_analytics => 'Compartir datos de uso anónimos';
+
+  @override
+  String get profile_analyticsDesc => 'Ayuda a mejorar la app. Nunca incluye peso, comidas ni datos de salud.';
+
+  @override
+  String get plan_longWarningTitle => 'Este es un ayuno largo';
+
+  @override
+  String get plan_longWarningDesc => 'Los ayunos de 20 horas o más no son adecuados para todas las personas y pueden hacer que te encuentres mal. Consulta a un médico si tienes dudas y termina el ayuno si te encuentras mal.';
+
+  @override
+  String get plan_longWarningAccept => 'Lo entiendo';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days días de prueba gratis, luego $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Sin ayuno';
+
+  @override
+  String get widget_tapToStart => 'Toca para empezar';
 }

@@ -6,18 +6,40 @@ import 'water_provider.dart';
 class FastingSessionNotifier
     extends StateNotifier<AsyncValue<List<FastingSession>>> {
   final AppDatabase _db;
+  int _loadRevision = 0;
 
-  FastingSessionNotifier(this._db) : super(const AsyncValue.loading()) {
+  FastingSessionNotifier(this._db, {void Function()? onDeleted})
+    : _onDeleted = onDeleted,
+      super(const AsyncValue.loading()) {
     loadSessions();
   }
 
+  final void Function()? _onDeleted;
+
   Future<void> loadSessions() async {
+    if (!mounted) return;
+    final revision = ++_loadRevision;
     try {
       final sessions = await _db.getAllSessions();
-      state = AsyncValue.data(sessions);
+      if (mounted && revision == _loadRevision) {
+        state = AsyncValue.data(sessions);
+      }
     } catch (e, st) {
-      state = AsyncValue.error(e, st);
+      if (mounted && revision == _loadRevision) {
+        state = AsyncValue.error(e, st);
+      }
     }
+  }
+
+  Future<bool> deleteSession(int id) async {
+    if (!mounted) return false;
+    final deleted = await _db.deleteFinishedSession(id);
+    if (deleted == 0) return false;
+    if (mounted) {
+      _onDeleted?.call();
+      await loadSessions();
+    }
+    return true;
   }
 
   Future<List<FastingSession>> getSessionsForWeek() async {
@@ -28,12 +50,14 @@ class FastingSessionNotifier
   }
 
   int getStreak(List<FastingSession> sessions) {
-    return currentFastingStreak(
-      sessions.where((s) => s.completed).map((s) => s.startTime),
+    return fastingStreakFor(
+      sessions.where((s) => s.completed),
       DateTime.now(),
-    );
+    ).$1;
   }
 }
+
+final fastingHistoryRevisionProvider = StateProvider<int>((ref) => 0);
 
 final fastingSessionProvider =
     StateNotifierProvider<
@@ -41,17 +65,21 @@ final fastingSessionProvider =
       AsyncValue<List<FastingSession>>
     >((ref) {
       final db = ref.watch(databaseProvider);
-      return FastingSessionNotifier(db);
+      return FastingSessionNotifier(
+        db,
+        onDeleted: () =>
+            ref.read(fastingHistoryRevisionProvider.notifier).state++,
+      );
     });
 
 final streakProvider = Provider<int>((ref) {
   final sessionsAsync = ref.watch(fastingSessionProvider);
   return sessionsAsync.when(
     data: (sessions) {
-      return currentFastingStreak(
-        sessions.where((s) => s.completed).map((s) => s.startTime),
+      return fastingStreakFor(
+        sessions.where((s) => s.completed),
         DateTime.now(),
-      );
+      ).$1;
     },
     loading: () => 0,
     error: (_, __) => 0,

@@ -9,6 +9,66 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'شوفان بالفواكه';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'زبادي بالتوت الأزرق';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'توست بالبيض والأفوكادو';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'وعاء كينوا بالدجاج';
+
+  @override
+  String get mealPreset_lentilSoup => 'شوربة العدس';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'سلمون وبروكلي';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'لفافة ديك رومي بالخضار';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'وعاء حبّات حمص بالطحينة';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'سلطة تونة وفاصوليا';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'جبن قريش بالتفاح';
+
+  @override
+  String get mealPreset_hummusVegetables => 'حمص مهروس وخضار مقرمشة';
+
+  @override
+  String get mealPreset_bananaKefir => 'وعاء موز بالكفير';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count خطوة إلى الختم',
+      many: '$count خطوة إلى الختم',
+      few: '$count خطوات إلى الختم',
+      two: 'خطوتان إلى الختم',
+      zero: 'لا خطوات متبقية إلى الختم',
+      one: 'خطوة واحدة إلى الختم',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError => 'تعذّر حذف السجل.';
+
+  @override
+  String get fastingHistory_title => 'سجل الصيام';
+
+  @override
+  String get fastingHistory_deleteWarning => 'سيُحذف هذا السجل نهائيًا.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -63,8 +123,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get timer_selectPlan => 'اختر خطة الصيام';
 
   @override
-  String get timer_stopConfirm =>
-      'هل أنت متأكد من رغبتك في إنهاء الصيام مبكرًا؟';
+  String get timer_stopConfirm => 'هل أنت متأكد من رغبتك في إنهاء الصيام مبكرًا؟';
 
   @override
   String get timer_stopTitle => 'إنهاء الصيام';
@@ -97,13 +156,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get phase_ketosis => 'الكيتوزية';
 
   @override
-  String get phase_ketosisDesc => 'إنتاج الكيتونات نشط';
+  String get phase_ketosisDesc => 'قد يزداد إنتاج الكيتونات';
 
   @override
   String get phase_autophagy => 'الالتهام الذاتي';
 
   @override
-  String get phase_autophagyDesc => 'تجدد الخلايا';
+  String get phase_autophagyDesc => 'مرحلة تقديرية لإعادة تدوير الخلايا';
 
   @override
   String get stats_title => 'الإحصاءات';
@@ -312,7 +371,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboarding_goalLongevity => 'طول العمر';
 
   @override
-  String get onboarding_goalLongevityDesc => 'تجدد الخلايا والشيخوخة الصحية';
+  String get onboarding_goalLongevityDesc => 'ابنِ روتينًا صحيًا طويل الأمد';
 
   @override
   String get onboarding_goalDiscipline => 'الانضباط';
@@ -333,20 +392,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'للحصول على توصيات مخصصة';
 
   @override
-  String get onboarding_gender => 'الجنس';
-
-  @override
-  String get onboarding_male => 'ذكر';
-
-  @override
-  String get onboarding_female => 'أنثى';
-
-  @override
   String get onboarding_age => 'العمر';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'تُحفظ هذه المعلومات على جهازك فقط وتُستخدم لحساب السعرات الحرارية.';
+  String get onboarding_bodyInfoDisclaimer => 'تُحفظ هذه المعلومات على جهازك فقط وتُستخدم لحساب السعرات الحرارية.';
 
   @override
   String get onboarding_permissions => 'الخطوة الأخيرة';
@@ -418,8 +467,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paywall_premiumActive => 'Premium نشط!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'تم فتح جميع خطط الصيام وإيقاف الإعلانات';
+  String get paywall_premiumActiveDesc => 'تم فتح جميع خطط الصيام وإيقاف الإعلانات';
 
   @override
   String get water_title => 'كمية الماء';
@@ -554,8 +602,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get completion_earlyTitle => 'انتهى الصيام';
 
   @override
-  String get completion_earlyMessage =>
-      'تم حفظ مدة اليوم. لم تتغير السلسلة أو الإنجازات لأن الهدف لم يكتمل.';
+  String get completion_earlyMessage => 'تم حفظ مدة اليوم. لم تتغير السلسلة أو الإنجازات لأن الهدف لم يكتمل.';
 
   @override
   String get timer_remainingTime => 'الوقت المتبقي';
@@ -585,8 +632,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get streak_incredible => 'مذهل!';
 
   @override
-  String get weight_noRecord =>
-      'لا توجد سجلات وزن بعد\nأضفها من الملف الشخصي > قياسات الجسم';
+  String get weight_noRecord => 'لا توجد سجلات وزن بعد\nأضفها من الملف الشخصي > قياسات الجسم';
 
   @override
   String get day_mon => 'الاثنين';
@@ -772,7 +818,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profile_calmGamification => 'تحفيز هادئ';
 
   @override
-  String get profile_calmGamificationDesc => 'يقلل ضغط الدوري والموسم';
+  String get profile_calmGamificationDesc => 'يقلل ضغط الموسم';
 
   @override
   String get profile_editName => 'تعديل اسمك';
@@ -790,8 +836,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get circle_tagline => 'معًا، بلا ضغط.';
 
   @override
-  String get circle_privacy =>
-      'يظل الوزن والقياسات الخاصة مخفية. يظهر التقدم والدعم فقط.';
+  String get circle_privacy => 'يظل الوزن والقياسات الخاصة مخفية. يظهر التقدم والدعم فقط.';
 
   @override
   String circle_sendSupport(int count) {
@@ -881,8 +926,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get weather_onPlan => 'وتيرة اليوم توافق خطتك.';
 
   @override
-  String get weather_challenging =>
-      'كانت هذه الساعة صعبة سابقًا؛ وضع الدعم جاهز.';
+  String get weather_challenging => 'كانت هذه الساعة صعبة سابقًا؛ وضع الدعم جاهز.';
 
   @override
   String get replay_copied => 'تم نسخ ملخص الصيام';
@@ -907,8 +951,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'توقيت المرحلة تقدير عام وليس قياسًا طبيًا.';
+  String get phase_estimateShort => 'توقيت المرحلة تقدير عام وليس قياسًا طبيًا.';
 
   @override
   String phase_hours(int start, int end) {
@@ -916,8 +959,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'هذا التوقيت تقدير عام. قد تختلف استجابات الأيض بين الأشخاص.';
+  String get phase_estimateLong => 'هذا التوقيت تقدير عام. قد تختلف استجابات الأيض بين الأشخاص.';
 
   @override
   String get bmi_underweight => 'نقص الوزن';
@@ -949,7 +991,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notification_phaseKetosis => 'أنت في حالة الكيتوزية ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'الالتهام الذاتي نشط! 🔄';
+  String get notification_phaseAutophagy => 'مرحلة الالتهام الذاتي التقديرية';
 
   @override
   String notification_completedBody(String plan) {
@@ -960,8 +1002,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notification_waterTitle => 'اشرب الماء 💧';
 
   @override
-  String get notification_waterBody =>
-      'لا تنس شرب كمية كافية من الماء أثناء الصيام!';
+  String get notification_waterBody => 'لا تنس شرب كمية كافية من الماء أثناء الصيام!';
 
   @override
   String get notification_windowTitle => 'نافذة الأكل توشك على الإغلاق ⏰';
@@ -1015,15 +1056,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get explore_faq => 'الأسئلة الشائعة';
 
   @override
-  String get explore_education =>
-      'هذا المحتوى للتثقيف العام فقط وليس تشخيصًا طبيًا أو نصيحة علاجية.';
+  String get explore_education => 'هذا المحتوى للتثقيف العام فقط وليس تشخيصًا طبيًا أو نصيحة علاجية.';
 
   @override
   String get explore_safety => 'الصحة والسلامة';
 
   @override
-  String get explore_safetyDesc =>
-      'إذا كنت تعاني حالة طبية أو تتناول دواءً بانتظام أو لديك أعراض مقلقة أو كنتِ حاملًا أو مرضعة، فاستشر مختصًا صحيًا مؤهلًا قبل الصيام. توقف إذا شعرت بتوعك.';
+  String get explore_safetyDesc => 'إذا كنت تعاني حالة طبية أو تتناول دواءً بانتظام أو لديك أعراض مقلقة أو كنتِ حاملًا أو مرضعة، فاستشر مختصًا صحيًا مؤهلًا قبل الصيام. توقف إذا شعرت بتوعك.';
 
   @override
   String get explore_sources => 'المصادر';
@@ -1059,64 +1098,55 @@ class AppLocalizationsAr extends AppLocalizations {
   String get tip_water => 'حافظ على الترطيب';
 
   @override
-  String get tip_waterDesc =>
-      'اشرب الماء عند العطش وتناول السوائل مع الوجبات. تختلف الحاجة حسب الصحة والطقس والنشاط.';
+  String get tip_waterDesc => 'اشرب الماء عند العطش وتناول السوائل مع الوجبات. تختلف الحاجة حسب الصحة والطقس والنشاط.';
 
   @override
   String get tip_food => 'تناول طعامًا صحيًا';
 
   @override
-  String get tip_foodDesc =>
-      'اختر في نوافذ الأكل أطعمة غنية بالبروتين والألياف والدهون الصحية. تجنب الأطعمة المصنعة.';
+  String get tip_foodDesc => 'اختر في نوافذ الأكل أطعمة غنية بالبروتين والألياف والدهون الصحية. تجنب الأطعمة المصنعة.';
 
   @override
   String get tip_sleep => 'نم جيدًا';
 
   @override
-  String get tip_sleepDesc =>
-      'يدعم النوم المنتظم والكافي الصحة العامة. نظّم الصيام بحيث لا يعطل نومك.';
+  String get tip_sleepDesc => 'يدعم النوم المنتظم والكافي الصحة العامة. نظّم الصيام بحيث لا يعطل نومك.';
 
   @override
   String get tip_exercise => 'تمارين خفيفة';
 
   @override
-  String get tip_exerciseDesc =>
-      'يمكنك المشي الخفيف أو ممارسة اليوغا أثناء الصيام. تجنب التمارين الشديدة، خصوصًا في الأسابيع الأولى حتى يتكيف جسمك.';
+  String get tip_exerciseDesc => 'يمكنك المشي الخفيف أو ممارسة اليوغا أثناء الصيام. تجنب التمارين الشديدة، خصوصًا في الأسابيع الأولى حتى يتكيف جسمك.';
 
   @override
   String get tip_drinks => 'المشروبات المسموحة';
 
   @override
-  String get tip_drinksDesc =>
-      'أثناء الصيام يمكنك شرب الماء والشاي السادة والقهوة السوداء (من دون سكر أو حليب). لن تقطع هذه المشروبات صيامك.';
+  String get tip_drinksDesc => 'أثناء الصيام يمكنك شرب الماء والشاي السادة والقهوة السوداء (من دون سكر أو حليب). لن تقطع هذه المشروبات صيامك.';
 
   @override
   String get faq_drinks => 'ماذا يمكنني أن أشرب أثناء الصيام؟';
 
   @override
-  String get faq_drinksAnswer =>
-      'يمكنك شرب الماء والشاي السادة والقهوة السوداء (من دون سكر أو حليب). المشروبات ذات السعرات تقطع الصيام.';
+  String get faq_drinksAnswer => 'يمكنك شرب الماء والشاي السادة والقهوة السوداء (من دون سكر أو حليب). المشروبات ذات السعرات تقطع الصيام.';
 
   @override
   String get faq_plan => 'أي خطة صيام أختار؟';
 
   @override
-  String get faq_planAnswer =>
-      'إن كنت مبتدئًا فابدأ بـ12:12 أو 14:10. وإن كنت متمرسًا فجرب 16:8 أو 18:6. خطتا 20:4 وOMAD للمتقدمين.';
+  String get faq_planAnswer => 'إن كنت مبتدئًا فابدأ بـ12:12 أو 14:10. وإن كنت متمرسًا فجرب 16:8 أو 18:6. خطتا 20:4 وOMAD للمتقدمين.';
 
   @override
   String get faq_exercise => 'هل يمكنني ممارسة الرياضة أثناء الصيام؟';
 
   @override
-  String get faq_exerciseAnswer =>
-      'نعم، لكن تجنب التمارين الشديدة. المشي والكارديو الخفيف واليوغا مناسبة. اجعل تمارين الأوزان قرب نافذة الأكل.';
+  String get faq_exerciseAnswer => 'نعم، لكن تجنب التمارين الشديدة. المشي والكارديو الخفيف واليوغا مناسبة. اجعل تمارين الأوزان قرب نافذة الأكل.';
 
   @override
   String get faq_weight => 'هل يساعد الصيام على خسارة الوزن؟';
 
   @override
-  String get faq_weightAnswer =>
-      'قد يقلل تقييد وقت الأكل إجمالي الطاقة المتناولة لدى بعض الأشخاص. تختلف النتائج وما زالت الآثار طويلة المدى قيد الدراسة.';
+  String get faq_weightAnswer => 'قد يقلل تقييد وقت الأكل إجمالي الطاقة المتناولة لدى بعض الأشخاص. تختلف النتائج وما زالت الآثار طويلة المدى قيد الدراسة.';
 
   @override
   String get plan_12_desc => 'مستوى مبتدئ';
@@ -1128,50 +1158,43 @@ class AppLocalizationsAr extends AppLocalizations {
   String get plan_16_desc => 'الخطة الأكثر شيوعًا';
 
   @override
-  String get plan_16_detail =>
-      'خطة الصيام المتقطع الأشهر. 16 ساعة صيام و8 ساعات أكل، عادة من الغداء إلى العشاء.';
+  String get plan_16_detail => 'خطة الصيام المتقطع الأشهر. 16 ساعة صيام و8 ساعات أكل، عادة من الغداء إلى العشاء.';
 
   @override
   String get plan_18_desc => 'مستوى متوسط';
 
   @override
-  String get plan_18_detail =>
-      '18 ساعة صيام و6 ساعات أكل. مدة أطول لحرق الدهون.';
+  String get plan_18_detail => '18 ساعة صيام و6 ساعات أكل. مدة أطول لحرق الدهون.';
 
   @override
   String get plan_20_desc => 'مستوى متقدم';
 
   @override
-  String get plan_20_detail =>
-      '20 ساعة صيام و4 ساعات أكل. مناسبة للوصول إلى الكيتوزية والالتهام الذاتي.';
+  String get plan_20_detail => 'صيام 20 ساعة و4 ساعات للأكل. لأصحاب الخبرة في الصيام.';
 
   @override
   String get plan_omad_desc => 'وجبة واحدة يوميًا';
 
   @override
-  String get plan_omad_detail =>
-      'وجبة واحدة يوميًا. 23 ساعة صيام وساعة واحدة للأكل. مستوى خبير.';
+  String get plan_omad_detail => 'وجبة واحدة يوميًا. 23 ساعة صيام وساعة واحدة للأكل. مستوى خبير.';
 
   @override
   String get plan_52_desc => 'يومان في الأسبوع';
 
   @override
-  String get plan_52_detail =>
-      'كُل بصورة طبيعية 5 أيام، ونحو 500 سعرة فقط في يومين. نهج بديل.';
+  String get plan_52_detail => 'كُل بصورة طبيعية 5 أيام، ونحو 500 سعرة فقط في يومين. نهج بديل.';
 
   @override
   String get plan_ese_desc => 'صيام 24 ساعة';
 
   @override
-  String get plan_ese_detail =>
-      'صم 24 ساعة مرة أو مرتين أسبوعيًا. للمستخدمين المتقدمين.';
+  String get plan_ese_detail => 'صم 24 ساعة مرة أو مرتين أسبوعيًا. للمستخدمين المتقدمين.';
 
   @override
   String get plan_warrior_desc => 'حمية المحارب';
 
   @override
-  String get plan_warrior_detail =>
-      'تناول طعامًا خفيفًا نهارًا (فواكه وخضار)، واجعل وجبتك الرئيسية ضمن نافذة مسائية مدتها 4 ساعات.';
+  String get plan_warrior_detail => 'تناول طعامًا خفيفًا نهارًا (فواكه وخضار)، واجعل وجبتك الرئيسية ضمن نافذة مسائية مدتها 4 ساعات.';
 
   @override
   String get award_first_title => 'الخطوة الأولى';
@@ -1323,16 +1346,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'تُكتسب كل سبع عمليات إكمال. لا يمحو يوم فائت تقدمك أبدًا.';
-
-  @override
-  String get game_league => 'دوري أسبوعي خاص';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'درجة إيقاعك في المئين $percent ضمن نموذج محلي خاص. لا يُصنف الوزن أو الصيام المفرط أبدًا.';
-  }
+  String get game_shieldsDesc => 'تُكتسب كل سبع عمليات إكمال. لا يمحو يوم فائت تقدمك أبدًا.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1476,8 +1490,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paywall_continue => 'متابعة';
 
   @override
-  String get paywall_productsUnavailable =>
-      'المشتريات غير متاحة الآن. حاول لاحقًا.';
+  String get paywall_productsUnavailable => 'المشتريات غير متاحة الآن. حاول لاحقًا.';
 
   @override
   String get paywall_purchaseFailed => 'تعذر إكمال عملية الشراء.';
@@ -1492,15 +1505,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paywall_terms => 'شروط الاستخدام';
 
   @override
-  String get permission_notificationDesc =>
-      'تذكيرات الصيام وتحديثات المراحل وإشعارات الإكمال';
+  String get permission_notificationDesc => 'تذكيرات الصيام وتحديثات المراحل وإشعارات الإكمال';
 
   @override
   String get profile_privacyChoices => 'خيارات الخصوصية';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'تتجدد الاشتراكات تلقائيًا ما لم تُلغَ قبل نهاية الفترة بـ24 ساعة على الأقل. يمكنك إدارتها أو إلغاؤها في إعدادات App Store.';
+  String get paywall_autoRenewInfo => 'تتجدد الاشتراكات تلقائيًا ما لم تُلغَ قبل نهاية الفترة بـ24 ساعة على الأقل. يمكنك إدارتها أو إلغاؤها في إعدادات App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1524,28 +1535,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paywall_retry => 'إعادة المحاولة';
 
   @override
-  String get paywall_alreadyOwned =>
-      'أنت تملك هذا الاشتراك بالفعل. اضغط «استعادة المشتريات».';
+  String get paywall_alreadyOwned => 'أنت تملك هذا الاشتراك بالفعل. اضغط «استعادة المشتريات».';
 
   @override
-  String get paywall_storeUnavailable =>
-      'يتعذر الوصول إلى المتجر الآن. تحقق من اتصالك وحاول مجددًا.';
+  String get paywall_storeUnavailable => 'يتعذر الوصول إلى المتجر الآن. تحقق من اتصالك وحاول مجددًا.';
 
   @override
-  String get paywall_secureNote =>
-      'يمكنك الإلغاء في أي وقت. تُحمّل الدفعة على حساب المتجر.';
+  String get paywall_secureNote => 'يمكنك الإلغاء في أي وقت. تُحمّل الدفعة على حساب المتجر.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'تتجدد الاشتراكات تلقائيًا ما لم تُلغَ قبل نهاية الفترة بـ24 ساعة على الأقل. يمكنك إدارتها أو إلغاؤها في Google Play > الاشتراكات.';
+  String get paywall_autoRenewInfoPlay => 'تتجدد الاشتراكات تلقائيًا ما لم تُلغَ قبل نهاية الفترة بـ24 ساعة على الأقل. يمكنك إدارتها أو إلغاؤها في Google Play > الاشتراكات.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'يفتح 18:6 و20:4 وOMAD و5:2 وEat-Stop-Eat وWarrior';
+  String get paywall_allPlansDesc => 'يفتح 18:6 و20:4 وOMAD و5:2 وEat-Stop-Eat وWarrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'تُوقف إعلانات البانر والإعلانات البينية تمامًا';
+  String get paywall_noAdsDesc => 'تُوقف إعلانات البانر والإعلانات البينية تمامًا';
 
   @override
   String get foodScan_title => 'مسح الطعام بالذكاء الاصطناعي';
@@ -1554,15 +1559,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get foodScan_scanCta => 'مسح الوجبة';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'صوّر طبقك واحصل على السعرات والمغذيات الكبرى';
+  String get foodScan_scanCtaDesc => 'صوّر طبقك واحصل على السعرات والمغذيات الكبرى';
 
   @override
   String get foodScan_introTitle => 'صوّر طبقك';
 
   @override
-  String get foodScan_introDesc =>
-      'يقرأ الذكاء الاصطناعي الصورة ويقدّر السعرات والبروتين والكربوهيدرات والدهون.';
+  String get foodScan_introDesc => 'يقرأ الذكاء الاصطناعي الصورة ويقدّر السعرات والبروتين والكربوهيدرات والدهون.';
 
   @override
   String get foodScan_tipLight => 'الإضاءة الجيدة والمتساوية تعطي تقديرًا أفضل';
@@ -1571,8 +1574,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get foodScan_tipFrame => 'ضع الطبق كاملًا داخل الإطار';
 
   @override
-  String get foodScan_tipScale =>
-      'أظهر أدوات المائدة أو يدًا للمساعدة في تقدير الحصص';
+  String get foodScan_tipScale => 'أظهر أدوات المائدة أو يدًا للمساعدة في تقدير الحصص';
 
   @override
   String get foodScan_takePhoto => 'التقاط صورة';
@@ -1589,15 +1591,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get foodScan_quotaReached => 'استخدمت عمليات مسح اليوم. حاول غدًا.';
 
   @override
-  String get foodScan_privacyNote =>
-      'تُرسل الصورة إلى واجهة Gemini من Google للتحليل ولا تُخزن على خوادمنا.';
+  String get foodScan_privacyNote => 'تُرسل الصورة إلى واجهة Gemini API من Google. قد تستخدمها Google لتحسين منتجاتها وقد يراها مراجعون بشريون. لا نخزنها على خوادمنا.';
 
   @override
   String get foodScan_consentTitle => 'هل تريد إرسال الصور إلى Google Gemini؟';
 
   @override
-  String get foodScan_consentBody =>
-      'لتقدير السعرات الحرارية والعناصر الغذائية، تُرسل كل صورة وجبة تلتقطها أو تختارها إلى خدمة Gemini للذكاء الاصطناعي من Google. تُستخدم الصورة لهذا التحليل فقط ولا تُخزَّن على خوادمنا.';
+  String get foodScan_consentBody => 'لتقدير السعرات والمغذيات الكبرى، تُرسل كل صورة وجبة تلتقطها أو تختارها إلى خدمة Gemini للذكاء الاصطناعي من Google. قد تستخدم Google الصور لتحسين منتجاتها وقد يراها مراجعون بشريون، لذا لا تُظهر في الصورة أشخاصًا أو مستندات أو بيانات شخصية أخرى. لا نخزن الصور على خوادمنا.';
 
   @override
   String get foodScan_consentAgree => 'موافق ومتابعة';
@@ -1612,12 +1612,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get foodScan_detectedItems => 'العناصر المكتشفة';
 
   @override
-  String get foodScan_disclaimer =>
-      'تقديرات الذكاء الاصطناعي تقريبية. اضغط عنصرًا لتصحيحه.';
+  String get foodScan_disclaimer => 'تقديرات الذكاء الاصطناعي تقريبية. اضغط عنصرًا لتصحيحه.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'النموذج غير واثق من هذه الصورة. تحقق من الأرقام قبل الحفظ.';
+  String get foodScan_lowConfidence => 'النموذج غير واثق من هذه الصورة. تحقق من الأرقام قبل الحفظ.';
 
   @override
   String get foodScan_save => 'إضافة إلى الوجبات';
@@ -1647,12 +1645,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get foodScan_upgrade => 'عرض Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'لا يوجد اتصال. تحقق من الإنترنت وحاول مجددًا.';
+  String get foodScan_errorNetwork => 'لا يوجد اتصال. تحقق من الإنترنت وحاول مجددًا.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'عمليات المسح كثيرة الآن. حاول بعد بضع دقائق.';
+  String get foodScan_errorRateLimited => 'عمليات المسح كثيرة الآن. حاول بعد بضع دقائق.';
 
   @override
   String get foodScan_errorUnavailable => 'تحليل الصور غير متاح الآن.';
@@ -1661,17 +1657,112 @@ class AppLocalizationsAr extends AppLocalizations {
   String get foodScan_errorServer => 'تواجه خدمة التحليل مشكلة. حاول بعد قليل.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'لم يُعثر على طعام في الصورة. التقط صورة أوضح للطبق.';
+  String get foodScan_errorNoFood => 'لم يُعثر على طعام في الصورة. التقط صورة أوضح للطبق.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'تعذر تحليل هذه الصورة. جرّب صورة أخرى.';
+  String get foodScan_errorUnreadable => 'تعذر تحليل هذه الصورة. جرّب صورة أخرى.';
 
   @override
   String get paywall_aiFoodScan => 'مسح الطعام بالذكاء الاصطناعي';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'صوّر وجبة وسجّل سعراتها ومغذياتها الكبرى خلال ثوانٍ';
+  String get paywall_aiFoodScanDesc => 'صوّر وجبة وسجّل سعراتها ومغذياتها الكبرى خلال ثوانٍ';
+
+  @override
+  String get safety_title => 'قبل أن تبدأ';
+
+  @override
+  String get safety_desc => 'الصيام ليس آمنًا للجميع. اختر كل ما ينطبق عليك.';
+
+  @override
+  String get safety_under18 => 'عمري أقل من 18 عامًا';
+
+  @override
+  String get safety_pregnant => 'أنا حامل أو مرضعة';
+
+  @override
+  String get safety_eatingDisorder => 'أعاني أو عانيت من اضطراب في الأكل';
+
+  @override
+  String get safety_underweight => 'وزني منخفض أو نُصحت بعدم إنقاص الوزن';
+
+  @override
+  String get safety_diabetes => 'أعاني من السكري أو أتناول دواءً يؤثر في سكر الدم';
+
+  @override
+  String get safety_medical => 'لدي حالة طبية أخرى أو أتناول دواءً بانتظام';
+
+  @override
+  String get safety_none => 'لا ينطبق عليّ أي مما سبق';
+
+  @override
+  String get safety_ack => 'سأتحدث إلى طبيبي قبل الصيام';
+
+  @override
+  String get safety_blockedTitle => 'هذا التطبيق غير آمن لك';
+
+  @override
+  String get safety_blockedDesc => 'بناءً على إجاباتك، لا يمكننا تقديم الصيام هنا. يرجى التحدث إلى طبيب. إذا كان الأكل صعبًا الآن، يمكن لمختص صحي مساعدتك.';
+
+  @override
+  String get safety_reviewAnswers => 'مراجعة إجاباتي';
+
+  @override
+  String get safety_targetTooLow => 'هذا الهدف أقل من الوزن الصحي بالنسبة لطولك.';
+
+  @override
+  String get onboarding_invalidBody => 'أدخل طولًا ووزنًا ووزنًا مستهدفًا وعمرًا صحيحة.';
+
+  @override
+  String get crisis_unwell => 'أشعر بتوعك';
+
+  @override
+  String get crisis_unwellTitle => 'أنهِ صيامك الآن';
+
+  @override
+  String get crisis_unwellDesc => 'الدوخة أو الارتعاش أو التشوش أو تسارع ضربات القلب علامات تدعوك إلى إيقاف الصيام وتناول شيء أو شربه.';
+
+  @override
+  String get crisis_emergency => 'إذا فقدت الوعي أو شعرت بألم في الصدر أو بتوعك شديد، فاتصل برقم الطوارئ المحلي الآن.';
+
+  @override
+  String get crisis_endFast => 'إنهاء صيامي';
+
+  @override
+  String get profile_deleteData => 'حذف جميع بياناتي';
+
+  @override
+  String get profile_deleteDataConfirm => 'سيؤدي هذا إلى حذف الصيام والوزن والوجبات والماء والإعدادات نهائيًا من هذا الجهاز. لا يمكن التراجع عن ذلك. تُدار الاشتراكات من حساب المتجر.';
+
+  @override
+  String get profile_deleteDataAction => 'حذف الكل';
+
+  @override
+  String get record_deleteConfirm => 'هل تريد حذف هذا الإدخال؟';
+
+  @override
+  String get profile_analytics => 'مشاركة بيانات استخدام مجهولة';
+
+  @override
+  String get profile_analyticsDesc => 'يساعد في تحسين التطبيق. لا يتضمن أبدًا الوزن أو الوجبات أو البيانات الصحية.';
+
+  @override
+  String get plan_longWarningTitle => 'هذا صيام طويل';
+
+  @override
+  String get plan_longWarningDesc => 'الصيام لمدة 20 ساعة أو أكثر لا يناسب الجميع وقد يسبب لك توعكًا. تحدث إلى طبيب إذا لم تكن متأكدًا، وأنهِ الصيام إذا شعرت بتوعك.';
+
+  @override
+  String get plan_longWarningAccept => 'فهمت';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return 'تجربة مجانية لمدة $days يوم، ثم $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'لا صيام';
+
+  @override
+  String get widget_tapToStart => 'اضغط للبدء';
 }

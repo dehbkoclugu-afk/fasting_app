@@ -9,6 +9,65 @@ class AppLocalizationsPl extends AppLocalizations {
   AppLocalizationsPl([String locale = 'pl']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Owsianka z owocami';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Jogurt z borówkami';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Tost z jajkiem i awokado';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Miska z kurczakiem i komosą';
+
+  @override
+  String get mealPreset_lentilSoup => 'Zupa z soczewicy';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Łosoś z brokułami';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap z indykiem i warzywami';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Ciecierzyca z tahini';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Sałatka z tuńczykiem i fasolą';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Serek wiejski z jabłkiem';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus i chrupiące warzywa';
+
+  @override
+  String get mealPreset_bananaKefir => 'Banan z kefirem';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count kroków do pieczęci',
+      many: '$count kroków do pieczęci',
+      few: '$count kroki do pieczęci',
+      one: '$count krok do pieczęci',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError => 'Nie udało się usunąć wpisu.';
+
+  @override
+  String get fastingHistory_title => 'Historia postów';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Ten wpis zostanie trwale usunięty.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -63,8 +122,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get timer_selectPlan => 'Wybierz plan postu';
 
   @override
-  String get timer_stopConfirm =>
-      'Czy na pewno chcesz zakończyć post wcześniej?';
+  String get timer_stopConfirm => 'Czy na pewno chcesz zakończyć post wcześniej?';
 
   @override
   String get timer_stopTitle => 'Zakończ post';
@@ -97,13 +155,13 @@ class AppLocalizationsPl extends AppLocalizations {
   String get phase_ketosis => 'Ketoza';
 
   @override
-  String get phase_ketosisDesc => 'Produkcja ketonów jest aktywna';
+  String get phase_ketosisDesc => 'Produkcja ketonów może wzrosnąć';
 
   @override
   String get phase_autophagy => 'Autofagia';
 
   @override
-  String get phase_autophagyDesc => 'Odnowa komórkowa';
+  String get phase_autophagyDesc => 'Szacowana faza recyklingu komórkowego';
 
   @override
   String get stats_title => 'Statystyki';
@@ -264,8 +322,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get onboarding_welcome => 'Witaj';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Przejmij kontrolę nad swoją drogą\nz postem przerywanym';
+  String get onboarding_welcomeDesc => 'Przejmij kontrolę nad swoją drogą\nz postem przerywanym';
 
   @override
   String get onboarding_featureTimer => 'Inteligentny minutnik postu';
@@ -274,8 +331,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get onboarding_featureStats => 'Szczegółowe statystyki i wykresy';
 
   @override
-  String get onboarding_featureMeals =>
-      'Planer posiłków i propozycje przepisów';
+  String get onboarding_featureMeals => 'Planer posiłków i propozycje przepisów';
 
   @override
   String get onboarding_getStarted => 'Zaczynamy';
@@ -314,8 +370,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get onboarding_goalLongevity => 'Długowieczność';
 
   @override
-  String get onboarding_goalLongevityDesc =>
-      'Odnowa komórkowa i zdrowe starzenie';
+  String get onboarding_goalLongevityDesc => 'Zbuduj zdrową, długofalową rutynę';
 
   @override
   String get onboarding_goalDiscipline => 'Dyscyplina';
@@ -327,38 +382,25 @@ class AppLocalizationsPl extends AppLocalizations {
   String get onboarding_selectPlan => 'Wybierz swój plan';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Wybierz najlepszy dla siebie plan postu';
+  String get onboarding_selectPlanDesc => 'Wybierz najlepszy dla siebie plan postu';
 
   @override
   String get onboarding_bodyInfo => 'Wprowadź swoje dane';
 
   @override
-  String get onboarding_bodyInfoDesc =>
-      'Aby otrzymywać spersonalizowane zalecenia';
-
-  @override
-  String get onboarding_gender => 'Płeć';
-
-  @override
-  String get onboarding_male => 'Mężczyzna';
-
-  @override
-  String get onboarding_female => 'Kobieta';
+  String get onboarding_bodyInfoDesc => 'Aby otrzymywać spersonalizowane zalecenia';
 
   @override
   String get onboarding_age => 'Wiek';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Te informacje są przechowywane wyłącznie na Twoim urządzeniu i służą do obliczeń kalorii.';
+  String get onboarding_bodyInfoDisclaimer => 'Te informacje są przechowywane wyłącznie na Twoim urządzeniu i służą do obliczeń kalorii.';
 
   @override
   String get onboarding_permissions => 'Ostatni krok';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Włącz uprawnienia, aby uzyskać najlepsze wrażenia';
+  String get onboarding_permissionsDesc => 'Włącz uprawnienia, aby uzyskać najlepsze wrażenia';
 
   @override
   String get onboarding_next => 'Kontynuuj';
@@ -385,8 +427,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get paywall_title => 'Przejdź na Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Odblokuj wszystkie plany postu i usuń reklamy';
+  String get paywall_subtitle => 'Odblokuj wszystkie plany postu i usuń reklamy';
 
   @override
   String get paywall_allPlans => 'Wszystkie plany postu';
@@ -425,8 +466,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get paywall_premiumActive => 'Premium jest aktywne!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Wszystkie plany postu są odblokowane, a reklamy wyłączone';
+  String get paywall_premiumActiveDesc => 'Wszystkie plany postu są odblokowane, a reklamy wyłączone';
 
   @override
   String get water_title => 'Spożycie wody';
@@ -561,8 +601,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get completion_earlyTitle => 'Post zakończony';
 
   @override
-  String get completion_earlyMessage =>
-      'Dzisiejszy czas został zapisany. Seria i postęp osiągnięć nie zmieniły się, ponieważ cel nie został ukończony.';
+  String get completion_earlyMessage => 'Dzisiejszy czas został zapisany. Seria i postęp osiągnięć nie zmieniły się, ponieważ cel nie został ukończony.';
 
   @override
   String get timer_remainingTime => 'Pozostały czas';
@@ -592,8 +631,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get streak_incredible => 'Niesamowicie!';
 
   @override
-  String get weight_noRecord =>
-      'Brak zapisów masy ciała\nDodaj je w Profil > Pomiary ciała';
+  String get weight_noRecord => 'Brak zapisów masy ciała\nDodaj je w Profil > Pomiary ciała';
 
   @override
   String get day_mon => 'Pon';
@@ -779,7 +817,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get profile_calmGamification => 'Spokojna grywalizacja';
 
   @override
-  String get profile_calmGamificationDesc => 'Zmniejsza presję ligi i sezonu';
+  String get profile_calmGamificationDesc => 'Zmniejsza presję sezonu';
 
   @override
   String get profile_editName => 'Edytuj swoje imię';
@@ -797,8 +835,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get circle_tagline => 'Razem, bez presji.';
 
   @override
-  String get circle_privacy =>
-      'Masa ciała i prywatne pomiary pozostają ukryte. Widoczne są tylko postępy i wsparcie.';
+  String get circle_privacy => 'Masa ciała i prywatne pomiary pozostają ukryte. Widoczne są tylko postępy i wsparcie.';
 
   @override
   String circle_sendSupport(int count) {
@@ -827,8 +864,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get crisis_delayTitle => 'Odłóż decyzję o 10 minut';
 
   @override
-  String get crisis_delayDesc =>
-      'Jeśli źle się czujesz, zakończenie postu nie jest porażką.';
+  String get crisis_delayDesc => 'Jeśli źle się czujesz, zakończenie postu nie jest porażką.';
 
   @override
   String get crisis_hunger => 'Głód';
@@ -843,8 +879,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get crisis_tenMore => 'Daj sobie 10 minut';
 
   @override
-  String get stats_storyEmpty =>
-      'Twój pierwszy post rozpocznie Twoją osobistą historię.';
+  String get stats_storyEmpty => 'Twój pierwszy post rozpocznie Twoją osobistą historię.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -890,8 +925,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get weather_onPlan => 'Dzisiejsze tempo odpowiada Twojemu planowi.';
 
   @override
-  String get weather_challenging =>
-      'Ta godzina była wcześniej trudna; tryb wsparcia jest gotowy.';
+  String get weather_challenging => 'Ta godzina była wcześniej trudna; tryb wsparcia jest gotowy.';
 
   @override
   String get replay_copied => 'Podsumowanie postu skopiowane';
@@ -916,8 +950,7 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'Czasy faz są ogólnymi szacunkami, a nie pomiarami medycznymi.';
+  String get phase_estimateShort => 'Czasy faz są ogólnymi szacunkami, a nie pomiarami medycznymi.';
 
   @override
   String phase_hours(int start, int end) {
@@ -925,8 +958,7 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Ten czas jest ogólnym szacunkiem. Reakcje metaboliczne mogą się różnić między osobami.';
+  String get phase_estimateLong => 'Ten czas jest ogólnym szacunkiem. Reakcje metaboliczne mogą się różnić między osobami.';
 
   @override
   String get bmi_underweight => 'Niedowaga';
@@ -949,18 +981,16 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get notification_phaseCatabolic =>
-      'Rozpoczęła się faza kataboliczna 📉';
+  String get notification_phaseCatabolic => 'Rozpoczęła się faza kataboliczna 📉';
 
   @override
-  String get notification_phaseFatBurning =>
-      'Rozpoczęło się spalanie tłuszczu! 🔥';
+  String get notification_phaseFatBurning => 'Rozpoczęło się spalanie tłuszczu! 🔥';
 
   @override
   String get notification_phaseKetosis => 'Jesteś w ketozie ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagia jest aktywna! 🔄';
+  String get notification_phaseAutophagy => 'Szacowana faza autofagii';
 
   @override
   String notification_completedBody(String plan) {
@@ -971,15 +1001,13 @@ class AppLocalizationsPl extends AppLocalizations {
   String get notification_waterTitle => 'Napij się wody 💧';
 
   @override
-  String get notification_waterBody =>
-      'Pamiętaj o piciu wystarczającej ilości wody podczas postu!';
+  String get notification_waterBody => 'Pamiętaj o piciu wystarczającej ilości wody podczas postu!';
 
   @override
   String get notification_windowTitle => 'Okno żywieniowe się zamyka ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Twoje okno żywieniowe zamknie się za 30 minut.';
+  String get notification_windowBody => 'Twoje okno żywieniowe zamknie się za 30 minut.';
 
   @override
   String notification_streakTitle(int days) {
@@ -1018,33 +1046,28 @@ class AppLocalizationsPl extends AppLocalizations {
   String get explore_guide => 'Przewodnik po poście';
 
   @override
-  String get explore_guideDesc =>
-      'Wszystko, co musisz wiedzieć o poście przerywanym';
+  String get explore_guideDesc => 'Wszystko, co musisz wiedzieć o poście przerywanym';
 
   @override
-  String get explore_circleDesc =>
-      'Dziel się spokojnym wsparciem ze swoją prywatną grupą.';
+  String get explore_circleDesc => 'Dziel się spokojnym wsparciem ze swoją prywatną grupą.';
 
   @override
   String get explore_faq => 'Często zadawane pytania';
 
   @override
-  String get explore_education =>
-      'Te treści służą wyłącznie ogólnej edukacji i nie stanowią diagnozy medycznej ani porady dotyczącej leczenia.';
+  String get explore_education => 'Te treści służą wyłącznie ogólnej edukacji i nie stanowią diagnozy medycznej ani porady dotyczącej leczenia.';
 
   @override
   String get explore_safety => 'Zdrowie i bezpieczeństwo';
 
   @override
-  String get explore_safetyDesc =>
-      'Jeśli masz chorobę, regularnie przyjmujesz leki, masz niepokojące objawy, jesteś w ciąży lub karmisz piersią, skonsultuj się z wykwalifikowanym pracownikiem ochrony zdrowia przed rozpoczęciem postu. Przerwij, jeśli źle się czujesz.';
+  String get explore_safetyDesc => 'Jeśli masz chorobę, regularnie przyjmujesz leki, masz niepokojące objawy, jesteś w ciąży lub karmisz piersią, skonsultuj się z wykwalifikowanym pracownikiem ochrony zdrowia przed rozpoczęciem postu. Przerwij, jeśli źle się czujesz.';
 
   @override
   String get explore_sources => 'Źródła';
 
   @override
-  String get explore_sourcesDesc =>
-      'Treść została uproszczona na podstawie poniższych publicznych źródeł zdrowotnych.';
+  String get explore_sourcesDesc => 'Treść została uproszczona na podstawie poniższych publicznych źródeł zdrowotnych.';
 
   @override
   String get explore_sourceError => 'Nie udało się otworzyć źródła';
@@ -1053,8 +1076,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get explore_rules => 'Ważne zasady';
 
   @override
-  String get explore_rule1 =>
-      'Nie spożywaj kalorycznych produktów podczas postu';
+  String get explore_rule1 => 'Nie spożywaj kalorycznych produktów podczas postu';
 
   @override
   String get explore_rule2 => 'Pij dużo wody i płynów';
@@ -1066,131 +1088,112 @@ class AppLocalizationsPl extends AppLocalizations {
   String get explore_rule4 => 'Przerwij post, jeśli źle się czujesz';
 
   @override
-  String get explore_rule5 =>
-      'Kobiety w ciąży lub karmiące piersią nie powinny pościć';
+  String get explore_rule5 => 'Kobiety w ciąży lub karmiące piersią nie powinny pościć';
 
   @override
-  String get explore_rule6 =>
-      'Skonsultuj się z lekarzem, jeśli masz chorobę przewlekłą';
+  String get explore_rule6 => 'Skonsultuj się z lekarzem, jeśli masz chorobę przewlekłą';
 
   @override
   String get tip_water => 'Dbaj o nawodnienie';
 
   @override
-  String get tip_waterDesc =>
-      'Pij wodę, gdy odczuwasz pragnienie, i przyjmuj płyny z posiłkami. Zapotrzebowanie może zależeć od zdrowia, pogody i aktywności.';
+  String get tip_waterDesc => 'Pij wodę, gdy odczuwasz pragnienie, i przyjmuj płyny z posiłkami. Zapotrzebowanie może zależeć od zdrowia, pogody i aktywności.';
 
   @override
   String get tip_food => 'Odżywiaj się zdrowo';
 
   @override
-  String get tip_foodDesc =>
-      'W oknie żywieniowym wybieraj produkty bogate w białko i błonnik oraz zdrowe tłuszcze. Unikaj żywności przetworzonej.';
+  String get tip_foodDesc => 'W oknie żywieniowym wybieraj produkty bogate w białko i błonnik oraz zdrowe tłuszcze. Unikaj żywności przetworzonej.';
 
   @override
   String get tip_sleep => 'Wysypiaj się';
 
   @override
-  String get tip_sleepDesc =>
-      'Regularny i wystarczający sen wspiera ogólne samopoczucie. Zaplanuj post tak, aby nie zakłócał snu.';
+  String get tip_sleepDesc => 'Regularny i wystarczający sen wspiera ogólne samopoczucie. Zaplanuj post tak, aby nie zakłócał snu.';
 
   @override
   String get tip_exercise => 'Lekka aktywność';
 
   @override
-  String get tip_exerciseDesc =>
-      'Podczas postu możesz spacerować lub ćwiczyć jogę. Unikaj ciężkich treningów, zwłaszcza w pierwszych tygodniach, zanim organizm się przystosuje.';
+  String get tip_exerciseDesc => 'Podczas postu możesz spacerować lub ćwiczyć jogę. Unikaj ciężkich treningów, zwłaszcza w pierwszych tygodniach, zanim organizm się przystosuje.';
 
   @override
   String get tip_drinks => 'Dozwolone napoje';
 
   @override
-  String get tip_drinksDesc =>
-      'Podczas postu możesz pić wodę, czystą herbatę i czarną kawę bez cukru i mleka. Te napoje nie przerywają postu.';
+  String get tip_drinksDesc => 'Podczas postu możesz pić wodę, czystą herbatę i czarną kawę bez cukru i mleka. Te napoje nie przerywają postu.';
 
   @override
   String get faq_drinks => 'Co mogę pić podczas postu?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Możesz pić wodę, czystą herbatę i czarną kawę bez cukru i mleka. Kaloryczne napoje przerywają post.';
+  String get faq_drinksAnswer => 'Możesz pić wodę, czystą herbatę i czarną kawę bez cukru i mleka. Kaloryczne napoje przerywają post.';
 
   @override
   String get faq_plan => 'Który plan postu wybrać?';
 
   @override
-  String get faq_planAnswer =>
-      'Jeśli zaczynasz, wybierz 12:12 lub 14:10. Jeśli masz doświadczenie, spróbuj 16:8 lub 18:6. 20:4 i OMAD są dla zaawansowanych.';
+  String get faq_planAnswer => 'Jeśli zaczynasz, wybierz 12:12 lub 14:10. Jeśli masz doświadczenie, spróbuj 16:8 lub 18:6. 20:4 i OMAD są dla zaawansowanych.';
 
   @override
   String get faq_exercise => 'Czy mogę ćwiczyć podczas postu?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Tak, ale unikaj intensywnych treningów. Lekkie kardio, spacery i joga są idealne. Trening siłowy zaplanuj blisko okna żywieniowego.';
+  String get faq_exerciseAnswer => 'Tak, ale unikaj intensywnych treningów. Lekkie kardio, spacery i joga są idealne. Trening siłowy zaplanuj blisko okna żywieniowego.';
 
   @override
   String get faq_weight => 'Czy post pomaga schudnąć?';
 
   @override
-  String get faq_weightAnswer =>
-      'U niektórych osób ograniczenie czasu jedzenia może zmniejszyć całkowite spożycie energii. Wyniki są różne, a długofalowe skutki nadal są badane.';
+  String get faq_weightAnswer => 'U niektórych osób ograniczenie czasu jedzenia może zmniejszyć całkowite spożycie energii. Wyniki są różne, a długofalowe skutki nadal są badane.';
 
   @override
   String get plan_12_desc => 'Poziom początkujący';
 
   @override
-  String get plan_12_detail =>
-      'Idealny dla początkujących. Pość przez 12 godzin, wliczając sen.';
+  String get plan_12_detail => 'Idealny dla początkujących. Pość przez 12 godzin, wliczając sen.';
 
   @override
   String get plan_16_desc => 'Najpopularniejszy plan';
 
   @override
-  String get plan_16_detail =>
-      'Najczęstszy plan postu przerywanego: 16 godzin postu i 8-godzinne okno żywieniowe, zwykle od obiadu do kolacji.';
+  String get plan_16_detail => 'Najczęstszy plan postu przerywanego: 16 godzin postu i 8-godzinne okno żywieniowe, zwykle od obiadu do kolacji.';
 
   @override
   String get plan_18_desc => 'Poziom średniozaawansowany';
 
   @override
-  String get plan_18_detail =>
-      '18 godzin postu i 6-godzinne okno żywieniowe. Dłuższe spalanie tłuszczu.';
+  String get plan_18_detail => '18 godzin postu i 6-godzinne okno żywieniowe. Dłuższe spalanie tłuszczu.';
 
   @override
   String get plan_20_desc => 'Poziom zaawansowany';
 
   @override
-  String get plan_20_detail =>
-      '20 godzin postu i 4-godzinne okno żywieniowe. Idealny do osiągnięcia ketozy i autofagii.';
+  String get plan_20_detail => '20 godzin postu, 4 godziny jedzenia. Dla osób z doświadczeniem w poście.';
 
   @override
   String get plan_omad_desc => 'Jeden posiłek dziennie';
 
   @override
-  String get plan_omad_detail =>
-      'Jeden posiłek dziennie: 23 godziny postu i 1-godzinne okno żywieniowe. Poziom ekspercki.';
+  String get plan_omad_detail => 'Jeden posiłek dziennie: 23 godziny postu i 1-godzinne okno żywieniowe. Poziom ekspercki.';
 
   @override
   String get plan_52_desc => '2 dni w tygodniu';
 
   @override
-  String get plan_52_detail =>
-      'Jedz normalnie przez 5 dni, a przez 2 dni ogranicz się do około 500 kalorii. Alternatywne podejście.';
+  String get plan_52_detail => 'Jedz normalnie przez 5 dni, a przez 2 dni ogranicz się do około 500 kalorii. Alternatywne podejście.';
 
   @override
   String get plan_ese_desc => '24-godzinny post';
 
   @override
-  String get plan_ese_detail =>
-      'Pość przez 24 godziny 1–2 razy w tygodniu. Dla zaawansowanych.';
+  String get plan_ese_detail => 'Pość przez 24 godziny 1–2 razy w tygodniu. Dla zaawansowanych.';
 
   @override
   String get plan_warrior_desc => 'Dieta wojownika';
 
   @override
-  String get plan_warrior_detail =>
-      'W ciągu dnia jedz lekko, a główny posiłek zjedz w czterogodzinnym oknie wieczorem.';
+  String get plan_warrior_detail => 'W ciągu dnia jedz lekko, a główny posiłek zjedz w czterogodzinnym oknie wieczorem.';
 
   @override
   String get award_first_title => 'Pierwszy krok';
@@ -1342,16 +1345,7 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Otrzymujesz jedną za każde siedem ukończeń. Pominięty dzień nigdy nie usuwa postępów.';
-
-  @override
-  String get game_league => 'Prywatna liga tygodniowa';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Twój wynik rytmu znajduje się w $percent. percentylu prywatnego modelu lokalnego. Masa ciała i skrajny post nigdy nie są klasyfikowane.';
-  }
+  String get game_shieldsDesc => 'Otrzymujesz jedną za każde siedem ukończeń. Pominięty dzień nigdy nie usuwa postępów.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1495,15 +1489,13 @@ class AppLocalizationsPl extends AppLocalizations {
   String get paywall_continue => 'Kontynuuj';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Zakupy są obecnie niedostępne. Spróbuj ponownie później.';
+  String get paywall_productsUnavailable => 'Zakupy są obecnie niedostępne. Spróbuj ponownie później.';
 
   @override
   String get paywall_purchaseFailed => 'Nie udało się zrealizować zakupu.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'Nie znaleziono wcześniejszego zakupu.';
+  String get paywall_nothingToRestore => 'Nie znaleziono wcześniejszego zakupu.';
 
   @override
   String get paywall_restoreFailed => 'Nie udało się przywrócić zakupów.';
@@ -1512,15 +1504,13 @@ class AppLocalizationsPl extends AppLocalizations {
   String get paywall_terms => 'Warunki użytkowania';
 
   @override
-  String get permission_notificationDesc =>
-      'Przypomnienia o poście, aktualizacje faz i powiadomienia o ukończeniu';
+  String get permission_notificationDesc => 'Przypomnienia o poście, aktualizacje faz i powiadomienia o ukończeniu';
 
   @override
   String get profile_privacyChoices => 'Opcje prywatności';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Subskrypcje odnawiają się automatycznie, chyba że anulujesz je co najmniej 24 godziny przed końcem okresu. Możesz nimi zarządzać lub anulować je w ustawieniach App Store.';
+  String get paywall_autoRenewInfo => 'Subskrypcje odnawiają się automatycznie, chyba że anulujesz je co najmniej 24 godziny przed końcem okresu. Możesz nimi zarządzać lub anulować je w ustawieniach App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1544,28 +1534,22 @@ class AppLocalizationsPl extends AppLocalizations {
   String get paywall_retry => 'Spróbuj ponownie';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Masz już tę subskrypcję. Dotknij Przywróć zakupy.';
+  String get paywall_alreadyOwned => 'Masz już tę subskrypcję. Dotknij Przywróć zakupy.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Nie można teraz połączyć się ze sklepem. Sprawdź połączenie i spróbuj ponownie.';
+  String get paywall_storeUnavailable => 'Nie można teraz połączyć się ze sklepem. Sprawdź połączenie i spróbuj ponownie.';
 
   @override
-  String get paywall_secureNote =>
-      'Anuluj w dowolnym momencie. Płatność zostanie pobrana z konta sklepu.';
+  String get paywall_secureNote => 'Anuluj w dowolnym momencie. Płatność zostanie pobrana z konta sklepu.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Subskrypcje odnawiają się automatycznie, chyba że anulujesz je co najmniej 24 godziny przed końcem okresu. Zarządzaj lub anuluj w Google Play > Subskrypcje.';
+  String get paywall_autoRenewInfoPlay => 'Subskrypcje odnawiają się automatycznie, chyba że anulujesz je co najmniej 24 godziny przed końcem okresu. Zarządzaj lub anuluj w Google Play > Subskrypcje.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Odblokowuje 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat i Warrior';
+  String get paywall_allPlansDesc => 'Odblokowuje 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat i Warrior';
 
   @override
-  String get paywall_noAdsDesc =>
-      'Reklamy banerowe i pełnoekranowe są całkowicie wyłączone';
+  String get paywall_noAdsDesc => 'Reklamy banerowe i pełnoekranowe są całkowicie wyłączone';
 
   @override
   String get foodScan_title => 'Skanowanie jedzenia przez AI';
@@ -1574,26 +1558,22 @@ class AppLocalizationsPl extends AppLocalizations {
   String get foodScan_scanCta => 'Zeskanuj posiłek';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Zrób zdjęcie talerza i poznaj kalorie oraz makroskładniki';
+  String get foodScan_scanCtaDesc => 'Zrób zdjęcie talerza i poznaj kalorie oraz makroskładniki';
 
   @override
   String get foodScan_introTitle => 'Zrób zdjęcie talerza';
 
   @override
-  String get foodScan_introDesc =>
-      'AI analizuje zdjęcie i szacuje kalorie, białko, węglowodany i tłuszcz.';
+  String get foodScan_introDesc => 'AI analizuje zdjęcie i szacuje kalorie, białko, węglowodany i tłuszcz.';
 
   @override
-  String get foodScan_tipLight =>
-      'Dobre, równomierne światło daje dokładniejsze oszacowanie';
+  String get foodScan_tipLight => 'Dobre, równomierne światło daje dokładniejsze oszacowanie';
 
   @override
   String get foodScan_tipFrame => 'Umieść cały talerz w kadrze';
 
   @override
-  String get foodScan_tipScale =>
-      'Umieść w kadrze sztućce lub dłoń, aby można było oszacować porcję';
+  String get foodScan_tipScale => 'Umieść w kadrze sztućce lub dłoń, aby można było oszacować porcję';
 
   @override
   String get foodScan_takePhoto => 'Zrób zdjęcie';
@@ -1607,19 +1587,16 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Wykorzystano dzisiejsze skany. Spróbuj ponownie jutro.';
+  String get foodScan_quotaReached => 'Wykorzystano dzisiejsze skany. Spróbuj ponownie jutro.';
 
   @override
-  String get foodScan_privacyNote =>
-      'Zdjęcie jest wysyłane do interfejsu Gemini API firmy Google w celu analizy i nie jest przechowywane na naszych serwerach.';
+  String get foodScan_privacyNote => 'Zdjęcie jest wysyłane do API Gemini firmy Google. Google może go używać do ulepszania swoich produktów, a ludzie mogą je oglądać podczas weryfikacji. Nie przechowujemy go na naszych serwerach.';
 
   @override
   String get foodScan_consentTitle => 'Wysłać zdjęcia do Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'Aby oszacować kalorie i makroskładniki, każde zrobione lub wybrane zdjęcie posiłku jest wysyłane do usługi AI Gemini firmy Google. Zdjęcie jest używane tylko do tej analizy i nie jest przechowywane na naszych serwerach.';
+  String get foodScan_consentBody => 'Aby oszacować kalorie i makroskładniki, każde zrobione lub wybrane zdjęcie posiłku jest wysyłane do usługi AI Gemini firmy Google. Google może używać zdjęć do ulepszania swoich produktów, a ludzie mogą je oglądać podczas weryfikacji, więc nie umieszczaj w kadrze osób, dokumentów ani innych danych osobowych. Nie przechowujemy zdjęć na naszych serwerach.';
 
   @override
   String get foodScan_consentAgree => 'Akceptuję i kontynuuję';
@@ -1634,12 +1611,10 @@ class AppLocalizationsPl extends AppLocalizations {
   String get foodScan_detectedItems => 'Wykryte produkty';
 
   @override
-  String get foodScan_disclaimer =>
-      'Szacunki AI są przybliżone. Dotknij produktu, aby go poprawić.';
+  String get foodScan_disclaimer => 'Szacunki AI są przybliżone. Dotknij produktu, aby go poprawić.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Model nie jest pewien tego zdjęcia. Sprawdź wartości przed zapisaniem.';
+  String get foodScan_lowConfidence => 'Model nie jest pewien tego zdjęcia. Sprawdź wartości przed zapisaniem.';
 
   @override
   String get foodScan_save => 'Dodaj do posiłków';
@@ -1663,40 +1638,130 @@ class AppLocalizationsPl extends AppLocalizations {
   String get foodScan_premiumTitle => 'Funkcja Premium';
 
   @override
-  String get foodScan_premiumDesc =>
-      'Analiza kalorii ze zdjęcia jest dostępna w Premium.';
+  String get foodScan_premiumDesc => 'Analiza kalorii ze zdjęcia jest dostępna w Premium.';
 
   @override
   String get foodScan_upgrade => 'Zobacz Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Brak połączenia. Sprawdź internet i spróbuj ponownie.';
+  String get foodScan_errorNetwork => 'Brak połączenia. Sprawdź internet i spróbuj ponownie.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Trwa teraz zbyt wiele skanowań. Spróbuj ponownie za kilka minut.';
+  String get foodScan_errorRateLimited => 'Trwa teraz zbyt wiele skanowań. Spróbuj ponownie za kilka minut.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'Analiza zdjęć jest obecnie niedostępna.';
+  String get foodScan_errorUnavailable => 'Analiza zdjęć jest obecnie niedostępna.';
 
   @override
-  String get foodScan_errorServer =>
-      'Usługa analizy ma problemy. Spróbuj ponownie za chwilę.';
+  String get foodScan_errorServer => 'Usługa analizy ma problemy. Spróbuj ponownie za chwilę.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Na zdjęciu nie znaleziono jedzenia. Zrób wyraźniejsze zdjęcie talerza.';
+  String get foodScan_errorNoFood => 'Na zdjęciu nie znaleziono jedzenia. Zrób wyraźniejsze zdjęcie talerza.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Nie udało się przeanalizować tego zdjęcia. Spróbuj innego.';
+  String get foodScan_errorUnreadable => 'Nie udało się przeanalizować tego zdjęcia. Spróbuj innego.';
 
   @override
   String get paywall_aiFoodScan => 'Skanowanie jedzenia przez AI';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Zrób zdjęcie posiłku i zapisz kalorie oraz makroskładniki w kilka sekund';
+  String get paywall_aiFoodScanDesc => 'Zrób zdjęcie posiłku i zapisz kalorie oraz makroskładniki w kilka sekund';
+
+  @override
+  String get safety_title => 'Zanim zaczniesz';
+
+  @override
+  String get safety_desc => 'Post nie jest bezpieczny dla każdego. Zaznacz wszystko, co Cię dotyczy.';
+
+  @override
+  String get safety_under18 => 'Mam mniej niż 18 lat';
+
+  @override
+  String get safety_pregnant => 'Jestem w ciąży lub karmię piersią';
+
+  @override
+  String get safety_eatingDisorder => 'Mam lub miałem/-am zaburzenia odżywiania';
+
+  @override
+  String get safety_underweight => 'Mam niedowagę lub zalecono mi, by nie chudnąć';
+
+  @override
+  String get safety_diabetes => 'Mam cukrzycę lub przyjmuję leki wpływające na poziom cukru';
+
+  @override
+  String get safety_medical => 'Mam inną chorobę lub regularnie przyjmuję leki';
+
+  @override
+  String get safety_none => 'Nic z tego mnie nie dotyczy';
+
+  @override
+  String get safety_ack => 'Porozmawiam z lekarzem przed rozpoczęciem postu';
+
+  @override
+  String get safety_blockedTitle => 'Ta aplikacja nie jest dla Ciebie bezpieczna';
+
+  @override
+  String get safety_blockedDesc => 'Na podstawie Twoich odpowiedzi nie możemy tu zaoferować postu. Porozmawiaj z lekarzem. Jeśli jedzenie jest teraz trudne, specjalista może pomóc.';
+
+  @override
+  String get safety_reviewAnswers => 'Sprawdź moje odpowiedzi';
+
+  @override
+  String get safety_targetTooLow => 'Ten cel jest poniżej zdrowej wagi dla Twojego wzrostu.';
+
+  @override
+  String get onboarding_invalidBody => 'Podaj prawidłowy wzrost, wagę, wagę docelową i wiek.';
+
+  @override
+  String get crisis_unwell => 'Źle się czuję';
+
+  @override
+  String get crisis_unwellTitle => 'Zakończ post teraz';
+
+  @override
+  String get crisis_unwellDesc => 'Zawroty głowy, drżenie, dezorientacja lub kołatanie serca to sygnały, by przerwać post i coś zjeść lub wypić.';
+
+  @override
+  String get crisis_emergency => 'Jeśli zemdlałeś/-aś, masz ból w klatce piersiowej lub czujesz się bardzo źle, zadzwoń teraz na lokalny numer alarmowy.';
+
+  @override
+  String get crisis_endFast => 'Zakończ mój post';
+
+  @override
+  String get profile_deleteData => 'Usuń wszystkie moje dane';
+
+  @override
+  String get profile_deleteDataConfirm => 'Spowoduje to trwałe usunięcie postów, wagi, posiłków, wody i ustawień z tego urządzenia. Nie można tego cofnąć. Subskrypcjami zarządzasz na koncie sklepu.';
+
+  @override
+  String get profile_deleteDataAction => 'Usuń wszystko';
+
+  @override
+  String get record_deleteConfirm => 'Usunąć ten wpis?';
+
+  @override
+  String get profile_analytics => 'Udostępniaj anonimowe dane o użyciu';
+
+  @override
+  String get profile_analyticsDesc => 'Pomaga ulepszać aplikację. Nigdy nie zawiera wagi, posiłków ani danych o zdrowiu.';
+
+  @override
+  String get plan_longWarningTitle => 'To długi post';
+
+  @override
+  String get plan_longWarningDesc => 'Posty trwające 20 godzin lub dłużej nie są odpowiednie dla każdego i mogą powodować złe samopoczucie. W razie wątpliwości porozmawiaj z lekarzem, a jeśli źle się czujesz, zakończ post.';
+
+  @override
+  String get plan_longWarningAccept => 'Rozumiem';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days dni bezpłatnego okresu próbnego, potem $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Bez postu';
+
+  @override
+  String get widget_tapToStart => 'Dotknij, aby zacząć';
 }

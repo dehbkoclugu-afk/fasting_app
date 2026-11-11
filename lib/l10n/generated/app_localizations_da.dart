@@ -9,6 +9,63 @@ class AppLocalizationsDa extends AppLocalizations {
   AppLocalizationsDa([String locale = 'da']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'Havregrød med frugt';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'Blåbæryoghurt';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'Toast med æg og avocado';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'Kylling og quinoa';
+
+  @override
+  String get mealPreset_lentilSoup => 'Linsesuppe';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'Laks og broccoli';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'Wrap med kalkun og grønt';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'Kikærter med tahin';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'Tun- og bønnesalat';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'Hytteost med æble';
+
+  @override
+  String get mealPreset_hummusVegetables => 'Hummus og sprøde grøntsager';
+
+  @override
+  String get mealPreset_bananaKefir => 'Banan og kefir';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count trin til seglet',
+      one: '$count trin til seglet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError => 'Registreringen kunne ikke slettes.';
+
+  @override
+  String get fastingHistory_title => 'Fastehistorik';
+
+  @override
+  String get fastingHistory_deleteWarning =>
+      'Denne registrering slettes permanent.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -63,8 +120,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get timer_selectPlan => 'Vælg fasteplan';
 
   @override
-  String get timer_stopConfirm =>
-      'Er du sikker på, at du vil afslutte fasten før tid?';
+  String get timer_stopConfirm => 'Er du sikker på, at du vil afslutte fasten før tid?';
 
   @override
   String get timer_stopTitle => 'Afslut faste';
@@ -97,13 +153,13 @@ class AppLocalizationsDa extends AppLocalizations {
   String get phase_ketosis => 'Ketose';
 
   @override
-  String get phase_ketosisDesc => 'Ketonproduktionen er aktiv';
+  String get phase_ketosisDesc => 'Ketonproduktionen kan stige';
 
   @override
   String get phase_autophagy => 'Autofagi';
 
   @override
-  String get phase_autophagyDesc => 'Cellefornyelse';
+  String get phase_autophagyDesc => 'Anslået fase med cellegenbrug';
 
   @override
   String get stats_title => 'Statistik';
@@ -264,8 +320,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get onboarding_welcome => 'Velkommen';
 
   @override
-  String get onboarding_welcomeDesc =>
-      'Tag styringen over din rejse med\nperiodisk faste';
+  String get onboarding_welcomeDesc => 'Tag styringen over din rejse med\nperiodisk faste';
 
   @override
   String get onboarding_featureTimer => 'Smart fastetimer';
@@ -313,7 +368,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get onboarding_goalLongevity => 'Et langt liv';
 
   @override
-  String get onboarding_goalLongevityDesc => 'Cellefornyelse og sund aldring';
+  String get onboarding_goalLongevityDesc => 'Skab en sund rutine på lang sigt';
 
   @override
   String get onboarding_goalDiscipline => 'Disciplin';
@@ -325,8 +380,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get onboarding_selectPlan => 'Vælg din plan';
 
   @override
-  String get onboarding_selectPlanDesc =>
-      'Vælg den fasteplan, der passer bedst til dig';
+  String get onboarding_selectPlanDesc => 'Vælg den fasteplan, der passer bedst til dig';
 
   @override
   String get onboarding_bodyInfo => 'Indtast dine oplysninger';
@@ -335,27 +389,16 @@ class AppLocalizationsDa extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'Til personlige anbefalinger';
 
   @override
-  String get onboarding_gender => 'Køn';
-
-  @override
-  String get onboarding_male => 'Mand';
-
-  @override
-  String get onboarding_female => 'Kvinde';
-
-  @override
   String get onboarding_age => 'Alder';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'Disse oplysninger gemmes kun på din enhed og bruges til kalorieberegninger.';
+  String get onboarding_bodyInfoDisclaimer => 'Disse oplysninger gemmes kun på din enhed og bruges til kalorieberegninger.';
 
   @override
   String get onboarding_permissions => 'Sidste trin';
 
   @override
-  String get onboarding_permissionsDesc =>
-      'Aktivér tilladelser for at få den bedste oplevelse';
+  String get onboarding_permissionsDesc => 'Aktivér tilladelser for at få den bedste oplevelse';
 
   @override
   String get onboarding_next => 'Fortsæt';
@@ -382,8 +425,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get paywall_title => 'Opgrader til Premium';
 
   @override
-  String get paywall_subtitle =>
-      'Lås op for alle fasteplaner, og fjern reklamer';
+  String get paywall_subtitle => 'Lås op for alle fasteplaner, og fjern reklamer';
 
   @override
   String get paywall_allPlans => 'Alle fasteplaner';
@@ -422,8 +464,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get paywall_premiumActive => 'Premium er aktivt!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'Alle fasteplaner er låst op, og reklamer er slået fra';
+  String get paywall_premiumActiveDesc => 'Alle fasteplaner er låst op, og reklamer er slået fra';
 
   @override
   String get water_title => 'Vandindtag';
@@ -558,8 +599,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get completion_earlyTitle => 'Fasten er afsluttet';
 
   @override
-  String get completion_earlyMessage =>
-      'Dagens tid blev gemt. Din serie og dine præstationer blev ikke ændret, fordi målet ikke blev nået.';
+  String get completion_earlyMessage => 'Dagens tid blev gemt. Din serie og dine præstationer blev ikke ændret, fordi målet ikke blev nået.';
 
   @override
   String get timer_remainingTime => 'Resterende tid';
@@ -589,8 +629,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get streak_incredible => 'Utroligt!';
 
   @override
-  String get weight_noRecord =>
-      'Ingen vægtregistreringer endnu\nTilføj dem under Profil > Kropsmålinger';
+  String get weight_noRecord => 'Ingen vægtregistreringer endnu\nTilføj dem under Profil > Kropsmålinger';
 
   @override
   String get day_mon => 'Man';
@@ -776,8 +815,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get profile_calmGamification => 'Rolig gamificering';
 
   @override
-  String get profile_calmGamificationDesc =>
-      'Mindsker presset fra liga og sæson';
+  String get profile_calmGamificationDesc => 'Reducerer sæsonpresset';
 
   @override
   String get profile_editName => 'Rediger dit navn';
@@ -795,8 +833,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get circle_tagline => 'Sammen, uden pres.';
 
   @override
-  String get circle_privacy =>
-      'Vægt og private målinger forbliver skjulte. Kun fremskridt og støtte er synlige.';
+  String get circle_privacy => 'Vægt og private målinger forbliver skjulte. Kun fremskridt og støtte er synlige.';
 
   @override
   String circle_sendSupport(int count) {
@@ -825,8 +862,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get crisis_delayTitle => 'Udskyd beslutningen i 10 minutter';
 
   @override
-  String get crisis_delayDesc =>
-      'Hvis du får det dårligt, er det ikke et nederlag at afslutte fasten.';
+  String get crisis_delayDesc => 'Hvis du får det dårligt, er det ikke et nederlag at afslutte fasten.';
 
   @override
   String get crisis_hunger => 'Sult';
@@ -841,8 +877,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get crisis_tenMore => 'Giv det 10 minutter';
 
   @override
-  String get stats_storyEmpty =>
-      'Din første faste bliver begyndelsen på din personlige historie.';
+  String get stats_storyEmpty => 'Din første faste bliver begyndelsen på din personlige historie.';
 
   @override
   String stats_story(int sessions, int hours, int rate) {
@@ -888,8 +923,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get weather_onPlan => 'Dagens tempo passer til din plan.';
 
   @override
-  String get weather_challenging =>
-      'Denne time har tidligere været udfordrende; støttetilstanden er klar.';
+  String get weather_challenging => 'Denne time har tidligere været udfordrende; støttetilstanden er klar.';
 
   @override
   String get replay_copied => 'Fasteresumé kopieret';
@@ -914,8 +948,7 @@ class AppLocalizationsDa extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'Tidspunkterne for faserne er generelle skøn, ikke medicinske målinger.';
+  String get phase_estimateShort => 'Tidspunkterne for faserne er generelle skøn, ikke medicinske målinger.';
 
   @override
   String phase_hours(int start, int end) {
@@ -923,8 +956,7 @@ class AppLocalizationsDa extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'Dette tidspunkt er et generelt skøn. Metaboliske reaktioner kan variere fra person til person.';
+  String get phase_estimateLong => 'Dette tidspunkt er et generelt skøn. Metaboliske reaktioner kan variere fra person til person.';
 
   @override
   String get bmi_underweight => 'Undervægt';
@@ -956,7 +988,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get notification_phaseKetosis => 'Du er i ketose ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'Autofagi er aktiv! 🔄';
+  String get notification_phaseAutophagy => 'Anslået autofagifase';
 
   @override
   String notification_completedBody(String plan) {
@@ -967,15 +999,13 @@ class AppLocalizationsDa extends AppLocalizations {
   String get notification_waterTitle => 'Drik vand 💧';
 
   @override
-  String get notification_waterBody =>
-      'Husk at drikke rigeligt med vand under fasten!';
+  String get notification_waterBody => 'Husk at drikke rigeligt med vand under fasten!';
 
   @override
   String get notification_windowTitle => 'Spisevinduet lukker ⏰';
 
   @override
-  String get notification_windowBody =>
-      'Dit spisevindue lukker om 30 minutter.';
+  String get notification_windowBody => 'Dit spisevindue lukker om 30 minutter.';
 
   @override
   String notification_streakTitle(int days) {
@@ -983,8 +1013,7 @@ class AppLocalizationsDa extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      'Det går rigtig godt! Fortsæt sådan i dag.';
+  String get notification_streakBody => 'Det går rigtig godt! Fortsæt sådan i dag.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1015,8 +1044,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get explore_guide => 'Fasteguide';
 
   @override
-  String get explore_guideDesc =>
-      'Alt, hvad du behøver at vide om periodisk faste';
+  String get explore_guideDesc => 'Alt, hvad du behøver at vide om periodisk faste';
 
   @override
   String get explore_circleDesc => 'Del stille støtte med din private gruppe.';
@@ -1025,22 +1053,19 @@ class AppLocalizationsDa extends AppLocalizations {
   String get explore_faq => 'Ofte stillede spørgsmål';
 
   @override
-  String get explore_education =>
-      'Dette indhold er kun til generel oplysning og er ikke en medicinsk diagnose eller behandlingsvejledning.';
+  String get explore_education => 'Dette indhold er kun til generel oplysning og er ikke en medicinsk diagnose eller behandlingsvejledning.';
 
   @override
   String get explore_safety => 'Sundhed og sikkerhed';
 
   @override
-  String get explore_safetyDesc =>
-      'Hvis du har en sygdom, tager fast medicin, har bekymrende symptomer, er gravid eller ammer, skal du tale med en kvalificeret sundhedsperson, før du faster. Stop, hvis du får det dårligt.';
+  String get explore_safetyDesc => 'Hvis du har en sygdom, tager fast medicin, har bekymrende symptomer, er gravid eller ammer, skal du tale med en kvalificeret sundhedsperson, før du faster. Stop, hvis du får det dårligt.';
 
   @override
   String get explore_sources => 'Kilder';
 
   @override
-  String get explore_sourcesDesc =>
-      'Indholdet er forenklet ud fra de offentlige sundhedskilder nedenfor.';
+  String get explore_sourcesDesc => 'Indholdet er forenklet ud fra de offentlige sundhedskilder nedenfor.';
 
   @override
   String get explore_sourceError => 'Kilden kunne ikke åbnes';
@@ -1070,106 +1095,91 @@ class AppLocalizationsDa extends AppLocalizations {
   String get tip_water => 'Hold væskebalancen';
 
   @override
-  String get tip_waterDesc =>
-      'Drik vand, når du er tørstig, og få væske til måltiderne. Behovet kan variere med helbred, vejr og aktivitet.';
+  String get tip_waterDesc => 'Drik vand, når du er tørstig, og få væske til måltiderne. Behovet kan variere med helbred, vejr og aktivitet.';
 
   @override
   String get tip_food => 'Spis sundt';
 
   @override
-  String get tip_foodDesc =>
-      'Vælg proteinrige og fiberrige fødevarer samt sunde fedtstoffer i spisevinduerne. Undgå forarbejdede fødevarer.';
+  String get tip_foodDesc => 'Vælg proteinrige og fiberrige fødevarer samt sunde fedtstoffer i spisevinduerne. Undgå forarbejdede fødevarer.';
 
   @override
   String get tip_sleep => 'Sov godt';
 
   @override
-  String get tip_sleepDesc =>
-      'Regelmæssig og tilstrækkelig søvn støtter dit generelle velbefindende. Planlæg fasten, så den ikke forstyrrer din søvn.';
+  String get tip_sleepDesc => 'Regelmæssig og tilstrækkelig søvn støtter dit generelle velbefindende. Planlæg fasten, så den ikke forstyrrer din søvn.';
 
   @override
   String get tip_exercise => 'Let motion';
 
   @override
-  String get tip_exerciseDesc =>
-      'Du kan gå rolige ture eller dyrke yoga under fasten. Undgå hård træning, især i de første uger, mens kroppen vænner sig til det.';
+  String get tip_exerciseDesc => 'Du kan gå rolige ture eller dyrke yoga under fasten. Undgå hård træning, især i de første uger, mens kroppen vænner sig til det.';
 
   @override
   String get tip_drinks => 'Tilladte drikkevarer';
 
   @override
-  String get tip_drinksDesc =>
-      'Under fasten kan du drikke vand, ren te og sort kaffe uden sukker eller mælk. Disse drikke bryder ikke fasten.';
+  String get tip_drinksDesc => 'Under fasten kan du drikke vand, ren te og sort kaffe uden sukker eller mælk. Disse drikke bryder ikke fasten.';
 
   @override
   String get faq_drinks => 'Hvad må jeg drikke under fasten?';
 
   @override
-  String get faq_drinksAnswer =>
-      'Du kan drikke vand, ren te og sort kaffe uden sukker eller mælk. Kalorieholdige drikke bryder fasten.';
+  String get faq_drinksAnswer => 'Du kan drikke vand, ren te og sort kaffe uden sukker eller mælk. Kalorieholdige drikke bryder fasten.';
 
   @override
   String get faq_plan => 'Hvilken fasteplan skal jeg vælge?';
 
   @override
-  String get faq_planAnswer =>
-      'Hvis du er ny, så begynd med 12:12 eller 14:10. Har du erfaring, kan du prøve 16:8 eller 18:6. 20:4 og OMAD er for øvede.';
+  String get faq_planAnswer => 'Hvis du er ny, så begynd med 12:12 eller 14:10. Har du erfaring, kan du prøve 16:8 eller 18:6. 20:4 og OMAD er for øvede.';
 
   @override
   String get faq_exercise => 'Må jeg træne under fasten?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'Ja, men undgå intensiv træning. Let konditionstræning, gåture og yoga er ideelt. Læg styrketræning tæt på dit spisevindue.';
+  String get faq_exerciseAnswer => 'Ja, men undgå intensiv træning. Let konditionstræning, gåture og yoga er ideelt. Læg styrketræning tæt på dit spisevindue.';
 
   @override
   String get faq_weight => 'Hjælper faste med vægttab?';
 
   @override
-  String get faq_weightAnswer =>
-      'For nogle kan et begrænset spisevindue sænke det samlede energiindtag. Resultaterne varierer, og langtidsvirkningerne undersøges stadig.';
+  String get faq_weightAnswer => 'For nogle kan et begrænset spisevindue sænke det samlede energiindtag. Resultaterne varierer, og langtidsvirkningerne undersøges stadig.';
 
   @override
   String get plan_12_desc => 'Begynderniveau';
 
   @override
-  String get plan_12_detail =>
-      'Ideel til begyndere. Fast i 12 timer inklusive din sovetid.';
+  String get plan_12_detail => 'Ideel til begyndere. Fast i 12 timer inklusive din sovetid.';
 
   @override
   String get plan_16_desc => 'Mest populære plan';
 
   @override
-  String get plan_16_detail =>
-      'Den mest almindelige plan for periodisk faste: 16 timers faste og et spisevindue på 8 timer, typisk fra frokost til aftensmad.';
+  String get plan_16_detail => 'Den mest almindelige plan for periodisk faste: 16 timers faste og et spisevindue på 8 timer, typisk fra frokost til aftensmad.';
 
   @override
   String get plan_18_desc => 'Mellemniveau';
 
   @override
-  String get plan_18_detail =>
-      '18 timers faste og et spisevindue på 6 timer. Længere fedtforbrænding.';
+  String get plan_18_detail => '18 timers faste og et spisevindue på 6 timer. Længere fedtforbrænding.';
 
   @override
   String get plan_20_desc => 'Avanceret niveau';
 
   @override
-  String get plan_20_detail =>
-      '20 timers faste og et spisevindue på 4 timer. Velegnet til at nå ketose og autofagi.';
+  String get plan_20_detail => '20 timers faste, 4 timer til at spise. For dem med erfaring med faste.';
 
   @override
   String get plan_omad_desc => 'Ét måltid om dagen';
 
   @override
-  String get plan_omad_detail =>
-      'Ét måltid om dagen: 23 timers faste og et spisevindue på 1 time. Ekspertniveau.';
+  String get plan_omad_detail => 'Ét måltid om dagen: 23 timers faste og et spisevindue på 1 time. Ekspertniveau.';
 
   @override
   String get plan_52_desc => '2 dage om ugen';
 
   @override
-  String get plan_52_detail =>
-      'Spis normalt i 5 dage, og begræns dig til cirka 500 kalorier i 2 dage. En alternativ tilgang.';
+  String get plan_52_detail => 'Spis normalt i 5 dage, og begræns dig til cirka 500 kalorier i 2 dage. En alternativ tilgang.';
 
   @override
   String get plan_ese_desc => '24 timers faste';
@@ -1181,8 +1191,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get plan_warrior_desc => 'Krigerdiet';
 
   @override
-  String get plan_warrior_detail =>
-      'Spis let i løbet af dagen (frugt og grønt), og spis dit hovedmåltid i et fire timers vindue om aftenen.';
+  String get plan_warrior_detail => 'Spis let i løbet af dagen (frugt og grønt), og spis dit hovedmåltid i et fire timers vindue om aftenen.';
 
   @override
   String get award_first_title => 'Første skridt';
@@ -1334,16 +1343,7 @@ class AppLocalizationsDa extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'Du får ét for hver syv gennemførelser. En sprunget dag sletter aldrig dine fremskridt.';
-
-  @override
-  String get game_league => 'Privat ugentlig liga';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'Din rytmescore ligger i $percent. percentil i en privat lokal model. Vægt og ekstrem faste bliver aldrig rangeret.';
-  }
+  String get game_shieldsDesc => 'Du får ét for hver syv gennemførelser. En sprunget dag sletter aldrig dine fremskridt.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1487,15 +1487,13 @@ class AppLocalizationsDa extends AppLocalizations {
   String get paywall_continue => 'Fortsæt';
 
   @override
-  String get paywall_productsUnavailable =>
-      'Køb er ikke tilgængelige lige nu. Prøv igen senere.';
+  String get paywall_productsUnavailable => 'Køb er ikke tilgængelige lige nu. Prøv igen senere.';
 
   @override
   String get paywall_purchaseFailed => 'Købet kunne ikke gennemføres.';
 
   @override
-  String get paywall_nothingToRestore =>
-      'Der blev ikke fundet noget tidligere køb.';
+  String get paywall_nothingToRestore => 'Der blev ikke fundet noget tidligere køb.';
 
   @override
   String get paywall_restoreFailed => 'Købene kunne ikke gendannes.';
@@ -1504,15 +1502,13 @@ class AppLocalizationsDa extends AppLocalizations {
   String get paywall_terms => 'Vilkår for brug';
 
   @override
-  String get permission_notificationDesc =>
-      'Fastepåmindelser, faseopdateringer og afslutningsnotifikationer';
+  String get permission_notificationDesc => 'Fastepåmindelser, faseopdateringer og afslutningsnotifikationer';
 
   @override
   String get profile_privacyChoices => 'Valg for privatliv';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'Abonnementer fornyes automatisk, medmindre de opsiges mindst 24 timer før periodens udløb. Administrer eller opsig når som helst i indstillingerne i App Store.';
+  String get paywall_autoRenewInfo => 'Abonnementer fornyes automatisk, medmindre de opsiges mindst 24 timer før periodens udløb. Administrer eller opsig når som helst i indstillingerne i App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1536,24 +1532,19 @@ class AppLocalizationsDa extends AppLocalizations {
   String get paywall_retry => 'Prøv igen';
 
   @override
-  String get paywall_alreadyOwned =>
-      'Du ejer allerede dette abonnement. Tryk på »Gendan køb«.';
+  String get paywall_alreadyOwned => 'Du ejer allerede dette abonnement. Tryk på »Gendan køb«.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'Der kan ikke oprettes forbindelse til butikken lige nu. Kontrollér forbindelsen, og prøv igen.';
+  String get paywall_storeUnavailable => 'Der kan ikke oprettes forbindelse til butikken lige nu. Kontrollér forbindelsen, og prøv igen.';
 
   @override
-  String get paywall_secureNote =>
-      'Opsig når som helst. Betalingen trækkes fra din butikskonto.';
+  String get paywall_secureNote => 'Opsig når som helst. Betalingen trækkes fra din butikskonto.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'Abonnementer fornyes automatisk, medmindre de opsiges mindst 24 timer før periodens udløb. Administrer eller opsig når som helst under Google Play > Abonnementer.';
+  String get paywall_autoRenewInfoPlay => 'Abonnementer fornyes automatisk, medmindre de opsiges mindst 24 timer før periodens udløb. Administrer eller opsig når som helst under Google Play > Abonnementer.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'Låser op for 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat og Warrior';
+  String get paywall_allPlansDesc => 'Låser op for 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat og Warrior';
 
   @override
   String get paywall_noAdsDesc => 'Banner- og fuldskærmsreklamer slås helt fra';
@@ -1565,26 +1556,22 @@ class AppLocalizationsDa extends AppLocalizations {
   String get foodScan_scanCta => 'Scan måltid';
 
   @override
-  String get foodScan_scanCtaDesc =>
-      'Tag et billede af din tallerken, og få kalorier og makronæringsstoffer';
+  String get foodScan_scanCtaDesc => 'Tag et billede af din tallerken, og få kalorier og makronæringsstoffer';
 
   @override
   String get foodScan_introTitle => 'Tag et billede af din tallerken';
 
   @override
-  String get foodScan_introDesc =>
-      'AI aflæser billedet og anslår kalorier, protein, kulhydrater og fedt.';
+  String get foodScan_introDesc => 'AI aflæser billedet og anslår kalorier, protein, kulhydrater og fedt.';
 
   @override
   String get foodScan_tipLight => 'Godt og jævnt lys giver et bedre skøn';
 
   @override
-  String get foodScan_tipFrame =>
-      'Sørg for, at hele tallerkenen er med i billedet';
+  String get foodScan_tipFrame => 'Sørg for, at hele tallerkenen er med i billedet';
 
   @override
-  String get foodScan_tipScale =>
-      'Medtag bestik eller en hånd, så portionsstørrelsen kan vurderes';
+  String get foodScan_tipScale => 'Medtag bestik eller en hånd, så portionsstørrelsen kan vurderes';
 
   @override
   String get foodScan_takePhoto => 'Tag billede';
@@ -1598,19 +1585,16 @@ class AppLocalizationsDa extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'Du har brugt dagens scanninger. Prøv igen i morgen.';
+  String get foodScan_quotaReached => 'Du har brugt dagens scanninger. Prøv igen i morgen.';
 
   @override
-  String get foodScan_privacyNote =>
-      'Billedet sendes til Googles Gemini API til analyse og gemmes ikke på vores servere.';
+  String get foodScan_privacyNote => 'Billedet sendes til Googles Gemini API. Google kan bruge det til at forbedre sine produkter, og menneskelige korrekturlæsere kan se det. Vi gemmer det ikke på vores servere.';
 
   @override
   String get foodScan_consentTitle => 'Send billeder til Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'For at anslå kalorier og makronæringsstoffer sendes hvert måltidsbillede, du tager eller vælger, til Googles AI-tjeneste Gemini. Billedet bruges kun til denne analyse og gemmes ikke på vores servere.';
+  String get foodScan_consentBody => 'For at anslå kalorier og makroer sendes hvert måltidsbillede, du tager eller vælger, til Googles Gemini AI-tjeneste. Google kan bruge billeder til at forbedre sine produkter, og menneskelige korrekturlæsere kan se dem, så hold personer, dokumenter og andre personlige oplysninger ude af billedet. Vi gemmer ikke billeder på vores servere.';
 
   @override
   String get foodScan_consentAgree => 'Accepter og fortsæt';
@@ -1625,12 +1609,10 @@ class AppLocalizationsDa extends AppLocalizations {
   String get foodScan_detectedItems => 'Fundne fødevarer';
 
   @override
-  String get foodScan_disclaimer =>
-      'AI-skøn er omtrentlige. Tryk på en fødevare for at rette den.';
+  String get foodScan_disclaimer => 'AI-skøn er omtrentlige. Tryk på en fødevare for at rette den.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'Modellen er usikker på dette billede. Kontrollér tallene, før du gemmer.';
+  String get foodScan_lowConfidence => 'Modellen er usikker på dette billede. Kontrollér tallene, før du gemmer.';
 
   @override
   String get foodScan_save => 'Føj til måltider';
@@ -1654,40 +1636,130 @@ class AppLocalizationsDa extends AppLocalizations {
   String get foodScan_premiumTitle => 'En Premium-funktion';
 
   @override
-  String get foodScan_premiumDesc =>
-      'Kalorieanalyse fra billeder er inkluderet i Premium.';
+  String get foodScan_premiumDesc => 'Kalorieanalyse fra billeder er inkluderet i Premium.';
 
   @override
   String get foodScan_upgrade => 'Se Premium';
 
   @override
-  String get foodScan_errorNetwork =>
-      'Ingen forbindelse. Kontrollér internettet, og prøv igen.';
+  String get foodScan_errorNetwork => 'Ingen forbindelse. Kontrollér internettet, og prøv igen.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'Der er for mange scanninger lige nu. Prøv igen om et par minutter.';
+  String get foodScan_errorRateLimited => 'Der er for mange scanninger lige nu. Prøv igen om et par minutter.';
 
   @override
-  String get foodScan_errorUnavailable =>
-      'Billedanalyse er ikke tilgængelig lige nu.';
+  String get foodScan_errorUnavailable => 'Billedanalyse er ikke tilgængelig lige nu.';
 
   @override
-  String get foodScan_errorServer =>
-      'Analysetjenesten har problemer. Prøv igen om lidt.';
+  String get foodScan_errorServer => 'Analysetjenesten har problemer. Prøv igen om lidt.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'Der blev ikke fundet mad på dette billede. Prøv et tydeligere billede af tallerkenen.';
+  String get foodScan_errorNoFood => 'Der blev ikke fundet mad på dette billede. Prøv et tydeligere billede af tallerkenen.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'Billedet kunne ikke analyseres. Prøv et andet.';
+  String get foodScan_errorUnreadable => 'Billedet kunne ikke analyseres. Prøv et andet.';
 
   @override
   String get paywall_aiFoodScan => 'AI-madscanning';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'Tag et billede af et måltid, og registrer kalorier og makronæringsstoffer på få sekunder';
+  String get paywall_aiFoodScanDesc => 'Tag et billede af et måltid, og registrer kalorier og makronæringsstoffer på få sekunder';
+
+  @override
+  String get safety_title => 'Før du starter';
+
+  @override
+  String get safety_desc => 'Faste er ikke sikkert for alle. Vælg alt, der gælder for dig.';
+
+  @override
+  String get safety_under18 => 'Jeg er under 18';
+
+  @override
+  String get safety_pregnant => 'Jeg er gravid eller ammer';
+
+  @override
+  String get safety_eatingDisorder => 'Jeg har eller har haft en spiseforstyrrelse';
+
+  @override
+  String get safety_underweight => 'Jeg er undervægtig eller har fået besked på ikke at tabe mig';
+
+  @override
+  String get safety_diabetes => 'Jeg har diabetes eller tager medicin, der påvirker blodsukkeret';
+
+  @override
+  String get safety_medical => 'Jeg har en anden sygdom eller tager fast medicin';
+
+  @override
+  String get safety_none => 'Intet af dette gælder for mig';
+
+  @override
+  String get safety_ack => 'Jeg taler med min læge, før jeg faster';
+
+  @override
+  String get safety_blockedTitle => 'Denne app er ikke sikker for dig';
+
+  @override
+  String get safety_blockedDesc => 'Ud fra dine svar kan vi ikke tilbyde faste her. Tal med en læge. Hvis mad føles svært lige nu, kan en sundhedsperson hjælpe.';
+
+  @override
+  String get safety_reviewAnswers => 'Gennemgå mine svar';
+
+  @override
+  String get safety_targetTooLow => 'Dette mål er under en sund vægt for din højde.';
+
+  @override
+  String get onboarding_invalidBody => 'Angiv en gyldig højde, vægt, målvægt og alder.';
+
+  @override
+  String get crisis_unwell => 'Jeg har det dårligt';
+
+  @override
+  String get crisis_unwellTitle => 'Afslut din faste nu';
+
+  @override
+  String get crisis_unwellDesc => 'Svimmelhed, rysten, forvirring eller hjertebanken er tegn på, at du skal stoppe fasten og spise eller drikke noget.';
+
+  @override
+  String get crisis_emergency => 'Hvis du er besvimet, har brystsmerter eller har det meget dårligt, så ring straks til dit lokale alarmnummer.';
+
+  @override
+  String get crisis_endFast => 'Afslut min faste';
+
+  @override
+  String get profile_deleteData => 'Slet alle mine data';
+
+  @override
+  String get profile_deleteDataConfirm => 'Dette sletter permanent dine faster, vægt, måltider, vand og indstillinger fra denne enhed. Det kan ikke fortrydes. Abonnementer administreres på din butikskonto.';
+
+  @override
+  String get profile_deleteDataAction => 'Slet alt';
+
+  @override
+  String get record_deleteConfirm => 'Slet denne registrering?';
+
+  @override
+  String get profile_analytics => 'Del anonyme brugsdata';
+
+  @override
+  String get profile_analyticsDesc => 'Hjælper med at forbedre appen. Indeholder aldrig vægt, måltider eller helbredsoplysninger.';
+
+  @override
+  String get plan_longWarningTitle => 'Dette er en lang faste';
+
+  @override
+  String get plan_longWarningDesc => 'Faster på 20 timer eller mere er ikke egnede for alle og kan få dig til at føle dig dårlig. Tal med en læge, hvis du er i tvivl, og afslut fasten, hvis du får det dårligt.';
+
+  @override
+  String get plan_longWarningAccept => 'Jeg forstår';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days dages gratis prøve, derefter $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'Faster ikke';
+
+  @override
+  String get widget_tapToStart => 'Tryk for at starte';
 }

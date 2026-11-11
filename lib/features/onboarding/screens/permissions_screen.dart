@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/gradient_button.dart';
+import '../../../services/analytics_service.dart';
 import '../../../services/notification_service.dart';
 import '../../../shared/widgets/editorial_screen_hero.dart';
 import '../../profile/providers/settings_provider.dart';
@@ -63,6 +64,14 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
                   ref.read(settingsProvider.notifier).setNotifications(granted);
                 },
               ),
+              SwitchListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(l10n.profile_analytics),
+                subtitle: Text(l10n.profile_analyticsDesc),
+                value: ref.watch(settingsProvider).analyticsEnabled,
+                onChanged:
+                    ref.read(settingsProvider.notifier).setAnalyticsEnabled,
+              ),
               const Spacer(),
 
               GradientButton(
@@ -91,6 +100,7 @@ class _PermissionsScreenState extends ConsumerState<PermissionsScreen> {
   void _completeOnboarding() {
     ref.read(settingsProvider.notifier).setNotifications(_notificationGranted);
     ref.read(settingsProvider.notifier).completeOnboarding();
+    AnalyticsService().track('onboarding_completed');
     context.go('/timer');
   }
 

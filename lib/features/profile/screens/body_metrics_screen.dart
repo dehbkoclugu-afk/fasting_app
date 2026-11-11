@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/utils/calculations.dart';
+import '../../../core/utils/fasting_safety.dart';
 import '../../../data/database/app_database.dart';
 import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/gradient_button.dart';
@@ -280,6 +281,14 @@ class _BodyMetricsScreenState extends ConsumerState<BodyMetricsScreen> {
                   if (target == null || target <= 0 || target > 500) {
                     ScaffoldMessenger.of(ctx).showSnackBar(
                       SnackBar(content: Text(l10n.bodyMetrics_invalidWeight)),
+                    );
+                    return;
+                  }
+                  final height = ref.read(settingsProvider).height;
+                  if (height != null &&
+                      FastingSafety.isUnderweight(target, height)) {
+                    ScaffoldMessenger.of(ctx).showSnackBar(
+                      SnackBar(content: Text(l10n.safety_targetTooLow)),
                     );
                     return;
                   }

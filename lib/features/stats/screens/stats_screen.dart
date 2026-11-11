@@ -1,11 +1,14 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fasting_app/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/utils/formatters.dart';
+import '../../../shared/widgets/glass_card.dart';
 import '../../../shared/widgets/banner_ad_widget.dart';
 import '../../../shared/widgets/section_header.dart';
 import '../../../shared/widgets/fasting_art_slot.dart';
@@ -29,6 +32,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    final number = NumberFormat.decimalPattern(l10n.localeName);
+    final compact = MediaQuery.sizeOf(context).width < 360 ||
+        MediaQuery.textScalerOf(context).scale(16) > 20;
     final periods = [l10n.stats_week, l10n.stats_month, l10n.stats_year];
     final dayLabels = [
       l10n.day_mon,
@@ -68,7 +74,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               FastingSplitArtCard(
                 assetPath: 'assets/images/editorial/stats-progress.webp',
                 minHeight: 190,
-                artWidth: 168,
+                artWidth: compact ? 0 : 168,
                 alignment: Alignment.bottomRight,
                 semanticLabel: l10n.stats_storyTitle,
                 child: Padding(
@@ -123,7 +129,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                             child: _buildSummaryCard(
                               context,
                               title: l10n.stats_totalFasts,
-                              value: '${stats.totalSessions}',
+                              value: number.format(stats.totalSessions),
                               subtitle: periods[_selectedPeriod].toLowerCase(),
                               artPath: 'assets/images/editorial/v3/stats-total.webp',
                             ),
@@ -148,7 +154,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                             child: _buildSummaryCard(
                               context,
                               title: l10n.stats_streak,
-                              value: '${stats.currentStreak}',
+                              value: number.format(stats.currentStreak),
                               subtitle: l10n.stats_daysConsecutive,
                               artPath: 'assets/images/editorial/v3/stats-streak.webp',
                             ),
@@ -158,7 +164,10 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                             child: _buildSummaryCard(
                               context,
                               title: l10n.stats_success,
-                              value: '%${(stats.completionRate * 100).round()}',
+                              value: Formatters.formatPercentage(
+                                stats.completionRate,
+                                locale: l10n.localeName,
+                              ),
                               subtitle: l10n.stats_completion,
                               artPath: 'assets/images/editorial/v3/stats-success.webp',
                             ),
@@ -257,7 +266,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                                 getTitlesWidget: (value, meta) {
                                   if (value > 0 && (value / interval - (value / interval).round()).abs() > .08) return const SizedBox();
                                   return Text(
-                                    value == 0 ? '0' : _formatHours(context, value),
+                                    value == 0 ? number.format(0) : _formatHours(context, value),
                                     style: TextStyle(
                                       color: theme.colorScheme.onSurfaceVariant,
                                       fontSize: 10,
@@ -317,16 +326,20 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    l10n.stats_monthlyView,
-                    style: theme.textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w600,
+                  Expanded(
+                    child: Text(
+                      l10n.stats_monthlyView,
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.chevron_left, size: 20),
+                        tooltip: MaterialLocalizations.of(context).previousMonthTooltip,
+                        icon: const BackButtonIcon(),
                         onPressed: () {
                           setState(() {
                             _heatmapMonth = DateTime(
@@ -338,7 +351,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                         visualDensity: VisualDensity.compact,
                       ),
                       IconButton(
-                        icon: const Icon(Icons.chevron_right, size: 20),
+                        tooltip: MaterialLocalizations.of(context).nextMonthTooltip,
+                        icon: const Icon(Icons.arrow_forward_ios, size: 16),
                         onPressed:
                             _heatmapMonth.month == DateTime.now().month &&
                                     _heatmapMonth.year == DateTime.now().year
@@ -428,6 +442,19 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     required String artPath,
   }) {
     final theme = Theme.of(context);
+    if (MediaQuery.textScalerOf(context).scale(16) > 20 ||
+        MediaQuery.sizeOf(context).width < 360) {
+      return GlassCard(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(title, style: theme.textTheme.labelLarge),
+            Text(value, style: theme.textTheme.titleLarge),
+            Text(subtitle, style: theme.textTheme.bodySmall),
+          ],
+        ),
+      );
+    }
     return FastingArtSlot(
       assetPath: artPath,
       height: 158,
@@ -489,15 +516,12 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
   }
 
   String _formatHours(BuildContext context, double hours) {
-    final language = Localizations.localeOf(context).languageCode;
-    if (hours <= 0) return language == 'tr' ? '0 sa' : '0 hr';
-    if (hours < 1) {
-      final minutes = (hours * 60).round();
-      return language == 'tr' ? '$minutes dk' : '$minutes min';
-    }
-    final value = hours == hours.roundToDouble()
-        ? hours.round().toString()
-        : hours.toStringAsFixed(1);
-    return language == 'tr' ? '$value sa' : '$value hr';
+    final l10n = AppLocalizations.of(context)!;
+    return Formatters.formatShortDuration(
+      (hours * 60).round(),
+      locale: l10n.localeName,
+      hoursLabel: l10n.common_hours,
+      minutesLabel: l10n.common_minutes,
+    );
   }
 }

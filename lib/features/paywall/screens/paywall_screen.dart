@@ -7,6 +7,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../services/analytics_service.dart';
 import '../../../core/config/build_config.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
@@ -25,6 +26,12 @@ class PaywallScreen extends ConsumerStatefulWidget {
 }
 
 class _PaywallScreenState extends ConsumerState<PaywallScreen> {
+  @override
+  void initState() {
+    super.initState();
+    AnalyticsService().track('paywall_viewed');
+  }
+
   /// Selected package identifier. Held by identifier rather than list index so
   /// the selection survives the product list arriving or being reloaded.
   String? _selectedId;
@@ -121,6 +128,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
         .purchase(package);
     if (!mounted) return;
     if (outcome == PurchaseOutcome.success) {
+      AnalyticsService().track('purchase_completed');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.paywall_premiumActive),
@@ -229,7 +237,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                       textAlign: TextAlign.center,
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.onSurface.withValues(
-                          alpha: .55,
+                          alpha: .75,
                         ),
                         height: 1.35,
                       ),
@@ -581,6 +589,21 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                 textAlign: TextAlign.center,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.error,
+                ),
+              ),
+            ),
+          if (trialDays != null && selected != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Text(
+                l10n.paywall_trialThen(
+                  trialDays,
+                  selected.storeProduct.priceString,
+                  _planTitle(l10n, selected),
+                ),
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),

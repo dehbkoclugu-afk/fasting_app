@@ -9,6 +9,63 @@ class AppLocalizationsHe extends AppLocalizations {
   AppLocalizationsHe([String locale = 'he']) : super(locale);
 
   @override
+  String get mealPreset_oatsFruit => 'שיבולת שועל עם פירות';
+
+  @override
+  String get mealPreset_blueberryYogurt => 'יוגורט עם אוכמניות';
+
+  @override
+  String get mealPreset_eggAvocadoToast => 'טוסט עם ביצה ואבוקדו';
+
+  @override
+  String get mealPreset_chickenQuinoa => 'קערת קינואה עם עוף';
+
+  @override
+  String get mealPreset_lentilSoup => 'מרק עדשים';
+
+  @override
+  String get mealPreset_salmonBroccoli => 'סלמון וברוקולי';
+
+  @override
+  String get mealPreset_turkeyVegWrap => 'טורטייה עם הודו וירקות';
+
+  @override
+  String get mealPreset_chickpeaTahini => 'קערת גרגרי חומוס וטחינה';
+
+  @override
+  String get mealPreset_tunaBeanSalad => 'סלט טונה ושעועית';
+
+  @override
+  String get mealPreset_appleCottageCheese => 'קוטג׳ עם תפוח';
+
+  @override
+  String get mealPreset_hummusVegetables => 'ממרח חומוס וירקות פריכים';
+
+  @override
+  String get mealPreset_bananaKefir => 'קערת בננה וקפיר';
+
+  @override
+  String game_stepsToSeal(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'עוד $count צעדים לחותם',
+      two: 'עוד שני צעדים לחותם',
+      one: 'עוד צעד אחד לחותם',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastingHistory_deleteError => 'לא ניתן למחוק את הרשומה.';
+
+  @override
+  String get fastingHistory_title => 'היסטוריית צום';
+
+  @override
+  String get fastingHistory_deleteWarning => 'הרשומה הזו תימחק לצמיתות.';
+
+  @override
   String get appTitle => 'FastTrack';
 
   @override
@@ -96,13 +153,13 @@ class AppLocalizationsHe extends AppLocalizations {
   String get phase_ketosis => 'קטוזיס';
 
   @override
-  String get phase_ketosisDesc => 'ייצור הקטונים פעיל';
+  String get phase_ketosisDesc => 'ייצור הקטונים עשוי לעלות';
 
   @override
   String get phase_autophagy => 'אוטופגיה';
 
   @override
-  String get phase_autophagyDesc => 'התחדשות תאים';
+  String get phase_autophagyDesc => 'שלב משוער של מיחזור תאים';
 
   @override
   String get stats_title => 'סטטיסטיקות';
@@ -311,7 +368,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get onboarding_goalLongevity => 'אריכות ימים';
 
   @override
-  String get onboarding_goalLongevityDesc => 'התחדשות תאים והזדקנות בריאה';
+  String get onboarding_goalLongevityDesc => 'בניית שגרה בריאה לטווח ארוך';
 
   @override
   String get onboarding_goalDiscipline => 'משמעת';
@@ -332,20 +389,10 @@ class AppLocalizationsHe extends AppLocalizations {
   String get onboarding_bodyInfoDesc => 'לקבלת המלצות אישיות';
 
   @override
-  String get onboarding_gender => 'מגדר';
-
-  @override
-  String get onboarding_male => 'זכר';
-
-  @override
-  String get onboarding_female => 'נקבה';
-
-  @override
   String get onboarding_age => 'גיל';
 
   @override
-  String get onboarding_bodyInfoDisclaimer =>
-      'מידע זה נשמר במכשיר בלבד ומשמש לחישוב קלוריות.';
+  String get onboarding_bodyInfoDisclaimer => 'מידע זה נשמר במכשיר בלבד ומשמש לחישוב קלוריות.';
 
   @override
   String get onboarding_permissions => 'שלב אחרון';
@@ -417,8 +464,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get paywall_premiumActive => 'Premium פעיל!';
 
   @override
-  String get paywall_premiumActiveDesc =>
-      'כל תוכניות הצום פתוחות והפרסומות כבויות';
+  String get paywall_premiumActiveDesc => 'כל תוכניות הצום פתוחות והפרסומות כבויות';
 
   @override
   String get water_title => 'צריכת מים';
@@ -553,8 +599,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get completion_earlyTitle => 'הצום הסתיים';
 
   @override
-  String get completion_earlyMessage =>
-      'משך הזמן של היום נשמר. הרצף וההתקדמות בהישגים לא השתנו מכיוון שהיעד לא הושלם.';
+  String get completion_earlyMessage => 'משך הזמן של היום נשמר. הרצף וההתקדמות בהישגים לא השתנו מכיוון שהיעד לא הושלם.';
 
   @override
   String get timer_remainingTime => 'זמן שנותר';
@@ -584,8 +629,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get streak_incredible => 'מדהים!';
 
   @override
-  String get weight_noRecord =>
-      'אין עדיין רישומי משקל\nאפשר להוסיף בפרופיל > מדדי גוף';
+  String get weight_noRecord => 'אין עדיין רישומי משקל\nאפשר להוסיף בפרופיל > מדדי גוף';
 
   @override
   String get day_mon => 'ב׳';
@@ -771,7 +815,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get profile_calmGamification => 'משחקיות רגועה';
 
   @override
-  String get profile_calmGamificationDesc => 'מפחית לחץ מליגות ועונות';
+  String get profile_calmGamificationDesc => 'מפחית את לחץ העונה';
 
   @override
   String get profile_editName => 'עריכת השם';
@@ -789,8 +833,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get circle_tagline => 'ביחד, בלי לחץ.';
 
   @override
-  String get circle_privacy =>
-      'המשקל והמדדים הפרטיים נשארים מוסתרים. רק ההתקדמות והתמיכה גלויות.';
+  String get circle_privacy => 'המשקל והמדדים הפרטיים נשארים מוסתרים. רק ההתקדמות והתמיכה גלויות.';
 
   @override
   String circle_sendSupport(int count) {
@@ -880,8 +923,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get weather_onPlan => 'הקצב היום תואם לתוכנית.';
 
   @override
-  String get weather_challenging =>
-      'השעה הזאת הייתה מאתגרת בעבר; מצב התמיכה מוכן.';
+  String get weather_challenging => 'השעה הזאת הייתה מאתגרת בעבר; מצב התמיכה מוכן.';
 
   @override
   String get replay_copied => 'סיכום הצום הועתק';
@@ -906,8 +948,7 @@ class AppLocalizationsHe extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateShort =>
-      'תזמון השלב הוא הערכה כללית, לא מדידה רפואית.';
+  String get phase_estimateShort => 'תזמון השלב הוא הערכה כללית, לא מדידה רפואית.';
 
   @override
   String phase_hours(int start, int end) {
@@ -915,8 +956,7 @@ class AppLocalizationsHe extends AppLocalizations {
   }
 
   @override
-  String get phase_estimateLong =>
-      'תזמון זה הוא הערכה כללית. התגובות המטבוליות עשויות להשתנות בין אנשים.';
+  String get phase_estimateLong => 'תזמון זה הוא הערכה כללית. התגובות המטבוליות עשויות להשתנות בין אנשים.';
 
   @override
   String get bmi_underweight => 'תת-משקל';
@@ -948,7 +988,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get notification_phaseKetosis => 'אתם בקטוזיס ⚡';
 
   @override
-  String get notification_phaseAutophagy => 'האוטופגיה פעילה! 🔄';
+  String get notification_phaseAutophagy => 'שלב אוטופגיה משוער';
 
   @override
   String notification_completedBody(String plan) {
@@ -973,8 +1013,7 @@ class AppLocalizationsHe extends AppLocalizations {
   }
 
   @override
-  String get notification_streakBody =>
-      'אתם עושים עבודה נהדרת! המשיכו גם היום.';
+  String get notification_streakBody => 'אתם עושים עבודה נהדרת! המשיכו גם היום.';
 
   @override
   String notification_ongoingTitle(String phase) {
@@ -1014,22 +1053,19 @@ class AppLocalizationsHe extends AppLocalizations {
   String get explore_faq => 'שאלות נפוצות';
 
   @override
-  String get explore_education =>
-      'תוכן זה מיועד להשכלה כללית בלבד ואינו אבחון רפואי או ייעוץ טיפולי.';
+  String get explore_education => 'תוכן זה מיועד להשכלה כללית בלבד ואינו אבחון רפואי או ייעוץ טיפולי.';
 
   @override
   String get explore_safety => 'בריאות ובטיחות';
 
   @override
-  String get explore_safetyDesc =>
-      'אם יש לכם מצב רפואי, אתם נוטלים תרופות בקביעות, יש תסמינים מדאיגים, או שאתן בהיריון או מניקות, התייעצו עם איש מקצוע רפואי מוסמך לפני הצום. הפסיקו אם אינכם מרגישים טוב.';
+  String get explore_safetyDesc => 'אם יש לכם מצב רפואי, אתם נוטלים תרופות בקביעות, יש תסמינים מדאיגים, או שאתן בהיריון או מניקות, התייעצו עם איש מקצוע רפואי מוסמך לפני הצום. הפסיקו אם אינכם מרגישים טוב.';
 
   @override
   String get explore_sources => 'מקורות';
 
   @override
-  String get explore_sourcesDesc =>
-      'התוכן פושט מתוך מקורות בריאות הציבור שלהלן.';
+  String get explore_sourcesDesc => 'התוכן פושט מתוך מקורות בריאות הציבור שלהלן.';
 
   @override
   String get explore_sourceError => 'לא ניתן לפתוח את המקור';
@@ -1059,64 +1095,55 @@ class AppLocalizationsHe extends AppLocalizations {
   String get tip_water => 'שמרו על נוזלים';
 
   @override
-  String get tip_waterDesc =>
-      'שתו מים כשאתם צמאים ושלבו נוזלים בארוחות. הצורך משתנה לפי הבריאות, מזג האוויר והפעילות.';
+  String get tip_waterDesc => 'שתו מים כשאתם צמאים ושלבו נוזלים בארוחות. הצורך משתנה לפי הבריאות, מזג האוויר והפעילות.';
 
   @override
   String get tip_food => 'אכלו נכון';
 
   @override
-  String get tip_foodDesc =>
-      'בחלונות האכילה בחרו מזונות עשירים בחלבון עם סיבים ושומנים בריאים. הימנעו ממזון מעובד.';
+  String get tip_foodDesc => 'בחלונות האכילה בחרו מזונות עשירים בחלבון עם סיבים ושומנים בריאים. הימנעו ממזון מעובד.';
 
   @override
   String get tip_sleep => 'שנו היטב';
 
   @override
-  String get tip_sleepDesc =>
-      'שינה סדירה ומספקת תומכת בבריאות הכללית. תזמנו את הצום כך שלא יפגע בשינה.';
+  String get tip_sleepDesc => 'שינה סדירה ומספקת תומכת בבריאות הכללית. תזמנו את הצום כך שלא יפגע בשינה.';
 
   @override
   String get tip_exercise => 'פעילות קלה';
 
   @override
-  String get tip_exerciseDesc =>
-      'אפשר לצאת להליכה קלה או לעשות יוגה בזמן הצום. הימנעו מפעילות מאומצת, במיוחד בשבועות הראשונים עד שהגוף מסתגל.';
+  String get tip_exerciseDesc => 'אפשר לצאת להליכה קלה או לעשות יוגה בזמן הצום. הימנעו מפעילות מאומצת, במיוחד בשבועות הראשונים עד שהגוף מסתגל.';
 
   @override
   String get tip_drinks => 'משקאות מותרים';
 
   @override
-  String get tip_drinksDesc =>
-      'בזמן הצום אפשר לשתות מים, תה ללא תוספות וקפה שחור (ללא סוכר או חלב). משקאות אלה לא ישברו את הצום.';
+  String get tip_drinksDesc => 'בזמן הצום אפשר לשתות מים, תה ללא תוספות וקפה שחור (ללא סוכר או חלב). משקאות אלה לא ישברו את הצום.';
 
   @override
   String get faq_drinks => 'מה אפשר לשתות בזמן הצום?';
 
   @override
-  String get faq_drinksAnswer =>
-      'אפשר לשתות מים, תה ללא תוספות וקפה שחור (ללא סוכר/חלב). משקאות עם קלוריות שוברים את הצום.';
+  String get faq_drinksAnswer => 'אפשר לשתות מים, תה ללא תוספות וקפה שחור (ללא סוכר/חלב). משקאות עם קלוריות שוברים את הצום.';
 
   @override
   String get faq_plan => 'באיזו תוכנית צום כדאי לבחור?';
 
   @override
-  String get faq_planAnswer =>
-      'אם אתם מתחילים, התחילו ב-12:12 או 14:10. אם יש לכם ניסיון, נסו 16:8 או 18:6. תוכניות 20:4 ו-OMAD מיועדות למתקדמים.';
+  String get faq_planAnswer => 'אם אתם מתחילים, התחילו ב-12:12 או 14:10. אם יש לכם ניסיון, נסו 16:8 או 18:6. תוכניות 20:4 ו-OMAD מיועדות למתקדמים.';
 
   @override
   String get faq_exercise => 'אפשר להתאמן בזמן הצום?';
 
   @override
-  String get faq_exerciseAnswer =>
-      'כן, אך הימנעו מאימונים עצימים. פעילות אירובית קלה, הליכה ויוגה מתאימות. תזמנו אימוני כוח סמוך לחלון האכילה.';
+  String get faq_exerciseAnswer => 'כן, אך הימנעו מאימונים עצימים. פעילות אירובית קלה, הליכה ויוגה מתאימות. תזמנו אימוני כוח סמוך לחלון האכילה.';
 
   @override
   String get faq_weight => 'האם צום מסייע בירידה במשקל?';
 
   @override
-  String get faq_weightAnswer =>
-      'אצל חלק מהאנשים, הגבלת שעות האכילה עשויה להפחית את צריכת האנרגיה הכוללת. התוצאות משתנות וההשפעות לטווח ארוך עדיין נחקרות.';
+  String get faq_weightAnswer => 'אצל חלק מהאנשים, הגבלת שעות האכילה עשויה להפחית את צריכת האנרגיה הכוללת. התוצאות משתנות וההשפעות לטווח ארוך עדיין נחקרות.';
 
   @override
   String get plan_12_desc => 'רמת מתחילים';
@@ -1128,50 +1155,43 @@ class AppLocalizationsHe extends AppLocalizations {
   String get plan_16_desc => 'התוכנית הפופולרית ביותר';
 
   @override
-  String get plan_16_detail =>
-      'תוכנית הצום לסירוגין הנפוצה ביותר. 16 שעות צום ו-8 שעות אכילה, בדרך כלל מצהריים עד הערב.';
+  String get plan_16_detail => 'תוכנית הצום לסירוגין הנפוצה ביותר. 16 שעות צום ו-8 שעות אכילה, בדרך כלל מצהריים עד הערב.';
 
   @override
   String get plan_18_desc => 'רמת ביניים';
 
   @override
-  String get plan_18_detail =>
-      '18 שעות צום ו-6 שעות אכילה. משך שריפת שומן ארוך יותר.';
+  String get plan_18_detail => '18 שעות צום ו-6 שעות אכילה. משך שריפת שומן ארוך יותר.';
 
   @override
   String get plan_20_desc => 'רמה מתקדמת';
 
   @override
-  String get plan_20_detail =>
-      '20 שעות צום ו-4 שעות אכילה. מתאים להגעה לקטוזיס ולאוטופגיה.';
+  String get plan_20_detail => '20 שעות צום ו-4 שעות אכילה. למי שיש ניסיון בצום.';
 
   @override
   String get plan_omad_desc => 'ארוחה אחת ביום';
 
   @override
-  String get plan_omad_detail =>
-      'ארוחה אחת ביום. 23 שעות צום ושעת אכילה אחת. רמת מומחים.';
+  String get plan_omad_detail => 'ארוחה אחת ביום. 23 שעות צום ושעת אכילה אחת. רמת מומחים.';
 
   @override
   String get plan_52_desc => 'יומיים בשבוע';
 
   @override
-  String get plan_52_detail =>
-      'אוכלים כרגיל 5 ימים ורק כ-500 קלוריות ביומיים. גישה חלופית.';
+  String get plan_52_detail => 'אוכלים כרגיל 5 ימים ורק כ-500 קלוריות ביומיים. גישה חלופית.';
 
   @override
   String get plan_ese_desc => 'צום של 24 שעות';
 
   @override
-  String get plan_ese_detail =>
-      'צמים 24 שעות פעם או פעמיים בשבוע. למשתמשים מתקדמים.';
+  String get plan_ese_detail => 'צמים 24 שעות פעם או פעמיים בשבוע. למשתמשים מתקדמים.';
 
   @override
   String get plan_warrior_desc => 'דיאטת הלוחם';
 
   @override
-  String get plan_warrior_detail =>
-      'אוכלים קל במהלך היום (פירות וירקות) ואת הארוחה העיקרית בחלון ערב של 4 שעות.';
+  String get plan_warrior_detail => 'אוכלים קל במהלך היום (פירות וירקות) ואת הארוחה העיקרית בחלון ערב של 4 שעות.';
 
   @override
   String get award_first_title => 'צעד ראשון';
@@ -1323,16 +1343,7 @@ class AppLocalizationsHe extends AppLocalizations {
   }
 
   @override
-  String get game_shieldsDesc =>
-      'מתקבלים בכל שבע השלמות. יום שהוחמץ לעולם לא מוחק את ההתקדמות.';
-
-  @override
-  String get game_league => 'ליגה שבועית פרטית';
-
-  @override
-  String game_leagueDesc(int percent) {
-    return 'ציון הקצב שלכם נמצא באחוזון $percent של מודל מקומי פרטי. משקל וצום קיצוני לעולם אינם מדורגים.';
-  }
+  String get game_shieldsDesc => 'מתקבלים בכל שבע השלמות. יום שהוחמץ לעולם לא מוחק את ההתקדמות.';
 
   @override
   String game_levelSemantics(int level, int xp) {
@@ -1476,8 +1487,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get paywall_continue => 'המשך';
 
   @override
-  String get paywall_productsUnavailable =>
-      'הרכישות אינן זמינות כרגע. נסו שוב מאוחר יותר.';
+  String get paywall_productsUnavailable => 'הרכישות אינן זמינות כרגע. נסו שוב מאוחר יותר.';
 
   @override
   String get paywall_purchaseFailed => 'לא ניתן להשלים את הרכישה.';
@@ -1492,15 +1502,13 @@ class AppLocalizationsHe extends AppLocalizations {
   String get paywall_terms => 'תנאי שימוש';
 
   @override
-  String get permission_notificationDesc =>
-      'תזכורות צום, עדכוני שלבים והתראות השלמה';
+  String get permission_notificationDesc => 'תזכורות צום, עדכוני שלבים והתראות השלמה';
 
   @override
   String get profile_privacyChoices => 'אפשרויות פרטיות';
 
   @override
-  String get paywall_autoRenewInfo =>
-      'המינויים מתחדשים אוטומטית אלא אם מבטלים לפחות 24 שעות לפני תום התקופה. אפשר לנהל או לבטל בכל עת בהגדרות ה-App Store.';
+  String get paywall_autoRenewInfo => 'המינויים מתחדשים אוטומטית אלא אם מבטלים לפחות 24 שעות לפני תום התקופה. אפשר לנהל או לבטל בכל עת בהגדרות ה-App Store.';
 
   @override
   String paywall_perMonth(String price) {
@@ -1524,24 +1532,19 @@ class AppLocalizationsHe extends AppLocalizations {
   String get paywall_retry => 'ניסיון חוזר';
 
   @override
-  String get paywall_alreadyOwned =>
-      'המינוי הזה כבר בבעלותכם. הקישו על ״שחזור רכישות״.';
+  String get paywall_alreadyOwned => 'המינוי הזה כבר בבעלותכם. הקישו על ״שחזור רכישות״.';
 
   @override
-  String get paywall_storeUnavailable =>
-      'לא ניתן להגיע לחנות כרגע. בדקו את החיבור ונסו שוב.';
+  String get paywall_storeUnavailable => 'לא ניתן להגיע לחנות כרגע. בדקו את החיבור ונסו שוב.';
 
   @override
-  String get paywall_secureNote =>
-      'אפשר לבטל בכל עת. התשלום מחויב בחשבון החנות.';
+  String get paywall_secureNote => 'אפשר לבטל בכל עת. התשלום מחויב בחשבון החנות.';
 
   @override
-  String get paywall_autoRenewInfoPlay =>
-      'המינויים מתחדשים אוטומטית אלא אם מבטלים לפחות 24 שעות לפני תום התקופה. אפשר לנהל או לבטל בכל עת ב-Google Play > מינויים.';
+  String get paywall_autoRenewInfoPlay => 'המינויים מתחדשים אוטומטית אלא אם מבטלים לפחות 24 שעות לפני תום התקופה. אפשר לנהל או לבטל בכל עת ב-Google Play > מינויים.';
 
   @override
-  String get paywall_allPlansDesc =>
-      'פותח את 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ו-Warrior';
+  String get paywall_allPlansDesc => 'פותח את 18:6, 20:4, OMAD, 5:2, Eat-Stop-Eat ו-Warrior';
 
   @override
   String get paywall_noAdsDesc => 'פרסומות באנר ופרסומות מעבר מושבתות לחלוטין';
@@ -1559,8 +1562,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get foodScan_introTitle => 'צלמו את הצלחת';
 
   @override
-  String get foodScan_introDesc =>
-      'ה-AI קורא את התמונה ומעריך קלוריות, חלבון, פחמימות ושומן.';
+  String get foodScan_introDesc => 'ה-AI קורא את התמונה ומעריך קלוריות, חלבון, פחמימות ושומן.';
 
   @override
   String get foodScan_tipLight => 'תאורה טובה ואחידה מספקת הערכה טובה יותר';
@@ -1583,19 +1585,16 @@ class AppLocalizationsHe extends AppLocalizations {
   }
 
   @override
-  String get foodScan_quotaReached =>
-      'השתמשתם בכל הסריקות של היום. נסו שוב מחר.';
+  String get foodScan_quotaReached => 'השתמשתם בכל הסריקות של היום. נסו שוב מחר.';
 
   @override
-  String get foodScan_privacyNote =>
-      'התמונה נשלחת ל-Gemini API של Google לניתוח ואינה נשמרת בשרתים שלנו.';
+  String get foodScan_privacyNote => 'התמונה נשלחת אל Gemini API של Google. Google עשויה להשתמש בה לשיפור מוצריה ובודקים אנושיים עשויים לראות אותה. איננו שומרים אותה בשרתים שלנו.';
 
   @override
   String get foodScan_consentTitle => 'לשלוח תמונות ל-Google Gemini?';
 
   @override
-  String get foodScan_consentBody =>
-      'כדי להעריך קלוריות ומאקרו, כל תמונת ארוחה שתצלמו או תבחרו נשלחת לשירות הבינה המלאכותית Gemini של Google. התמונה משמשת רק לניתוח הזה ואינה נשמרת בשרתים שלנו.';
+  String get foodScan_consentBody => 'כדי להעריך קלוריות ומקרו, כל תמונת ארוחה שמצלמים או בוחרים נשלחת לשירות ה-AI של Google בשם Gemini. Google עשויה להשתמש בתמונות לשיפור מוצריה ובודקים אנושיים עשויים לראות אותן, לכן אין לכלול בתמונה אנשים, מסמכים או פרטים אישיים אחרים. איננו שומרים תמונות בשרתים שלנו.';
 
   @override
   String get foodScan_consentAgree => 'אישור והמשך';
@@ -1610,12 +1609,10 @@ class AppLocalizationsHe extends AppLocalizations {
   String get foodScan_detectedItems => 'פריטים שזוהו';
 
   @override
-  String get foodScan_disclaimer =>
-      'הערכות AI הן בקירוב. הקישו על פריט כדי לתקן אותו.';
+  String get foodScan_disclaimer => 'הערכות AI הן בקירוב. הקישו על פריט כדי לתקן אותו.';
 
   @override
-  String get foodScan_lowConfidence =>
-      'המודל אינו בטוח לגבי התמונה. בדקו את המספרים לפני השמירה.';
+  String get foodScan_lowConfidence => 'המודל אינו בטוח לגבי התמונה. בדקו את המספרים לפני השמירה.';
 
   @override
   String get foodScan_save => 'הוספה לארוחות';
@@ -1648,8 +1645,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get foodScan_errorNetwork => 'אין חיבור. בדקו את האינטרנט ונסו שוב.';
 
   @override
-  String get foodScan_errorRateLimited =>
-      'יש יותר מדי סריקות כרגע. נסו שוב בעוד כמה דקות.';
+  String get foodScan_errorRateLimited => 'יש יותר מדי סריקות כרגע. נסו שוב בעוד כמה דקות.';
 
   @override
   String get foodScan_errorUnavailable => 'ניתוח תמונות אינו זמין כרגע.';
@@ -1658,17 +1654,112 @@ class AppLocalizationsHe extends AppLocalizations {
   String get foodScan_errorServer => 'שירות הניתוח נתקל בבעיה. נסו שוב בקרוב.';
 
   @override
-  String get foodScan_errorNoFood =>
-      'לא נמצא מזון בתמונה. נסו צילום ברור יותר של הצלחת.';
+  String get foodScan_errorNoFood => 'לא נמצא מזון בתמונה. נסו צילום ברור יותר של הצלחת.';
 
   @override
-  String get foodScan_errorUnreadable =>
-      'לא ניתן לנתח את התמונה. נסו תמונה אחרת.';
+  String get foodScan_errorUnreadable => 'לא ניתן לנתח את התמונה. נסו תמונה אחרת.';
 
   @override
   String get paywall_aiFoodScan => 'סריקת מזון ב-AI';
 
   @override
-  String get paywall_aiFoodScanDesc =>
-      'צלמו ארוחה ורשמו קלוריות ומאקרו בתוך שניות';
+  String get paywall_aiFoodScanDesc => 'צלמו ארוחה ורשמו קלוריות ומאקרו בתוך שניות';
+
+  @override
+  String get safety_title => 'לפני שמתחילים';
+
+  @override
+  String get safety_desc => 'צום אינו בטוח לכולם. בחרו כל מה שנכון לגביכם.';
+
+  @override
+  String get safety_under18 => 'אני מתחת לגיל 18';
+
+  @override
+  String get safety_pregnant => 'אני בהיריון או מניקה';
+
+  @override
+  String get safety_eatingDisorder => 'יש לי או הייתה לי הפרעת אכילה';
+
+  @override
+  String get safety_underweight => 'יש לי תת-משקל או שנאמר לי לא לרדת במשקל';
+
+  @override
+  String get safety_diabetes => 'יש לי סוכרת או שאני נוטל/ת תרופה שמשפיעה על הסוכר בדם';
+
+  @override
+  String get safety_medical => 'יש לי מצב רפואי אחר או שאני נוטל/ת תרופות באופן קבוע';
+
+  @override
+  String get safety_none => 'אף אחד מאלה לא נכון לגביי';
+
+  @override
+  String get safety_ack => 'אתייעץ עם הרופא/ה שלי לפני הצום';
+
+  @override
+  String get safety_blockedTitle => 'האפליקציה הזו אינה בטוחה עבורך';
+
+  @override
+  String get safety_blockedDesc => 'לפי התשובות שלך, איננו יכולים להציע כאן צום. נא לדבר עם רופא/ה. אם קשה לך עם אוכל כרגע, איש/אשת מקצוע בתחום הבריאות יכולים לעזור.';
+
+  @override
+  String get safety_reviewAnswers => 'עיון בתשובות שלי';
+
+  @override
+  String get safety_targetTooLow => 'היעד הזה נמוך ממשקל בריא לגובה שלך.';
+
+  @override
+  String get onboarding_invalidBody => 'יש להזין גובה, משקל, משקל יעד וגיל תקינים.';
+
+  @override
+  String get crisis_unwell => 'אני לא מרגיש/ה טוב';
+
+  @override
+  String get crisis_unwellTitle => 'סיים/י את הצום עכשיו';
+
+  @override
+  String get crisis_unwellDesc => 'סחרחורת, רעד, בלבול או דופק מהיר הם סימנים להפסיק את הצום ולאכול או לשתות משהו.';
+
+  @override
+  String get crisis_emergency => 'אם התעלפת, יש לך כאב בחזה או שאת/ה מרגיש/ה רע מאוד, יש להתקשר מיד למספר החירום המקומי.';
+
+  @override
+  String get crisis_endFast => 'סיום הצום שלי';
+
+  @override
+  String get profile_deleteData => 'מחיקת כל הנתונים שלי';
+
+  @override
+  String get profile_deleteDataConfirm => 'פעולה זו מוחקת לצמיתות מהמכשיר את הצומות, המשקל, הארוחות, המים וההגדרות. אי אפשר לבטל אותה. מינויים מנוהלים בחשבון החנות.';
+
+  @override
+  String get profile_deleteDataAction => 'מחיקת הכול';
+
+  @override
+  String get record_deleteConfirm => 'למחוק את הרשומה הזו?';
+
+  @override
+  String get profile_analytics => 'שיתוף נתוני שימוש אנונימיים';
+
+  @override
+  String get profile_analyticsDesc => 'עוזר לשפר את האפליקציה. לעולם לא כולל משקל, ארוחות או מידע בריאותי.';
+
+  @override
+  String get plan_longWarningTitle => 'זה צום ארוך';
+
+  @override
+  String get plan_longWarningDesc => 'צומות של 20 שעות ומעלה אינם מתאימים לכולם ועלולים לגרום להרגשה רעה. אם יש ספק יש להתייעץ עם רופא/ה, ואם מרגישים רע יש לסיים את הצום.';
+
+  @override
+  String get plan_longWarningAccept => 'הבנתי';
+
+  @override
+  String paywall_trialThen(int days, String price, String plan) {
+    return '$days ימי ניסיון בחינם, ואז $price ($plan)';
+  }
+
+  @override
+  String get widget_notFasting => 'לא בצום';
+
+  @override
+  String get widget_tapToStart => 'יש להקיש כדי להתחיל';
 }
