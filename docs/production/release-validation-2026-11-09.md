@@ -28,6 +28,9 @@
   `store-privacy-declarations-2026-11-11.md`.
 - `bug-control-protocol-100.md` was re-audited: 77 pass, 6 fixed, 13 manual,
   3 pending (Codemagic AAB and certificate, final sign-off), 1 warning.
+- 11 November: the release owner ran the phone checks on a physical Android
+  phone with the sideload build and reported everything working. Purchases,
+  restore and photo scanning still need the Codemagic build in internal testing.
 - The manual phone checks below were not run on an emulator: the build host had
   0.16 GB free memory and its emulator previously stalled with system ANRs.
 
